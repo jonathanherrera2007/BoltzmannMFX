@@ -20,6 +20,22 @@ void BMXParticleContainer::EvolveParticles (Real dt,
 
     Real eps = std::numeric_limits<Real>::epsilon();
 
+    // If this is first pass through this routine, check to see if
+    // DEM::neighborhood parameter needs to be reset
+    if (reset_neighborhood) {
+      int nparticles, nsegments;
+      CountParticleTypes(nparticles, nsegments);
+      if (nsegments > 0) {
+        ParmParse ppF("cell_force");
+        Real width;
+        ppF.get("neighbor_width",width);
+        width = 1.5*(SPECIES::max_len+width);
+        DEM::neighborhood = width*width;
+        std::printf("Reset neighborhood to %f\n",DEM::neighborhood);
+      }
+      reset_neighborhood = false;
+    }
+
     for (int lev = 0; lev <= finest_level; lev++)
     {
 
