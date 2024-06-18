@@ -229,7 +229,7 @@ void BMXParticleContainer::EvaluateInteriorFusion (const Vector<MultiFab*> cost,
 
     BMXChemistry *chemistry = BMXChemistry::instance();
     amrex::Gpu::DeviceVector<Real> fpar_vec = chemistry->getFusionParameters();
-    Real *fpar = &fpar_vec[0];
+    auto fpar = fpar_vec.data();
     BMXCellInteraction *interaction = BMXCellInteraction::instance();
     amrex::Gpu::DeviceVector<Real> xpar_vec = interaction->getForceParams();
     // Real *xpar = &xpar_vec[0];
@@ -255,7 +255,7 @@ void BMXParticleContainer::EvaluateInteriorFusion (const Vector<MultiFab*> cost,
       fillNeighbors();
       // send in "false" for sort_neighbor_list option
 
-      buildNeighborList(BMXCheckPair(DEM::neighborhood, false), false);
+      buildNeighborList(BMXCheckPair(DEM::neighborhood, false, pairDebug::INTERIORFUSION), false);
 #else
       updateNeighbors();
 #endif
@@ -302,9 +302,8 @@ void BMXParticleContainer::EvaluateInteriorFusion (const Vector<MultiFab*> cost,
       int me = ParallelDescriptor::MyProc();
       Gpu::DeviceVector<unsigned int> do_split(nrp+1, 0);
       auto do_split_p = do_split.data();
-      bool did_fusion = false;
       amrex::ParallelFor(nrp,
-          [nrp,pstruct,nbor_data,fpar,xpar,me,do_split_p,did_fusion]
+          [nrp,pstruct,nbor_data,fpar,xpar,me,do_split_p]
           AMREX_GPU_DEVICE (int i) noexcept
           {
           auto& particle = pstruct[i];
@@ -343,9 +342,10 @@ void BMXParticleContainer::EvaluateInteriorFusion (const Vector<MultiFab*> cost,
             // split_flag to 1.
             checkInteriorFusion(&particle.rdata(0), &particle.idata(0),
                 &p2.rdata(0), &p2.idata(0), &split_flag, me);
-            if (split_flag == 1) do_split_p[i]++;
+            // if (split_flag == 1) do_split_p[i]++;
+            if (split_flag == 1) amrex::Gpu::Atomic::Add(do_split_p+i,1u);
             if (split_flag == 1) {
-              printf("p[%d] Splitting particle id: %d cpu: %d\n",me,
+              std::printf("p[%d] Splitting particle id: %d cpu: %d\n",me,
                   particle.idata(intIdx::id),particle.idata(intIdx::cpu));
             }
             
@@ -407,7 +407,7 @@ void BMXParticleContainer::EvaluateInteriorFusion (const Vector<MultiFab*> cost,
             int *ipar_orig = &p_orig.idata(0);
             int *ipar_new  = &p.idata(0);
 
-            // Set parameters on new particled base on values from
+            // Set parameters on new particled based on values from
             // original particle
             setSplitSegment(pos_orig, pos_new, par_orig,
                 par_new, ipar_orig, ipar_new,
@@ -533,7 +533,7 @@ void BMXParticleContainer::CleanupFusion (const Vector<MultiFab*> cost,
       fillNeighbors();
       // send in "false" for sort_neighbor_list option
 
-      buildNeighborList(BMXCheckPair(DEM::neighborhood, false), false);
+      buildNeighborList(BMXCheckPair(DEM::neighborhood, false, pairDebug::CLEANUP), false);
 #else
       updateNeighbors();
 #endif
@@ -600,10 +600,26 @@ void BMXParticleContainer::CleanupFusion (const Vector<MultiFab*> cost,
           Real dist_z = pos1[2] - p2.pos(2);
 
           Real r2 = dist_x*dist_x +
-          dist_y*dist_y +
-          dist_z*dist_z;
+                    dist_y*dist_y +
+                    dist_z*dist_z;
 
           RealVect diff(dist_x,dist_y,dist_z);
+#if 0
+          int *ipar = &particle.idata(0);
+          int *jpar = &p2.idata(0);
+          if ((ipar[intIdx::id] == 289 && ipar[intIdx::cpu] == 6) ||
+              (ipar[intIdx::id] == 290 && ipar[intIdx::cpu] == 6) ||
+              (ipar[intIdx::id] == 288 && ipar[intIdx::cpu] == 6) ||
+              (ipar[intIdx::id] == 316 && ipar[intIdx::cpu] == 6) ||
+              (ipar[intIdx::id] == 316 && ipar[intIdx::cpu] == 6) ) {
+            std::printf("(Outside) iid: %d icpu: %d jid: %d cpu: %d i_new_flag: %d"
+                " i_fuse_flag: %d j_split_flag: %d ix: %f iy: %f iz: %f\n",
+                ipar[intIdx::id],ipar[intIdx::cpu],
+                jpar[intIdx::id],jpar[intIdx::cpu],
+                ipar[intIdx::new_flag],ipar[intIdx::fuse_flag],
+                jpar[intIdx::split_flag],pos1[0],pos1[1],pos1[2]);
+          }
+#endif
 
           //Real r_lm = 2.0*maxInteractionDistance(&particle.rdata(0),&p2.rdata(0),
           //    &particle.idata(0),&p2.idata(0),&xpar[0]);
@@ -736,24 +752,28 @@ void BMXParticleContainer::PrintConnectivity (const Vector<MultiFab*> cost,
 
             int *ipar = &p_orig.idata(0);
             if (ipar[intIdx::n_bnds] == 1) {
-            printf("particle id: %d cpu: %d nbnds: %d site1: %d id1: %d cpu1: %d\n",
+              std::printf("particle id: %d cpu: %d nbnds: %d site1: %d"
+                " id1: %d cpu1: %d\n",
                 ipar[intIdx::id],ipar[intIdx::cpu],ipar[intIdx::n_bnds],
                 ipar[intIdx::site1],ipar[intIdx::seg1_id1],ipar[intIdx::seg1_id2]);
             } else if (ipar[intIdx::n_bnds] == 2) {
-            printf("particle id: %d cpu: %d nbnds: %d site1: %d id1: %d cpu1: %d"
+              std::printf("particle id: %d cpu: %d nbnds: %d site1: %d"
+                " id1: %d cpu1: %d"
                 " site2: %d id2: %d cpu2: %d\n",
                 ipar[intIdx::id],ipar[intIdx::cpu],ipar[intIdx::n_bnds],
                 ipar[intIdx::site1],ipar[intIdx::seg1_id1],ipar[intIdx::seg1_id2],
                 ipar[intIdx::site2],ipar[intIdx::seg2_id1],ipar[intIdx::seg2_id2]);
             } else if (ipar[intIdx::n_bnds] == 3) {
-            printf("particle id: %d cpu: %d nbnds: %d site1: %d id1: %d cpu1: %d"
+              std::printf("particle id: %d cpu: %d nbnds: %d site1: %d"
+                " id1: %d cpu1: %d"
                 " site2: %d id2: %d cpu2: %d site3: %d id3: %d cpu3: %d\n",
                 ipar[intIdx::id],ipar[intIdx::cpu],ipar[intIdx::n_bnds],
                 ipar[intIdx::site1],ipar[intIdx::seg1_id1],ipar[intIdx::seg1_id2],
                 ipar[intIdx::site2],ipar[intIdx::seg2_id1],ipar[intIdx::seg2_id2],
                 ipar[intIdx::site3],ipar[intIdx::seg3_id1],ipar[intIdx::seg3_id2]);
             } else if (ipar[intIdx::n_bnds] == 4) {
-            printf("particle id: %d cpu: %d nbnds: %d site1: %d id1: %d cpu1: %d"
+              std::printf("particle id: %d cpu: %d nbnds: %d site1: %d"
+                " id1: %d cpu1: %d"
                 " site2: %d id2: %d cpu2: %d site3: %d id3: %d cpu3: %d"
                 " site4: %d id4: %d cpu4: %d\n",
                 ipar[intIdx::id],ipar[intIdx::cpu],ipar[intIdx::n_bnds],
@@ -868,10 +888,16 @@ void BMXParticleContainer::CalculateFungalCM(const Vector<MultiFab*> cost,
 
             if (ipar[intIdx::cell_type] == cellType::FUNGI) {
               RealVect pos(p_orig.pos());
+              /*
               *cmx += pos[0];
               *cmy += pos[1];
               *cmz += pos[2];
               (*ntotp)++;
+              */
+              amrex::Gpu::Atomic::Add(cmx,pos[0]);
+              amrex::Gpu::Atomic::Add(cmy,pos[1]);
+              amrex::Gpu::Atomic::Add(cmz,pos[2]);
+              amrex::Gpu::Atomic::Add(ntotp,1);
             }
 
 
@@ -990,11 +1016,18 @@ void BMXParticleContainer::CalculateFungalRG(const Vector<MultiFab*> cost,
               Real radius = rpar[realIdx::radius];
               Real clength = rpar[realIdx::c_length];
               Real vol = M_PI*radius*radius*clength;
+              /*
               *rg += vol*((pos[0]-cm[0])*(pos[0]-cm[0])
                   + (pos[1]-cm[1])*(pos[1]-cm[1])
                   + (pos[2]-cm[2])*(pos[2]-cm[2]));
               *mtot += vol;
               (*ntotp)++;
+              */
+              amrex::Gpu::Atomic::Add(rg,vol*((pos[0]-cm[0])*(pos[0]-cm[0])
+                    + (pos[1]-cm[1])*(pos[1]-cm[1])
+                    + (pos[2]-cm[2])*(pos[2]-cm[2])));
+              amrex::Gpu::Atomic::Add(mtot,vol);
+              amrex::Gpu::Atomic::Add(ntotp,1);
             }
 
 
@@ -1114,7 +1147,8 @@ void BMXParticleContainer::CalculateFungalDensityProfile(
                      + (pos[2]-cm[2])*(pos[2]-cm[2]));
               r = sqrt(r);
               int ir = static_cast<int>(r/dr);
-              if (ir < nbins) rdens_d[ir] += vol;
+              // if (ir < nbins) rdens_d[ir] += vol;
+              if (ir < nbins) amrex::Gpu::Atomic::Add(rdens_d+ir,vol);
 //              if (ir < nbins) printf("r: %e ir: %d rdens_d: %e\n",r,ir,rdens_d[ir]);
             }
 
