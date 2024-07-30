@@ -483,6 +483,22 @@ void BMXParticleContainer::CountParticleTypes (int &nparticles, int &nsegments)
 {
   BL_PROFILE("BMXParticleContainer::WriteSegmentsToAscii");
 
+#if 1
+  amrex::ReduceOps<ReduceOpSum, ReduceOpSum> reduce_ops;
+  auto r = amrex::ParticleReduce<ReduceData<int, int>> (
+    *this, [=] AMREX_GPU_DEVICE (const ParticleType& p) noexcept -> amrex::GpuTuple<int, int>
+    {
+      int type = p.idata(intIdx::cell_type);
+      if (type == cellType::FUNGI) {
+      return {0, 1};
+    } else {
+      return {1, 0};
+    }
+    }, reduce_ops);
+
+  nparticles = amrex::get<0>(r);
+  nsegments = amrex::get<1>(r);
+#else
   nparticles = 0;
   nsegments = 0;
     
@@ -513,7 +529,7 @@ void BMXParticleContainer::CountParticleTypes (int &nparticles, int &nsegments)
 
       const int nrp = GetParticles(lev)[index].numRealParticles();
 
-      amrex::ParallelFor(nrp, [pstruct,npart,nseg]
+      amrex::ParallelFor(nrp, [pstruct,npart,nseg,MyProc]
           AMREX_GPU_DEVICE(int i) noexcept
       {
         auto& particle = pstruct[i];
@@ -521,7 +537,7 @@ void BMXParticleContainer::CountParticleTypes (int &nparticles, int &nsegments)
         int type = particle.idata(intIdx::cell_type);
         if (type == cellType::FUNGI) {
           (*nseg)++;
-          std::printf("Increment nseg: %d\n",*nseg);
+          std::printf("p[%d] Increment nseg: %d\n",MyProc,*nseg);
         } else {
           (*npart)++;
         }
@@ -530,10 +546,10 @@ void BMXParticleContainer::CountParticleTypes (int &nparticles, int &nsegments)
       nsegments += nseg_gpu.dataValue();
     }
   } // levels
+#endif
   int buf[2];
   buf[0] = nparticles;
   buf[1] = nsegments;
-  std::printf("nparticles: %d nsegments: %d\n",nparticles,nsegments);
   ParallelDescriptor::ReduceIntSum(buf,2);
   nparticles = buf[0];
   nsegments = buf[1];

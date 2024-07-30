@@ -142,7 +142,8 @@ void BMXChemistry::setParams(const char* /*file*/)
   ppF.get("neighbor_width",width);
   // TODO: Come up with correct neighborhood value base on what types of cells
   //       are being simulated
-  DEM::neighborhood = 1.1*(2.0*radius+width);
+  width = 1.1*(2.0*radius+width);
+  DEM::neighborhood = width*width;
   ParmParse ppV("bmx");
   int verbose = 0;
   ppV.query("verbose",verbose);

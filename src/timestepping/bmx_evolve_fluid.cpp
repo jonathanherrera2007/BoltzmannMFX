@@ -131,7 +131,7 @@ bmx::EvolveFluid (int nstep,
         t_new[lev] = time+dt;
     }
 
-    amrex::Print() << "\n   Step " << nstep+1 << ": from old_time " \
+    amrex::Print() << "\n   Step " << nstep+1 << ": from old time " \
                    << time << " to new time " << time+dt
                    << " with dt = " << dt << "\n" << std::endl;
 

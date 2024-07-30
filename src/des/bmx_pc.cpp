@@ -38,6 +38,7 @@ BMXParticleContainer::BMXParticleContainer (AmrCore* amr_core)
 
     nlev         = amr_core->finestLevel()+1;
     finest_level = amr_core->finestLevel();
+    reset_neighborhood = true;
 }
 
 void BMXParticleContainer::AllocData ()

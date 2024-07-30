@@ -52,13 +52,25 @@ struct intData
 ///
 /// We add a particle to the neighbor list if its center is within 3 particle radii
 ///
+struct pairDebug
+{
+  enum {TIPFUSION, INTERIORFUSION, CLEANUP, IGNORE};
+};
+
 struct BMXCheckPair
 {
   amrex::Real neighborhood;
+  int locale;
   bool single_pass;
-  BMXCheckPair (amrex::Real neighborhood_) : neighborhood(neighborhood_), single_pass(true) {}
+  /* neighborhood: square of cutoff distance
+   * single_pass: only include pairs that fall within cutoff and for which i<j
+   * locale: debugging flag to signal debugging code inside check pair routine
+   */
+  BMXCheckPair (amrex::Real neighborhood_) : neighborhood(neighborhood_), single_pass(true), locale(pairDebug::IGNORE) {}
   BMXCheckPair (amrex::Real neighborhood_, bool single_pass_) : neighborhood(neighborhood_),
-      single_pass(single_pass_) {}
+      single_pass(single_pass_), locale(pairDebug::IGNORE) {}
+  BMXCheckPair (amrex::Real neighborhood_, bool single_pass_, int locale_) : neighborhood(neighborhood_),
+      single_pass(single_pass_), locale(locale_) {}
 
   template <class P>
   AMREX_GPU_DEVICE AMREX_INLINE
@@ -66,6 +78,10 @@ struct BMXCheckPair
   {
     const P& p1 = particles[i];
     const P& p2 = particles[j];
+    int idx = p1.idata(intIdx::id);
+    int icpu = p1.idata(intIdx::cpu);
+    int jdx = p2.idata(intIdx::id);
+    int jcpu = p2.idata(intIdx::cpu);
 
     if (single_pass) {
       if (i < j) {
@@ -73,8 +89,38 @@ struct BMXCheckPair
           return true;  
       }
     } else { 
-      if ((p1.pos() - p2.pos()).radSquared() <= neighborhood)
+#if 0
+      if (icpu == 6 && jcpu == 6) {
+        if (idx == 318 || idx == 247 ||
+            jdx == 247 || jdx == 318) {
+          if (locale == pairDebug::TIPFUSION) {
+          std::printf("Checking pair Tip Fusion idx: %d icpu: %d jdx: %d jcpu: %d r: %e nghb: %e\n",
+              idx,icpu,jdx,jcpu,(p1.pos() - p2.pos()).radSquared(),neighborhood);
+          } else if (locale == pairDebug::INTERIORFUSION) {
+          std::printf("Checking pair Interior Fusion idx: %d icpu: %d jdx: %d jcpu: %d r: %e nghb: %e\n",
+              idx,icpu,jdx,jcpu,(p1.pos() - p2.pos()).radSquared(),neighborhood);
+          } else if (locale == pairDebug::CLEANUP) {
+#endif
+#if 1
+          if (locale == pairDebug::CLEANUP) {
+          std::printf("Checking pair Cleanup idx: %d icpu: %d inew: %d"
+              " isplit: %d ifuse: %d jdx: %d jcpu: %d jnew: %d jsplit: %d"
+              " jfuse: %d r: %e nghb: %e\n",
+              idx,icpu,p1.idata(intIdx::new_flag),
+              p1.idata(intIdx::split_flag),p1.idata(intIdx::fuse_flag),
+              jdx,jcpu,p2.idata(intIdx::new_flag),
+              p2.idata(intIdx::split_flag),p1.idata(intIdx::fuse_flag),
+              (p1.pos() - p2.pos()).radSquared(),neighborhood);
+          }
+#endif
+#if 0
+          }
+        }
+      }
+#endif
+      if ((p1.pos() - p2.pos()).radSquared() <= neighborhood) {
         return true;  
+      }
     }
 
     return false;
@@ -179,6 +225,7 @@ public:
   private:
     int nlev;
     int finest_level;
+    bool reset_neighborhood;
 
     amrex::IntVect m_sorting_bin = amrex::IntVect::TheZeroVector();
 
