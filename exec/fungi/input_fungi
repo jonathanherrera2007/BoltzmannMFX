@@ -14,7 +14,7 @@ amrex.fpe_trap_invalid = 1
 
 bmx.fixed_dt = 0.25
 
-bmx.max_step = 200000
+bmx.max_step = 526700
 #bmx.max_step = 1
 
 dem.solve = bacteria
@@ -32,21 +32,21 @@ bmx.vf_deposition_scheme = one_to_one # trilinear # one_to_one
 # Geometry / grids / tiles
 
 # Maximum level in hierarchy
-amr.max_level = 2
+amr.max_level = 1
 
 geometry.coord_sys   = 0                       # 0: Cartesian
 geometry.is_periodic = 1       1       0       # Is periodic in each direction?
 geometry.prob_lo     = 0.      0.      0.      # lo corner of physical domain
-geometry.prob_hi     = 0.1280  0.1280  0.0640     # hi corner of physical domain
+geometry.prob_hi     = 0.2000  0.2000  0.1000     # hi corner of physical domain
 
 # Number of grid cells in each direction at the coarsest level
 amr.n_cell =  16  16  8
 
 bmx.tag_region    = true
-bmx.tag_region_lo = 0. 0. 0.04000
-bmx.tag_region_hi = 0.1280 0.1280 0.0520
+bmx.tag_region_lo = 0. 0. 0.0500
+bmx.tag_region_hi = 0.2000 0.2000 0.0875
 
-# Dont put any buffer region around the tagged cells
+# Don't put any buffer region around the tagged cells
 amr.n_error_buf = 2
 
 # Just require grid to be coarsenable by 2
@@ -100,12 +100,12 @@ amr.par_ascii_file ="vis"
 amr.plot_int       = 400
 amr.plot_file      ="plt"
 
-amr.check_int      = 100000
+amr.check_int      = 10
 amr.check_file     ="chk"
 
 #! Restart from checkpoint
 #!-----------------------------------------------------------//
-#amr.restart   ="chk200000"
+amr.restart   ="chk526600"
 
 #_______________________________________________________________________
 # Fluid model settings
@@ -114,7 +114,7 @@ fluid.solve = fluid
 fluid.chem_species      = A B C D F
 fluid.chem_species_diff = 6.0e-10 0.0 6.0e-10 6.0e-10 0.0
 fluid.init_conc_species = 2.0e-5 0.0 2.0e-6 2.0e-5 0.0
-fluid.surface_location = 0.04800
+fluid.surface_location = 0.0750
 #_______________________________________________________________________
 # Reaction model parameters
 #
@@ -151,7 +151,7 @@ chem_species.fusion_probability = 0.01
 chem_species.max_fusion_separation = 6.0e-4
 chem_species.rg_frequency = 200
 chem_species.density_profile_bins = 50
-chem_species.density_profile_maximum = 0.060
+chem_species.density_profile_maximum = 0.075
 
 bmx.substeps = 4
 
@@ -168,7 +168,7 @@ cell_force.fungi_wall_boundary_width = 1.0e-04
 cell_force.cell_boundary_width = 1.0e-5
 cell_force.cell_wall_boundary_width = 1.0e-04
 
-cell_force.neighbor_width = 1.0e-2 #set range of neighbor list
+cell_force.neighbor_width = 6.25e-3 #set range of neighbor list
 
 cell_force.bond_strength = 1.0
 cell_force.bond_cutoff = 5.0e-4
