@@ -101,7 +101,7 @@ struct BMXCheckPair
               idx,icpu,jdx,jcpu,(p1.pos() - p2.pos()).radSquared(),neighborhood);
           } else if (locale == pairDebug::CLEANUP) {
 #endif
-#if 1
+#if 0
           if (locale == pairDebug::CLEANUP) {
           std::printf("Checking pair Cleanup idx: %d icpu: %d inew: %d"
               " isplit: %d ifuse: %d jdx: %d jcpu: %d jnew: %d jsplit: %d"
