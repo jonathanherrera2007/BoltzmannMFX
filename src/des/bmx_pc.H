@@ -127,6 +127,72 @@ struct BMXCheckPair
   }
 };
 
+struct BMXCheckPolyPair
+{
+  int typeIdx;
+  int num_bin_types;
+  amrex::Real *neighborhood;
+  int locale;
+  bool single_pass;
+  /* neighborhood: square of cutoff distance
+   * single_pass: only include pairs that fall within cutoff and for which i<j
+   * locale: debugging flag to signal debugging code inside check pair routine
+   */
+  BMXCheckPolyPair (int typeIdx_, int num_bin_types_, amrex::Real *neighborhood_)
+    : typeIdx(typeIdx_), num_bin_types(num_bin_types_),
+      neighborhood(neighborhood_), single_pass(true),
+      locale(pairDebug::IGNORE) {}
+  BMXCheckPolyPair (int typeIdx_, int num_bin_types_, amrex::Real *neighborhood_,
+      bool single_pass_) : typeIdx(typeIdx_), num_bin_types(num_bin_types_),
+      neighborhood(neighborhood_), single_pass(single_pass_),
+      locale(pairDebug::IGNORE) {}
+  BMXCheckPolyPair (int typeIdx_, int num_bin_types_, amrex::Real *neighborhood_,
+      bool single_pass_, int locale_) : typeIdx(typeIdx_),
+      num_bin_types(num_bin_types_), neighborhood(neighborhood_),
+      single_pass(single_pass_), locale(locale_) {}
+
+  template <class P>
+  AMREX_GPU_DEVICE AMREX_INLINE
+  bool operator() (const P* particles, const int i, const int j, int type,
+      bool ghost_i, bool ghost_j) const
+  {
+    const P& p1 = particles[i];
+    const P& p2 = particles[j];
+    int type_i = p1.idata(typeIdx);
+    int type_j = p2.idata(typeIdx);
+    if (!(ghost_i && ghost_j)) {    // One particle must be locally held
+
+      if (single_pass) {
+        if (i < j || type_i < type_j) { // Smaller index or type finds neighbor
+          // Get index for neighborhood from analytical partial sums
+          int imin = amrex::min(type_i,type_j);
+          int imax = amrex::max(type_i,type_j);
+          int k = imin-1;
+          // \sum_{i=N-k}^{N}(i)
+          int indx = num_bin_types*(k+1)-(k*(k+1))/2;
+          // \sum_{i=1}^{l}(i)
+          indx += imax-imin;
+          if ((p1.pos() - p2.pos()).radSquared() <= neighborhood[indx])
+            return true;
+        }
+      } else { 
+        // Get index for neighborhood from analytical partial sums
+        int imin = amrex::min(type_i,type_j);
+        int imax = amrex::max(type_i,type_j);
+        int k = imin-1;
+        // \sum_{i=N-k}^{N}(i)
+        int indx = num_bin_types*(k+1)-(k*(k+1))/2;
+        // \sum_{i=1}^{l}(i)
+        indx += imax-imin;
+        if ((p1.pos() - p2.pos()).radSquared() <= neighborhood[indx])
+          return true;  
+      }
+    }
+
+    return false;
+  }
+};
+
 // Cannot inherit from this class?
 #ifdef NEW_CHEM
 class BMXParticleContainer final
