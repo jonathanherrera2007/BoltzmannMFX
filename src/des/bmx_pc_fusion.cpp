@@ -159,6 +159,7 @@ bool BMXParticleContainer::EvaluateTipFusion (const Vector<MultiFab*> cost,
 
           }
           } // end of neighbor loop
+          incrementBondScale(&particle.rdata(0),&particle.idata(0),fpar);
           }); // end of loop over particles
 
       amrex::Gpu::Device::synchronize();
@@ -586,7 +587,6 @@ void BMXParticleContainer::CleanupFusion (const Vector<MultiFab*> cost,
           auto& particle = pstruct[i];
 
           // increment bond scaling parameter
-          incrementBondScale(&particle.rdata(0),&particle.idata(0),fpar);
           RealVect pos1(particle.pos());
 
           const auto neighbs = nbor_data.getNeighbors(i);
