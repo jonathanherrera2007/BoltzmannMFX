@@ -44,9 +44,12 @@ checkSplit(Real *p_par, int *p_ipar, Real max_vol, Real max_len,
       // Only consider splitting if segment cannot grow radially
       if (p_par[realIdx::radius] >= max_rad) {
         // Choose single bud or tip splitting
-        Real x = amrex::Random(engine);
+#ifdef DEBUG_DETERMINISTIC
         double itmp;
-        x = modf(1000.0*p_par[realIdx::phi],&itmp);
+        Real x = modf(1000.0*p_par[realIdx::phi],&itmp);
+#else
+        Real x = amrex::Random(engine);
+#endif
         if (p_par[realIdx::c_length] >= max_len) {
           if (x > split_prob || p_ipar[intIdx::n_bnds] == 0) {
             // If segment is a growth tip then split if segment is greater than
@@ -226,9 +229,12 @@ checkTipFusion(Real *rij, Real *i_par, int *i_ipar, Real *j_par,
           rz = ri[2] - rj[2];
           r = sqrt(rx*rx+ry*ry+rz*rz);
           if (r < fuse_length) {
+#ifdef DEBUG_DETERMINISTIC
             double itmp;
             if (modf(10000.0*i_par[realIdx::phi],&itmp) < fuse_prob) {
-//            if (amrex::Random(engine) < fuse_prob) {
+#else
+            if (amrex::Random(engine) < fuse_prob) {
+#endif
               // TIP i is fusing to segment j
 //#ifndef AMREX_USE_GPU
               std::printf("TIP %d,%d is fusing to segment %d,%d n_bnds: %d site1: %d\n",
@@ -654,11 +660,14 @@ setNewSegment(Real *pos_orig, Real *pos_new, Real *par_orig,
     rotx[2][2] = gst;
     // Choose a direction for the new segment from a distribution of directions
     // around the x-axis
-    Real rtheta = 0.1 * amrex::Random(engine);
+#ifdef DEBUG_DETERMINISTIC
     double itmp;
-    rtheta = 0.1 * modf(100000.0*par_orig[realIdx::phi],&itmp);
+    Real rtheta = 0.1 * modf(100000.0*par_orig[realIdx::phi],&itmp);
+    Real rphi = 2.0 * M_PI * modf(123830.0*par_orig[realIdx::phi],&itmp);
+#else
+    Real rtheta = 0.1 * amrex::Random(engine);
     Real rphi = 2.0 * M_PI * amrex::Random(engine);
-    rphi = 2.0 * M_PI * modf(123830.0*par_orig[realIdx::phi],&itmp);
+#endif
     Real rct = cos(rtheta);
     Real rst = sin(rtheta);
     Real rcp = cos(rphi);
@@ -2563,11 +2572,14 @@ setNewSegments(Real *pos_orig, Real *pos_new1, Real *pos_new2,
 
   // Choose directions for the new segments from a distribution of directions
   // around the x-axis
-  Real rtheta = 0.1 * amrex::Random(engine);
+#ifdef DEBUG_DETERMINISTIC
   double itmp;
-  rtheta = 0.1 * modf(100000.0*par_orig[realIdx::phi],&itmp);
+  Real rtheta = 0.1 * modf(100000.0*par_orig[realIdx::phi],&itmp);
+  Real rphi = 2.0 * M_PI * modf(123830.0*par_orig[realIdx::phi],&itmp);
+#else
+  Real rtheta = 0.1 * amrex::Random(engine);
   Real rphi = 2.0 * M_PI * amrex::Random(engine);
-  rphi = 2.0 * M_PI * modf(123830.0*par_orig[realIdx::phi],&itmp);
+#endif
   Real rct = cos(rtheta);
   Real rst = sin(rtheta);
   Real rcp = cos(rphi);
@@ -2581,10 +2593,13 @@ setNewSegments(Real *pos_orig, Real *pos_new1, Real *pos_new2,
   Real gny1 = rotx1[1][0]*rx+rotx1[1][1]*ry+rotx1[1][2]*rz;
   Real gnz1 = rotx1[2][0]*rx+rotx1[2][1]*ry+rotx1[2][2]*rz;
 
-  rtheta = 0.1 * amrex::Random(engine);
+#ifdef DEBUG_DETERMINISTIC
   rtheta = 0.1 * modf(890341.0*par_orig[realIdx::phi],&itmp);
-  rphi = 2.0 * M_PI * amrex::Random(engine);
   rphi = 2.0 * M_PI * modf(477351.0*par_orig[realIdx::phi],&itmp);
+#else
+  rtheta = 0.1 * amrex::Random(engine);
+  rphi = 2.0 * M_PI * amrex::Random(engine);
+#endif
   rct = cos(rtheta);
   rst = sin(rtheta);
   rcp = cos(rphi);
