@@ -3,11 +3,11 @@
 - **Stage ID:** `C05`
 - **Status:** `PASS`
 - **Date:** 2026-08-01
-- **Role:** primary writer (Claude), product lane
+- **Role:** primary writer (the independent reviewer), product lane
 - **Input HEAD:** `6f981670` (the predeclaration commit)
 - **Contract:** `CON-P08-001`, `contracts/p08/`
 - **Companion evidence:** `STAGE_REPORT.json`, `COMPARISON_RECORD.json`,
-  `SELFTEST.json`, `BUNDLE.json`
+ `SELFTEST.json`, `BUNDLE.json`
 
 > **All eight comparison dimensions resolve. No contradiction, nothing
 > undecided.** The four P07 defect mappings covered by D1–D4 are **reproduced in
@@ -44,13 +44,13 @@ predeclaration and it would be false to present it as one.
 What protects it instead:
 
 1. Every rule derives from the **five reviewed defect mappings** (CDEF-01…05)
-   and from tolerances already in `AGENTS.md`. Both predate the observations.
+ and from tolerances already in `AGENTS.md`. Both predate the observations.
 2. No rule cites a numeric value taken from an observed outcome. Thresholds are
-   exact equality, an `AGENTS.md` tolerance, or a *shape* criterion (saturation,
-   sign, staleness, count).
+ exact equality, an `AGENTS.md` tolerance, or a *shape* criterion (saturation,
+ sign, staleness, count).
 3. Every outcome class — including the four the real data never produces — is
-   exercised by synthetic fixtures containing none of the real measurements. A
-   rule tuned to the actual results would fail those.
+ exercised by synthetic fixtures containing none of the real measurements. A
+ rule tuned to the actual results would fail those.
 
 A reviewer can check (1) against the defect mappings and (3) by running
 `run_p08_selftest.py`.
@@ -71,15 +71,15 @@ A reviewer can check (1) against the defect mappings and (3) by running
 Detail as recorded:
 
 - **D1** — baseline uncapped across 6 `k1` rows; repaired saturates
-  (spread `1.82e-15` ≤ `1e-06`) and final content equals `fA0·V_cell` exactly on
-  4 rows.
+ (spread `1.82e-15` ≤ `1e-06`) and final content equals `fA0·V_cell` exactly on
+ 4 rows.
 - **D2** — trees differ on 5 fixtures with a directly observed tip growth branch.
 - **D3** — both tip branches execute as predicted with stored area unchanged on
-  4 fixtures, and the trees differ there.
+ 4 fixtures, and the trees differ there.
 - **D4** — 188 non-tip rejections observed; `cB` differs between trees.
 - **D8** — cross-platform variance is zero across 2 platforms
-  (`gce-reference-linux`, `windows-development`) on 19
-  tree/fixture/observable groups.
+ (`gce-reference-linux`, `windows-development`) on 19
+ tree/fixture/observable groups.
 
 ## 4. Exact / tolerance / invariant, kept distinct
 
@@ -87,14 +87,14 @@ The contract fixes which comparator applies per dimension; it is not chosen
 per-run.
 
 - **`EXACT`** carries the weight wherever the claim is an equality or a
-  non-difference: the donor-cap equality, stored-area staleness, the 91
-  phosphorus lines, identity continuity, and every cross-platform comparison.
+ non-difference: the donor-cap equality, stored-area staleness, the 91
+ phosphorus lines, identity continuity, and every cross-platform comparison.
 - **`TOLERANCE`** is used **once**, for the D1 saturation spread, at `1e-6`
-  relative. Observed spread is `1.82e-15` — nine orders inside it. The threshold
-  was declared in the contract before the comparison ran and was not widened.
+ relative. Observed spread is `1.82e-15` — nine orders inside it. The threshold
+ was declared in the contract before the comparison ran and was not widened.
 - **`INVARIANT`** covers shape claims that no tolerance could express:
-  monotonicity of the baseline transfer, predicted-equals-observed branch
-  classification, rejection counts.
+ monotonicity of the baseline transfer, predicted-equals-observed branch
+ classification, rejection counts.
 
 ## 5. Platform-only differences (D8)
 
@@ -151,10 +151,10 @@ Direct check of the underlying numbers showed the platforms agree to ten
 significant figures:
 
 ```
-     k1     baseline GCE     baseline WIN     repaired GCE     repaired WIN
-    0.5  1.261737482e-13  1.261737482e-13  4.569057503e-12  4.569057503e-12
-    5.0  1.139173166e-12  1.139173166e-12  4.871032500e-12  4.871032500e-12
-  100.0  4.870055587e-12  4.870055587e-12  4.871032500e-12  4.871032500e-12
+ k1 baseline GCE baseline WIN repaired GCE repaired WIN
+ 0.5 1.261737482e-13 1.261737482e-13 4.569057503e-12 4.569057503e-12
+ 5.0 1.139173166e-12 1.139173166e-12 4.871032500e-12 4.871032500e-12
+ 100.0 4.870055587e-12 4.870055587e-12 4.871032500e-12 4.871032500e-12
 ```
 
 The grouping key now includes `fixture`, and a group present on only one

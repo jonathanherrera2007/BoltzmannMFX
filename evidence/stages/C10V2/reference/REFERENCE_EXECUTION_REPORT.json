@@ -5,7 +5,7 @@
   "qualification_status": "PASS",
   "stage_status": "BLOCKED_PENDING_FINAL_INDEPENDENT_ACCEPTANCE",
   "authorization": {
-    "source": "explicit user authorization in the Codex task",
+    "source": "explicit user authorization in the the implementation writer task",
     "scope": "Provision one GCE n2-standard-8 in us-west1-b pinned to Intel Cascade Lake, run reference qualification and timing, then delete it immediately.",
     "instance_count": 1,
     "later_stage_authorization": false

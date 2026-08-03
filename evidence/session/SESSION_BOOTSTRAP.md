@@ -3,7 +3,7 @@
 - **Stage:** `S00_SESSION_BOOTSTRAP`
 - **Status:** `PASS`
 - **Captured:** 2026-07-30
-- **Role:** primary writer (Claude), product lane
+- **Role:** primary writer (the independent reviewer), product lane
 - **Production-source edits in this stage:** none
 
 ---
@@ -12,7 +12,7 @@
 
 | Field | Value |
 |---|---|
-| Located at | `C:\Users\Shadow\Documents\Codex\2026-07-28\how\outputs\BMX_RESEARCH_GRADE_GPT_PRO_PLANNING_PACKAGE_20260730.zip` |
+| Located at | `C:\Users\Shadow\Documents\the implementation writer\2026-07-28\how\outputs\BMX_RESEARCH_GRADE_PLANNING_PLANNING_PACKAGE_20260730.zip` |
 | Size | 321,212 bytes |
 | Expected SHA-256 | `014607d34400638a5a915674e500b1b8afbacfebf0159801f8b7e5f32cac74a1` |
 | Actual SHA-256 | `014607d34400638a5a915674e500b1b8afbacfebf0159801f8b7e5f32cac74a1` |
@@ -40,7 +40,7 @@ Read in this session:
 - `05_BUILD_PLATFORM/ENVIRONMENT_SUMMARY.md`
 
 Not yet read (required before the stages that consume them, per `AGENTS.md`
-reading order): `00_START_HERE/GPT_PRO_PLANNING_PROMPT.md`,
+reading order): `00_START_HERE/PLANNING_PLANNING_PROMPT.md`,
 `01_CURRENT_STATE/PRODUCT_STATE_SUMMARY.md`,
 `01_CURRENT_STATE/RESEARCH_GRADE_DEFINITION_OF_DONE.md`,
 `01_CURRENT_STATE/TARGET_AND_CLAIM_BOUNDARY.md`,
@@ -54,7 +54,7 @@ pack and records `amrex_included: false` — AMReX must be bound, not extracted.
 
 The canonical BMX objects exist locally in an **existing lane repository**:
 
-`C:\Users\Shadow\Documents\Codex\2026-07-25\github-plugin-github-openai-curated-remote-3\work\BoltzmannMFX`
+`C:\Users\Shadow\Documents\the implementation writer\2026-07-25\github-plugin-curated-remote-3\work\BoltzmannMFX`
 
 | Check | Result |
 |---|---|
@@ -63,16 +63,16 @@ The canonical BMX objects exist locally in an **existing lane repository**:
 | Commit subject | "Add phosphorus transport and growth sensitivity review", Jonathan Herrera, Thu Jul 9 2026 |
 | `git ls-tree 389e9e3 subprojects/amrex` | gitlink `cbdc6580ee3d78cccdd37172e4ba077ee181f483` — **matches pinned AMReX commit** |
 | Current submodule state | `cbdc6580e` (`22.07-4-gcbdc6580e`) — already at pin |
-| Remote | `origin  https://github.com/jonathanherrera2007/BoltzmannMFX.git` |
+| Remote | `origin https://github.com/jonathanherrera2007/BoltzmannMFX.git` |
 
 **Classification of this repository: NOT the product worktree.** It is a live
 multi-lane scratch workspace:
 
 - HEAD is `dfe1eefe26a5ed0bda336e2800a8808562891571` on branch
-  `codex/bmx-connected-poster-pilot`, not the canonical commit.
+ `workspace/bmx-connected-poster-pilot`, not the canonical commit.
 - Four registered worktrees point at **WSL-style `/mnt/c/...` paths** and are all
-  marked `prunable`; a fifth (`BoltzmannMFX-convergence-repair`) reports 2 dirty
-  entries.
+ marked `prunable`; a fifth (`BoltzmannMFX-convergence-repair`) reports 2 dirty
+ entries.
 - Several sibling `BoltzmannMFX-*` directories are detached copies with no `.git`.
 
 Its object database is nevertheless a legitimate source for C01, because commit
@@ -83,14 +83,14 @@ another lane's evidence.
 
 ## 4. Product workspace isolation
 
-- **New product root (created this stage):** `C:\Users\Shadow\Documents\Codex\BMX-RG-SW\`
-  — currently contains only `planning-package/` and `evidence/session/`.
+- **New product root (created this stage):** `C:\Users\Shadow\Documents\the implementation writer\BMX-RG-SW\`
+ — currently contains only `planning-package/` and `evidence/session/`.
 - **P05 workspace (must not be touched):**
-  `C:\Users\Shadow\Documents\Codex\2026-07-25\perform-a-strict-read-only-import\work\p05-production-readiness\`
+ `C:\Users\Shadow\Documents\the implementation writer\2026-07-25\perform-a-strict-read-only-import\work\p05-production-readiness\`
 - **Path overlap:** none.
 - **Writers on the product root:** exactly one (this session).
 - No prior RG-SW `evidence/stages/*` directory exists anywhere under
-  `Documents\Codex`. **This is a cold start; no stage C01+ has been executed.**
+ `Documents\the implementation writer`. **This is a cold start; no stage C01+ has been executed.**
 
 ## 5. Environment recapture (supersedes package `ENVIRONMENT_SUMMARY.md`)
 
@@ -145,7 +145,7 @@ produced. **Nothing has been built, run, or tested in this stage.**
 
 ## 8. Next valid prompt
 
-`prompts/claude/C01_PACKAGE_SOURCE_AND_WORKTREE_AUDIT.md`
+`prompts/writer/C01_PACKAGE_SOURCE_AND_WORKTREE_AUDIT.md`
 
 Its preconditions are met: package hash and manifest verified, canonical
 commit/tree and pinned AMReX gitlink located and confirmed, isolation from P05

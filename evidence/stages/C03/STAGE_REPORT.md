@@ -3,7 +3,7 @@
 - **Stage ID:** `C03`
 - **Status:** `PASS`
 - **Date:** 2026-07-30
-- **Role:** primary writer (Claude), product lane
+- **Role:** primary writer (the independent reviewer), product lane
 - **Baseline worktree:** `389e9e3` / tree `1c73deed`, AMReX `cbdc658`
 - **Output commit:** see `COMMIT.txt`
 - **Companion evidence:** `STAGE_REPORT.json`, `runs/c03-baseline/RUN_INDEX.json`, `BASELINE_MANIFEST.json`, `BASELINE_ANALYSIS.json`
@@ -146,10 +146,10 @@ decomposition-dependent, plus ordering, because rank stdout interleaves (under
 Two consequences carried forward:
 
 - **A raw-log comparator can never be a valid cross-rank comparator here.**
-  Particle ids are rank-local and stdout interleaves. C16 must compare canonical
-  identities and metrics, not logs.
+ Particle ids are rank-local and stdout interleaves. C16 must compare canonical
+ identities and metrics, not logs.
 - **P10 (C08)** must preserve ledgers and accounting across MPI redistribution
-  even though `(id, cpu)` is not stable across decompositions.
+ even though `(id, cpu)` is not stable across decompositions.
 
 This is an observation, **not** a defect finding — rank-local ids and interleaved
 stdout are expected behaviour.
@@ -160,16 +160,16 @@ Per the stage requirement, baseline behaviour is recorded **as observed**, never
 as a repaired expectation:
 
 - **0 negative species minima** and **0 non-finite values** across all 8 cases.
-  The P07 preparation maps two donor-exhaustion defects (`CDEF-01` A,
-  `CDEF-02` C) whose stated failure mode is a sign reversal on a capped
-  transfer. **This baseline configuration did not exhibit a negative minimum.**
-  That is recorded as a fact about this configuration and this run length. It is
-  **not** evidence that the defects are absent, and **not** a prediction about
-  what P07 will change — the donor-exhaustion branches may simply never be
-  reached here. Designing fixtures that actually reach them is C04's work
-  (`AT_P07_DONOR_CAP_A`, `AT_P07_DONOR_CAP_C`).
+ The P07 preparation maps two donor-exhaustion defects (`CDEF-01` A,
+ `CDEF-02` C) whose stated failure mode is a sign reversal on a capped
+ transfer. **This baseline configuration did not exhibit a negative minimum.**
+ That is recorded as a fact about this configuration and this run length. It is
+ **not** evidence that the defects are absent, and **not** a prediction about
+ what P07 will change — the donor-exhaustion branches may simply never be
+ reached here. Designing fixtures that actually reach them is C04's work
+ (`AT_P07_DONOR_CAP_A`, `AT_P07_DONOR_CAP_C`).
 - Particle count grows 1 → 2 within 20 steps and stays at 2 through 200 steps in
-  `B08`. Growth and tip generation occur; splitting beyond one event does not.
+ `B08`. Growth and tip generation occur; splitting beyond one event does not.
 
 ## 7. Artefacts
 
@@ -234,7 +234,7 @@ Status remains **`RESEARCH-USE-CANDIDATE — RG-SW INCOMPLETE`**, **`RG-SCI:NO-G
 
 ## 12. Next valid prompt
 
-`prompts/claude/C04_P07_CARBON_REPAIR_IMPLEMENT_AND_VALIDATE.md`
+`prompts/writer/C04_P07_CARBON_REPAIR_IMPLEMENT_AND_VALIDATE.md`
 
 C04 starts from a strong position: the P07 candidate patch targets bytes that
 are confirmed drift-free against the historical evidence kernel. Its harder task

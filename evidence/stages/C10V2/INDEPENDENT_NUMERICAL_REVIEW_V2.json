@@ -6,7 +6,7 @@
   "reviewed_contract_id": "USER-DIRECTED-20260801-P12-NUMERICAL-V2",
   "reviewed_contract_sha256": "43d64a8f4ec6c8c00379fc3d9605441cb900479fcdd8db9e78e6fc1edd28f81f",
   "reviewed_source_commit": "0f38760b4daba3acbfd4b658c9ac522523b5c69b",
-  "reviewer_identity": "Claude (Opus 5) acting as independent reviewer; writer role for rgsw/product handed to Codex at e7a6952 and not resumed. Same reviewer as IR-20260801-P10-U02.",
+  "reviewer_identity": "independent reviewer; writer role for rgsw/product handed to the implementation writer at e7a6952 and not resumed. Same reviewer as IR-20260801-P10-U02.",
   "reviewer_is_implementation_writer": false,
   "read_only_worktree_or_detached_commit": true,
   "review_method": "Read-only inspection of the clean checkout at the exact candidate commit. Verified `git status --porcelain` empty and HEAD == 0f38760b4daba3acbfd4b658c9ac522523b5c69b before reading. No file in the repository was written or modified by the reviewer. Note: a separate worktree was not created; byte identity with the candidate commit was established by the clean-tree and HEAD checks instead.",

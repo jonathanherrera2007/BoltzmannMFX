@@ -39,7 +39,7 @@
     "global_order_changed": false,
     "rationale": "O09 already reserves one final-topology segment transaction that computes eligibility, request, and caps before atomically debiting local D, crediting local A, and recording the external exported-P receipt. C12 fills that slot without adding, deleting, or reordering a global operator.",
     "independent_reviewer_claimed": false,
-    "writer_independence_note": "Codex is the implementation writer and makes no independent-review claim. P14-U07 remains a writer-owned technical fit freeze under the user-adopted provisional authority."
+    "writer_independence_note": "the implementation writer is the implementation writer and makes no independent-review claim. P14-U07 remains a writer-owned technical fit freeze under the user-adopted provisional authority."
   },
   "implementation": {
     "interface_fraction": "For each final-topology fungal segment, compute the normalized axial parameter measure whose finite-radius centerline lies strictly inside the P11 aperture support after P11 snapping/tolerance; tangency is inactive and solid contact has precedence.",

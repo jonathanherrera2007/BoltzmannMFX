@@ -1,7 +1,7 @@
 # C07 integrator handoff — `B-C07-01` (RESOLVED)
 
 **Resolution:** The user explicitly reassigned the minimum
-`src/des/bmx_calc_txfr.cpp` seam to Codex for C07 only, with the kernel frozen
+`src/des/bmx_calc_txfr.cpp` seam to the implementation writer for C07 only, with the kernel frozen
 and C08+ behavior prohibited. C07 implemented the map below and passed the
 clean build, enabled/disabled runtime matrix, E-internal-only checks, and the
 frozen P07 feature-off comparator. The current `STAGE_REPORT.md` supersedes the
@@ -19,13 +19,13 @@ Its complete C07 prompt is lines 643–693 and its complete C13 prompt is lines
 949–998.
 
 - C07 assigns primary ownership to chemistry definitions, fluid parsing and
-  initialization, particle initialization, and plot scaffolding. It says
-  central transfer files require integrator ownership and orders a handoff when
-  a necessary change crosses ownership.
+ initialization, particle initialization, and plot scaffolding. It says
+ central transfer files require integrator ownership and orders a handoff when
+ a necessary change crosses ownership.
 - C13 assigns `src/des/bmx_calc_txfr.cpp` and explicit mesh↔particle mapping to
-  the integrator.
+ the integrator.
 - The writer handoff independently freezes `src/chemistry/bmx_chem_K.H` and
-  assigns `bmx_calc_txfr.cpp` to C13.
+ assigns `bmx_calc_txfr.cpp` to C13.
 
 ## Frozen input
 
@@ -40,17 +40,17 @@ Its complete C07 prompt is lines 643–693 and its complete C13 prompt is lines
 ## Exact collision
 
 1. `src/chemistry/bmx_chem.H:16-17` uses one macro for the chemistry count and
-   for all three particle chemistry blocks.
+ for all three particle chemistry blocks.
 2. Frozen `src/chemistry/bmx_chem_K.H` uses that macro as the particle block
-   stride and loop bound. C07 must therefore compile that path with particle
-   stride 8 to obtain the canonical reserved layout.
+ stride and loop bound. C07 must therefore compile that path with particle
+ stride 8 to obtain the canonical reserved layout.
 3. `src/des/bmx_calc_txfr.cpp:128-132` uses the same macro as the mesh
-   interpolation count and aborts unless it equals `X_k->nComp()`.
+ interpolation count and aborts unless it equals `X_k->nComp()`.
 4. Canonical mesh count is 6 when disabled and 7 when enabled. Canonical
-   particle count is always 8.
+ particle count is always 8.
 5. `bmx_calc_txfr_fluid` at `:22-45` also assumes a contiguous identity map from
-   particle increments to mesh components. In enabled mode this would send
-   particle slot 6 (`P_E`) to mesh slot 6 (`P_F`), violating E internal-only.
+ particle increments to mesh components. In enabled mode this would send
+ particle slot 6 (`P_E`) to mesh slot 6 (`P_F`), violating E internal-only.
 
 No value of the shared macro is correct: 6 fails the particle layout; 8 makes
 the transfer interpolation abort and leaves an invalid enabled deposition map.
@@ -62,22 +62,22 @@ stage authority should explicitly reassign this narrow seam to C07. The seam
 must provide all of the following without changing scientific behavior:
 
 1. Decouple active mesh interpolation count (runtime 6 or 7) from particle
-   chemistry stride (compile-time 8).
+ chemistry stride (compile-time 8).
 2. Size any GPU-local mesh interpolation buffer to a reviewed compile-time
-   maximum of 7, while interpolating and copying exactly the active mesh count.
+ maximum of 7, while interpolating and copying exactly the active mesh count.
 3. Remove the equality assumption between `X_k->nComp()` and particle stride;
-   validate the active mesh schema instead.
+ validate the active mesh schema instead.
 4. Use the C07 semantic maps rather than contiguous deposition:
-   - disabled mesh→particle and particle→mesh: `0→0, 1→1, 2→2, 3→3, 4→4, 5→5`;
-   - enabled mesh→particle and particle→mesh:
-     `0→0, 1→1, 2→2, 3→3, 4→4, 5→5, 6→7`.
+ - disabled mesh→particle and particle→mesh: `0→0, 1→1, 2→2, 3→3, 4→4, 5→5`;
+ - enabled mesh→particle and particle→mesh:
+ `0→0, 1→1, 2→2, 3→3, 4→4, 5→5, 6→7`.
 5. Never transfer particle slot 6 (`P_E`) to mesh. Never synthesize a mesh E.
 6. Preserve the disabled first-six path byte-for-byte in ordering and
-   numerically under the frozen P07 comparator.
+ numerically under the frozen P07 comparator.
 7. Do not edit `src/chemistry/bmx_chem_K.H`; its SHA-256 must remain
-   `9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02`.
+ `9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02`.
 8. Do not add P10 conservation/topology semantics, P11 geometry, P12 uptake,
-   P13 reactions/growth, or P14 export/reward behavior.
+ P13 reactions/growth, or P14 export/reward behavior.
 
 The integrator may choose a different implementation shape only if it proves
 the same invariants and preserves the ownership and frozen-byte constraints.

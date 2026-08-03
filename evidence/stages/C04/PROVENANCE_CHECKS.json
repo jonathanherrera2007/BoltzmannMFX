@@ -27,7 +27,7 @@
     },
     {
       "check": "not_a_repository",
-      "detail": "expected UNAVAILABLE, got UNAVAILABLE, note=no .git entry at C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-provenance-c",
+      "detail": "expected UNAVAILABLE, got UNAVAILABLE, note=no .git entry at C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-provenance-c",
       "status": "PASS"
     },
     {
@@ -38,6 +38,6 @@
   ],
   "failures": [],
   "live_commit": "48375fc42b36d238241656796ae4e7938a42ff21",
-  "source_dir": "C:\\Users\\Shadow\\Documents\\Codex\\BMX-RG-SW\\worktrees\\product",
+  "source_dir": "C:\\Users\\Shadow\\Documents\\the implementation writer\\BMX-RG-SW\\worktrees\\product",
   "status": "PASS"
 }

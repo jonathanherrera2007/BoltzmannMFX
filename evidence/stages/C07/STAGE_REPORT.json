@@ -5,7 +5,7 @@
   "status": "PASS",
   "completed_at": "2026-08-01T07:43:14Z",
   "writer": {
-    "agent": "Codex",
+    "agent": "the implementation writer",
     "role": "sole product-branch writer from e7a69521",
     "independent_x01_x09_review_eligible": false
   },
@@ -30,10 +30,10 @@
     "p07_reference_executable_sha256": "64b9aaccd6a97599e8bb0df17640018e89533ed7627e947800ae33b0426bef7c"
   },
   "authority": {
-    "authoritative_handoff": "evidence/handoff/CLAUDE_TO_CODEX_WRITER_HANDOFF.md",
+    "authoritative_handoff": "evidence/handoff/WRITER_HANDOFF.md",
     "recovered_prompt_attachment_sha256": "d314e0b16234e92e26108a0b8bbac87d1337b09c3f226ff17ac486421f5da3e3",
     "c07_prompt_lines": "643-693",
-    "transfer_exception": "User authorized Codex during C07 only to modify src/des/bmx_calc_txfr.cpp as needed for the 6/7-mesh to 8-particle separation and explicit maps; kernel frozen; no C08+ behavior",
+    "transfer_exception": "User authorized the implementation writer during C07 only to modify src/des/bmx_calc_txfr.cpp as needed for the 6/7-mesh to 8-particle separation and explicit maps; kernel frozen; no C08+ behavior",
     "b_c07_01": "CLOSED"
   },
   "layout": {
@@ -130,7 +130,7 @@
     "formal P05-P18 acceptance",
     "RG-SW:GO",
     "RG-SCI:GO",
-    "Codex independence for later X01-X09 review of these bytes"
+    "the implementation writer independence for later X01-X09 review of these bytes"
   ],
   "next_action": "Record the post-stage review follow-up commit, then proceed only under the separate C08 execution authority and its still-binding gates."
 }

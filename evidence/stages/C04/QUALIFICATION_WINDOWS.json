@@ -53,25 +53,25 @@
     },
     {
       "detail": "7 fixtures, failing=0, neutrality=PASS",
-      "index": "C:\\Users\\Shadow\\Documents\\Codex\\BMX-RG-SW\\runs\\c04-p07-geometry\\GEOMETRY_INDEX.json",
+      "index": "C:\\Users\\Shadow\\Documents\\the implementation writer\\BMX-RG-SW\\runs\\c04-p07-geometry\\GEOMETRY_INDEX.json",
       "status": "PASS",
       "step": "geometry_matrix"
     },
     {
       "detail": "5/5 checks",
-      "index": "C:\\Users\\Shadow\\Documents\\Codex\\BMX-RG-SW\\runs\\c04-diag-check\\DIAGNOSTIC_CHECKS.json",
+      "index": "C:\\Users\\Shadow\\Documents\\the implementation writer\\BMX-RG-SW\\runs\\c04-diag-check\\DIAGNOSTIC_CHECKS.json",
       "status": "PASS",
       "step": "diagnostic_regression_guard"
     },
     {
       "detail": "verdict=CAP_FIRES_AND_TRANSFER_EQUALS_AVAILABLE, saturation=True, transfer_equals_available=True",
-      "index": "C:\\Users\\Shadow\\Documents\\Codex\\BMX-RG-SW\\runs\\c04-p07-donor-cap-fixture\\DONOR_CAP_FIXTURE.json",
+      "index": "C:\\Users\\Shadow\\Documents\\the implementation writer\\BMX-RG-SW\\runs\\c04-p07-donor-cap-fixture\\DONOR_CAP_FIXTURE.json",
       "status": "PASS",
       "step": "donor_cap_fixture"
     },
     {
       "detail": "7/7 checks",
-      "index": "C:\\Users\\Shadow\\Documents\\Codex\\BMX-RG-SW\\runs\\c04-provenance-check\\PROVENANCE_CHECKS.json",
+      "index": "C:\\Users\\Shadow\\Documents\\the implementation writer\\BMX-RG-SW\\runs\\c04-provenance-check\\PROVENANCE_CHECKS.json",
       "status": "PASS",
       "step": "provenance_regression_fixture"
     }

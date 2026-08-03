@@ -5,7 +5,7 @@
   "particle_ascii_precision_digits": 15,
   "method": "exact comparison of every G1/G4 particle dump across the 46-real P07 and 52-real C07 ABIs for topology, geometry, and the first six values in each chemistry block; exact-zero audit of C07 slots 6/7 in all three blocks",
   "p07_executable": {
-    "path": "C:\\Users\\Shadow\\Documents\\Codex\\BMX-RG-SW\\build\\c04-p07-release\\bmx.exe",
+    "path": "C:\\Users\\Shadow\\Documents\\the implementation writer\\BMX-RG-SW\\build\\c04-p07-release\\bmx.exe",
     "sha256": "64b9aaccd6a97599e8bb0df17640018e89533ed7627e947800ae33b0426bef7c"
   },
   "c07_executable": {

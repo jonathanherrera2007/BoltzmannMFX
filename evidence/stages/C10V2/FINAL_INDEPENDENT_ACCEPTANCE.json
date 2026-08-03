@@ -5,7 +5,7 @@
   "implementation_commit": "0f38760b4daba3acbfd4b658c9ac522523b5c69b",
   "implementation_tree": "511e3d1ec6ec5148aa0548b6256c85b52a3b68a2",
   "evidence_commit_reviewed": "3c4a0806c9d345b3ce8809076447c22784d5cbff",
-  "reviewer_identity": "Claude (Opus 5) acting as independent reviewer; writer role for rgsw/product handed to Codex at e7a6952 and not resumed. Same reviewer as IR-20260801-P10-U02 and IR-20260801-P12-NUMERICAL-V2.",
+  "reviewer_identity": "independent reviewer; writer role for rgsw/product handed to the implementation writer at e7a6952 and not resumed. Same reviewer as IR-20260801-P10-U02 and IR-20260801-P12-NUMERICAL-V2.",
   "reviewer_is_implementation_writer": false,
   "read_only_review": true,
   "review_method": "Read-only inspection of the clean checkout at evidence commit 3c4a0806. Verified `git status --porcelain` empty and HEAD == 3c4a0806 before reading. No repository file was written or modified by the reviewer. All hashes below were recomputed locally rather than accepted from the report.",

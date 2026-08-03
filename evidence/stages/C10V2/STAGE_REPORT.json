@@ -27,7 +27,7 @@
   "review": {
     "id": "IR-20260801-P12-NUMERICAL-V2",
     "status": "PASS",
-    "reviewer_identity": "Claude (Opus 5) acting as independent reviewer; writer role for rgsw/product handed to Codex at e7a6952 and not resumed. Same reviewer as IR-20260801-P10-U02.",
+    "reviewer_identity": "independent reviewer; writer role for rgsw/product handed to the implementation writer at e7a6952 and not resumed. Same reviewer as IR-20260801-P10-U02.",
     "attributed_but_unsigned": true,
     "cryptographic_signature_present": false,
     "artifact_sha256": "bda12aef209793b4537915e374e09caf100397c0fdf8678ed00118ff987a3ea2",
@@ -39,7 +39,7 @@
     "artifact": "FINAL_INDEPENDENT_ACCEPTANCE.json",
     "artifact_sha256": "de1fb8ba26696a84ff0f0233e9fe269e091a384eb5034e86fc74250cbb72de58",
     "evidence_commit_reviewed": "3c4a0806c9d345b3ce8809076447c22784d5cbff",
-    "reviewer_identity": "Claude (Opus 5) acting as independent reviewer; writer role for rgsw/product handed to Codex at e7a6952 and not resumed.",
+    "reviewer_identity": "independent reviewer; writer role for rgsw/product handed to the implementation writer at e7a6952 and not resumed.",
     "reviewer_is_implementation_writer": false,
     "read_only_review": true,
     "confirmations_passed": 10,

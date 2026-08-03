@@ -12,7 +12,7 @@ engineering acceptance. This request does not authorize C11 and does not ask
 the reviewer to approve biological calibration or mentor-level scientific
 claims.
 
-The implementation writer is Codex. A reviewer who is not independent of that
+The implementation writer is the implementation writer. A reviewer who is not independent of that
 writer must not issue the acceptance artifact.
 
 ## Exact implementation and frozen contracts
@@ -40,25 +40,25 @@ writer must not issue the acceptance artifact.
 Confirm or reject each item explicitly:
 
 1. The Linux host satisfies the reference-platform contract: native Ubuntu,
-   `n2-standard-8`, and required plus observed `Intel Cascade Lake`.
+ `n2-standard-8`, and required plus observed `Intel Cascade Lake`.
 2. Source, dependency, kernel, operator-order, numerical-contract, uptake-law,
-   review, executable, and extractor identities are attributable and exact.
+ review, executable, and extractor identities are attributable and exact.
 3. The qualification matrix passes the frozen numerical gates without primary
-   clipping and selects L0 with `dt = 1800 s` under the frozen rule.
+ clipping and selects L0 with `dt = 1800 s` under the frozen rule.
 4. Windows and Linux coupled comparisons, temporal comparisons, saturation
-   prediction, production selection, and canonical claim values agree exactly.
+ prediction, production selection, and canonical claim values agree exactly.
 5. The measured near-null low/high contrast is reported against the saturation
-   prediction without tuning or biological amplification claims.
+ prediction without tuning or biological amplification claims.
 6. The timing measurement and 151-configuration projections are correctly
-   bounded to the C10 uptake-only fixture and are not presented as P15 runtime
-   guarantees.
+ bounded to the C10 uptake-only fixture and are not presented as P15 runtime
+ guarantees.
 7. The CRLF/Git-LF overlay is a byte-representation repair that preserved the
-   Git source tree and did not change a model, parameter, order, or gate.
+ Git source tree and did not change a model, parameter, order, or gate.
 8. The post-outcome manifest-current-directory recovery was packaging-only and
-   did not rerun or alter outcomes.
+ did not rerun or alter outcomes.
 9. The GCE instance and boot disk were deleted after evidence retrieval.
 10. The accumulated evidence is sufficient to close
-    `D-C10-02-NUMERICAL-CONVERGENCE` from an engineering standpoint.
+ `D-C10-02-NUMERICAL-CONVERGENCE` from an engineering standpoint.
 
 ## Required artifact fields
 
@@ -66,30 +66,30 @@ The returned JSON should include at least:
 
 ```json
 {
-  "artifact_type": "C10_V2_FINAL_INDEPENDENT_ACCEPTANCE",
-  "status": "PASS_OR_FAIL",
-  "implementation_commit": "0f38760b4daba3acbfd4b658c9ac522523b5c69b",
-  "implementation_tree": "511e3d1ec6ec5148aa0548b6256c85b52a3b68a2",
-  "reviewer_identity": "...",
-  "reviewer_is_implementation_writer": false,
-  "read_only_review": true,
-  "windows_result_sha256": "e25ff8256a1ab151cea3b007228b261bd1c4d8b83fa34234d71371d62b2d0ab0",
-  "reference_result_sha256": "b3d72145bfd9310d4d0f2ea171bbcb0e814debe36bbac56ac6e52103e7b89d43",
-  "reference_timing_sha256": "2473d2f8675077d6e9ede062f128b1a8307035bd23f21f8bf03ce5f75ed0d2e5",
-  "confirmations": {
-    "reference_host_qualified": true,
-    "provenance_exact": true,
-    "frozen_gates_pass": true,
-    "cross_platform_claim_values_exact": true,
-    "contrast_claim_bounded": true,
-    "timing_claim_bounded": true,
-    "crlf_overlay_packaging_only": true,
-    "manifest_recovery_packaging_only": true,
-    "cloud_resources_deleted": true,
-    "c10_engineering_closure_accepted": true
-  },
-  "c11_authorized": false,
-  "findings": []
+ "artifact_type": "C10_V2_FINAL_INDEPENDENT_ACCEPTANCE",
+ "status": "PASS_OR_FAIL",
+ "implementation_commit": "0f38760b4daba3acbfd4b658c9ac522523b5c69b",
+ "implementation_tree": "511e3d1ec6ec5148aa0548b6256c85b52a3b68a2",
+ "reviewer_identity": "...",
+ "reviewer_is_implementation_writer": false,
+ "read_only_review": true,
+ "windows_result_sha256": "e25ff8256a1ab151cea3b007228b261bd1c4d8b83fa34234d71371d62b2d0ab0",
+ "reference_result_sha256": "b3d72145bfd9310d4d0f2ea171bbcb0e814debe36bbac56ac6e52103e7b89d43",
+ "reference_timing_sha256": "2473d2f8675077d6e9ede062f128b1a8307035bd23f21f8bf03ce5f75ed0d2e5",
+ "confirmations": {
+ "reference_host_qualified": true,
+ "provenance_exact": true,
+ "frozen_gates_pass": true,
+ "cross_platform_claim_values_exact": true,
+ "contrast_claim_bounded": true,
+ "timing_claim_bounded": true,
+ "crlf_overlay_packaging_only": true,
+ "manifest_recovery_packaging_only": true,
+ "cloud_resources_deleted": true,
+ "c10_engineering_closure_accepted": true
+ },
+ "c11_authorized": false,
+ "findings": []
 }
 ```
 

@@ -1,4 +1,4 @@
-# Primary-writer handoff — Claude → Codex
+# Primary-writer handoff
 
 - **Date:** 2026-08-01
 - **Branch:** `rgsw/product`
@@ -10,16 +10,16 @@
 ## 0. Read this first — the one-writer rule
 
 `AGENTS.md` says one agent writes the product branch at a time. From this
-document forward **Codex is the primary writer** and Claude writes nothing to
+document forward **the implementation writer is the primary writer** and the independent reviewer writes nothing to
 `rgsw/product`. Do not run both.
 
-This is a role Codex has *not* held so far. The prompt pack's default assignment
-is Claude-as-writer and Codex-as-independent-reviewer (`prompts/codex/X01`–`X09`).
-If Codex later performs an independent review of its own writing, that review is
+This is a role the implementation writer has *not* held so far. The prompt pack's default assignment
+is the independent reviewer-as-writer and the implementation writer-as-independent-reviewer (`prompts/workspace/X01`–`X09`).
+If the implementation writer later performs an independent review of its own writing, that review is
 **not independent** and must not be recorded as such. Say so in the report rather
 than letting the pack's labels imply otherwise.
 
-Codex reads `AGENTS.md` at the repo root. That file is authoritative for
+the implementation writer reads `AGENTS.md` at the repo root. That file is authoritative for
 boundaries; this document only adds state and hard-won context.
 
 ## 1. Where the project actually is
@@ -76,13 +76,13 @@ git rev-parse adb427331e180cd0b4faa74a4ab2098381b2eabb:src/chemistry HEAD:src/ch
 **Authority to implement exists**, but read the chain carefully because two
 documents appear to conflict and do not:
 
-- `prompts/claude/C07_P09_THREE_STATE_INFRASTRUCTURE.md` is an **execution**
-  prompt.
+- `prompts/writer/C07_P09_THREE_STATE_INFRASTRUCTURE.md` is an **execution**
+ prompt.
 - C06A lists **P09 as `stages_implementable_now`**.
 - `P09_P_THREE_STATE_INFRASTRUCTURE_PREP_SANITIZED.md` ends with *"Stop pending
-  separate source-write/build/test authorization"* — that is the **preparation**
-  document deferring to exactly the authorization the C07 prompt supplies. It is
-  not a live blocker.
+ separate source-write/build/test authorization"* — that is the **preparation**
+ document deferring to exactly the authorization the C07 prompt supplies. It is
+ not a live blocker.
 
 **But its other stop conditions still bind and are not superseded.** Stop if
 completion would require *"assigning semantics, units, values, defaults,
@@ -168,89 +168,89 @@ These are not hypothetical. Each was a defect that shipped into a run and had to
 be caught.
 
 1. **A structural log statistic cannot attribute a difference to a branch.** The
-   first C04 matrix compared "lines differing" and "max relative difference", and
-   produced three false conclusions. Use observables the model already emits at
-   full precision: `amr.par_ascii_int` (particle fields, trajectory-neutral) and
-   `bmx.print_sums` (fluid side). Predict the branch from the source's own
-   predicates *and* observe what changed, then require agreement.
+ first C04 matrix compared "lines differing" and "max relative difference", and
+ produced three false conclusions. Use observables the model already emits at
+ full precision: `amr.par_ascii_int` (particle fields, trajectory-neutral) and
+ `bmx.print_sums` (fluid side). Predict the branch from the source's own
+ predicates *and* observe what changed, then require agreement.
 
 2. **The `realIdx` enum comments are 1-based position markers, not indices.**
-   Reading them as indices silently shifts fields — it put `dadt`/`dvdt` one slot
-   off and read `tau_split` as `dvdt`. Verify any hand-derived column map against
-   physics before trusting it.
+ Reading them as indices silently shifts fields — it put `dadt`/`dvdt` one slot
+ off and read `tau_split` as `dvdt`. Verify any hand-derived column map against
+ physics before trusting it.
 
 3. **A fixture can be a no-op against its own reference.** Stock
-   `max_seg_radius` equals the initial radius, so `radius < radius_max` is already
-   false at t=0 — the "forcing" override selected the same branch as the control.
+ `max_seg_radius` equals the initial radius, so `radius < radius_max` is already
+ false at t=0 — the "forcing" override selected the same branch as the control.
 
 4. **`fungi_init_cfg.dat` stores `area` rounded to 4 significant figures.** The
-   true `2πr(r+L)` differs at 1.7e-5, so a repair that recomputes the area is not
-   inert even with growth off. There is a self-consistent init file at
-   `tools/repro/fixtures/fungi_init_cfg_selfconsistent.dat`.
+ true `2πr(r+L)` differs at 1.7e-5, so a repair that recomputes the area is not
+ inert even with growth off. There is a self-consistent init file at
+ `tools/repro/fixtures/fungi_init_cfg_selfconsistent.dat`.
 
 5. **A detector can be structurally blind.** The donor-cap sign-flip test could
-   only ever see a *baseline*-side activation, so a repaired-side-only firing was
-   invisible. It produced a confident "NOT REACHED" that was wrong.
+ only ever see a *baseline*-side activation, so a repaired-side-only firing was
+ invisible. It produced a confident "NOT REACHED" that was wrong.
 
 6. **Writing files from Python on Windows silently produces CRLF.** That broke
-   `configure_linux.sh` on the reference platform with `$'\r': command not found`.
-   `.gitattributes` now pins LF for executed/parsed text; use `newline='\n'`.
+ `configure_linux.sh` on the reference platform with `$'\r': command not found`.
+ `.gitattributes` now pins LF for executed/parsed text; use `newline='\n'`.
 
 7. **Synthetic tests verify logic, not the shape of real data.** Twice a harness
-   passed its suite and failed on production structure — most recently the P08
-   comparator grouped by `(tree, observable)` without `fixture`, collapsing a
-   sweep into one group and reporting phantom platform variance. Make synthetic
-   fixtures structurally as rich as production.
+ passed its suite and failed on production structure — most recently the P08
+ comparator grouped by `(tree, observable)` without `fixture`, collapsing a
+ sweep into one group and reporting phantom platform variance. Make synthetic
+ fixtures structurally as rich as production.
 
 8. **`--describe` provenance of the source tree ≠ provenance of each image.** A
-   reference run reported `release_evidence: true` while two images carried a
-   commit that did not describe their own bytes (dirty tree). Interrogate every
-   built binary, and require `RESOLVED` + 40-char commit + **clean** worktree.
+ reference run reported `release_evidence: true` while two images carried a
+ commit that did not describe their own bytes (dirty tree). Interrogate every
+ built binary, and require `RESOLVED` + 40-char commit + **clean** worktree.
 
 ## 7. Discipline that must not slip
 
 - **Do not push, merge, open a PR, or contact anyone** without explicit
-  authorization. Nothing has been pushed; there is no upstream.
+ authorization. Nothing has been pushed; there is no upstream.
 - **Predeclare before measuring.** C05's contract was committed *before* the
-  comparator so the ordering is verifiable from history. Where predeclaration
-  cannot be blind — because data already exists — **say so** and explain what
-  protects it instead. `contracts/p08/COMPARISON_CONTRACT.md` §0 is the pattern.
+ comparator so the ordering is verifiable from history. Where predeclaration
+ cannot be blind — because data already exists — **say so** and explain what
+ protects it instead. `contracts/p08/COMPARISON_CONTRACT.md` §0 is the pattern.
 - **`INCONCLUSIVE` is not a soft pass.** Neither is "the tests are green".
 - **Never widen a tolerance after seeing an outcome.**
 - **A stage does not reach `PASS` with an unresolved blocker in its own
-  mandatory scope.**
+ mandatory scope.**
 
 ## 8. Claims that remain prohibited
 
 Regardless of stage outcome:
 
 - any phosphorus behaviour is correct — **`dP1`/`dP2` still use the stale
-  `new_cell_area`; phosphorus retains exactly the CDEF-03 staleness that carbon
-  had repaired**
+ `new_cell_area`; phosphorus retains exactly the CDEF-03 staleness that carbon
+ had repaired**
 - any conservation property of the model as a whole (`D-C04-07` open)
 - calibrated biology, predictive validity, full-plate validity, production
-  qualification, publication readiness
+ qualification, publication readiness
 - P07 phase success; formal P05–P18 acceptance
 - `RG-SW:GO`; `RG-SCI:GO`
 
-## 9. Suggested first actions for Codex
+## 9. Suggested first actions for the implementation writer
 
 1. Read `AGENTS.md`, then `prompts/shared/S01_RESUME_FROM_CHECKPOINT.md`.
 2. Verify identity (§2) from actual bytes — do not trust this document.
 3. Confirm `git status --porcelain=v1` is clean apart from anything you add.
 4. Re-derive the C07 plan against real source; treat the committed draft as
-   input, not instruction.
+ input, not instruction.
 5. Record `D-C07-01` before implementing.
 6. Implement P09 as storage/I-O plumbing only, default-off, and prove the
-   feature-off path is unchanged against the C04 reference.
+ feature-off path is unchanged against the C04 reference.
 7. Qualify on the Linux reference host before claiming release evidence.
 
-## 10. What Claude did not do
+## 10. What the independent reviewer did not do
 
 - Did not send the mentor packet (user action, `B-S00-03`).
 - Did not start C06B, C07, or anything in Phase B.
 - Did not push anything.
 - Did not resolve `B-C02-01`, `B-C03-02`, or `D-C04-07`.
-- Did not perform any independent review of its own work — `prompts/codex/X01`–`X07`
-  remain unexecuted, and they were written on the assumption that a *different*
-  agent from the writer performs them.
+- Did not perform any independent review of its own work — `prompts/workspace/X01`–`X07`
+ remain unexecuted, and they were written on the assumption that a *different*
+ agent from the writer performs them.

@@ -3,7 +3,7 @@
 - **Stage ID:** `C01`
 - **Status:** `PASS`
 - **Started / completed:** 2026-07-30
-- **Role:** primary writer (Claude), product lane
+- **Role:** primary writer (the independent reviewer), product lane
 - **Input commit / tree:** `389e9e35a1c7291a4af795b2e39f2db1f0012b61` / `1c73deedf0eb2feea833a7fddbc431ae9754d977`
 - **Output commit:** see `COMMIT.txt` in this directory (recorded in the follow-up commit; see §8)
 - **AMReX commit:** `cbdc6580ee3d78cccdd37172e4ba077ee181f483`
@@ -48,10 +48,10 @@ comparison in §4 is a strictly stronger check.
 The canonical objects were **not** downloaded. They already existed in a
 pre-existing lane repository:
 
-`…\2026-07-25\github-plugin-github-openai-curated-remote-3\work\BoltzmannMFX`
+`…\2026-07-25\github-plugin-curated-remote-3\work\BoltzmannMFX`
 
 That repository is a **live multi-lane scratch workspace** — HEAD `dfe1eef` on
-`codex/bmx-connected-poster-pilot`, five registered worktrees (four marked
+`workspace/bmx-connected-poster-pilot`, five registered worktrees (four marked
 `prunable`, pointing at WSL-style `/mnt/c/...` paths). It is explicitly **not**
 treated as a baseline and **not** used as a working tree.
 
@@ -62,10 +62,10 @@ exactly. No trust is placed in the lane workspace's own state.
 Two deliberate hardening choices:
 
 - `git clone --no-hardlinks` for both BMX and AMReX, so the product's object
-  store is **physically independent**. A later `gc`/`prune`/worktree-prune in the
-  lane repository cannot corrupt or truncate this product.
+ store is **physically independent**. A later `gc`/`prune`/worktree-prune in the
+ lane repository cannot corrupt or truncate this product.
 - AMReX objects were taken from `<lane>/.git/modules/subprojects/amrex`
-  (the submodule's real object store), so the whole acquisition was offline.
+ (the submodule's real object store), so the whole acquisition was offline.
 
 **The lane repository was not modified.** Verified after the fact: HEAD still
 `dfe1eef`, 0 dirty entries, all 5 worktrees still registered. Its prunable
@@ -124,12 +124,12 @@ user authorization.
 
 ```
 BMX-RG-SW/
-├── planning-package/          extracted, hash-verified, reference only
-├── repo/                      git store + pristine canonical checkout (never edited)
+├── planning-package/ extracted, hash-verified, reference only
+├── repo/ git store + pristine canonical checkout (never edited)
 └── worktrees/
-    ├── baseline/              detached 389e9e3   — untouched baseline (C03)
-    ├── product/               branch rgsw/product — primary writer (this lane)
-    └── review/                detached 389e9e3   — independent reviewer, read-only
+ ├── baseline/ detached 389e9e3 — untouched baseline (C03)
+ ├── product/ branch rgsw/product — primary writer (this lane)
+ └── review/ detached 389e9e3 — independent reviewer, read-only
 ```
 
 All four checkouts verified at commit `389e9e3` / tree `1c73dee`, each with
@@ -154,7 +154,7 @@ Isolation from P05:
 
 ## 7. Repository guidance files installed
 
-`AGENTS.md` and `CLAUDE.md` were placed at the product worktree root from the
+`AGENTS.md` was placed at the product worktree root from the
 supplied templates, verbatim, with one addition: a clearly-labelled
 "Local binding" subsection in `AGENTS.md` recording the real local package path,
 since the package's `/mnt/data/...` origin path does not exist on this host. The
@@ -165,7 +165,7 @@ fixed identity hashes above it are unchanged.
 | Path | Reason |
 |---|---|
 | `AGENTS.md` | shared durable agent rules (pack README step 3) |
-| `CLAUDE.md` | Claude entry point importing `AGENTS.md` |
+| `AGENTS.md` | the independent reviewer entry point importing `AGENTS.md` |
 | `evidence/session/SESSION_BOOTSTRAP.md` | S00 evidence, relocated into the product worktree so all evidence is version-controlled in one place |
 | `evidence/stages/C01/STAGE_REPORT.md` | this report |
 | `evidence/stages/C01/STAGE_REPORT.json` | machine-readable report |
@@ -186,7 +186,7 @@ All commands were run from `BMX-RG-SW`. Exit code 0 unless noted.
 ```
 Get-FileHash <zip> -Algorithm SHA256
 Expand-Archive -Path <zip> -DestinationPath planning-package -Force
-sha256sum -c MANIFEST.sha256                       # 153 OK, 0 failed
+sha256sum -c MANIFEST.sha256 # 153 OK, 0 failed
 
 git -c core.autocrlf=false clone --no-hardlinks --no-checkout <lane> repo
 git -C repo remote remove origin
@@ -194,7 +194,7 @@ git -C repo remote add canonical-upstream https://github.com/jonathanherrera2007
 git -C repo checkout --detach 389e9e35a1c7291a4af795b2e39f2db1f0012b61
 
 git -c core.autocrlf=false clone --no-hardlinks --no-checkout \
-    <lane>/.git/modules/subprojects/amrex repo/subprojects/amrex
+ <lane>/.git/modules/subprojects/amrex repo/subprojects/amrex
 git -C repo/subprojects/amrex checkout --detach cbdc6580ee3d78cccdd37172e4ba077ee181f483
 git -C repo submodule init
 
@@ -205,7 +205,7 @@ git -C repo worktree add --detach worktrees/review 389e9e3…
 
 git rev-parse HEAD 'HEAD^{tree}' ; git submodule status ; git status --porcelain
 git ls-files --eol ; git ls-files -s
-cmp / sha256sum over 04_SOURCE_SNAPSHOT vs checkout   # 108/108 byte-identical
+cmp / sha256sum over 04_SOURCE_SNAPSHOT vs checkout # 108/108 byte-identical
 ```
 
 ## 10. Tests
@@ -249,7 +249,7 @@ Current honest label: **`RESEARCH-USE-CANDIDATE — RG-SW INCOMPLETE`**,
 
 ## 14. Next valid prompt
 
-`prompts/claude/C02_FIRST_FOUR_HOUR_BUILD_SPIKE.md`
+`prompts/writer/C02_FIRST_FOUR_HOUR_BUILD_SPIKE.md`
 
 Note for C02: the one-hour native-Windows prerequisite budget has effectively
 already been spent by inspection — there is no compiler, no generator, and no

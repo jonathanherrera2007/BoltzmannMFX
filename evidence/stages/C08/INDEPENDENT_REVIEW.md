@@ -2,18 +2,18 @@
 
 - **Review ID:** `IR-20260801-P10-U02`
 - **Received:** 2026-08-01
-- **Writer:** Codex, sole C08 product-branch writer
+- **Writer:** the implementation writer, sole C08 product-branch writer
 - **Review provenance:** independent reviewer report supplied by the user in
-  the Codex delegation thread; no cryptographic reviewer signature was
-  provided
+ the the delegation thread; no cryptographic reviewer signature was
+ provided
 - **Reviewed implementation:**
-  `ab451fb479c475da9f806a237c0911e63a273880`
+ `ab451fb479c475da9f806a237c0911e63a273880`
 - **Reviewed evidence pointer:**
-  `48e24c64b754c9034e22d94f610d342e253408e0`
+ `48e24c64b754c9034e22d94f610d342e253408e0`
 - **Exact operator-order target:**
-  `contracts/p10/OPERATOR_ORDER_V1.json`
+ `contracts/p10/OPERATOR_ORDER_V1.json`
 - **Exact target SHA-256:**
-  `bb63c219a860687d91ce1acf06a667c9208abf026b32f18acfc64884bb696dd6`
+ `bb63c219a860687d91ce1acf06a667c9208abf026b32f18acfc64884bb696dd6`
 
 ## Verdict received
 

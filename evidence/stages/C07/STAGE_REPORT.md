@@ -3,15 +3,15 @@
 - **Stage ID:** `C07`
 - **Status:** `PASS`
 - **Completed:** 2026-08-01 UTC
-- **Role:** sole product-branch writer (Codex) from `e7a69521`
+- **Role:** sole product-branch writer (the implementation writer) from `e7a69521`
 - **Independent X01–X09 reviewer eligibility:** **no** for these bytes
 - **Input commit:** `947100e966200c5dc8f1a40ef7480b5d0ead096b`
 - **Input tree:** `3aaef073d25d94289f70d9f4b5afdb85de034a7d`
 - **Stage commit:** recorded after commit in `COMMIT.txt` and
-  `STAGE_REPORT.json#/output_git_commit`
+ `STAGE_REPORT.json#/output_git_commit`
 - **Post-stage review follow-up:** `REVIEW-C07-001` closed by semantic G1/G4
-  runtime evidence recorded below; implementation/evidence commit
-  `1cbaabe386c9496a55e5d2cdcd562c1981f307a9`
+ runtime evidence recorded below; implementation/evidence commit
+ `1cbaabe386c9496a55e5d2cdcd562c1981f307a9`
 
 C07 implements the P09 storage and I/O plumbing authorized by the recovered
 execution prompt and the user's narrow transfer-file ownership exception. The
@@ -24,7 +24,7 @@ deterministically, and plot metadata is semantic.
 The frozen C04/P07 chemistry kernel was not edited. Its SHA-256 remains
 `9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02`.
 
-Claude's subsequent read-only review correctly found that C07's original
+the independent reviewer's subsequent read-only review correctly found that C07's original
 feature-off comparator used normalized stdout from three no-trigger controls.
 That evidence did not exercise or observe the widened chemistry blocks, so its
 feature-off claim was too strong. `REVIEW-C07-001` is closed by the follow-up
@@ -49,7 +49,7 @@ files for the integrator.
 
 The user then supplied the exact missing authority:
 
-> I authorize Codex, as the sole writer, to modify
+> I authorize the implementation writer, as the sole writer, to modify
 > `src/des/bmx_calc_txfr.cpp` during C07 only as needed to separate the
 > 6/7-component mesh from the 8-component particle layout and implement
 > explicit maps. Keep `bmx_chem_K.H` frozen and do not introduce C08+ behavior.
@@ -92,19 +92,19 @@ The implementation provides:
 - separate compile-time particle stride 8 and active runtime mesh count 6/7;
 - three eight-wide particle blocks: committed, working, and increment;
 - deterministic zero initialization of the complete real and integer particle
-  allocation before explicit input values are populated;
+ allocation before explicit input values are populated;
 - explicit enabled particle initialization through
-  `chem_species.initial_particle_P = P_D P_E P_F`; no value is defaulted;
+ `chem_species.initial_particle_P = P_D P_E P_F`; no value is defaulted;
 - exact schema rejection for simultaneous `P`/`P_D`, mesh `P_E`, missing
-  `P_F`, reordered phosphorus layouts, and legacy aliases;
+ `P_F`, reordered phosphorus layouts, and legacy aliases;
 - exact-zero gates for mesh `P_F` diffusion and all pre-existing generic-P
-  reaction/exchange/growth controls in enabled mode;
+ reaction/exchange/growth controls in enabled mode;
 - one-pass explicit deposition maps and mapped interpolation with no mesh E;
 - 24 semantic particle plot names plus enabled mesh names `P_D`/`P_F`;
 - schema-v2 metadata constants (layout descriptor/hash, component counts,
-  units-decision source and decision-contract hashes) that remain explicitly
-  `checkpoint_schema_ready=false` while P10 operator order and global-ledger
-  integration are unbound.
+ units-decision source and decision-contract hashes) that remain explicitly
+ `checkpoint_schema_ready=false` while P10 operator order and global-ledger
+ integration are unbound.
 
 The checkpoint constants are scaffolding only, exactly as C07 requests. C07
 does **not** claim a checkpoint-v2 writer, restart round trip, or legacy
@@ -195,20 +195,20 @@ Final executable:
 - size: 2,405,376 bytes
 - SHA-256: `f86889fc0def576f520340c91f14847aed7f2facf0362349852b1e259bcb1b67`
 - `CMakeCache.txt` SHA-256:
-  `d7bfb8303d2262071c922cbc9d19bbc54d4b9e41a0ebe567ace0a72883dbdd91`
+ `d7bfb8303d2262071c922cbc9d19bbc54d4b9e41a0ebe567ace0a72883dbdd91`
 - `compile_commands.json` SHA-256:
-  `8b6059e2417504d9b337a15db7614f13b3019452ae2ea6708548302bdf2a0eff`
+ `8b6059e2417504d9b337a15db7614f13b3019452ae2ea6708548302bdf2a0eff`
 
 Runtime schema results:
 
 - accepted disabled schema at initialization;
 - accepted enabled schema through one complete step, exercising mapped
-  interpolation and deposition;
+ interpolation and deposition;
 - accepted enabled plot output with mesh `P_D/P_F`, no mesh `P_E`, and all 24
-  semantic particle names;
+ semantic particle names;
 - rejected simultaneous `P`/`P_D`, mesh `P_E`, missing `P_F`, reordered
-  layout, nonzero `P_F` diffusion, and missing explicit internal P
-  initialization (all expected nonzero exit 22).
+ layout, nonzero `P_F` diffusion, and missing explicit internal P
+ initialization (all expected nonzero exit 22).
 
 The supplemental stdout controls use the frozen C03 normalizer unchanged and,
 exactly as C04 reviewed, remove only the unavoidable `BMX git hash:`
@@ -279,6 +279,6 @@ transport, export/reward behavior, calibrated biology, predictive validity,
 full-plate validity, publication or production readiness, formal P05–P18
 acceptance, `RG-SW:GO`, or `RG-SCI:GO`.
 
-Codex authored these bytes and must not later be described as an independent
+the implementation writer authored these bytes and must not later be described as an independent
 X01–X09 reviewer of them. C07 ends here. C08 and all later stages were not
 started.

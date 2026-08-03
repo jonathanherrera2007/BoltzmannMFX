@@ -2,8 +2,8 @@
 
 - **Date:** 2026-07-31
 - **Purpose:** `DEC-PLATFORM-001` makes Linux the reference platform. This
-  records what could and could not be established toward that on the available
-  hardware.
+ records what could and could not be established toward that on the available
+ hardware.
 
 > **This is not platform-qualified evidence and does not close
 > `B-PLATFORM-01`.** The host is WSL1, which `tools/repro/linux_env.sh`
@@ -102,23 +102,23 @@ host — because no reference host exists (RT-1).
 
 ```bash
 wsl -d Ubuntu
-cd /mnt/c/Users/Shadow/Documents/Codex/BMX-RG-SW/worktrees/product
+cd /mnt/c/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/worktrees/product
 
-source tools/repro/linux_env.sh          # must print class: smoke-only here
+source tools/repro/linux_env.sh # must print class: smoke-only here
 bash tools/repro/configure_linux.sh -b /tmp/bmx-linux-smoke -f
-bash tools/repro/build_linux.sh     -b /tmp/bmx-linux-smoke
+bash tools/repro/build_linux.sh -b /tmp/bmx-linux-smoke
 
 python3 tools/repro/check_sums_diagnostic.py \
-  --exe /tmp/bmx-linux-smoke/bmx --case-dir exec/fungi \
-  --work-dir /tmp/bmx-linux-diagcheck
+ --exe /tmp/bmx-linux-smoke/bmx --case-dir exec/fungi \
+ --work-dir /tmp/bmx-linux-diagcheck
 
 bash tools/repro/configure_linux.sh -s ../baseline-diag -b /tmp/bmx-linux-baseline-diag -f
-bash tools/repro/build_linux.sh     -b /tmp/bmx-linux-baseline-diag
+bash tools/repro/build_linux.sh -b /tmp/bmx-linux-baseline-diag
 
 python3 tools/repro/run_p07_donor_cap_fixture.py \
-  --baseline-exe /tmp/bmx-linux-baseline-diag/bmx \
-  --repaired-exe /tmp/bmx-linux-smoke/bmx \
-  --case-dir exec/fungi --out-dir /tmp/bmx-linux-donorcap
+ --baseline-exe /tmp/bmx-linux-baseline-diag/bmx \
+ --repaired-exe /tmp/bmx-linux-smoke/bmx \
+ --case-dir exec/fungi --out-dir /tmp/bmx-linux-donorcap
 ```
 
 ## 5. Status

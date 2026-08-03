@@ -3,7 +3,7 @@
 - **Stage ID:** `C02`
 - **Status:** `PASS`
 - **Date:** 2026-07-30
-- **Role:** primary writer (Claude), product lane
+- **Role:** primary writer (the independent reviewer), product lane
 - **Input commit / tree:** `893dbaba15143f87cf680a24b2103db9d3723e69` (C01 output) on `rgsw/product`; source tree still `1c73deed…` plus C01's non-source additions
 - **Output commit:** see `COMMIT.txt`
 - **AMReX:** `cbdc6580ee3d78cccdd37172e4ba077ee181f483`
@@ -129,10 +129,10 @@ Positive evidence from the logs:
 - `MPI initialized with 1 MPI processes` / `with 2 MPI processes`
 - `AMReX (22.07-4-gcbdc6580ee3d) initialized` … `finalized`
 - `Reading in 6 chem_species` → `A B C D F P`, matching the **disabled
-  compatibility mesh order** in `AGENTS.md`. Phosphorus infrastructure is not
-  enabled, as expected at this stage.
+ compatibility mesh order** in `AGENTS.md`. Phosphorus infrastructure is not
+ enabled, as expected at this stage.
 - `Evolving particles on level: 1 ... with fluid dt 0.25`, `In Particle Exchange
-  with 1 particles at level 1`, `Time per step 0.0494016` under 2 ranks
+ with 1 particles at level 1`, `Time per step 0.0494016` under 2 ranks
 - Scan for `nan|inf|assert|abort|error` across all smoke logs: **no matches**
 
 The two-rank run is a **launch check only**. It shows the MPI build actually
@@ -217,7 +217,7 @@ formal acceptance **NO**.
 
 ## 13. Next valid prompt
 
-`prompts/claude/C03_P06_LEAN_BASELINE_EVIDENCE.md`
+`prompts/writer/C03_P06_LEAN_BASELINE_EVIDENCE.md`
 
 C03 must build in the **baseline** worktree using these same scripts and record
 its own executable hash; the C02 image was built from the product worktree and

@@ -189,7 +189,7 @@
       }
     },
     "first_data": 28,
-    "index": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-diag-check/DIAGNOSTIC_CHECKS.json",
+    "index": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-diag-check/DIAGNOSTIC_CHECKS.json",
     "status": "PASS"
   },
   "donor_cap_fixture": {
@@ -217,7 +217,7 @@
           "delta_A_fluid": -4.870055586918292e-12,
           "delta_A_particles": 4.870055586973302e-12,
           "exit": 0,
-          "run_dir": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-p07-donor-cap-fixture\\k1_100\\baseline",
+          "run_dir": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-p07-donor-cap-fixture\\k1_100\\baseline",
           "transfer_over_available": 0.9973873842121319
         },
         "k1": 100.0,
@@ -230,7 +230,7 @@
           "delta_A_fluid": -4.871032499953681e-12,
           "delta_A_particles": 4.871032499999993e-12,
           "exit": 0,
-          "run_dir": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-p07-donor-cap-fixture\\k1_100\\repaired",
+          "run_dir": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-p07-donor-cap-fixture\\k1_100\\repaired",
           "transfer_equals_available": true,
           "transfer_over_available": 0.9975874559999981
         },
@@ -241,7 +241,7 @@
       "stored_area_ratio": 100.0,
       "true_area": 5.105088062083415e-06
     },
-    "index": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-p07-donor-cap-fixture/DONOR_CAP_FIXTURE.json",
+    "index": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-p07-donor-cap-fixture/DONOR_CAP_FIXTURE.json",
     "rows": [
       {
         "alpha_first_half": 0.0032672563597333846,
@@ -255,7 +255,7 @@
           "delta_A_fluid": -1.2617374798449063e-13,
           "delta_A_particles": 1.2617374821994632e-13,
           "exit": 0,
-          "run_dir": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-p07-donor-cap-fixture\\k1_0.5\\baseline",
+          "run_dir": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-p07-donor-cap-fixture\\k1_0.5\\baseline",
           "transfer_over_available": 0.025840383635444997
         },
         "k1": 0.5,
@@ -268,7 +268,7 @@
           "delta_A_fluid": -4.569057502913439e-12,
           "delta_A_particles": 4.569057502930556e-12,
           "exit": 0,
-          "run_dir": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-p07-donor-cap-fixture\\k1_0.5\\repaired",
+          "run_dir": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-p07-donor-cap-fixture\\k1_0.5\\repaired",
           "transfer_over_available": 0.9357429766001776
         },
         "repaired_capped": false,
@@ -286,7 +286,7 @@
           "delta_A_fluid": -2.4947845417359166e-13,
           "delta_A_particles": 2.4947845422790507e-13,
           "exit": 0,
-          "run_dir": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-p07-donor-cap-fixture\\k1_1\\baseline",
+          "run_dir": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-p07-donor-cap-fixture\\k1_1\\baseline",
           "transfer_over_available": 0.05109318742587494
         },
         "k1": 1.0,
@@ -299,7 +299,7 @@
           "delta_A_fluid": -4.868219158674326e-12,
           "delta_A_particles": 4.868219158726102e-12,
           "exit": 0,
-          "run_dir": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-p07-donor-cap-fixture\\k1_1\\repaired",
+          "run_dir": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-p07-donor-cap-fixture\\k1_1\\repaired",
           "transfer_over_available": 0.9970112837071055
         },
         "repaired_capped": false,
@@ -317,7 +317,7 @@
           "delta_A_fluid": -4.877042284661825e-13,
           "delta_A_particles": 4.877042284988348e-13,
           "exit": 0,
-          "run_dir": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-p07-donor-cap-fixture\\k1_2\\baseline",
+          "run_dir": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-p07-donor-cap-fixture\\k1_2\\baseline",
           "transfer_over_available": 0.09988182599656133
         },
         "k1": 2.0,
@@ -330,7 +330,7 @@
           "delta_A_fluid": -4.871032499953681e-12,
           "delta_A_particles": 4.871032500000001e-12,
           "exit": 0,
-          "run_dir": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-p07-donor-cap-fixture\\k1_2\\repaired",
+          "run_dir": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-p07-donor-cap-fixture\\k1_2\\repaired",
           "transfer_equals_available": true,
           "transfer_over_available": 0.9975874559999998
         },
@@ -349,7 +349,7 @@
           "delta_A_fluid": -1.1391731658299796e-12,
           "delta_A_particles": 1.1391731658547444e-12,
           "exit": 0,
-          "run_dir": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-p07-donor-cap-fixture\\k1_5\\baseline",
+          "run_dir": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-p07-donor-cap-fixture\\k1_5\\baseline",
           "transfer_over_available": 0.23330266436705155
         },
         "k1": 5.0,
@@ -362,7 +362,7 @@
           "delta_A_fluid": -4.871032499953681e-12,
           "delta_A_particles": 4.8710325000000015e-12,
           "exit": 0,
-          "run_dir": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-p07-donor-cap-fixture\\k1_5\\repaired",
+          "run_dir": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-p07-donor-cap-fixture\\k1_5\\repaired",
           "transfer_equals_available": true,
           "transfer_over_available": 0.997587456
         },
@@ -381,7 +381,7 @@
           "delta_A_fluid": -3.2870367968704052e-12,
           "delta_A_particles": 3.287036796906513e-12,
           "exit": 0,
-          "run_dir": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-p07-donor-cap-fixture\\k1_20\\baseline",
+          "run_dir": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-p07-donor-cap-fixture\\k1_20\\baseline",
           "transfer_over_available": 0.6731851360064536
         },
         "k1": 20.0,
@@ -394,7 +394,7 @@
           "delta_A_fluid": -4.871032499953681e-12,
           "delta_A_particles": 4.8710325000000015e-12,
           "exit": 0,
-          "run_dir": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-p07-donor-cap-fixture\\k1_20\\repaired",
+          "run_dir": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-p07-donor-cap-fixture\\k1_20\\repaired",
           "transfer_equals_available": true,
           "transfer_over_available": 0.997587456
         },
@@ -413,7 +413,7 @@
           "delta_A_fluid": -4.870055586918292e-12,
           "delta_A_particles": 4.870055586973302e-12,
           "exit": 0,
-          "run_dir": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-p07-donor-cap-fixture\\k1_100\\baseline",
+          "run_dir": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-p07-donor-cap-fixture\\k1_100\\baseline",
           "transfer_over_available": 0.9973873842121319
         },
         "k1": 100.0,
@@ -426,7 +426,7 @@
           "delta_A_fluid": -4.871032499953681e-12,
           "delta_A_particles": 4.871032499999993e-12,
           "exit": 0,
-          "run_dir": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-p07-donor-cap-fixture\\k1_100\\repaired",
+          "run_dir": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-p07-donor-cap-fixture\\k1_100\\repaired",
           "transfer_equals_available": true,
           "transfer_over_available": 0.9975874559999981
         },
@@ -672,7 +672,7 @@
             "stale": 76
           }
         },
-        "geometry_json": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-p07-geometry\\G1_tip_length_only\\GEOMETRY.json",
+        "geometry_json": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-p07-geometry\\G1_tip_length_only\\GEOMETRY.json",
         "max_rel": 0.05480782749107253,
         "observed_branch_counts": {
           "TIP_LENGTH_ONLY": 76
@@ -689,7 +689,7 @@
             "stale": 40
           }
         },
-        "geometry_json": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-p07-geometry\\G2_tip_radius_only\\GEOMETRY.json",
+        "geometry_json": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-p07-geometry\\G2_tip_radius_only\\GEOMETRY.json",
         "max_rel": 0.11484406645344886,
         "observed_branch_counts": {
           "TIP_RADIUS_ONLY": 40
@@ -701,7 +701,7 @@
       },
       "G3_tip_proportional": {
         "area_left_stale_counts": {},
-        "geometry_json": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-p07-geometry\\G3_tip_proportional\\GEOMETRY.json",
+        "geometry_json": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-p07-geometry\\G3_tip_proportional\\GEOMETRY.json",
         "max_rel": 0.005557531993133672,
         "observed_branch_counts": {
           "TIP_PROPORTIONAL": 40
@@ -718,7 +718,7 @@
             "stale": 133
           }
         },
-        "geometry_json": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-p07-geometry\\G4_nontip_rejected\\GEOMETRY.json",
+        "geometry_json": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-p07-geometry\\G4_nontip_rejected\\GEOMETRY.json",
         "max_rel": 0.9999935780521666,
         "observed_branch_counts": {
           "NONTIP_REJECTED": 188,
@@ -737,7 +737,7 @@
             "stale": 30
           }
         },
-        "geometry_json": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-p07-geometry\\G5_nontip_radial\\GEOMETRY.json",
+        "geometry_json": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-p07-geometry\\G5_nontip_radial\\GEOMETRY.json",
         "max_rel": 0.0921950312689999,
         "observed_branch_counts": {
           "TIP_RADIUS_ONLY": 30
@@ -749,7 +749,7 @@
       },
       "G6_no_growth_stock_init": {
         "area_left_stale_counts": {},
-        "geometry_json": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-p07-geometry\\G6_no_growth_stock_init\\GEOMETRY.json",
+        "geometry_json": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-p07-geometry\\G6_no_growth_stock_init\\GEOMETRY.json",
         "max_rel": 2.285363621866748e-05,
         "observed_branch_counts": {
           "NO_GROWTH": 20
@@ -761,7 +761,7 @@
       },
       "G7_no_growth_exact_init": {
         "area_left_stale_counts": {},
-        "geometry_json": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-p07-geometry\\G7_no_growth_exact_init\\GEOMETRY.json",
+        "geometry_json": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-p07-geometry\\G7_no_growth_exact_init\\GEOMETRY.json",
         "max_rel": 0.0,
         "observed_branch_counts": {
           "NO_GROWTH": 20
@@ -772,7 +772,7 @@
         }
       }
     },
-    "index": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-p07-geometry/GEOMETRY_INDEX.json",
+    "index": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-p07-geometry/GEOMETRY_INDEX.json",
     "kernel_instrumented": false,
     "method": "amr.par_ascii_int particle dumps at precision 15; branch PREDICTED from the kernel's own predicates (bmx_chem_K.H:2038-2105) and OBSERVED from exact field-change classification, required to agree",
     "neutrality_fixture": {
@@ -1256,7 +1256,7 @@
         },
         {
           "check": "not_a_repository",
-          "detail": "expected UNAVAILABLE, got UNAVAILABLE, note=no .git entry at C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-provenance-c",
+          "detail": "expected UNAVAILABLE, got UNAVAILABLE, note=no .git entry at C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-provenance-c",
           "status": "PASS"
         },
         {

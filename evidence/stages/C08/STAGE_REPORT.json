@@ -8,7 +8,7 @@
     "branch": "rgsw/c08-p10"
   },
   "writer": {
-    "identity": "Codex",
+    "identity": "the implementation writer",
     "sole_product_branch_writer": true,
     "independent_reviewer_for_authored_bytes": false
   },

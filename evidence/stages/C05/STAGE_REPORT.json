@@ -108,11 +108,11 @@
       "detail": "trees differ on 5 fixture(s) with a directly observed tip growth branch",
       "dimension": "D2",
       "evidence": [
-        "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G1_tip_length_only\\GEOMETRY.json",
-        "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G2_tip_radius_only\\GEOMETRY.json",
-        "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G3_tip_proportional\\GEOMETRY.json",
-        "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G4_nontip_rejected\\GEOMETRY.json",
-        "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G5_nontip_radial\\GEOMETRY.json"
+        "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G1_tip_length_only\\GEOMETRY.json",
+        "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G2_tip_radius_only\\GEOMETRY.json",
+        "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G3_tip_proportional\\GEOMETRY.json",
+        "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G4_nontip_rejected\\GEOMETRY.json",
+        "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G5_nontip_radial\\GEOMETRY.json"
       ],
       "name": "CDEF-03 first-half stale exchange area",
       "result": "REPAIR_VERIFIED"
@@ -121,10 +121,10 @@
       "detail": "both tip branches execute as predicted with stored area unchanged on 4 fixture(s), and the trees differ there",
       "dimension": "D3",
       "evidence": [
-        "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G1_tip_length_only\\GEOMETRY.json",
-        "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G2_tip_radius_only\\GEOMETRY.json",
-        "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G4_nontip_rejected\\GEOMETRY.json",
-        "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G5_nontip_radial\\GEOMETRY.json"
+        "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G1_tip_length_only\\GEOMETRY.json",
+        "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G2_tip_radius_only\\GEOMETRY.json",
+        "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G4_nontip_rejected\\GEOMETRY.json",
+        "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G5_nontip_radial\\GEOMETRY.json"
       ],
       "name": "CDEF-04 tip stored-area staleness",
       "result": "REPAIR_VERIFIED"
@@ -133,7 +133,7 @@
       "detail": "188 non-tip rejection(s) observed; cB differs between trees",
       "dimension": "D4",
       "evidence": [
-        "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G4_nontip_rejected\\GEOMETRY.json"
+        "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G4_nontip_rejected\\GEOMETRY.json"
       ],
       "name": "CDEF-05 non-tip rejected-growth rollback",
       "result": "REPAIR_VERIFIED"
@@ -169,21 +169,21 @@
       "detail": "cross-platform variance is zero across 2 platforms (gce-reference-linux, windows-development) on 19 tree/fixture/observable groups; no observed difference is platform-attributable",
       "dimension": "D8",
       "evidence": [
-        "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G1_tip_length_only\\GEOMETRY.json",
-        "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G2_tip_radius_only\\GEOMETRY.json",
-        "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G3_tip_proportional\\GEOMETRY.json",
-        "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G4_nontip_rejected\\GEOMETRY.json",
-        "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G5_nontip_radial\\GEOMETRY.json",
-        "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G6_no_growth_stock_init\\GEOMETRY.json",
-        "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G7_no_growth_exact_init\\GEOMETRY.json",
-        "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs\\c04-p07-donor-cap-fixture\\DONOR_CAP_FIXTURE.json",
-        "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs\\c04-p07-geometry\\G1_tip_length_only\\GEOMETRY.json",
-        "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs\\c04-p07-geometry\\G2_tip_radius_only\\GEOMETRY.json",
-        "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs\\c04-p07-geometry\\G3_tip_proportional\\GEOMETRY.json",
-        "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs\\c04-p07-geometry\\G4_nontip_rejected\\GEOMETRY.json",
-        "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs\\c04-p07-geometry\\G5_nontip_radial\\GEOMETRY.json",
-        "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs\\c04-p07-geometry\\G6_no_growth_stock_init\\GEOMETRY.json",
-        "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs\\c04-p07-geometry\\G7_no_growth_exact_init\\GEOMETRY.json",
+        "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G1_tip_length_only\\GEOMETRY.json",
+        "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G2_tip_radius_only\\GEOMETRY.json",
+        "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G3_tip_proportional\\GEOMETRY.json",
+        "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G4_nontip_rejected\\GEOMETRY.json",
+        "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G5_nontip_radial\\GEOMETRY.json",
+        "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G6_no_growth_stock_init\\GEOMETRY.json",
+        "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G7_no_growth_exact_init\\GEOMETRY.json",
+        "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs\\c04-p07-donor-cap-fixture\\DONOR_CAP_FIXTURE.json",
+        "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs\\c04-p07-geometry\\G1_tip_length_only\\GEOMETRY.json",
+        "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs\\c04-p07-geometry\\G2_tip_radius_only\\GEOMETRY.json",
+        "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs\\c04-p07-geometry\\G3_tip_proportional\\GEOMETRY.json",
+        "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs\\c04-p07-geometry\\G4_nontip_rejected\\GEOMETRY.json",
+        "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs\\c04-p07-geometry\\G5_nontip_radial\\GEOMETRY.json",
+        "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs\\c04-p07-geometry\\G6_no_growth_stock_init\\GEOMETRY.json",
+        "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs\\c04-p07-geometry\\G7_no_growth_exact_init\\GEOMETRY.json",
         "evidence/stages/C04/reference\\DONOR_CAP_REFERENCE.json"
       ],
       "name": "platform-only differences not attributed to P07",
@@ -261,7 +261,7 @@
     ],
     "statement": "the raw observations already existed and the writer had seen them; they were produced by C04. Presenting this as a blind predeclaration would be false."
   },
-  "role": "primary writer (Claude), product lane",
+  "role": "primary writer (the independent reviewer), product lane",
   "source_changes": {
     "model_source_altered": false,
     "note": "C05 owns the comparison harness, schemas, fixtures, analysis and evidence only",

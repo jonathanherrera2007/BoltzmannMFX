@@ -1,18 +1,18 @@
 # C07 / P09 — three-state phosphorus infrastructure: implementation plan
 
-**Status:** DRAFT, carried into the Claude-to-Codex writer handoff.
-Written per `CLAUDE.md` ("use plan mode before editing a new phase").
+**Status:** DRAFT, carried into the the independent reviewer-to-the implementation writer writer handoff.
+Written per the project instructions ("use plan mode before editing a new phase").
 
 > **Section 0 below is STALE and retained only as history.** It was written on
 > 2026-07-30, when C04 was `BLOCKED` and no reference-capable Linux host
 > existed. Both conditions are now resolved:
 >
 > - **C04 is `PASS` and reference-platform qualified.** All five defect mappings
->   are demonstrated at runtime; the qualification sequence emitted
->   `release_evidence: true` on a GCE reference host. The P07 image is a sound
->   feature-off regression reference.
+> are demonstrated at runtime; the qualification sequence emitted
+> `release_evidence: true` on a GCE reference host. The P07 image is a sound
+> feature-off regression reference.
 > - **`B-PLATFORM-01` is CLOSED.** A reference host exists and the route to
->   re-provision one is documented in the writer handoff.
+> re-provision one is documented in the writer handoff.
 >
 > The rest of the plan (§1 finding, §2 layout, §3 refactor, §4 files, §5 tests,
 > §6 exclusions, §7 sequence) is still believed current, **but it is a draft**.
@@ -78,15 +78,15 @@ From `AGENTS.md` (canonical architecture) plus decisions closed in C06A:
 Key properties, each traceable to a closed decision:
 
 - Legacy generic `P` (currently `P_COMP = 5`) becomes **`P_D`** in enabled mode —
-  D is the sole active mobile and exportable P currency (`MD-88955e1dff7ca225-01`,
-  `MD-5b43f4b235dec87e-04`).
+ D is the sole active mobile and exportable P currency (`MD-88955e1dff7ca225-01`,
+ `MD-5b43f4b235dec87e-04`).
 - **`P_E` is particle-only.** It must have no mesh representation, no diffusion,
-  no membrane exchange, no bonded transport, no export
-  (`MD-5b43f4b235dec87e-04`). This is why mesh has 7 and particle has 8.
+ no membrane exchange, no bonded transport, no export
+ (`MD-5b43f4b235dec87e-04`). This is why mesh has 7 and particle has 8.
 - **`P_F` exists on both** but every F coefficient stays exactly zero
-  (`MD-5b43f4b235dec87e-07`, `-01`).
+ (`MD-5b43f4b235dec87e-07`, `-01`).
 - Reject: simultaneous `P` and `P_D`; mesh `P_E`; missing enabled `P_F`;
-  reordered legacy components; any nonzero F-active coefficient.
+ reordered legacy components; any nonzero F-active coefficient.
 
 ## 3. The core refactor
 
@@ -95,9 +95,9 @@ conflation is what makes a particle-only state impossible. `AGENTS.md` requires
 they be distinct and connected by explicit reviewed maps.
 
 ```
-NUM_CHEM_COMPONENTS 6                    ->  NUM_MESH_CHEM_COMPONENTS     (6 or 7)
-                                             NUM_PARTICLE_CHEM_COMPONENTS (8, always)
-MAX_CHEM_REAL_VAR 28 + 3*6 = 46          ->  28 + 3*8 = 52
+NUM_CHEM_COMPONENTS 6 -> NUM_MESH_CHEM_COMPONENTS (6 or 7)
+ NUM_PARTICLE_CHEM_COMPONENTS (8, always)
+MAX_CHEM_REAL_VAR 28 + 3*6 = 46 -> 28 + 3*8 = 52
 ```
 
 The particle real block keeps its three sub-blocks (committed / working /

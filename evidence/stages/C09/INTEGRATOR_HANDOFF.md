@@ -9,17 +9,17 @@ executable SHA-256 is
 ## What is frozen
 
 - Chemistry kernel SHA-256:
-  `9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02`
+ `9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02`
 - P11 geometry contract SHA-256:
-  `6a4329f013c857c664a11d669747845006a6c0c9d34f568625b6939d1462acba`
+ `6a4329f013c857c664a11d669747845006a6c0c9d34f568625b6939d1462acba`
 - Decision reconciliation SHA-256:
-  `ddade9c36ee8be93da7a6f332fed31863a21c4d5e04cd377dca493c7ef6a7b64`
+ `ddade9c36ee8be93da7a6f332fed31863a21c4d5e04cd377dca493c7ef6a7b64`
 - AMReX commit/tree:
-  `cbdc6580ee3d78cccdd37172e4ba077ee181f483` /
-  `fb714dc6e693c18f7c441d1d1febe4a5e8bf9ea6`
+ `cbdc6580ee3d78cccdd37172e4ba077ee181f483` /
+ `fb714dc6e693c18f7c441d1d1febe4a5e8bf9ea6`
 
 The P11 decisions are `CLOSED_USER_ADOPTED`, not scientifically or
-independently approved. Codex authored the product bytes and cannot serve as
+independently approved. the implementation writer authored the product bytes and cannot serve as
 their independent reviewer.
 
 ## Qualified behavior

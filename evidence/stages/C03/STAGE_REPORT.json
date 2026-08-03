@@ -165,5 +165,5 @@
     "label": "RESEARCH-USE-CANDIDATE — RG-SW INCOMPLETE"
   },
 
-  "next_prompt": "prompts/claude/C04_P07_CARBON_REPAIR_IMPLEMENT_AND_VALIDATE.md"
+  "next_prompt": "prompts/writer/C04_P07_CARBON_REPAIR_IMPLEMENT_AND_VALIDATE.md"
 }

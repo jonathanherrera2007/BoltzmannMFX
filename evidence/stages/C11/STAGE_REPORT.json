@@ -35,7 +35,7 @@
     "global_order_changed": false,
     "rationale": "The frozen O02 text already requires membrane transfer, then enabled local D/E reaction, then growth eligibility from the post-reaction state, with admissible geometry before B/E debit and structural-P credit only for accepted realized growth. C11 fills those clauses without adding, deleting, or reordering a global operator.",
     "independent_reviewer_claimed": false,
-    "writer_independence_note": "Codex is the implementation writer and makes no independent-review claim. P13-U05 is a writer-owned technical fit freeze under the adopted contract."
+    "writer_independence_note": "the implementation writer is the implementation writer and makes no independent-review claim. P13-U05 is a writer-owned technical fit freeze under the adopted contract."
   },
   "implementation": {
     "reaction": "D/E forward and reverse requested amounts are derived from one common pre-reaction state, independently donor-capped, and committed simultaneously.",

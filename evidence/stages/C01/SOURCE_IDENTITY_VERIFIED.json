@@ -10,8 +10,8 @@
     "actual_sha256": "014607d34400638a5a915674e500b1b8afbacfebf0159801f8b7e5f32cac74a1",
     "verdict": "MATCH",
     "size_bytes": 321212,
-    "origin_path_in_package": "/mnt/data/BMX_RESEARCH_GRADE_GPT_PRO_PLANNING_PACKAGE_20260730.zip",
-    "local_path": "C:\\Users\\Shadow\\Documents\\Codex\\2026-07-28\\how\\outputs\\BMX_RESEARCH_GRADE_GPT_PRO_PLANNING_PACKAGE_20260730.zip",
+    "origin_path_in_package": "/mnt/data/BMX_RESEARCH_GRADE_PLANNING_PLANNING_PACKAGE_20260730.zip",
+    "local_path": "C:\\Users\\Shadow\\Documents\\the implementation writer\\2026-07-28\\how\\outputs\\BMX_RESEARCH_GRADE_PLANNING_PLANNING_PACKAGE_20260730.zip",
     "extracted_to": "BMX-RG-SW/planning-package/",
     "internal_manifest": "MANIFEST.sha256",
     "internal_manifest_members": 153,
@@ -46,7 +46,7 @@
   },
 
   "object_provenance": {
-    "source_repository": "C:\\Users\\Shadow\\Documents\\Codex\\2026-07-25\\github-plugin-github-openai-curated-remote-3\\work\\BoltzmannMFX",
+    "source_repository": "C:\\Users\\Shadow\\Documents\\the implementation writer\\2026-07-25\\github-plugin-curated-remote-3\\work\\BoltzmannMFX",
     "classification": "live multi-lane scratch workspace; NOT a baseline and NOT a writer for this product",
     "why_acceptable": "Git commit and tree SHA-1s are self-verifying. Both required BMX identities and both required AMReX identities were reproduced exactly after cloning. No trust is placed in the lane workspace state itself.",
     "clone_mode": "--no-hardlinks (object stores are physically independent; a later gc/prune in the lane repository cannot affect this product)",
@@ -105,7 +105,7 @@
   ],
 
   "isolation": {
-    "p05_workspace": "C:\\Users\\Shadow\\Documents\\Codex\\2026-07-25\\perform-a-strict-read-only-import\\work\\p05-production-readiness",
+    "p05_workspace": "C:\\Users\\Shadow\\Documents\\the implementation writer\\2026-07-25\\perform-a-strict-read-only-import\\work\\p05-production-readiness",
     "path_overlap_with_product": false,
     "shared_branches": false,
     "shared_object_store": false,

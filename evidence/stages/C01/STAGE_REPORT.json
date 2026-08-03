@@ -15,7 +15,7 @@
 
   "files_changed": [
     {"path": "AGENTS.md", "reason": "shared durable agent rules installed at product root"},
-    {"path": "CLAUDE.md", "reason": "Claude entry point importing AGENTS.md"},
+    {"path": "AGENTS.md", "reason": "the independent reviewer entry point importing AGENTS.md"},
     {"path": "evidence/session/SESSION_BOOTSTRAP.md", "reason": "S00 evidence relocated into the product worktree for version control"},
     {"path": "evidence/stages/C01/STAGE_REPORT.md", "reason": "stage report"},
     {"path": "evidence/stages/C01/STAGE_REPORT.json", "reason": "machine-readable stage report"},
@@ -117,6 +117,6 @@
     "label": "RESEARCH-USE-CANDIDATE — RG-SW INCOMPLETE"
   },
 
-  "next_prompt": "prompts/claude/C02_FIRST_FOUR_HOUR_BUILD_SPIKE.md",
+  "next_prompt": "prompts/writer/C02_FIRST_FOUR_HOUR_BUILD_SPIKE.md",
   "manifest_sha256": null
 }

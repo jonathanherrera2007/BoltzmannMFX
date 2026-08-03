@@ -3,7 +3,7 @@
 
 ## Fixed project identity
 
-- Planning package: `/mnt/data/BMX_RESEARCH_GRADE_GPT_PRO_PLANNING_PACKAGE_20260730.zip`
+- Planning package: `/mnt/data/BMX_RESEARCH_GRADE_PLANNING_PLANNING_PACKAGE_20260730.zip`
 - Expected planning-package SHA-256: `014607d34400638a5a915674e500b1b8afbacfebf0159801f8b7e5f32cac74a1`
 - Canonical BMX commit: `389e9e35a1c7291a4af795b2e39f2db1f0012b61`
 - Canonical BMX Git tree: `1c73deedf0eb2feea833a7fddbc431ae9754d977`
@@ -15,8 +15,8 @@
 
 ### Local binding (recorded by C01, does not supersede the identities above)
 
-- Product root: `C:\Users\Shadow\Documents\Codex\BMX-RG-SW\`
-- Planning package located at `C:\Users\Shadow\Documents\Codex\2026-07-28\how\outputs\BMX_RESEARCH_GRADE_GPT_PRO_PLANNING_PACKAGE_20260730.zip` (hash verified) and extracted to `planning-package/`. The `/mnt/data/...` path above is the package's origin path and is not present on this host.
+- Product root: `C:\Users\Shadow\Documents\the implementation writer\BMX-RG-SW\`
+- Planning package located at `C:\Users\Shadow\Documents\the implementation writer\2026-07-28\how\outputs\BMX_RESEARCH_GRADE_PLANNING_PLANNING_PACKAGE_20260730.zip` (hash verified) and extracted to `planning-package/`. The `/mnt/data/...` path above is the package's origin path and is not present on this host.
 
 
 ## Authoritative reading order
@@ -24,7 +24,7 @@
 Before source changes, read completely:
 
 1. `00_START_HERE/README_FIRST.md`
-2. `00_START_HERE/GPT_PRO_PLANNING_PROMPT.md`
+2. `00_START_HERE/PLANNING_PLANNING_PROMPT.md`
 3. `01_CURRENT_STATE/PRODUCT_STATE_SUMMARY.md`
 4. `01_CURRENT_STATE/RESEARCH_GRADE_DEFINITION_OF_DONE.md`
 5. `01_CURRENT_STATE/TARGET_AND_CLAIM_BOUNDARY.md`

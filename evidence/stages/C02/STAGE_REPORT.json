@@ -143,5 +143,5 @@
     "label": "RESEARCH-USE-CANDIDATE — RG-SW INCOMPLETE"
   },
 
-  "next_prompt": "prompts/claude/C03_P06_LEAN_BASELINE_EVIDENCE.md"
+  "next_prompt": "prompts/writer/C03_P06_LEAN_BASELINE_EVIDENCE.md"
 }

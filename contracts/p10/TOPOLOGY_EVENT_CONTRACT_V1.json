@@ -7,7 +7,7 @@
     "date": "2026-08-01",
     "source_path": "contracts/USER_APPROVED_DECISION_CONTRACT_20260801.txt",
     "source_sha256": "283eace4f34e0a3d6961d49db2ab2c75ac6e384a9077a7044313a20f7bd4bc93",
-    "user_statement": "I adopt the attached contract as the binding user-approved decision contract, superseding the pending mentor gate for P10-U01. I authorize Codex as the sole C08 integrator to modify src/des/bmx_calc_txfr.cpp, src/timestepping/bmx_evolve.cpp, src/bmx.H, and src/bmx.cpp only as needed to complete C08. This does not authorize C09 or later work."
+    "user_statement": "I adopt the attached contract as the binding user-approved decision contract, superseding the pending mentor gate for P10-U01. I authorize the implementation writer as the sole C08 integrator to modify src/des/bmx_calc_txfr.cpp, src/timestepping/bmx_evolve.cpp, src/bmx.H, and src/bmx.cpp only as needed to complete C08. This does not authorize C09 or later work."
   },
   "governing_invariant": "Topology is not a phosphorus source or sink. Every predecessor D/E/F amount is assigned exactly once to a live successor or an already-approved cumulative destination, otherwise the update aborts before state is destroyed.",
   "v1_other_exit_rule": "other_exit_d, other_exit_e, other_exit_f, and other_exit_events are exactly zero",

@@ -37,7 +37,7 @@
     "global_order_changed": false,
     "rationale": "O09 already requires final-topology eligibility, request and caps before mutation, same-update atomic local-D debit/local-A credit, and exactly-once export ledgers.",
     "independent_reviewer_claimed": false,
-    "writer_independence_note": "Codex is the product-branch writer and makes no independent-review claim. P14-U07 is a writer-owned technical fit freeze."
+    "writer_independence_note": "the implementation writer is the product-branch writer and makes no independent-review claim. P14-U07 is a writer-owned technical fit freeze."
   },
   "blockers": [
     {

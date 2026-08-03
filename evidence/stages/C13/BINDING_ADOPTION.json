@@ -10,7 +10,7 @@
   "decision_contract": "contracts/p15/C13_BINDING_ADOPTION_V1.json",
   "decision_contract_sha256": "c726cc575684e078d3c3359ececef28fde91daf5050aec273161b734710875d7",
   "source": {
-    "path_at_adoption": "C:/Users/Shadow/.codex/attachments/3186333f-00d2-46e0-863c-36290cc3dc47/pasted-text.txt",
+    "path_at_adoption": "C:/Users/Shadow/.agent/attachments/3186333f-00d2-46e0-863c-36290cc3dc47/pasted-text.txt",
     "sha256": "cbd1eedddf31b94c8a9d23d7b2d3329f065a007824387c70435d1004fdc6f350",
     "size_bytes": 40449,
     "lines": 1272,

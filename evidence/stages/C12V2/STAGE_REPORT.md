@@ -27,12 +27,12 @@ external exported-P receipt are committed together. No global operator was
 added, removed, or reordered.
 
 - Global-order SHA-256:
-  `bb63c219a860687d91ce1acf06a667c9208abf026b32f18acfc64884bb696dd6`
+ `bb63c219a860687d91ce1acf06a667c9208abf026b32f18acfc64884bb696dd6`
 - P14 O09-fit SHA-256:
-  `72193a1034d4148d167f059c347053d2206fa580cce9a156ec705304e7f378e7`
+ `72193a1034d4148d167f059c347053d2206fa580cce9a156ec705304e7f378e7`
 - Global order changed: **no**
 
-Codex is the implementation writer and makes no independent-review claim.
+the implementation writer is the implementation writer and makes no independent-review claim.
 
 ## Implemented transaction
 
@@ -59,21 +59,21 @@ frozen P10 local tolerance.
 ## Qualification
 
 - Clean Release build from commit
-  `9432628e47ed9defc9007cdbcda0f8956e813d63`: **PASS**
+ `9432628e47ed9defc9007cdbcda0f8956e813d63`: **PASS**
 - Analytical export, geometry, cap, reward, refinement, and invalid-input
-  suite, 137 checks: **PASS**
+ suite, 137 checks: **PASS**
 - Enabled native suite, 23 cases: **PASS**
 - No-contact, tangency, partial, full, oblique, solid-edge, window-only, and
-  true-crossing cases: **PASS**
+ true-crossing cases: **PASS**
 - All five adopted export rates and exact zero controls: **PASS**
 - Local/global P conservation, exact reward, atomic commit, provenance, and
-  nonnegative donor checks: **PASS**
+ nonnegative donor checks: **PASS**
 - One-rank versus two-rank and alternate decomposition equivalence: **PASS**
 - Continuous versus 1-to-1 restart and 2-to-1 rank-change restart: **PASS**
 - Contract, algebra, global-ledger, bad-rate, and bad-multiplier failures:
-  **rejected before a valid P14 commit**
+ **rejected before a valid P14 commit**
 - C11-vs-C12 G1/G4 feature-off semantic trajectory, 420 particle records:
-  **0 differing values**
+ **0 differing values**
 - P10 topology and actual redistribution regressions: **PASS**
 - P12 and P13 runtime regressions: **PASS**
 - Static scope/freeze/order audit, 27 checks: **PASS**

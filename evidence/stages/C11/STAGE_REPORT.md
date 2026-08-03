@@ -24,7 +24,7 @@ without adding or reordering a global operator.
 - P13 O02-fit SHA-256: `ea6e8dc2ca3f69fe2f366801c9df8ec9832b58f399d605c88d91527ff2098407`
 - Global order changed: **no**
 
-Codex is the implementation writer and does not claim to be an independent
+the implementation writer is the implementation writer and does not claim to be an independent
 reviewer. P13-U05 is recorded as a writer-owned technical fit freeze while its
 decision status remains `CLOSED_USER_ADOPTED` and its authority residual is
 preserved.
@@ -51,7 +51,7 @@ remains byte-identical at
 ## Qualification
 
 - Clean Release build from commit
-  `ff059edbc5bf10d61936a43b2b5bdfb05d69c133`: **PASS**
+ `ff059edbc5bf10d61936a43b2b5bdfb05d69c133`: **PASS**
 - Analytical reaction/growth/negative/nonfinite suite, 43 checks: **PASS**
 - Enabled native suite, 18 cases: **PASS**
 - One-rank vs two-rank equivalence at one and four steps: **PASS**

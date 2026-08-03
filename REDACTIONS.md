@@ -39,7 +39,7 @@ value, parameter, tolerance, equation, gate, operator order, or result was alter
 | `contracts/USER_ADOPTED_DECISION_CONTRACT_20260801_V2.json` | status token naming a person ×1 | `ef5ae6da48e1ec85…` | `6772aa314005b395…` |
 | `contracts/USER_ADOPTED_DECISION_CONTRACT_20260801_V2.txt` | status token naming a person ×1, personal name ×6, personal name ×1, personal name ×4 | `34e8414c09e6528f…` | `d8e3501e75a75cf6…` |
 | `contracts/USER_APPROVED_DECISION_CONTRACT_20260801.txt` | status token naming a person ×1, personal name ×9 | `283eace4f34e0a3d…` | `da61907656a9e8cb…` |
-| `evidence/handoff/CLAUDE_TO_CODEX_WRITER_HANDOFF.md` | personal email address ×1 | `abcb90924106c2ef…` | `7cb06fec78aa1a42…` |
+| `evidence/handoff/WRITER_HANDOFF.md` | personal email address ×1 | `abcb90924106c2ef…` | `7cb06fec78aa1a42…` |
 | `evidence/stages/C04/STAGE_REPORT.json` | personal email address ×1 | `f92e8005e3739a81…` | `ec107ac26ca867b0…` |
 | `subprojects/README.md` | SSH submodule URL → HTTPS | `f1f8921436635f33…` | `f961f1c891b42395…` |
 
@@ -62,3 +62,17 @@ usernames they expose are already public via the hosting account.
 
 `.gitmodules` and `subprojects/README.md` use the HTTPS URL for AMReX instead of SSH, so
 the submodule can be initialised without repository credentials.
+
+## 6. Agent and tool identities
+
+Names of the AI coding tools used during development were replaced with neutral role
+labels — "implementation writer" and "independent reviewer" — and the agent-instruction
+file was removed. Local cache paths containing tool names were generalised.
+
+The **two-party structure is preserved and is load-bearing**: the independent review
+artifacts assert that the reviewer was not the implementation writer, and that assertion
+is what the review is worth. Only the identities were generalised, never the separation.
+
+No phase, stage, contract, or decision identifier was altered; those are the evidence
+structure and renaming them would break cross-references and the compiled contract IDs.
+

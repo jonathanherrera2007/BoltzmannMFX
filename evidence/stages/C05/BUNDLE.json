@@ -343,7 +343,7 @@
       "fixture": "G1_tip_length_only",
       "observable": "max_rel",
       "platform": "gce-reference-linux",
-      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G1_tip_length_only\\GEOMETRY.json",
+      "source": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G1_tip_length_only\\GEOMETRY.json",
       "tree": "pair",
       "value": 0.05480782749107253
     },
@@ -353,7 +353,7 @@
       "fixture": "G1_tip_length_only",
       "observable": "trees_differ",
       "platform": "gce-reference-linux",
-      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G1_tip_length_only\\GEOMETRY.json",
+      "source": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G1_tip_length_only\\GEOMETRY.json",
       "tree": "both",
       "value": true
     },
@@ -362,7 +362,7 @@
       "fixture": "G1_tip_length_only",
       "observable": "predicted_equals_observed",
       "platform": "gce-reference-linux",
-      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G1_tip_length_only\\GEOMETRY.json",
+      "source": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G1_tip_length_only\\GEOMETRY.json",
       "tree": "both",
       "value": true
     },
@@ -371,7 +371,7 @@
       "fixture": "G1_tip_length_only",
       "observable": "area_left_stale",
       "platform": "gce-reference-linux",
-      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G1_tip_length_only\\GEOMETRY.json",
+      "source": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G1_tip_length_only\\GEOMETRY.json",
       "tree": "both",
       "value": true
     },
@@ -380,7 +380,7 @@
       "fixture": "G1_tip_length_only",
       "observable": "trees_differ",
       "platform": "gce-reference-linux",
-      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G1_tip_length_only\\GEOMETRY.json",
+      "source": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G1_tip_length_only\\GEOMETRY.json",
       "tree": "both",
       "value": true
     },
@@ -389,7 +389,7 @@
       "fixture": "G2_tip_radius_only",
       "observable": "max_rel",
       "platform": "gce-reference-linux",
-      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G2_tip_radius_only\\GEOMETRY.json",
+      "source": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G2_tip_radius_only\\GEOMETRY.json",
       "tree": "pair",
       "value": 0.11484406645344886
     },
@@ -399,7 +399,7 @@
       "fixture": "G2_tip_radius_only",
       "observable": "trees_differ",
       "platform": "gce-reference-linux",
-      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G2_tip_radius_only\\GEOMETRY.json",
+      "source": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G2_tip_radius_only\\GEOMETRY.json",
       "tree": "both",
       "value": true
     },
@@ -408,7 +408,7 @@
       "fixture": "G2_tip_radius_only",
       "observable": "predicted_equals_observed",
       "platform": "gce-reference-linux",
-      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G2_tip_radius_only\\GEOMETRY.json",
+      "source": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G2_tip_radius_only\\GEOMETRY.json",
       "tree": "both",
       "value": true
     },
@@ -417,7 +417,7 @@
       "fixture": "G2_tip_radius_only",
       "observable": "area_left_stale",
       "platform": "gce-reference-linux",
-      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G2_tip_radius_only\\GEOMETRY.json",
+      "source": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G2_tip_radius_only\\GEOMETRY.json",
       "tree": "both",
       "value": true
     },
@@ -426,7 +426,7 @@
       "fixture": "G2_tip_radius_only",
       "observable": "trees_differ",
       "platform": "gce-reference-linux",
-      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G2_tip_radius_only\\GEOMETRY.json",
+      "source": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G2_tip_radius_only\\GEOMETRY.json",
       "tree": "both",
       "value": true
     },
@@ -435,7 +435,7 @@
       "fixture": "G3_tip_proportional",
       "observable": "max_rel",
       "platform": "gce-reference-linux",
-      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G3_tip_proportional\\GEOMETRY.json",
+      "source": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G3_tip_proportional\\GEOMETRY.json",
       "tree": "pair",
       "value": 0.005557531993133672
     },
@@ -445,7 +445,7 @@
       "fixture": "G3_tip_proportional",
       "observable": "trees_differ",
       "platform": "gce-reference-linux",
-      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G3_tip_proportional\\GEOMETRY.json",
+      "source": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G3_tip_proportional\\GEOMETRY.json",
       "tree": "both",
       "value": true
     },
@@ -454,7 +454,7 @@
       "fixture": "G4_nontip_rejected",
       "observable": "max_rel",
       "platform": "gce-reference-linux",
-      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G4_nontip_rejected\\GEOMETRY.json",
+      "source": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G4_nontip_rejected\\GEOMETRY.json",
       "tree": "pair",
       "value": 0.9999935780521666
     },
@@ -464,7 +464,7 @@
       "fixture": "G4_nontip_rejected",
       "observable": "trees_differ",
       "platform": "gce-reference-linux",
-      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G4_nontip_rejected\\GEOMETRY.json",
+      "source": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G4_nontip_rejected\\GEOMETRY.json",
       "tree": "both",
       "value": true
     },
@@ -473,7 +473,7 @@
       "fixture": "G4_nontip_rejected",
       "observable": "predicted_equals_observed",
       "platform": "gce-reference-linux",
-      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G4_nontip_rejected\\GEOMETRY.json",
+      "source": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G4_nontip_rejected\\GEOMETRY.json",
       "tree": "both",
       "value": true
     },
@@ -482,7 +482,7 @@
       "fixture": "G4_nontip_rejected",
       "observable": "area_left_stale",
       "platform": "gce-reference-linux",
-      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G4_nontip_rejected\\GEOMETRY.json",
+      "source": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G4_nontip_rejected\\GEOMETRY.json",
       "tree": "both",
       "value": true
     },
@@ -491,7 +491,7 @@
       "fixture": "G4_nontip_rejected",
       "observable": "trees_differ",
       "platform": "gce-reference-linux",
-      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G4_nontip_rejected\\GEOMETRY.json",
+      "source": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G4_nontip_rejected\\GEOMETRY.json",
       "tree": "both",
       "value": true
     },
@@ -500,7 +500,7 @@
       "fixture": "G4_nontip_rejected",
       "observable": "rejections_observed",
       "platform": "gce-reference-linux",
-      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G4_nontip_rejected\\GEOMETRY.json",
+      "source": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G4_nontip_rejected\\GEOMETRY.json",
       "tree": "both",
       "value": 188
     },
@@ -509,7 +509,7 @@
       "fixture": "G4_nontip_rejected",
       "observable": "cB_differs",
       "platform": "gce-reference-linux",
-      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G4_nontip_rejected\\GEOMETRY.json",
+      "source": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G4_nontip_rejected\\GEOMETRY.json",
       "tree": "both",
       "value": true
     },
@@ -518,7 +518,7 @@
       "fixture": "G5_nontip_radial",
       "observable": "max_rel",
       "platform": "gce-reference-linux",
-      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G5_nontip_radial\\GEOMETRY.json",
+      "source": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G5_nontip_radial\\GEOMETRY.json",
       "tree": "pair",
       "value": 0.0921950312689999
     },
@@ -528,7 +528,7 @@
       "fixture": "G5_nontip_radial",
       "observable": "trees_differ",
       "platform": "gce-reference-linux",
-      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G5_nontip_radial\\GEOMETRY.json",
+      "source": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G5_nontip_radial\\GEOMETRY.json",
       "tree": "both",
       "value": true
     },
@@ -537,7 +537,7 @@
       "fixture": "G5_nontip_radial",
       "observable": "predicted_equals_observed",
       "platform": "gce-reference-linux",
-      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G5_nontip_radial\\GEOMETRY.json",
+      "source": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G5_nontip_radial\\GEOMETRY.json",
       "tree": "both",
       "value": true
     },
@@ -546,7 +546,7 @@
       "fixture": "G5_nontip_radial",
       "observable": "area_left_stale",
       "platform": "gce-reference-linux",
-      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G5_nontip_radial\\GEOMETRY.json",
+      "source": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G5_nontip_radial\\GEOMETRY.json",
       "tree": "both",
       "value": true
     },
@@ -555,7 +555,7 @@
       "fixture": "G5_nontip_radial",
       "observable": "trees_differ",
       "platform": "gce-reference-linux",
-      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G5_nontip_radial\\GEOMETRY.json",
+      "source": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G5_nontip_radial\\GEOMETRY.json",
       "tree": "both",
       "value": true
     },
@@ -564,7 +564,7 @@
       "fixture": "G6_no_growth_stock_init",
       "observable": "max_rel",
       "platform": "gce-reference-linux",
-      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G6_no_growth_stock_init\\GEOMETRY.json",
+      "source": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G6_no_growth_stock_init\\GEOMETRY.json",
       "tree": "pair",
       "value": 2.285363621866748e-05
     },
@@ -573,7 +573,7 @@
       "fixture": "G7_no_growth_exact_init",
       "observable": "max_rel",
       "platform": "gce-reference-linux",
-      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G7_no_growth_exact_init\\GEOMETRY.json",
+      "source": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G7_no_growth_exact_init\\GEOMETRY.json",
       "tree": "pair",
       "value": 0.0
     },
@@ -583,7 +583,7 @@
       "k1": 0.5,
       "observable": "delta_A_particles",
       "platform": "windows-development",
-      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs\\c04-p07-donor-cap-fixture\\DONOR_CAP_FIXTURE.json",
+      "source": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs\\c04-p07-donor-cap-fixture\\DONOR_CAP_FIXTURE.json",
       "tree": "baseline",
       "value": 1.2617374821994632e-13
     },
@@ -593,7 +593,7 @@
       "k1": 0.5,
       "observable": "delta_A_particles",
       "platform": "windows-development",
-      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs\\c04-p07-donor-cap-fixture\\DONOR_CAP_FIXTURE.json",
+      "source": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs\\c04-p07-donor-cap-fixture\\DONOR_CAP_FIXTURE.json",
       "tree": "candidate",
       "value": 4.569057502930556e-12
     },
@@ -603,7 +603,7 @@
       "k1": 1.0,
       "observable": "delta_A_particles",
       "platform": "windows-development",
-      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs\\c04-p07-donor-cap-fixture\\DONOR_CAP_FIXTURE.json",
+      "source": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs\\c04-p07-donor-cap-fixture\\DONOR_CAP_FIXTURE.json",
       "tree": "baseline",
       "value": 2.4947845422790507e-13
     },
@@ -613,7 +613,7 @@
       "k1": 1.0,
       "observable": "delta_A_particles",
       "platform": "windows-development",
-      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs\\c04-p07-donor-cap-fixture\\DONOR_CAP_FIXTURE.json",
+      "source": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs\\c04-p07-donor-cap-fixture\\DONOR_CAP_FIXTURE.json",
       "tree": "candidate",
       "value": 4.868219158726102e-12
     },
@@ -623,7 +623,7 @@
       "k1": 2.0,
       "observable": "delta_A_particles",
       "platform": "windows-development",
-      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs\\c04-p07-donor-cap-fixture\\DONOR_CAP_FIXTURE.json",
+      "source": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs\\c04-p07-donor-cap-fixture\\DONOR_CAP_FIXTURE.json",
       "tree": "baseline",
       "value": 4.877042284988348e-13
     },
@@ -633,7 +633,7 @@
       "k1": 2.0,
       "observable": "delta_A_particles",
       "platform": "windows-development",
-      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs\\c04-p07-donor-cap-fixture\\DONOR_CAP_FIXTURE.json",
+      "source": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs\\c04-p07-donor-cap-fixture\\DONOR_CAP_FIXTURE.json",
       "tree": "candidate",
       "value": 4.871032500000001e-12
     },
@@ -643,7 +643,7 @@
       "k1": 5.0,
       "observable": "delta_A_particles",
       "platform": "windows-development",
-      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs\\c04-p07-donor-cap-fixture\\DONOR_CAP_FIXTURE.json",
+      "source": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs\\c04-p07-donor-cap-fixture\\DONOR_CAP_FIXTURE.json",
       "tree": "baseline",
       "value": 1.1391731658547444e-12
     },
@@ -653,7 +653,7 @@
       "k1": 5.0,
       "observable": "delta_A_particles",
       "platform": "windows-development",
-      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs\\c04-p07-donor-cap-fixture\\DONOR_CAP_FIXTURE.json",
+      "source": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs\\c04-p07-donor-cap-fixture\\DONOR_CAP_FIXTURE.json",
       "tree": "candidate",
       "value": 4.8710325000000015e-12
     },
@@ -663,7 +663,7 @@
       "k1": 20.0,
       "observable": "delta_A_particles",
       "platform": "windows-development",
-      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs\\c04-p07-donor-cap-fixture\\DONOR_CAP_FIXTURE.json",
+      "source": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs\\c04-p07-donor-cap-fixture\\DONOR_CAP_FIXTURE.json",
       "tree": "baseline",
       "value": 3.287036796906513e-12
     },
@@ -673,7 +673,7 @@
       "k1": 20.0,
       "observable": "delta_A_particles",
       "platform": "windows-development",
-      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs\\c04-p07-donor-cap-fixture\\DONOR_CAP_FIXTURE.json",
+      "source": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs\\c04-p07-donor-cap-fixture\\DONOR_CAP_FIXTURE.json",
       "tree": "candidate",
       "value": 4.8710325000000015e-12
     },
@@ -683,7 +683,7 @@
       "k1": 100.0,
       "observable": "delta_A_particles",
       "platform": "windows-development",
-      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs\\c04-p07-donor-cap-fixture\\DONOR_CAP_FIXTURE.json",
+      "source": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs\\c04-p07-donor-cap-fixture\\DONOR_CAP_FIXTURE.json",
       "tree": "baseline",
       "value": 4.870055586973302e-12
     },
@@ -693,7 +693,7 @@
       "k1": 100.0,
       "observable": "delta_A_particles",
       "platform": "windows-development",
-      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs\\c04-p07-donor-cap-fixture\\DONOR_CAP_FIXTURE.json",
+      "source": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs\\c04-p07-donor-cap-fixture\\DONOR_CAP_FIXTURE.json",
       "tree": "candidate",
       "value": 4.871032499999993e-12
     },
@@ -702,7 +702,7 @@
       "fixture": "G1_tip_length_only",
       "observable": "max_rel",
       "platform": "windows-development",
-      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs\\c04-p07-geometry\\G1_tip_length_only\\GEOMETRY.json",
+      "source": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs\\c04-p07-geometry\\G1_tip_length_only\\GEOMETRY.json",
       "tree": "pair",
       "value": 0.05480782749107253
     },
@@ -711,7 +711,7 @@
       "fixture": "G2_tip_radius_only",
       "observable": "max_rel",
       "platform": "windows-development",
-      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs\\c04-p07-geometry\\G2_tip_radius_only\\GEOMETRY.json",
+      "source": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs\\c04-p07-geometry\\G2_tip_radius_only\\GEOMETRY.json",
       "tree": "pair",
       "value": 0.11484406645344886
     },
@@ -720,7 +720,7 @@
       "fixture": "G3_tip_proportional",
       "observable": "max_rel",
       "platform": "windows-development",
-      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs\\c04-p07-geometry\\G3_tip_proportional\\GEOMETRY.json",
+      "source": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs\\c04-p07-geometry\\G3_tip_proportional\\GEOMETRY.json",
       "tree": "pair",
       "value": 0.005557531993133672
     },
@@ -729,7 +729,7 @@
       "fixture": "G4_nontip_rejected",
       "observable": "max_rel",
       "platform": "windows-development",
-      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs\\c04-p07-geometry\\G4_nontip_rejected\\GEOMETRY.json",
+      "source": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs\\c04-p07-geometry\\G4_nontip_rejected\\GEOMETRY.json",
       "tree": "pair",
       "value": 0.9999935780521666
     },
@@ -738,7 +738,7 @@
       "fixture": "G5_nontip_radial",
       "observable": "max_rel",
       "platform": "windows-development",
-      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs\\c04-p07-geometry\\G5_nontip_radial\\GEOMETRY.json",
+      "source": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs\\c04-p07-geometry\\G5_nontip_radial\\GEOMETRY.json",
       "tree": "pair",
       "value": 0.0921950312689999
     },
@@ -747,7 +747,7 @@
       "fixture": "G6_no_growth_stock_init",
       "observable": "max_rel",
       "platform": "windows-development",
-      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs\\c04-p07-geometry\\G6_no_growth_stock_init\\GEOMETRY.json",
+      "source": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs\\c04-p07-geometry\\G6_no_growth_stock_init\\GEOMETRY.json",
       "tree": "pair",
       "value": 2.285363621866748e-05
     },
@@ -756,7 +756,7 @@
       "fixture": "G7_no_growth_exact_init",
       "observable": "max_rel",
       "platform": "windows-development",
-      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs\\c04-p07-geometry\\G7_no_growth_exact_init\\GEOMETRY.json",
+      "source": "C:/Users/Shadow/Documents/the implementation writer/BMX-RG-SW/runs\\c04-p07-geometry\\G7_no_growth_exact_init\\GEOMETRY.json",
       "tree": "pair",
       "value": 0.0
     },

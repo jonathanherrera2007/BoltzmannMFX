@@ -32,7 +32,7 @@ Extractor executable SHA-256:
 ## Qualifying V2 run
 
 ```powershell
-& C:\Users\Shadow\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe `
+& C:\Users\Shadow\.cache\agent-runtimes\primary-runtime\dependencies\python\python.exe `
   tools\repro\run_c10_p12_v2_48h.py `
   --exe C:\b\BMX-shadow-handoff-20260721\build-c10-v2-prereview-0f38760\bmx.exe `
   --source . `
@@ -69,7 +69,7 @@ copy. A deterministic stored ZIP was also created from the external result;
 its `P12_V2_GRID_TIME.json` member is byte-identical to the runner output.
 
 ```powershell
-& C:\Users\Shadow\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe -c `
+& C:\Users\Shadow\.cache\agent-runtimes\primary-runtime\dependencies\python\python.exe -c `
   "from pathlib import Path; import zipfile; b=Path(r'C:\b\BMX-shadow-handoff-20260721\c10-v2-results-0f38760-20260802-r2\P12_V2_GRID_TIME.json').read_bytes(); z=zipfile.ZipFile(r'evidence\stages\C10V2\P12_V2_GRID_TIME.raw.zip','w'); i=zipfile.ZipInfo('P12_V2_GRID_TIME.json',(1980,1,1,0,0,0)); i.compress_type=zipfile.ZIP_STORED; i.external_attr=0o100644<<16; z.writestr(i,b); z.close()"
 ```
 
@@ -83,9 +83,9 @@ Observed identities:
   `d85e08240788f023e5f59ec16b31ebc11a0e790ff061af2cdbc26f1239ca23e9`.
 
 ```powershell
-C:\Users\Shadow\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe -m json.tool evidence\stages\C10V2\P12_V2_GRID_TIME.json
-C:\Users\Shadow\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe -m json.tool evidence\stages\C10V2\INDEPENDENT_NUMERICAL_REVIEW_V2.json
-C:\Users\Shadow\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe tools\repro\run_c10_static_test.py --source . --json-out <external-path>
+C:\Users\Shadow\.cache\agent-runtimes\primary-runtime\dependencies\python\python.exe -m json.tool evidence\stages\C10V2\P12_V2_GRID_TIME.json
+C:\Users\Shadow\.cache\agent-runtimes\primary-runtime\dependencies\python\python.exe -m json.tool evidence\stages\C10V2\INDEPENDENT_NUMERICAL_REVIEW_V2.json
+C:\Users\Shadow\.cache\agent-runtimes\primary-runtime\dependencies\python\python.exe tools\repro\run_c10_static_test.py --source . --json-out <external-path>
 git diff --check
 ```
 

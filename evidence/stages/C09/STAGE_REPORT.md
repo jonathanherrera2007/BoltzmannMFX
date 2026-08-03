@@ -4,14 +4,14 @@
 - **Status:** `PASS`
 - **Branch:** `rgsw/c09-p11`
 - **Stage base:** `0f6636e6080126d2ce58efcef942525bce9b524c`
-  / tree `7984ef6601d934a33e01f46ed5d1b819a383751d`
+ / tree `7984ef6601d934a33e01f46ed5d1b819a383751d`
 - **Qualified source:** `72414be0f8e52aa438dd04ab5b04cff5bcda5839`
-  / tree `2fd93f00110054cb1dfcc50172305d77ab5d542f`
+ / tree `2fd93f00110054cb1dfcc50172305d77ab5d542f`
 - **Qualified executable SHA-256:**
-  `33a191e180288783a0e9fc5f7ca25ac08e298b43e68fa37f0414e5b19c37b996`
+ `33a191e180288783a0e9fc5f7ca25ac08e298b43e68fa37f0414e5b19c37b996`
 - **Final evidence commit:** `37a06c13c051afcdd56706be97b46b4cc3326549`
-- **Writer:** Codex, sole product-branch writer; not an independent reviewer of
-  its authored bytes
+- **Writer:** the implementation writer, sole product-branch writer; not an independent reviewer of
+ its authored bytes
 - **External/cloud resources:** none; spend USD 0
 - **C10 or later work:** not started
 
@@ -41,22 +41,22 @@ nor independent scientific review. No later contract section was ingested.
 ## Implemented behavior
 
 - Exact default-off binding for schema, contract ID, local quasi-2D stage,
-  three-state mesh layout, approved domains, periodicity, and face alignment.
+ three-state mesh layout, approved domains, periodicity, and face alignment.
 - Finite-radius capsule classification for the split plate, solid-edge
-  precedence, fungal-only aperture passage, and periodic y canonicalization.
+ precedence, fungal-only aperture passage, and periodic y canonicalization.
 - Hard nonpenetration by projection with tangent retention. Reflection,
-  penalty forces, and deletion are prohibited. Simultaneous constraints use
-  the frozen order: internal support, outer x, then outer z.
+ penalty forces, and deletion are prohibited. Simultaneous constraints use
+ the frozen order: internal support, outer x, then outer z.
 - One final owned-particle event traversal after topology and redistribution
-  per update, with MPI-global counts and stable particle/update identity.
+ per update, with MPI-global counts and stable particle/update identity.
 - P_D and P_F x-normal coefficients are set to exact zero at x=0 on every
-  active AMR level. Outer x/z retain homogeneous Neumann conditions and y is
-  periodic.
+ active AMR level. Outer x/z retain homogeneous Neumann conditions and y is
+ periodic.
 - Checkpoint schema v3 records the P11 enabled state, schema, contract
-  identity/hash, stage, exact domain bounds, and periodicity. Mismatches abort
-  before field or particle deserialization.
+ identity/hash, stage, exact domain bounds, and periodicity. Mismatches abort
+ before field or particle deserialization.
 - `rejected_growth` is reserved and remains exactly zero. C09 adds no growth,
-  B/E debit, chemistry, export, carbon reward, or C10+ behavior.
+ B/E debit, chemistry, export, carbon reward, or C10+ behavior.
 
 ## Build
 
@@ -65,11 +65,11 @@ MPI ON, OpenMP OFF, GPU backend NONE, and C++17. It produced a 2,511,360-byte
 executable from the exact qualified source commit above.
 
 - Executable SHA-256:
-  `33a191e180288783a0e9fc5f7ca25ac08e298b43e68fa37f0414e5b19c37b996`
+ `33a191e180288783a0e9fc5f7ca25ac08e298b43e68fa37f0414e5b19c37b996`
 - Raw log SHA-256:
-  `ed02a0a69f238b013f8f59b0d790f1e5d1b858e4c319f2b514006288a2dc8dc2`
+ `ed02a0a69f238b013f8f59b0d790f1e5d1b858e4c319f2b514006288a2dc8dc2`
 - CMake cache SHA-256:
-  `0a3a1b0ada9e40d3c7ecf8d41c1a6bac442cd4a876f40ca945e62c1e74a1c484`
+ `0a3a1b0ada9e40d3c7ecf8d41c1a6bac442cd4a876f40ca945e62c1e74a1c484`
 
 The two compiler warnings are inherited MSVC C4244 instantiations in pinned
 AMReX/`std::numeric`; no C09 source warning was emitted.
@@ -113,7 +113,7 @@ exercised 188; all semantic fields and reserved slots matched.
 
 All commands ran from the product root. `python` below denotes the bundled
 runtime at
-`C:\Users\Shadow\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe`.
+`C:\Users\Shadow\.cache\agent-runtimes\primary-runtime\dependencies\python\python.exe`.
 
 1. `powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tools\repro\run_c09_native_build.ps1 -SourceDir . -BuildDir C:\b\BMX-shadow-handoff-20260721\build-c09-native-release-definitive -LogPath .\evidence\stages\C09\raw\native_build.log -JsonOut .\evidence\stages\C09\BUILD.json -Parallel 4` — exit 0.
 2. `powershell.exe -NoProfile -ExecutionPolicy Bypass -File tools/repro/run_c09_geometry_unit.ps1 -SourceDir . -BuildDir C:\b\BMX-shadow-handoff-20260721\build-c09-native-release-definitive -RunDir C:\b\BMX-shadow-handoff-20260721\runs\c09-geometry-unit-definitive -JsonOut evidence/stages/C09/GEOMETRY_UNIT.json` — exit 0.
@@ -134,18 +134,18 @@ An earlier feature-off invocation used obsolete flag names and exited 1 in
 ## Files changed and why
 
 - `contracts/decision_reconciliation.{json,md}`,
-  `contracts/release_blockers.json`, and `contracts/p11/*`: freeze the exact
-  P11 contract and reconcile C09-only user authority without overstating it.
+ `contracts/release_blockers.json`, and `contracts/p11/*`: freeze the exact
+ P11 contract and reconcile C09-only user authority without overstating it.
 - `src/chemistry/bmx_cell_interaction_K.H`,
-  `src/chemistry/bmx_chem_layout.H`,
-  `src/chemistry/bmx_phosphorus_geometry_K.H`, `src/des/bmx_pc.H`,
-  `src/des/bmx_pc_interaction.cpp`,
-  `src/diffusion/bmx_define_coeffs_on_faces.cpp`,
-  `src/io/bmx_checkpoint_schema.{H,cpp}`, `src/io/bmx_chk.cpp`,
-  `src/io/bmx_restart.cpp`, and `src/timestepping/bmx_evolve.cpp`: implement
-  the C09 geometry, production motion, event, no-flux, and restart paths.
+ `src/chemistry/bmx_chem_layout.H`,
+ `src/chemistry/bmx_phosphorus_geometry_K.H`, `src/des/bmx_pc.H`,
+ `src/des/bmx_pc_interaction.cpp`,
+ `src/diffusion/bmx_define_coeffs_on_faces.cpp`,
+ `src/io/bmx_checkpoint_schema.{H,cpp}`, `src/io/bmx_chk.cpp`,
+ `src/io/bmx_restart.cpp`, and `src/timestepping/bmx_evolve.cpp`: implement
+ the C09 geometry, production motion, event, no-flux, and restart paths.
 - `tools/repro/c09_geometry_unit.cpp` and `tools/repro/run_c09_*`: build and
-  qualify exact C09 behavior, provenance, and ownership.
+ qualify exact C09 behavior, provenance, and ownership.
 - `evidence/stages/C09/*`: preserve build, raw log, tests, report, and handoff.
 
 The machine-readable report lists every path in these groups. The local

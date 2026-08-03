@@ -3,18 +3,18 @@
 - **Stage ID:** `C04`
 - **Status:** `PASS` — **reference-platform qualified** (RT-1 and RT-2 both PASS, §17)
 - **Date:** 2026-08-01 (fifth issue: reference-host qualification executed)
-- **Role:** primary writer (Claude), product lane
+- **Role:** primary writer (the independent reviewer), product lane
 - **Baseline:** `389e9e3` / tree `1c73deed`, AMReX `cbdc6580` / tree `fb714dc6`
 - **Input HEAD:** `b686981f` (qualified); report issued at a later prep commit
 - **Companion evidence:** `STAGE_REPORT.json`,
-  `runs/c04-p07-geometry/GEOMETRY_INDEX.json`,
-  `runs/c04-p07-donor-cap-fixture/DONOR_CAP_FIXTURE.json`,
-  `runs/c04-diag-check/DIAGNOSTIC_CHECKS.json`,
-  `runs/c04-provenance-check/PROVENANCE_CHECKS.json`,
-  `LINUX_SMOKE.md`,
-  **`reference/`** (the reference-host run: `QUALIFICATION_REFERENCE.json`,
-  `GEOMETRY_REFERENCE.json`, `DONOR_CAP_REFERENCE.json`,
-  `DIAGNOSTIC_REFERENCE.json`, `PROVENANCE_REFERENCE.json`, `logs/`)
+ `runs/c04-p07-geometry/GEOMETRY_INDEX.json`,
+ `runs/c04-p07-donor-cap-fixture/DONOR_CAP_FIXTURE.json`,
+ `runs/c04-diag-check/DIAGNOSTIC_CHECKS.json`,
+ `runs/c04-provenance-check/PROVENANCE_CHECKS.json`,
+ `LINUX_SMOKE.md`,
+ **`reference/`** (the reference-host run: `QUALIFICATION_REFERENCE.json`,
+ `GEOMETRY_REFERENCE.json`, `DONOR_CAP_REFERENCE.json`,
+ `DIAGNOSTIC_REFERENCE.json`, `PROVENANCE_REFERENCE.json`, `logs/`)
 
 > **`B-C04-02` is CLOSED.** All five P07 defect mappings are now demonstrated at
 > runtime. The last one, the second-half fluid donor cap, is measured on the
@@ -39,13 +39,13 @@
 > other (§10):
 >
 > 1. **Reference-platform qualification** — `DEC-PLATFORM-001` makes Linux the
->    reference platform; every result below was produced on Windows. A Linux
->    portability smoke passed with numerically identical results, but only on a
->    `smoke-only` host (`B-PLATFORM-01`).
+> reference platform; every result below was produced on Windows. A Linux
+> portability smoke passed with numerically identical results, but only on a
+> `smoke-only` host (`B-PLATFORM-01`).
 > 2. **Build provenance** — a release build must record which commit produced
->    it. Repaired under `D-C04-08` (commit `8428a5d`) and verified on both
->    platforms, but the repair has not yet been exercised through a full
->    qualification run on a reference host.
+> it. Repaired under `D-C04-08` (commit `8428a5d`) and verified on both
+> platforms, but the repair has not yet been exercised through a full
+> qualification run on a reference host.
 >
 > Neither is a defect in the P07 repair. Both must be satisfied before evidence
 > from this stage can be treated as release evidence.
@@ -129,10 +129,10 @@ attribute a difference to a branch, and they produced three false conclusions
 kernel:
 
 - **Geometry / particle side** — `amr.par_ascii_int` dumps every particle real
-  and integer field per step at precision 15.
+ and integer field per step at precision 15.
 - **Fluid side** — `bmx.print_sums` reports mesh and particle content at full
-  precision. This is what the particle dump structurally cannot provide, and it
-  is what closes the donor-cap row.
+ precision. This is what the particle dump structurally cannot provide, and it
+ is what closes the donor-cap row.
 
 Both are pure output. Neutrality is proven, not assumed:
 
@@ -196,10 +196,10 @@ fixture where 188 non-tip rejections were directly counted. The baseline leaves
 ### 4a. What the branch does
 
 ```
-baseline:  dA2 = -fA_tmp*fluid_vol ;  dfA = -fA_tmp        // zeroes the fluid AND
-                                                           // debits the particle
-repaired:  dA2 =  fA_tmp*fluid_vol ;  dfA = dA2/fluid_vol  // credits the particle
-                                                           // exactly what the fluid held
+baseline: dA2 = -fA_tmp*fluid_vol ; dfA = -fA_tmp // zeroes the fluid AND
+ // debits the particle
+repaired: dA2 = fA_tmp*fluid_vol ; dfA = dA2/fluid_vol // credits the particle
+ // exactly what the fluid held
 ```
 
 ### 4b. Why the earlier probe was wrong
@@ -214,13 +214,13 @@ Two confounds also suppressed the exchange entirely, and both had to be removed
 before anything could be measured:
 
 1. **The particle sits where there is no fluid A.** It is at `z = 0.0752`, just
-   above `fluid.surface_location = 0.075`, and the initial field is zero above
-   the surface. No uptake is possible there at all. Fixed by raising the surface
-   above the domain so the field is uniform.
+ above `fluid.surface_location = 0.075`, and the initial field is zero above
+ the surface. No uptake is possible there at all. Fixed by raising the surface
+ above the domain so the field is uniform.
 2. **`rA = -k2*cA + kr2*cB*cC` (`:1849`) drains A far faster than the exchange
-   moves it.** With `k2 = 4.0` the reaction dominates completely. Fixed by
-   zeroing `k2`/`kr2`, and `kv`/`kg`, so the *only* process touching A is the
-   membrane exchange.
+ moves it.** With `k2 = 4.0` the reaction dominates completely. Fixed by
+ zeroing `k2`/`kr2`, and `kv`/`kg`, so the *only* process touching A is the
+ membrane exchange.
 
 `tools/repro/run_p07_donor_cap_probe.ps1` is retained but marked **SUPERSEDED**
 in its own header and in its JSON output, so its negative result cannot be cited
@@ -234,33 +234,33 @@ recomputes the **true** area for the second. Storing an area 100× smaller than
 repaired second half exceed it:
 
 ```
-alpha  = 0.5*dtp*A_stored*k1/fluid_vol      both trees, first half
-alpha' = 0.5*dtp*A_true  *k1/fluid_vol      repaired only, second half
-fluid_vol = grid_vol/npart  (:1438),  dtp = fixed_dt/4 = 0.0625
+alpha = 0.5*dtp*A_stored*k1/fluid_vol both trees, first half
+alpha' = 0.5*dtp*A_true *k1/fluid_vol repaired only, second half
+fluid_vol = grid_vol/npart (:1438), dtp = fixed_dt/4 = 0.0625
 ```
 
 ### 4d. Result — saturation, and exact equality
 
 ```
-     k1     alpha  alphaprime    baseline dA    repaired dA  rep/available  capped
-    0.5    0.0033       0.327   1.261737e-13   4.569058e-12       0.935743   False
-      1    0.0065       0.653   2.494785e-13   4.868219e-12       0.997011   False
-      2    0.0131       1.307   4.877042e-13   4.871033e-12       0.997587    True
-      5    0.0327       3.267   1.139173e-12   4.871033e-12       0.997587    True
-     20    0.1307      13.069   3.287037e-12   4.871033e-12       0.997587    True
-    100    0.6535      65.345   4.870056e-12   4.871032e-12       0.997587    True
+ k1 alpha alphaprime baseline dA repaired dA rep/available capped
+ 0.5 0.0033 0.327 1.261737e-13 4.569058e-12 0.935743 False
+ 1 0.0065 0.653 2.494785e-13 4.868219e-12 0.997011 False
+ 2 0.0131 1.307 4.877042e-13 4.871033e-12 0.997587 True
+ 5 0.0327 3.267 1.139173e-12 4.871033e-12 0.997587 True
+ 20 0.1307 13.069 3.287037e-12 4.871033e-12 0.997587 True
+ 100 0.6535 65.345 4.870056e-12 4.871032e-12 0.997587 True
 ```
 
 The **shape** is the proof, not any single number:
 
 - **The baseline transfer grows linearly with `k1`** — 1.26e-13 → 4.87e-12 over
-  a 200× span. Uncapped, exactly as expected when the second half uses the small
-  stored area.
+ a 200× span. Uncapped, exactly as expected when the second half uses the small
+ stored area.
 - **The repaired transfer saturates at `4.871033e-12`, identical to seven
-  significant figures across `k1` = 2, 5, 20, 100** — a 50× span. A transfer that
-  stops tracking its own driving rate is a cap; nothing else produces that.
+ significant figures across `k1` = 2, 5, 20, 100** — a 50× span. A transfer that
+ stops tracking its own driving rate is a cap; nothing else produces that.
 - Saturation begins precisely where the arithmetic says it must, between
-  `alpha' = 0.653` and `alpha' = 1.307`.
+ `alpha' = 0.653` and `alpha' = 1.307`.
 
 The mandatory row itself, stated exactly. After the cap fires, everything the
 cell held is in the particle:
@@ -332,12 +332,12 @@ Dead code that had rotted while unused. Both defects would have produced
 confident nonsense on first re-enable:
 
 1. Particle content was read at components **22/23/24** as A/B/C. Correct only
-   while `realIdx::first_data` was 22; it is now **28**, so those indices
-   actually read `dvdt`, `tau_split`, `bond_scale`. Offsets are now derived from
-   `realIdx::first_data`.
+ while `realIdx::first_data` was 22; it is now **28**, so those indices
+ actually read `dvdt`, `tau_split`, `bond_scale`. Offsets are now derived from
+ `realIdx::first_data`.
 2. Mesh components were hard-coded **0/1/2**, but the order comes from the
-   `fluid.chem_species` input. Indices are now resolved **by name**, and a
-   reordered list aborts rather than silently pairing mesh B with particle A.
+ `fluid.chem_species` input. Indices are now resolved **by name**, and a
+ reordered list aborts rather than silently pairing mesh B with particle A.
 
 The particle block and the mesh list agree at slots 0–2 but **diverge at slot 4**
 (kernel `cE` vs input `F`, tracked as `D-C07-01`), so the diagnostic reports only
@@ -380,9 +380,9 @@ were running identical code paths.
 `2*pi*r*(r+L)` "gives exactly the stored 5.105e-6" is wrong:
 
 ```
-2*pi*r*(r+L)   = 5.105088062083415e-06
-stored in init = 5.105e-06                (four significant figures)
-relative       = 1.725e-05
+2*pi*r*(r+L) = 5.105088062083415e-06
+stored in init = 5.105e-06 (four significant figures)
+relative = 1.725e-05
 ```
 
 The repair recomputes the area rather than reading the stored field, so it
@@ -434,23 +434,23 @@ asserts the model's self-describing layout fields (`num_reals`, `real_tot`,
 
 ```bash
 # 1. verify the reviewed candidate is intact
-sha256sum src/chemistry/bmx_chem_K.H   # 9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02
+sha256sum src/chemistry/bmx_chem_K.H # 9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02
 
 # 2. geometry matrix (candidate images, no instrumentation)
 powershell -NoProfile -ExecutionPolicy Bypass -File tools/repro/run_p07_geometry_fixtures.ps1
 
 # 3. diagnostic regression guard (instrumented repaired image)
 python tools/repro/check_sums_diagnostic.py \
-  --exe   ../../build/c04-diag-release/bmx.exe \
-  --case-dir exec/fungi --work-dir ../../runs/c04-diag-check \
-  --json-out ../../runs/c04-diag-check/DIAGNOSTIC_CHECKS.json
+ --exe ../../build/c04-diag-release/bmx.exe \
+ --case-dir exec/fungi --work-dir ../../runs/c04-diag-check \
+ --json-out ../../runs/c04-diag-check/DIAGNOSTIC_CHECKS.json
 
 # 4. donor-cap fixture (both instrumented images)
 python tools/repro/run_p07_donor_cap_fixture.py \
-  --baseline-exe ../../build/c04-baseline-diag-release/bmx.exe \
-  --repaired-exe ../../build/c04-diag-release/bmx.exe \
-  --case-dir exec/fungi --out-dir ../../runs/c04-p07-donor-cap-fixture \
-  --json-out ../../runs/c04-p07-donor-cap-fixture/DONOR_CAP_FIXTURE.json
+ --baseline-exe ../../build/c04-baseline-diag-release/bmx.exe \
+ --repaired-exe ../../build/c04-diag-release/bmx.exe \
+ --case-dir exec/fungi --out-dir ../../runs/c04-p07-donor-cap-fixture \
+ --json-out ../../runs/c04-p07-donor-cap-fixture/DONOR_CAP_FIXTURE.json
 ```
 
 All run directories were deleted before the final execution; every number above
@@ -565,17 +565,17 @@ behaviour changes; the candidate kernel still hashes to `9519fc24…ffba02`.
 A Linux build could not say which commit produced it, for three reasons at once:
 
 1. **`get_git_info()` captured nothing on any platform.** It was invoked as
-   `get_git_info( )` with no arguments, so its `${ARGC} GREATER 0` guards never
-   fired and `${ARGV0}`/`${ARGV1}` were never set. It only printed, and nothing
-   consumed it. This was true on Windows too — the Windows build "worked" only
-   because AMReX independently produced a hash.
+ `get_git_info( )` with no arguments, so its `${ARGC} GREATER 0` guards never
+ fired and `${ARGV0}`/`${ARGV1}` were never set. It only printed, and nothing
+ consumed it. This was true on Windows too — the Windows build "worked" only
+ because AMReX independently produced a hash.
 2. **The worktree pointer is not portable.** A linked worktree stores `.git` as
-   a **file** holding an absolute `gitdir:` path in the syntax of the machine
-   that created it. AMReX's `generate_buildinfo()` runs `git describe` in the
-   source directory, which fails there, yielding an empty hash.
+ a **file** holding an absolute `gitdir:` path in the syntax of the machine
+ that created it. AMReX's `generate_buildinfo()` runs `git describe` in the
+ source directory, which fails there, yielding an empty hash.
 3. **The report failed open.** `writeBuildInfo()` printed the line only
-   `if (strlen(githash1) > 0)`, so a build carrying *no* provenance was
-   indistinguishable from one that simply did not print it.
+ `if (strlen(githash1) > 0)`, so a build carrying *no* provenance was
+ indistinguishable from one that simply did not print it.
 
 ### 15b. The subtle part
 
@@ -688,12 +688,12 @@ separately.
 On a C02-compliant reference Linux host:
 
 ```bash
-source tools/repro/linux_env.sh        # must print class: reference-capable
+source tools/repro/linux_env.sh # must print class: reference-capable
 bash tools/repro/configure_linux.sh -b <build>/c03-baseline-release -s <baseline> -f
-bash tools/repro/configure_linux.sh -b <build>/c04-p07-release      -s <product>  -f
+bash tools/repro/configure_linux.sh -b <build>/c04-p07-release -s <product> -f
 # ... and the two instrumented variants, then:
 python3 tools/repro/run_c04_qualification.py --rgsw-root <root> --skip-build \
-        --json-out <root>/runs/c04-qualification/QUALIFICATION_REFERENCE.json
+ --json-out <root>/runs/c04-qualification/QUALIFICATION_REFERENCE.json
 ```
 
 with `-DBMX_REQUIRE_PROVENANCE=ON` on every configure, which closes RT-2 in the
@@ -732,16 +732,16 @@ so the hash is a function of its parents and tree).
 ### 17c. Verdict
 
 ```
-[PASS] identity_reviewed_candidate_kernel      9519fc24... matches the reviewed candidate
-[PASS] identity_amrex                          commit cbdc6580, tree fb714dc6
-[PASS] identity_build_provenance               RESOLVED, clean
+[PASS] identity_reviewed_candidate_kernel 9519fc24... matches the reviewed candidate
+[PASS] identity_amrex commit cbdc6580, tree fb714dc6
+[PASS] identity_build_provenance RESOLVED, clean
 [PASS] build_images_present
 [PASS] per_image_provenance_resolved_and_exact all four RESOLVED on a clean tree
-[PASS] geometry_matrix                         7 fixtures, failing=0, neutrality PASS
-[PASS] diagnostic_regression_guard             5/5
-[PASS] donor_cap_fixture                       CAP_FIRES_AND_TRANSFER_EQUALS_AVAILABLE
-[PASS] provenance_regression_fixture           7/7
-checks passed : 9/9        RELEASE EVIDENCE : True
+[PASS] geometry_matrix 7 fixtures, failing=0, neutrality PASS
+[PASS] diagnostic_regression_guard 5/5
+[PASS] donor_cap_fixture CAP_FIRES_AND_TRANSFER_EQUALS_AVAILABLE
+[PASS] provenance_regression_fixture 7/7
+checks passed : 9/9 RELEASE EVIDENCE : True
 ```
 
 `not_release_evidence_because` is empty.

@@ -9,7 +9,7 @@
   "artifact_sha256_binding": "The adjacent BONDED_D_TRANSPORT_CONTRACT_V1.sha256 is the SHA-256 of these exact JSON bytes.",
   "authority": {
     "source_kind": "user-attached binding adopted by explicit read-and-act request",
-    "source_path_at_adoption": "C:/Users/Shadow/.codex/attachments/3186333f-00d2-46e0-863c-36290cc3dc47/pasted-text.txt",
+    "source_path_at_adoption": "C:/Users/Shadow/.agent/attachments/3186333f-00d2-46e0-863c-36290cc3dc47/pasted-text.txt",
     "source_sha256": "cbd1eedddf31b94c8a9d23d7b2d3329f065a007824387c70435d1004fdc6f350",
     "source_size_bytes": 40449,
     "source_line_count": 1272,

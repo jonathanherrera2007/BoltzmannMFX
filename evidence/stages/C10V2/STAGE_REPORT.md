@@ -28,7 +28,7 @@ authorized by this closure.
 - Frozen kernel: `9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02`
 - Frozen global order: `bb63c219a860687d91ce1acf06a667c9208abf026b32f18acfc64884bb696dd6`
 
-The prerun review is attributed to Claude (Opus 5) but is not
+The prerun review is attributed to the independent reviewer (Opus 5) but is not
 cryptographically signed. It is recorded as attributed-but-unsigned, matching
 the P10 review precedent.
 
@@ -133,9 +133,9 @@ claim boundaries, packaging corrections and cloud cleanup. This closes
 Two new findings are nonblocking:
 
 - **F-16 (LOW):** the requested 151-configuration arithmetic must never be
-  treated as a P15 estimate. The stronger disclaimer above is now binding.
+ treated as a P15 estimate. The stronger disclaimer above is now binding.
 - **F-17 (INFO):** exact cloud billing is unsettled. Query and record it before
-  any P15 budget decision; it is not required for C10 closure.
+ any P15 budget decision; it is not required for C10 closure.
 
 The near-null contrast is also a prospective P15 design warning, not an adopted
 change: before P15 costing or science, either adopt arms that straddle `K_m` or

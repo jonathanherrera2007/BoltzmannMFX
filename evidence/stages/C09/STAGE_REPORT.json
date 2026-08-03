@@ -10,7 +10,7 @@
     "branch": "rgsw/c09-p11"
   },
   "writer": {
-    "identity": "Codex",
+    "identity": "the implementation writer",
     "sole_product_branch_writer": true,
     "independent_reviewer_for_authored_bytes": false
   },
@@ -135,37 +135,37 @@
       "evidence": "evidence/stages/C09/GEOMETRY_UNIT.json"
     },
     {
-      "command": "C:\\Users\\Shadow\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe .\\tools\\repro\\run_c09_geometry_runtime.py --exe C:\\b\\BMX-shadow-handoff-20260721\\build-c09-native-release-definitive\\bmx.exe --source . --run-root C:\\b\\BMX-shadow-handoff-20260721\\runs\\c09-geometry-runtime-definitive --json-out .\\evidence\\stages\\C09\\GEOMETRY_RUNTIME.json --mpiexec C:\\Program Files\\Microsoft MPI\\Bin\\mpiexec.exe",
+      "command": "C:\\Users\\Shadow\\.cache\\agent-runtimes\\primary-runtime\\dependencies\\python\\python.exe .\\tools\\repro\\run_c09_geometry_runtime.py --exe C:\\b\\BMX-shadow-handoff-20260721\\build-c09-native-release-definitive\\bmx.exe --source . --run-root C:\\b\\BMX-shadow-handoff-20260721\\runs\\c09-geometry-runtime-definitive --json-out .\\evidence\\stages\\C09\\GEOMETRY_RUNTIME.json --mpiexec C:\\Program Files\\Microsoft MPI\\Bin\\mpiexec.exe",
       "exit_code": 0,
       "evidence": "evidence/stages/C09/GEOMETRY_RUNTIME.json"
     },
     {
-      "command": "C:\\Users\\Shadow\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe .\\tools\\repro\\run_c09_checkpoint_tests.py --exe C:\\b\\BMX-shadow-handoff-20260721\\build-c09-native-release-definitive\\bmx.exe --source . --run-root C:\\b\\BMX-shadow-handoff-20260721\\runs\\c09-checkpoint-definitive --json-out .\\evidence\\stages\\C09\\CHECKPOINT_RESTART.json --mpiexec C:\\Program Files\\Microsoft MPI\\Bin\\mpiexec.exe",
+      "command": "C:\\Users\\Shadow\\.cache\\agent-runtimes\\primary-runtime\\dependencies\\python\\python.exe .\\tools\\repro\\run_c09_checkpoint_tests.py --exe C:\\b\\BMX-shadow-handoff-20260721\\build-c09-native-release-definitive\\bmx.exe --source . --run-root C:\\b\\BMX-shadow-handoff-20260721\\runs\\c09-checkpoint-definitive --json-out .\\evidence\\stages\\C09\\CHECKPOINT_RESTART.json --mpiexec C:\\Program Files\\Microsoft MPI\\Bin\\mpiexec.exe",
       "exit_code": 0,
       "evidence": "evidence/stages/C09/CHECKPOINT_RESTART.json"
     },
     {
-      "command": "C:\\Users\\Shadow\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe .\\tools\\repro\\run_c09_feature_off.py --c08-source C:\\b\\BMX-shadow-handoff-20260721\\c08-reference-a33 --c08-exe C:\\b\\BMX-shadow-handoff-20260721\\build-c08-reference-a33\\bmx.exe --c09-exe C:\\b\\BMX-shadow-handoff-20260721\\build-c09-native-release-definitive\\bmx.exe --case-dir .\\exec\\fungi --out-dir C:\\b\\BMX-shadow-handoff-20260721\\runs\\c09-feature-off-definitive --json-out .\\evidence\\stages\\C09\\FEATURE_OFF_SEMANTIC.json",
+      "command": "C:\\Users\\Shadow\\.cache\\agent-runtimes\\primary-runtime\\dependencies\\python\\python.exe .\\tools\\repro\\run_c09_feature_off.py --c08-source C:\\b\\BMX-shadow-handoff-20260721\\c08-reference-a33 --c08-exe C:\\b\\BMX-shadow-handoff-20260721\\build-c08-reference-a33\\bmx.exe --c09-exe C:\\b\\BMX-shadow-handoff-20260721\\build-c09-native-release-definitive\\bmx.exe --case-dir .\\exec\\fungi --out-dir C:\\b\\BMX-shadow-handoff-20260721\\runs\\c09-feature-off-definitive --json-out .\\evidence\\stages\\C09\\FEATURE_OFF_SEMANTIC.json",
       "exit_code": 0,
       "evidence": "evidence/stages/C09/FEATURE_OFF_SEMANTIC.json"
     },
     {
-      "command": "C:\\Users\\Shadow\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe .\\tools\\repro\\run_c08_topology_split.py --exe C:\\b\\BMX-shadow-handoff-20260721\\build-c09-native-release-definitive\\bmx.exe --source . --run-root C:\\b\\BMX-shadow-handoff-20260721\\runs\\c09-p10-topology-regression-definitive --json-out .\\evidence\\stages\\C09\\P10_TOPOLOGY_REGRESSION.json --mpiexec C:\\Program Files\\Microsoft MPI\\Bin\\mpiexec.exe",
+      "command": "C:\\Users\\Shadow\\.cache\\agent-runtimes\\primary-runtime\\dependencies\\python\\python.exe .\\tools\\repro\\run_c08_topology_split.py --exe C:\\b\\BMX-shadow-handoff-20260721\\build-c09-native-release-definitive\\bmx.exe --source . --run-root C:\\b\\BMX-shadow-handoff-20260721\\runs\\c09-p10-topology-regression-definitive --json-out .\\evidence\\stages\\C09\\P10_TOPOLOGY_REGRESSION.json --mpiexec C:\\Program Files\\Microsoft MPI\\Bin\\mpiexec.exe",
       "exit_code": 0,
       "evidence": "evidence/stages/C09/P10_TOPOLOGY_REGRESSION.json"
     },
     {
-      "command": "C:\\Users\\Shadow\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe .\\tools\\repro\\run_c08_redistribution_guards.py --exe C:\\b\\BMX-shadow-handoff-20260721\\build-c09-native-release-definitive\\bmx.exe --source . --run-root C:\\b\\BMX-shadow-handoff-20260721\\runs\\c09-p10-redistribution-regression-definitive --json-out .\\evidence\\stages\\C09\\P10_REDISTRIBUTION_REGRESSION.json --mpiexec C:\\Program Files\\Microsoft MPI\\Bin\\mpiexec.exe --ranks 2 --restart-ranks 1",
+      "command": "C:\\Users\\Shadow\\.cache\\agent-runtimes\\primary-runtime\\dependencies\\python\\python.exe .\\tools\\repro\\run_c08_redistribution_guards.py --exe C:\\b\\BMX-shadow-handoff-20260721\\build-c09-native-release-definitive\\bmx.exe --source . --run-root C:\\b\\BMX-shadow-handoff-20260721\\runs\\c09-p10-redistribution-regression-definitive --json-out .\\evidence\\stages\\C09\\P10_REDISTRIBUTION_REGRESSION.json --mpiexec C:\\Program Files\\Microsoft MPI\\Bin\\mpiexec.exe --ranks 2 --restart-ranks 1",
       "exit_code": 0,
       "evidence": "evidence/stages/C09/P10_REDISTRIBUTION_REGRESSION.json"
     },
     {
-      "command": "C:\\Users\\Shadow\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe .\\tools\\repro\\run_c09_static_test.py --source . --stage-base 0f6636e6080126d2ce58efcef942525bce9b524c --json-out .\\evidence\\stages\\C09\\STATIC.json",
+      "command": "C:\\Users\\Shadow\\.cache\\agent-runtimes\\primary-runtime\\dependencies\\python\\python.exe .\\tools\\repro\\run_c09_static_test.py --source . --stage-base 0f6636e6080126d2ce58efcef942525bce9b524c --json-out .\\evidence\\stages\\C09\\STATIC.json",
       "exit_code": 0,
       "evidence": "evidence/stages/C09/STATIC.json"
     },
     {
-      "command": "C:\\Users\\Shadow\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe -m py_compile .\\tools\\repro\\run_c09_geometry_runtime.py .\\tools\\repro\\run_c09_checkpoint_tests.py .\\tools\\repro\\run_c09_feature_off.py .\\tools\\repro\\run_c09_static_test.py",
+      "command": "C:\\Users\\Shadow\\.cache\\agent-runtimes\\primary-runtime\\dependencies\\python\\python.exe -m py_compile .\\tools\\repro\\run_c09_geometry_runtime.py .\\tools\\repro\\run_c09_checkpoint_tests.py .\\tools\\repro\\run_c09_feature_off.py .\\tools\\repro\\run_c09_static_test.py",
       "exit_code": 0
     },
     {

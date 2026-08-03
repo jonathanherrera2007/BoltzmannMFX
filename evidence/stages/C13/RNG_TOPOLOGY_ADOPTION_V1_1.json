@@ -26,7 +26,7 @@
   },
   "authority": {
     "kind": "EXPLICIT_PROJECT_OWNER_OPTION_1_SELECTION_AND_HASH_BINDING_IN_CURRENT_TASK",
-    "source_path": "C:/Users/Shadow/.codex/attachments/a27fcd6f-0b68-4a12-aae0-232f8dc61ff8/pasted-text.txt",
+    "source_path": "C:/Users/Shadow/.agent/attachments/a27fcd6f-0b68-4a12-aae0-232f8dc61ff8/pasted-text.txt",
     "source_sha256": "a165a85542c2666518724925dc0e743095c55b9176fddd7a584e99a297264290",
     "source_explicitly_selects_option_1": true,
     "source_states_superseding_contract_now_binds": true,
