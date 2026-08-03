@@ -1,0 +1,52 @@
+{
+    "artifact_type":  "C13_P15_STAGE0_NATIVE_BUILD",
+    "stage":  "C13/P15 Stage 0",
+    "status":  "PASS",
+    "classification":  "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+    "source":  {
+                   "path":  "C:\\b\\BMX-shadow-handoff-20260721\\BMX-C13-freeze",
+                   "head":  "a475b3f968e17327f2ffe28d0d48a781d35e3e65",
+                   "tree":  "7adcbb63aa2a42f66e08ef1c0eab2636a688657d",
+                   "dirty_before_configure":  false,
+                   "status_capture":  "before build and before evidence outputs were opened"
+               },
+    "amrex":  {
+                  "commit":  "cbdc6580ee3d78cccdd37172e4ba077ee181f483",
+                  "tree":  "fb714dc6e693c18f7c441d1d1febe4a5e8bf9ea6"
+              },
+    "configuration":  {
+                          "build_type":  "Release",
+                          "cxx_compiler":  "C:/Program1/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe",
+                          "cxx_standard":  "17",
+                          "bmx_mpi":  "ON",
+                          "bmx_omp":  "OFF",
+                          "bmx_gpu_backend":  "NONE",
+                          "amrex_spacedim":  "3"
+                      },
+    "contracts":  {
+                      "binding_sha256":  "c726cc575684e078d3c3359ececef28fde91daf5050aec273161b734710875d7",
+                      "bonded_sha256":  "e6022bffb56defa13cb31e7c0ac2097dfd197c9513e2f3e2e3a5ade37feeda44",
+                      "numerical_sha256":  "c4d8dd50bb9c4b2b945e80410d71c4b822a32b29a325d7bb9ca5a8ec53531182",
+                      "terminal_sha256":  "272106fabb9af9221d13c9f3b82fa9a963bea831c0a983747986789452b1bfe6",
+                      "operator_fit_sha256":  "4e391b63796f61cade7381a0a4168c6aa2d607272cd0c009cedef5aec4ad7168",
+                      "global_order_sha256":  "bb63c219a860687d91ce1acf06a667c9208abf026b32f18acfc64884bb696dd6"
+                  },
+    "frozen_kernel_sha256":  "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02",
+    "executable":  {
+                       "path":  "C:\\b\\BMX-shadow-handoff-20260721\\build-c13-native-freeze\\bmx.exe",
+                       "size_bytes":  2682880,
+                       "sha256":  "57eb7cfdbf2e8cec705f65046f84220d8832278ed0ea3634efccdc513e97041b"
+                   },
+    "raw_log":  "C:\\b\\BMX-shadow-handoff-20260721\\BMX-RG-SW-C07-product\\evidence\\stages\\C13\\BUILD.log",
+    "cmake_cache_sha256":  "ff2271ccf38083875b9d0cb2d99cb9d4a31d724eccb957783eb8fc35ba954665",
+    "warnings":  [
+                     "Inherited MSVC C4244 diagnostics arise only in std::numeric instantiated by pinned AMReX particle I/O; no C13 source warning was emitted."
+                 ],
+    "qualification_outcomes_enabled":  false,
+    "outcome_hours":  0,
+    "independent_review_gate_crossed":  false,
+    "external_resources":  "none",
+    "external_spend_usd":  0,
+    "claim_boundary":  "Clean Windows C13 Stage 0 engineering build only; not independent review, a 216-hour outcome, mentor approval, calibration, predictive validation, or P15 science.",
+    "raw_log_sha256":  "850019abb7acc246c3b02216b27ba3fbd441134504757d0c144c6adad34d1c2a"
+}

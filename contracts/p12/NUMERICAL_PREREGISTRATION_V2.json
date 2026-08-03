@@ -1,0 +1,177 @@
+{
+  "schema": "bmx-p12-numerical-preregistration-v2",
+  "stage": "C10",
+  "contract_id": "USER-DIRECTED-20260801-P12-NUMERICAL-V2",
+  "classification": "USER_DIRECTED_TECHNICAL_PROPOSAL_PENDING_INDEPENDENT_NUMERICAL_REVIEW",
+  "artifact_sha256_binding": "The adjacent NUMERICAL_PREREGISTRATION_V2.sha256 is the SHA-256 of these exact JSON bytes.",
+  "frozen_before_v2_48h_outcomes": true,
+  "v2_outcomes_seen_before_freeze": false,
+  "claim_boundary": "Prospective numerical repair only; not release evidence, mentor approval, biological calibration, predictive validation, or C10 closure.",
+  "proposal_source": {
+    "received_as_user_message": true,
+    "repair_class": "TIMESTEP_SCALES_WITH_REPRESENTED_DONOR_VOLUME",
+    "stated_markdown_artifact_sha256": "6da3ed723fe69dfc1803b781a311e63c330155191cf766d32a5755bcbbed1eca",
+    "stated_json_artifact_sha256": "34313da008bfcb0f501cb098e0abf20d62bebe08f75484206c653b0bf341b4d2",
+    "named_sandbox_artifact_bytes_available_locally": false,
+    "named_sandbox_artifact_identity_claimed": false,
+    "note": "The repository-native V2 is frozen from the complete values stated in the user message. It does not claim byte identity with unavailable sandbox artifacts."
+  },
+  "preserved_v1": {
+    "contract_path": "contracts/p12/NUMERICAL_PREREGISTRATION_V1.json",
+    "contract_sha256": "dc5af4ff51cf077e9d494ae7d87c7d0a01ec51887101bd63764b0abc4460ce0e",
+    "status": "FAILED_PRESERVED",
+    "superseded_scope": "Only the coupled grid/timestep schedule and the added clipping/temporal qualification gates are superseded. V1 and its failed outcomes remain immutable evidence.",
+    "failed_evidence_sha256": {
+      "evidence/stages/C10/P12_48H_GRID_TIME.json": "edeb759d86979f8b6077ba41cc8b9f07988d0f4162e7b39240008fa1dd0a4157",
+      "evidence/stages/C10/BLOCKER_REPORT.json": "b7a39a388a1016604608ae4d2df163f4444a53ebf968ddc9f3822e4c14760bf3",
+      "evidence/stages/C10/BLOCKER_REPORT.md": "3397ea6b6784625b06fe7a164b646fb3c35a3992504ca97c03ab144c29e897bf",
+      "evidence/stages/C10/STAGE_REPORT.json": "6699679fba747586937ab0832aa7b2dad2c771ac45366398fa44f192e995684b",
+      "evidence/stages/C10/STAGE_REPORT.md": "b7b7df0d7bba082fcc73823e5770f3e80c8796002386ab84307d0aff2838bc4f"
+    }
+  },
+  "unchanged_contracts": {
+    "scientific_uptake_contract_id": "UDC-20260801-P12-UPTAKE-ONLY-V1",
+    "scientific_uptake_contract_sha256": "2094aed3c8ef21a257d2c597352793384d01a1efc3d72936d5c5108d308f8804",
+    "operator_order_id": "bmx-p10-global-order-v1",
+    "operator_order_sha256": "bb63c219a860687d91ce1acf06a667c9208abf026b32f18acfc64884bb696dd6",
+    "operator_order_change": false,
+    "uptake_law_change": false,
+    "shared_donor_arbitration_change": false,
+    "donor_ownership_change": false,
+    "low_high_arms_change": false,
+    "eligible_area_change": false,
+    "diffusion_change": false
+  },
+  "frozen_scientific_and_experiment_values": {
+    "initial_mesh_d_arms_mol_p_cm3": {
+      "low": 1.61e-8,
+      "high": 4.52e-8
+    },
+    "j_max_mol_p_cm2_s": 2.95949412514e-12,
+    "k_m_mol_p_cm3": 1.00084710414e-9,
+    "eligible_area": "FULL_EXPOSED_EXTRARADICAL_SURFACE",
+    "mesh_d_diffusivity_cm2_s": 5.0e-6,
+    "duration_s": 172800.0,
+    "observation_times_s": [0.0, 1800.0, 3600.0, 7200.0, 14400.0, 28800.0, 43200.0, 86400.0, 129600.0, 172800.0],
+    "checkpoint_s": 86400.0,
+    "cumulative_uptake_successive_relative_limit": 0.02,
+    "mesh_profile_successive_l1_relative_limit": 0.05
+  },
+  "repair_derivation": {
+    "request": "R_j=sum_i(A_i*J(C_j)*dt) from the common pre-O02 donor state",
+    "available": "N_j=max(C_j,0)*max(phi_j,0)*V_j",
+    "demand_ratio": "eta_j=R_j/N_j",
+    "donor_scale": "s_j=min(1,1/eta_j)",
+    "refinement": "Halving all three grid spacings divides represented one-cell donor volume by 8, so dt is also divided by 8.",
+    "expected_primary_eta": {
+      "low": 0.102,
+      "high": 0.038
+    },
+    "expected_is_not_acceptance": true
+  },
+  "coupled_grid_time_levels": [
+    {"id": "L0", "n_cell": [8, 8, 4], "dt_s": 1800.0, "updates_48h": 96},
+    {"id": "L1", "n_cell": [16, 16, 8], "dt_s": 225.0, "updates_48h": 768},
+    {"id": "L2", "n_cell": [32, 32, 16], "dt_s": 28.125, "updates_48h": 6144}
+  ],
+  "trajectory_diagnostics": {
+    "eta_max_run": "maximum R_j/N_j over every update and donor cell with R_j>0 and N_j>0",
+    "zero_inventory_positive_request": "hard failure for a primary arm and reported separately rather than serialized as a nonfinite eta",
+    "minimum_donor_scale_run": "minimum donor scale over every update and donor cell with positive request",
+    "cumulative_rejected_mol": "sum of requested minus accepted uptake over the complete trajectory",
+    "restart_requirement": "Checkpoint and restore the cumulative ledgers and run-wide extrema so continuous and restarted diagnostics describe the same complete trajectory."
+  },
+  "primary_no_clipping_gates": {
+    "eta_max_run_max": 0.25,
+    "minimum_donor_scale_run": "s_min_run >= 1 - 64*epsilon_double",
+    "minimum_donor_scale_run_evaluated_double": 0.9999999999999858,
+    "cumulative_rejected_mol": "N_rejected <= max(1e-28 mol,64*epsilon_double*N_requested)",
+    "exempt_fixture": "MULTIPLE_SEGMENTS_ONE_DONOR_ANALYTIC_CAP",
+    "exemption_scope": "Only the no-clipping gate is exempt. Conservation, exact arbitration, finite values, and requested=accepted+rejected remain mandatory."
+  },
+  "required_coupled_study": {
+    "arms": ["low", "high"],
+    "levels": ["L0", "L1", "L2"],
+    "every_run_gates": [
+      "positivity",
+      "all O01/O10/checkpoint conservation ledgers",
+      "all scheduled observations",
+      "zero E/F/structural-P/export/reward/growth",
+      "primary no-clipping gates",
+      "continuous/restart equivalence",
+      "deterministic clean rerun",
+      "MPI/rank/decomposition invariance"
+    ],
+    "successive_comparison_gates": {
+      "cumulative_accepted_uptake_relative_max": 0.02,
+      "mesh_d_profile_l1_relative_max_at_every_observation": 0.05
+    }
+  },
+  "production_grid_selection": {
+    "principle": "Select the coarsest passing level only when it and every finer successor satisfy every outcome and non-outcome gate for both arms.",
+    "L0": "Selectable only if L0-to-L1 and L1-to-L2 pass for both arms and every non-outcome gate passes at all three levels.",
+    "L1": "Selectable only if L0-to-L1 fails or does not qualify, L1-to-L2 passes for both arms, and every non-outcome gate passes at L1 and L2.",
+    "L2": "Not selectable from a three-level study because it has no finer successor."
+  },
+  "fixed_grid_temporal_confirmation": {
+    "candidate_grid_source": "production_grid_selection",
+    "timesteps": ["dt", "dt/2", "dt/4"],
+    "selection": "Select the largest timestep for which it and both smaller successor timesteps pass.",
+    "gates": [
+      "cumulative accepted uptake relative difference <= 0.02",
+      "mesh-D profile L1 relative difference <= 0.05 at every observation",
+      "positivity",
+      "conservation",
+      "restart equivalence",
+      "deterministic rerun",
+      "primary no-clipping gates"
+    ]
+  },
+  "execution_and_review_gate": {
+    "independent_numerical_review_required_before_any_v2_48h_outcome_run": true,
+    "implementation_writer_may_review": false,
+    "review_status": "PENDING",
+    "v2_48h_outcome_execution": "PROHIBITED_PENDING_INDEPENDENT_REVIEW",
+    "review_must_confirm": [
+      "h^3 represented-donor-volume derivation",
+      "no frozen gate is weakened",
+      "no post-hoc scientific parameter change",
+      "unchanged O02 semantics and global operator order",
+      "run-wide clipping diagnostics",
+      "exact configuration and contract hashing",
+      "deterministic MPI and restart behavior"
+    ]
+  },
+  "required_identity_bindings": [
+    "qualification runner",
+    "effective runtime configuration",
+    "new V2 evidence artifacts",
+    "executable and source provenance",
+    "checkpoint/restart metadata"
+  ],
+  "prohibited_repairs": [
+    "loosen 2 percent uptake gate",
+    "loosen 5 percent profile gate",
+    "remove L2",
+    "select L1 only because L0 and L1 agree",
+    "change low/high D arms",
+    "change J_max or K_m",
+    "change eligible area",
+    "change diffusion to suppress failure",
+    "count rejected requests as accepted",
+    "use predicted saturation ratio as convergence proof",
+    "change bmx.substeps without subcycling the complete O02/O03/O04 transaction",
+    "choose an L2 timestep from the observed V1 scale",
+    "discard or relabel failed V1 evidence",
+    "start C11 before D-C10-02 is formally closed"
+  ],
+  "release_sequence_after_local_qualification": [
+    "clean-environment deterministic reproduction",
+    "selected-configuration 24h checkpoint to 48h restart comparison",
+    "representative rank/decomposition invariance",
+    "reference-capable Linux reproduction with exact provenance",
+    "reference-host benchmark and 151-configuration campaign projections",
+    "independent final implementation/evidence acceptance",
+    "reissue C10 stage report as PASS and close D-C10-02"
+  ]
+}

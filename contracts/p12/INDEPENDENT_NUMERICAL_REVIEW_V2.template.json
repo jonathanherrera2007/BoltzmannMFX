@@ -1,0 +1,23 @@
+{
+  "schema": "bmx-p12-independent-numerical-review-v2",
+  "stage": "C10",
+  "status": "PENDING",
+  "reviewed_contract_id": "USER-DIRECTED-20260801-P12-NUMERICAL-V2",
+  "reviewed_contract_sha256": "43d64a8f4ec6c8c00379fc3d9605441cb900479fcdd8db9e78e6fc1edd28f81f",
+  "reviewed_source_commit": "TO_BE_REPLACED_WITH_REVIEW_CANDIDATE_COMMIT",
+  "reviewer_identity": "TO_BE_COMPLETED_BY_INDEPENDENT_REVIEWER",
+  "reviewer_is_implementation_writer": null,
+  "read_only_worktree_or_detached_commit": null,
+  "review_findings": [],
+  "confirmations": {
+    "h_cubed_donor_volume_derivation": null,
+    "frozen_gates_not_weakened": null,
+    "no_post_hoc_scientific_parameter_change": null,
+    "o02_and_global_operator_order_unchanged": null,
+    "run_wide_clipping_diagnostics_correct": null,
+    "configuration_and_contract_hashing_exact": null,
+    "deterministic_mpi_and_restart_design_adequate": null
+  },
+  "outcome_execution_authorized": false,
+  "instructions": "An independent reviewer must copy this template to a new evidence artifact, identify the exact candidate commit and contract SHA-256, set reviewer_is_implementation_writer=false, complete every confirmation, and set status=PASS and outcome_execution_authorized=true before the V2 runner will execute any 48-hour outcome. The implementation writer must not complete or approve this artifact."
+}

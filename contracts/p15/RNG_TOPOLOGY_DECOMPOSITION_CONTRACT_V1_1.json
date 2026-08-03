@@ -1,0 +1,2144 @@
+{
+  "artifact_type": "C13_RNG_TOPOLOGY_DECOMPOSITION_CONTRACT",
+  "contract_id": "UDC-20260802-C13-RNG-TOPOLOGY-DECOMPOSITION-V1.1",
+  "decision_id": "D-C13-05-RNG-SIDE-BRANCH-GRADIENT-REACHABILITY",
+  "version": 1,
+  "revision": 1,
+  "semantic_version": "1.1",
+  "status": "PROPOSED_EXACT_SUPERSEDING_DECISION_BYTES_AWAITING_EXPLICIT_USER_ADOPTION",
+  "classification_on_adoption": "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+  "binding_rule": "These consolidated v1.1 bytes become binding only when the project owner explicitly adopts the adjacent v1.1 contract SHA-256 and v1.1 KAT SHA-256. Adoption supersedes v1 as the current implementation/qualification binding while retaining v1 as provenance. Merely generating, reviewing, staging, or applying this decision-only artifact is not adoption.",
+  "scope": "RG-SW C13/P15 Stage-0 stochastic split, branch, and fusion topology on CPU MPI/OpenMP only, including the exact frozen setNewSegment side-branch gradient reachability correction.",
+  "claim_boundary": "Technical numerical/software realization only; not mentor approval, biological calibration, RG-SCI, predictive validation, a P15 science authorization, or C13 PASS.",
+  "artifact_sha256_binding": "The adjacent RNG_TOPOLOGY_DECOMPOSITION_CONTRACT_V1_1.sha256 is SHA-256 over these exact UTF-8 JSON bytes, including the final LF.",
+  "supersession": {
+    "supersedes_contract_path": "contracts/p15/RNG_TOPOLOGY_DECOMPOSITION_CONTRACT_V1.json",
+    "supersedes_contract_id": "UDC-20260802-C13-RNG-TOPOLOGY-DECOMPOSITION-V1",
+    "supersedes_contract_sha256": "059f067b94673838efba143c5a4615aaf79dcacc78a456317a81578daa37eba0",
+    "supersedes_kat_path": "contracts/p15/RNG_TOPOLOGY_DECOMPOSITION_KAT_V1.json",
+    "supersedes_kat_sha256": "ef47fa935b64671dd2f93e93640308b9620055587083f0c5c5a55aa1f95edcb7",
+    "relationship": "Full consolidated replacement. Every v1 binding is preserved except the side-branch gradient reachability, draw consumption, and associated qualification clauses enumerated in the adjacent v1-to-v1.1 changelog.",
+    "old_bytes_after_adoption": "Retained unchanged as superseded provenance; not used as the current implementation or qualification contract."
+  },
+  "decision_context": {
+    "trigger_decision": "D-C13-05-RNG-SIDE-BRANCH-GRADIENT-REACHABILITY",
+    "current_repository_head_user_reported": "421736bff65f59f360b56a8b4c8a7b95f1b29ed2",
+    "current_working_tree_clean_user_reported": true,
+    "product_src_tree_unchanged_user_reported": true,
+    "current_contract_and_kat_hashes_verified_user_reported": true,
+    "independently_checked_source_archive": "BMX-RG-SW-C07-product-full-0960214-20260802.zip",
+    "independently_checked_source_archive_sha256": "9402571b1a6c0cbff3edc2d13041b0c4bfd085c7b79371e5100fca329d9a0bd7",
+    "independently_checked_archive_head": "096021480271fde968eb7227e30affcaaa111232",
+    "current_head_bytes_supplied_for_independent_check": false,
+    "current_head_validation_boundary": "The current HEAD value and clean/src-unchanged state are user-reported because updated repository bytes were not supplied. The frozen chemistry-kernel behavior and hash were independently checked in the available bound source archive."
+  },
+  "source_context": {
+    "source_archive_name": "BMX-RG-SW-C07-product-full-0960214-20260802.zip",
+    "source_archive_sha256": "9402571b1a6c0cbff3edc2d13041b0c4bfd085c7b79371e5100fca329d9a0bd7",
+    "archive_head_commit": "096021480271fde968eb7227e30affcaaa111232",
+    "archive_head_tree": "68d77ac0b75734063e5a0313a4041c600bfee424",
+    "stage_input_commit": "7768fc92f683f68b0d282b69e45d079103fc847a",
+    "decision_freeze_commit": "e3eb56f3d02d64d2ab21efb4e3a435d36e59541d",
+    "deterministic_implementation_commit": "7cd952ec22172a023de25f84952263c896458730",
+    "clean_source_candidate_commit": "a475b3f968e17327f2ffe28d0d48a781d35e3e65",
+    "candidate_tree": "7adcbb63aa2a42f66e08ef1c0eab2636a688657d",
+    "candidate_source_tree": "dd10ce05a9d12a84244a3d3cf713ca9ab279e16b",
+    "candidate_executable_sha256": "57eb7cfdbf2e8cec705f65046f84220d8832278ed0ea3634efccdc513e97041b",
+    "observed_failure_seed_uint64": 2461941894568478670,
+    "observed_same_parent_legacy_pair": [
+      1,
+      0
+    ],
+    "observed_P0_child_legacy_pair": [
+      3,
+      0
+    ],
+    "observed_P1_child_legacy_pair": [
+      1,
+      1
+    ]
+  },
+  "frozen_bindings": {
+    "current_C13_binding_id": "UDC-20260802-C13-STAGE0-BINDINGS-V1",
+    "current_C13_binding_sha256": "c726cc575684e078d3c3359ececef28fde91daf5050aec273161b734710875d7",
+    "global_operator_order_id": "bmx-p10-global-order-v1",
+    "global_operator_order_sha256": "bb63c219a860687d91ce1acf06a667c9208abf026b32f18acfc64884bb696dd6",
+    "global_operator_order_changed": false,
+    "operator_slots": {
+      "O06": "split/branch topology",
+      "O08": "fusion predicate plus target split topology"
+    },
+    "chemistry_kernel_path": "src/chemistry/bmx_chem_K.H",
+    "chemistry_kernel_sha256": "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02",
+    "chemistry_kernel_changed": false,
+    "interaction_kernel_path": "src/chemistry/bmx_cell_interaction_K.H",
+    "interaction_kernel_input_sha256": "273c0c015f116f5397ebed750d206dbfbc00a3648340e38f0cff91af754a5e4f",
+    "topology_amount_contract_id": "bmx-p10-topology-event-v1",
+    "topology_amount_contract_sha256": "a6a5a8a8d299ee3e0cfc30f6d359d84ed13fb9872db7cf51bfb38777b800bdfb",
+    "numerical_preregistration_id": "UDC-20260802-C13-216H-NUMERICAL-V1",
+    "numerical_preregistration_sha256": "c4d8dd50bb9c4b2b945e80410d71c4b822a32b29a325d7bb9ca5a8ec53531182",
+    "pinned_AMReX_commit": "cbdc6580ee3d78cccdd37172e4ba077ee181f483",
+    "pinned_AMReX_tree": "fb714dc6e693c18f7c441d1d1febe4a5e8bf9ea6",
+    "input_split_source_sha256": "ab20f71ee4769f527cdc1a630583dc35665f51ef8ac9c9eac84bbf996203ac2d",
+    "input_fusion_source_sha256": "93f6d32ca80c30bb1c2a2b92f69be619d188f5a49512ac869b34da496aa8c228",
+    "input_seed_source_sha256": "81006aecf1fd4f0f3e63f0353c91de4df7041f0c43fd29af02cec69b5a019749"
+  },
+  "side_branch_gradient_reachability": {
+    "source_path": "src/chemistry/bmx_chem_K.H",
+    "source_file_sha256": "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02",
+    "setNewSegment_gradient_load_lines_in_bound_archive": "490-492",
+    "unconditional_zero_override_lines_in_bound_archive": "493-497",
+    "side_branch_gradient_norm_line_in_bound_archive": "820",
+    "side_branch_zero_gradient_sign_draw_lines_in_bound_archive": "831-839",
+    "frozen_operation_sequence": [
+      "Load gx, gy, gz from par_orig.",
+      "Execute the unconditional if (true) block and assign gx=0.0, gy=0.0, gz=0.0.",
+      "For SECOND_1 or SECOND_2, compute gn=sqrt(gx*gx+gy*gy+gz*gz).",
+      "Because gn==0.0, materialize the sign draw and choose +pi/4 iff u>0.5, otherwise -pi/4.",
+      "Then materialize rtheta and rphi in the unchanged frozen order."
+    ],
+    "effective_gradient_component_bits_hex": [
+      "0x0000000000000000",
+      "0x0000000000000000",
+      "0x0000000000000000"
+    ],
+    "effective_gradient_norm_bits_hex": "0x0000000000000000",
+    "qualified_reachable_cases": [
+      "gn==0.0"
+    ],
+    "qualified_unreachable_cases": [
+      "gn!=0.0"
+    ],
+    "accepted_side_branch_geometry_draw_ordinals": [
+      0,
+      1,
+      2
+    ],
+    "accepted_side_branch_geometry_draw_count": 3,
+    "accepted_side_branch_total_draw_count_including_predicate": 4,
+    "mandatory_sign_draw": "Event type 0x12 draw ordinal 0 exists for every accepted side branch.",
+    "runtime_fail_closed_rule": "If a P15-enabled frozen-equivalent side-branch path observes effective gn!=0.0 before sign selection, abort the complete O06 batch with C13_ABORT_SIDE_BRANCH_GRADIENT_REACHABILITY_DIVERGENCE before topology mutation or ledger-chain advancement.",
+    "behavior_change_boundary": "Removing, bypassing, parameterizing, or conditionally disabling the unconditional zero override; reading a nonzero effective gradient; or omitting sign draw ordinal 0 is a growth/topology behavior change and requires a new prospective decision with exact formulas and independent review."
+  },
+  "governing_invariants": [
+    "No MPI rank, physical owner, tile, grid, BoxArray, DistributionMap, thread, OpenMP schedule, pointer, allocation order, wall-clock value, or container iteration order appears in an RNG key, canonical candidate key, event ID, child identity, topology projection, or cumulative ledger hash.",
+    "O06 commits before O07 and O08 evaluates only from the post-O07 state. This contract fills stochastic behavior inside frozen O06/O08 and creates no operator slot or cross-slot arbitration.",
+    "Every successful O06 or O08 batch is evaluated from one immutable slot snapshot, globally conflict-preflighted, assigned identities canonically, and committed exactly once before either cumulative chain advances.",
+    "The P15-enabled topology path must not call amrex::Random, ParallelForRNG, ResetRandomSeed-derived streams, ParticleType::NextID, or current rank to determine any decision, geometry, event identity, or child identity.",
+    "The frozen setNewSegment sequence unconditionally assigns gx=gy=gz=+0.0 before the SECOND_1/SECOND_2 gradient norm is computed; therefore every qualified accepted side branch follows gn==0.0 and materializes geometry draw ordinals 0, 1, and 2. A gn!=0.0 side-branch path is unreachable and fails closed rather than being qualified.",
+    "Any inconsistency, duplicate, collision, exhaustion, missing state, mutated evidence anchor, invalid probability, or unqualified platform condition fails closed; v1.1 has no retry, fallback entropy, winner selection, or silent repair.",
+    "Feature-off behavior remains the inherited path and is outside this decomposition-independence claim."
+  ],
+  "rng_key": {
+    "schema_id": "bmx-c13-rng-key-v1",
+    "schema_version": 1,
+    "magic": {
+      "ascii_zero_padded_to_16": "BMXC13RNGKEYV1",
+      "hex": "424d58433133524e474b455956310000"
+    },
+    "layout": {
+      "size_bytes": 80,
+      "fields": [
+        {
+          "name": "magic",
+          "type": "bytes16",
+          "offset": 0,
+          "size": 16
+        },
+        {
+          "name": "key_schema_version",
+          "type": "uint16_be",
+          "offset": 16,
+          "size": 2
+        },
+        {
+          "name": "operator_slot",
+          "type": "uint8",
+          "offset": 18,
+          "size": 1
+        },
+        {
+          "name": "event_type",
+          "type": "uint8",
+          "offset": 19,
+          "size": 1
+        },
+        {
+          "name": "master_seed",
+          "type": "uint64_be",
+          "offset": 20,
+          "size": 8
+        },
+        {
+          "name": "seed_block",
+          "type": "uint64_be",
+          "offset": 28,
+          "size": 8
+        },
+        {
+          "name": "global_update_index",
+          "type": "uint64_be",
+          "offset": 36,
+          "size": 8
+        },
+        {
+          "name": "parent_logical_id",
+          "type": "uint64_be",
+          "offset": 44,
+          "size": 8
+        },
+        {
+          "name": "target_logical_id_or_zero",
+          "type": "uint64_be",
+          "offset": 52,
+          "size": 8
+        },
+        {
+          "name": "candidate_ordinal",
+          "type": "uint32_be",
+          "offset": 60,
+          "size": 4
+        },
+        {
+          "name": "draw_ordinal",
+          "type": "uint32_be",
+          "offset": 64,
+          "size": 4
+        },
+        {
+          "name": "retry_ordinal",
+          "type": "uint32_be",
+          "offset": 68,
+          "size": 4
+        },
+        {
+          "name": "key_flags_zero",
+          "type": "uint32_be",
+          "offset": 72,
+          "size": 4
+        },
+        {
+          "name": "reserved_zero",
+          "type": "uint32_be",
+          "offset": 76,
+          "size": 4
+        }
+      ]
+    },
+    "serialization": "Concatenate fields in listed offset order with no implicit padding. Every integer is unsigned and serialized most-significant byte first. key_flags_zero, reserved_zero, and retry_ordinal are exactly zero in v1.",
+    "operator_slot_enumeration": {
+      "6": "O06_SPLIT_TOPOLOGY",
+      "8": "O08_FUSION_TOPOLOGY"
+    },
+    "event_type_enumeration": {
+      "0x01": "SPLIT_KIND_PREDICATE",
+      "0x02": "SIDE_BRANCH_PREDICATE",
+      "0x10": "YEAST_SPLIT_GEOMETRY",
+      "0x11": "TIP_EXTENSION_GEOMETRY",
+      "0x12": "SIDE_BRANCH_GEOMETRY",
+      "0x13": "TIP_BIFURCATION_GEOMETRY",
+      "0x20": "FUSION_PREDICATE",
+      "0x21": "FUSION_GEOMETRY_RESERVED_ZERO_DRAWS"
+    },
+    "field_rules": {
+      "master_seed": "Exact unsigned 64-bit bmx.seed. No rank offset, signed conversion, truncation, or seed scrambling.",
+      "seed_block": "Exact unsigned 64-bit p15 seed block. The C13 Stage-0 v1 qualified configuration requires 0. A nonzero value denotes a different unqualified stochastic realization.",
+      "global_update_index": "Exact main-loop nstep supplied to bmx::Evolve before this update; first evolved update is 0. Physical simulation time is deliberately excluded from the key and is recorded as binary64 bits in ledgers.",
+      "parent_logical_id": "Stable nonzero logical ID defined by decomposition_independent_identity.",
+      "target_logical_id_or_zero": "Stable target logical ID for fusion predicates; exactly zero for all O06 keys and for event domains without a target.",
+      "candidate_ordinal": "O06 is exactly 0. O08 is the zero-based index in the parent-specific canonical fusion target list defined below.",
+      "draw_ordinal": "Fixed semantic position within an event domain. Conditional omissions do not renumber later ordinals.",
+      "retry_ordinal": "Exactly 0. A nonzero value is C13_ABORT_RNG_RETRY_NOT_PERMITTED."
+    }
+  },
+  "key_to_random_algorithm": {
+    "algorithm_id": "bmx-sha256-first64-u53-v1",
+    "algorithm_version": 1,
+    "hash": "SHA-256 exactly as specified by NIST FIPS 180-4. No HMAC, provider salt, text encoding, pre-hash truncation, or library-specific seed expansion.",
+    "domain_separation_constants": {
+      "rng_draw": {
+        "ascii_with_terminal_nul": "BMX-C13-RNG-DRAW-V1\\0",
+        "length_bytes": 20,
+        "hex": "424d582d4331332d524e472d445241572d563100"
+      },
+      "rng_candidates": {
+        "ascii_with_terminal_nul": "BMX-C13-RNG-CANDIDATES-V1\\0",
+        "length_bytes": 26,
+        "hex": "424d582d4331332d524e472d43414e444944415445532d563100"
+      },
+      "rng_records": {
+        "ascii_with_terminal_nul": "BMX-C13-RNG-RECORDS-V1\\0",
+        "length_bytes": 23,
+        "hex": "424d582d4331332d524e472d5245434f5244532d563100"
+      },
+      "rng_chain_init": {
+        "ascii_with_terminal_nul": "BMX-C13-RNG-CHAIN-INIT-V1\\0",
+        "length_bytes": 26,
+        "hex": "424d582d4331332d524e472d434841494e2d494e49542d563100"
+      },
+      "rng_chain_step": {
+        "ascii_with_terminal_nul": "BMX-C13-RNG-CHAIN-STEP-V1\\0",
+        "length_bytes": 26,
+        "hex": "424d582d4331332d524e472d434841494e2d535445502d563100"
+      },
+      "topology_candidates": {
+        "ascii_with_terminal_nul": "BMX-C13-TOPO-CANDIDATES-V1\\0",
+        "length_bytes": 27,
+        "hex": "424d582d4331332d544f504f2d43414e444944415445532d563100"
+      },
+      "topology_records": {
+        "ascii_with_terminal_nul": "BMX-C13-TOPO-RECORDS-V1\\0",
+        "length_bytes": 24,
+        "hex": "424d582d4331332d544f504f2d5245434f5244532d563100"
+      },
+      "topology_event_id": {
+        "ascii_with_terminal_nul": "BMX-C13-TOPO-EVENT-ID-V1\\0",
+        "length_bytes": 25,
+        "hex": "424d582d4331332d544f504f2d4556454e542d49442d563100"
+      },
+      "topology_projection": {
+        "ascii_with_terminal_nul": "BMX-C13-TOPO-PROJECTION-V1\\0",
+        "length_bytes": 27,
+        "hex": "424d582d4331332d544f504f2d50524f4a454354494f4e2d563100"
+      },
+      "topology_event_rng_subset": {
+        "ascii_with_terminal_nul": "BMX-C13-TOPO-EVENT-RNG-SUBSET-V1\\0",
+        "length_bytes": 33,
+        "hex": "424d582d4331332d544f504f2d4556454e542d524e472d5355425345542d563100"
+      },
+      "topology_chain_init": {
+        "ascii_with_terminal_nul": "BMX-C13-TOPO-CHAIN-INIT-V1\\0",
+        "length_bytes": 27,
+        "hex": "424d582d4331332d544f504f2d434841494e2d494e49542d563100"
+      },
+      "topology_chain_step": {
+        "ascii_with_terminal_nul": "BMX-C13-TOPO-CHAIN-STEP-V1\\0",
+        "length_bytes": 27,
+        "hex": "424d582d4331332d544f504f2d434841494e2d535445502d563100"
+      }
+    },
+    "draw_preimage": "rng_draw domain bytes followed immediately by the exact 80-byte RNG key.",
+    "digest": "SHA256(draw_preimage), all 32 bytes retained in evidence.",
+    "raw_uint64": "Interpret digest bytes 0..7 as one unsigned big-endian integer x. Digest bytes 8..31 are not reused for another draw.",
+    "integer_to_binary64": "m = x >> 11; u = ldexp(static_cast<double>(m), -53). Because m has at most 53 bits, the conversion and scaling are exact binary64 operations.",
+    "uniform_interval": "[0,1): zero is possible; one is impossible.",
+    "probability_validation": "Every probability threshold is a finite IEEE-754 binary64 value in [0,1]. Otherwise abort before key materialization; no clamping.",
+    "comparison_conventions": {
+      "tip_bifurcation": "Create two children iff n_bnds > 0 and u <= split_prob; otherwise one child. This preserves frozen checkSplit branch x > split_prob, including equality.",
+      "side_branch": "Accept iff u < brnch_prob.",
+      "fusion": "Accept iff u < fuse_prob.",
+      "side_branch_sign": "Use +pi/4 iff u > 0.5; otherwise -pi/4, including equality."
+    },
+    "rejection_retry": "None. There is no rejection sampling, rehash loop, alternate digest lane, fallback PRNG, collision retry, or event retry.",
+    "binary64_constants": {
+      "pi_bits_hex": "0x400921fb54442d18",
+      "two_pi_bits_hex": "0x401921fb54442d18",
+      "one_tenth_bits_hex": "0x3fb999999999999a",
+      "one_half_bits_hex": "0x3fe0000000000000",
+      "fusion_broadphase_small_number_bits_hex": "0x3cd203af9ee75616",
+      "fusion_broadphase_small_number_hexfloat": "0x1.203af9ee75616p-50",
+      "operation_order": "Use the frozen expression order: 2.0*u-1.0; 0.1*u; (2.0*pi)*u; and interaction_distance-small_number before squaring. FMA contraction is prohibited."
+    }
+  },
+  "decomposition_independent_identity": {
+    "identity_pair": "(AMReX id, AMReX cpu field reinterpreted as a stable namespace, not the current owner rank)",
+    "storage_constraint": "BMX relationship fields store id and cpu as signed 32-bit int. Therefore v1 restricts the AMReX id component to 1..2147483647 even though pinned AMReX stores a wider particle id.",
+    "id_radix": 2147483647,
+    "cpu_namespace_min": 0,
+    "cpu_namespace_max": 16777215,
+    "logical_id_formula": "logical_id = uint64(cpu_namespace) * 2147483647 + uint64(amrex_id)",
+    "inverse_formula": {
+      "cpu_namespace": "(logical_id - 1) / 2147483647 using unsigned integer division",
+      "amrex_id": "((logical_id - 1) % 2147483647) + 1"
+    },
+    "logical_id_min": 1,
+    "logical_id_max": 36028797002186752,
+    "fresh_run_initialization": "After initial particle creation and redistribution but before the first O06, gather all live real particles; require p.id()==idata(id), p.cpu()==idata(cpu), positive in-range pairs, and global uniqueness. Convert each pair to logical_id and set next_logical_id=max(logical_id)+1. The current Stage-0 ASCII initialization is rank-0-created; its initial namespace remains 0. Any other initializer must independently prove identical initial logical IDs across P0-P5 or abort.",
+    "allocation": "After a complete accepted same-slot event plan is globally sorted and conflict-free, allocate consecutive logical IDs beginning at next_logical_id, in canonical event order and then child ordinal. Advance next_logical_id only after the complete slot batch commits.",
+    "child_counts": {
+      "YEAST_SPLIT": 1,
+      "TIP_EXTENSION_SPLIT": 1,
+      "SIDE_BRANCH": 1,
+      "TIP_BIFURCATION": 2,
+      "FUSION_TARGET_SPLIT": 1
+    },
+    "write_rule": "Set each child p.id()/p.cpu() from the inverse formula and set BMX idata(id)/idata(cpu) to the same values before insertion. The rank that inserts or later owns the child is not part of its identity.",
+    "physical_insertion_owner": "O06 children are inserted by the slot-snapshot real owner of the parent. The O08 target-split child is inserted by the slot-snapshot real owner of the target. This affects location only and is excluded from canonical bytes.",
+    "collision_rule": "Before mutation, compare every allocated pair with every live real-particle pair and every pending child. Any duplicate or collision aborts the complete slot batch; no hole skip, rehash, namespace substitution, or retry.",
+    "exhaustion_rule": "If the requested child range exceeds logical_id_max, abort the complete batch before mutation with C13_ABORT_CHILD_ID_EXHAUSTED.",
+    "deletion_and_restart": "Logical IDs are never reused. next_logical_id is monotonic and checkpointed; holes remain permanently unused. On restart next_logical_id must exceed every live logical ID.",
+    "amrex_nextid_compatibility": {
+      "sentinel": 549755813885,
+      "source_meaning": "Pinned AMReX LastParticleID (GhostParticleID-2).",
+      "rule": "After initial logical-ID capture and on every restart, set ParticleType::NextID(sentinel) on every rank. This permits pinned AMReX checkpoint bookkeeping to read and restore a valid value but is never an allocator for P15 topology.",
+      "guard": "Static call-graph checks and runtime child-id checks must prove that no post-activation P15 topology path obtains an id from NextID. A created particle id component above 2147483647 or any p.id()/idata(id) mismatch aborts."
+    }
+  },
+  "canonical_candidates": {
+    "slot_snapshots": {
+      "O06": "After O05 and any required redistribution, before any O06 mutation.",
+      "O08": "After O07 completes and any required neighbor refresh, before any O08 mutation.",
+      "immutability": "All predicate, geometry, conflict, amount, and identity planning reads only the corresponding immutable snapshot. Ghost copies must match the unique real record in every projected field."
+    },
+    "periodic_displacement": "For each coordinate d, raw=x_parent-x_target. If nonperiodic, delta=raw. If periodic with length L, delta=raw-L*floor(raw/L+0.5), producing [-L/2,L/2); an exact +L/2 tie maps to -L/2. Use this delta for center distance and frozen fusion geometry.",
+    "O06": {
+      "candidate_set": "Exactly one descriptor for every live real particle in the O06 snapshot.",
+      "candidate_order": "(parent_logical_id ascending)",
+      "candidate_ordinal": 0,
+      "deterministic_binding": "Cell type, position, radius, length, volume, bond count, gradient, and geometry formulas are byte-for-byte equivalent to frozen checkSplit, setNewCell, setNewSegment, and setNewSegments in the frozen chemistry kernel; only explicit contract draws and child identities replace inherited RNG/NextID inputs."
+    },
+    "O08": {
+      "parent_set": "Every live FUNGI particle with position TIP and fuse_flag==0, sorted by parent logical_id.",
+      "mathematical_target_set": "For a parent, every other live FUNGI particle whose position is not TIP and whose canonical center displacement satisfies distance_squared <= (maxInteractionDistance(parent,target,xpar)-small_number)^2. The exact maxInteractionDistance implementation is bound by interaction_kernel_input_sha256; small_number is the binary64 constant above.",
+      "accelerator_rule": "AMReX neighbor lists or a spatial index may accelerate enumeration but may not define membership. The resulting unique target logical-ID set must equal the mathematical target set; missing, duplicate, or inconsistent target records abort.",
+      "target_order": "Unsigned target_logical_id ascending.",
+      "candidate_ordinal": "Zero-based index in target_order; more than 4294967296 candidates for one parent aborts before any draw.",
+      "deterministic_binding": "After the center broad phase, the bonded-overlap test, endpoint construction, evaluateMinimumDistance, strict 0<tau_target<1, closest-tip-end test, r<fuse_length, tau_split, fix_site, fuse_tip, bond writes, and deterministic target split reproduce the frozen source formulas exactly. Only the fusion probability draw and child identity are replaced."
+    },
+    "candidate_descriptor_layout": {
+      "size_bytes": 48,
+      "fields": [
+        {
+          "name": "global_update_index",
+          "type": "uint64_be",
+          "offset": 0,
+          "size": 8
+        },
+        {
+          "name": "operator_slot",
+          "type": "uint8",
+          "offset": 8,
+          "size": 1
+        },
+        {
+          "name": "candidate_kind",
+          "type": "uint8",
+          "offset": 9,
+          "size": 1
+        },
+        {
+          "name": "deterministic_status",
+          "type": "uint16_be",
+          "offset": 10,
+          "size": 2
+        },
+        {
+          "name": "parent_logical_id",
+          "type": "uint64_be",
+          "offset": 12,
+          "size": 8
+        },
+        {
+          "name": "target_logical_id_or_zero",
+          "type": "uint64_be",
+          "offset": 20,
+          "size": 8
+        },
+        {
+          "name": "candidate_ordinal",
+          "type": "uint32_be",
+          "offset": 28,
+          "size": 4
+        },
+        {
+          "name": "precondition_mask",
+          "type": "uint64_be",
+          "offset": 32,
+          "size": 8
+        },
+        {
+          "name": "resolved_event_type_or_zero",
+          "type": "uint8",
+          "offset": 40,
+          "size": 1
+        },
+        {
+          "name": "materialized_draw_count",
+          "type": "uint8",
+          "offset": 41,
+          "size": 1
+        },
+        {
+          "name": "reserved_zero_u16",
+          "type": "uint16_be",
+          "offset": 42,
+          "size": 2
+        },
+        {
+          "name": "reserved_zero_u32",
+          "type": "uint32_be",
+          "offset": 44,
+          "size": 4
+        }
+      ]
+    },
+    "candidate_field_enumerations": {
+      "candidate_kind": {
+        "1": "O06_YEAST_SPLIT",
+        "2": "O06_FUNGI_TIP_SPLIT_KIND",
+        "3": "O06_FUNGI_SIDE_BRANCH",
+        "4": "O06_NON_TOPOLOGY_PARTICLE",
+        "5": "O08_FUSION_PAIR"
+      },
+      "deterministic_status": {
+        "0": "NO_EVENT_NO_DRAW",
+        "1": "EVENT_SELECTED_DETERMINISTICALLY",
+        "2": "EVENT_SELECTED_AFTER_STOCHASTIC_DRAW",
+        "3": "NO_EVENT_AFTER_STOCHASTIC_REJECTION",
+        "4": "DRAW_MATERIALIZED_THEN_DISCARDED_NO_EVENT",
+        "5": "EVENT_SELECTED_WITH_DRAW_DETERMINISTICALLY_OVERRIDDEN"
+      },
+      "precondition_mask_bits": {
+        "0": "LIVE_REAL_PARTICLE",
+        "1": "CELL_TYPE_YEAST",
+        "2": "CELL_TYPE_FUNGI",
+        "3": "POSITION_TIP",
+        "4": "POSITION_SECOND_1_OR_SECOND_2",
+        "5": "RADIUS_GE_MAX_RAD",
+        "6": "LENGTH_GE_MAX_LEN",
+        "7": "VOLUME_GT_MAX_VOL",
+        "8": "N_BNDS_GT_ZERO",
+        "9": "STRUCTURAL_FUSION_TARGET",
+        "10": "CENTER_DISTANCE_WITHIN_FROZEN_INTERACTION_BOUND",
+        "11": "FROZEN_BONDED_TEST_PASSED",
+        "12": "TAU_TARGET_STRICTLY_INSIDE",
+        "13": "CLOSEST_TIP_POINT_IS_GROWTH_END",
+        "14": "DISTANCE_LT_FUSE_LENGTH",
+        "15": "FROZEN_SETNEWSEGMENT_EFFECTIVE_GRADIENT_NORM_EXACTLY_ZERO",
+        "16": "PREDICATE_DRAW_MATERIALIZED",
+        "17": "GEOMETRY_DRAW_SET_MATERIALIZED",
+        "18": "EVENT_SELECTED",
+        "19": "EVENT_COMMITTED_IN_SUCCESSFUL_BATCH"
+      },
+      "resolved_event_type_or_zero": "Zero for no event; otherwise topology-event values 1..5.",
+      "materialized_draw_count": "Number of authoritative RNG records for this candidate, including rejected and discarded draws; 0..5 in v1.1. An accepted side branch has exactly 4: one predicate plus geometry ordinals 0, 1, and 2."
+    },
+    "descriptor_order_and_digest": "All ranks gather descriptors, reject duplicates/inconsistencies, and sort by (update,slot,parent,target,candidate_ordinal). Each ledger hashes the same 48-byte descriptor stream under its ledger-specific candidate domain. Raw descriptors are mandatory in failed-attempt diagnostics but normal successful evidence may retain only count plus digest."
+  },
+  "draw_schedule": [
+    {
+      "path": "O06 YEAST split",
+      "predicate": "Select one-child YEAST_SPLIT iff vol > max_vol, strictly. Equality does not split. No probability draw exists.",
+      "geometry_event_type": "0x10",
+      "draws": [
+        {
+          "ordinal": 0,
+          "use": "z=2.0*u-1.0; theta=acos(z)"
+        },
+        {
+          "ordinal": 1,
+          "use": "phi=(2.0*pi)*u"
+        }
+      ],
+      "consumption": "Materialize both geometry draws only after strict vol>max_vol selection. Otherwise zero draws."
+    },
+    {
+      "path": "O06 FUNGI TIP split-kind predicate",
+      "event_type": "0x01",
+      "draws": [
+        {
+          "ordinal": 0,
+          "use": "split-kind predicate"
+        }
+      ],
+      "consumption": "Materialize exactly when position==TIP and radius>=max_rad, matching the frozen random-call boundary. If c_length<max_len, record DRAWN_DISCARDED_LENGTH_INELIGIBLE and create no event. If c_length>=max_len, select two children iff n_bnds>0 and u<=split_prob; otherwise one child. The draw exists even when n_bnds==0 and is deterministically overridden to one child."
+    },
+    {
+      "path": "O06 accepted FUNGI TIP one-child geometry",
+      "event_type": "0x11",
+      "draws": [
+        {
+          "ordinal": 0,
+          "use": "rtheta=0.1*u"
+        },
+        {
+          "ordinal": 1,
+          "use": "rphi=(2.0*pi)*u"
+        }
+      ],
+      "consumption": "Both draws only after one-child event selection."
+    },
+    {
+      "path": "O06 FUNGI SECOND_1/SECOND_2 side-branch predicate",
+      "event_type": "0x02",
+      "draws": [
+        {
+          "ordinal": 0,
+          "use": "accept iff u<brnch_prob"
+        }
+      ],
+      "consumption": "Exactly one predicate draw for every such particle. A stochastic rejection consumes that draw and no geometry draws."
+    },
+    {
+      "path": "O06 accepted side-branch geometry",
+      "event_type": "0x12",
+      "draws": [
+        {
+          "ordinal": 0,
+          "use": "Always for every accepted side branch: +pi/4 iff u>0.5 else -pi/4, including equality in the negative arm"
+        },
+        {
+          "ordinal": 1,
+          "use": "rtheta=0.1*u, always for every accepted side branch"
+        },
+        {
+          "ordinal": 2,
+          "use": "rphi=(2.0*pi)*u, always for every accepted side branch"
+        }
+      ],
+      "consumption": "Materialize exactly all three geometry draws, in ordinal order 0, 1, 2, after side-branch predicate acceptance. The frozen unconditional gradient zeroing makes gn==0.0 mandatory. No accepted side branch may omit ordinal 0, and no gn!=0.0 schedule exists in v1.1.",
+      "reachability_guard": "Effective gn must have binary64 bits 0x0000000000000000 immediately before the sign branch; otherwise C13_ABORT_SIDE_BRANCH_GRADIENT_REACHABILITY_DIVERGENCE."
+    },
+    {
+      "path": "O06 accepted FUNGI TIP two-child bifurcation geometry",
+      "event_type": "0x13",
+      "draws": [
+        {
+          "ordinal": 0,
+          "use": "child0 rtheta=0.1*u"
+        },
+        {
+          "ordinal": 1,
+          "use": "child0 rphi=(2.0*pi)*u"
+        },
+        {
+          "ordinal": 2,
+          "use": "child1 rtheta=0.1*u"
+        },
+        {
+          "ordinal": 3,
+          "use": "child1 rphi=(2.0*pi)*u"
+        }
+      ],
+      "consumption": "All four draws only after bifurcation selection."
+    },
+    {
+      "path": "O08 fusion predicate",
+      "event_type": "0x20",
+      "draws": [
+        {
+          "ordinal": 0,
+          "use": "accept iff u<fuse_prob"
+        }
+      ],
+      "consumption": "Materialize only after structural parent/target tests, canonical center broad phase, frozen bonded test, strict 0<tau_target<1, closest-tip-growth-end test, and r<fuse_length all pass. A stochastic rejection consumes exactly this draw. Earlier failures consume zero draws."
+    },
+    {
+      "path": "O08 fusion geometry",
+      "event_type": "0x21",
+      "draws": [],
+      "consumption": "Exactly zero stochastic draws. tau_split, fix_site, fuse_tip, bond writes, and target split geometry are deterministic from the immutable O08 snapshot. Any future stochastic fusion geometry requires prospective contract v2 review."
+    }
+  ],
+  "canonical_event_processing": {
+    "candidate_evaluation_owner": "The unique current real-particle owner of the parent in the slot snapshot evaluates that parent and its candidates exactly once. This rank may differ across decompositions and is excluded from keys and canonical ledgers. Duplicate or missing real ownership aborts.",
+    "collection": "Candidate descriptors, authoritative draw records, and accepted event plans are globally gathered. Every rank verifies counts and digests. Rank 0 sorts and broadcasts the immutable canonical commit plan and is the sole authoritative ledger writer; any byte-identical implementation is conforming.",
+    "event_order": {
+      "slot_precedence": "O06 before O08 only through frozen global order; no combined cross-slot queue.",
+      "O06_sort_key": "(parent_logical_id ascending,event_priority ascending), where YEAST_SPLIT=0, TIP_EXTENSION_SPLIT=1, TIP_BIFURCATION=2, SIDE_BRANCH=3.",
+      "O08_sort_key": "(parent_tip_logical_id ascending,target_logical_id ascending,candidate_ordinal ascending).",
+      "child_order": "Child ordinal 0, then 1."
+    },
+    "tie_breaks": "Duplicate identity pairs, descriptors, RNG keys, event order keys, or inconsistent equal-key records hard-abort. Rank, arrival order, physical distance ties, and container order never select a winner.",
+    "participant_closure": "Use the P10 closure: every directly mutated predecessor/destination plus every bond endpoint whose relationship is read or written. Sort and deduplicate logical IDs and canonical bond keys.",
+    "same_slot_conflict": "If accepted events in the same slot share any participant, bond, or destination, abort the complete slot batch before topology mutation. Do not choose first, smallest, nearest, or highest-probability events and do not retry.",
+    "specific_conflicts": [
+      "More than one accepted target for one fusion tip aborts O08.",
+      "More than one accepted tip for one target aborts O08.",
+      "Any overlapping split/branch participant closure aborts O06.",
+      "Any duplicate pending child or event identity aborts the slot."
+    ],
+    "cross_slot_rule": "O06 fully commits, then O07 executes, then O08 snapshots. An O08 event may involve an O06-created child visible in the O08 snapshot. There is no rollback or arbitration across slots.",
+    "atomic_fusion": "The fusion predicate, tip mutation, target mutation, D/E/F amount preflight/partition, relationship remap, and target split child are one O08 event. No part commits unless the complete event preflights.",
+    "distributed_commit": "Each current real owner applies only plan entries for particles it owns; the designated physical insertion owner inserts each child. Before chain advancement, MPI reductions prove exactly one application of every planned existing-particle mutation and child and zero unplanned applications.",
+    "failed_attempts": "A conflict or precommit fault may write a separate nonauthoritative FAILED_ATTEMPT artifact containing raw descriptors/draws/plans, but it allocates no IDs, appends no success ledger batch, advances no chain, mutates no topology, and permits no checkpoint."
+  },
+  "rng_and_topology_ledgers": {
+    "storage_policy": "Both raw authoritative records and digests are mandatory. Authoritative files are fixed-layout big-endian binary. A deterministic JSONL mirror is mandatory for review but nonauthoritative. Physical-rank owner traces are separate and excluded from all canonical hashes.",
+    "paths": {
+      "rng_binary": "rng_topology/RNG_DRAW_LEDGER_V1.bin",
+      "rng_jsonl": "rng_topology/RNG_DRAW_LEDGER_V1.jsonl",
+      "topology_binary": "rng_topology/TOPOLOGY_EVENT_LEDGER_V1.bin",
+      "topology_jsonl": "rng_topology/TOPOLOGY_EVENT_LEDGER_V1.jsonl",
+      "execution_trace": "rng_topology/EXECUTION_OWNER_TRACE_NONCANONICAL.jsonl"
+    },
+    "magic_constants": {
+      "rng_file": {
+        "ascii_zero_padded_to_16": "BMXC13RNGLEDGV1",
+        "hex": "424d58433133524e474c454447563100"
+      },
+      "topology_file": {
+        "ascii_zero_padded_to_16": "BMXC13TOPLEDGV1",
+        "hex": "424d58433133544f504c454447563100"
+      },
+      "batch": {
+        "ascii_zero_padded_to_16": "BMXC13BATCHV1",
+        "hex": "424d5843313342415443485631000000"
+      },
+      "state": {
+        "ascii_zero_padded_to_16": "BMXC13RTSTATEV1",
+        "hex": "424d5843313352545354415445563100"
+      },
+      "rng_record_hex": "524e4731",
+      "topology_record_hex": "544f5031"
+    },
+    "binary_file_grammar": "file_header128 followed by zero or more repetitions of batch_header192 followed immediately by record_count fixed-size records. RNG records are 208 bytes; topology records are 384 bytes. There is no footer and no implicit alignment padding.",
+    "jsonl_grammar": "UTF-8 without BOM; LF line endings; one compact JSON object per line; keys appear in binary field order; separators are comma and colon with no extra whitespace; non-ASCII is escaped; uint64 values are decimal strings; signed int32 values are JSON integers; byte arrays and digests are lowercase hex; binary64 fields are 0x plus 16 lowercase hex digits. Line 1 mirrors the file header, each batch header is followed by its records.",
+    "ledger_kind_enumeration": {
+      "1": "RNG",
+      "2": "TOPOLOGY"
+    },
+    "layouts": {
+      "file_header": {
+        "size_bytes": 128,
+        "fields": [
+          {
+            "name": "magic",
+            "type": "bytes16",
+            "offset": 0,
+            "size": 16
+          },
+          {
+            "name": "file_schema_version",
+            "type": "uint16_be",
+            "offset": 16,
+            "size": 2
+          },
+          {
+            "name": "ledger_kind",
+            "type": "uint8",
+            "offset": 18,
+            "size": 1
+          },
+          {
+            "name": "flags",
+            "type": "uint8",
+            "offset": 19,
+            "size": 1
+          },
+          {
+            "name": "contract_sha256",
+            "type": "bytes32",
+            "offset": 20,
+            "size": 32
+          },
+          {
+            "name": "initial_network_sha256",
+            "type": "bytes32",
+            "offset": 52,
+            "size": 32
+          },
+          {
+            "name": "generated_configuration_sha256",
+            "type": "bytes32",
+            "offset": 84,
+            "size": 32
+          },
+          {
+            "name": "segment_start_update",
+            "type": "uint64_be",
+            "offset": 116,
+            "size": 8
+          },
+          {
+            "name": "reserved_zero",
+            "type": "uint32_be",
+            "offset": 124,
+            "size": 4
+          }
+        ]
+      },
+      "batch_header": {
+        "size_bytes": 192,
+        "fields": [
+          {
+            "name": "magic",
+            "type": "bytes16",
+            "offset": 0,
+            "size": 16
+          },
+          {
+            "name": "batch_schema_version",
+            "type": "uint16_be",
+            "offset": 16,
+            "size": 2
+          },
+          {
+            "name": "ledger_kind",
+            "type": "uint8",
+            "offset": 18,
+            "size": 1
+          },
+          {
+            "name": "operator_slot",
+            "type": "uint8",
+            "offset": 19,
+            "size": 1
+          },
+          {
+            "name": "global_update_index",
+            "type": "uint64_be",
+            "offset": 20,
+            "size": 8
+          },
+          {
+            "name": "time_before_binary64_bits",
+            "type": "uint64_be",
+            "offset": 28,
+            "size": 8
+          },
+          {
+            "name": "candidate_count",
+            "type": "uint64_be",
+            "offset": 36,
+            "size": 8
+          },
+          {
+            "name": "candidate_digest",
+            "type": "bytes32",
+            "offset": 44,
+            "size": 32
+          },
+          {
+            "name": "record_count",
+            "type": "uint64_be",
+            "offset": 76,
+            "size": 8
+          },
+          {
+            "name": "records_digest",
+            "type": "bytes32",
+            "offset": 84,
+            "size": 32
+          },
+          {
+            "name": "previous_cumulative_chain",
+            "type": "bytes32",
+            "offset": 116,
+            "size": 32
+          },
+          {
+            "name": "new_cumulative_chain",
+            "type": "bytes32",
+            "offset": 148,
+            "size": 32
+          },
+          {
+            "name": "cumulative_record_count_after_batch",
+            "type": "uint64_be",
+            "offset": 180,
+            "size": 8
+          },
+          {
+            "name": "reserved_zero",
+            "type": "uint32_be",
+            "offset": 188,
+            "size": 4
+          }
+        ]
+      },
+      "candidate_descriptor": {
+        "size_bytes": 48,
+        "fields": [
+          {
+            "name": "global_update_index",
+            "type": "uint64_be",
+            "offset": 0,
+            "size": 8
+          },
+          {
+            "name": "operator_slot",
+            "type": "uint8",
+            "offset": 8,
+            "size": 1
+          },
+          {
+            "name": "candidate_kind",
+            "type": "uint8",
+            "offset": 9,
+            "size": 1
+          },
+          {
+            "name": "deterministic_status",
+            "type": "uint16_be",
+            "offset": 10,
+            "size": 2
+          },
+          {
+            "name": "parent_logical_id",
+            "type": "uint64_be",
+            "offset": 12,
+            "size": 8
+          },
+          {
+            "name": "target_logical_id_or_zero",
+            "type": "uint64_be",
+            "offset": 20,
+            "size": 8
+          },
+          {
+            "name": "candidate_ordinal",
+            "type": "uint32_be",
+            "offset": 28,
+            "size": 4
+          },
+          {
+            "name": "precondition_mask",
+            "type": "uint64_be",
+            "offset": 32,
+            "size": 8
+          },
+          {
+            "name": "resolved_event_type_or_zero",
+            "type": "uint8",
+            "offset": 40,
+            "size": 1
+          },
+          {
+            "name": "materialized_draw_count",
+            "type": "uint8",
+            "offset": 41,
+            "size": 1
+          },
+          {
+            "name": "reserved_zero_u16",
+            "type": "uint16_be",
+            "offset": 42,
+            "size": 2
+          },
+          {
+            "name": "reserved_zero_u32",
+            "type": "uint32_be",
+            "offset": 44,
+            "size": 4
+          }
+        ]
+      },
+      "rng_draw_record": {
+        "size_bytes": 208,
+        "fields": [
+          {
+            "name": "magic",
+            "type": "bytes4",
+            "offset": 0,
+            "size": 4
+          },
+          {
+            "name": "record_schema_version",
+            "type": "uint16_be",
+            "offset": 4,
+            "size": 2
+          },
+          {
+            "name": "event_type",
+            "type": "uint8",
+            "offset": 6,
+            "size": 1
+          },
+          {
+            "name": "operator_slot",
+            "type": "uint8",
+            "offset": 7,
+            "size": 1
+          },
+          {
+            "name": "global_update_index",
+            "type": "uint64_be",
+            "offset": 8,
+            "size": 8
+          },
+          {
+            "name": "time_before_binary64_bits",
+            "type": "uint64_be",
+            "offset": 16,
+            "size": 8
+          },
+          {
+            "name": "parent_logical_id",
+            "type": "uint64_be",
+            "offset": 24,
+            "size": 8
+          },
+          {
+            "name": "target_logical_id_or_zero",
+            "type": "uint64_be",
+            "offset": 32,
+            "size": 8
+          },
+          {
+            "name": "candidate_ordinal",
+            "type": "uint32_be",
+            "offset": 40,
+            "size": 4
+          },
+          {
+            "name": "draw_ordinal",
+            "type": "uint32_be",
+            "offset": 44,
+            "size": 4
+          },
+          {
+            "name": "retry_ordinal",
+            "type": "uint32_be",
+            "offset": 48,
+            "size": 4
+          },
+          {
+            "name": "use_code",
+            "type": "uint16_be",
+            "offset": 52,
+            "size": 2
+          },
+          {
+            "name": "draw_status",
+            "type": "uint8",
+            "offset": 54,
+            "size": 1
+          },
+          {
+            "name": "decision_code",
+            "type": "uint8",
+            "offset": 55,
+            "size": 1
+          },
+          {
+            "name": "threshold_binary64_bits_or_zero",
+            "type": "uint64_be",
+            "offset": 56,
+            "size": 8
+          },
+          {
+            "name": "raw_key",
+            "type": "bytes80",
+            "offset": 64,
+            "size": 80
+          },
+          {
+            "name": "sha256_digest",
+            "type": "bytes32",
+            "offset": 144,
+            "size": 32
+          },
+          {
+            "name": "raw_uint64",
+            "type": "uint64_be",
+            "offset": 176,
+            "size": 8
+          },
+          {
+            "name": "uniform_binary64_bits",
+            "type": "uint64_be",
+            "offset": 184,
+            "size": 8
+          },
+          {
+            "name": "event_plan_ordinal_or_uint64_max",
+            "type": "uint64_be",
+            "offset": 192,
+            "size": 8
+          },
+          {
+            "name": "reserved_zero",
+            "type": "uint64_be",
+            "offset": 200,
+            "size": 8
+          }
+        ]
+      },
+      "topology_event_record": {
+        "size_bytes": 384,
+        "fields": [
+          {
+            "name": "magic",
+            "type": "bytes4",
+            "offset": 0,
+            "size": 4
+          },
+          {
+            "name": "record_schema_version",
+            "type": "uint16_be",
+            "offset": 4,
+            "size": 2
+          },
+          {
+            "name": "event_type",
+            "type": "uint8",
+            "offset": 6,
+            "size": 1
+          },
+          {
+            "name": "operator_slot",
+            "type": "uint8",
+            "offset": 7,
+            "size": 1
+          },
+          {
+            "name": "global_update_index",
+            "type": "uint64_be",
+            "offset": 8,
+            "size": 8
+          },
+          {
+            "name": "time_before_binary64_bits",
+            "type": "uint64_be",
+            "offset": 16,
+            "size": 8
+          },
+          {
+            "name": "event_ordinal",
+            "type": "uint64_be",
+            "offset": 24,
+            "size": 8
+          },
+          {
+            "name": "candidate_ordinal",
+            "type": "uint32_be",
+            "offset": 32,
+            "size": 4
+          },
+          {
+            "name": "predecessor_count",
+            "type": "uint8",
+            "offset": 36,
+            "size": 1
+          },
+          {
+            "name": "successor_count",
+            "type": "uint8",
+            "offset": 37,
+            "size": 1
+          },
+          {
+            "name": "child_count",
+            "type": "uint8",
+            "offset": 38,
+            "size": 1
+          },
+          {
+            "name": "flags",
+            "type": "uint8",
+            "offset": 39,
+            "size": 1
+          },
+          {
+            "name": "parent_logical_id",
+            "type": "uint64_be",
+            "offset": 40,
+            "size": 8
+          },
+          {
+            "name": "target_logical_id_or_zero",
+            "type": "uint64_be",
+            "offset": 48,
+            "size": 8
+          },
+          {
+            "name": "event_id_sha256",
+            "type": "bytes32",
+            "offset": 56,
+            "size": 32
+          },
+          {
+            "name": "pre_topology_sha256",
+            "type": "bytes32",
+            "offset": 88,
+            "size": 32
+          },
+          {
+            "name": "post_topology_sha256",
+            "type": "bytes32",
+            "offset": 120,
+            "size": 32
+          },
+          {
+            "name": "effective_configuration_sha256",
+            "type": "bytes32",
+            "offset": 152,
+            "size": 32
+          },
+          {
+            "name": "ledger_destination_code",
+            "type": "uint16_be",
+            "offset": 184,
+            "size": 2
+          },
+          {
+            "name": "reason_code",
+            "type": "uint16_be",
+            "offset": 186,
+            "size": 2
+          },
+          {
+            "name": "reserved_zero_u32",
+            "type": "uint32_be",
+            "offset": 188,
+            "size": 4
+          },
+          {
+            "name": "ordered_predecessor_logical_ids_padded_to_4",
+            "type": "uint64_be[4]",
+            "offset": 192,
+            "size": 32
+          },
+          {
+            "name": "ordered_successor_logical_ids_padded_to_4",
+            "type": "uint64_be[4]",
+            "offset": 224,
+            "size": 32
+          },
+          {
+            "name": "ordered_child_logical_ids_padded_to_2",
+            "type": "uint64_be[2]",
+            "offset": 256,
+            "size": 16
+          },
+          {
+            "name": "predecessor_D_E_F_amount_bits",
+            "type": "uint64_be[3]",
+            "offset": 272,
+            "size": 24
+          },
+          {
+            "name": "successor_D_E_F_amount_bits",
+            "type": "uint64_be[3]",
+            "offset": 296,
+            "size": 24
+          },
+          {
+            "name": "local_D_E_F_residual_bits",
+            "type": "uint64_be[3]",
+            "offset": 320,
+            "size": 24
+          },
+          {
+            "name": "rng_draw_subset_sha256",
+            "type": "bytes32",
+            "offset": 344,
+            "size": 32
+          },
+          {
+            "name": "reserved_zero_u64",
+            "type": "uint64_be",
+            "offset": 376,
+            "size": 8
+          }
+        ]
+      },
+      "topology_particle_projection": {
+        "size_bytes": 256,
+        "fields": [
+          {
+            "name": "logical_id",
+            "type": "uint64_be",
+            "offset": 0,
+            "size": 8
+          },
+          {
+            "name": "amrex_id",
+            "type": "uint32_be",
+            "offset": 8,
+            "size": 4
+          },
+          {
+            "name": "cpu_namespace",
+            "type": "uint32_be",
+            "offset": 12,
+            "size": 4
+          },
+          {
+            "name": "cell_type",
+            "type": "int32_be_twos_complement",
+            "offset": 16,
+            "size": 4
+          },
+          {
+            "name": "position",
+            "type": "int32_be_twos_complement",
+            "offset": 20,
+            "size": 4
+          },
+          {
+            "name": "n_bnds",
+            "type": "uint32_be",
+            "offset": 24,
+            "size": 4
+          },
+          {
+            "name": "fuse_flag",
+            "type": "int32_be_twos_complement",
+            "offset": 28,
+            "size": 4
+          },
+          {
+            "name": "split_flag",
+            "type": "int32_be_twos_complement",
+            "offset": 32,
+            "size": 4
+          },
+          {
+            "name": "fuse_tip",
+            "type": "int32_be_twos_complement",
+            "offset": 36,
+            "size": 4
+          },
+          {
+            "name": "fix_site",
+            "type": "int32_be_twos_complement",
+            "offset": 40,
+            "size": 4
+          },
+          {
+            "name": "projection_flags",
+            "type": "uint32_be",
+            "offset": 44,
+            "size": 4
+          },
+          {
+            "name": "target_logical_id_or_zero",
+            "type": "uint64_be",
+            "offset": 48,
+            "size": 8
+          },
+          {
+            "name": "tau_split_binary64_bits",
+            "type": "uint64_be",
+            "offset": 56,
+            "size": 8
+          },
+          {
+            "name": "x_binary64_bits",
+            "type": "uint64_be",
+            "offset": 64,
+            "size": 8
+          },
+          {
+            "name": "y_binary64_bits",
+            "type": "uint64_be",
+            "offset": 72,
+            "size": 8
+          },
+          {
+            "name": "z_binary64_bits",
+            "type": "uint64_be",
+            "offset": 80,
+            "size": 8
+          },
+          {
+            "name": "radius_binary64_bits",
+            "type": "uint64_be",
+            "offset": 88,
+            "size": 8
+          },
+          {
+            "name": "c_length_binary64_bits",
+            "type": "uint64_be",
+            "offset": 96,
+            "size": 8
+          },
+          {
+            "name": "theta_binary64_bits",
+            "type": "uint64_be",
+            "offset": 104,
+            "size": 8
+          },
+          {
+            "name": "phi_binary64_bits",
+            "type": "uint64_be",
+            "offset": 112,
+            "size": 8
+          },
+          {
+            "name": "area_binary64_bits",
+            "type": "uint64_be",
+            "offset": 120,
+            "size": 8
+          },
+          {
+            "name": "vol_binary64_bits",
+            "type": "uint64_be",
+            "offset": 128,
+            "size": 8
+          },
+          {
+            "name": "bond_scale_binary64_bits",
+            "type": "uint64_be",
+            "offset": 136,
+            "size": 8
+          },
+          {
+            "name": "D_amount_binary64_bits",
+            "type": "uint64_be",
+            "offset": 144,
+            "size": 8
+          },
+          {
+            "name": "E_amount_binary64_bits",
+            "type": "uint64_be",
+            "offset": 152,
+            "size": 8
+          },
+          {
+            "name": "F_amount_binary64_bits",
+            "type": "uint64_be",
+            "offset": 160,
+            "size": 8
+          },
+          {
+            "name": "bond0_neighbor_logical_id_or_zero",
+            "type": "uint64_be",
+            "offset": 168,
+            "size": 8
+          },
+          {
+            "name": "bond0_local_site_or_zero",
+            "type": "int32_be_twos_complement",
+            "offset": 176,
+            "size": 4
+          },
+          {
+            "name": "bond0_neighbor_site_or_zero",
+            "type": "int32_be_twos_complement",
+            "offset": 180,
+            "size": 4
+          },
+          {
+            "name": "bond1_neighbor_logical_id_or_zero",
+            "type": "uint64_be",
+            "offset": 184,
+            "size": 8
+          },
+          {
+            "name": "bond1_local_site_or_zero",
+            "type": "int32_be_twos_complement",
+            "offset": 192,
+            "size": 4
+          },
+          {
+            "name": "bond1_neighbor_site_or_zero",
+            "type": "int32_be_twos_complement",
+            "offset": 196,
+            "size": 4
+          },
+          {
+            "name": "bond2_neighbor_logical_id_or_zero",
+            "type": "uint64_be",
+            "offset": 200,
+            "size": 8
+          },
+          {
+            "name": "bond2_local_site_or_zero",
+            "type": "int32_be_twos_complement",
+            "offset": 208,
+            "size": 4
+          },
+          {
+            "name": "bond2_neighbor_site_or_zero",
+            "type": "int32_be_twos_complement",
+            "offset": 212,
+            "size": 4
+          },
+          {
+            "name": "bond3_neighbor_logical_id_or_zero",
+            "type": "uint64_be",
+            "offset": 216,
+            "size": 8
+          },
+          {
+            "name": "bond3_local_site_or_zero",
+            "type": "int32_be_twos_complement",
+            "offset": 224,
+            "size": 4
+          },
+          {
+            "name": "bond3_neighbor_site_or_zero",
+            "type": "int32_be_twos_complement",
+            "offset": 228,
+            "size": 4
+          },
+          {
+            "name": "reserved_zero",
+            "type": "bytes24",
+            "offset": 232,
+            "size": 24
+          }
+        ]
+      }
+    },
+    "header_field_rules": {
+      "file_header_flags": "Exactly 1: bit0 JSONL_MIRROR_REQUIRED; bits1..7 zero.",
+      "batch_reserved": "Exactly zero.",
+      "segment_start_update": "0 for fresh run; state.next_update_index for a restart-created segment.",
+      "contract_and_case_hashes": "Raw 32-byte SHA-256 values. A mismatch aborts before append."
+    },
+    "rng_record_enumerations": {
+      "decision_code": {
+        "0": "FALSE_OR_NO_EVENT",
+        "1": "TRUE_OR_EVENT_SELECTED",
+        "2": "NOT_APPLICABLE"
+      },
+      "draw_status": {
+        "0": "PREDICATE_ACCEPTED",
+        "1": "PREDICATE_REJECTED",
+        "2": "PREDICATE_DRAW_DISCARDED_DETERMINISTICALLY",
+        "3": "GEOMETRY_USED"
+      },
+      "use_code": {
+        "1": "SPLIT_KIND",
+        "2": "SIDE_BRANCH_PREDICATE",
+        "3": "YEAST_AXIS_COSINE",
+        "4": "YEAST_AZIMUTH",
+        "5": "TIP_DEFLECTION",
+        "6": "TIP_AZIMUTH",
+        "7": "SIDE_BRANCH_SIGN",
+        "8": "SIDE_BRANCH_DEFLECTION",
+        "9": "SIDE_BRANCH_AZIMUTH",
+        "10": "BIFURCATION_CHILD0_DEFLECTION",
+        "11": "BIFURCATION_CHILD0_AZIMUTH",
+        "12": "BIFURCATION_CHILD1_DEFLECTION",
+        "13": "BIFURCATION_CHILD1_AZIMUTH",
+        "14": "FUSION_PREDICATE"
+      }
+    },
+    "rng_record_field_rules": {
+      "magic_and_version": "RNG1 and uint16 1.",
+      "time_before": "Exact IEEE-754 binary64 object bits of simulation time at slot entry.",
+      "threshold": "Exact binary64 threshold bits for predicate draws; zero for geometry draws.",
+      "key_and_draw": "raw_key is the exact 80 bytes; digest/raw_uint64/uniform bits must recompute exactly from it.",
+      "event_plan_ordinal": "Zero-based canonical committed event ordinal if the draw belongs to a committed event; UINT64_MAX for rejected, discarded, or failed-attempt-only draws.",
+      "reserved": "Exactly zero."
+    },
+    "topology_event_enumeration": {
+      "1": "YEAST_SPLIT",
+      "2": "TIP_EXTENSION_SPLIT",
+      "3": "TIP_BIFURCATION",
+      "4": "SIDE_BRANCH",
+      "5": "FUSION_TARGET_SPLIT"
+    },
+    "topology_reason_code": {
+      "1": "P10_SPLIT_PARENT_REPLACED",
+      "2": "P10_FUSION_PREDECESSOR_REPLACED"
+    },
+    "ledger_destination_code": {
+      "1": "SUCCESSOR_INTERNAL_D_E_F"
+    },
+    "topology_flags": {
+      "bit0": "EVENT_COMMITTED, always 1 in authoritative records",
+      "bit1": "PARENT_RETAINED_AS_SUCCESSOR",
+      "bit2": "TARGET_PRESENT",
+      "bit3": "TARGET_RETAINED_AS_SUCCESSOR",
+      "bits4_to_7": "zero"
+    },
+    "topology_record_field_rules": {
+      "counts_and_arrays": "predecessor_count and successor_count are 1..4; child_count is 1..2. Active ordered IDs occupy the prefix; all unused entries are zero. IDs within each active list are canonical event-role order, not numeric sort.",
+      "event_roles": "Split predecessor=[parent], successors=[retained parent,child0,child1 if present], children=[child0,child1]. Fusion predecessor=[tip,target], successors=[mutated tip,retained target,target-split child], children=[target-split child].",
+      "amounts": "D/E/F values are aggregate predecessor, aggregate successor, and successor-minus-predecessor binary64 bit patterns in mol elemental-P-equivalent. Existing P10 local tolerances govern acceptance.",
+      "configuration_hash": "Exact generated effective-configuration SHA-256 for the run.",
+      "reserved": "All reserved fields are zero."
+    },
+    "record_sort": {
+      "rng": "(update,slot,parent_logical_id,target_logical_id,candidate_ordinal,event_type,draw_ordinal,retry_ordinal)",
+      "topology": "(update,slot,event_ordinal), with event_ordinal assigned from canonical event order."
+    },
+    "record_uniqueness": "Duplicate canonical record sort keys or duplicate 80-byte RNG keys abort before append.",
+    "event_id": {
+      "preimage": "topology_event_id domain || uint16_be(1) || uint8(slot) || uint8(topology_event_type) || uint64_be(update) || uint64_be(parent) || uint64_be(target_or_zero) || uint32_be(candidate_ordinal) || uint8(child_count) || three zero bytes || each child logical ID as uint64_be in child order.",
+      "output": "Full SHA-256 digest."
+    },
+    "topology_projection": {
+      "layout": {
+        "size_bytes": 256,
+        "fields": [
+          {
+            "name": "logical_id",
+            "type": "uint64_be",
+            "offset": 0,
+            "size": 8
+          },
+          {
+            "name": "amrex_id",
+            "type": "uint32_be",
+            "offset": 8,
+            "size": 4
+          },
+          {
+            "name": "cpu_namespace",
+            "type": "uint32_be",
+            "offset": 12,
+            "size": 4
+          },
+          {
+            "name": "cell_type",
+            "type": "int32_be_twos_complement",
+            "offset": 16,
+            "size": 4
+          },
+          {
+            "name": "position",
+            "type": "int32_be_twos_complement",
+            "offset": 20,
+            "size": 4
+          },
+          {
+            "name": "n_bnds",
+            "type": "uint32_be",
+            "offset": 24,
+            "size": 4
+          },
+          {
+            "name": "fuse_flag",
+            "type": "int32_be_twos_complement",
+            "offset": 28,
+            "size": 4
+          },
+          {
+            "name": "split_flag",
+            "type": "int32_be_twos_complement",
+            "offset": 32,
+            "size": 4
+          },
+          {
+            "name": "fuse_tip",
+            "type": "int32_be_twos_complement",
+            "offset": 36,
+            "size": 4
+          },
+          {
+            "name": "fix_site",
+            "type": "int32_be_twos_complement",
+            "offset": 40,
+            "size": 4
+          },
+          {
+            "name": "projection_flags",
+            "type": "uint32_be",
+            "offset": 44,
+            "size": 4
+          },
+          {
+            "name": "target_logical_id_or_zero",
+            "type": "uint64_be",
+            "offset": 48,
+            "size": 8
+          },
+          {
+            "name": "tau_split_binary64_bits",
+            "type": "uint64_be",
+            "offset": 56,
+            "size": 8
+          },
+          {
+            "name": "x_binary64_bits",
+            "type": "uint64_be",
+            "offset": 64,
+            "size": 8
+          },
+          {
+            "name": "y_binary64_bits",
+            "type": "uint64_be",
+            "offset": 72,
+            "size": 8
+          },
+          {
+            "name": "z_binary64_bits",
+            "type": "uint64_be",
+            "offset": 80,
+            "size": 8
+          },
+          {
+            "name": "radius_binary64_bits",
+            "type": "uint64_be",
+            "offset": 88,
+            "size": 8
+          },
+          {
+            "name": "c_length_binary64_bits",
+            "type": "uint64_be",
+            "offset": 96,
+            "size": 8
+          },
+          {
+            "name": "theta_binary64_bits",
+            "type": "uint64_be",
+            "offset": 104,
+            "size": 8
+          },
+          {
+            "name": "phi_binary64_bits",
+            "type": "uint64_be",
+            "offset": 112,
+            "size": 8
+          },
+          {
+            "name": "area_binary64_bits",
+            "type": "uint64_be",
+            "offset": 120,
+            "size": 8
+          },
+          {
+            "name": "vol_binary64_bits",
+            "type": "uint64_be",
+            "offset": 128,
+            "size": 8
+          },
+          {
+            "name": "bond_scale_binary64_bits",
+            "type": "uint64_be",
+            "offset": 136,
+            "size": 8
+          },
+          {
+            "name": "D_amount_binary64_bits",
+            "type": "uint64_be",
+            "offset": 144,
+            "size": 8
+          },
+          {
+            "name": "E_amount_binary64_bits",
+            "type": "uint64_be",
+            "offset": 152,
+            "size": 8
+          },
+          {
+            "name": "F_amount_binary64_bits",
+            "type": "uint64_be",
+            "offset": 160,
+            "size": 8
+          },
+          {
+            "name": "bond0_neighbor_logical_id_or_zero",
+            "type": "uint64_be",
+            "offset": 168,
+            "size": 8
+          },
+          {
+            "name": "bond0_local_site_or_zero",
+            "type": "int32_be_twos_complement",
+            "offset": 176,
+            "size": 4
+          },
+          {
+            "name": "bond0_neighbor_site_or_zero",
+            "type": "int32_be_twos_complement",
+            "offset": 180,
+            "size": 4
+          },
+          {
+            "name": "bond1_neighbor_logical_id_or_zero",
+            "type": "uint64_be",
+            "offset": 184,
+            "size": 8
+          },
+          {
+            "name": "bond1_local_site_or_zero",
+            "type": "int32_be_twos_complement",
+            "offset": 192,
+            "size": 4
+          },
+          {
+            "name": "bond1_neighbor_site_or_zero",
+            "type": "int32_be_twos_complement",
+            "offset": 196,
+            "size": 4
+          },
+          {
+            "name": "bond2_neighbor_logical_id_or_zero",
+            "type": "uint64_be",
+            "offset": 200,
+            "size": 8
+          },
+          {
+            "name": "bond2_local_site_or_zero",
+            "type": "int32_be_twos_complement",
+            "offset": 208,
+            "size": 4
+          },
+          {
+            "name": "bond2_neighbor_site_or_zero",
+            "type": "int32_be_twos_complement",
+            "offset": 212,
+            "size": 4
+          },
+          {
+            "name": "bond3_neighbor_logical_id_or_zero",
+            "type": "uint64_be",
+            "offset": 216,
+            "size": 8
+          },
+          {
+            "name": "bond3_local_site_or_zero",
+            "type": "int32_be_twos_complement",
+            "offset": 224,
+            "size": 4
+          },
+          {
+            "name": "bond3_neighbor_site_or_zero",
+            "type": "int32_be_twos_complement",
+            "offset": 228,
+            "size": 4
+          },
+          {
+            "name": "reserved_zero",
+            "type": "bytes24",
+            "offset": 232,
+            "size": 24
+          }
+        ]
+      },
+      "record_order": "Unsigned logical_id ascending, unique.",
+      "integer_rule": "Unsigned fields big-endian. Signed int32 fields are exact two-complement 32-bit patterns in big-endian order.",
+      "floating_rule": "Copy each finite IEEE-754 binary64 object representation to uint64 and serialize big-endian; no text formatting or numeric conversion.",
+      "flags": "projection_flags bit0 LIVE_REAL_PARTICLE is 1; bits1..31 zero.",
+      "target": "Stable fusion target logical ID or zero.",
+      "bonds": "Serialize n_bnds active bonds, where n_bnds is 0..4, sorted by (neighbor_logical_id,local_site,neighbor_site). Remaining tuples are all-zero. Invalid IDs/sites abort.",
+      "missing_post_particle": "A disappeared predecessor is absent from the post projection; no tombstone.",
+      "hash_preimage": "topology_projection domain || uint32_be(record_count) || concatenated 256-byte records.",
+      "scope": "Affected P10 participant closure only, before and after the event."
+    },
+    "event_rng_subset": {
+      "record_order": "Canonical RNG record order restricted to records belonging to this committed event.",
+      "hash_preimage": "topology_event_rng_subset domain || uint32_be(record_count) || concatenated 208-byte RNG records.",
+      "zero_draw_event": "SHA256(domain || uint32_be(0))."
+    },
+    "digest_and_chain_rules": {
+      "candidate_digest": "SHA256(ledger-specific candidate domain || concatenated 48-byte descriptors in canonical order).",
+      "records_digest": "SHA256(ledger-specific records domain || concatenated fixed-size records in canonical order).",
+      "batch_core100": "uint16_be(1) || uint8(ledger_kind) || uint8(slot) || uint64_be(update) || uint64_be(time_before_bits) || uint64_be(candidate_count) || candidate_digest32 || uint64_be(record_count) || records_digest32.",
+      "chain_init": "SHA256(kind-specific chain_init domain || contract_sha256_raw32 || master_seed_be64 || seed_block_be64 || initial_network_sha256_raw32 || generated_configuration_sha256_raw32).",
+      "chain_step": "SHA256(kind-specific chain_step domain || previous_chain32 || batch_core100 || cumulative_record_count_after_batch_be64).",
+      "empty_batches": "Both chains advance once at O06 and once at O08 for every successfully completed update, even with zero candidates or zero records. The empty digest is SHA256(domain alone)."
+    },
+    "file_segmentation": "A fresh run opens one segment at update 0. A restart opens new binary/JSONL segments whose first batch previous_chain equals checkpoint state. Historical segments are immutable; evidence records each segment SHA-256, byte size, start/end chains, and update range.",
+    "owner_trace": "Actual MPI owner before/after and commit rank are mandatory in EXECUTION_OWNER_TRACE_NONCANONICAL.jsonl for diagnosis but excluded from event bytes, projections, and chains because they may differ across decompositions."
+  },
+  "checkpoint_restart": {
+    "checkpoint_schema_version": 9,
+    "checkpoint_version_line": "Checkpoint version: 9",
+    "header_insertion": "Immediately after existing p15_global_order_sha256, write these exact lines in order.",
+    "header_fields_enabled": [
+      "p15_rng_topology_contract_id UDC-20260802-C13-RNG-TOPOLOGY-DECOMPOSITION-V1",
+      "p15_rng_topology_contract_sha256 <64 lowercase hex>",
+      "p15_rng_topology_state_schema_version 1",
+      "p15_rng_topology_state_file RNGTopologyState",
+      "p15_rng_topology_state_sha256 <64 lowercase hex>",
+      "p15_rng_topology_ledger_policy RAW_BINARY_AND_JSONL"
+    ],
+    "header_fields_disabled": [
+      "p15_rng_topology_contract_id DISABLED",
+      "p15_rng_topology_contract_sha256 DISABLED",
+      "p15_rng_topology_state_schema_version 0",
+      "p15_rng_topology_state_file DISABLED",
+      "p15_rng_topology_state_sha256 DISABLED",
+      "p15_rng_topology_ledger_policy DISABLED"
+    ],
+    "state_file": "Checkpoint-directory file RNGTopologyState, exactly 320 bytes, written by IO rank and SHA-256 hashed over all bytes.",
+    "state_layout": {
+      "size_bytes": 320,
+      "fields": [
+        {
+          "name": "magic",
+          "type": "bytes16",
+          "offset": 0,
+          "size": 16
+        },
+        {
+          "name": "state_schema_version",
+          "type": "uint16_be",
+          "offset": 16,
+          "size": 2
+        },
+        {
+          "name": "flags",
+          "type": "uint16_be",
+          "offset": 18,
+          "size": 2
+        },
+        {
+          "name": "contract_sha256",
+          "type": "bytes32",
+          "offset": 20,
+          "size": 32
+        },
+        {
+          "name": "initial_network_sha256",
+          "type": "bytes32",
+          "offset": 52,
+          "size": 32
+        },
+        {
+          "name": "generated_configuration_sha256",
+          "type": "bytes32",
+          "offset": 84,
+          "size": 32
+        },
+        {
+          "name": "master_seed",
+          "type": "uint64_be",
+          "offset": 116,
+          "size": 8
+        },
+        {
+          "name": "seed_block",
+          "type": "uint64_be",
+          "offset": 124,
+          "size": 8
+        },
+        {
+          "name": "next_update_index",
+          "type": "uint64_be",
+          "offset": 132,
+          "size": 8
+        },
+        {
+          "name": "next_logical_id",
+          "type": "uint64_be",
+          "offset": 140,
+          "size": 8
+        },
+        {
+          "name": "completed_O06_batches",
+          "type": "uint64_be",
+          "offset": 148,
+          "size": 8
+        },
+        {
+          "name": "completed_O08_batches",
+          "type": "uint64_be",
+          "offset": 156,
+          "size": 8
+        },
+        {
+          "name": "cumulative_candidate_count",
+          "type": "uint64_be",
+          "offset": 164,
+          "size": 8
+        },
+        {
+          "name": "cumulative_rng_draw_record_count",
+          "type": "uint64_be",
+          "offset": 172,
+          "size": 8
+        },
+        {
+          "name": "cumulative_topology_event_record_count",
+          "type": "uint64_be",
+          "offset": 180,
+          "size": 8
+        },
+        {
+          "name": "cumulative_allocated_child_count",
+          "type": "uint64_be",
+          "offset": 188,
+          "size": 8
+        },
+        {
+          "name": "checkpoint_time_binary64_bits",
+          "type": "uint64_be",
+          "offset": 196,
+          "size": 8
+        },
+        {
+          "name": "rng_cumulative_chain",
+          "type": "bytes32",
+          "offset": 204,
+          "size": 32
+        },
+        {
+          "name": "topology_cumulative_chain",
+          "type": "bytes32",
+          "offset": 236,
+          "size": 32
+        },
+        {
+          "name": "amrex_next_id_compatibility_sentinel",
+          "type": "uint64_be",
+          "offset": 268,
+          "size": 8
+        },
+        {
+          "name": "last_completed_update_or_uint64_max",
+          "type": "uint64_be",
+          "offset": 276,
+          "size": 8
+        },
+        {
+          "name": "reserved_zero",
+          "type": "bytes36",
+          "offset": 284,
+          "size": 36
+        }
+      ]
+    },
+    "state_field_rules": {
+      "magic": {
+        "ascii_zero_padded_to_16": "BMXC13RTSTATEV1",
+        "hex": "424d5843313352545354415445563100"
+      },
+      "state_schema_version": 1,
+      "flags": "Exactly 1: bit0 P15_RNG_TOPOLOGY_ENABLED; bits1..15 zero.",
+      "hashes": "Raw contract, initial-network, and generated-configuration SHA-256 values.",
+      "seed": "Exact master_seed and seed_block from keys.",
+      "next_update_index": "First update not yet executed.",
+      "next_logical_id": "First never-allocated logical ID; greater than every live ID.",
+      "completed_batches": "For v1 fresh-start runs, completed_O06_batches==completed_O08_batches==next_update_index.",
+      "cumulative_candidate_count": "Sum of canonical descriptor counts over all completed slots, counted once although both ledgers hash them.",
+      "record_counts": "Exact cumulative authoritative RNG and topology record counts.",
+      "child_count": "Exact count of logical child IDs allocated and committed under this contract.",
+      "checkpoint_time": "Exact binary64 bits of checkpoint Header time after O10.",
+      "chains": "Latest RNG and topology cumulative chains after the last completed O08.",
+      "amrex_sentinel": "Exactly 549755813885.",
+      "last_completed_update": "UINT64_MAX when next_update_index==0; otherwise next_update_index-1.",
+      "reserved": "All 36 bytes zero."
+    },
+    "fresh_state": {
+      "next_update_index": 0,
+      "next_logical_id": "max live logical_id + 1",
+      "completed_O06_batches": 0,
+      "completed_O08_batches": 0,
+      "all_counts": 0,
+      "checkpoint_time_binary64_bits": "0x0000000000000000",
+      "last_completed_update_or_uint64_max": 18446744073709551615,
+      "chains": "kind-specific chain_init values",
+      "amrex_sentinel": 549755813885
+    },
+    "successful_update_transition": "O06 and O08 each append one successful batch and advance both corresponding ledger chains. Only after O10 audit succeeds set next_update_index=current_update+1, last_completed_update=current_update, checkpoint_time bits to Header time, and permit checkpoint output.",
+    "checkpoint_consistency": "Header nstep equals state.next_update_index; Header time bits equal state.checkpoint_time bits; contract, seed, block, case hashes, counts, chains, sentinel, and state-file SHA all match exactly.",
+    "restart_validation_order": [
+      "Read checkpoint version and scalar/header contract fields.",
+      "Read RNGTopologyState and verify exact size, magic, schema, flags, reserved zeros, SHA, contract, seed, update, time, counts, chains, and sentinel before AMReX particle deserialization.",
+      "Broadcast the exact 320 state bytes and require identical SHA on every rank.",
+      "Only then deserialize particles.",
+      "Validate p.id/idata(id), p.cpu/idata(cpu), live logical-ID uniqueness, bond logical IDs, and next_logical_id greater than all live IDs.",
+      "Set ParticleType::NextID(549755813885) on every rank.",
+      "Open new ledger segments anchored to checkpoint chains/counts before the next O06."
+    ],
+    "rank_change_semantics": "The same state bytes continue across 1->1, 2->1, 1->2, 1->4, 4->1, or any positive CPU MPI rank count. No reseeding, key translation, ID renumbering, namespace rewrite, chain reset, candidate-ordinal rewrite, or draw replay occurs.",
+    "fail_closed_codes": {
+      "C13_ABORT_RNG_TOPOLOGY_CHECKPOINT_STATE": "missing, malformed, mutated, wrong-size, wrong-hash, wrong-contract, wrong-seed, wrong-update, wrong-time, wrong-count, wrong-sentinel, nonzero-reserved, or inconsistent state",
+      "C13_ABORT_RNG_TOPOLOGY_LEDGER_CONTINUATION": "new segment does not anchor to checkpoint chains/counts",
+      "C13_ABORT_CHILD_ID_COLLISION": "live or pending identity collision",
+      "C13_ABORT_CHILD_ID_EXHAUSTED": "logical namespace exhausted",
+      "C13_ABORT_RNG_KEY_DUPLICATE": "duplicate key or canonical draw key",
+      "C13_ABORT_TOPOLOGY_EVENT_DUPLICATE": "duplicate event identity/order key",
+      "C13_ABORT_RNG_RETRY_NOT_PERMITTED": "nonzero retry ordinal or retry request",
+      "C13_ABORT_GPU_NOT_QUALIFIED": "P15 RNG/topology enabled in a GPU build"
+    },
+    "historical_evidence_rule": "Stateless continuation technically requires validated state, but missing or mutated historical raw ledger segments fail qualification/reproducibility evidence. They may not be regenerated and represented as original evidence."
+  },
+  "platform_scope": {
+    "included": "CPU execution with MPI and/or OpenMP across P0-P5, using one identical executable, compiler, standard library, math library, MPI library, AMReX commit, ISA target, min CPU platform, and floating-point flags.",
+    "required_runtime_properties": [
+      "AMReX Real is IEEE-754 binary64; sizeof(Real)==8 and std::numeric_limits<Real>::is_iec559 is true.",
+      "Rounding mode is FE_TONEAREST.",
+      "DEBUG_DETERMINISTIC is undefined for the qualified path.",
+      "No fast-math, unsafe-math, associative-math, finite-math-only, reciprocal-math, or differing contraction/FMA setting across P0-P5.",
+      "Explicit big-endian serialization independent of host endianness.",
+      "All SHA-256/KAT checks pass before simulation."
+    ],
+    "openmp_rule": "Thread count, schedule, tile traversal, and task completion order may change evaluation timing but not descriptor bytes, keys, records, events, IDs, chains, or discrete topology. Real-valued post-state must satisfy preregistered 1e-12 normalized limits.",
+    "cross_platform_boundary": "Key, draw, identity, ledger, and checkpoint bytes are algorithmically portable. Geometry/topology qualification is limited to the frozen CPU software/ISA fingerprint because v1 does not independently standardize libm transcendental implementations.",
+    "gpu": "Explicitly excluded. P15-enabled startup in CUDA, HIP, SYCL, or any AMREX_USE_GPU build aborts with C13_ABORT_GPU_NOT_QUALIFIED. GPU inheritance is false until a separate prospective contract and matrix pass.",
+    "feature_off": "When P15 is disabled, this state and these ledgers are disabled and no decomposition-independent claim is made for the legacy stochastic topology path."
+  },
+  "qualification_matrix": {
+    "source": "contracts/p15/NUMERICAL_PREREGISTRATION_V1.json at the frozen SHA-256.",
+    "P0_to_P5": [
+      {
+        "id": "P0",
+        "mpi_ranks": 1,
+        "omp_threads_per_rank": 1,
+        "box_array": "B1"
+      },
+      {
+        "id": "P1",
+        "mpi_ranks": 2,
+        "omp_threads_per_rank": 1,
+        "box_array": "B2X"
+      },
+      {
+        "id": "P2",
+        "mpi_ranks": 4,
+        "omp_threads_per_rank": 1,
+        "box_array": "B4XZ"
+      },
+      {
+        "id": "P3",
+        "mpi_ranks": 4,
+        "omp_threads_per_rank": 1,
+        "box_array": "B4YZ"
+      },
+      {
+        "id": "P4",
+        "mpi_ranks": 1,
+        "omp_threads_per_rank": 4,
+        "box_array": "B1"
+      },
+      {
+        "id": "P5",
+        "mpi_ranks": 2,
+        "omp_threads_per_rank": 2,
+        "box_array": "B2X"
+      }
+    ],
+    "exact_requirements": [
+      "initial-state hash",
+      "canonical logical and AMReX ID/namespace pairs",
+      "canonical bond and junction keys",
+      "candidate descriptor counts/digests",
+      "raw RNG keys/draws and cumulative chain",
+      "topology event IDs/order/records and cumulative chain",
+      "integer ledgers and topology counts",
+      "accepted side-branch effective-gradient bits exactly [0,0,0] and gn bits exactly zero",
+      "accepted side-branch geometry draw ordinal set exactly [0,1,2] with sign use code 7 at ordinal 0"
+    ],
+    "real_requirements": {
+      "canonical_state_vector_normalized_linf_max": 1e-12,
+      "aggregate_scalar_normalized_difference_max": 1e-12,
+      "canonical_sort": "mesh by cell index; particles by logical_id"
+    },
+    "forced_cases": [
+      "strict yeast split",
+      "tip one-child split",
+      "tip two-child bifurcation",
+      "accepted side branch with nonzero stored gradient inputs but frozen effective gn==0.0, geometry draw ordinals exactly [0,1,2], and total candidate draw count exactly 4",
+      "side-branch stochastic rejection",
+      "fusion pre-draw deterministic rejection",
+      "fusion stochastic rejection",
+      "fusion acceptance with zero-draw fusion geometry"
+    ],
+    "restart_paths": [
+      "continuous versus same-rank restart at multiple cut points",
+      "P0 continuous to checkpoint then restart as P2",
+      "P2 continuous to checkpoint then restart as P0",
+      "2->1 forced split/branch/fusion continuation"
+    ],
+    "failure_rule": "Any exact mismatch or real tolerance failure blocks C13. No aggregate agreement can waive an ID, topology, key, draw, or chain mismatch."
+  },
+  "implementation_boundary": {
+    "allowed": "Add a separate host-capable keyed RNG/candidate/event/identity/ledger module; replace only P15-enabled random decision/geometry-input and child-allocation paths in O06/O08; extend checkpoint/restart/evidence schemas; add guards and tests.",
+    "prohibited": [
+      "Editing src/chemistry/bmx_chem_K.H.",
+      "Removing, bypassing, parameterizing, or changing the frozen unconditional gx=gy=gz=0.0 override in setNewSegment or its P15-enabled byte-equivalent replica; allowing a qualified side-branch gn!=0.0 path; or omitting geometry draw ordinal 0.",
+      "Changing contracts/p10/OPERATOR_ORDER_V1.json or adding/reordering an operator slot.",
+      "Changing any biological parameter, bonded-D rule, terminal-zone rule, P12-P14 behavior, reaction, growth, export, fusion-distance, or amount-routing decision.",
+      "Using an implementation library whose unbound version, key compression, serialization, or conversion changes the specified bytes.",
+      "Running any 216-hour qualification outcome before exact-source and numerical-contract independent PASS."
+    ],
+    "required_source_behavior": [
+      "P15-enabled O06/O08 contain no outcome-bearing amrex::Random, ParallelForRNG, rank-derived seed, current-rank child namespace, or NextID allocation.",
+      "The frozen deterministic formulas are reproduced outside the frozen kernel with explicit contract draw inputs; independent review compares every branch and operation order to the frozen source hash.",
+      "For every accepted SECOND_1/SECOND_2 side branch, the P15-enabled frozen-equivalent path performs the unconditional +0.0 gradient override before gn, proves gn bits are zero, and materializes geometry event 0x12 draw ordinals 0, 1, and 2. Any other path aborts before mutation.",
+      "Feature-off path remains unchanged and passes existing G1/G4 identity evidence.",
+      "Checkpoint schema changes prospectively from 8 to 9 only after adoption."
+    ]
+  },
+  "mandatory_pre_216h_tests": [
+    "Run the normative KAT for contract hash, key serialization, SHA-256 draw mapping, identity mapping, candidate bytes/digests, event IDs, topology projections, RNG/topology record bytes, event RNG subset, file/batch headers, chain initialization/steps, and checkpoint state bytes/hash.",
+    "Run the normative side-branch reachability KAT with deliberately nonzero stored gx/gy/gz inputs; prove the frozen effective gradient and gn are exact +0.0, the accepted candidate records one predicate plus geometry ordinals [0,1,2], and a synthetic gn!=0.0 implementation mutation is rejected fail-closed.",
+    "Run every forced split/branch/fusion case across P0-P5 with exact IDs, descriptor digests, raw keys/draws, event order, event records, projection hashes, cumulative chains, and discrete topology.",
+    "Run conditional/rejected draw faults, duplicate key/event faults, candidate-set incompleteness, same-slot conflict aborts, child collision/exhaustion, invalid probability, nonzero retry, and sentinel misuse.",
+    "Run continuous/restart and all rank-change paths with exact state bytes, ledger anchors, IDs, and chains; mutate or remove each checkpoint/header/state/ledger field and prove fail-closed rejection.",
+    "Rebuild from clean committed source; rerun all existing C13 analytical/static/native/feature-off suites; prove frozen kernel/global order hashes unchanged.",
+    "Obtain independent exact-source and numerical-contract PASS before enabling any preregistered 216-hour outcome."
+  ],
+  "closure_rule": "Explicit adoption of v1.1 supersedes the v1 implementation/qualification binding, preserves D-C13-04 as CLOSED_USER_ADOPTED_PENDING_IMPLEMENTATION_AND_REVIEW, and closes only D-C13-05 as CLOSED_USER_ADOPTED_PENDING_IMPLEMENTATION_AND_REVIEW. C13 remains BLOCKED until exact v1.1 implementation, clean engineering qualification, independent review, and every preregistered 216-hour convergence/restart/conservation/production-selection gate passes."
+}

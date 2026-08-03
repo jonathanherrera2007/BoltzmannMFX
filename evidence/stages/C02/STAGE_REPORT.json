@@ -1,0 +1,147 @@
+{
+  "stage_id": "C02",
+  "status": "PASS",
+  "started_at": "2026-07-30",
+  "completed_at": "2026-07-30",
+  "input_git_commit": "893dbaba15143f87cf680a24b2103db9d3723e69",
+  "input_git_tree": "1c73deedf0eb2feea833a7fddbc431ae9754d977",
+  "output_git_commit": "41acbb8c6294a82e8e1c0d413fc321fa203fe68d",
+  "amrex_commit": "cbdc6580ee3d78cccdd37172e4ba077ee181f483",
+  "contract_hashes": {},
+
+  "supersedes": {
+    "target": "evidence/stages/C01/STAGE_REPORT.md sections 5 and 12",
+    "reason": "C01 concluded from PATH probing that native Windows had no C++ compiler. Visual Studio Build Tools 2022 17.14.37 is installed at the literal path C:\\Program and is not on PATH until the developer environment is loaded. The reference recipe's C:/Program/... paths were accurate, not sanitised placeholders.",
+    "effect": "blocker B-S00-01 is CLOSED; WSL1 was neither needed nor used"
+  },
+
+  "reference_platform": {
+    "os": "Windows 11 Home 10.0.26200 AMD64",
+    "logical_processors": 8,
+    "compiler": "MSVC 19.44.35228.0",
+    "msvc_toolset": "14.44.35207",
+    "generator": "Ninja 1.12.1",
+    "cmake": "4.4.0",
+    "mpi": "Microsoft MPI (MS-MPI)",
+    "mpi_thread_support_level": 0,
+    "build_type": "Release",
+    "precision": "double",
+    "gpu_backend": "NONE",
+    "openmp": false
+  },
+
+  "build_identity": {
+    "executable": "build/c02-native-release/bmx.exe",
+    "sha256": "e3c8ee0869a2a04a142bdd672ecc431dce946be2e6f98a7e1c9815c19488a9bc",
+    "size_bytes": 2369536,
+    "object_count": 200,
+    "build_seconds": 213,
+    "parallel": 8,
+    "build_dir_size": "250M",
+    "cmake_cxx_flags": "/DWIN32 /D_WINDOWS /EHsc /w /D_USE_MATH_DEFINES /std:c++17 /Zc:lambda",
+    "cmake_cxx_flags_release": "/O2 /DNDEBUG",
+    "cache": {
+      "BMX_MPI": "ON",
+      "BMX_MPI_THREAD_MULTIPLE": "OFF",
+      "BMX_OMP": "OFF",
+      "BMX_GPU_BACKEND": "NONE",
+      "BMX_HYPRE": "OFF",
+      "BMX_CSG": "OFF",
+      "AMReX_SPACEDIM": "3",
+      "CMAKE_BUILD_TYPE": "Release"
+    },
+    "self_reported": {
+      "bmx_git_describe": "v0.1-108-g893dbaba1514",
+      "amrex_git_describe": "22.07-4-gcbdc6580ee3d"
+    }
+  },
+
+  "deviations_from_reference_recipe": [
+    {"id": "D-C02-01", "change": "/D_USE_MATH_DEFINES", "cause": "M_PI is a POSIX extension not exposed by MSVC <cmath> by default; 20 uses in src/chemistry/bmx_cell_interaction_K.H", "scientific_effect": "none"},
+    {"id": "D-C02-02", "change": "append Git usr/bin to PATH", "cause": "tools/CMake/BMX_Utils.cmake shells out to POSIX grep, absent on Windows; appended not prepended to avoid shadowing MSVC link.exe/sort.exe/find.exe", "scientific_effect": "none"},
+    {"id": "D-C02-03", "change": "/DWIN32 /D_WINDOWS /EHsc restored", "cause": "recipe assigned CMAKE_CXX_FLAGS=/w, replacing CMake MSVC defaults and disabling exception unwinding (C4530 in every TU); recipe never launches its image, C02 does", "scientific_effect": "none; corrects error-path behaviour"},
+    {"id": "D-C02-04", "change": "MPI_C_HEADER_DIR / MPI_CXX_HEADER_DIR", "cause": "CMake 4.4 FindMPI lists these in MPI_<lang>_REQUIRED_VARS; recipe supplies only the derived *_INCLUDE_DIRS", "scientific_effect": "none"},
+    {"id": "D-C02-05", "change": "/std:c++17 /Zc:lambda", "cause": "constexpr Real used in lambda without capture at src/des/bmx_pc_interaction.cpp:246,656; C++17 AND the conformant MSVC lambda parser are BOTH required", "scientific_effect": "none known; changes language standard for the whole product — requires independent numerical review before any final run"}
+  ],
+
+  "commands": [
+    {"command": "powershell -File tools/repro/configure_native_windows.ps1", "exit_code": 0},
+    {"command": "powershell -File tools/repro/build_native_windows.ps1 -Parallel 8", "exit_code": 0, "result": "200/200 objects, bmx.exe linked, 213 s"},
+    {"command": "powershell -File tools/repro/run_smoke_native_windows.ps1", "exit_code": 0}
+  ],
+
+  "tests": [
+    {"id": "C02-T1-configure", "status": "PASS", "evidence": "CONFIGURE_EXIT=0, CMakeCache.txt options verified"},
+    {"id": "C02-T2-clean-build", "status": "PASS", "evidence": "200/200 objects, 0 errors, bmx.exe linked"},
+    {"id": "C02-T3-exe-hash", "status": "PASS", "evidence": "e3c8ee0869a2a04a142bdd672ecc431dce946be2e6f98a7e1c9815c19488a9bc"},
+    {"id": "C02-T4-describe", "status": "PASS", "evidence": "runs/c02-smoke/describe/stdout.log; identity chain matches pins"},
+    {"id": "C02-T5-init-only", "status": "PASS", "evidence": "runs/c02-smoke/max_step_0/stdout.log; 6 chem_species A B C D F P"},
+    {"id": "C02-T6-one-step", "status": "PASS", "evidence": "runs/c02-smoke/max_step_1/stdout.log; fluid dt 0.25 advanced"},
+    {"id": "C02-T7-two-rank-launch", "status": "PASS", "evidence": "runs/c02-smoke/mpi_2rank/stdout.log; 'MPI initialized with 2 MPI processes', real particle exchange"},
+    {"id": "C02-T8-no-nan-or-error", "status": "PASS", "evidence": "grep -ilE 'nan|inf|assert|abort|error' over all smoke logs returns no files"},
+    {"id": "C02-T9-rebuild-from-cleared-dir", "status": "PASS", "evidence": "configure+build re-run from removed build directory succeeded"},
+    {"id": "C02-T10-source-unchanged", "status": "PASS", "evidence": "no file under src/ modified"}
+  ],
+
+  "smoke_runs": [
+    {"name": "describe", "exit": 0, "elapsed_s": 0.035},
+    {"name": "max_step_0", "exit": 0, "elapsed_s": 0.065},
+    {"name": "max_step_1", "exit": 0, "elapsed_s": 0.149},
+    {"name": "mpi_2rank", "exit": 0, "elapsed_s": 0.226, "note": "launch check only; NOT the C16 rank/decomposition invariance study"}
+  ],
+
+  "files_changed": [
+    {"path": "tools/repro/native_windows_env.ps1", "reason": "toolchain resolution and MSVC environment import"},
+    {"path": "tools/repro/configure_native_windows.ps1", "reason": "configure with reviewed options plus documented deviations"},
+    {"path": "tools/repro/build_native_windows.ps1", "reason": "build and hash the image"},
+    {"path": "tools/repro/run_smoke_native_windows.ps1", "reason": "execution smoke test"},
+    {"path": "evidence/stages/C02/STAGE_REPORT.md", "reason": "stage report"},
+    {"path": "evidence/stages/C02/STAGE_REPORT.json", "reason": "machine-readable stage report"},
+    {"path": "evidence/stages/C02/DEFECTS.md", "reason": "five defects found by actually building"},
+    {"path": "evidence/stages/C02/ENVIRONMENT.md", "reason": "corrected environment record"},
+    {"path": "evidence/stages/C02/COMMIT.txt", "reason": "stage commit hash"}
+  ],
+  "production_source_files_changed": 0,
+
+  "process_errors": [
+    {
+      "what": "launched a reconfigure+rebuild while a prior background build was still running against the same build directory and log file",
+      "effect": "produced a contaminated /Zc:lambda failure result",
+      "resolution": "result discarded; configure and build re-run strictly serially with distinct logs; no reported conclusion rests on the contaminated run"
+    }
+  ],
+
+  "claims_enabled": [
+    "the canonical source compiles clean on the declared reference platform",
+    "the resulting executable initialises, advances one timestep, and launches under two MPI ranks"
+  ],
+  "claims_still_prohibited": [
+    "platform qualification (C16)",
+    "numerical correctness",
+    "conservation or restart integrity",
+    "MPI rank-invariance",
+    "any scientific result",
+    "formal P05-P18 acceptance",
+    "empirical calibration",
+    "predictive validity",
+    "production qualification",
+    "publication readiness",
+    "RG-SW:GO",
+    "RG-SCI:GO"
+  ],
+
+  "blockers": [
+    {"id": "B-S00-03", "owner": "user/mentor", "dependency": "mentor/MENTOR_QUESTIONS_URGENT.md", "safe_boundary": "blocks C06B and final runs in C10-C15", "detail": "biology decisions unresolved; mentor packet not sent"},
+    {"id": "B-C02-01", "owner": "writer + independent review", "dependency": "evidence/stages/C02/DEFECTS.md", "safe_boundary": "non-blocking for C03-C05; D-C02-05 must be reviewed before any final run", "detail": "five source/recipe defects worked around in build configuration rather than fixed at source"}
+  ],
+  "blockers_resolved_by_this_stage": ["B-S00-01"],
+
+  "release_status": {
+    "rg_sw": "INCOMPLETE",
+    "rg_sci": "NO-GO",
+    "formal_p05_p18_acceptance": false,
+    "label": "RESEARCH-USE-CANDIDATE — RG-SW INCOMPLETE"
+  },
+
+  "next_prompt": "prompts/claude/C03_P06_LEAN_BASELINE_EVIDENCE.md"
+}

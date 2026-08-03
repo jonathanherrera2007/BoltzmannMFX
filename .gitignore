@@ -1,0 +1,15 @@
+# Added by C02 (build spike). Repository hygiene only -- no source behaviour.
+#
+# CMakeLists.txt:158-162 deliberately copies compile_commands.json from the
+# build directory into the source root after every configure. That means a
+# configure always dirties the worktree, which conflicts with the one-writer /
+# clean-status discipline in AGENTS.md. The file is a generated build artefact
+# containing absolute machine-specific paths and must never be committed.
+# See evidence/stages/C02/DEFECTS.md D-C02-06.
+/compile_commands.json
+
+# Python bytecode caches. Machine- and interpreter-specific; committing them
+# breaks byte-identical reproduction comparisons in C18/C21. One was swept into
+# the C03 commit by a broad `git add tools/repro` and is removed here.
+__pycache__/
+*.py[cod]

@@ -1,0 +1,4090 @@
+{
+  "artifact_type": "C10_P12_V2_GRID_AND_TIME_QUALIFICATION",
+  "case_registry_sha256": "7358a373bc80ba0bdd4d2284c5f97af2122b404ce8a0da53fe2e1bb51f4f7137",
+  "claim_boundary": "Independently prereviewed engineering numerical qualification; not yet reference-host reproduction, final independent acceptance, mentor approval, calibration, predictive validation, or C10 blocker closure.",
+  "coupled_cases": {
+    "L0_high": {
+      "canonical": {
+        "checks": {
+          "all_o01_ledgers": true,
+          "all_o10_ledgers": true,
+          "all_observations": true,
+          "all_recorded_boundary_conservation": true,
+          "all_uptake_rows": true,
+          "checkpoint_ledgers_present": true,
+          "cumulative_rejection_roundoff_only": true,
+          "eta_headroom": true,
+          "exit_zero": true,
+          "explicit_inactive_ledgers_zero": true,
+          "field_positivity": true,
+          "finite_diagnostics": true,
+          "internal_e_f_zero": true,
+          "positive_uptake_activity": true,
+          "scale_never_clipped": true,
+          "trajectory_extrema_consistent": true,
+          "zero_inventory_positive_request_absent": true
+        },
+        "last_o10": {
+          "boundary": "O10_POST_UPDATE_LEDGER",
+          "internal_d": 2.5537650344849064e-12,
+          "internal_e": 0.0,
+          "internal_f": 0.0,
+          "mesh_d": 1.7824620834051695e-10,
+          "residual": 6.979336418416171e-25,
+          "tolerance": 3.61599946750003e-20
+        },
+        "last_uptake": {
+          "accepted": 2.6597608259246467e-14,
+          "area": 5.105088062083415e-06,
+          "cum_accepted": 2.5537650344849064e-12,
+          "cum_area_time": 0.8821592171280158,
+          "cum_rejected": 0.0,
+          "cum_requested": 2.5537650344849064e-12,
+          "max_eta": 0.03821881847720755,
+          "min_scale": 1.0,
+          "rejected": 0.0,
+          "requested": 2.6597608259246467e-14,
+          "run_max_eta": 0.03821881847720755,
+          "run_min_scale": 1.0,
+          "run_positive_request_updates": 96,
+          "run_zero_inventory_positive_request_updates": 0,
+          "update": 96,
+          "zero_inventory_positive_request": 0
+        },
+        "rejection_tolerance_mol": 3.629118388182784e-26,
+        "status": "PASS",
+        "wall_s": 0.922686307000049
+      },
+      "checkpoint_restart": {
+        "checkpoint_step": 48,
+        "equivalence": {
+          "field_equivalent": true,
+          "field_max_relative_difference": 0.0,
+          "uptake_ledger_equivalent": true
+        },
+        "particle_comparison": {
+          "exact_discrete_fields": true,
+          "exact_identifiers": true,
+          "exact_schema": true,
+          "first_difference": null,
+          "floating_failures": 0,
+          "floating_tolerance": 1e-12,
+          "max_relative_difference": 0.0,
+          "status": "PASS"
+        },
+        "summary": {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.5537650344849064e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 1.7824620834051695e-10,
+            "residual": 6.979336418416171e-25,
+            "tolerance": 3.61599946750003e-20
+          },
+          "last_uptake": {
+            "accepted": 2.6597608259246467e-14,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.5537650344849064e-12,
+            "cum_area_time": 0.8821592171280158,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.5537650344849064e-12,
+            "max_eta": 0.03821881847720755,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 2.6597608259246467e-14,
+            "run_max_eta": 0.03821881847720755,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 96,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 96,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.629118388182784e-26,
+          "status": "PASS",
+          "wall_s": 0.6061246489999803
+        }
+      },
+      "checkpoint_restart_2_to_1": {
+        "checkpoint_step": 48,
+        "equivalence": {
+          "field_equivalent": true,
+          "field_max_relative_difference": 1.485309473195422e-16,
+          "uptake_ledger_equivalent": true
+        },
+        "particle_comparison": {
+          "exact_discrete_fields": true,
+          "exact_identifiers": true,
+          "exact_schema": true,
+          "first_difference": null,
+          "floating_failures": 0,
+          "floating_tolerance": 1e-12,
+          "max_relative_difference": 0.0,
+          "status": "PASS"
+        },
+        "summary": {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.5537650344849064e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 1.7824620834051693e-10,
+            "residual": -4.911384887033602e-25,
+            "tolerance": 3.6159994675000415e-20
+          },
+          "last_uptake": {
+            "accepted": 2.6597608259246467e-14,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.5537650344849056e-12,
+            "cum_area_time": 0.8821592171280158,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.5537650344849056e-12,
+            "max_eta": 0.03821881847720755,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 2.6597608259246467e-14,
+            "run_max_eta": 0.03821881847720755,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 96,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 96,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.629118388182783e-26,
+          "status": "PASS",
+          "wall_s": 0.6059840359999953
+        }
+      },
+      "configuration_sha256": "ecc56f62d95603e665394c1f030f3f113c20b6fe40f04ab345a9c78c9765a95d",
+      "deterministic_rerun": {
+        "bit_exact_uptake_and_observation_meshes": true,
+        "equivalence": {
+          "field_equivalent": true,
+          "field_max_relative_difference": 0.0,
+          "uptake_ledger_equivalent": true
+        },
+        "particle_comparison": {
+          "exact_discrete_fields": true,
+          "exact_identifiers": true,
+          "exact_schema": true,
+          "first_difference": null,
+          "floating_failures": 0,
+          "floating_tolerance": 1e-12,
+          "max_relative_difference": 0.0,
+          "status": "PASS"
+        },
+        "summary": {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.5537650344849064e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 1.7824620834051695e-10,
+            "residual": 6.979336418416171e-25,
+            "tolerance": 3.61599946750003e-20
+          },
+          "last_uptake": {
+            "accepted": 2.6597608259246467e-14,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.5537650344849064e-12,
+            "cum_area_time": 0.8821592171280158,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.5537650344849064e-12,
+            "max_eta": 0.03821881847720755,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 2.6597608259246467e-14,
+            "run_max_eta": 0.03821881847720755,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 96,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 96,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.629118388182784e-26,
+          "status": "PASS",
+          "wall_s": 0.9193267370000058
+        }
+      },
+      "mpi_decomposition": {
+        "equivalence": {
+          "field_equivalent": true,
+          "field_max_relative_difference": 1.4852581788190663e-16,
+          "uptake_ledger_equivalent": true
+        },
+        "particle_comparison": {
+          "exact_discrete_fields": true,
+          "exact_identifiers": true,
+          "exact_schema": true,
+          "first_difference": null,
+          "floating_failures": 0,
+          "floating_tolerance": 1e-12,
+          "max_relative_difference": 0.0,
+          "status": "PASS"
+        },
+        "summary": {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.5537650344849064e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 1.7824620834051708e-10,
+            "residual": -3.360421238496675e-25,
+            "tolerance": 3.6159994675000433e-20
+          },
+          "last_uptake": {
+            "accepted": 2.6597608259246467e-14,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.553765034484906e-12,
+            "cum_area_time": 0.8821592171280158,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.553765034484906e-12,
+            "max_eta": 0.03821881847720755,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 2.6597608259246467e-14,
+            "run_max_eta": 0.03821881847720755,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 96,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 96,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.6291183881827834e-26,
+          "status": "PASS",
+          "wall_s": 0.8835421930000393
+        },
+        "trajectory_field_equivalent": true,
+        "trajectory_field_max_relative_difference": 2.9390329510876134e-16
+      },
+      "raw_root": "/home/jherrera2007/c10-work/runs/c10-v2-reference/coupled/L0_high",
+      "status": "PASS"
+    },
+    "L0_low": {
+      "canonical": {
+        "checks": {
+          "all_o01_ledgers": true,
+          "all_o10_ledgers": true,
+          "all_observations": true,
+          "all_recorded_boundary_conservation": true,
+          "all_uptake_rows": true,
+          "checkpoint_ledgers_present": true,
+          "cumulative_rejection_roundoff_only": true,
+          "eta_headroom": true,
+          "exit_zero": true,
+          "explicit_inactive_ledgers_zero": true,
+          "field_positivity": true,
+          "finite_diagnostics": true,
+          "internal_e_f_zero": true,
+          "positive_uptake_activity": true,
+          "scale_never_clipped": true,
+          "trajectory_extrema_consistent": true,
+          "zero_inventory_positive_request_absent": true
+        },
+        "last_o10": {
+          "boundary": "O10_POST_UPDATE_LEDGER",
+          "internal_d": 2.454928699524047e-12,
+          "internal_e": 0.0,
+          "internal_f": 0.0,
+          "mesh_d": 6.194506181679273e-11,
+          "residual": -5.816113682013476e-25,
+          "tolerance": 1.2879998103263411e-20
+        },
+        "last_uptake": {
+          "accepted": 2.5542415206884e-14,
+          "area": 5.105088062083415e-06,
+          "cum_accepted": 2.454928699524046e-12,
+          "cum_area_time": 0.8821592171280158,
+          "cum_rejected": 0.0,
+          "cum_requested": 2.454928699524046e-12,
+          "max_eta": 0.10569655916071392,
+          "min_scale": 1.0,
+          "rejected": 0.0,
+          "requested": 2.5542415206884e-14,
+          "run_max_eta": 0.10569655916071392,
+          "run_min_scale": 1.0,
+          "run_positive_request_updates": 96,
+          "run_zero_inventory_positive_request_updates": 0,
+          "update": 96,
+          "zero_inventory_positive_request": 0
+        },
+        "rejection_tolerance_mol": 3.488663508511601e-26,
+        "status": "PASS",
+        "wall_s": 0.920618592999972
+      },
+      "checkpoint_restart": {
+        "checkpoint_step": 48,
+        "equivalence": {
+          "field_equivalent": true,
+          "field_max_relative_difference": 0.0,
+          "uptake_ledger_equivalent": true
+        },
+        "particle_comparison": {
+          "exact_discrete_fields": true,
+          "exact_identifiers": true,
+          "exact_schema": true,
+          "first_difference": null,
+          "floating_failures": 0,
+          "floating_tolerance": 1e-12,
+          "max_relative_difference": 0.0,
+          "status": "PASS"
+        },
+        "summary": {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.454928699524047e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 6.194506181679273e-11,
+            "residual": -5.816113682013476e-25,
+            "tolerance": 1.2879998103263411e-20
+          },
+          "last_uptake": {
+            "accepted": 2.5542415206884e-14,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.454928699524046e-12,
+            "cum_area_time": 0.8821592171280158,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.454928699524046e-12,
+            "max_eta": 0.10569655916071392,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 2.5542415206884e-14,
+            "run_max_eta": 0.10569655916071392,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 96,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 96,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.488663508511601e-26,
+          "status": "PASS",
+          "wall_s": 0.6047579959999894
+        }
+      },
+      "checkpoint_restart_2_to_1": {
+        "checkpoint_step": 48,
+        "equivalence": {
+          "field_equivalent": true,
+          "field_max_relative_difference": 6.420420276292753e-16,
+          "uptake_ledger_equivalent": true
+        },
+        "particle_comparison": {
+          "exact_discrete_fields": true,
+          "exact_identifiers": true,
+          "exact_schema": true,
+          "first_difference": null,
+          "floating_failures": 0,
+          "floating_tolerance": 1e-12,
+          "max_relative_difference": 0.0,
+          "status": "PASS"
+        },
+        "summary": {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.4549286995240476e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 6.194506181679275e-11,
+            "residual": -3.7481621506309067e-25,
+            "tolerance": 1.2879998103263395e-20
+          },
+          "last_uptake": {
+            "accepted": 2.5542415206884002e-14,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.454928699524046e-12,
+            "cum_area_time": 0.8821592171280158,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.454928699524046e-12,
+            "max_eta": 0.10569655916071387,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 2.5542415206884002e-14,
+            "run_max_eta": 0.10569655916071387,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 96,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 96,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.488663508511601e-26,
+          "status": "PASS",
+          "wall_s": 0.6070532019999746
+        }
+      },
+      "configuration_sha256": "fe6970f040e10fa12ce607ae47b449fb89960c5bf644973c9203817d8c03c075",
+      "deterministic_rerun": {
+        "bit_exact_uptake_and_observation_meshes": true,
+        "equivalence": {
+          "field_equivalent": true,
+          "field_max_relative_difference": 0.0,
+          "uptake_ledger_equivalent": true
+        },
+        "particle_comparison": {
+          "exact_discrete_fields": true,
+          "exact_identifiers": true,
+          "exact_schema": true,
+          "first_difference": null,
+          "floating_failures": 0,
+          "floating_tolerance": 1e-12,
+          "max_relative_difference": 0.0,
+          "status": "PASS"
+        },
+        "summary": {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.454928699524047e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 6.194506181679273e-11,
+            "residual": -5.816113682013476e-25,
+            "tolerance": 1.2879998103263411e-20
+          },
+          "last_uptake": {
+            "accepted": 2.5542415206884e-14,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.454928699524046e-12,
+            "cum_area_time": 0.8821592171280158,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.454928699524046e-12,
+            "max_eta": 0.10569655916071392,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 2.5542415206884e-14,
+            "run_max_eta": 0.10569655916071392,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 96,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 96,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.488663508511601e-26,
+          "status": "PASS",
+          "wall_s": 0.9037140020000152
+        }
+      },
+      "mpi_decomposition": {
+        "equivalence": {
+          "field_equivalent": true,
+          "field_max_relative_difference": 1.282518952192333e-15,
+          "uptake_ledger_equivalent": true
+        },
+        "particle_comparison": {
+          "exact_discrete_fields": true,
+          "exact_identifiers": true,
+          "exact_schema": true,
+          "first_difference": null,
+          "floating_failures": 0,
+          "floating_tolerance": 1e-12,
+          "max_relative_difference": 0.0,
+          "status": "PASS"
+        },
+        "summary": {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.4549286995240476e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 6.194506181679275e-11,
+            "residual": -3.7481621506309067e-25,
+            "tolerance": 1.2879998103263395e-20
+          },
+          "last_uptake": {
+            "accepted": 2.5542415206884002e-14,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.454928699524046e-12,
+            "cum_area_time": 0.8821592171280158,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.454928699524046e-12,
+            "max_eta": 0.10569655916071381,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 2.5542415206884002e-14,
+            "run_max_eta": 0.10569655916071381,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 96,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 96,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.488663508511601e-26,
+          "status": "PASS",
+          "wall_s": 0.86995038200007
+        },
+        "trajectory_field_equivalent": true,
+        "trajectory_field_max_relative_difference": 1.282518952192333e-15
+      },
+      "raw_root": "/home/jherrera2007/c10-work/runs/c10-v2-reference/coupled/L0_low",
+      "status": "PASS"
+    },
+    "L1_high": {
+      "canonical": {
+        "checks": {
+          "all_o01_ledgers": true,
+          "all_o10_ledgers": true,
+          "all_observations": true,
+          "all_recorded_boundary_conservation": true,
+          "all_uptake_rows": true,
+          "checkpoint_ledgers_present": true,
+          "cumulative_rejection_roundoff_only": true,
+          "eta_headroom": true,
+          "exit_zero": true,
+          "explicit_inactive_ledgers_zero": true,
+          "field_positivity": true,
+          "finite_diagnostics": true,
+          "internal_e_f_zero": true,
+          "positive_uptake_activity": true,
+          "scale_never_clipped": true,
+          "trajectory_extrema_consistent": true,
+          "zero_inventory_positive_request_absent": true
+        },
+        "last_o10": {
+          "boundary": "O10_POST_UPDATE_LEDGER",
+          "internal_d": 2.5537245904178683e-12,
+          "internal_e": 0.0,
+          "internal_f": 0.0,
+          "mesh_d": 1.782462487845936e-10,
+          "residual": 6.462348535570529e-24,
+          "tolerance": 3.615999467500165e-20
+        },
+        "last_uptake": {
+          "accepted": 3.3246432167029086e-15,
+          "area": 5.105088062083415e-06,
+          "cum_accepted": 2.5537245904178735e-12,
+          "cum_area_time": 0.8821592171280258,
+          "cum_rejected": 0.0,
+          "cum_requested": 2.5537245904178735e-12,
+          "max_eta": 0.03825849273670495,
+          "min_scale": 1.0,
+          "rejected": 0.0,
+          "requested": 3.3246432167029086e-15,
+          "run_max_eta": 0.03825849273670495,
+          "run_min_scale": 1.0,
+          "run_positive_request_updates": 768,
+          "run_zero_inventory_positive_request_updates": 0,
+          "update": 768,
+          "zero_inventory_positive_request": 0
+        },
+        "rejection_tolerance_mol": 3.6290609137067144e-26,
+        "status": "PASS",
+        "wall_s": 11.217184003000057
+      },
+      "checkpoint_restart": {
+        "checkpoint_step": 384,
+        "equivalence": {
+          "field_equivalent": true,
+          "field_max_relative_difference": 0.0,
+          "uptake_ledger_equivalent": true
+        },
+        "particle_comparison": {
+          "exact_discrete_fields": true,
+          "exact_identifiers": true,
+          "exact_schema": true,
+          "first_difference": null,
+          "floating_failures": 0,
+          "floating_tolerance": 1e-12,
+          "max_relative_difference": 0.0,
+          "status": "PASS"
+        },
+        "summary": {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.5537245904178683e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 1.782462487845936e-10,
+            "residual": 6.462348535570529e-24,
+            "tolerance": 3.615999467500165e-20
+          },
+          "last_uptake": {
+            "accepted": 3.3246432167029086e-15,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.5537245904178735e-12,
+            "cum_area_time": 0.8821592171280258,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.5537245904178735e-12,
+            "max_eta": 0.03825849273670495,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 3.3246432167029086e-15,
+            "run_max_eta": 0.03825849273670495,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 768,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 768,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.6290609137067144e-26,
+          "status": "PASS",
+          "wall_s": 5.765193722999811
+        }
+      },
+      "checkpoint_restart_2_to_1": {
+        "checkpoint_step": 384,
+        "equivalence": {
+          "field_equivalent": true,
+          "field_max_relative_difference": 0.0,
+          "uptake_ledger_equivalent": true
+        },
+        "particle_comparison": {
+          "exact_discrete_fields": true,
+          "exact_identifiers": true,
+          "exact_schema": true,
+          "first_difference": null,
+          "floating_failures": 0,
+          "floating_tolerance": 1e-12,
+          "max_relative_difference": 0.0,
+          "status": "PASS"
+        },
+        "summary": {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.5537245904178683e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 1.782462487845936e-10,
+            "residual": 1.2071667064445748e-23,
+            "tolerance": 3.6159994675001083e-20
+          },
+          "last_uptake": {
+            "accepted": 3.3246432167029086e-15,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.5537245904178735e-12,
+            "cum_area_time": 0.8821592171280258,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.5537245904178735e-12,
+            "max_eta": 0.03825849273670495,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 3.3246432167029086e-15,
+            "run_max_eta": 0.03825849273670495,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 768,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 768,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.6290609137067144e-26,
+          "status": "PASS",
+          "wall_s": 5.76573518400005
+        }
+      },
+      "configuration_sha256": "efc4d10dcfe5cc8ebd8794ce8f561ff587e6739534a6b7176a09a7e497f1eb89",
+      "deterministic_rerun": {
+        "bit_exact_uptake_and_observation_meshes": true,
+        "equivalence": {
+          "field_equivalent": true,
+          "field_max_relative_difference": 0.0,
+          "uptake_ledger_equivalent": true
+        },
+        "particle_comparison": {
+          "exact_discrete_fields": true,
+          "exact_identifiers": true,
+          "exact_schema": true,
+          "first_difference": null,
+          "floating_failures": 0,
+          "floating_tolerance": 1e-12,
+          "max_relative_difference": 0.0,
+          "status": "PASS"
+        },
+        "summary": {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.5537245904178683e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 1.782462487845936e-10,
+            "residual": 6.462348535570529e-24,
+            "tolerance": 3.615999467500165e-20
+          },
+          "last_uptake": {
+            "accepted": 3.3246432167029086e-15,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.5537245904178735e-12,
+            "cum_area_time": 0.8821592171280258,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.5537245904178735e-12,
+            "max_eta": 0.03825849273670495,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 3.3246432167029086e-15,
+            "run_max_eta": 0.03825849273670495,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 768,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 768,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.6290609137067144e-26,
+          "status": "PASS",
+          "wall_s": 11.237729115000093
+        }
+      },
+      "mpi_decomposition": {
+        "equivalence": {
+          "field_equivalent": true,
+          "field_max_relative_difference": 0.0,
+          "uptake_ledger_equivalent": true
+        },
+        "particle_comparison": {
+          "exact_discrete_fields": true,
+          "exact_identifiers": true,
+          "exact_schema": true,
+          "first_difference": null,
+          "floating_failures": 0,
+          "floating_tolerance": 1e-12,
+          "max_relative_difference": 0.0,
+          "status": "PASS"
+        },
+        "summary": {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.5537245904178683e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 1.7824624878459377e-10,
+            "residual": 1.2252612823441722e-23,
+            "tolerance": 3.615999467500111e-20
+          },
+          "last_uptake": {
+            "accepted": 3.3246432167029086e-15,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.5537245904178735e-12,
+            "cum_area_time": 0.8821592171280258,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.5537245904178735e-12,
+            "max_eta": 0.03825849273670495,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 3.3246432167029086e-15,
+            "run_max_eta": 0.03825849273670495,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 768,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 768,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.6290609137067144e-26,
+          "status": "PASS",
+          "wall_s": 8.78206997899997
+        },
+        "trajectory_field_equivalent": true,
+        "trajectory_field_max_relative_difference": 0.0
+      },
+      "raw_root": "/home/jherrera2007/c10-work/runs/c10-v2-reference/coupled/L1_high",
+      "status": "PASS"
+    },
+    "L1_low": {
+      "canonical": {
+        "checks": {
+          "all_o01_ledgers": true,
+          "all_o10_ledgers": true,
+          "all_observations": true,
+          "all_recorded_boundary_conservation": true,
+          "all_uptake_rows": true,
+          "checkpoint_ledgers_present": true,
+          "cumulative_rejection_roundoff_only": true,
+          "eta_headroom": true,
+          "exit_zero": true,
+          "explicit_inactive_ledgers_zero": true,
+          "field_positivity": true,
+          "finite_diagnostics": true,
+          "internal_e_f_zero": true,
+          "positive_uptake_activity": true,
+          "scale_never_clipped": true,
+          "trajectory_extrema_consistent": true,
+          "zero_inventory_positive_request_absent": true
+        },
+        "last_o10": {
+          "boundary": "O10_POST_UPDATE_LEDGER",
+          "internal_d": 2.4546379960889873e-12,
+          "internal_e": 0.0,
+          "internal_f": 0.0,
+          "mesh_d": 6.194535252023717e-11,
+          "residual": 6.268478079503413e-24,
+          "tolerance": 1.2879998103264604e-20
+        },
+        "last_uptake": {
+          "accepted": 3.192377581022497e-15,
+          "area": 5.105088062083415e-06,
+          "cum_accepted": 2.4546379960889873e-12,
+          "cum_area_time": 0.8821592171280258,
+          "cum_rejected": 0.0,
+          "cum_requested": 2.4546379960889873e-12,
+          "max_eta": 0.10594159360415696,
+          "min_scale": 1.0,
+          "rejected": 0.0,
+          "requested": 3.192377581022497e-15,
+          "run_max_eta": 0.10594159360415696,
+          "run_min_scale": 1.0,
+          "run_positive_request_updates": 768,
+          "run_zero_inventory_positive_request_updates": 0,
+          "update": 768,
+          "zero_inventory_positive_request": 0
+        },
+        "rejection_tolerance_mol": 3.488250394083518e-26,
+        "status": "PASS",
+        "wall_s": 11.225010744999963
+      },
+      "checkpoint_restart": {
+        "checkpoint_step": 384,
+        "equivalence": {
+          "field_equivalent": true,
+          "field_max_relative_difference": 0.0,
+          "uptake_ledger_equivalent": true
+        },
+        "particle_comparison": {
+          "exact_discrete_fields": true,
+          "exact_identifiers": true,
+          "exact_schema": true,
+          "first_difference": null,
+          "floating_failures": 0,
+          "floating_tolerance": 1e-12,
+          "max_relative_difference": 0.0,
+          "status": "PASS"
+        },
+        "summary": {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.4546379960889873e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 6.194535252023717e-11,
+            "residual": 6.268478079503413e-24,
+            "tolerance": 1.2879998103264604e-20
+          },
+          "last_uptake": {
+            "accepted": 3.192377581022497e-15,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.4546379960889873e-12,
+            "cum_area_time": 0.8821592171280258,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.4546379960889873e-12,
+            "max_eta": 0.10594159360415696,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 3.192377581022497e-15,
+            "run_max_eta": 0.10594159360415696,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 768,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 768,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.488250394083518e-26,
+          "status": "PASS",
+          "wall_s": 5.763646078999955
+        }
+      },
+      "checkpoint_restart_2_to_1": {
+        "checkpoint_step": 384,
+        "equivalence": {
+          "field_equivalent": true,
+          "field_max_relative_difference": 0.0,
+          "uptake_ledger_equivalent": true
+        },
+        "particle_comparison": {
+          "exact_discrete_fields": true,
+          "exact_identifiers": true,
+          "exact_schema": true,
+          "first_difference": null,
+          "floating_failures": 0,
+          "floating_tolerance": 1e-12,
+          "max_relative_difference": 0.0,
+          "status": "PASS"
+        },
+        "summary": {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.4546379960889873e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 6.194535252023717e-11,
+            "residual": 9.241158405865856e-24,
+            "tolerance": 1.2879998103264311e-20
+          },
+          "last_uptake": {
+            "accepted": 3.192377581022497e-15,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.4546379960889873e-12,
+            "cum_area_time": 0.8821592171280258,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.4546379960889873e-12,
+            "max_eta": 0.10594159360415696,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 3.192377581022497e-15,
+            "run_max_eta": 0.10594159360415696,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 768,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 768,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.488250394083518e-26,
+          "status": "PASS",
+          "wall_s": 5.743620338000028
+        }
+      },
+      "configuration_sha256": "157558218aaf33059b0e0ad7239f2db063087f177d33877470e13630e21e87de",
+      "deterministic_rerun": {
+        "bit_exact_uptake_and_observation_meshes": true,
+        "equivalence": {
+          "field_equivalent": true,
+          "field_max_relative_difference": 0.0,
+          "uptake_ledger_equivalent": true
+        },
+        "particle_comparison": {
+          "exact_discrete_fields": true,
+          "exact_identifiers": true,
+          "exact_schema": true,
+          "first_difference": null,
+          "floating_failures": 0,
+          "floating_tolerance": 1e-12,
+          "max_relative_difference": 0.0,
+          "status": "PASS"
+        },
+        "summary": {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.4546379960889873e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 6.194535252023717e-11,
+            "residual": 6.268478079503413e-24,
+            "tolerance": 1.2879998103264604e-20
+          },
+          "last_uptake": {
+            "accepted": 3.192377581022497e-15,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.4546379960889873e-12,
+            "cum_area_time": 0.8821592171280258,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.4546379960889873e-12,
+            "max_eta": 0.10594159360415696,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 3.192377581022497e-15,
+            "run_max_eta": 0.10594159360415696,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 768,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 768,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.488250394083518e-26,
+          "status": "PASS",
+          "wall_s": 11.220842016000006
+        }
+      },
+      "mpi_decomposition": {
+        "equivalence": {
+          "field_equivalent": true,
+          "field_max_relative_difference": 0.0,
+          "uptake_ledger_equivalent": true
+        },
+        "particle_comparison": {
+          "exact_discrete_fields": true,
+          "exact_identifiers": true,
+          "exact_schema": true,
+          "first_difference": null,
+          "floating_failures": 0,
+          "floating_tolerance": 1e-12,
+          "max_relative_difference": 0.0,
+          "status": "PASS"
+        },
+        "summary": {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.4546379960889873e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 6.194535252023717e-11,
+            "residual": 9.241158405865856e-24,
+            "tolerance": 1.2879998103264311e-20
+          },
+          "last_uptake": {
+            "accepted": 3.192377581022497e-15,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.4546379960889873e-12,
+            "cum_area_time": 0.8821592171280258,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.4546379960889873e-12,
+            "max_eta": 0.10594159360415696,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 3.192377581022497e-15,
+            "run_max_eta": 0.10594159360415696,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 768,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 768,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.488250394083518e-26,
+          "status": "PASS",
+          "wall_s": 8.952185469999904
+        },
+        "trajectory_field_equivalent": true,
+        "trajectory_field_max_relative_difference": 0.0
+      },
+      "raw_root": "/home/jherrera2007/c10-work/runs/c10-v2-reference/coupled/L1_low",
+      "status": "PASS"
+    },
+    "L2_high": {
+      "canonical": {
+        "checks": {
+          "all_o01_ledgers": true,
+          "all_o10_ledgers": true,
+          "all_observations": true,
+          "all_recorded_boundary_conservation": true,
+          "all_uptake_rows": true,
+          "checkpoint_ledgers_present": true,
+          "cumulative_rejection_roundoff_only": true,
+          "eta_headroom": true,
+          "exit_zero": true,
+          "explicit_inactive_ledgers_zero": true,
+          "field_positivity": true,
+          "finite_diagnostics": true,
+          "internal_e_f_zero": true,
+          "positive_uptake_activity": true,
+          "scale_never_clipped": true,
+          "trajectory_extrema_consistent": true,
+          "zero_inventory_positive_request_absent": true
+        },
+        "last_o10": {
+          "boundary": "O10_POST_UPDATE_LEDGER",
+          "internal_d": 2.553649590041924e-12,
+          "internal_e": 0.0,
+          "internal_f": 0.0,
+          "mesh_d": 1.782463237822601e-10,
+          "residual": -2.742853363043413e-21,
+          "tolerance": 3.615999467473469e-20
+        },
+        "last_uptake": {
+          "accepted": 4.155679639892204e-16,
+          "area": 5.105088062083415e-06,
+          "cum_accepted": 2.5536495900419174e-12,
+          "cum_area_time": 0.8821592171280712,
+          "cum_rejected": 0.0,
+          "cum_requested": 2.5536495900419174e-12,
+          "max_eta": 0.03839048395624756,
+          "min_scale": 1.0,
+          "rejected": 0.0,
+          "requested": 4.155679639892204e-16,
+          "run_max_eta": 0.03839048395624756,
+          "run_min_scale": 1.0,
+          "run_positive_request_updates": 6144,
+          "run_zero_inventory_positive_request_updates": 0,
+          "update": 6144,
+          "zero_inventory_positive_request": 0
+        },
+        "rejection_tolerance_mol": 3.6289543317620846e-26,
+        "status": "PASS",
+        "wall_s": 474.1355323769999
+      },
+      "checkpoint_restart": {
+        "checkpoint_step": 3072,
+        "equivalence": {
+          "field_equivalent": true,
+          "field_max_relative_difference": 0.0,
+          "uptake_ledger_equivalent": true
+        },
+        "particle_comparison": {
+          "exact_discrete_fields": true,
+          "exact_identifiers": true,
+          "exact_schema": true,
+          "first_difference": null,
+          "floating_failures": 0,
+          "floating_tolerance": 1e-12,
+          "max_relative_difference": 0.0,
+          "status": "PASS"
+        },
+        "summary": {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.553649590041924e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 1.782463237822601e-10,
+            "residual": -2.742853363043413e-21,
+            "tolerance": 3.615999467473469e-20
+          },
+          "last_uptake": {
+            "accepted": 4.155679639892204e-16,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.5536495900419174e-12,
+            "cum_area_time": 0.8821592171280712,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.5536495900419174e-12,
+            "max_eta": 0.03839048395624756,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 4.155679639892204e-16,
+            "run_max_eta": 0.03839048395624756,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 6144,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 6144,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.6289543317620846e-26,
+          "status": "PASS",
+          "wall_s": 237.45141970799978
+        }
+      },
+      "checkpoint_restart_2_to_1": {
+        "checkpoint_step": 3072,
+        "equivalence": {
+          "field_equivalent": true,
+          "field_max_relative_difference": 0.0,
+          "uptake_ledger_equivalent": true
+        },
+        "particle_comparison": {
+          "exact_discrete_fields": true,
+          "exact_identifiers": true,
+          "exact_schema": true,
+          "first_difference": null,
+          "floating_failures": 0,
+          "floating_tolerance": 1e-12,
+          "max_relative_difference": 0.0,
+          "status": "PASS"
+        },
+        "summary": {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.553649590041924e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 1.782463237822601e-10,
+            "residual": -2.714263933122049e-21,
+            "tolerance": 3.615999467473184e-20
+          },
+          "last_uptake": {
+            "accepted": 4.155679639892204e-16,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.5536495900419174e-12,
+            "cum_area_time": 0.8821592171280712,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.5536495900419174e-12,
+            "max_eta": 0.03839048395624756,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 4.155679639892204e-16,
+            "run_max_eta": 0.03839048395624756,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 6144,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 6144,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.6289543317620846e-26,
+          "status": "PASS",
+          "wall_s": 237.0438665040001
+        }
+      },
+      "configuration_sha256": "47323cd665964861f8ffe6f1cbefc1ac771ddee03b1d3333e1166f7f1f935a92",
+      "deterministic_rerun": {
+        "bit_exact_uptake_and_observation_meshes": true,
+        "equivalence": {
+          "field_equivalent": true,
+          "field_max_relative_difference": 0.0,
+          "uptake_ledger_equivalent": true
+        },
+        "particle_comparison": {
+          "exact_discrete_fields": true,
+          "exact_identifiers": true,
+          "exact_schema": true,
+          "first_difference": null,
+          "floating_failures": 0,
+          "floating_tolerance": 1e-12,
+          "max_relative_difference": 0.0,
+          "status": "PASS"
+        },
+        "summary": {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.553649590041924e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 1.782463237822601e-10,
+            "residual": -2.742853363043413e-21,
+            "tolerance": 3.615999467473469e-20
+          },
+          "last_uptake": {
+            "accepted": 4.155679639892204e-16,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.5536495900419174e-12,
+            "cum_area_time": 0.8821592171280712,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.5536495900419174e-12,
+            "max_eta": 0.03839048395624756,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 4.155679639892204e-16,
+            "run_max_eta": 0.03839048395624756,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 6144,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 6144,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.6289543317620846e-26,
+          "status": "PASS",
+          "wall_s": 474.309404869
+        }
+      },
+      "mpi_decomposition": {
+        "equivalence": {
+          "field_equivalent": true,
+          "field_max_relative_difference": 0.0,
+          "uptake_ledger_equivalent": true
+        },
+        "particle_comparison": {
+          "exact_discrete_fields": true,
+          "exact_identifiers": true,
+          "exact_schema": true,
+          "first_difference": null,
+          "floating_failures": 0,
+          "floating_tolerance": 1e-12,
+          "max_relative_difference": 0.0,
+          "status": "PASS"
+        },
+        "summary": {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.553649590041924e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 1.7824632378225993e-10,
+            "residual": -2.714444878881045e-21,
+            "tolerance": 3.615999467473182e-20
+          },
+          "last_uptake": {
+            "accepted": 4.155679639892204e-16,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.5536495900419174e-12,
+            "cum_area_time": 0.8821592171280712,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.5536495900419174e-12,
+            "max_eta": 0.03839048395624756,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 4.155679639892204e-16,
+            "run_max_eta": 0.03839048395624756,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 6144,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 6144,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.6289543317620846e-26,
+          "status": "PASS",
+          "wall_s": 265.6648756990003
+        },
+        "trajectory_field_equivalent": true,
+        "trajectory_field_max_relative_difference": 0.0
+      },
+      "raw_root": "/home/jherrera2007/c10-work/runs/c10-v2-reference/coupled/L2_high",
+      "status": "PASS"
+    },
+    "L2_low": {
+      "canonical": {
+        "checks": {
+          "all_o01_ledgers": true,
+          "all_o10_ledgers": true,
+          "all_observations": true,
+          "all_recorded_boundary_conservation": true,
+          "all_uptake_rows": true,
+          "checkpoint_ledgers_present": true,
+          "cumulative_rejection_roundoff_only": true,
+          "eta_headroom": true,
+          "exit_zero": true,
+          "explicit_inactive_ledgers_zero": true,
+          "field_positivity": true,
+          "finite_diagnostics": true,
+          "internal_e_f_zero": true,
+          "positive_uptake_activity": true,
+          "scale_never_clipped": true,
+          "trajectory_extrema_consistent": true,
+          "zero_inventory_positive_request_absent": true
+        },
+        "last_o10": {
+          "boundary": "O10_POST_UPDATE_LEDGER",
+          "internal_d": 2.4540972207152547e-12,
+          "internal_e": 0.0,
+          "internal_f": 0.0,
+          "mesh_d": 6.194589329300585e-11,
+          "residual": -2.5803511467679564e-21,
+          "tolerance": 1.2879998103002254e-20
+        },
+        "last_uptake": {
+          "accepted": 3.989556363197941e-16,
+          "area": 5.105088062083415e-06,
+          "cum_accepted": 2.4540972207152588e-12,
+          "cum_area_time": 0.8821592171280712,
+          "cum_rejected": 0.0,
+          "cum_requested": 2.4540972207152588e-12,
+          "max_eta": 0.10654141714024555,
+          "min_scale": 1.0,
+          "rejected": 0.0,
+          "requested": 3.989556363197941e-16,
+          "run_max_eta": 0.10654141714024555,
+          "run_min_scale": 1.0,
+          "run_positive_request_updates": 6144,
+          "run_zero_inventory_positive_request_updates": 0,
+          "update": 6144,
+          "zero_inventory_positive_request": 0
+        },
+        "rejection_tolerance_mol": 3.487481906056557e-26,
+        "status": "PASS",
+        "wall_s": 476.44406871499996
+      },
+      "checkpoint_restart": {
+        "checkpoint_step": 3072,
+        "equivalence": {
+          "field_equivalent": true,
+          "field_max_relative_difference": 0.0,
+          "uptake_ledger_equivalent": true
+        },
+        "particle_comparison": {
+          "exact_discrete_fields": true,
+          "exact_identifiers": true,
+          "exact_schema": true,
+          "first_difference": null,
+          "floating_failures": 0,
+          "floating_tolerance": 1e-12,
+          "max_relative_difference": 0.0,
+          "status": "PASS"
+        },
+        "summary": {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.4540972207152547e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 6.194589329300585e-11,
+            "residual": -2.5803511467679564e-21,
+            "tolerance": 1.2879998103002254e-20
+          },
+          "last_uptake": {
+            "accepted": 3.989556363197941e-16,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.4540972207152588e-12,
+            "cum_area_time": 0.8821592171280712,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.4540972207152588e-12,
+            "max_eta": 0.10654141714024555,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 3.989556363197941e-16,
+            "run_max_eta": 0.10654141714024555,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 6144,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 6144,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.487481906056557e-26,
+          "status": "PASS",
+          "wall_s": 237.49392625100018
+        }
+      },
+      "checkpoint_restart_2_to_1": {
+        "checkpoint_step": 3072,
+        "equivalence": {
+          "field_equivalent": true,
+          "field_max_relative_difference": 0.0,
+          "uptake_ledger_equivalent": true
+        },
+        "particle_comparison": {
+          "exact_discrete_fields": true,
+          "exact_identifiers": true,
+          "exact_schema": true,
+          "first_difference": null,
+          "floating_failures": 0,
+          "floating_tolerance": 1e-12,
+          "max_relative_difference": 0.0,
+          "status": "PASS"
+        },
+        "summary": {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.4540972207152547e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 6.194589329300585e-11,
+            "residual": -2.596985231898515e-21,
+            "tolerance": 1.2879998103003919e-20
+          },
+          "last_uptake": {
+            "accepted": 3.989556363197941e-16,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.4540972207152588e-12,
+            "cum_area_time": 0.8821592171280712,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.4540972207152588e-12,
+            "max_eta": 0.10654141714024555,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 3.989556363197941e-16,
+            "run_max_eta": 0.10654141714024555,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 6144,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 6144,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.487481906056557e-26,
+          "status": "PASS",
+          "wall_s": 237.2060524909998
+        }
+      },
+      "configuration_sha256": "f1561e866eabd39c78ea40bdb9067cfbd474d3a4c6ec03eee3bdf0c143e9ddac",
+      "deterministic_rerun": {
+        "bit_exact_uptake_and_observation_meshes": true,
+        "equivalence": {
+          "field_equivalent": true,
+          "field_max_relative_difference": 0.0,
+          "uptake_ledger_equivalent": true
+        },
+        "particle_comparison": {
+          "exact_discrete_fields": true,
+          "exact_identifiers": true,
+          "exact_schema": true,
+          "first_difference": null,
+          "floating_failures": 0,
+          "floating_tolerance": 1e-12,
+          "max_relative_difference": 0.0,
+          "status": "PASS"
+        },
+        "summary": {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.4540972207152547e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 6.194589329300585e-11,
+            "residual": -2.5803511467679564e-21,
+            "tolerance": 1.2879998103002254e-20
+          },
+          "last_uptake": {
+            "accepted": 3.989556363197941e-16,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.4540972207152588e-12,
+            "cum_area_time": 0.8821592171280712,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.4540972207152588e-12,
+            "max_eta": 0.10654141714024555,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 3.989556363197941e-16,
+            "run_max_eta": 0.10654141714024555,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 6144,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 6144,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.487481906056557e-26,
+          "status": "PASS",
+          "wall_s": 473.244222926
+        }
+      },
+      "mpi_decomposition": {
+        "equivalence": {
+          "field_equivalent": true,
+          "field_max_relative_difference": 0.0,
+          "uptake_ledger_equivalent": true
+        },
+        "particle_comparison": {
+          "exact_discrete_fields": true,
+          "exact_identifiers": true,
+          "exact_schema": true,
+          "first_difference": null,
+          "floating_failures": 0,
+          "floating_tolerance": 1e-12,
+          "max_relative_difference": 0.0,
+          "status": "PASS"
+        },
+        "summary": {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.4540972207152547e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 6.194589329300654e-11,
+            "residual": -2.5962872982566733e-21,
+            "tolerance": 1.2879998103003988e-20
+          },
+          "last_uptake": {
+            "accepted": 3.989556363197941e-16,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.4540972207152588e-12,
+            "cum_area_time": 0.8821592171280712,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.4540972207152588e-12,
+            "max_eta": 0.10654141714024555,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 3.989556363197941e-16,
+            "run_max_eta": 0.10654141714024555,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 6144,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 6144,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.487481906056557e-26,
+          "status": "PASS",
+          "wall_s": 266.588584996
+        },
+        "trajectory_field_equivalent": true,
+        "trajectory_field_max_relative_difference": 0.0
+      },
+      "raw_root": "/home/jherrera2007/c10-work/runs/c10-v2-reference/coupled/L2_low",
+      "status": "PASS"
+    }
+  },
+  "coupled_comparisons": {
+    "L0_vs_L1_high": {
+      "checks": {
+        "both_cases_pass": true,
+        "profile_within_5_percent_every_observation": true,
+        "uptake_within_2_percent": true
+      },
+      "cumulative_uptake_relative_difference": 1.5837286128895545e-05,
+      "maximum_mesh_profile_l1_relative": 1.2104050777091658e-05,
+      "mesh_profile_l1_relative_by_observation": {
+        "0": 0.0,
+        "129600": 1.206672681082132e-05,
+        "14400": 1.1968796057474398e-05,
+        "172800": 1.2104050777091658e-05,
+        "1800": 8.494601884972557e-06,
+        "28800": 1.1982162593128228e-05,
+        "3600": 1.0624892078389722e-05,
+        "43200": 1.1994136858460626e-05,
+        "7200": 1.1820301888904636e-05,
+        "86400": 1.2030197558048639e-05
+      },
+      "status": "PASS"
+    },
+    "L0_vs_L1_low": {
+      "checks": {
+        "both_cases_pass": true,
+        "profile_within_5_percent_every_observation": true,
+        "uptake_within_2_percent": true
+      },
+      "cumulative_uptake_relative_difference": 0.0001184302677306849,
+      "maximum_mesh_profile_l1_relative": 3.314104993216557e-05,
+      "mesh_profile_l1_relative_by_observation": {
+        "0": 2.0551071119329885e-16,
+        "129600": 3.2908054216790126e-05,
+        "14400": 3.23612193154702e-05,
+        "172800": 3.314104993216557e-05,
+        "1800": 2.2950515373258466e-05,
+        "28800": 3.2430361360416504e-05,
+        "3600": 2.8705576974287443e-05,
+        "43200": 3.249648486284987e-05,
+        "7200": 3.1945657793342473e-05,
+        "86400": 3.269598232374258e-05
+      },
+      "status": "PASS"
+    },
+    "L1_vs_L2_high": {
+      "checks": {
+        "both_cases_pass": true,
+        "profile_within_5_percent_every_observation": true,
+        "uptake_within_2_percent": true
+      },
+      "cumulative_uptake_relative_difference": 2.9369877624775688e-05,
+      "maximum_mesh_profile_l1_relative": 6.254591892050036e-06,
+      "mesh_profile_l1_relative_by_observation": {
+        "0": 0.0,
+        "129600": 6.236005601269751e-06,
+        "14400": 6.189948659542481e-06,
+        "172800": 6.254591892050036e-06,
+        "1800": 5.542448548492355e-06,
+        "28800": 6.195417027644563e-06,
+        "3600": 6.081606395248227e-06,
+        "43200": 6.200978610724417e-06,
+        "7200": 6.184793263874588e-06,
+        "86400": 6.2181884384967745e-06
+      },
+      "status": "PASS"
+    },
+    "L1_vs_L2_low": {
+      "checks": {
+        "both_cases_pass": true,
+        "profile_within_5_percent_every_observation": true,
+        "uptake_within_2_percent": true
+      },
+      "cumulative_uptake_relative_difference": 0.00022035613306748612,
+      "maximum_mesh_profile_l1_relative": 1.7828322074686304e-05,
+      "mesh_profile_l1_relative_by_observation": {
+        "0": 2.0551071119329885e-16,
+        "129600": 1.73358794118126e-05,
+        "14400": 1.6727050630816198e-05,
+        "172800": 1.7828322074686304e-05,
+        "1800": 1.4970890759201896e-05,
+        "28800": 1.6757157648281804e-05,
+        "3600": 1.6428562969314015e-05,
+        "43200": 1.679970927124646e-05,
+        "7200": 1.6708928070647523e-05,
+        "86400": 1.7008047341428517e-05
+      },
+      "status": "PASS"
+    }
+  },
+  "executable": {
+    "path": "/home/jherrera2007/c10-work/build/bmx",
+    "sha256": "30d9e79289d1c9fe4324aaefe0d3bfb998f650578431fcc4b2e32a4f0dafbe4b"
+  },
+  "external_resources": "none",
+  "external_spend_usd": 0,
+  "fixed_network_sha256": "1f2294613b8a608b068d60269ff8eb29990210d3a1bc6d8142d4f840aa292702",
+  "independent_prerun_review": {
+    "checks": {
+      "all_confirmations_pass": true,
+      "contract_id_exact": true,
+      "contract_sha256_exact": true,
+      "outcome_execution_authorized": true,
+      "read_only_or_detached": true,
+      "reviewer_identified": true,
+      "reviewer_independent": true,
+      "source_commit_exact": true,
+      "status_pass": true
+    },
+    "path": "/home/jherrera2007/c10-reference-handoff-0f38760-20260802/INDEPENDENT_NUMERICAL_REVIEW_V2.json",
+    "sha256": "bda12aef209793b4537915e374e09caf100397c0fdf8678ed00118ff987a3ea2"
+  },
+  "numerical_contract": {
+    "id": "USER-DIRECTED-20260801-P12-NUMERICAL-V2",
+    "sha256": "43d64a8f4ec6c8c00379fc3d9605441cb900479fcdd8db9e78e6fc1edd28f81f"
+  },
+  "raw_run_root": "/home/jherrera2007/c10-work/runs/c10-v2-reference",
+  "runner_sha256": "882fb997a71ccc91d6f660af33855b3631ba4e4fd39b6f6665464c7853622d5d",
+  "saturation_prediction": {
+    "concentration_ratio_high_over_low": 2.8074534161490687,
+    "fractions": {
+      "high": 0.9783370399706305,
+      "low": 0.9414738288667758
+    },
+    "initial_flux_ratio_high_over_low": 1.039154791108985
+  },
+  "scientific_uptake_contract": {
+    "id": "UDC-20260801-P12-UPTAKE-ONLY-V1",
+    "sha256": "2094aed3c8ef21a257d2c597352793384d01a1efc3d72936d5c5108d308f8804"
+  },
+  "selected_production_dt_s": 1800.0,
+  "selected_production_grid": "L0",
+  "source": {
+    "clean_before_run": true,
+    "commit": "0f38760b4daba3acbfd4b658c9ac522523b5c69b",
+    "tree": "511e3d1ec6ec5148aa0548b6256c85b52a3b68a2"
+  },
+  "stage": "C10/P12",
+  "status": "PASS",
+  "temporal_cases": {
+    "T0_high": {
+      "canonical": {
+        "checks": {
+          "all_o01_ledgers": true,
+          "all_o10_ledgers": true,
+          "all_observations": true,
+          "all_recorded_boundary_conservation": true,
+          "all_uptake_rows": true,
+          "checkpoint_ledgers_present": true,
+          "cumulative_rejection_roundoff_only": true,
+          "eta_headroom": true,
+          "exit_zero": true,
+          "explicit_inactive_ledgers_zero": true,
+          "field_positivity": true,
+          "finite_diagnostics": true,
+          "internal_e_f_zero": true,
+          "positive_uptake_activity": true,
+          "scale_never_clipped": true,
+          "trajectory_extrema_consistent": true,
+          "zero_inventory_positive_request_absent": true
+        },
+        "last_o10": {
+          "boundary": "O10_POST_UPDATE_LEDGER",
+          "internal_d": 2.5537650344849064e-12,
+          "internal_e": 0.0,
+          "internal_f": 0.0,
+          "mesh_d": 1.7824620834051695e-10,
+          "residual": 6.979336418416171e-25,
+          "tolerance": 3.61599946750003e-20
+        },
+        "last_uptake": {
+          "accepted": 2.6597608259246467e-14,
+          "area": 5.105088062083415e-06,
+          "cum_accepted": 2.5537650344849064e-12,
+          "cum_area_time": 0.8821592171280158,
+          "cum_rejected": 0.0,
+          "cum_requested": 2.5537650344849064e-12,
+          "max_eta": 0.03821881847720755,
+          "min_scale": 1.0,
+          "rejected": 0.0,
+          "requested": 2.6597608259246467e-14,
+          "run_max_eta": 0.03821881847720755,
+          "run_min_scale": 1.0,
+          "run_positive_request_updates": 96,
+          "run_zero_inventory_positive_request_updates": 0,
+          "update": 96,
+          "zero_inventory_positive_request": 0
+        },
+        "rejection_tolerance_mol": 3.629118388182784e-26,
+        "status": "PASS",
+        "wall_s": 0.922686307000049
+      },
+      "checkpoint_restart": {
+        "checkpoint_step": 48,
+        "equivalence": {
+          "field_equivalent": true,
+          "field_max_relative_difference": 0.0,
+          "uptake_ledger_equivalent": true
+        },
+        "particle_comparison": {
+          "exact_discrete_fields": true,
+          "exact_identifiers": true,
+          "exact_schema": true,
+          "first_difference": null,
+          "floating_failures": 0,
+          "floating_tolerance": 1e-12,
+          "max_relative_difference": 0.0,
+          "status": "PASS"
+        },
+        "summary": {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.5537650344849064e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 1.7824620834051695e-10,
+            "residual": 6.979336418416171e-25,
+            "tolerance": 3.61599946750003e-20
+          },
+          "last_uptake": {
+            "accepted": 2.6597608259246467e-14,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.5537650344849064e-12,
+            "cum_area_time": 0.8821592171280158,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.5537650344849064e-12,
+            "max_eta": 0.03821881847720755,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 2.6597608259246467e-14,
+            "run_max_eta": 0.03821881847720755,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 96,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 96,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.629118388182784e-26,
+          "status": "PASS",
+          "wall_s": 0.6061246489999803
+        }
+      },
+      "checkpoint_restart_2_to_1": {
+        "checkpoint_step": 48,
+        "equivalence": {
+          "field_equivalent": true,
+          "field_max_relative_difference": 1.485309473195422e-16,
+          "uptake_ledger_equivalent": true
+        },
+        "particle_comparison": {
+          "exact_discrete_fields": true,
+          "exact_identifiers": true,
+          "exact_schema": true,
+          "first_difference": null,
+          "floating_failures": 0,
+          "floating_tolerance": 1e-12,
+          "max_relative_difference": 0.0,
+          "status": "PASS"
+        },
+        "summary": {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.5537650344849064e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 1.7824620834051693e-10,
+            "residual": -4.911384887033602e-25,
+            "tolerance": 3.6159994675000415e-20
+          },
+          "last_uptake": {
+            "accepted": 2.6597608259246467e-14,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.5537650344849056e-12,
+            "cum_area_time": 0.8821592171280158,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.5537650344849056e-12,
+            "max_eta": 0.03821881847720755,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 2.6597608259246467e-14,
+            "run_max_eta": 0.03821881847720755,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 96,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 96,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.629118388182783e-26,
+          "status": "PASS",
+          "wall_s": 0.6059840359999953
+        }
+      },
+      "configuration_sha256": "ecc56f62d95603e665394c1f030f3f113c20b6fe40f04ab345a9c78c9765a95d",
+      "deterministic_rerun": {
+        "bit_exact_uptake_and_observation_meshes": true,
+        "equivalence": {
+          "field_equivalent": true,
+          "field_max_relative_difference": 0.0,
+          "uptake_ledger_equivalent": true
+        },
+        "particle_comparison": {
+          "exact_discrete_fields": true,
+          "exact_identifiers": true,
+          "exact_schema": true,
+          "first_difference": null,
+          "floating_failures": 0,
+          "floating_tolerance": 1e-12,
+          "max_relative_difference": 0.0,
+          "status": "PASS"
+        },
+        "summary": {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.5537650344849064e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 1.7824620834051695e-10,
+            "residual": 6.979336418416171e-25,
+            "tolerance": 3.61599946750003e-20
+          },
+          "last_uptake": {
+            "accepted": 2.6597608259246467e-14,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.5537650344849064e-12,
+            "cum_area_time": 0.8821592171280158,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.5537650344849064e-12,
+            "max_eta": 0.03821881847720755,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 2.6597608259246467e-14,
+            "run_max_eta": 0.03821881847720755,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 96,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 96,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.629118388182784e-26,
+          "status": "PASS",
+          "wall_s": 0.9193267370000058
+        }
+      },
+      "mpi_decomposition": {
+        "equivalence": {
+          "field_equivalent": true,
+          "field_max_relative_difference": 1.4852581788190663e-16,
+          "uptake_ledger_equivalent": true
+        },
+        "particle_comparison": {
+          "exact_discrete_fields": true,
+          "exact_identifiers": true,
+          "exact_schema": true,
+          "first_difference": null,
+          "floating_failures": 0,
+          "floating_tolerance": 1e-12,
+          "max_relative_difference": 0.0,
+          "status": "PASS"
+        },
+        "summary": {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.5537650344849064e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 1.7824620834051708e-10,
+            "residual": -3.360421238496675e-25,
+            "tolerance": 3.6159994675000433e-20
+          },
+          "last_uptake": {
+            "accepted": 2.6597608259246467e-14,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.553765034484906e-12,
+            "cum_area_time": 0.8821592171280158,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.553765034484906e-12,
+            "max_eta": 0.03821881847720755,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 2.6597608259246467e-14,
+            "run_max_eta": 0.03821881847720755,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 96,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 96,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.6291183881827834e-26,
+          "status": "PASS",
+          "wall_s": 0.8835421930000393
+        },
+        "trajectory_field_equivalent": true,
+        "trajectory_field_max_relative_difference": 2.9390329510876134e-16
+      },
+      "raw_root": "/home/jherrera2007/c10-work/runs/c10-v2-reference/coupled/L0_high",
+      "status": "PASS"
+    },
+    "T0_low": {
+      "canonical": {
+        "checks": {
+          "all_o01_ledgers": true,
+          "all_o10_ledgers": true,
+          "all_observations": true,
+          "all_recorded_boundary_conservation": true,
+          "all_uptake_rows": true,
+          "checkpoint_ledgers_present": true,
+          "cumulative_rejection_roundoff_only": true,
+          "eta_headroom": true,
+          "exit_zero": true,
+          "explicit_inactive_ledgers_zero": true,
+          "field_positivity": true,
+          "finite_diagnostics": true,
+          "internal_e_f_zero": true,
+          "positive_uptake_activity": true,
+          "scale_never_clipped": true,
+          "trajectory_extrema_consistent": true,
+          "zero_inventory_positive_request_absent": true
+        },
+        "last_o10": {
+          "boundary": "O10_POST_UPDATE_LEDGER",
+          "internal_d": 2.454928699524047e-12,
+          "internal_e": 0.0,
+          "internal_f": 0.0,
+          "mesh_d": 6.194506181679273e-11,
+          "residual": -5.816113682013476e-25,
+          "tolerance": 1.2879998103263411e-20
+        },
+        "last_uptake": {
+          "accepted": 2.5542415206884e-14,
+          "area": 5.105088062083415e-06,
+          "cum_accepted": 2.454928699524046e-12,
+          "cum_area_time": 0.8821592171280158,
+          "cum_rejected": 0.0,
+          "cum_requested": 2.454928699524046e-12,
+          "max_eta": 0.10569655916071392,
+          "min_scale": 1.0,
+          "rejected": 0.0,
+          "requested": 2.5542415206884e-14,
+          "run_max_eta": 0.10569655916071392,
+          "run_min_scale": 1.0,
+          "run_positive_request_updates": 96,
+          "run_zero_inventory_positive_request_updates": 0,
+          "update": 96,
+          "zero_inventory_positive_request": 0
+        },
+        "rejection_tolerance_mol": 3.488663508511601e-26,
+        "status": "PASS",
+        "wall_s": 0.920618592999972
+      },
+      "checkpoint_restart": {
+        "checkpoint_step": 48,
+        "equivalence": {
+          "field_equivalent": true,
+          "field_max_relative_difference": 0.0,
+          "uptake_ledger_equivalent": true
+        },
+        "particle_comparison": {
+          "exact_discrete_fields": true,
+          "exact_identifiers": true,
+          "exact_schema": true,
+          "first_difference": null,
+          "floating_failures": 0,
+          "floating_tolerance": 1e-12,
+          "max_relative_difference": 0.0,
+          "status": "PASS"
+        },
+        "summary": {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.454928699524047e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 6.194506181679273e-11,
+            "residual": -5.816113682013476e-25,
+            "tolerance": 1.2879998103263411e-20
+          },
+          "last_uptake": {
+            "accepted": 2.5542415206884e-14,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.454928699524046e-12,
+            "cum_area_time": 0.8821592171280158,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.454928699524046e-12,
+            "max_eta": 0.10569655916071392,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 2.5542415206884e-14,
+            "run_max_eta": 0.10569655916071392,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 96,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 96,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.488663508511601e-26,
+          "status": "PASS",
+          "wall_s": 0.6047579959999894
+        }
+      },
+      "checkpoint_restart_2_to_1": {
+        "checkpoint_step": 48,
+        "equivalence": {
+          "field_equivalent": true,
+          "field_max_relative_difference": 6.420420276292753e-16,
+          "uptake_ledger_equivalent": true
+        },
+        "particle_comparison": {
+          "exact_discrete_fields": true,
+          "exact_identifiers": true,
+          "exact_schema": true,
+          "first_difference": null,
+          "floating_failures": 0,
+          "floating_tolerance": 1e-12,
+          "max_relative_difference": 0.0,
+          "status": "PASS"
+        },
+        "summary": {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.4549286995240476e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 6.194506181679275e-11,
+            "residual": -3.7481621506309067e-25,
+            "tolerance": 1.2879998103263395e-20
+          },
+          "last_uptake": {
+            "accepted": 2.5542415206884002e-14,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.454928699524046e-12,
+            "cum_area_time": 0.8821592171280158,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.454928699524046e-12,
+            "max_eta": 0.10569655916071387,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 2.5542415206884002e-14,
+            "run_max_eta": 0.10569655916071387,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 96,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 96,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.488663508511601e-26,
+          "status": "PASS",
+          "wall_s": 0.6070532019999746
+        }
+      },
+      "configuration_sha256": "fe6970f040e10fa12ce607ae47b449fb89960c5bf644973c9203817d8c03c075",
+      "deterministic_rerun": {
+        "bit_exact_uptake_and_observation_meshes": true,
+        "equivalence": {
+          "field_equivalent": true,
+          "field_max_relative_difference": 0.0,
+          "uptake_ledger_equivalent": true
+        },
+        "particle_comparison": {
+          "exact_discrete_fields": true,
+          "exact_identifiers": true,
+          "exact_schema": true,
+          "first_difference": null,
+          "floating_failures": 0,
+          "floating_tolerance": 1e-12,
+          "max_relative_difference": 0.0,
+          "status": "PASS"
+        },
+        "summary": {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.454928699524047e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 6.194506181679273e-11,
+            "residual": -5.816113682013476e-25,
+            "tolerance": 1.2879998103263411e-20
+          },
+          "last_uptake": {
+            "accepted": 2.5542415206884e-14,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.454928699524046e-12,
+            "cum_area_time": 0.8821592171280158,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.454928699524046e-12,
+            "max_eta": 0.10569655916071392,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 2.5542415206884e-14,
+            "run_max_eta": 0.10569655916071392,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 96,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 96,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.488663508511601e-26,
+          "status": "PASS",
+          "wall_s": 0.9037140020000152
+        }
+      },
+      "mpi_decomposition": {
+        "equivalence": {
+          "field_equivalent": true,
+          "field_max_relative_difference": 1.282518952192333e-15,
+          "uptake_ledger_equivalent": true
+        },
+        "particle_comparison": {
+          "exact_discrete_fields": true,
+          "exact_identifiers": true,
+          "exact_schema": true,
+          "first_difference": null,
+          "floating_failures": 0,
+          "floating_tolerance": 1e-12,
+          "max_relative_difference": 0.0,
+          "status": "PASS"
+        },
+        "summary": {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.4549286995240476e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 6.194506181679275e-11,
+            "residual": -3.7481621506309067e-25,
+            "tolerance": 1.2879998103263395e-20
+          },
+          "last_uptake": {
+            "accepted": 2.5542415206884002e-14,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.454928699524046e-12,
+            "cum_area_time": 0.8821592171280158,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.454928699524046e-12,
+            "max_eta": 0.10569655916071381,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 2.5542415206884002e-14,
+            "run_max_eta": 0.10569655916071381,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 96,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 96,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.488663508511601e-26,
+          "status": "PASS",
+          "wall_s": 0.86995038200007
+        },
+        "trajectory_field_equivalent": true,
+        "trajectory_field_max_relative_difference": 1.282518952192333e-15
+      },
+      "raw_root": "/home/jherrera2007/c10-work/runs/c10-v2-reference/coupled/L0_low",
+      "status": "PASS"
+    },
+    "T1_high": {
+      "canonical": {
+        "checks": {
+          "all_o01_ledgers": true,
+          "all_o10_ledgers": true,
+          "all_observations": true,
+          "all_recorded_boundary_conservation": true,
+          "all_uptake_rows": true,
+          "checkpoint_ledgers_present": true,
+          "cumulative_rejection_roundoff_only": true,
+          "eta_headroom": true,
+          "exit_zero": true,
+          "explicit_inactive_ledgers_zero": true,
+          "field_positivity": true,
+          "finite_diagnostics": true,
+          "internal_e_f_zero": true,
+          "positive_uptake_activity": true,
+          "scale_never_clipped": true,
+          "trajectory_extrema_consistent": true,
+          "zero_inventory_positive_request_absent": true
+        },
+        "last_o10": {
+          "boundary": "O10_POST_UPDATE_LEDGER",
+          "internal_d": 2.5537627963567155e-12,
+          "internal_e": 0.0,
+          "internal_f": 0.0,
+          "mesh_d": 1.782462105786452e-10,
+          "residual": 7.496324301261813e-25,
+          "tolerance": 3.615999467500031e-20
+        },
+        "last_uptake": {
+          "accepted": 1.3298782317058629e-14,
+          "area": 5.105088062083415e-06,
+          "cum_accepted": 2.5537627963567175e-12,
+          "cum_area_time": 0.8821592171280116,
+          "cum_rejected": 0.0,
+          "cum_requested": 2.5537627963567175e-12,
+          "max_eta": 0.01911080411376395,
+          "min_scale": 1.0,
+          "rejected": 0.0,
+          "requested": 1.3298782317058629e-14,
+          "run_max_eta": 0.01911080411376395,
+          "run_min_scale": 1.0,
+          "run_positive_request_updates": 192,
+          "run_zero_inventory_positive_request_updates": 0,
+          "update": 192,
+          "zero_inventory_positive_request": 0
+        },
+        "rejection_tolerance_mol": 3.6291152076113314e-26,
+        "status": "PASS",
+        "wall_s": 1.2229639160004808
+      },
+      "checkpoint_restart": {
+        "checkpoint_step": 96,
+        "equivalence": {
+          "field_equivalent": true,
+          "field_max_relative_difference": 0.0,
+          "uptake_ledger_equivalent": true
+        },
+        "particle_comparison": {
+          "exact_discrete_fields": true,
+          "exact_identifiers": true,
+          "exact_schema": true,
+          "first_difference": null,
+          "floating_failures": 0,
+          "floating_tolerance": 1e-12,
+          "max_relative_difference": 0.0,
+          "status": "PASS"
+        },
+        "summary": {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.5537627963567155e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 1.782462105786452e-10,
+            "residual": 7.496324301261813e-25,
+            "tolerance": 3.615999467500031e-20
+          },
+          "last_uptake": {
+            "accepted": 1.3298782317058629e-14,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.5537627963567175e-12,
+            "cum_area_time": 0.8821592171280116,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.5537627963567175e-12,
+            "max_eta": 0.01911080411376395,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 1.3298782317058629e-14,
+            "run_max_eta": 0.01911080411376395,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 192,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 192,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.6291152076113314e-26,
+          "status": "PASS",
+          "wall_s": 0.7598247570003878
+        }
+      },
+      "checkpoint_restart_2_to_1": {
+        "checkpoint_step": 96,
+        "equivalence": {
+          "field_equivalent": true,
+          "field_max_relative_difference": 0.0,
+          "uptake_ledger_equivalent": true
+        },
+        "particle_comparison": {
+          "exact_discrete_fields": true,
+          "exact_identifiers": true,
+          "exact_schema": true,
+          "first_difference": null,
+          "floating_failures": 0,
+          "floating_tolerance": 1e-12,
+          "max_relative_difference": 0.0,
+          "status": "PASS"
+        },
+        "summary": {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.5537627963567135e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 1.782462105786452e-10,
+            "residual": -4.1359030627651384e-25,
+            "tolerance": 3.615999467500043e-20
+          },
+          "last_uptake": {
+            "accepted": 1.3298782317058629e-14,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.5537627963567175e-12,
+            "cum_area_time": 0.8821592171280116,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.5537627963567175e-12,
+            "max_eta": 0.01911080411376395,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 1.3298782317058629e-14,
+            "run_max_eta": 0.01911080411376395,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 192,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 192,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.6291152076113314e-26,
+          "status": "PASS",
+          "wall_s": 0.7621235010001328
+        }
+      },
+      "configuration_sha256": "d21b74837d3fe460a513b3a2f20c8e618f4c7d184319df3b00d89b8c4093790b",
+      "deterministic_rerun": {
+        "bit_exact_uptake_and_observation_meshes": true,
+        "equivalence": {
+          "field_equivalent": true,
+          "field_max_relative_difference": 0.0,
+          "uptake_ledger_equivalent": true
+        },
+        "particle_comparison": {
+          "exact_discrete_fields": true,
+          "exact_identifiers": true,
+          "exact_schema": true,
+          "first_difference": null,
+          "floating_failures": 0,
+          "floating_tolerance": 1e-12,
+          "max_relative_difference": 0.0,
+          "status": "PASS"
+        },
+        "summary": {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.5537627963567155e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 1.782462105786452e-10,
+            "residual": 7.496324301261813e-25,
+            "tolerance": 3.615999467500031e-20
+          },
+          "last_uptake": {
+            "accepted": 1.3298782317058629e-14,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.5537627963567175e-12,
+            "cum_area_time": 0.8821592171280116,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.5537627963567175e-12,
+            "max_eta": 0.01911080411376395,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 1.3298782317058629e-14,
+            "run_max_eta": 0.01911080411376395,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 192,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 192,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.6291152076113314e-26,
+          "status": "PASS",
+          "wall_s": 1.2344211110003016
+        }
+      },
+      "mpi_decomposition": {
+        "equivalence": {
+          "field_equivalent": true,
+          "field_max_relative_difference": 2.970618908107127e-16,
+          "uptake_ledger_equivalent": true
+        },
+        "particle_comparison": {
+          "exact_discrete_fields": true,
+          "exact_identifiers": true,
+          "exact_schema": true,
+          "first_difference": null,
+          "floating_failures": 0,
+          "floating_tolerance": 1e-12,
+          "max_relative_difference": 0.0,
+          "status": "PASS"
+        },
+        "summary": {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.5537627963567135e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 1.7824621057864525e-10,
+            "residual": -3.618915179919496e-25,
+            "tolerance": 3.615999467500043e-20
+          },
+          "last_uptake": {
+            "accepted": 1.3298782317058629e-14,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.5537627963567175e-12,
+            "cum_area_time": 0.8821592171280116,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.5537627963567175e-12,
+            "max_eta": 0.019110804113763948,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 1.3298782317058629e-14,
+            "run_max_eta": 0.019110804113763948,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 192,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 192,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.6291152076113314e-26,
+          "status": "PASS",
+          "wall_s": 1.173414978999972
+        },
+        "trajectory_field_equivalent": true,
+        "trajectory_field_max_relative_difference": 2.970618908107127e-16
+      },
+      "raw_root": "/home/jherrera2007/c10-work/runs/c10-v2-reference/temporal/T1_high",
+      "status": "PASS"
+    },
+    "T1_low": {
+      "canonical": {
+        "checks": {
+          "all_o01_ledgers": true,
+          "all_o10_ledgers": true,
+          "all_observations": true,
+          "all_recorded_boundary_conservation": true,
+          "all_uptake_rows": true,
+          "checkpoint_ledgers_present": true,
+          "cumulative_rejection_roundoff_only": true,
+          "eta_headroom": true,
+          "exit_zero": true,
+          "explicit_inactive_ledgers_zero": true,
+          "field_positivity": true,
+          "finite_diagnostics": true,
+          "internal_e_f_zero": true,
+          "positive_uptake_activity": true,
+          "scale_never_clipped": true,
+          "trajectory_extrema_consistent": true,
+          "zero_inventory_positive_request_absent": true
+        },
+        "last_o10": {
+          "boundary": "O10_POST_UPDATE_LEDGER",
+          "internal_d": 2.454912655809791e-12,
+          "internal_e": 0.0,
+          "internal_f": 0.0,
+          "mesh_d": 6.194507786050681e-11,
+          "residual": -7.496324301261813e-25,
+          "tolerance": 1.2879998103263395e-20
+        },
+        "last_uptake": {
+          "accepted": 1.2771047573755525e-14,
+          "area": 5.105088062083415e-06,
+          "cum_accepted": 2.4549126558097927e-12,
+          "cum_area_time": 0.8821592171280116,
+          "cum_rejected": 0.0,
+          "cum_requested": 2.4549126558097927e-12,
+          "max_eta": 0.052858513197476927,
+          "min_scale": 1.0,
+          "rejected": 0.0,
+          "requested": 1.2771047573755525e-14,
+          "run_max_eta": 0.052858513197476927,
+          "run_min_scale": 1.0,
+          "run_positive_request_updates": 192,
+          "run_zero_inventory_positive_request_updates": 0,
+          "update": 192,
+          "zero_inventory_positive_request": 0
+        },
+        "rejection_tolerance_mol": 3.4886407090223666e-26,
+        "status": "PASS",
+        "wall_s": 1.226199913999153
+      },
+      "checkpoint_restart": {
+        "checkpoint_step": 96,
+        "equivalence": {
+          "field_equivalent": true,
+          "field_max_relative_difference": 0.0,
+          "uptake_ledger_equivalent": true
+        },
+        "particle_comparison": {
+          "exact_discrete_fields": true,
+          "exact_identifiers": true,
+          "exact_schema": true,
+          "first_difference": null,
+          "floating_failures": 0,
+          "floating_tolerance": 1e-12,
+          "max_relative_difference": 0.0,
+          "status": "PASS"
+        },
+        "summary": {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.454912655809791e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 6.194507786050681e-11,
+            "residual": -7.496324301261813e-25,
+            "tolerance": 1.2879998103263395e-20
+          },
+          "last_uptake": {
+            "accepted": 1.2771047573755525e-14,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.4549126558097927e-12,
+            "cum_area_time": 0.8821592171280116,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.4549126558097927e-12,
+            "max_eta": 0.052858513197476927,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 1.2771047573755525e-14,
+            "run_max_eta": 0.052858513197476927,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 192,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 192,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.4886407090223666e-26,
+          "status": "PASS",
+          "wall_s": 0.7628797290008151
+        }
+      },
+      "checkpoint_restart_2_to_1": {
+        "checkpoint_step": 96,
+        "equivalence": {
+          "field_equivalent": true,
+          "field_max_relative_difference": 1.2840836951070323e-15,
+          "uptake_ledger_equivalent": true
+        },
+        "particle_comparison": {
+          "exact_discrete_fields": true,
+          "exact_identifiers": true,
+          "exact_schema": true,
+          "first_difference": null,
+          "floating_failures": 0,
+          "floating_tolerance": 1e-12,
+          "max_relative_difference": 0.0,
+          "status": "PASS"
+        },
+        "summary": {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.454912655809791e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 6.194507786050688e-11,
+            "residual": -5.040631857745012e-25,
+            "tolerance": 1.2879998103263386e-20
+          },
+          "last_uptake": {
+            "accepted": 1.2771047573755528e-14,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.4549126558097927e-12,
+            "cum_area_time": 0.8821592171280116,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.4549126558097927e-12,
+            "max_eta": 0.05285851319747688,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 1.2771047573755528e-14,
+            "run_max_eta": 0.05285851319747688,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 192,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 192,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.4886407090223666e-26,
+          "status": "PASS",
+          "wall_s": 0.7662554400003501
+        }
+      },
+      "configuration_sha256": "a6bb7ee6d749ce1c88942ca654899f7dbb6c201062bffd313b49c2da4c887a07",
+      "deterministic_rerun": {
+        "bit_exact_uptake_and_observation_meshes": true,
+        "equivalence": {
+          "field_equivalent": true,
+          "field_max_relative_difference": 0.0,
+          "uptake_ledger_equivalent": true
+        },
+        "particle_comparison": {
+          "exact_discrete_fields": true,
+          "exact_identifiers": true,
+          "exact_schema": true,
+          "first_difference": null,
+          "floating_failures": 0,
+          "floating_tolerance": 1e-12,
+          "max_relative_difference": 0.0,
+          "status": "PASS"
+        },
+        "summary": {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.454912655809791e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 6.194507786050681e-11,
+            "residual": -7.496324301261813e-25,
+            "tolerance": 1.2879998103263395e-20
+          },
+          "last_uptake": {
+            "accepted": 1.2771047573755525e-14,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.4549126558097927e-12,
+            "cum_area_time": 0.8821592171280116,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.4549126558097927e-12,
+            "max_eta": 0.052858513197476927,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 1.2771047573755525e-14,
+            "run_max_eta": 0.052858513197476927,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 192,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 192,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.4886407090223666e-26,
+          "status": "PASS",
+          "wall_s": 1.2212258529998508
+        }
+      },
+      "mpi_decomposition": {
+        "equivalence": {
+          "field_equivalent": true,
+          "field_max_relative_difference": 8.560557967380219e-16,
+          "uptake_ledger_equivalent": true
+        },
+        "particle_comparison": {
+          "exact_discrete_fields": true,
+          "exact_identifiers": true,
+          "exact_schema": true,
+          "first_difference": null,
+          "floating_failures": 0,
+          "floating_tolerance": 1e-12,
+          "max_relative_difference": 0.0,
+          "status": "PASS"
+        },
+        "summary": {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.454912655809791e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 6.194507786050688e-11,
+            "residual": -5.040631857745012e-25,
+            "tolerance": 1.2879998103263386e-20
+          },
+          "last_uptake": {
+            "accepted": 1.2771047573755525e-14,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.4549126558097927e-12,
+            "cum_area_time": 0.8821592171280116,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.4549126558097927e-12,
+            "max_eta": 0.052858513197476885,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 1.2771047573755525e-14,
+            "run_max_eta": 0.052858513197476885,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 192,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 192,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.4886407090223666e-26,
+          "status": "PASS",
+          "wall_s": 1.1651898030004304
+        },
+        "trajectory_field_equivalent": true,
+        "trajectory_field_max_relative_difference": 1.047489642866576e-15
+      },
+      "raw_root": "/home/jherrera2007/c10-work/runs/c10-v2-reference/temporal/T1_low",
+      "status": "PASS"
+    },
+    "T2_high": {
+      "canonical": {
+        "checks": {
+          "all_o01_ledgers": true,
+          "all_o10_ledgers": true,
+          "all_observations": true,
+          "all_recorded_boundary_conservation": true,
+          "all_uptake_rows": true,
+          "checkpoint_ledgers_present": true,
+          "cumulative_rejection_roundoff_only": true,
+          "eta_headroom": true,
+          "exit_zero": true,
+          "explicit_inactive_ledgers_zero": true,
+          "field_positivity": true,
+          "finite_diagnostics": true,
+          "internal_e_f_zero": true,
+          "positive_uptake_activity": true,
+          "scale_never_clipped": true,
+          "trajectory_extrema_consistent": true,
+          "zero_inventory_positive_request_absent": true
+        },
+        "last_o10": {
+          "boundary": "O10_POST_UPDATE_LEDGER",
+          "internal_d": 2.5537616772571275e-12,
+          "internal_e": 0.0,
+          "internal_f": 0.0,
+          "mesh_d": 1.782462116977433e-10,
+          "residual": -7.237830359838992e-25,
+          "tolerance": 3.615999467500016e-20
+        },
+        "last_uptake": {
+          "accepted": 6.649385704804549e-15,
+          "area": 5.105088062083415e-06,
+          "cum_accepted": 2.553761677257129e-12,
+          "cum_area_time": 0.8821592171280088,
+          "cum_rejected": 0.0,
+          "cum_requested": 2.553761677257129e-12,
+          "max_eta": 0.009555750812993057,
+          "min_scale": 1.0,
+          "rejected": 0.0,
+          "requested": 6.649385704804549e-15,
+          "run_max_eta": 0.009555750812993057,
+          "run_min_scale": 1.0,
+          "run_positive_request_updates": 384,
+          "run_zero_inventory_positive_request_updates": 0,
+          "update": 384,
+          "zero_inventory_positive_request": 0
+        },
+        "rejection_tolerance_mol": 3.629113617275165e-26,
+        "status": "PASS",
+        "wall_s": 1.7828327819997867
+      },
+      "checkpoint_restart": {
+        "checkpoint_step": 192,
+        "equivalence": {
+          "field_equivalent": true,
+          "field_max_relative_difference": 0.0,
+          "uptake_ledger_equivalent": true
+        },
+        "particle_comparison": {
+          "exact_discrete_fields": true,
+          "exact_identifiers": true,
+          "exact_schema": true,
+          "first_difference": null,
+          "floating_failures": 0,
+          "floating_tolerance": 1e-12,
+          "max_relative_difference": 0.0,
+          "status": "PASS"
+        },
+        "summary": {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.5537616772571275e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 1.782462116977433e-10,
+            "residual": -7.237830359838992e-25,
+            "tolerance": 3.615999467500016e-20
+          },
+          "last_uptake": {
+            "accepted": 6.649385704804549e-15,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.553761677257129e-12,
+            "cum_area_time": 0.8821592171280088,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.553761677257129e-12,
+            "max_eta": 0.009555750812993057,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 6.649385704804549e-15,
+            "run_max_eta": 0.009555750812993057,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 384,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 384,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.629113617275165e-26,
+          "status": "PASS",
+          "wall_s": 1.0300936069997988
+        }
+      },
+      "checkpoint_restart_2_to_1": {
+        "checkpoint_step": 192,
+        "equivalence": {
+          "field_equivalent": true,
+          "field_max_relative_difference": 1.4853094444823235e-16,
+          "uptake_ledger_equivalent": true
+        },
+        "particle_comparison": {
+          "exact_discrete_fields": true,
+          "exact_identifiers": true,
+          "exact_schema": true,
+          "first_difference": null,
+          "floating_failures": 0,
+          "floating_tolerance": 1e-12,
+          "max_relative_difference": 0.0,
+          "status": "PASS"
+        },
+        "summary": {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.5537616772571275e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 1.7824621169774328e-10,
+            "residual": -1.9128551665288765e-24,
+            "tolerance": 3.6159994675000277e-20
+          },
+          "last_uptake": {
+            "accepted": 6.649385704804549e-15,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.553761677257129e-12,
+            "cum_area_time": 0.8821592171280088,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.553761677257129e-12,
+            "max_eta": 0.009555750812993057,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 6.649385704804549e-15,
+            "run_max_eta": 0.009555750812993057,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 384,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 384,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.629113617275165e-26,
+          "status": "PASS",
+          "wall_s": 1.0308636179997848
+        }
+      },
+      "configuration_sha256": "f5aa1819de9fe46d78ff42be9852278d9d98f443d83142fe849fc196b5c85e6b",
+      "deterministic_rerun": {
+        "bit_exact_uptake_and_observation_meshes": true,
+        "equivalence": {
+          "field_equivalent": true,
+          "field_max_relative_difference": 0.0,
+          "uptake_ledger_equivalent": true
+        },
+        "particle_comparison": {
+          "exact_discrete_fields": true,
+          "exact_identifiers": true,
+          "exact_schema": true,
+          "first_difference": null,
+          "floating_failures": 0,
+          "floating_tolerance": 1e-12,
+          "max_relative_difference": 0.0,
+          "status": "PASS"
+        },
+        "summary": {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.5537616772571275e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 1.782462116977433e-10,
+            "residual": -7.237830359838992e-25,
+            "tolerance": 3.615999467500016e-20
+          },
+          "last_uptake": {
+            "accepted": 6.649385704804549e-15,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.553761677257129e-12,
+            "cum_area_time": 0.8821592171280088,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.553761677257129e-12,
+            "max_eta": 0.009555750812993057,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 6.649385704804549e-15,
+            "run_max_eta": 0.009555750812993057,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 384,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 384,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.629113617275165e-26,
+          "status": "PASS",
+          "wall_s": 1.7675431479992767
+        }
+      },
+      "mpi_decomposition": {
+        "equivalence": {
+          "field_equivalent": true,
+          "field_max_relative_difference": 1.4853094444823235e-16,
+          "uptake_ledger_equivalent": true
+        },
+        "particle_comparison": {
+          "exact_discrete_fields": true,
+          "exact_identifiers": true,
+          "exact_schema": true,
+          "first_difference": null,
+          "floating_failures": 0,
+          "floating_tolerance": 1e-12,
+          "max_relative_difference": 0.0,
+          "status": "PASS"
+        },
+        "summary": {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.5537616772571275e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 1.7824621169774351e-10,
+            "residual": -1.6802106192483375e-24,
+            "tolerance": 3.61599946750003e-20
+          },
+          "last_uptake": {
+            "accepted": 6.649385704804549e-15,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.553761677257129e-12,
+            "cum_area_time": 0.8821592171280088,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.553761677257129e-12,
+            "max_eta": 0.009555750812993057,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 6.649385704804549e-15,
+            "run_max_eta": 0.009555750812993057,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 384,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 384,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.629113617275165e-26,
+          "status": "PASS",
+          "wall_s": 1.5956912410001678
+        },
+        "trajectory_field_equivalent": true,
+        "trajectory_field_max_relative_difference": 1.4853094444823235e-16
+      },
+      "raw_root": "/home/jherrera2007/c10-work/runs/c10-v2-reference/temporal/T2_high",
+      "status": "PASS"
+    },
+    "T2_low": {
+      "canonical": {
+        "checks": {
+          "all_o01_ledgers": true,
+          "all_o10_ledgers": true,
+          "all_observations": true,
+          "all_recorded_boundary_conservation": true,
+          "all_uptake_rows": true,
+          "checkpoint_ledgers_present": true,
+          "cumulative_rejection_roundoff_only": true,
+          "eta_headroom": true,
+          "exit_zero": true,
+          "explicit_inactive_ledgers_zero": true,
+          "field_positivity": true,
+          "finite_diagnostics": true,
+          "internal_e_f_zero": true,
+          "positive_uptake_activity": true,
+          "scale_never_clipped": true,
+          "trajectory_extrema_consistent": true,
+          "zero_inventory_positive_request_absent": true
+        },
+        "last_o10": {
+          "boundary": "O10_POST_UPDATE_LEDGER",
+          "internal_d": 2.4549046333575464e-12,
+          "internal_e": 0.0,
+          "internal_f": 0.0,
+          "mesh_d": 6.194508588295983e-11,
+          "residual": 2.5849394142282115e-26,
+          "tolerance": 1.2879998103263473e-20
+        },
+        "last_uptake": {
+          "accepted": 6.3854837685959174e-15,
+          "area": 5.105088062083415e-06,
+          "cum_accepted": 2.4549046333575504e-12,
+          "cum_area_time": 0.8821592171280088,
+          "cum_rejected": 0.0,
+          "cum_requested": 2.4549046333575504e-12,
+          "max_eta": 0.02643181569751092,
+          "min_scale": 1.0,
+          "rejected": 0.0,
+          "requested": 6.3854837685959174e-15,
+          "run_max_eta": 0.02643181569751092,
+          "run_min_scale": 1.0,
+          "run_positive_request_updates": 384,
+          "run_zero_inventory_positive_request_updates": 0,
+          "update": 384,
+          "zero_inventory_positive_request": 0
+        },
+        "rejection_tolerance_mol": 3.488629308432039e-26,
+        "status": "PASS",
+        "wall_s": 1.7602427329993589
+      },
+      "checkpoint_restart": {
+        "checkpoint_step": 192,
+        "equivalence": {
+          "field_equivalent": true,
+          "field_max_relative_difference": 0.0,
+          "uptake_ledger_equivalent": true
+        },
+        "particle_comparison": {
+          "exact_discrete_fields": true,
+          "exact_identifiers": true,
+          "exact_schema": true,
+          "first_difference": null,
+          "floating_failures": 0,
+          "floating_tolerance": 1e-12,
+          "max_relative_difference": 0.0,
+          "status": "PASS"
+        },
+        "summary": {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.4549046333575464e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 6.194508588295983e-11,
+            "residual": 2.5849394142282115e-26,
+            "tolerance": 1.2879998103263473e-20
+          },
+          "last_uptake": {
+            "accepted": 6.3854837685959174e-15,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.4549046333575504e-12,
+            "cum_area_time": 0.8821592171280088,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.4549046333575504e-12,
+            "max_eta": 0.02643181569751092,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 6.3854837685959174e-15,
+            "run_max_eta": 0.02643181569751092,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 384,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 384,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.488629308432039e-26,
+          "status": "PASS",
+          "wall_s": 1.0362959469994166
+        }
+      },
+      "checkpoint_restart_2_to_1": {
+        "checkpoint_step": 192,
+        "equivalence": {
+          "field_equivalent": true,
+          "field_max_relative_difference": 2.140139191692183e-16,
+          "uptake_ledger_equivalent": true
+        },
+        "particle_comparison": {
+          "exact_discrete_fields": true,
+          "exact_identifiers": true,
+          "exact_schema": true,
+          "first_difference": null,
+          "floating_failures": 0,
+          "floating_tolerance": 1e-12,
+          "max_relative_difference": 0.0,
+          "status": "PASS"
+        },
+        "summary": {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.4549046333575464e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 6.194508588295983e-11,
+            "residual": 2.0679515313825692e-25,
+            "tolerance": 1.2879998103263455e-20
+          },
+          "last_uptake": {
+            "accepted": 6.3854837685959174e-15,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.4549046333575504e-12,
+            "cum_area_time": 0.8821592171280088,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.4549046333575504e-12,
+            "max_eta": 0.02643181569751092,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 6.3854837685959174e-15,
+            "run_max_eta": 0.02643181569751092,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 384,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 384,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.488629308432039e-26,
+          "status": "PASS",
+          "wall_s": 1.0399138829998265
+        }
+      },
+      "configuration_sha256": "f2bdf82914da4a181535b8952d396e6746cc05239c90f2fb5cfb3cdb02d26100",
+      "deterministic_rerun": {
+        "bit_exact_uptake_and_observation_meshes": true,
+        "equivalence": {
+          "field_equivalent": true,
+          "field_max_relative_difference": 0.0,
+          "uptake_ledger_equivalent": true
+        },
+        "particle_comparison": {
+          "exact_discrete_fields": true,
+          "exact_identifiers": true,
+          "exact_schema": true,
+          "first_difference": null,
+          "floating_failures": 0,
+          "floating_tolerance": 1e-12,
+          "max_relative_difference": 0.0,
+          "status": "PASS"
+        },
+        "summary": {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.4549046333575464e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 6.194508588295983e-11,
+            "residual": 2.5849394142282115e-26,
+            "tolerance": 1.2879998103263473e-20
+          },
+          "last_uptake": {
+            "accepted": 6.3854837685959174e-15,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.4549046333575504e-12,
+            "cum_area_time": 0.8821592171280088,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.4549046333575504e-12,
+            "max_eta": 0.02643181569751092,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 6.3854837685959174e-15,
+            "run_max_eta": 0.02643181569751092,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 384,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 384,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.488629308432039e-26,
+          "status": "PASS",
+          "wall_s": 1.7546593509996455
+        }
+      },
+      "mpi_decomposition": {
+        "equivalence": {
+          "field_equivalent": true,
+          "field_max_relative_difference": 2.1377347979347756e-16,
+          "uptake_ledger_equivalent": true
+        },
+        "particle_comparison": {
+          "exact_discrete_fields": true,
+          "exact_identifiers": true,
+          "exact_schema": true,
+          "first_difference": null,
+          "floating_failures": 0,
+          "floating_tolerance": 1e-12,
+          "max_relative_difference": 0.0,
+          "status": "PASS"
+        },
+        "summary": {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.4549046333575464e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 6.194508588295986e-11,
+            "residual": 2.3264454728053903e-25,
+            "tolerance": 1.2879998103263458e-20
+          },
+          "last_uptake": {
+            "accepted": 6.3854837685959174e-15,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.4549046333575504e-12,
+            "cum_area_time": 0.8821592171280088,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.4549046333575504e-12,
+            "max_eta": 0.026431815697510914,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 6.3854837685959174e-15,
+            "run_max_eta": 0.026431815697510914,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 384,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 384,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.488629308432039e-26,
+          "status": "PASS",
+          "wall_s": 1.6455055659998834
+        },
+        "trajectory_field_equivalent": true,
+        "trajectory_field_max_relative_difference": 4.23307372862062e-16
+      },
+      "raw_root": "/home/jherrera2007/c10-work/runs/c10-v2-reference/temporal/T2_low",
+      "status": "PASS"
+    }
+  },
+  "temporal_comparisons": {
+    "T0_vs_T1_high": {
+      "checks": {
+        "both_cases_pass": true,
+        "profile_within_5_percent_every_observation": true,
+        "uptake_within_2_percent": true
+      },
+      "cumulative_uptake_relative_difference": 8.764041014373769e-07,
+      "maximum_mesh_profile_l1_relative": 2.3945625907586814e-06,
+      "mesh_profile_l1_relative_by_observation": {
+        "0": 0.0,
+        "129600": 9.595200249409153e-09,
+        "14400": 1.9742775930322205e-09,
+        "172800": 1.2556385849508436e-08,
+        "1800": 2.3945625907586814e-06,
+        "28800": 2.84347445056981e-09,
+        "3600": 8.236220296712621e-07,
+        "43200": 3.794697828351895e-09,
+        "7200": 1.1661660562946422e-07,
+        "86400": 6.674847712939803e-09
+      },
+      "status": "PASS"
+    },
+    "T0_vs_T1_low": {
+      "checks": {
+        "both_cases_pass": true,
+        "profile_within_5_percent_every_observation": true,
+        "uptake_within_2_percent": true
+      },
+      "cumulative_uptake_relative_difference": 6.535350337340911e-06,
+      "maximum_mesh_profile_l1_relative": 6.4680593257785305e-06,
+      "mesh_profile_l1_relative_by_observation": {
+        "0": 0.0,
+        "129600": 1.9565591080148572e-07,
+        "14400": 3.754729263575788e-08,
+        "172800": 2.5899901813390084e-07,
+        "1800": 6.4680593257785305e-06,
+        "28800": 5.6489077426063116e-08,
+        "3600": 2.2222541009640703e-06,
+        "43200": 7.565938061232838e-08,
+        "7200": 3.1472540333653896e-07,
+        "86400": 1.3457252133441364e-07
+      },
+      "status": "PASS"
+    },
+    "T1_vs_T2_high": {
+      "checks": {
+        "both_cases_pass": true,
+        "profile_within_5_percent_every_observation": true,
+        "uptake_within_2_percent": true
+      },
+      "cumulative_uptake_relative_difference": 4.3821614147644787e-07,
+      "maximum_mesh_profile_l1_relative": 1.1201443122934295e-06,
+      "mesh_profile_l1_relative_by_observation": {
+        "0": 0.0,
+        "129600": 4.7977408368021765e-09,
+        "14400": 9.483212981005988e-10,
+        "172800": 6.278384934509662e-09,
+        "1800": 1.1201443122934295e-06,
+        "28800": 1.4217617011380274e-09,
+        "3600": 3.6080483912366255e-07,
+        "43200": 1.8973896020881518e-09,
+        "7200": 2.960372232504292e-08,
+        "86400": 3.3375141640602064e-09
+      },
+      "status": "PASS"
+    },
+    "T1_vs_T2_low": {
+      "checks": {
+        "both_cases_pass": true,
+        "profile_within_5_percent_every_observation": true,
+        "uptake_within_2_percent": true
+      },
+      "cumulative_uptake_relative_difference": 3.2679282662518025e-06,
+      "maximum_mesh_profile_l1_relative": 3.0248879067321897e-06,
+      "mesh_profile_l1_relative_by_observation": {
+        "0": 0.0,
+        "129600": 9.783493626755761e-08,
+        "14400": 1.877415148604018e-08,
+        "172800": 1.2950911277351492e-07,
+        "1800": 3.0248879067321897e-06,
+        "28800": 2.8245799333265496e-08,
+        "3600": 9.747608946318828e-07,
+        "43200": 3.7831735311490585e-08,
+        "7200": 7.976500895054567e-08,
+        "86400": 6.729072393981899e-08
+      },
+      "status": "PASS"
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "schema": "bmx-p12-case-registry-v1",
+  "stage": "C10",
+  "duration_s": 172800.0,
+  "fixed_network": {
+    "path": "contracts/p12/network/P12_FIXED_NETWORK_V1.dat",
+    "sha256": "1f2294613b8a608b068d60269ff8eb29990210d3a1bc6d8142d4f840aa292702"
+  },
+  "initial_mesh_d_arms_mol_cm3": [1.61e-8, 4.52e-8],
+  "primary_cases": [
+    "LOW_D_FULL_SURFACE", "HIGH_D_FULL_SURFACE"
+  ],
+  "rate_sensitivities": {
+    "j_max_multipliers": [0.3333333333333333, 1.0, 3.0],
+    "k_m_multipliers": [0.1, 1.0, 10.0]
+  },
+  "diffusion_sensitivities_cm2_s": [1e-7, 1e-6, 5e-6, 1e-5],
+  "area_sensitivities": [
+    {"id": "FULL_EXPOSED_EXTRARADICAL_SURFACE", "status": "IMPLEMENTED_ENGINEERING_QUALIFIED"},
+    {"id": "TIP_005", "status": "IMPLEMENTED_FIXED_NETWORK_ONLY"},
+    {"id": "TIP_010", "status": "IMPLEMENTED_FIXED_NETWORK_ONLY"},
+    {"id": "TIP_020", "status": "IMPLEMENTED_FIXED_NETWORK_ONLY"},
+    {"id": "TIP_010_AREA_MATCHED", "status": "IMPLEMENTED_FIXED_NETWORK_ONLY"}
+  ],
+  "negative_controls": [
+    "J_MAX_ZERO", "EMPTY_NETWORK", "ZERO_MESH_D", "ZERO_D_DIFFUSION", "ZERO_ELIGIBLE_AREA"
+  ],
+  "positive_controls": [
+    "ONE_SEGMENT_ONE_DONOR_ANALYTIC",
+    "MULTIPLE_SEGMENTS_ONE_DONOR_ANALYTIC_CAP",
+    "ACTIVE_FULL_SURFACE_BOTH_ARMS"
+  ],
+  "integrity_controls": [
+    "DONOR_ORDER_PERMUTATION", "SEGMENT_SUBDIVISION", "CONTINUOUS_VS_RESTART",
+    "GRID_TIME_REFINEMENT", "MPI_DECOMPOSITION", "FULL_VS_TIP", "TIP_AREA_MATCHED"
+  ],
+  "execution_boundary": "The user explicitly authorized the 48 h C10 executions. Writer-generated outcomes remain engineering evidence and cannot become release evidence until independent numerical review accepts the frozen preregistration and exact implementation bytes."
+}

@@ -1,0 +1,75 @@
+{
+  "artifact_type": "C13_STAGE0_BLOCKER_REPORT",
+  "stage": "C13/P15 Stage 0",
+  "revision": "POST_D-C13-04_ADOPTION",
+  "generated": "2026-08-02",
+  "status": "BLOCKED",
+  "classification": "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+  "blocker_ids": [
+    "D-C13-05-RNG-SIDE-BRANCH-GRADIENT-REACHABILITY"
+  ],
+  "prior_blocker_disposition": [
+    {
+      "id": "D-C13-04-RNG-TOPOLOGY-DECOMPOSITION",
+      "status": "CLOSED_USER_ADOPTED_PENDING_IMPLEMENTATION_AND_REVIEW",
+      "contract_sha256": "059f067b94673838efba143c5a4615aaf79dcacc78a456317a81578daa37eba0",
+      "kat_sha256": "ef47fa935b64671dd2f93e93640308b9620055587083f0c5c5a55aa1f95edcb7"
+    },
+    {
+      "id": "D-C13-01-BONDED-D-DISCRETIZATION",
+      "status": "CLOSED_USER_ADOPTED_AND_IMPLEMENTED"
+    },
+    {
+      "id": "D-C13-02-INTEGRATED-NUMERICAL-PREREGISTRATION",
+      "status": "CLOSED_USER_ADOPTED_OUTCOMES_STILL_GATED"
+    },
+    {
+      "id": "D-C13-03-TERMINAL-ZONE-GENERAL-TOPOLOGY",
+      "status": "CLOSED_USER_ADOPTED_AND_IMPLEMENTED"
+    }
+  ],
+  "root_cause": {
+    "summary": "The adopted RNG/topology contract requires a frozen-formula-equivalent side-branch path and a mandatory nonzero-gradient side-branch case, but the frozen formula unconditionally zeroes the gradient before the branch norm is computed.",
+    "frozen_source_path": "src/chemistry/bmx_chem_K.H",
+    "frozen_source_sha256": "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02",
+    "frozen_dataflow": "read parent gx/gy/gz -> unconditional if(true) sets all to 0.0 -> side-branch gn=sqrt(0)=0.0",
+    "contract_formula_requirement": "O06 gradient and geometry formulas byte-for-byte equivalent to frozen setNewSegment; only RNG and child identity may change.",
+    "contract_draw_requirement": "Sign draw ordinal 0 is absent when gn!=0.0.",
+    "contract_qualification_requirement": "Both side branch with gn==0 and side branch with gn!=0 are mandatory forced cases across P0-P5.",
+    "why_writer_cannot_choose": "Removing the gn!=0 case changes adopted test semantics; making gn!=0 reachable changes growth/topology behavior prohibited by the adoption boundary."
+  },
+  "evidence": {
+    "machine_readable": "evidence/stages/C13/RNG_TOPOLOGY_CONTRACT_CONFLICT_V1.json",
+    "human_readable": "evidence/stages/C13/RNG_TOPOLOGY_CONTRACT_CONFLICT_V1.md",
+    "machine_readable_sha256": "61c2669ce433683c99b9726e6436deb67deb4a9f5e18af591176003889caea94",
+    "sha256_authority": "committed LF Git blob bytes at evidence commit 91836c51529480ba0db44ec32d446d568dacd547",
+    "kat_status": "PASS",
+    "kat_scope": "Serialization, draws, identities, ledgers, chains, and checkpoint state; not frozen control-flow reachability."
+  },
+  "implementation_state": {
+    "product_source_change_retained": false,
+    "src_tree": "dd10ce05a9d12a84244a3d3cf713ca9ab279e16b",
+    "new_build": "NOT_RUN",
+    "new_runtime_qualification": "NOT_RUN",
+    "independent_review": "NOT_REQUESTED_NO_IMPLEMENTATION_CANDIDATE"
+  },
+  "required_resolution": {
+    "recommended": "Issue a new contract/KAT revision preserving frozen behavior, remove the unreachable gn!=0 side-branch forced case, and bind sign draw ordinal 0 as always present for accepted side branches.",
+    "alternative": "Explicitly authorize and exactly bind nonzero-gradient side-branch behavior as a growth/topology change, then obtain independent review.",
+    "prohibited": "Do not use a synthetic-only gn!=0 helper, inject a post-zeroing gradient, or silently choose precedence between normative clauses."
+  },
+  "frozen_bytes": {
+    "global_order_sha256": "bb63c219a860687d91ce1acf06a667c9208abf026b32f18acfc64884bb696dd6",
+    "kernel_sha256": "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02",
+    "global_order_changed": false,
+    "kernel_changed": false
+  },
+  "execution_boundary": {
+    "qualification_216h": "PROHIBITED_AND_NOT_RUN",
+    "P15_science": "PROHIBITED_AND_NOT_RUN",
+    "C14_or_later": "NOT_STARTED",
+    "external_resources": "none",
+    "external_spend_usd": 0
+  },
+  "claim_boundary": "RG-SW Stage-0 specification-consistency blocker only; not implementation qualification, independent acceptance, mentor approval, CLOSED_SCIENTIFIC, calibration, predictive validation, RG-SCI progress, C13 PASS, a 216-hour outcome, or P15 science."
+}

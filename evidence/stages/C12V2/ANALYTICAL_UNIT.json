@@ -1,0 +1,16 @@
+{
+    "artifact_type":  "C12_P14_ANALYTICAL_UNIT",
+    "stage":  "C12/P14",
+    "status":  "PASS",
+    "checks_executed":  137,
+    "output":  "C12_EXPORT_UNIT PASS checks=137",
+    "source_sha256":  "95d68edd90e395df1bfc1806ad7eed8fbcdc2617628cb0a3f25bb79aefcfea83",
+    "header_sha256":  "8298505ed9479d5f8f267ff693493fde2b6ec2935ef73f414218a868d49ace85",
+    "contract_sha256":  "01a9d6eb7291cc8bc0c98f52afbf3c5ea1c86da4fd3f992a02665e283f81ff4e",
+    "operator_fit_sha256":  "72193a1034d4148d167f059c347053d2206fa580cce9a156ec705304e7f378e7",
+    "frozen_global_order_sha256":  "bb63c219a860687d91ce1acf06a667c9208abf026b32f18acfc64884bb696dd6",
+    "frozen_kernel_sha256":  "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02",
+    "external_resources":  "none",
+    "external_spend_usd":  0,
+    "claim_boundary":  "Deterministic analytical P14 geometry and transaction tests only; not mentor approval, calibration, predictive validation, or C13 science."
+}

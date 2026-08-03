@@ -1,0 +1,97 @@
+{
+  "artifact_type": "P13_REACTION_AND_LIEBIG_IMPLEMENTATION_CONTRACT",
+  "contract_id": "bmx-p13-reaction-liebig-v1",
+  "status": "WRITER_FROZEN_BEFORE_C11_OUTCOMES",
+  "stage": "C11",
+  "authority": {
+    "classification": "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+    "decision_ids": [
+      "MD-5b43f4b235dec87e-01",
+      "MD-5b43f4b235dec87e-05",
+      "MD-5b43f4b235dec87e-06",
+      "MD-5b43f4b235dec87e-07",
+      "UDC-20260801-P13-V1"
+    ],
+    "user_adopted_source": "contracts/USER_APPROVED_DECISION_CONTRACT_20260801.txt",
+    "user_adopted_source_sha256": "283eace4f34e0a3d6961d49db2ab2c75ac6e384a9077a7044313a20f7bd4bc93",
+    "mentor_approval_claimed_by_user_adoption": false
+  },
+  "operator_fit": {
+    "path": "contracts/p13/OPERATOR_FIT_V1.json",
+    "global_order_sha256": "bb63c219a860687d91ce1acf06a667c9208abf026b32f18acfc64884bb696dd6",
+    "slot": "O02_LOCAL_MESH_PARTICLE_UPDATE",
+    "global_order_changed": false
+  },
+  "state_and_units": {
+    "D": "local exchangeable/translocatable phosphorus amount in mol elemental-P equivalent",
+    "E": "local immobile growth-precursor phosphorus amount in mol elemental-P equivalent",
+    "structural_p": "cumulative nonmobile amount in mol elemental-P equivalent",
+    "volume": "cm^3",
+    "concentration": "mol/cm^3",
+    "rate_constant": "s^-1",
+    "volume_growth_rate": "cm^3/s"
+  },
+  "reaction": {
+    "common_prestate": true,
+    "forward_rate": "R_DE = k_DE * N_D",
+    "reverse_rate": "R_ED = k_ED * N_E",
+    "technical_step_rule": "requested forward and reverse amounts are R*dt from the same pre-reaction state; each is independently capped at its prestate donor amount; both accepted transfers commit simultaneously",
+    "conservation": "N_D_after + N_E_after = N_D_before + N_E_before",
+    "allowed_rate_pairs_s^-1": [
+      [0.0, 0.0],
+      [1.0e-5, 0.0],
+      [1.0e-6, 1.0e-6],
+      [1.0e-5, 1.0e-5],
+      [1.0e-4, 1.0e-4]
+    ],
+    "classification": "sensitivities only; no biological baseline"
+  },
+  "liebig_growth": {
+    "q_B": "k_gB / k_VB",
+    "G_C": "k_VB * C_B * V",
+    "k_gP": "p13.k_gP_over_k_gB * k_gB",
+    "k_VP": "k_gP / q_P",
+    "G_P": "k_VP * C_E * V",
+    "requested_delta_V": "dt * min(G_C, G_P)",
+    "accepted_delta_V": "min(requested_delta_V, N_B/q_B, N_E/q_P, native admissible geometric allowance)",
+    "state_time": "C_B, C_E, N_B, and N_E are evaluated after membrane transfer and local reactions and before growth",
+    "geometry_rule": "derive the native fungal tip/interior cylinder geometry for the accepted volume from the pre-growth geometry; a geometry-ineligible segment accepts zero growth",
+    "atomic_commit": "only accepted delta_V commits; debit q_B*delta_V from B, debit q_P*delta_V from E, and credit exactly the E debit to structural_p",
+    "rejection_rule": "rejected, clipped, geometry-ineligible, or unrealized growth consumes neither B nor E",
+    "q_P_values_mol_cm^-3": [3.0e-6, 3.0e-5, 3.0e-4],
+    "k_gP_over_k_gB_values": [0.1, 1.0, 10.0],
+    "classification": "sensitivities only; no biological baseline"
+  },
+  "integration_policy": {
+    "feature_off": "the frozen legacy chemistry kernel is called byte-identically with its original parameter vector",
+    "feature_on": "for fungal particles only, legacy B-driven growth and legacy inert-P growth limiting are disabled inside the frozen kernel; legacy membrane/carbon reactions finish first, then this contract applies D/E reaction and Liebig growth once per global O02 transaction",
+    "nonfungal_particles": "retain frozen legacy behavior and do not consume D/E through P13",
+    "F": "every F reaction coefficient and transfer remains exactly zero"
+  },
+  "numerical_policy": {
+    "nonfinite": "hard abort",
+    "negative_beyond_integrated_tolerance": "hard abort",
+    "roundoff_clamp": "only negative values within the existing P10 integrated tolerance may clamp to zero; every clamp is counted and reported",
+    "conservation": "existing P10 local and integrated tolerances are unchanged",
+    "timestep_and_grid": "C13 Stage 0 must qualify convergence prospectively before any P15 science run"
+  },
+  "required_cases": [
+    "reaction off",
+    "D-to-E one-way",
+    "each symmetric reversible sensitivity",
+    "zero D",
+    "zero E",
+    "carbon-limited",
+    "phosphorus-limited",
+    "exact tie",
+    "near tie",
+    "B availability cap",
+    "E availability cap",
+    "geometry-ineligible growth",
+    "rejected growth consumes no B or E",
+    "restart equivalence",
+    "feature-off regression",
+    "one-rank and two-rank determinism"
+  ],
+  "claim_boundary": "P13 software and numerical behavior only under a provisional user-adopted contract; not mentor approval, calibration, predictive validity, a selected biological baseline, or C12+ authorization."
+}

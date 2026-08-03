@@ -1,0 +1,106 @@
+{
+  "artifact_type": "P10_TOPOLOGY_EVENT_CONTRACT",
+  "contract_id": "bmx-p10-topology-event-v1",
+  "status": "USER_APPROVED_BINDING_C08",
+  "scope": "enabled P09 three-state mode during C08 only",
+  "approval": {
+    "date": "2026-08-01",
+    "source_path": "contracts/USER_APPROVED_DECISION_CONTRACT_20260801.txt",
+    "source_sha256": "283eace4f34e0a3d6961d49db2ab2c75ac6e384a9077a7044313a20f7bd4bc93",
+    "user_statement": "I adopt the attached contract as the binding user-approved decision contract, superseding the pending mentor gate for P10-U01. I authorize Codex as the sole C08 integrator to modify src/des/bmx_calc_txfr.cpp, src/timestepping/bmx_evolve.cpp, src/bmx.H, and src/bmx.cpp only as needed to complete C08. This does not authorize C09 or later work."
+  },
+  "governing_invariant": "Topology is not a phosphorus source or sink. Every predecessor D/E/F amount is assigned exactly once to a live successor or an already-approved cumulative destination, otherwise the update aborts before state is destroyed.",
+  "v1_other_exit_rule": "other_exit_d, other_exit_e, other_exit_f, and other_exit_events are exactly zero",
+  "events": [
+    {
+      "event": "split predecessor replacement",
+      "classification": "PERMITTED_AMOUNT_TRANSFER",
+      "reason_code": "P10_SPLIT_PARENT_REPLACED",
+      "rule": "capture D/E/F amounts before topology mutation and partition each amount by successor owning volume exactly once",
+      "destination": "successor internal D/E/F"
+    },
+    {
+      "event": "approved fusion or predecessor replacement",
+      "classification": "PERMITTED_AMOUNT_TRANSFER",
+      "reason_code": "P10_FUSION_PREDECESSOR_REPLACED",
+      "rule": "add predecessor amounts before recomputing concentrations in the unique successor",
+      "destination": "successor internal D/E/F"
+    },
+    {
+      "event": "raw deletion without a complete successor map",
+      "classification": "HARD_ABORT_BEFORE_MUTATION",
+      "reason_code": "P10_ABORT_UNMAPPED_PARTICLE_DELETION",
+      "rule": "abort before marking, deleting, compacting, or redistributing",
+      "destination": "none"
+    },
+    {
+      "event": "out-of-domain particle removal",
+      "classification": "HARD_ABORT_BEFORE_LOSS_IF_BOUNDARY_RULE_CANNOT_RESOLVE",
+      "reason_code": "P10_ABORT_OUT_OF_DOMAIN_PARTICLE",
+      "rule": "never remove; periodic wrapping remains valid, while C08 aborts before nonperiodic loss because C09 boundary mechanics are not authorized",
+      "destination": "none"
+    },
+    {
+      "event": "bond endpoint predecessor replacement",
+      "classification": "PERMITTED_RELATIONSHIP_REMAP",
+      "reason_code": "P10_BOND_ENDPOINT_REMAPPED",
+      "rule": "resolve the old endpoint through the unique predecessor-to-successor map; bonds own no phosphorus",
+      "destination": "none"
+    },
+    {
+      "event": "redundant zero-state self-loop or duplicate bond",
+      "classification": "PERMITTED_ZERO_AMOUNT_PRUNE",
+      "reason_code": "P10_ZERO_STATE_BOND_PRUNED",
+      "rule": "prune canonically",
+      "destination": "NONE_ZERO_AMOUNT"
+    },
+    {
+      "event": "orphan bond without a unique live successor",
+      "classification": "HARD_ABORT",
+      "reason_code": "P10_ABORT_ORPHAN_BOND_NO_SUCCESSOR",
+      "rule": "abort the topology stage before cleanup",
+      "destination": "none"
+    },
+    {
+      "event": "orphan bond with pending material",
+      "classification": "HARD_ABORT",
+      "reason_code": "P10_ABORT_ORPHAN_BOND_PENDING_MATERIAL",
+      "rule": "do not export or assign the material arbitrarily",
+      "destination": "none"
+    },
+    {
+      "event": "disjoint simultaneous topology batch",
+      "classification": "PERMITTED_EXACTLY_ONCE_BATCH",
+      "reason_code": "P10_SIMULTANEOUS_DISJOINT_BATCH",
+      "rule": "evaluate from one immutable pre-topology snapshot; each predecessor participates at most once; disjoint components may execute in canonical event-key order for byte-level determinism while scientific semantics remain snapshot-based",
+      "destination": "corresponding successors"
+    },
+    {
+      "event": "simultaneous topology conflict",
+      "classification": "ATOMIC_HARD_ABORT_BEFORE_TOPOLOGY_MUTATION",
+      "reason_code": "P10_ABORT_SIMULTANEOUS_TOPOLOGY_CONFLICT",
+      "rule": "reject the complete batch when events share a particle, bond, or destination; no partial subset commits",
+      "destination": "none"
+    }
+  ],
+  "event_record_required_before_predecessor_disappearance": [
+    "event_id",
+    "global_step",
+    "simulation_time",
+    "reason_code",
+    "event_type",
+    "ordered_predecessor_ids",
+    "ordered_successor_ids",
+    "predecessor_D/E/F_amounts",
+    "successor_D/E/F_amounts",
+    "ledger_destination",
+    "effective_configuration_hash",
+    "pre_topology_hash",
+    "post_topology_hash",
+    "local_conservation_residual",
+    "MPI_owner_before",
+    "MPI_owner_after"
+  ],
+  "current_path_boundary": "The inspected C08 product has split-with-retained-parent paths and relationship cleanup, but no approved source path that destroys a phosphorus-owning predecessor or performs a true merge. Any later such path must implement the atomic event record before destruction.",
+  "later_stage_boundary": "Structuralization, export, wall projection/sliding, and all C09-or-later behavior remain unauthorized by this C08 contract binding."
+}

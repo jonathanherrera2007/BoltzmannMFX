@@ -1,0 +1,59 @@
+{
+  "artifact_type": "C10_V2_WINDOWS_REFERENCE_COMPARISON",
+  "generated": "2026-08-02",
+  "status": "PASS",
+  "windows_artifact": {
+    "path": "../P12_V2_GRID_TIME.json",
+    "exact_generated_sha256": "e25ff8256a1ab151cea3b007228b261bd1c4d8b83fa34234d71371d62b2d0ab0",
+    "committed_lf_sha256": "d7ed0cce4af86517d1206427ff4bdc47eb931fbec6d4a87bcf30e33e48ea3742"
+  },
+  "reference_artifact": {
+    "path": "results/P12_V2_GRID_TIME_REFERENCE.json",
+    "sha256": "b3d72145bfd9310d4d0f2ea171bbcb0e814debe36bbac56ac6e52103e7b89d43"
+  },
+  "exact_object_comparisons": {
+    "coupled_comparisons": true,
+    "temporal_comparisons": true,
+    "saturation_prediction": true,
+    "selected_production_grid": true,
+    "selected_production_dt_s": true
+  },
+  "canonical_case_groups_checked": 12,
+  "canonical_values_checked_per_group": {
+    "last_uptake": [
+      "accepted",
+      "area",
+      "cum_accepted",
+      "cum_area_time",
+      "cum_rejected",
+      "cum_requested",
+      "max_eta",
+      "min_scale",
+      "rejected",
+      "requested",
+      "run_max_eta",
+      "run_min_scale",
+      "run_positive_request_updates",
+      "run_zero_inventory_positive_request_updates",
+      "update",
+      "zero_inventory_positive_request"
+    ],
+    "last_o10": [
+      "internal_d",
+      "internal_e",
+      "internal_f",
+      "mesh_d"
+    ]
+  },
+  "canonical_value_comparisons": 240,
+  "canonical_value_differences": 0,
+  "excluded_from_exact_cross_platform_claim_comparison": [
+    "wall-clock timing",
+    "platform-specific executable and extractor hashes",
+    "raw filesystem paths",
+    "platform labels",
+    "noncanonical MPI and restart floating residual diagnostics already judged by their frozen within-run tolerances"
+  ],
+  "method": "Both JSON files were parsed as typed objects. Whole coupled-comparison, temporal-comparison and saturation-prediction objects plus selection were compared exactly. The listed canonical fields were compared by exact numeric or discrete equality for the six coupled and six serialized temporal groups.",
+  "claim_boundary": "Exact agreement for the stated claim-bearing objects and canonical values only; not an assertion that platform-specific files, timings or every diagnostic byte are identical."
+}

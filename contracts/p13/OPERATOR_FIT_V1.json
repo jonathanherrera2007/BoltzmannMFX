@@ -1,0 +1,24 @@
+{
+  "artifact_type": "P13_OPERATOR_ORDER_FIT",
+  "contract_id": "bmx-p13-o02-fit-v1",
+  "status": "WRITER_FROZEN_BEFORE_C11_OUTCOMES",
+  "stage": "C11",
+  "input_commit": "f60bfb2412f7cba4dd0160f48f7c54ac41e2d007",
+  "global_operator_order": {
+    "contract_id": "bmx-p10-global-order-v1",
+    "sha256": "bb63c219a860687d91ce1acf06a667c9208abf026b32f18acfc64884bb696dd6",
+    "slot": "O02_LOCAL_MESH_PARTICLE_UPDATE",
+    "changed": false
+  },
+  "fit_rationale": "O02 already orders membrane D/F transfer, then any enabled local D/E reaction, then growth eligibility; it also already requires geometry before B/E debit and structural-P credit only for accepted realized growth. P13 fills those clauses without adding, removing, or reordering a global operator.",
+  "p13_u05_disposition": "CLOSED_TECHNICAL_EXISTING_O02_SLOT",
+  "integration_order_within_o02": [
+    "complete the membrane transaction from the common pre-O02 state",
+    "apply the enabled local D/E amount reaction from one common pre-reaction state",
+    "evaluate carbon-supported and E-supported growth from the post-reaction state",
+    "derive an admissible geometry before committing resource debits",
+    "atomically commit the accepted geometry, B debit, E debit, and equal structural-P credit"
+  ],
+  "stop_condition": "Any implementation that cannot fit these existing O02 clauses must propose new exact operator-order bytes and stop for independent review before implementation or outcome execution.",
+  "claim_boundary": "Technical order fit only; no biological baseline, calibration, prediction, or C12+ behavior is authorized by this artifact."
+}

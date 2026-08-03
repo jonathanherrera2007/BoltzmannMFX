@@ -12,6 +12,10 @@ target_sources( bmxcore
    bmx_des_K.H
    bmx_pc.cpp
    bmx_pc.H
+   bmx_pc_phosphorus.cpp
+   bmx_pc_export.cpp
+   bmx_pc_p15.cpp
+   bmx_pc_phosphorus.H
    bmx_pc_init.cpp
    bmx_pc_interaction.cpp
    bmx_pc_write.cpp
@@ -21,4 +25,3 @@ target_sources( bmxcore
    bmx_pc_xchng.cpp
    bmx_pc_fusion.cpp
    )
-

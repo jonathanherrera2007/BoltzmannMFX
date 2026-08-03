@@ -1,0 +1,199 @@
+{
+  "artifact_type": "C10_V2_REFERENCE_EXECUTION_REPORT",
+  "stage": "C10/P12",
+  "generated": "2026-08-02",
+  "qualification_status": "PASS",
+  "stage_status": "BLOCKED_PENDING_FINAL_INDEPENDENT_ACCEPTANCE",
+  "authorization": {
+    "source": "explicit user authorization in the Codex task",
+    "scope": "Provision one GCE n2-standard-8 in us-west1-b pinned to Intel Cascade Lake, run reference qualification and timing, then delete it immediately.",
+    "instance_count": 1,
+    "later_stage_authorization": false
+  },
+  "source": {
+    "implementation_commit": "0f38760b4daba3acbfd4b658c9ac522523b5c69b",
+    "implementation_tree": "511e3d1ec6ec5148aa0548b6256c85b52a3b68a2",
+    "evidence_handoff_commit": "8bd454f19c1d17edb66f7918b01be695da805b6b",
+    "worktree_clean_before_build_and_outcomes": true
+  },
+  "reference_host": {
+    "provider": "GCE",
+    "project": "project-a4ddb38c-cbe3-43a7-8d0",
+    "instance": "bmx-c10v2-qual-20260802",
+    "zone": "us-west1-b",
+    "machine_type": "n2-standard-8",
+    "minimum_cpu_platform": "Intel Cascade Lake",
+    "observed_cpu_platform": "Intel Cascade Lake",
+    "operating_system": "Ubuntu 24.04.4 LTS",
+    "kernel": "6.17.0-1021-gcp",
+    "filesystem": "ext4",
+    "vcpus": 8,
+    "boot_disk": {
+      "type": "pd-balanced",
+      "size_gb": 50,
+      "auto_delete": true
+    }
+  },
+  "toolchain": {
+    "gcc": "13.3.0",
+    "gxx": "13.3.0",
+    "cmake": "3.28.3",
+    "open_mpi": "4.1.6",
+    "ninja": "1.11.1",
+    "python": "3.12.3",
+    "build_type": "Release",
+    "mpi_enabled": true,
+    "openmp_enabled": false,
+    "precision": "double",
+    "provenance_required": true
+  },
+  "build_diagnostics": {
+    "status": "PASS_WITH_NONBLOCKING_WARNINGS",
+    "warning_count": 6,
+    "warning": "GCC reports that two [[noreturn]] guard helpers may return because AMReX Abort is not declared noreturn in the pinned dependency interface.",
+    "locations": [
+      "src/io/bmx_checkpoint_schema.cpp:27",
+      "src/chemistry/bmx_phosphorus_geometry_K.H:726"
+    ],
+    "assessment": "No compilation error occurred. These are fail-closed rejection helpers; their exercised negative-path suites pass. No post-qualification source change was made."
+  },
+  "frozen_identities": {
+    "amrex_commit": "cbdc6580ee3d78cccdd37172e4ba077ee181f483",
+    "amrex_tree": "fb714dc6e693c18f7c441d1d1febe4a5e8bf9ea6",
+    "kernel_sha256": "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02",
+    "operator_order_sha256": "bb63c219a860687d91ce1acf06a667c9208abf026b32f18acfc64884bb696dd6",
+    "numerical_v2_contract_sha256": "43d64a8f4ec6c8c00379fc3d9605441cb900479fcdd8db9e78e6fc1edd28f81f",
+    "uptake_contract_sha256": "2094aed3c8ef21a257d2c597352793384d01a1efc3d72936d5c5108d308f8804",
+    "independent_prerun_review_sha256": "bda12aef209793b4537915e374e09caf100397c0fdf8678ed00118ff987a3ea2",
+    "runner_sha256": "882fb997a71ccc91d6f660af33855b3631ba4e4fd39b6f6665464c7853622d5d",
+    "extractor_source_sha256": "5733e5d5b0b3ef65ad8a2282111c735c476ec6872331546e5e443fa250e63d1b",
+    "reference_executable_sha256": "30d9e79289d1c9fe4324aaefe0d3bfb998f650578431fcc4b2e32a4f0dafbe4b",
+    "reference_extractor_sha256": "489c41375ae6ee974f67111f2c99d93af9d5348612a34bc75918496db473bc02",
+    "cmake_cache_sha256": "dbc6d86d7711bc9c092978e00c7e5f67e2debd0e9949a0aff41354ffb0d04be1"
+  },
+  "qualification": {
+    "artifact": "results/P12_V2_GRID_TIME_REFERENCE.json",
+    "artifact_sha256": "b3d72145bfd9310d4d0f2ea171bbcb0e814debe36bbac56ac6e52103e7b89d43",
+    "status": "PASS",
+    "selected_grid": "L0",
+    "selected_n_cell": [8, 8, 4],
+    "selected_dt_s": 1800.0,
+    "unique_case_groups": 10,
+    "unique_simulation_summaries": 50,
+    "failed_simulation_summaries": 0,
+    "maximum_eta": 0.10654141714024555,
+    "minimum_donor_scale": 1.0,
+    "maximum_cumulative_rejected_mol": 0.0,
+    "maximum_coupled_uptake_relative_difference": 0.00022035613306748612,
+    "maximum_coupled_profile_l1_relative": 0.0000331410499321656,
+    "maximum_temporal_uptake_relative_difference": 0.000006535350337340911,
+    "maximum_temporal_profile_l1_relative": 0.0000064680593257785305
+  },
+  "generated_result_context": {
+    "note": "The platform-agnostic V2 runner serializes its original generic claim_boundary, external_resources=none, and external_spend_usd=0 fields. On this invocation those fields describe only runner-internal resource management, not the authorized GCE orchestration. This wrapper is the authoritative host/resource classification for the reference execution.",
+    "reference_host_classification": "PASS",
+    "external_resource_classification": "one authorized GCE VM, subsequently deleted"
+  },
+  "cross_platform_comparison": {
+    "windows_artifact_sha256": "e25ff8256a1ab151cea3b007228b261bd1c4d8b83fa34234d71371d62b2d0ab0",
+    "reference_artifact_sha256": "b3d72145bfd9310d4d0f2ea171bbcb0e814debe36bbac56ac6e52103e7b89d43",
+    "coupled_comparisons_exact": true,
+    "temporal_comparisons_exact": true,
+    "saturation_prediction_exact": true,
+    "production_selection_exact": true,
+    "canonical_claim_value_differences": 0,
+    "status": "PASS"
+  },
+  "saturation_contrast": {
+    "predicted_initial_flux_ratio_high_over_low": 1.039154791108985,
+    "measured_48h_high_over_low": {
+      "L0": 1.0402603688571577,
+      "L1": 1.0403670905798583,
+      "L2": 1.0405657805592736
+    },
+    "interpretation": "Near-null contrast consistent with transporter saturation; no tuning and no biological amplification claim."
+  },
+  "timing": {
+    "artifact": "results/REFERENCE_TIMING_AND_PROJECTIONS.json",
+    "artifact_sha256": "2473d2f8675077d6e9ede062f128b1a8307035bd23f21f8bf03ce5f75ed0d2e5",
+    "status": "PASS",
+    "configuration": "L0, 8x8x4, dt=1800 s, 48 h simulated, 96 updates, one MPI rank, plot every update, checkpoint at update 48",
+    "repeats_per_arm": 5,
+    "low_median_wall_s": 0.9068460409998806,
+    "high_median_wall_s": 0.9089595030000055,
+    "representative_wall_s": 0.9079027719999431,
+    "conservative_wall_s": 0.9089595030000055
+  },
+  "campaign_projections": {
+    "basis": "151 configurations, nine concurrent n2-standard-8 instances, one run per instance, perfect waves; excludes provisioning, queue, transfer, retry, and later-model overhead",
+    "n5": {
+      "runs": 755,
+      "waves": 84,
+      "elapsed_hours_representative": 0.021184398013332006,
+      "elapsed_minutes_representative": 1.2710638807999204,
+      "aggregate_instance_hours_representative": 0.19040738690554362
+    },
+    "n10": {
+      "runs": 1510,
+      "waves": 168,
+      "elapsed_hours_representative": 0.04236879602666401,
+      "elapsed_minutes_representative": 2.5421277615998406,
+      "aggregate_instance_hours_representative": 0.38081477381108725
+    },
+    "n20": {
+      "runs": 3020,
+      "waves": 336,
+      "elapsed_hours_representative": 0.08473759205332802,
+      "elapsed_minutes_representative": 5.084255523199681,
+      "aggregate_instance_hours_representative": 0.7616295476221745
+    }
+  },
+  "fail_closed_packaging_findings": [
+    {
+      "id": "C10V2-REF-PKG-01",
+      "outcomes_executed_before_stop": false,
+      "cause": "The frozen V1 evidence names the original Windows CRLF bytes while the committed Git blob is LF. The first reference attempt rejected the LF checkout before outcomes.",
+      "repair": "Overlay the exact frozen CRLF bytes, pass them through Git's clean filter with git add --renormalize, require no staged diff, and require a clean worktree.",
+      "model_or_gate_change": false
+    },
+    {
+      "id": "C10V2-REF-PKG-02",
+      "outcomes_executed_before_stop": false,
+      "cause": "The second attempt correctly stopped because the exact-byte overlay had not yet been reconciled with the Git index.",
+      "repair": "The reusable handoff script now performs and validates the index reconciliation before build or outcomes.",
+      "model_or_gate_change": false
+    },
+    {
+      "id": "C10V2-REF-PKG-03",
+      "outcomes_rerun": false,
+      "cause": "After qualification and timing passed, the driver verified a relative-path manifest from the wrong current directory.",
+      "repair": "A packaging-only finalizer verified the existing manifest from the work root, asserted the completed products, and repacked the compact evidence. The reusable driver now changes to the work root before verification.",
+      "model_or_gate_change": false
+    }
+  ],
+  "archives": {
+    "raw_archive_sha256": "5421afd5bf82b6bc6d705937caf0f67b59d71d2044c5e86ea5a866e2e251d6ab",
+    "raw_archive_size_bytes": 107600919,
+    "compact_evidence_archive_sha256": "66c14705a35fdf68e7efe132054455c2a8730d6a1cf26d52847abf6c543224ab",
+    "compact_evidence_archive_size_bytes": 2927269,
+    "manifest_entries": 22,
+    "manifest_verification": "PASS"
+  },
+  "resource_cleanup": {
+    "instance_deleted": true,
+    "boot_disk_deleted": true,
+    "instance_list_after_delete": [],
+    "disk_list_after_delete": [],
+    "status": "PASS"
+  },
+  "spend": {
+    "authorized_estimate_usd": [1.0, 2.0],
+    "exact_billed_usd": null,
+    "billing_status": "not yet settled or queried",
+    "resource_lifecycle_minutes_approximate": 84.16,
+    "statement": "No exact cost claim is made; one authorized instance existed for approximately 84 minutes and was deleted."
+  },
+  "remaining_blocker": "Final independent acceptance of the exact implementation and imported Windows/reference evidence.",
+  "claim_boundary": "Reference-capable Linux reproduction and timing for the frozen C10/P12 uptake-only candidate. This is not final independent acceptance, C10 closure, mentor scientific approval, biological calibration, predictive validation, or a runtime guarantee for P13/P14/P15.",
+  "later_stages_started": false
+}

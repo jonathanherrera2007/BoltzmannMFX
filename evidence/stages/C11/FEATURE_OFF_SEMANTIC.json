@@ -1,0 +1,78 @@
+{
+  "artifact_type": "C11_FEATURE_OFF_SEMANTIC_TEST",
+  "stage": "C11/P13",
+  "status": "PASS",
+  "particle_ascii_precision_digits": 15,
+  "c10_executable": {
+    "path": "C:\\b\\BMX-shadow-handoff-20260721\\build-c10-v2-prereview-0f38760\\bmx.exe",
+    "sha256": "4591dacc8e2ece1a32a4e3ec18e1293a04cd0a364bcb62a7ccf94dd61d66518f"
+  },
+  "c11_executable": {
+    "path": "C:\\b\\BMX-shadow-handoff-20260721\\build-c11-native-final\\bmx.exe",
+    "sha256": "a7a2700556b553f7cfae298bbe681474fff9086cdab5a8c83d53b4869fd38825"
+  },
+  "fixtures": [
+    {
+      "id": "G1_tip_length_only",
+      "engineering_overrides": [
+        "bmx.max_step=40"
+      ],
+      "target_branch": "TIP_LENGTH_ONLY",
+      "target_branch_count": 76,
+      "split_or_new_particle_events": 2,
+      "trajectory": {
+        "reference_dumps": 41,
+        "c09_dumps": 41,
+        "dumps_compared": 41,
+        "particle_records_compared": 79,
+        "differing_values": 0,
+        "fields_differing": [],
+        "first_difference": null,
+        "identical": true
+      },
+      "checks": {
+        "both_exits_zero": true,
+        "both_particle_layouts_are_8": true,
+        "target_branch_exercised": true,
+        "split_exercised_when_required": true,
+        "semantic_trajectory_identical": true,
+        "P13_not_activated": true
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "G4_nontip_rejected",
+      "engineering_overrides": [
+        "bmx.max_step=30",
+        "chem_species.max_seg_length=6.0e-4",
+        "chem_species.seg_split_length=3.0e-4"
+      ],
+      "target_branch": "NONTIP_REJECTED",
+      "target_branch_count": 188,
+      "split_or_new_particle_events": 19,
+      "trajectory": {
+        "reference_dumps": 31,
+        "c09_dumps": 31,
+        "dumps_compared": 31,
+        "particle_records_compared": 341,
+        "differing_values": 0,
+        "fields_differing": [],
+        "first_difference": null,
+        "identical": true
+      },
+      "checks": {
+        "both_exits_zero": true,
+        "both_particle_layouts_are_8": true,
+        "target_branch_exercised": true,
+        "split_exercised_when_required": true,
+        "semantic_trajectory_identical": true,
+        "P13_not_activated": true
+      },
+      "status": "PASS"
+    }
+  ],
+  "method": "Exact comparison of every semantic particle field in every G1/G4 15-digit dump between the qualified C10 executable and C11 with p13.enabled absent/default-off; both growth and split paths execute.",
+  "external_resources": "none",
+  "external_spend_usd": 0,
+  "claim_boundary": "Windows CPU engineering feature-off regression with branch-forcing fixtures; not release-host or scientific evidence."
+}

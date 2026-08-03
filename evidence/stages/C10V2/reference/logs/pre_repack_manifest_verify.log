@@ -1,0 +1,9 @@
+results/P12_V2_GRID_TIME_REFERENCE.json: OK
+results/REFERENCE_TIMING_AND_PROJECTIONS.json: OK
+results/STATIC_REFERENCE.json: OK
+logs/environment.txt: OK
+build/CMakeCache.txt: OK
+build/bmx: OK
+tools/c10_plot_extract: OK
+artifacts/C10_REFERENCE_RAW.tar.gz: OK
+artifacts/C10_REFERENCE_EVIDENCE.tar.gz: OK

@@ -1,0 +1,33 @@
+{
+  "artifact_type": "C10_GCE_RESOURCE_LIFECYCLE",
+  "generated": "2026-08-02",
+  "authorization": "One GCE n2-standard-8 in us-west1-b, pinned to Intel Cascade Lake, for reference qualification and timing, followed by immediate deletion.",
+  "project": "project-a4ddb38c-cbe3-43a7-8d0",
+  "zone": "us-west1-b",
+  "instance": "bmx-c10v2-qual-20260802",
+  "machine_type": "n2-standard-8",
+  "minimum_cpu_platform": "Intel Cascade Lake",
+  "observed_cpu_platform": "Intel Cascade Lake",
+  "creation_timestamp": "2026-08-02T02:59:30.437-07:00",
+  "last_start_timestamp": "2026-08-02T02:59:37.767-07:00",
+  "before_delete_capture_utc": "2026-08-02T11:21:56Z",
+  "instance_absence_confirmed_utc": "2026-08-02T11:23:40Z",
+  "disk_absence_confirmed_utc": "2026-08-02T11:22:53Z",
+  "approximate_lifecycle_seconds": 5049.563,
+  "boot_disk": {
+    "size_gb": 50,
+    "type": "pd-balanced",
+    "auto_delete": true
+  },
+  "before_delete_instance_description_sha256": "3606dfc534d1f91f3f2fe843f8d8aa8df02e1396075122e5e2d03c023a6ca313",
+  "instances_after_delete_sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+  "disks_after_delete_sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+  "instances_after_delete": [],
+  "disks_after_delete": [],
+  "instance_deleted": true,
+  "boot_disk_deleted": true,
+  "cleanup_status": "PASS",
+  "exact_billed_usd": null,
+  "billing_status": "not yet settled or queried",
+  "authorized_estimate_usd": [1.0, 2.0]
+}

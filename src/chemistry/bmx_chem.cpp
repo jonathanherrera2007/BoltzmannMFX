@@ -15,6 +15,7 @@ amrex::Real BMXChemistry::k4 = 0.0;
 amrex::Real BMXChemistry::k5 = 0.0;
 amrex::Real BMXChemistry::k6 = 0.0;
 amrex::Real BMXChemistry::k7 = 0.0;
+amrex::Real BMXChemistry::kP = 0.0;
 amrex::Real BMXChemistry::kr1 = 0.0;
 amrex::Real BMXChemistry::kr2 = 0.0;
 amrex::Real BMXChemistry::kr3 = 0.0;
@@ -22,13 +23,17 @@ amrex::Real BMXChemistry::kr4 = 0.0;
 amrex::Real BMXChemistry::kr5 = 0.0;
 amrex::Real BMXChemistry::kr6 = 0.0;
 amrex::Real BMXChemistry::kr7 = 0.0;
+amrex::Real BMXChemistry::krP = 0.0;
 amrex::Real BMXChemistry::kg = 0.0;
 amrex::Real BMXChemistry::kv = 0.0;
 amrex::Real BMXChemistry::kb = 0.0;
 amrex::Real BMXChemistry::kbv = 0.0;
+amrex::Real BMXChemistry::p_growth_limit = 0.0;
+amrex::Real BMXChemistry::qP = 0.0;
 amrex::Real BMXChemistry::mtA = 0.0;
 amrex::Real BMXChemistry::mtB = 0.0;
 amrex::Real BMXChemistry::mtC = 0.0;
+amrex::Real BMXChemistry::mtP = 0.0;
 amrex::Real BMXChemistry::bacteria_radius_max = 0.0;
 amrex::Real BMXChemistry::radius_max = 0.0;
 amrex::Real BMXChemistry::length_max = 0.0;
@@ -39,6 +44,7 @@ amrex::Real BMXChemistry::max_fusion_separation= 0.0;
 
 int BMXChemistry::p_num_reals = 0;
 int BMXChemistry::p_num_ints = 0;
+std::vector<amrex::Real> BMXChemistry::p_initial_concentrations;
 
 BMXChemistry *BMXChemistry::p_instance = NULL;
 
@@ -58,7 +64,7 @@ BMXChemistry* BMXChemistry::instance()
  */
 BMXChemistry::BMXChemistry()
 {
-  p_num_species = NUM_CHEM_COMPONENTS;
+  p_num_species = NUM_PARTICLE_CHEM_COMPONENTS;
   p_num_ivals = 0;
   p_num_reals = 3*p_num_species;
   p_num_ints = 0;
@@ -100,6 +106,44 @@ void BMXChemistry::setIntegers(int *ipar)
 void BMXChemistry::setParams(const char* /*file*/)
 {
   ParmParse pp("chem_species");
+
+  std::string layout_error;
+  const auto layout_mode =
+      BMXChemLayout::classifyMeshSpecies(FLUID::chem_species, &layout_error);
+  if (layout_mode == BMXChemLayout::MeshMode::invalid) {
+    amrex::Abort("P09 chemistry layout invalid: " + layout_error);
+  }
+
+  p_initial_concentrations.assign(NUM_PARTICLE_CHEM_COMPONENTS, 0.0);
+  if (layout_mode == BMXChemLayout::MeshMode::disabled) {
+    for (int n = 0; n < BMXChemLayout::disabled_mesh_components; ++n) {
+      p_initial_concentrations[n] = FLUID::init_conc[n];
+    }
+  } else if (layout_mode == BMXChemLayout::MeshMode::enabled) {
+    // Carbon slots retain their existing mesh-bound initialization. The three
+    // internal phosphorus values have distinct ownership and therefore require
+    // an explicit input; no biological initialization is defaulted here.
+    for (int n = 0; n < BMXChemLayout::P_D; ++n) {
+      p_initial_concentrations[n] = FLUID::init_conc[n];
+    }
+    std::vector<Real> initial_particle_p;
+    pp.getarr("initial_particle_P", initial_particle_p);
+    if (initial_particle_p.size() != 3) {
+      amrex::Abort("chem_species.initial_particle_P must contain exactly "
+                   "P_D P_E P_F for the enabled P09 layout");
+    }
+    p_initial_concentrations[BMXChemLayout::P_D] = initial_particle_p[0];
+    p_initial_concentrations[BMXChemLayout::P_E] = initial_particle_p[1];
+    p_initial_concentrations[BMXChemLayout::P_F] = initial_particle_p[2];
+  } else {
+    const int count = amrex::min(
+        static_cast<int>(FLUID::init_conc.size()),
+        NUM_PARTICLE_CHEM_COMPONENTS);
+    for (int n = 0; n < count; ++n) {
+      p_initial_concentrations[n] = FLUID::init_conc[n];
+    }
+  }
+
   pp.get("k1",k1);
   pp.get("kr1",kr1);
   pp.get("k2",k2);
@@ -114,16 +158,37 @@ void BMXChemistry::setParams(const char* /*file*/)
   pp.get("kr6",kr6);
   pp.get("k7",k7);
   pp.get("kr7",kr7);
+  kP = k1;
+  krP = kr1;
+  pp.query("kP",kP);
+  pp.query("krP",krP);
   pp.get("kg",kg);
   pp.get("kv",kv);
   pp.get("kb",kb);
   pp.get("kbv",kbv);
+  p_growth_limit = 0.0;
+  pp.query("p_growth_limit",p_growth_limit);
+  qP = 0.0;
+  pp.query("qP",qP);
+  if (p_growth_limit != 0.0 && qP <= 0.0) {
+    amrex::Abort("chem_species.qP must be positive when p_growth_limit is enabled");
+  }
   mtA = 0.0;
   pp.query("mass_transfer_A",mtA);
   mtB = 0.0;
   pp.query("mass_transfer_B",mtB);
   mtC = 0.0;
   pp.query("mass_transfer_C",mtC);
+  mtP = mtA;
+  pp.query("mass_transfer_P",mtP);
+  if (layout_mode == BMXChemLayout::MeshMode::enabled &&
+      (kP != 0.0 || krP != 0.0 || mtP != 0.0 ||
+       p_growth_limit != 0.0)) {
+    amrex::Abort("enabled P09 plumbing requires chem_species.kP, "
+                 "chem_species.krP, chem_species.mass_transfer_P, and "
+                 "chem_species.p_growth_limit to be exactly zero; C07 does "
+                 "not activate later phosphorus operators");
+  }
   fusion_prob = 0.0;
   pp.query("fusion_probability",fusion_prob);
   max_fusion_separation = 5.0e-4;
@@ -181,40 +246,30 @@ void BMXChemistry::getVarArraySizes(int *num_ints, int *num_reals, int *tot_ints
 void BMXChemistry::printCellConcentrations(int id, Real *p_vals, Real *p_par)
 {
   if (p_verbose) {
+    const auto layout_mode =
+        BMXChemLayout::classifyMeshSpecies(FLUID::chem_species);
+    const int print_count =
+        layout_mode == BMXChemLayout::MeshMode::enabled
+            ? NUM_PARTICLE_CHEM_COMPONENTS
+            : amrex::min(static_cast<int>(FLUID::chem_species.size()),
+                         NUM_PARTICLE_CHEM_COMPONENTS);
     printf("\n");
     printf("        Particle: %d\n",id);
-    if (p_vals[0] < 0) {
-      printf(" XXXX   Concentration A: %18.6e\n",p_vals[0]);
-    } else {
-      printf("        Concentration A: %18.6e\n",p_vals[0]);
+    for (int n = 0; n < print_count; ++n) {
+      const char* prefix = (p_vals[n] < 0.0) ? " XXXX  " : "       ";
+      printf("%s Concentration %s: %18.6e\n", prefix,
+             BMXChemLayout::particleName(layout_mode, n), p_vals[n]);
     }
-    if (p_vals[1] < 0) {
-      printf(" XXXX   Concentration B: %18.6e\n",p_vals[1]);
-    } else {
-      printf("        Concentration B: %18.6e\n",p_vals[1]);
-    }
-    if (p_vals[2] < 0) {
-      printf(" XXXX   Concentration C: %18.6e\n",p_vals[2]);
-    } else {
-      printf("        Concentration C: %18.6e\n",p_vals[2]);
-    }
-    if (p_vals[3] < 0) {
-      printf(" XXXX   Concentration D: %18.6e\n",p_vals[3]);
-    } else {
-      printf("        Concentration D: %18.6e\n",p_vals[3]);
-    }
-    if (p_vals[4] < 0) {
-      printf(" XXXX   Concentration E: %18.6e\n",p_vals[4]);
-    } else {
-      printf("        Concentration E: %18.6e\n",p_vals[4]);
-    }
-   // printf("        Concentration B: %18.6e\n",p_vals[1]);
-   // printf("        Concentration C: %18.6e\n",p_vals[2]);
     printf("        Cell volume    : %18.6e\n",p_par[realIdx::vol]);
    // printf("        X velocity     : %18.6e\n",p_par[realIdx::velx]);
    // printf("        Y velocity     : %18.6e\n",p_par[realIdx::vely]);
    // printf("        Z velocity     : %18.6e\n",p_par[realIdx::velz]);
   }
+}
+
+const std::vector<Real>& BMXChemistry::getParticleInitialConcentrations() const
+{
+  return p_initial_concentrations;
 }
 
 /**
@@ -254,8 +309,12 @@ void BMXChemistry::getChemParams(amrex::Gpu::DeviceVector<Real> &chempar)
   chempar.push_back(kb);
   chempar.push_back(kbv);
   chempar.push_back(bacteria_radius_max);
-  chempar.push_back(radius_max);          // 20
-  chempar.push_back(length_max);          // 21
+  chempar.push_back(radius_max);          // 19
+  chempar.push_back(length_max);          // 20
+  chempar.push_back(kP);                  // 21
+  chempar.push_back(krP);                 // 22
+  chempar.push_back(p_growth_limit);      // 23
+  chempar.push_back(qP);                  // 24
 }
 
 /** Returen a vector containing exchange parameters
@@ -263,10 +322,11 @@ void BMXChemistry::getChemParams(amrex::Gpu::DeviceVector<Real> &chempar)
  */
 amrex::Gpu::DeviceVector<Real> BMXChemistry::getExchangeParameters()
 {
-  amrex::Gpu::DeviceVector<Real> ret;
-  ret.push_back(mtA);
-  ret.push_back(mtB);
-  ret.push_back(mtC);
+  amrex::Gpu::DeviceVector<Real> ret(NUM_PARTICLE_CHEM_COMPONENTS, 0.0);
+  ret[0] = mtA;
+  ret[1] = mtB;
+  ret[2] = mtC;
+  ret[P_COMP] = mtP;
   return ret;
 }
 

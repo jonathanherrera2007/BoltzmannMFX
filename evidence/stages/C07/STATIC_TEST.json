@@ -1,0 +1,18 @@
+{
+  "checks": [
+    {"id": "kernel_frozen", "status": "PASS", "detail": "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02"},
+    {"id": "distinct_counts", "status": "PASS", "detail": "particle=8, mesh enabled=7, mesh disabled=6"},
+    {"id": "explicit_maps", "status": "PASS", "detail": "enabled mesh slot 6 maps to particle P_F slot 7; P_E has no mesh map"},
+    {"id": "schema_rejections", "status": "PASS", "detail": "all canonical invalid-layout branches are explicit"},
+    {"id": "f_and_later_operators_default_off", "status": "PASS", "detail": "P_F diffusion and legacy P reaction/exchange/growth gates are exact-zero"},
+    {"id": "deterministic_particle_initialization", "status": "PASS", "detail": "the full allocated particle record is zeroed before committed values are populated"},
+    {"id": "mapped_transfer_seam", "status": "PASS", "detail": "enabled deposition and interpolation use the reviewed 7-to-8 map"},
+    {"id": "semantic_particle_plot_names", "status": "PASS", "detail": "all 24 chemistry fields have semantic block/component names"},
+    {"id": "checkpoint_metadata_scaffold_fail_closed", "status": "PASS", "detail": "schema-v2 identifiers are declared; unresolved later contracts cannot be emitted as ready"},
+    {"id": "ownership_boundary", "status": "PASS", "detail": "changed source files are C07-owned plus the user-authorized src/des/bmx_calc_txfr.cpp exception"}
+  ],
+  "kernel_sha256": "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02",
+  "passed": true,
+  "stage": "C07",
+  "test": "static_layout_and_ownership"
+}

@@ -1,0 +1,155 @@
+{
+  "blockers": [
+    {
+      "blocks": [
+        "C06B",
+        "C10-C15 final runs"
+      ],
+      "detail": "mentor packet now READY at mentor/MENTOR_PACKET_C06A.md but NOT SENT; sending is the user's action",
+      "id": "B-S00-03",
+      "owner": "user/mentor"
+    },
+    {
+      "blocks": [
+        "C04 gate",
+        "C05"
+      ],
+      "detail": "CDEF-04/CDEF-05 runtime reachability not demonstrated",
+      "id": "B-C04-01",
+      "owner": "writer"
+    },
+    {
+      "detail": "no reference-capable Linux host provisioned",
+      "id": "B-PLATFORM-01",
+      "owner": "user"
+    },
+    {
+      "detail": "six defects worked around in build config",
+      "id": "B-C02-01",
+      "owner": "writer + review"
+    },
+    {
+      "detail": "C02 image hash not reproducible after install-path rename",
+      "id": "B-C03-02",
+      "owner": "writer"
+    }
+  ],
+  "claims_still_prohibited": [
+    "any biological parameter selected by this stage",
+    "mentor approval of the frozen technical policies",
+    "calibration",
+    "any scientific result",
+    "formal P05-P18 acceptance",
+    "RG-SW:GO",
+    "RG-SCI:GO"
+  ],
+  "completed_at": "2026-07-30",
+  "executed_out_of_index_order": {
+    "fact": "PROMPT_INDEX places C06A at step 7, after C05; it was run now, with C04 BLOCKED and C05 not started",
+    "justification": "C06A is decision reconciliation over the two decision JSONs and the P09-P16 requirements. It does not consume P07 runtime results, so it is not a dependent prompt of C04 and no gate was skipped.",
+    "why_it_matters": "B-S00-03 (mentor packet unsent) is the longest-latency blocker in the project and gates C06B plus every final run C10-C15. Producing the packet now shortens the critical path rather than the local one."
+  },
+  "next_action_user": "send mentor/MENTOR_PACKET_C06A.md",
+  "next_prompt_writer": "resolve B-C04-01 (particle-geometry observables), then C05",
+  "out_of_ledger_gaps": [
+    {
+      "blocks": "P12 final run",
+      "gap": "D membrane uptake coefficient value/range and confirmation of the reversible area-based form",
+      "id": "G-EXT-01"
+    },
+    {
+      "blocks": "P14 export enable",
+      "gap": "k_export operand (amount vs concentration), units, and value/range",
+      "id": "G-EXT-02"
+    }
+  ],
+  "output_git_commit": "fd8b0ed482074c1e9708df0a68df9183547a1639",
+  "packet": {
+    "file": "mentor/MENTOR_PACKET_C06A.md",
+    "items_removed_versus_prior_urgent_packet": [
+      {
+        "item": "P14 export law form",
+        "why": "MD-88955e1dff7ca225-02 already fixes it as first-order in local internal D; only operand, units and magnitude remain"
+      },
+      {
+        "item": "P14 reward conversion and additional interface cap",
+        "why": "MD-5b43f4b235dec87e-03 gives r=3 mass-basis, ~7.736 mol A-equivalent per mol P, and states there is no version-1 capacity or delay"
+      }
+    ],
+    "principle": "the packet states what is already closed so the mentor can skip it, and asks only what determines an equation or a final experiment contract",
+    "sections": 7
+  },
+  "reconciliation": {
+    "closed_total": 27,
+    "confirmed_decisions_used": [
+      "MD-5b43f4b235dec87e-01",
+      "MD-5b43f4b235dec87e-02",
+      "MD-5b43f4b235dec87e-03",
+      "MD-5b43f4b235dec87e-04",
+      "MD-5b43f4b235dec87e-05",
+      "MD-5b43f4b235dec87e-06",
+      "MD-5b43f4b235dec87e-07",
+      "MD-5b43f4b235dec87e-08",
+      "MD-5b43f4b235dec87e-09",
+      "MD-88955e1dff7ca225-01",
+      "MD-88955e1dff7ca225-02",
+      "MDX-90a88d72294815f4-01",
+      "MDX-90a88d72294815f4-02"
+    ],
+    "each_field_accounted_once": true,
+    "enforcement": "generator aborts on any unmapped or extra unknown_id",
+    "status_counts": {
+      "CLOSED_MEASURED": 3,
+      "CLOSED_SCIENTIFIC": 16,
+      "CLOSED_TECHNICAL": 8,
+      "OPEN": 25,
+      "PARTIAL": 7
+    },
+    "total_fields": 59
+  },
+  "release_blockers": {
+    "count": 32,
+    "file": "contracts/release_blockers.json"
+  },
+  "release_status": {
+    "formal_p05_p18_acceptance": false,
+    "label": "RESEARCH-USE-CANDIDATE \u2014 RG-SW INCOMPLETE",
+    "rg_sci": "NO-GO",
+    "rg_sw": "INCOMPLETE"
+  },
+  "review_triggers_carried_forward": {
+    "f_activation_trigger": "MD-5b43f4b235dec87e-01 and -07: F infrastructure may exist but every F reaction, exchange and transport coefficient stays exactly zero. Scientific F activation requires a separate decision.",
+    "renewed_review_trigger": "MD-5b43f4b235dec87e-05 approves q_P and k_gP/k_gB as SENSITIVITIES ONLY and selects no biological baseline. Using them to define or compare explorer/exploiter strategies (P16) therefore requires renewed review before P16 executes."
+  },
+  "source_changes": 0,
+  "stage_id": "C06A",
+  "stages_fully_blocked": [
+    "P15",
+    "P16",
+    "P17"
+  ],
+  "stages_implementable_now": [
+    "P09",
+    "P10 (except deletion/orphan/simultaneous-event semantics and the global operator order)"
+  ],
+  "stages_infrastructure_only_default_off": [
+    "P11 (except particle-divider mechanics and outer boundaries)",
+    "P12",
+    "P13",
+    "P14"
+  ],
+  "started_at": "2026-07-30",
+  "status": "PASS",
+  "technical_freeze_caveat": "frozen for implementation, NOT mentor approval; subject to independent numerical review before final runs",
+  "technical_policies_frozen": [
+    "P09-U01 canonical D/E/F vocabulary; legacy aliases rejected in enabled mode",
+    "P09-U03 legacy checkpoint reject + schema v2 requirements",
+    "P10-U03 conservation tolerances",
+    "P10-U04 restart comparator",
+    "P13-U07 non-finite and clamp policy",
+    "P13-U08 limiting-case test enumeration",
+    "P14-U08 ledger persistence schema",
+    "P14-U09 shared numerical tolerances",
+    "P12-U05/U06 and P15-U06 measured operational limits"
+  ]
+}

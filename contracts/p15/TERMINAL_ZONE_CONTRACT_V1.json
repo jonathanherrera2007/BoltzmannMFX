@@ -1,0 +1,142 @@
+{
+  "artifact_type": "P15_GENERAL_TERMINAL_ZONE_CONTRACT",
+  "schema": "bmx-p15-terminal-zone-v1",
+  "contract_id": "UDC-20260802-C13-TERMINAL-ZONE-V1",
+  "stage": "C13/P15 Stage 0",
+  "classification": "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+  "status": "CLOSED_USER_ADOPTED_FOR_RG_SW_IMPLEMENTATION",
+  "frozen_before_product_implementation": true,
+  "artifact_sha256_binding": "The adjacent TERMINAL_ZONE_CONTRACT_V1.sha256 is the SHA-256 of these exact JSON bytes.",
+  "authority": {
+    "source_kind": "user-attached binding adopted by explicit read-and-act request",
+    "source_path_at_adoption": "C:/Users/Shadow/.codex/attachments/3186333f-00d2-46e0-863c-36290cc3dc47/pasted-text.txt",
+    "source_sha256": "cbd1eedddf31b94c8a9d23d7b2d3329f065a007824387c70435d1004fdc6f350",
+    "source_size_bytes": 40449,
+    "source_line_count": 1272,
+    "mentor_approval": false,
+    "calibration": false,
+    "closed_scientific": false,
+    "predictive_validation": false
+  },
+  "operator_fit": {
+    "global_order_id": "bmx-p10-global-order-v1",
+    "global_order_sha256": "bb63c219a860687d91ce1acf06a667c9208abf026b32f18acfc64884bb696dd6",
+    "slot": "O02_LOCAL_MESH_PARTICLE_UPDATE",
+    "construction_time": "Once per O02 invocation from the valid current topology, before O02 mutates any amount.",
+    "topology_visibility": "Topology created later in O05/O06 becomes effective for uptake on the next update.",
+    "global_order_changed": false
+  },
+  "metric_graph": {
+    "endpoint_site_1": "segment centre - 0.5*L_i*unit_orientation",
+    "endpoint_site_2": "segment centre + 0.5*L_i*unit_orientation",
+    "site_convention_fixture_required": true,
+    "junctions": "Valid reciprocal bonded endpoint ports form zero-length equivalence classes using the same relation and canonical keys as bonded-D transport.",
+    "segment_edges": "Each segment is one undirected metric edge with physical weight L_i.",
+    "construction": "Deterministic canonical graph independent of rank, tile, particle order, or bond-list order."
+  },
+  "live_terminal_origins": {
+    "TIP_bonds_at_one_site": "The bonded site is basal and the opposite unbonded endpoint is the live terminal origin.",
+    "multiple_bonds_same_basal_site": "allowed",
+    "isolated_TIP": "Both endpoints are live terminal origins.",
+    "TIP_bonds_at_both_sites": "hard abort AMBIGUOUS_TIP_ORIENTATION",
+    "duplicate_origin": "Deduplicate by canonical endpoint/junction key.",
+    "free_non_TIP_endpoint": "physically exposed but not a live-terminal origin",
+    "component_without_origin": "infinite terminal distance and zero terminal-zone uptake area; permitted after network evolution",
+    "initial_area_matched_case": "requires positive physical full and terminal areas"
+  },
+  "graph_distance": {
+    "algorithm": "deterministic canonical multi-source shortest paths",
+    "junction_length": 0.0,
+    "edge_weight": "physical centreline length",
+    "endpoint_distances": ["d_i1", "d_i2"],
+    "point_distance": "d_i(s) = min(d_i1+s,d_i2+L_i-s) for s in [0,L_i] measured from site 1",
+    "properties": [
+      "branches handled",
+      "multiple equidistant tips handled",
+      "fused networks handled",
+      "disconnected components handled",
+      "segments approached from both ends handled",
+      "physical area reached through multiple tips counted once"
+    ]
+  },
+  "terminal_interval": {
+    "thresholds_cm": [0.005, 0.01, 0.02],
+    "snapping": "Apply the frozen P11-style geometric snapping tolerance to distances within tolerance of ell.",
+    "predicate": "d_i(s) <= ell",
+    "boundary_measure": "zero axial measure",
+    "site1_reach": "a_i = clamp(ell-d_i1,0,L_i)",
+    "site2_reach": "b_i = clamp(ell-d_i2,0,L_i)",
+    "eligible_length": "L_tip_i(ell) = min(L_i,a_i+b_i)",
+    "union_rule": "The min prevents double counting for two-ended entry, branch ties, and multiple tips."
+  },
+  "physical_surface": {
+    "free_endpoint": "An endpoint is exposed only when no bond attaches at that endpoint site.",
+    "full_area": "A_full_i = 2*pi*r_i*L_i + pi*r_i^2*n_free_i",
+    "terminal_cap_count": "n_tipcap_i(ell) counts unbonded endpoints whose endpoint distance is <= ell",
+    "terminal_area": "A_tip_i(ell) = 2*pi*r_i*L_tip_i(ell) + pi*r_i^2*n_tipcap_i(ell)",
+    "stored_area_proration": "prohibited",
+    "stored_area_guard": "For every valid P15 segment, computed full physical area must match the stored area representation within the frozen local geometry comparator or hard-abort.",
+    "surface_overlap_model_added": false,
+    "solid_occlusion_model_added": false,
+    "P11_geometric_legality": "authoritative"
+  },
+  "area_matched_TIP_010": {
+    "initial_time": "After initial topology validation and before the first uptake transaction.",
+    "full_sum": "A_full_0 = canonical global sum_i(A_full_i)",
+    "tip_sum": "A_tip010_0 = canonical global sum_i(A_tip_i(0.010 cm))",
+    "guards": ["A_full_0 finite and positive", "A_tip010_0 finite and positive"],
+    "multiplier": "M_area = A_full_0/A_tip010_0",
+    "per_network": true,
+    "canonical_sorted_global_sum": true,
+    "frozen_case_fields": [
+      "binary64 M_area",
+      "initial-network hash",
+      "A_full_0",
+      "A_tip010_0"
+    ],
+    "checkpoint": "Serialize every frozen field; read and verify on restart; never recompute on restart.",
+    "evolution": "Keep M_area fixed as the network evolves; never rematch later.",
+    "effective_area": "A_effective_i(t) = M_area*A_tip_i(0.010 cm,t)",
+    "report_separately": ["physical terminal area", "effective uptake area"],
+    "geometry_effect": "M_area changes uptake intensity only and does not change reported fungal geometry."
+  },
+  "representation_refinement": {
+    "scope": "collinear same-radius children with unchanged physical union and connectivity",
+    "required_invariants": [
+      "metric graph is isometric",
+      "graph distance at every physical point is unchanged",
+      "child eligible intervals exactly partition the parent interval",
+      "child lateral eligible areas sum to parent lateral eligible area",
+      "inserted bonded internal endpoints add no cap area",
+      "original external free caps are preserved",
+      "full exposed area unchanged",
+      "terminal-zone area unchanged",
+      "initial area-matching multiplier unchanged"
+    ],
+    "full_area_identity": "A_parent_full = sum_j(A_child_j_full)",
+    "terminal_area_identity": "A_parent_tip(ell) = sum_j(A_child_j_tip(ell))",
+    "subdivisions": [2, 4, 8],
+    "fixtures": [
+      "isolated tip",
+      "connected simple tip",
+      "three-way branch",
+      "equal-distance branch tie",
+      "terminal interval ending inside a segment",
+      "terminal intervals entering a segment from both ends"
+    ]
+  },
+  "fail_closed_conditions": [
+    "invalid or nonreciprocal topology",
+    "duplicate bond records",
+    "invalid endpoint site",
+    "nonfinite segment geometry",
+    "nonpositive radius",
+    "nonpositive centreline length",
+    "nonpositive owning volume",
+    "ambiguous TIP orientation",
+    "stored/computed full-area mismatch above frozen tolerance",
+    "nonfinite graph distance or area",
+    "nonfinite or nonpositive initial area-match operands"
+  ],
+  "claim_boundary": "RG-SW physical metric-graph uptake-area implementation contract only; not mentor approval, calibration, a BAS identity claim, biological validation of terminal lengths, or predictive validation."
+}

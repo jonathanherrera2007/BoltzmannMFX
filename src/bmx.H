@@ -74,6 +74,11 @@ class bmx : public AmrCore
 
     void ComputeAndPrintSums ();
 
+    // C08/P10 canonical global-ledger boundaries. These are no-ops outside
+    // the enabled three-state layout.
+    bool P10Enabled () const;
+    void AuditP10Ledger (const char* boundary, bool require_bound = true);
+
     void Regrid ();
 
     void print_mesh(int location);
@@ -100,6 +105,11 @@ class bmx : public AmrCore
 
     // If > 0, dump plotfiles at exactcly the designated period by changing dt
     static Real plot_per_exact;
+
+    // If non-zero, ComputeAndPrintSums() reports fluid and particle content.
+    // Diagnostic only, default OFF: with the flag unset the function returns
+    // before reading anything, so default behaviour is unchanged.
+    static int print_sums;
 
     static inline std::string get_load_balance_type ()
     { return load_balance_type; }
@@ -268,6 +278,11 @@ class bmx : public AmrCore
 
     // Particle container
     BMXParticleContainer* pc;
+
+    // Set before checkpoint metadata is read. A restarted enabled run may
+    // restore a bound reference, but it must never silently bind an old
+    // unbound checkpoint as though it were a fresh initial condition.
+    bool p10_restart_metadata_expected = false;
 
     // Boundary conditions types
     Vector< IArrayBox* > bc_ilo;

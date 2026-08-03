@@ -1,0 +1,253 @@
+platform      : native Linux / Ubuntu 24.04.4 LTS / kernel 6.17.0-1021-gcp
+class         : reference-capable
+compiler      : g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+cmake         : cmake version 3.28.3
+mpi           : g++ -I/usr/lib/x86_64-linux-gnu/openmpi/include -I/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -L/usr/lib/x86_64-linux-gnu/openmpi/lib -lmpi_cxx -lmpi
+generator     : Ninja
+nproc         : 8
+
+build  : /home/jherrera2007/c10-work/build
+target : bmx
+jobs   : 8
+
+[1/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_Version.cpp.o
+[2/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_error_fi.cpp.o
+[3/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_BlockMutex.cpp.o
+[4/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_parmparse_fi.cpp.o
+[5/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_FileSystem.cpp.o
+[6/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX.cpp.o
+[7/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_Utility.cpp.o
+[8/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_Random.cpp.o
+[9/203] Building CXX object CMakeFiles/bmx.dir/src/main.cpp.o
+[10/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_ParallelDescriptor.cpp.o
+[11/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_ParallelContext.cpp.o
+[12/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_BackgroundThread.cpp.o
+[13/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_AsyncOut.cpp.o
+[14/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_BArena.cpp.o
+[15/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_Arena.cpp.o
+[16/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_ForkJoin.cpp.o
+[17/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_PArena.cpp.o
+[18/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_CArena.cpp.o
+[19/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_parstream.cpp.o
+[20/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_FPC.cpp.o
+[21/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_DistributionMapping.cpp.o
+[22/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_NFiles.cpp.o
+[23/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_VectorIO.cpp.o
+[24/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_ParmParse.cpp.o
+[25/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_FabConv.cpp.o
+[26/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_IntConv.cpp.o
+[27/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_BoxIterator.cpp.o
+[28/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_IntVect.cpp.o
+[29/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_IndexType.cpp.o
+[30/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_Box.cpp.o
+[31/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_Orientation.cpp.o
+[32/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_Periodicity.cpp.o
+[33/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_RealBox.cpp.o
+[34/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_RealVect.cpp.o
+[35/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_BoxDomain.cpp.o
+[36/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_BoxList.cpp.o
+[37/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_FArrayBox.cpp.o
+[38/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_VisMF.cpp.o
+[39/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_IArrayBox.cpp.o
+[40/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_BaseFab.cpp.o
+[41/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_MFCopyDescriptor.cpp.o
+[42/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_CoordSys.cpp.o
+[43/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_MFIter.cpp.o
+[44/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_BoxArray.cpp.o
+[45/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_Geometry.cpp.o
+[46/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_iMultiFab.cpp.o
+[47/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_BCRec.cpp.o
+[48/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_MultiFab.cpp.o
+[49/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_PhysBCFunct.cpp.o
+[50/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_BCUtil.cpp.o
+[51/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_FilND_C.cpp.o
+[52/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_FilCC_C.cpp.o
+[53/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_FilFC_C.cpp.o
+[54/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_GpuControl.cpp.o
+[55/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_NonLocalBC.cpp.o
+[56/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_PlotFileDataImpl.cpp.o
+[57/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_PlotFileUtil.cpp.o
+[58/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_FabArrayBase.cpp.o
+[59/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_GpuUtility.cpp.o
+[60/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_GpuDevice.cpp.o
+[61/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_MultiFabUtil.cpp.o
+[62/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_GpuAsyncArray.cpp.o
+[63/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_GpuElixir.cpp.o
+[64/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_MemPool.cpp.o
+[65/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/Parser/AMReX_Parser.cpp.o
+[66/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/Parser/AMReX_Parser_Exe.cpp.o
+[67/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/Parser/amrex_parser.lex.cpp.o
+[68/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/Parser/amrex_parser.tab.cpp.o
+[69/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_BLBackTrace.cpp.o
+[70/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/Parser/AMReX_Parser_Y.cpp.o
+[71/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/Parser/AMReX_IParser.cpp.o
+[72/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/AMReX_Machine.cpp.o
+[73/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/Parser/AMReX_IParser_Exe.cpp.o
+[74/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/Parser/amrex_iparser.lex.cpp.o
+[75/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/Parser/amrex_iparser.tab.cpp.o
+[76/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Base/Parser/AMReX_IParser_Y.cpp.o
+[77/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Boundary/AMReX_Mask.cpp.o
+[78/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Boundary/AMReX_LO_BCTYPES.cpp.o
+[79/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Boundary/AMReX_BndryRegister.cpp.o
+[80/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Boundary/AMReX_MultiMask.cpp.o
+[81/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Boundary/AMReX_MacBndry.cpp.o
+[82/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Boundary/AMReX_FabSet.cpp.o
+[83/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Boundary/AMReX_InterpBndryData.cpp.o
+[84/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Boundary/AMReX_BndryData.cpp.o
+[85/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/AmrCore/AMReX_Cluster.cpp.o
+[86/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/AmrCore/AMReX_InterpBase.cpp.o
+[87/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/AmrCore/AMReX_ErrorList.cpp.o
+[88/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/AmrCore/AMReX_AmrCore.cpp.o
+[89/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/AmrCore/AMReX_FillPatchUtil.cpp.o
+[90/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Boundary/AMReX_YAFluxRegister.cpp.o
+[91/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/AmrCore/AMReX_MFInterpolater.cpp.o
+[92/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/AmrCore/AMReX_FluxRegister.cpp.o
+[93/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/AmrCore/AMReX_Interpolater.cpp.o
+[94/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Amr/AMReX_Derive.cpp.o
+[95/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/AmrCore/AMReX_TagBox.cpp.o
+[96/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/AmrCore/AMReX_AmrMesh.cpp.o
+[97/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/AmrCore/AMReX_InterpFaceRegister.cpp.o
+[98/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Amr/AMReX_StateData.cpp.o
+[99/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/EB/AMReX_EBFArrayBox.cpp.o
+[100/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Amr/AMReX_Amr.cpp.o
+[101/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Amr/AMReX_StateDescriptor.cpp.o
+[102/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/EB/AMReX_EBFabFactory.cpp.o
+[103/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Amr/AMReX_AuxBoundaryData.cpp.o
+[104/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/EB/AMReX_EBCellFlag.cpp.o
+[105/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Amr/AMReX_Extrapolater.cpp.o
+[106/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/EB/AMReX_EBInterpolater.cpp.o
+[107/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/EB/AMReX_EBDataCollection.cpp.o
+[108/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/EB/AMReX_EBMFInterpolater.cpp.o
+[109/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/EB/AMReX_MultiCutFab.cpp.o
+[110/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/EB/AMReX_EBAmrUtil.cpp.o
+[111/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Amr/AMReX_AmrLevel.cpp.o
+[112/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/EB/AMReX_distFcnElement.cpp.o
+[113/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/EB/AMReX_algoim.cpp.o
+[114/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/EB/AMReX_EB_utils.cpp.o
+[115/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/EB/AMReX_EBMultiFabUtil.cpp.o
+[116/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/EB/AMReX_EB2_MultiGFab.cpp.o
+[117/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/EB/AMReX_EBFluxRegister.cpp.o
+[118/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/EB/AMReX_EB2_ND_C.cpp.o
+[119/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/EB/AMReX_EB2_3D_C.cpp.o
+[120/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/EB/AMReX_WriteEBSurface.cpp.o
+[121/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/EB/AMReX_EBToPVD.cpp.o
+[122/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/EB/AMReX_EB2_IndexSpace_STL.cpp.o
+[123/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/EB/AMReX_EB_STL_utils.cpp.o
+[124/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/EB/AMReX_EB2_Level.cpp.o
+[125/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/LinearSolvers/MLMG/AMReX_MLMGBndry.cpp.o
+[126/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/EB/AMReX_EB2_Level_STL.cpp.o
+[127/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/LinearSolvers/MLMG/AMReX_MLCGSolver.cpp.o
+[128/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/LinearSolvers/MLMG/AMReX_MLLinOp.cpp.o
+[129/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/EB/AMReX_EB2.cpp.o
+[130/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/LinearSolvers/MLMG/AMReX_MLMG.cpp.o
+[131/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/LinearSolvers/MLMG/AMReX_MLCellABecLap.cpp.o
+[132/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/LinearSolvers/MLMG/AMReX_MLALaplacian.cpp.o
+[133/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/LinearSolvers/MLMG/AMReX_MLABecLaplacian.cpp.o
+[134/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/LinearSolvers/MLMG/AMReX_MLNodeLinOp.cpp.o
+[135/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/LinearSolvers/MLMG/AMReX_MLCellLinOp.cpp.o
+[136/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/LinearSolvers/MLMG/AMReX_MLPoisson.cpp.o
+[137/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/LinearSolvers/MLMG/AMReX_MLTensorOp_grad.cpp.o
+[138/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/LinearSolvers/MLMG/AMReX_MLNodeTensorLaplacian.cpp.o
+[139/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/LinearSolvers/MLMG/AMReX_MLNodeLaplacian_eb.cpp.o
+[140/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/LinearSolvers/MLMG/AMReX_MLNodeLaplacian.cpp.o
+[141/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/LinearSolvers/MLMG/AMReX_MLNodeLaplacian_sten.cpp.o
+[142/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/LinearSolvers/MLMG/AMReX_MLEBNodeFDLaplacian.cpp.o
+[143/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/LinearSolvers/MLMG/AMReX_MLNodeLaplacian_misc.cpp.o
+[144/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Particle/AMReX_ParticleMPIUtil.cpp.o
+[145/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/LinearSolvers/MLMG/AMReX_MLNodeLaplacian_sync.cpp.o
+[146/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/LinearSolvers/MLMG/AMReX_MLTensorOp.cpp.o
+[147/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Particle/AMReX_ParticleUtil.cpp.o
+[148/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/LinearSolvers/MLMG/AMReX_MLEBABecLap.cpp.o
+[149/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/LinearSolvers/MLMG/AMReX_MLEBTensorOp.cpp.o
+[150/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Particle/AMReX_TracerParticles.cpp.o
+[151/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Particle/AMReX_ParticleBufferMap.cpp.o
+[152/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Particle/AMReX_ParticleCommunication.cpp.o
+[153/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/LinearSolvers/MLMG/AMReX_MLEBABecLap_F.cpp.o
+[154/203] Building CXX object src/CMakeFiles/bmxcore.dir/io/bmx_checkpoint_schema.cpp.o
+/home/jherrera2007/c10-work/product/src/io/bmx_checkpoint_schema.cpp: In function ‘void {anonymous}::reject(const std::string&)’:
+/home/jherrera2007/c10-work/product/src/io/bmx_checkpoint_schema.cpp:27:3: warning: ‘noreturn’ function does return
+   27 |   }
+      |   ^
+In file included from /home/jherrera2007/c10-work/product/src/io/bmx_checkpoint_schema.cpp:11:
+/home/jherrera2007/c10-work/product/src/chemistry/bmx_phosphorus_geometry_K.H: In function ‘void BMXPhosphorusGeometry::rejectConfiguration(const std::string&)’:
+/home/jherrera2007/c10-work/product/src/chemistry/bmx_phosphorus_geometry_K.H:726:3: warning: ‘noreturn’ function does return
+  726 |   }
+      |   ^
+[155/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/Particle/AMReX_ParticleContainerBase.cpp.o
+[156/203] Building CXX object src/CMakeFiles/bmxcore.dir/io/bmx_build_info.cpp.o
+[157/203] Building CXX object src/CMakeFiles/bmxcore.dir/io/bmx_io.cpp.o
+[158/203] Building CXX object src/CMakeFiles/bmxcore.dir/bmx.cpp.o
+[159/203] Building CXX object src/CMakeFiles/bmxcore.dir/deposition/bmx_deposition_bcs.cpp.o
+[160/203] Building CXX object src/CMakeFiles/bmxcore.dir/io/bmx_chk.cpp.o
+[161/203] Building CXX object src/CMakeFiles/bmxcore.dir/des/bmx_pc_init.cpp.o
+[162/203] Building CXX object src/CMakeFiles/bmxcore.dir/des/bmx_pc_phosphorus.cpp.o
+[163/203] Building CXX object src/CMakeFiles/bmxcore.dir/des/bmx_pc.cpp.o
+[164/203] Building CXX object src/CMakeFiles/bmxcore.dir/io/bmx_plt.cpp.o
+[165/203] Building CXX object src/CMakeFiles/bmxcore.dir/io/bmx_restart.cpp.o
+In file included from /home/jherrera2007/c10-work/product/src/io/bmx_restart.cpp:19:
+/home/jherrera2007/c10-work/product/src/chemistry/bmx_phosphorus_geometry_K.H: In function ‘void BMXPhosphorusGeometry::rejectConfiguration(const std::string&)’:
+/home/jherrera2007/c10-work/product/src/chemistry/bmx_phosphorus_geometry_K.H:726:3: warning: ‘noreturn’ function does return
+  726 |   }
+      |   ^
+[166/203] Building CXX object src/CMakeFiles/bmxcore.dir/des/bmx_pc_write.cpp.o
+[167/203] Building CXX object subprojects/amrex/Src/CMakeFiles/amrex.dir/LinearSolvers/MLMG/AMReX_MLEBTensorOp_bc.cpp.o
+[168/203] Linking CXX static library subprojects/amrex/Src/libamrex.a
+[169/203] Building CXX object src/CMakeFiles/bmxcore.dir/des/bmx_calc_volume_fraction.cpp.o
+[170/203] Building CXX object src/CMakeFiles/bmxcore.dir/des/bmx_split_particles.cpp.o
+[171/203] Building CXX object src/CMakeFiles/bmxcore.dir/diffusion/bmx_define_coeffs_on_faces.cpp.o
+In file included from /home/jherrera2007/c10-work/product/src/diffusion/bmx_define_coeffs_on_faces.cpp:9:
+/home/jherrera2007/c10-work/product/src/chemistry/bmx_phosphorus_geometry_K.H: In function ‘void BMXPhosphorusGeometry::rejectConfiguration(const std::string&)’:
+/home/jherrera2007/c10-work/product/src/chemistry/bmx_phosphorus_geometry_K.H:726:3: warning: ‘noreturn’ function does return
+  726 |   }
+      |   ^
+[172/203] Building CXX object src/CMakeFiles/bmxcore.dir/setup/bmx_calc_cell.cpp.o
+[173/203] Building CXX object src/CMakeFiles/bmxcore.dir/diffusion/bmx_diffusion_op.cpp.o
+[174/203] Building CXX object src/CMakeFiles/bmxcore.dir/des/bmx_calc_txfr.cpp.o
+[175/203] Building CXX object src/CMakeFiles/bmxcore.dir/leveldata/bmx_leveldata.cpp.o
+[176/203] Building CXX object src/CMakeFiles/bmxcore.dir/diffusion/bmx_diffuse_chem_species.cpp.o
+[177/203] Building CXX object src/CMakeFiles/bmxcore.dir/setup/bmx_calc_fluid_coeffs.cpp.o
+[178/203] Building CXX object src/CMakeFiles/bmxcore.dir/setup/bmx_init_fluid.cpp.o
+[179/203] Building CXX object src/CMakeFiles/bmxcore.dir/des/bmx_pc_xchng.cpp.o
+[180/203] Building CXX object src/CMakeFiles/bmxcore.dir/des/bmx_pc_interaction.cpp.o
+In file included from /home/jherrera2007/c10-work/product/src/chemistry/bmx_cell_interaction_K.H:12,
+                 from /home/jherrera2007/c10-work/product/src/des/bmx_pc_interaction.cpp:9:
+/home/jherrera2007/c10-work/product/src/chemistry/bmx_phosphorus_geometry_K.H: In function ‘void BMXPhosphorusGeometry::rejectConfiguration(const std::string&)’:
+/home/jherrera2007/c10-work/product/src/chemistry/bmx_phosphorus_geometry_K.H:726:3: warning: ‘noreturn’ function does return
+  726 |   }
+      |   ^
+[181/203] Building CXX object src/CMakeFiles/bmxcore.dir/setup/bmx_setup_solvers.cpp.o
+[182/203] Building CXX object src/CMakeFiles/bmxcore.dir/setup/bmx_arrays.cpp.o
+[183/203] Building CXX object src/CMakeFiles/bmxcore.dir/util/bmx_filcc.cpp.o
+[184/203] Building CXX object src/CMakeFiles/bmxcore.dir/setup/bmx_init.cpp.o
+[185/203] Building CXX object src/CMakeFiles/bmxcore.dir/setup/bmx_set_bc_type.cpp.o
+[186/203] Building CXX object src/CMakeFiles/bmxcore.dir/setup/bmx_tagging.cpp.o
+[187/203] Building CXX object src/CMakeFiles/bmxcore.dir/des/bmx_pc_fusion.cpp.o
+[188/203] Building CXX object src/CMakeFiles/bmxcore.dir/mods/bmx_fluid_parms.cpp.o
+[189/203] Building CXX object src/CMakeFiles/bmxcore.dir/mods/bmx_chem_species_parms.cpp.o
+[190/203] Building CXX object src/CMakeFiles/bmxcore.dir/mods/bmx_dem_parms.cpp.o
+[191/203] Building CXX object src/CMakeFiles/bmxcore.dir/mods/bmx_bc_parms.cpp.o
+[192/203] Building CXX object src/CMakeFiles/bmxcore.dir/util/bmx_util.cpp.o
+[193/203] Building CXX object src/CMakeFiles/bmxcore.dir/util/bmx_regrid.cpp.o
+[194/203] Building CXX object src/CMakeFiles/buildInfobmxcore.dir/__/bmxcore/AMReX_buildInfo.cpp.o
+[195/203] Linking CXX static library src/libbuildInfobmxcore.a
+[196/203] Building CXX object src/CMakeFiles/bmxcore.dir/util/bmx_set_chem_species_bcs.cpp.o
+[197/203] Building CXX object src/CMakeFiles/bmxcore.dir/chemistry/bmx_phosphorus_uptake.cpp.o
+In file included from /home/jherrera2007/c10-work/product/src/chemistry/bmx_phosphorus_uptake.cpp:14:
+/home/jherrera2007/c10-work/product/src/chemistry/bmx_phosphorus_geometry_K.H: In function ‘void BMXPhosphorusGeometry::rejectConfiguration(const std::string&)’:
+/home/jherrera2007/c10-work/product/src/chemistry/bmx_phosphorus_geometry_K.H:726:3: warning: ‘noreturn’ function does return
+  726 |   }
+      |   ^
+[198/203] Building CXX object src/CMakeFiles/bmxcore.dir/chemistry/bmx_chem.cpp.o
+[199/203] Building CXX object src/CMakeFiles/bmxcore.dir/util/bmx_fillpatch.cpp.o
+[200/203] Building CXX object src/CMakeFiles/bmxcore.dir/timestepping/bmx_evolve.cpp.o
+[201/203] Building CXX object src/CMakeFiles/bmxcore.dir/chemistry/bmx_cell_interaction.cpp.o
+[202/203] Building CXX object src/CMakeFiles/bmxcore.dir/timestepping/bmx_evolve_fluid.cpp.o
+[203/203] Linking CXX executable bmx
+
+build OK in 114 s
+executable    : /home/jherrera2007/c10-work/build/bmx
+size_bytes    : 4657520
+sha256        : 30d9e79289d1c9fe4324aaefe0d3bfb998f650578431fcc4b2e32a4f0dafbe4b
+platform      : native Linux / Ubuntu 24.04.4 LTS / kernel 6.17.0-1021-gcp
+platform_class: reference-capable
+compiler      : g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0

@@ -1,0 +1,12 @@
+{
+  "artifact_type": "P12_OPERATOR_ORDER_FIT_DETERMINATION",
+  "stage": "C10/P12",
+  "status": "FITS_EXISTING_ORDER",
+  "operator_order_id": "bmx-p10-global-order-v1",
+  "operator_order_sha256": "bb63c219a860687d91ce1acf06a667c9208abf026b32f18acfc64884bb696dd6",
+  "implementation": "For each donor cell, gather all requests from the same immutable pre-O02 mesh/particle state, compute one shared donor scale, and apply each accepted transfer before O03 deposits the signed extensive mesh increments.",
+  "determination": "The gather/scale/apply passes are internal phases of the single O02 membrane-transfer transaction. They introduce no state-changing operator between O01 and O02, do not move any transfer commit outside O02/O03, and preserve O03 particle-to-mesh commit followed by O04 mesh transport. Therefore no operator-order-v2 freeze is required.",
+  "single_pass_wording": "The frozen OPERATOR_ORDER_V1.json does not require particle-iteration-order single-pass execution; its exact O02 bytes require interpolation followed by execution of membrane D/F transfer. The two-pass donor arbitration is how that one membrane-transfer operator is executed deterministically.",
+  "independent_review": "The existing order remains independently approved at its exact SHA-256. This artifact is a fit determination, not a new or self-approved operator order.",
+  "claim_boundary": "Technical operator-slot determination only; no biological value, result, or scientific approval."
+}

@@ -1,0 +1,20 @@
+{
+  "artifact_type": "C10_STAGE_REPORT",
+  "stage": "C10/P12",
+  "status": "BLOCKED",
+  "engineering_implementation": "PASS",
+  "numerical_qualification": "FAIL",
+  "definitive_build": {"source_head": "8f19296b190ad632de27ccc257c5764b1256b7e0", "executable_sha256": "8efdf36d3e8cbd022b5a3dbc4e3d5b54889cee8a2fcf90410387bf5f3ae6c4df"},
+  "operator_order": {"status": "FITS_EXISTING_ORDER", "sha256": "bb63c219a860687d91ce1acf06a667c9208abf026b32f18acfc64884bb696dd6"},
+  "decision_source_sha256": "34e8414c09e6528fc86399ceb4902cb5fc6907d9562fcf7a78cb3a8e4e333066",
+  "frozen_kernel_sha256": "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02",
+  "checks": {"analytical_unit": "PASS", "native_runtime": "PASS", "static": "PASS", "checkpoint_restart_reissue": "PASS", "grid_time_convergence": "FAIL"},
+  "saturation": {"low_fraction_approx": 0.9415, "high_fraction_approx": 0.9783, "predicted_initial_flux_ratio": 1.039154791108985},
+  "measured_high_over_low_48h": {"L0": 1.04026036885716, "L1": 1.04036229881569, "L2": 1.7230043486024},
+  "selected_production_level": null,
+  "blockers": ["D-C10-02-NUMERICAL-CONVERGENCE"],
+  "later_stages_started": false,
+  "reference_host_timing": "NOT_AVAILABLE_NO_QUALIFIED_PRODUCTION_RESOLUTION",
+  "campaign_projection": "NOT_AVAILABLE_NO_QUALIFIED_PRODUCTION_RESOLUTION",
+  "external_spend_usd": 0
+}

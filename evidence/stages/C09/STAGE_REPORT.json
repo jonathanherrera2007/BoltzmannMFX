@@ -1,0 +1,272 @@
+{
+  "artifact_type": "C09_STAGE_REPORT",
+  "stage": "C09/P11",
+  "status": "PASS",
+  "input": {
+    "stage_base_commit": "0f6636e6080126d2ce58efcef942525bce9b524c",
+    "stage_base_tree": "7984ef6601d934a33e01f46ed5d1b819a383751d",
+    "previous_stage": "C08/P10",
+    "previous_stage_status": "PASS",
+    "branch": "rgsw/c09-p11"
+  },
+  "writer": {
+    "identity": "Codex",
+    "sole_product_branch_writer": true,
+    "independent_reviewer_for_authored_bytes": false
+  },
+  "authority": {
+    "approval_id": "UDC-20260801-P11-SECTION-9",
+    "activation": "user request: Continue through C09",
+    "scope": "section 9 geometry decisions for RG-SW C09/P11 only",
+    "source": "contracts/USER_APPROVED_DECISION_CONTRACT_20260801.txt",
+    "source_sha256": "283eace4f34e0a3d6961d49db2ab2c75ac6e384a9077a7044313a20f7bd4bc93",
+    "classification": "CLOSED_USER_ADOPTED",
+    "mentor_or_independent_scientific_approval": false,
+    "later_source_sections_ingested": false,
+    "c10_or_later_authorized_or_started": false
+  },
+  "qualified_source": {
+    "commit": "72414be0f8e52aa438dd04ab5b04cff5bcda5839",
+    "tree": "2fd93f00110054cb1dfcc50172305d77ab5d542f",
+    "dirty_before_evidence_outputs": false
+  },
+  "frozen_identities": {
+    "chemistry_kernel_sha256": "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02",
+    "chemistry_kernel_modified_by_c09": false,
+    "amrex_commit": "cbdc6580ee3d78cccdd37172e4ba077ee181f483",
+    "amrex_tree": "fb714dc6e693c18f7c441d1d1febe4a5e8bf9ea6",
+    "geometry_contract_sha256": "6a4329f013c857c664a11d669747845006a6c0c9d34f568625b6939d1462acba",
+    "decision_reconciliation_sha256": "ddade9c36ee8be93da7a6f332fed31863a21c4d5e04cd377dca493c7ef6a7b64"
+  },
+  "implementation": {
+    "activation": "default-off; enabled use requires exact schema, contract id, stage, three-state layout, domain, periodicity, and grid-face alignment",
+    "geometry": "finite-radius capsule predicates for the split plate, fungal-only aperture, solid-edge precedence, approved local-strip domains, and periodic y",
+    "constraint_order": [
+      "internal support",
+      "outer x",
+      "outer z"
+    ],
+    "particle_mechanics": "hard nonpenetration by projection with tangential motion retained; no reflection, penalty force, or deletion",
+    "event_accounting": "one final owned-particle traversal after topology/redistribution per update with MPI-global deterministic counters",
+    "mesh_mechanics": "P_D and P_F x-normal diffusion coefficients are zeroed on every active-AMR x=0 divider face; inherited homogeneous Neumann outer x/z and periodic y remain in force",
+    "checkpoint": "schema v3 serializes and validates enabled state, geometry schema/id/hash/stage, exact domain bounds, and periodicity before field or particle deserialization",
+    "rejected_growth": "reserved counter remains exactly zero; C09 adds no growth or B/E debit",
+    "chemistry_export_or_reward_added": false,
+    "c10_or_later_behavior_added": false
+  },
+  "build": {
+    "status": "PASS",
+    "configuration": "native Windows Release, MPI ON, OpenMP OFF, GPU backend NONE, C++17",
+    "source_clean_and_exactly_attributed": true,
+    "executable_size_bytes": 2511360,
+    "executable_sha256": "33a191e180288783a0e9fc5f7ca25ac08e298b43e68fa37f0414e5b19c37b996",
+    "raw_log_sha256": "ed02a0a69f238b013f8f59b0d790f1e5d1b858e4c319f2b514006288a2dc8dc2",
+    "cmake_cache_sha256": "0a3a1b0ada9e40d3c7ecf8d41c1a6bac442cd4a876f40ca945e62c1e74a1c484",
+    "diagnostics": "two inherited MSVC C4244 instantiations in pinned AMReX/std::numeric; no C09-source warning",
+    "evidence": "evidence/stages/C09/BUILD.json"
+  },
+  "tests": {
+    "geometry_unit": "PASS_153_CHECKS",
+    "enabled_valid_domains": "PASS_5_OF_5",
+    "rank1_rank2_event_identity": "PASS_EXACT",
+    "level0_level1_event_identity": "PASS_EXACT",
+    "production_motion_paths": "PASS_2_OF_2",
+    "invalid_fail_closed_cases": "PASS_8_OF_8",
+    "nonzero_pd_divider_mask": "PASS_P_D_INPUT_6E-10_POSTMASK_ZERO",
+    "checkpoint_restart_rank1": "PASS",
+    "checkpoint_restart_2_to_2": "PASS",
+    "checkpoint_restart_2_to_1": "PASS",
+    "checkpoint_corruptions_before_payload": "PASS_8_OF_8",
+    "feature_off_semantic_g1_g4": "PASS_72_DUMPS_420_PARTICLE_RECORDS_ZERO_DIFFERENCES",
+    "p10_topology_regression": "PASS_1_AND_2_RANKS",
+    "p10_redistribution_regression": "PASS_2_TO_1_INCLUDED",
+    "static": "PASS_ZERO_UNEXPECTED_PATHS",
+    "python_syntax": "PASS",
+    "git_diff_check": "PASS"
+  },
+  "runtime_details": {
+    "approved_x_domains_cm": [
+      [-0.5, 0.5],
+      [-1.0, 1.0],
+      [-2.0, 2.0]
+    ],
+    "divider_mask_input": {
+      "p_d_diffusion_cm2_per_s": 6e-10,
+      "p_f_diffusion_cm2_per_s": 0.0,
+      "purpose": "engineering branch forcing, not a biological parameter"
+    },
+    "divider_masks": {
+      "central_level0_masked_faces": 96,
+      "central_level1_masked_faces": 160,
+      "large_level0_masked_faces": 192,
+      "postmask_nonzero_faces": 0
+    },
+    "internal_frame_motion": {
+      "attempted_penetration": 1,
+      "projected_motion": 1,
+      "tangential_motion": 1
+    },
+    "outer_z_motion": {
+      "attempted_penetration": 1,
+      "projected_motion": 1,
+      "tangential_motion": 0
+    },
+    "feature_off": {
+      "c08_reference_commit": "a33e37749450432fb15c1021fc554a26f4e3fc7d",
+      "c08_reference_tree": "333613990076476707f7e8aa82b1119e2d9a3f58",
+      "c08_executable_sha256": "5c0d593945adc983846a6b24b82764a8aaf302d9a60e69af0afe1e42ebbfa1fc",
+      "precision_digits": 15,
+      "g1_target_branches": 76,
+      "g4_target_branches": 188,
+      "dumps_compared": 72,
+      "particle_records_compared": 420,
+      "differing_values": 0
+    }
+  },
+  "commands": [
+    {
+      "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\\tools\\repro\\run_c09_native_build.ps1 -SourceDir . -BuildDir C:\\b\\BMX-shadow-handoff-20260721\\build-c09-native-release-definitive -LogPath .\\evidence\\stages\\C09\\raw\\native_build.log -JsonOut .\\evidence\\stages\\C09\\BUILD.json -Parallel 4",
+      "exit_code": 0,
+      "evidence": "evidence/stages/C09/BUILD.json and evidence/stages/C09/raw/native_build.log"
+    },
+    {
+      "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File tools/repro/run_c09_geometry_unit.ps1 -SourceDir . -BuildDir C:\\b\\BMX-shadow-handoff-20260721\\build-c09-native-release-definitive -RunDir C:\\b\\BMX-shadow-handoff-20260721\\runs\\c09-geometry-unit-definitive -JsonOut evidence/stages/C09/GEOMETRY_UNIT.json",
+      "exit_code": 0,
+      "evidence": "evidence/stages/C09/GEOMETRY_UNIT.json"
+    },
+    {
+      "command": "C:\\Users\\Shadow\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe .\\tools\\repro\\run_c09_geometry_runtime.py --exe C:\\b\\BMX-shadow-handoff-20260721\\build-c09-native-release-definitive\\bmx.exe --source . --run-root C:\\b\\BMX-shadow-handoff-20260721\\runs\\c09-geometry-runtime-definitive --json-out .\\evidence\\stages\\C09\\GEOMETRY_RUNTIME.json --mpiexec C:\\Program Files\\Microsoft MPI\\Bin\\mpiexec.exe",
+      "exit_code": 0,
+      "evidence": "evidence/stages/C09/GEOMETRY_RUNTIME.json"
+    },
+    {
+      "command": "C:\\Users\\Shadow\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe .\\tools\\repro\\run_c09_checkpoint_tests.py --exe C:\\b\\BMX-shadow-handoff-20260721\\build-c09-native-release-definitive\\bmx.exe --source . --run-root C:\\b\\BMX-shadow-handoff-20260721\\runs\\c09-checkpoint-definitive --json-out .\\evidence\\stages\\C09\\CHECKPOINT_RESTART.json --mpiexec C:\\Program Files\\Microsoft MPI\\Bin\\mpiexec.exe",
+      "exit_code": 0,
+      "evidence": "evidence/stages/C09/CHECKPOINT_RESTART.json"
+    },
+    {
+      "command": "C:\\Users\\Shadow\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe .\\tools\\repro\\run_c09_feature_off.py --c08-source C:\\b\\BMX-shadow-handoff-20260721\\c08-reference-a33 --c08-exe C:\\b\\BMX-shadow-handoff-20260721\\build-c08-reference-a33\\bmx.exe --c09-exe C:\\b\\BMX-shadow-handoff-20260721\\build-c09-native-release-definitive\\bmx.exe --case-dir .\\exec\\fungi --out-dir C:\\b\\BMX-shadow-handoff-20260721\\runs\\c09-feature-off-definitive --json-out .\\evidence\\stages\\C09\\FEATURE_OFF_SEMANTIC.json",
+      "exit_code": 0,
+      "evidence": "evidence/stages/C09/FEATURE_OFF_SEMANTIC.json"
+    },
+    {
+      "command": "C:\\Users\\Shadow\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe .\\tools\\repro\\run_c08_topology_split.py --exe C:\\b\\BMX-shadow-handoff-20260721\\build-c09-native-release-definitive\\bmx.exe --source . --run-root C:\\b\\BMX-shadow-handoff-20260721\\runs\\c09-p10-topology-regression-definitive --json-out .\\evidence\\stages\\C09\\P10_TOPOLOGY_REGRESSION.json --mpiexec C:\\Program Files\\Microsoft MPI\\Bin\\mpiexec.exe",
+      "exit_code": 0,
+      "evidence": "evidence/stages/C09/P10_TOPOLOGY_REGRESSION.json"
+    },
+    {
+      "command": "C:\\Users\\Shadow\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe .\\tools\\repro\\run_c08_redistribution_guards.py --exe C:\\b\\BMX-shadow-handoff-20260721\\build-c09-native-release-definitive\\bmx.exe --source . --run-root C:\\b\\BMX-shadow-handoff-20260721\\runs\\c09-p10-redistribution-regression-definitive --json-out .\\evidence\\stages\\C09\\P10_REDISTRIBUTION_REGRESSION.json --mpiexec C:\\Program Files\\Microsoft MPI\\Bin\\mpiexec.exe --ranks 2 --restart-ranks 1",
+      "exit_code": 0,
+      "evidence": "evidence/stages/C09/P10_REDISTRIBUTION_REGRESSION.json"
+    },
+    {
+      "command": "C:\\Users\\Shadow\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe .\\tools\\repro\\run_c09_static_test.py --source . --stage-base 0f6636e6080126d2ce58efcef942525bce9b524c --json-out .\\evidence\\stages\\C09\\STATIC.json",
+      "exit_code": 0,
+      "evidence": "evidence/stages/C09/STATIC.json"
+    },
+    {
+      "command": "C:\\Users\\Shadow\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe -m py_compile .\\tools\\repro\\run_c09_geometry_runtime.py .\\tools\\repro\\run_c09_checkpoint_tests.py .\\tools\\repro\\run_c09_feature_off.py .\\tools\\repro\\run_c09_static_test.py",
+      "exit_code": 0
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0
+    },
+    {
+      "command": "Get-FileHash src/chemistry/bmx_chem_K.H -Algorithm SHA256",
+      "exit_code": 0,
+      "result": "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02"
+    }
+  ],
+  "non_evidence_invocations": [
+    {
+      "description": "An initial feature-off invocation used obsolete option names and exited in argparse before launching BMX or writing the evidence file; the exact corrected command above then passed.",
+      "exit_code": 1
+    }
+  ],
+  "changed_file_groups": [
+    {
+      "paths": [
+        "contracts/decision_reconciliation.json",
+        "contracts/decision_reconciliation.md",
+        "contracts/release_blockers.json",
+        "contracts/p11/GEOMETRY_CONTRACT_V1.json",
+        "contracts/p11/GEOMETRY_CONTRACT_V1.sha256"
+      ],
+      "reason": "freeze and reconcile the C09-only user-adopted P11 geometry authority without claiming scientific approval"
+    },
+    {
+      "paths": [
+        "src/chemistry/bmx_cell_interaction_K.H",
+        "src/chemistry/bmx_chem_layout.H",
+        "src/chemistry/bmx_phosphorus_geometry_K.H",
+        "src/des/bmx_pc.H",
+        "src/des/bmx_pc_interaction.cpp",
+        "src/diffusion/bmx_define_coeffs_on_faces.cpp",
+        "src/io/bmx_checkpoint_schema.H",
+        "src/io/bmx_checkpoint_schema.cpp",
+        "src/io/bmx_chk.cpp",
+        "src/io/bmx_restart.cpp",
+        "src/timestepping/bmx_evolve.cpp"
+      ],
+      "reason": "implement default-off P11 geometry, production motion constraints, deterministic events, divider no-flux masking, and restart identity"
+    },
+    {
+      "paths": [
+        "tools/repro/c09_geometry_unit.cpp",
+        "tools/repro/run_c09_checkpoint_tests.py",
+        "tools/repro/run_c09_feature_off.py",
+        "tools/repro/run_c09_geometry_runtime.py",
+        "tools/repro/run_c09_geometry_unit.ps1",
+        "tools/repro/run_c09_native_build.ps1",
+        "tools/repro/run_c09_static_test.py"
+      ],
+      "reason": "build and exercise C09 predicates, production paths, restart, feature-off semantics, retained P10 behavior, provenance, and ownership scope"
+    },
+    {
+      "paths": [
+        "evidence/stages/C09/.gitattributes",
+        "evidence/stages/C09/BUILD.json",
+        "evidence/stages/C09/CHECKPOINT_RESTART.json",
+        "evidence/stages/C09/COMMIT.txt",
+        "evidence/stages/C09/FEATURE_OFF_SEMANTIC.json",
+        "evidence/stages/C09/GEOMETRY_RUNTIME.json",
+        "evidence/stages/C09/GEOMETRY_UNIT.json",
+        "evidence/stages/C09/INTEGRATOR_HANDOFF.md",
+        "evidence/stages/C09/P10_REDISTRIBUTION_REGRESSION.json",
+        "evidence/stages/C09/P10_TOPOLOGY_REGRESSION.json",
+        "evidence/stages/C09/STATIC.json",
+        "evidence/stages/C09/STAGE_REPORT.json",
+        "evidence/stages/C09/STAGE_REPORT.md",
+        "evidence/stages/C09/raw/native_build.log"
+      ],
+      "reason": "preserve exact build, test, scope, and handoff evidence for C09; the evidence-local attribute retains the verbatim CRLF build log while exempting only that raw capture from trailing-space diagnostics"
+    }
+  ],
+  "effects": {
+    "conservation": "C09 event and motion paths do not mutate chemistry, export, carbon reward, or the P ledger; rejected_growth remains zero",
+    "restart": "enabled C09 requires checkpoint schema v3 and exact geometry identity before payload loading; default-off schema-v3 restart remains valid",
+    "feature_off": "C09 matches the exact clean C08 reference on all semantic particle fields and reserved slots at 15-digit output precision for active G1/G4 trajectories",
+    "claims": "engineering qualification only"
+  },
+  "blockers": [],
+  "global_release_blockers_remaining": 28,
+  "next_stage_gates": "C10/P12 remains unstarted and retains its experiment, controls, replicate, seed, and independent numerical/release-host gates",
+  "qualified_source_commit": "72414be0f8e52aa438dd04ab5b04cff5bcda5839",
+  "final_evidence_commit": "37a06c13c051afcdd56706be97b46b4cc3326549",
+  "external_resources": "none",
+  "external_spend_usd": 0,
+  "release_evidence": false,
+  "c10_or_later_started": false,
+  "claims_prohibited": [
+    "mentor or independent scientific approval of the user-adopted geometry",
+    "independent numerical review",
+    "reference-host or release qualification",
+    "calibrated or predictive biology",
+    "full-plate validity or scaling",
+    "RG-SW:GO",
+    "RG-SCI:GO",
+    "publication readiness",
+    "formal P05-P18 acceptance"
+  ]
+}

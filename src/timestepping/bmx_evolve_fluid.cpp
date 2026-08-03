@@ -253,19 +253,19 @@ bmx::EvolveFluid (int nstep,
     {
         auto& ld = *m_leveldata[lev];
 
-        amrex::Real x0max = ld.X_k->max(0);
-        amrex::Real x1max = ld.X_k->max(1);
-        amrex::Real x2max = ld.X_k->max(2);
-        amrex::Real x0min = ld.X_k->min(0);
-        amrex::Real x1min = ld.X_k->min(1);
-        amrex::Real x2min = ld.X_k->min(2);
-        amrex::Print() << "Max/min of species 0 at level " << lev << " " << x0max << " " << x0min << std::endl;
-        amrex::Print() << "Max/min of species 1 at level " << lev << " " << x1max << " " << x1min << std::endl;
-        amrex::Print() << "Max/min of species 2 at level " << lev << " " << x2max << " " << x2min << std::endl;
-
         Real eps = 1.e-8;
-        if (x0max > 1.0+eps || x1max > 1.0+eps || x2max > 1.0+eps) amrex::Abort("Species greater than 1");
-        if (x0min < 0.0-eps || x1min < 0.0-eps || x2min < 0.0-eps) amrex::Abort("Species    less than 0");
+        for (int n = 0; n < nchem_species; ++n) {
+            amrex::Real xmax = ld.X_k->max(n);
+            amrex::Real xmin = ld.X_k->min(n);
+            amrex::Print() << "Max/min of species " << n;
+            if (n < static_cast<int>(FLUID::chem_species.size())) {
+                amrex::Print() << " (" << FLUID::chem_species[n] << ")";
+            }
+            amrex::Print() << " at level " << lev << " " << xmax << " " << xmin << std::endl;
+
+            if (xmax > 1.0+eps) amrex::Abort("Species greater than 1");
+            if (xmin < 0.0-eps) amrex::Abort("Species less than 0");
+        }
     } // lev
 
     print_mesh(6);

@@ -1,0 +1,25 @@
+{
+    "artifact_type":  "C08_AMOUNT_HELPER_UNIT",
+    "stage":  "C08",
+    "status":  "PASS",
+    "source":  {
+                   "path":  "C:\\b\\BMX-shadow-handoff-20260721\\BMX-RG-SW-C07-product\\tools\\repro\\c08_amount_unit.cpp",
+                   "sha256":  "57b4ff29391c3d422253c9d8a0bfbfb462c11347505c144a513ae2800816381e"
+               },
+    "executable":  {
+                       "path":  "C:\\b\\BMX-shadow-handoff-20260721\\runs\\c08-amount-unit-review-final\\c08_amount_unit.exe",
+                       "sha256":  "0f09934b7f0a1a29c445fa3a2e20574b31109c139f3f78510a769db081f3ef01"
+                   },
+    "assertions":  [
+                       "two-way partition preserves committed, working, and signed-transfer D/E/F amounts",
+                       "three-way partition preserves committed, working, and signed-transfer D/E/F amounts",
+                       "additive merge preserves D/E/F amounts",
+                       "one-owner pure-volume restore preserves D/E/F amounts after owning volume changes",
+                       "non-phosphorus sentinels remain unchanged",
+                       "zero owning volume, nonfinite state, overflow, and negative committed inventory fail closed",
+                       "local and integrated tolerance formulas match the frozen P10-U03 contract",
+                       "global accounted-total formula includes mesh D/F, internal D/E/F, structural P, and export exactly once while v1 other exits remain zero",
+                       "orphan-bond and simultaneous-event policy returns the adopted exact reason codes and fail-closed dispositions"
+                   ],
+    "claim_boundary":  "analytic engineering unit; no biological values or final-run qualification"
+}

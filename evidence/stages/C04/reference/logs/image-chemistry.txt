@@ -1,0 +1,4 @@
+c03-baseline-release chemistry: 711ae2caa6e7aabb5c084fe841d2d90edb85ee53e7abc7a859d7de00e6614678
+c04-p07-release chemistry: 9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02
+c04-baseline-diag-release chemistry: 711ae2caa6e7aabb5c084fe841d2d90edb85ee53e7abc7a859d7de00e6614678
+c04-diag-release chemistry: 9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02

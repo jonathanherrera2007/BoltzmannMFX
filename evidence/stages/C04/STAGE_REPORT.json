@@ -1,0 +1,1517 @@
+{
+  "amrex_commit": "cbdc6580ee3d78cccdd37172e4ba077ee181f483",
+  "baseline_commit": "389e9e35a1c7291a4af795b2e39f2db1f0012b61",
+  "baseline_kernel_sha256": "711ae2caa6e7aabb5c084fe841d2d90edb85ee53e7abc7a859d7de00e6614678",
+  "blockers": [
+    {
+      "detail": "biology decisions unresolved; mentor packet unsent",
+      "id": "B-S00-03",
+      "owner": "user/mentor"
+    },
+    {
+      "detail": "six defects worked around in build config",
+      "id": "B-C02-01",
+      "owner": "writer + review"
+    },
+    {
+      "detail": "C02 image hash not reproducible after install-path rename",
+      "id": "B-C03-02",
+      "owner": "writer"
+    }
+  ],
+  "chemistry_freeze_proof": {
+    "commits_touching_src_chemistry_after_candidate": [],
+    "identical": true,
+    "kernel_blob_at_candidate": "970e66c42780ee5bfa1e110a9218cb58aefcad41",
+    "kernel_blob_at_head": "970e66c42780ee5bfa1e110a9218cb58aefcad41",
+    "note": "gitattributes sets '* -text' by default so C/C++ sources are never line-ending normalised",
+    "src_chemistry_tree_at_candidate": "423d11cb32c9773bb89c028900b4fcd48d6e4d02",
+    "src_chemistry_tree_at_head": "423d11cb32c9773bb89c028900b4fcd48d6e4d02"
+  },
+  "claims_still_prohibited": [
+    "conservation correctness of the model as a whole (D-C04-07 open)",
+    "any scientific result",
+    "P07 phase success",
+    "formal P05-P18 acceptance",
+    "RG-SW:GO",
+    "RG-SCI:GO"
+  ],
+  "closed_blockers": [
+    {
+      "closed_by": "runs/c04-p07-geometry",
+      "detail": "CDEF-04 observed 116 times with stored area bit-identical 116/116; CDEF-05 observed 188 times, cB rel=1.000",
+      "id": "B-C04-01"
+    },
+    {
+      "closed_by": "runs/c04-p07-donor-cap-fixture",
+      "detail": "second-half donor cap fires; transfer saturates at the cell content across a 50x k1 span and A_particles_final equals fA0*V_cell exactly (4.882812500000002e-12, rel 0.00e+00)",
+      "id": "B-C04-02"
+    },
+    {
+      "closed_by": "evidence/stages/C04/reference/QUALIFICATION_REFERENCE.json",
+      "detail": "complete qualification sequence executed on a C02-compliant reference-capable GCE host with release_evidence: true; RT-1 and RT-2 both PASS",
+      "id": "B-PLATFORM-01"
+    }
+  ],
+  "comparison_semantics": {
+    "bytewise_file_comparison": "NOT performed anywhere; the term 'bit-identical' has been removed.",
+    "numerically_identical_at_full_emitted_precision": "parsed doubles compared for exact equality, from text emitted at precision 15. Applies to: G7 control, stored-area staleness counts, and all Windows-vs-Linux result agreement.",
+    "textually_identical_line_for_line": "string comparison of log lines after removing wall-clock timing. Applies to: G0 particle-dump neutrality (1308 lines) and diagnostic neutrality (708 lines)."
+  },
+  "completed_at": "2026-07-30",
+  "conservation_metrics": {
+    "M1_exchange_closure_absolute": {
+      "formula": "R_abs = delta_A_particles + delta_A_fluid over the run",
+      "max_over_all_rows": 2.354557e-22,
+      "max_row": "baseline, k1=0.5",
+      "normalization": "none",
+      "reported_value_4p6e_23": {
+        "note": "a single row, not a maximum and not normalized",
+        "row": "repaired, k1=5",
+        "value": 4.63205e-23
+      },
+      "units": "amount (BMX concentration unit * cm^3)"
+    },
+    "M2_exchange_closure_relative": {
+      "cell_content": 4.882812500000002e-12,
+      "formula": "R_rel = abs(R_abs) / (fA0 * V_cell)",
+      "max_over_all_rows": 4.822133e-11,
+      "max_row": "baseline, k1=0.5",
+      "normalization": "cell content fA0*V_cell",
+      "note": "the worst case is a row where the cap does NOT fire; the repaired capped rows sit near 9.5e-12",
+      "units": "dimensionless"
+    },
+    "M3_cap_equality_relative": {
+      "formula": "E_rel = abs(A_particles_final - fA0*V_cell) / (fA0*V_cell)",
+      "normalization": "cell content",
+      "note": "this is the mandatory C04 row; all values at or below 2 ulp",
+      "units": "dimensionless",
+      "values": {
+        "k1=100": 1.82e-15,
+        "k1=2": 1.654e-16,
+        "k1=20": 0.0,
+        "k1=5": 0.0
+      }
+    },
+    "independence": "M1/M2 ask whether anything was created or destroyed; M3 asks whether the capped transfer equalled the available amount. A transfer can conserve perfectly while stopping at the wrong value, which is the failure mode the baseline sign produces.",
+    "no_threshold": "no tolerance was chosen after seeing these values; they are reported, not tested against a threshold. C04 declares no conservation acceptance row - that contract belongs to P10.",
+    "note": "three distinct metrics, not three estimates of one quantity. All amounts are concentration x volume in native BMX units (lengths are cm); the inputs declare no unit symbol for species A, so no mol label is asserted."
+  },
+  "contradictions": [],
+  "corrections_to_previous_issue": [
+    {
+      "claim_corrected": "F3 forces the tip radius-only/length-only branches",
+      "finding": "stock max_seg_radius (2.5e-4) equals the initial radius, so radius<radius_max is already false at t=0 and the tip path is length-only from step 1. F3's override selected the same branch as its own stock reference, making it a no-op.",
+      "id": "D-C04-02"
+    },
+    {
+      "claim_corrected": "the initial configuration is self-consistent, so N1 is bit-identical",
+      "finding": "fungi_init_cfg.dat stores area=5.105e-6 (4 s.f.) but 2*pi*r*(r+L)=5.105088062083415e-6, a 1.725e-5 relative mismatch. The repair recomputes the area and corrects it even with growth off. G7, with the area written at full precision, IS bit-identical (max_rel=0), isolating the discrepancy to the input file.",
+      "id": "D-C04-03"
+    },
+    {
+      "claim_corrected": "F1's max_rel=1.0 is the unique signature of the donor-cap sign fix",
+      "finding": "under F1's exact configuration the recorded A amount is -1.872873e-17 baseline vs -1.872870e-17 repaired: same sign, five significant figures. The donor cap does not fire.",
+      "id": "D-C04-06"
+    }
+  ],
+  "cross_platform_agreement_final": {
+    "M2_max_relative_closure_residual": {
+      "gce_reference": "4.822133e-11",
+      "windows": "4.822133e-11",
+      "wsl1": "4.822133e-11"
+    },
+    "donor_cap_A_particles_final_k1_5": {
+      "gce_reference": "4.882812500000002e-12",
+      "windows": "4.882812500000002e-12",
+      "wsl1": "4.882812500000002e-12"
+    },
+    "donor_cap_relative_difference": {
+      "gce_reference": 0.0,
+      "windows": 0.0,
+      "wsl1": 0.0
+    },
+    "geometry_fixtures": {
+      "gce_reference": "7/7",
+      "windows": "7/7",
+      "wsl1": "7/7"
+    },
+    "note": "the reference host reproduces Windows and WSL1 numerically at full emitted precision"
+  },
+  "defect_mappings_demonstrated": {
+    "CDEF-01_02_donor_cap": "DEMONSTRATED",
+    "CDEF-03_stale_area_first_half": "DEMONSTRATED",
+    "CDEF-04_tip_length_only": "DEMONSTRATED",
+    "CDEF-04_tip_radius_only": "DEMONSTRATED",
+    "CDEF-05_nontip_rejection": "DEMONSTRATED"
+  },
+  "deliberate_asymmetry_for_reviewer": "dP1/dP2 still use the stale new_cell_area while carbon uses the refreshed carbon_exchange_area. Intentional (P07 phosphorus exclusion), but phosphorus retains exactly the CDEF-03 staleness carbon just had repaired. 'P07 passed' must not be read as 'phosphorus area handling is correct'.",
+  "diagnostic_regression_guard": {
+    "checks": [
+      {
+        "check": "field_map_matches_first_data_and_species_order",
+        "detail": "first_data=28, A=mesh0/part28, B=mesh1/part29, C=mesh2/part30",
+        "status": "PASS"
+      },
+      {
+        "check": "particle_totals_match_independent_dump_reference",
+        "detail": "A=1.1780000000e-14 (rel 0.0e+00); B=0.0000000000e+00 (rel 0.0e+00); C=1.1780000000e-15 (rel 0.0e+00)",
+        "status": "PASS"
+      },
+      {
+        "check": "fluid_totals_match_analytic_initial_condition",
+        "detail": "A=6.0000000000e-08 (rel 5.1e-15); B=0.0000000000e+00 (rel 0.0e+00); C=6.0000000000e-09 (rel 3.9e-14)",
+        "status": "PASS"
+      },
+      {
+        "check": "reordered_species_is_rejected",
+        "detail": "exit=22, diagnostic-owned abort=True",
+        "status": "PASS"
+      },
+      {
+        "check": "enabling_diagnostic_is_trajectory_neutral",
+        "detail": "708 non-diagnostic lines compared, identical",
+        "status": "PASS"
+      }
+    ],
+    "component_map": {
+      "A": {
+        "mesh": 0,
+        "particle": 28
+      },
+      "B": {
+        "mesh": 1,
+        "particle": 29
+      },
+      "C": {
+        "mesh": 2,
+        "particle": 30
+      }
+    },
+    "first_data": 28,
+    "index": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-diag-check/DIAGNOSTIC_CHECKS.json",
+    "status": "PASS"
+  },
+  "donor_cap_fixture": {
+    "confounds_removed": [
+      "particle sits above fluid.surface_location where fluid A is zero -> surface raised to 0.2",
+      "rA = -k2*cA + kr2*cB*cC drains A faster than the exchange -> k2/kr2 zeroed",
+      "growth would change the area mid-step -> kv/kg zeroed"
+    ],
+    "conservation_max_relative_residual": 4.822132615927011e-11,
+    "geometry": {
+      "available_A_in_cell": 4.882812500000002e-12,
+      "c_length": 0.003,
+      "dtp": 0.0625,
+      "fA0": 2e-05,
+      "fine_cell_volume": 2.4414062500000006e-07,
+      "radius": {
+        "alpha_first_half": 0.653451271946677,
+        "alpha_second_half_repaired": 65.34512719466768,
+        "baseline": {
+          "A_fluid_final": 7.999511816440565e-08,
+          "A_fluid_initial": 7.999998821999257e-08,
+          "A_particles_final": 4.881835586973302e-12,
+          "A_particles_initial": 1.1780000000000001e-14,
+          "conservation_residual": 5.500993411547718e-23,
+          "delta_A_fluid": -4.870055586918292e-12,
+          "delta_A_particles": 4.870055586973302e-12,
+          "exit": 0,
+          "run_dir": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-p07-donor-cap-fixture\\k1_100\\baseline",
+          "transfer_over_available": 0.9973873842121319
+        },
+        "k1": 100.0,
+        "repaired": {
+          "A_fluid_final": 7.999511718749262e-08,
+          "A_fluid_initial": 7.999998821999257e-08,
+          "A_particles_final": 4.882812499999993e-12,
+          "A_particles_initial": 1.1780000000000001e-14,
+          "conservation_residual": 4.631161298659925e-23,
+          "delta_A_fluid": -4.871032499953681e-12,
+          "delta_A_particles": 4.871032499999993e-12,
+          "exit": 0,
+          "run_dir": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-p07-donor-cap-fixture\\k1_100\\repaired",
+          "transfer_equals_available": true,
+          "transfer_over_available": 0.9975874559999981
+        },
+        "repaired_capped": true,
+        "uncapped_request_true_area": 3.190680038802134e-10
+      },
+      "stored_area": 5.105088062083415e-08,
+      "stored_area_ratio": 100.0,
+      "true_area": 5.105088062083415e-06
+    },
+    "index": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-p07-donor-cap-fixture/DONOR_CAP_FIXTURE.json",
+    "rows": [
+      {
+        "alpha_first_half": 0.0032672563597333846,
+        "alpha_second_half_repaired": 0.3267256359733385,
+        "baseline": {
+          "A_fluid_final": 7.999986204624459e-08,
+          "A_fluid_initial": 7.999998821999257e-08,
+          "A_particles_final": 1.3795374821994632e-13,
+          "A_particles_initial": 1.1780000000000001e-14,
+          "conservation_residual": 2.354556941370612e-22,
+          "delta_A_fluid": -1.2617374798449063e-13,
+          "delta_A_particles": 1.2617374821994632e-13,
+          "exit": 0,
+          "run_dir": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-p07-donor-cap-fixture\\k1_0.5\\baseline",
+          "transfer_over_available": 0.025840383635444997
+        },
+        "k1": 0.5,
+        "repaired": {
+          "A_fluid_final": 7.999541916248966e-08,
+          "A_fluid_initial": 7.999998821999257e-08,
+          "A_particles_final": 4.580837502930556e-12,
+          "A_particles_initial": 1.1780000000000001e-14,
+          "conservation_residual": 1.7117145683592438e-23,
+          "delta_A_fluid": -4.569057502913439e-12,
+          "delta_A_particles": 4.569057502930556e-12,
+          "exit": 0,
+          "run_dir": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-p07-donor-cap-fixture\\k1_0.5\\repaired",
+          "transfer_over_available": 0.9357429766001776
+        },
+        "repaired_capped": false,
+        "uncapped_request_true_area": 1.5953400194010672e-12
+      },
+      {
+        "alpha_first_half": 0.006534512719466769,
+        "alpha_second_half_repaired": 0.653451271946677,
+        "baseline": {
+          "A_fluid_final": 7.99997387415384e-08,
+          "A_fluid_initial": 7.999998821999257e-08,
+          "A_particles_final": 2.612584542279051e-13,
+          "A_particles_initial": 1.1780000000000001e-14,
+          "conservation_residual": 5.431341411237772e-23,
+          "delta_A_fluid": -2.4947845417359166e-13,
+          "delta_A_particles": 2.4947845422790507e-13,
+          "exit": 0,
+          "run_dir": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-p07-donor-cap-fixture\\k1_1\\baseline",
+          "transfer_over_available": 0.05109318742587494
+        },
+        "k1": 1.0,
+        "repaired": {
+          "A_fluid_final": 7.99951200008339e-08,
+          "A_fluid_initial": 7.999998821999257e-08,
+          "A_particles_final": 4.8799991587261025e-12,
+          "A_particles_initial": 1.1780000000000001e-14,
+          "conservation_residual": 5.1776336466991076e-23,
+          "delta_A_fluid": -4.868219158674326e-12,
+          "delta_A_particles": 4.868219158726102e-12,
+          "exit": 0,
+          "run_dir": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-p07-donor-cap-fixture\\k1_1\\repaired",
+          "transfer_over_available": 0.9970112837071055
+        },
+        "repaired_capped": false,
+        "uncapped_request_true_area": 3.1906800388021345e-12
+      },
+      {
+        "alpha_first_half": 0.013069025438933539,
+        "alpha_second_half_repaired": 1.306902543893354,
+        "baseline": {
+          "A_fluid_final": 7.999950051576411e-08,
+          "A_fluid_initial": 7.999998821999257e-08,
+          "A_particles_final": 4.994842284988348e-13,
+          "A_particles_initial": 1.1780000000000001e-14,
+          "conservation_residual": 3.2652328640516384e-23,
+          "delta_A_fluid": -4.877042284661825e-13,
+          "delta_A_particles": 4.877042284988348e-13,
+          "exit": 0,
+          "run_dir": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-p07-donor-cap-fixture\\k1_2\\baseline",
+          "transfer_over_available": 0.09988182599656133
+        },
+        "k1": 2.0,
+        "repaired": {
+          "A_fluid_final": 7.999511718749262e-08,
+          "A_fluid_initial": 7.999998821999257e-08,
+          "A_particles_final": 4.882812500000001e-12,
+          "A_particles_initial": 1.1780000000000001e-14,
+          "conservation_residual": 4.631969092226871e-23,
+          "delta_A_fluid": -4.871032499953681e-12,
+          "delta_A_particles": 4.871032500000001e-12,
+          "exit": 0,
+          "run_dir": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-p07-donor-cap-fixture\\k1_2\\repaired",
+          "transfer_equals_available": true,
+          "transfer_over_available": 0.9975874559999998
+        },
+        "repaired_capped": true,
+        "uncapped_request_true_area": 6.381360077604269e-12
+      },
+      {
+        "alpha_first_half": 0.03267256359733385,
+        "alpha_second_half_repaired": 3.2672563597333846,
+        "baseline": {
+          "A_fluid_final": 7.999884904682674e-08,
+          "A_fluid_initial": 7.999998821999257e-08,
+          "A_particles_final": 1.1509531658547443e-12,
+          "A_particles_initial": 1.1780000000000001e-14,
+          "conservation_residual": 2.476472933026495e-23,
+          "delta_A_fluid": -1.1391731658299796e-12,
+          "delta_A_particles": 1.1391731658547444e-12,
+          "exit": 0,
+          "run_dir": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-p07-donor-cap-fixture\\k1_5\\baseline",
+          "transfer_over_available": 0.23330266436705155
+        },
+        "k1": 5.0,
+        "repaired": {
+          "A_fluid_final": 7.999511718749262e-08,
+          "A_fluid_initial": 7.999998821999257e-08,
+          "A_particles_final": 4.882812500000002e-12,
+          "A_particles_initial": 1.1780000000000001e-14,
+          "conservation_residual": 4.632049871583566e-23,
+          "delta_A_fluid": -4.871032499953681e-12,
+          "delta_A_particles": 4.8710325000000015e-12,
+          "exit": 0,
+          "run_dir": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-p07-donor-cap-fixture\\k1_5\\repaired",
+          "transfer_equals_available": true,
+          "transfer_over_available": 0.997587456
+        },
+        "repaired_capped": true,
+        "uncapped_request_true_area": 1.595340019401067e-11
+      },
+      {
+        "alpha_first_half": 0.1306902543893354,
+        "alpha_second_half_repaired": 13.069025438933538,
+        "baseline": {
+          "A_fluid_final": 7.99967011831957e-08,
+          "A_fluid_initial": 7.999998821999257e-08,
+          "A_particles_final": 3.298816796906513e-12,
+          "A_particles_initial": 1.1780000000000001e-14,
+          "conservation_residual": 3.610756464893338e-23,
+          "delta_A_fluid": -3.2870367968704052e-12,
+          "delta_A_particles": 3.287036796906513e-12,
+          "exit": 0,
+          "run_dir": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-p07-donor-cap-fixture\\k1_20\\baseline",
+          "transfer_over_available": 0.6731851360064536
+        },
+        "k1": 20.0,
+        "repaired": {
+          "A_fluid_final": 7.999511718749262e-08,
+          "A_fluid_initial": 7.999998821999257e-08,
+          "A_particles_final": 4.882812500000002e-12,
+          "A_particles_initial": 1.1780000000000001e-14,
+          "conservation_residual": 4.632049871583566e-23,
+          "delta_A_fluid": -4.871032499953681e-12,
+          "delta_A_particles": 4.8710325000000015e-12,
+          "exit": 0,
+          "run_dir": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-p07-donor-cap-fixture\\k1_20\\repaired",
+          "transfer_equals_available": true,
+          "transfer_over_available": 0.997587456
+        },
+        "repaired_capped": true,
+        "uncapped_request_true_area": 6.381360077604269e-11
+      },
+      {
+        "alpha_first_half": 0.653451271946677,
+        "alpha_second_half_repaired": 65.34512719466768,
+        "baseline": {
+          "A_fluid_final": 7.999511816440565e-08,
+          "A_fluid_initial": 7.999998821999257e-08,
+          "A_particles_final": 4.881835586973302e-12,
+          "A_particles_initial": 1.1780000000000001e-14,
+          "conservation_residual": 5.500993411547718e-23,
+          "delta_A_fluid": -4.870055586918292e-12,
+          "delta_A_particles": 4.870055586973302e-12,
+          "exit": 0,
+          "run_dir": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-p07-donor-cap-fixture\\k1_100\\baseline",
+          "transfer_over_available": 0.9973873842121319
+        },
+        "k1": 100.0,
+        "repaired": {
+          "A_fluid_final": 7.999511718749262e-08,
+          "A_fluid_initial": 7.999998821999257e-08,
+          "A_particles_final": 4.882812499999993e-12,
+          "A_particles_initial": 1.1780000000000001e-14,
+          "conservation_residual": 4.631161298659925e-23,
+          "delta_A_fluid": -4.871032499953681e-12,
+          "delta_A_particles": 4.871032499999993e-12,
+          "exit": 0,
+          "run_dir": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-p07-donor-cap-fixture\\k1_100\\repaired",
+          "transfer_equals_available": true,
+          "transfer_over_available": 0.9975874559999981
+        },
+        "repaired_capped": true,
+        "uncapped_request_true_area": 3.190680038802134e-10
+      }
+    ],
+    "saturation_observed": true,
+    "transfer_equals_available": true,
+    "transfer_equals_available_rows": [
+      {
+        "A_particles_final": 4.882812500000001e-12,
+        "available": 4.882812500000002e-12,
+        "equal": true,
+        "k1": 2.0,
+        "relative_difference": 1.6543612251060549e-16
+      },
+      {
+        "A_particles_final": 4.882812500000002e-12,
+        "available": 4.882812500000002e-12,
+        "equal": true,
+        "k1": 5.0,
+        "relative_difference": 0.0
+      },
+      {
+        "A_particles_final": 4.882812500000002e-12,
+        "available": 4.882812500000002e-12,
+        "equal": true,
+        "k1": 20.0,
+        "relative_difference": 0.0
+      },
+      {
+        "A_particles_final": 4.882812499999993e-12,
+        "available": 4.882812500000002e-12,
+        "equal": true,
+        "k1": 100.0,
+        "relative_difference": 1.81979734761666e-15
+      }
+    ],
+    "verdict": "CAP_FIRES_AND_TRANSFER_EQUALS_AVAILABLE",
+    "why_not_sign_flip": "a sign flip only occurs when the BASELINE cap fires; this construction keeps the baseline under the cap by design, so only the repaired side activates and the sign test is blind to it"
+  },
+  "donor_cap_probe": {
+    "note": "the earlier probe reported NOT REACHED; that was a detector artefact -- a sign flip only occurs when the BASELINE cap fires, so a repaired-side-only activation is invisible to it. Its negative result is not evidence about the model.",
+    "superseded_by": "tools/repro/run_p07_donor_cap_fixture.py"
+  },
+  "evidence_artifacts_tracked": {
+    "all_tracked_and_committed": true,
+    "artifacts": [
+      "tools/repro/run_p07_donor_cap_fixture.py",
+      "tools/repro/fixtures/fungi_init_cfg_small_stored_area.dat",
+      "tools/repro/analyze_p07_geometry.py",
+      "tools/repro/run_p07_geometry_fixtures.ps1",
+      "tools/repro/fixtures/fungi_init_cfg_selfconsistent.dat",
+      "tools/repro/check_sums_diagnostic.py",
+      "tools/repro/check_build_provenance.py",
+      "tools/CMake/BMX_Provenance.cmake",
+      "tools/CMake/bmx_provenance.H.in",
+      "tools/repro/run_p07_geometry_fixtures.py",
+      "tools/repro/run_c04_qualification.py"
+    ],
+    "donor_cap_fixture_includes": [
+      "k1 sweep 0.5..100",
+      "exact-equality assertion (M3)",
+      "saturation detection",
+      "conservation residual (M1/M2)"
+    ],
+    "superseded_but_retained": [
+      "tools/repro/run_p07_donor_cap_probe.ps1"
+    ]
+  },
+  "failure_handling": {
+    "classify_first_causal_failure_as": [
+      "host/infrastructure",
+      "packaging",
+      "build-system/provenance",
+      "fixture/harness",
+      "chemistry/numerical"
+    ],
+    "do_not": [
+      "edit source immediately",
+      "reinterpret the run as smoke evidence"
+    ],
+    "preserve": "the entire failed evidence package",
+    "then": "report the first causal failure and all downstream consequences, and request authorization before any change outside the approved ownership scope"
+  },
+  "findings_for_other_lanes": [
+    {
+      "detail": "bmx_chem_K.H:2084 unreachable from a single-segment initial condition",
+      "id": "D-C04-04",
+      "owner": "review"
+    },
+    {
+      "detail": "volume closure drifts during evolution: volSum() and computeParticleVolume() separate as segments grow, past the 1e-12 relative tolerance the dead assertion used. Now reported as SUMS volume_residual rather than aborting.",
+      "id": "D-C04-07",
+      "owner": "integrator (P10)"
+    },
+    {
+      "detail": "input_fungi declares slot 4 as F while the kernel names and uses it as E",
+      "id": "D-C07-01",
+      "owner": "writer (C07)"
+    },
+    {
+      "detail": "build provenance did not survive linked worktrees across platforms; repaired in 8428a5d",
+      "id": "D-C04-08",
+      "owner": "integrator - DONE",
+      "status": "REPAIRED"
+    }
+  ],
+  "fixture_design_errors_corrected": [
+    {
+      "fix": "kv=0 control: geometry never changes and refreshed area equals stored area; repair is then bit-identical",
+      "what": "stock parameters used as a no-trigger control",
+      "why_wrong": "CDEF-03/04 are area-refresh defects and the tip geometry path runs on essentially every growth step, so stock parameters trigger a reviewed predicate constantly"
+    },
+    {
+      "fix": "stock references establish a floor; a targeted fixture must exceed it",
+      "what": "treating any difference as proof the targeted branch was reached",
+      "why_wrong": "the area refresh perturbs every growth run"
+    }
+  ],
+  "fixture_summary": {
+    "controls_changed": 0,
+    "controls_unchanged": 3,
+    "fixtures": 9,
+    "targeted_branches_not_reached": 0,
+    "targeted_branches_reached": 2,
+    "targeted_indistinguishable_from_floor": 2
+  },
+  "fixtures": [
+    {
+      "differing_lines": 268,
+      "expectation": "DIFFER",
+      "hook": "AT_P07_DONOR_CAP_A",
+      "id": "F1_donor_cap_A",
+      "max_relative_difference": 1.0,
+      "verdict": "REACHED_AND_CHANGED_ABOVE_FLOOR"
+    },
+    {
+      "differing_lines": 228,
+      "expectation": "DIFFER",
+      "hook": "AT_P07_DONOR_CAP_C",
+      "id": "F2_donor_cap_C",
+      "max_relative_difference": 0.00018508840909450887,
+      "verdict": "REACHED_AND_CHANGED_ABOVE_FLOOR"
+    },
+    {
+      "differing_lines": 202,
+      "expectation": "DIFFER",
+      "hook": "AT_P07_LOCAL_AREA_REFRESH / AT_P07_STORED_AREA_BRANCHES",
+      "id": "F3_area_refresh_tip",
+      "max_relative_difference": 0.00018509126235544615,
+      "verdict": "INDISTINGUISHABLE_FROM_STOCK_AREA_REFRESH"
+    },
+    {
+      "differing_lines": 2014,
+      "expectation": "DIFFER",
+      "hook": "AT_P07_REJECTED_GROWTH_CARBON_ROLLBACK",
+      "id": "F4_rejected_growth",
+      "max_relative_difference": 0.00026137517189493855,
+      "verdict": "INDISTINGUISHABLE_FROM_STOCK_AREA_REFRESH"
+    },
+    {
+      "differing_lines": 0,
+      "expectation": "SAME",
+      "hook": "AT_P07_NO_TRIGGER_REGRESSION",
+      "id": "N1_no_growth",
+      "max_relative_difference": 0.0,
+      "verdict": "CONTROL_UNCHANGED"
+    },
+    {
+      "differing_lines": 0,
+      "expectation": "SAME",
+      "hook": "AT_P07_NO_TRIGGER_REGRESSION",
+      "id": "N2_init_only",
+      "max_relative_difference": 0.0,
+      "verdict": "CONTROL_UNCHANGED"
+    },
+    {
+      "differing_lines": 0,
+      "expectation": "SAME",
+      "hook": "AT_P07_NO_TRIGGER_REGRESSION",
+      "id": "N3_no_growth_2rank",
+      "max_relative_difference": 0.0,
+      "verdict": "CONTROL_UNCHANGED"
+    },
+    {
+      "differing_lines": 202,
+      "expectation": "DIFFER",
+      "hook": "blast-radius reference",
+      "id": "S1_stock_short",
+      "max_relative_difference": 0.00018509126235544615,
+      "verdict": "REACHED_AND_CHANGED"
+    },
+    {
+      "differing_lines": 2014,
+      "expectation": "DIFFER",
+      "hook": "blast-radius reference",
+      "id": "S2_stock_long",
+      "max_relative_difference": 0.00026137517189493855,
+      "verdict": "REACHED_AND_CHANGED"
+    }
+  ],
+  "gce_authorization": {
+    "actual_requirement_vs_cap": {
+      "estimated_cost_usd": "approximately 1-2",
+      "estimated_wall_time": "1-2 hours",
+      "note": "the authorized cap of USD 100 per account is roughly two orders of magnitude above what this run requires; recorded so the cap is not mistaken for an expected spend",
+      "vms_needed": 1,
+      "why_one": "C04 qualification is a single-node build-and-test: four ~200-object builds plus the fixture matrix. DEC-PLATFORM-001 s95 (six independent pools, MPI cannot span them) is irrelevant here because nothing in C04 is multi-node."
+    },
+    "agent_cannot_execute": {
+      "probed": {
+        "GOOGLE_APPLICATION_CREDENTIALS": "unset",
+        "docker": "ABSENT",
+        "gcloud": "ABSENT",
+        "gcloud_config_dirs": "none present",
+        "gsutil": "ABSENT",
+        "ssh": "present",
+        "terraform": "ABSENT"
+      },
+      "reason": "gcloud CLI absent, no credentials present, and authenticating would require driving a Google OAuth login with the owner's password. Entering credentials is outside what the agent may do regardless of spend authorization."
+    },
+    "granted_by": "project owner, in session",
+    "recorded_utc": "2026-07-31T17:28:40.874623+00:00",
+    "resolves": [
+      "DEC-PLATFORM-001 s105 (per-action provisioning/spend authorization)",
+      "DEC-PLATFORM-001 s100-104 (account legitimacy)"
+    ],
+    "s104_owner_statement": "accounts are legitimate paid accounts",
+    "s105_spend_cap": "up to USD 100 per account; must not be exceeded",
+    "s91_cpu_pinning_required": true,
+    "s91_note": "must set --min-cpu-platform and record machine type, CPU platform, compiler and MPI alongside the frozen commit",
+    "s98_99_note": "the cloud instance is a read-only consumer of a frozen commit; it must not write the product branch"
+  },
+  "geometry_observables": {
+    "candidate_hash_preserved": true,
+    "fixtures": {
+      "G1_tip_length_only": {
+        "area_left_stale_counts": {
+          "TIP_LENGTH_ONLY": {
+            "refreshed": 0,
+            "stale": 76
+          }
+        },
+        "geometry_json": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-p07-geometry\\G1_tip_length_only\\GEOMETRY.json",
+        "max_rel": 0.05480782749107253,
+        "observed_branch_counts": {
+          "TIP_LENGTH_ONLY": 76
+        },
+        "particles_differing": 2,
+        "predicted_branch_counts": {
+          "TIP_LENGTH_ONLY": 76
+        }
+      },
+      "G2_tip_radius_only": {
+        "area_left_stale_counts": {
+          "TIP_RADIUS_ONLY": {
+            "refreshed": 0,
+            "stale": 40
+          }
+        },
+        "geometry_json": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-p07-geometry\\G2_tip_radius_only\\GEOMETRY.json",
+        "max_rel": 0.11484406645344886,
+        "observed_branch_counts": {
+          "TIP_RADIUS_ONLY": 40
+        },
+        "particles_differing": 1,
+        "predicted_branch_counts": {
+          "TIP_RADIUS_ONLY": 40
+        }
+      },
+      "G3_tip_proportional": {
+        "area_left_stale_counts": {},
+        "geometry_json": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-p07-geometry\\G3_tip_proportional\\GEOMETRY.json",
+        "max_rel": 0.005557531993133672,
+        "observed_branch_counts": {
+          "TIP_PROPORTIONAL": 40
+        },
+        "particles_differing": 1,
+        "predicted_branch_counts": {
+          "TIP_PROPORTIONAL": 40
+        }
+      },
+      "G4_nontip_rejected": {
+        "area_left_stale_counts": {
+          "TIP_LENGTH_ONLY": {
+            "refreshed": 0,
+            "stale": 133
+          }
+        },
+        "geometry_json": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-p07-geometry\\G4_nontip_rejected\\GEOMETRY.json",
+        "max_rel": 0.9999935780521666,
+        "observed_branch_counts": {
+          "NONTIP_REJECTED": 188,
+          "TIP_LENGTH_ONLY": 133
+        },
+        "particles_differing": 12,
+        "predicted_branch_counts": {
+          "NONTIP_REJECTED": 188,
+          "TIP_LENGTH_ONLY": 133
+        }
+      },
+      "G5_nontip_radial": {
+        "area_left_stale_counts": {
+          "TIP_RADIUS_ONLY": {
+            "refreshed": 0,
+            "stale": 30
+          }
+        },
+        "geometry_json": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-p07-geometry\\G5_nontip_radial\\GEOMETRY.json",
+        "max_rel": 0.0921950312689999,
+        "observed_branch_counts": {
+          "TIP_RADIUS_ONLY": 30
+        },
+        "particles_differing": 1,
+        "predicted_branch_counts": {
+          "TIP_RADIUS_ONLY": 30
+        }
+      },
+      "G6_no_growth_stock_init": {
+        "area_left_stale_counts": {},
+        "geometry_json": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-p07-geometry\\G6_no_growth_stock_init\\GEOMETRY.json",
+        "max_rel": 2.285363621866748e-05,
+        "observed_branch_counts": {
+          "NO_GROWTH": 20
+        },
+        "particles_differing": 1,
+        "predicted_branch_counts": {
+          "TIP_LENGTH_ONLY": 20
+        }
+      },
+      "G7_no_growth_exact_init": {
+        "area_left_stale_counts": {},
+        "geometry_json": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-p07-geometry\\G7_no_growth_exact_init\\GEOMETRY.json",
+        "max_rel": 0.0,
+        "observed_branch_counts": {
+          "NO_GROWTH": 20
+        },
+        "particles_differing": 0,
+        "predicted_branch_counts": {
+          "TIP_LENGTH_ONLY": 20
+        }
+      }
+    },
+    "index": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-p07-geometry/GEOMETRY_INDEX.json",
+    "kernel_instrumented": false,
+    "method": "amr.par_ascii_int particle dumps at precision 15; branch PREDICTED from the kernel's own predicates (bmx_chem_K.H:2038-2105) and OBSERVED from exact field-change classification, required to agree",
+    "neutrality_fixture": {
+      "id": "G0_ascii_neutrality",
+      "non_timing_lines_compared": 1308,
+      "result": "IDENTICAL"
+    },
+    "tooling": [
+      "tools/repro/run_p07_geometry_fixtures.ps1",
+      "tools/repro/analyze_p07_geometry.py",
+      "tools/repro/fixtures/fungi_init_cfg_selfconsistent.dat"
+    ]
+  },
+  "handoff": {
+    "archive": "handoff/C04_REFERENCE_HOST_HANDOFF.tar.gz",
+    "bundles_committed": false,
+    "clean_extraction_verification": {
+      "checks": {
+        "clone_independent_of_worktree": ".git is a DIRECTORY",
+        "configure_passthrough_present": true,
+        "crlf_present": false,
+        "kernel_hash": "9519fc24...ffba02",
+        "manifest": "5/5 OK",
+        "provenance": "RESOLVED / ordinary checkout / clean / exact commit",
+        "qualify_refuses_on_smoke_only": "exit 1 after passing all identity checks",
+        "source_tree_clean": "YES"
+      },
+      "is_release_evidence": false,
+      "result": "PASS"
+    },
+    "defects_caught_by_this_verification": [
+      "first archive was cut before the configure_linux.sh passthrough was committed; the run would have failed at the first configure",
+      "files committed with CRLF before .gitattributes made a fresh clone report a dirty tree"
+    ],
+    "entrypoint": "bash qualify.sh <empty-workdir>",
+    "generator": "tools/repro/make_handoff.py",
+    "pinned_commit": "9941e167b3f4e0cf06f852c8b8181a77d8032610",
+    "sha256": "989190abb6c3cd2be29a4fca817ab00415f7bc24df93e1afbf3abfc7da2974cb",
+    "size_bytes": 77547010
+  },
+  "harness_defects_found_and_fixed": [
+    {
+      "bug": "k1=1e6 (~650,000x overshoot)",
+      "fix": "derived k=100 from the actual trigger condition",
+      "symptom": "stalled implicit solve; 1.4 s case ran over 10 minutes"
+    },
+    {
+      "bug": "Start-Process -ArgumentList with an array",
+      "fix": "pass a single pre-joined string",
+      "symptom": "every name=value override silently dropped; a 20-step fixture reached step 2454"
+    },
+    {
+      "bug": "function parameter named $Args",
+      "fix": "renamed to $ModelArgs",
+      "symptom": "collided with PowerShell's automatic $args; overrides dropped again; reached step 4174"
+    },
+    {
+      "bug": "timed WaitForExit without touching .Handle",
+      "fix": "cache $p.Handle before waiting",
+      "symptom": "all 14 runs reported TIMEOUT despite exiting cleanly"
+    },
+    {
+      "caught_by": "cross-checking against physics: the length-only branch predicts dadt = 2*pi*r*(rV*L/V0) = 2.160e-10; the corrected column reads 2.162e-10",
+      "cause": "the trailing numbers in the realIdx enum comments are 1-based position markers, not indices",
+      "defect": "analyze_p07_geometry.py had dadt/dvdt at realIdx 22/23 instead of 21/22",
+      "guard_added": "the parser now asserts the model's self-describing layout fields (num_reals, real_tot, first_real_inc) and rejects non-positive geometry",
+      "impact": "none on verdicts; the matrix was re-run after the fix and all verdicts were unchanged",
+      "symptom": "read dvdt as dadt and tau_split as dvdt"
+    }
+  ],
+  "harness_defects_found_on_reference_host": [
+    {
+      "classification": "fixture/harness",
+      "defect": "pristine baseline 389e9e35 has no tools/repro; build_one invoked each tree's own configure script",
+      "fixed_in": "1e0f09a216619c64fcae57a871a39ada2c4dc032",
+      "n": 1
+    },
+    {
+      "classification": "fixture/harness",
+      "defect": "pristine baseline predates D-C04-08 so it cannot report provenance, making criterion 2 unsatisfiable",
+      "fixed_in": "1e0f09a216619c64fcae57a871a39ada2c4dc032",
+      "n": 2
+    },
+    {
+      "classification": "fixture/harness",
+      "defect": "cp -a into an existing submodule placeholder nested AMReX at subprojects/amrex/amrex",
+      "fixed_in": "18549ab53dc8cdd31ed63409d126745c9d80c6e7",
+      "n": 3
+    },
+    {
+      "classification": "fixture/harness",
+      "defect": "baseline trees left the cherry-pick UNCOMMITTED, so two images reported commit 389e9e35 with a dirty worktree - resolved but NOT exact - and the driver still emitted release_evidence: true because it only checked the source tree it ran in",
+      "fixed_in": "b686981faa9dcc8505ed668b4e394fc553afd93f",
+      "n": 4,
+      "note": "this one produced a false PASS; the driver now interrogates every image directly"
+    }
+  ],
+  "host_admissibility_matrix": {
+    "additional_for_drivers": [
+      "python3"
+    ],
+    "candidates": {
+      "current_wsl1": {
+        "controlling": "DEC-PLATFORM-001 s29-31; linux_env.sh returns smoke-only for kernel 4.4.0-26100-Microsoft",
+        "verdict": "DOES NOT QUALIFY"
+      },
+      "docker_or_container_on_windows": {
+        "controlling": "not contemplated in DEC-PLATFORM-001; a container on the Docker Desktop WSL2 backend would likely self-classify reference-capable via the host kernel, which is the silent qualification the enforcement exists to prevent. Recorded as a gap in linux_env.sh.",
+        "verdict": "UNRESOLVED - owner decision"
+      },
+      "ordinary_cloud_linux_vm_gce": {
+        "controlling": "platform class qualifies via s33 'a GCE Linux instance', but s105 authorization and s100-104 account legitimacy are unsatisfied preconditions and s91 CPU pinning must be configured",
+        "verdict": "UNRESOLVED - owner decision"
+      },
+      "org_approved_hosted_linux_ci_runner": {
+        "controlling": "not named in s33; s98-99 treat cloud runners as read-only consumers of a frozen commit and s91 requires a pinned CPU platform that ephemeral runners typically cannot guarantee",
+        "verdict": "UNRESOLVED - owner decision"
+      },
+      "org_or_lab_managed_native_linux": {
+        "conditional_on": "five mandatory tools present",
+        "controlling": "DEC-PLATFORM-001 s33 'other native Linux'; linux_env.sh -> reference-capable",
+        "verdict": "QUALIFIES"
+      },
+      "wsl2": {
+        "availability_detail": "This machine is a Blade/Shadow cloud-hosted Windows VM (Win32_ComputerSystem Blade/Shadow Computer, BIOS 'Blade 1.1.3', AMD EPYC 7543P, HyperVisorPresent=True, systeminfo reports 'A hypervisor has been detected'). There is no tenant-accessible physical firmware, and WSL2 requires nested virtualization exposed by the host hypervisor - a Blade provider capability, not a user setting or an agent action.",
+        "availability_on_this_host": "UNAVAILABLE - CONCLUSIVELY TESTED",
+        "conclusive_test_2026_07_31": {
+          "components_installed": true,
+          "conclusion": "WSL2 route is CLOSED on this host.",
+          "decisive_event_log": {
+            "level": "Error",
+            "message": "Hypervisor launch failed; Either SVM not present or not enabled in BIOS.",
+            "provider": "Microsoft-Windows-Hyper-V-Hypervisor",
+            "time": "2026-07-31 10:22:32"
+          },
+          "evidence": {
+            "hns": "present, Running",
+            "hypervisorlaunchtype": "not set (defaults to Auto, so launch was attempted)",
+            "last_boot": "2026-07-31 10:22:32",
+            "reboot_performed": true,
+            "set_version_error": "Wsl/Service/CreateVm/HCS/HCS_E_HYPERV_NOT_INSTALLED",
+            "uptime_at_test": "2m20s",
+            "vmcompute": "present, Running",
+            "wsl_install_no_distribution": "completed",
+            "wsl_kernel": "6.18.33.2-2",
+            "wsl_version": "2.7.11.0"
+          },
+          "interpretation": "SVM is AMD Secure Virtual Machine (AMD-V). Every software prerequisite is present and the hypervisor attempted to launch at boot; the CPU did not offer SVM because Blade does not expose nested virtualization to the guest. Direct evidence from the hypervisor, not inference from missing components."
+        },
+        "condition": "s23-25 excludes WSL1 partly because the tree sits on DrvFs; linux_env.sh only WARNS on drvfs/9p and does not downgrade. Place the working tree on the ext4 VHD, not /mnt/c.",
+        "controlling": "explicitly named in DEC-PLATFORM-001 s33; linux_env.sh kernel test",
+        "verdict": "QUALIFIES"
+      }
+    },
+    "controlling_documents": [
+      "contracts/platform/PLATFORM_REFERENCE_DECISION.md (DEC-PLATFORM-001)",
+      "tools/repro/linux_env.sh"
+    ],
+    "correction_to_previous_packet": "The previous packet recommended WSL2 as the shortest path on the grounds that it 'needs only virtualization enabled in firmware'. That assumed physical hardware and is wrong for this environment. WSL2 remains admissible by contract but is not reachable on this host.",
+    "inadmissible_is_not_a_class": "linux_env.sh emits only reference-capable or smoke-only; inadmissibility is expressed by _require aborting under set -euo pipefail",
+    "mandatory_tools": [
+      "gcc",
+      "g++",
+      "cmake",
+      "mpicxx",
+      "mpirun"
+    ],
+    "optional_tools": [
+      "make"
+    ],
+    "preferred": [
+      "ninja (else Unix Makefiles)"
+    ],
+    "supersedes": "evidence/stages/C02/STAGE_REPORT.md section 3 (which declared Windows/MSVC/MS-MPI)"
+  },
+  "identity": {
+    "amrex_commit": "cbdc6580ee3d78cccdd37172e4ba077ee181f483",
+    "amrex_tree": "fb714dc6e693c18f7c441d1d1febe4a5e8bf9ea6",
+    "baseline_kernel_sha256": "711ae2caa6e7aabb5c084fe841d2d90edb85ee53e7abc7a859d7de00e6614678",
+    "build_images": {
+      "c03-baseline-release": {
+        "chemistry": "baseline",
+        "diagnostic": false,
+        "sha256": "e2effe2c375890d70cc28c40ab038ef00cc3e86cf384e25f1683f164918a9b9a"
+      },
+      "c04-baseline-diag-release": {
+        "chemistry": "baseline",
+        "diagnostic": true,
+        "sha256": "1e55ee7892c6ee7707c642dd09dd81ebda21352bdfbf1e24153144ae2a0fdd35"
+      },
+      "c04-diag-release": {
+        "chemistry": "repaired",
+        "diagnostic": true,
+        "sha256": "bc133b41820aa94c10eb181662c614a11b6e76867f478216e82b1f81aa6de93a"
+      },
+      "c04-p07-release": {
+        "chemistry": "repaired",
+        "diagnostic": false,
+        "sha256": "64b9aaccd6a97599e8bb0df17640018e89533ed7627e947800ae33b0426bef7c"
+      }
+    },
+    "canonical_baseline_commit": "389e9e35a1c7291a4af795b2e39f2db1f0012b61",
+    "canonical_baseline_tree": "1c73deedf0eb2feea833a7fddbc431ae9754d977",
+    "diagnostic_repair_commit": "5481856f46ba4bd2432dd21800fe9dbec8d10a15",
+    "final_chemistry_candidate_commit": "adb427331e180cd0b4faa74a4ab2098381b2eabb",
+    "provenance_repair_commit": "8428a5d354025f2a222deae287679bf2e89a4a9b",
+    "reviewed_candidate_kernel_sha256": "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02"
+  },
+  "images": {
+    "c03-baseline-release": {
+      "chemistry": "baseline",
+      "diagnostic": false,
+      "sha256": "e2effe2c375890d70cc28c40ab038ef00cc3e86cf384e25f1683f164918a9b9a"
+    },
+    "c04-baseline-diag-release": {
+      "chemistry": "baseline",
+      "diagnostic": true,
+      "sha256": "1e55ee7892c6ee7707c642dd09dd81ebda21352bdfbf1e24153144ae2a0fdd35"
+    },
+    "c04-diag-release": {
+      "chemistry": "repaired",
+      "diagnostic": true,
+      "sha256": "bc133b41820aa94c10eb181662c614a11b6e76867f478216e82b1f81aa6de93a"
+    },
+    "c04-p07-release": {
+      "chemistry": "repaired",
+      "diagnostic": false,
+      "sha256": "64b9aaccd6a97599e8bb0df17640018e89533ed7627e947800ae33b0426bef7c"
+    }
+  },
+  "independent_byte_checks": {
+    "exposure_formulas_reuse_existing_rule_at_lines": [
+      2055,
+      2058
+    ],
+    "new_numeric_literals_introduced": 0,
+    "p_lines_byte_identical": true,
+    "p_related_lines_baseline": 91,
+    "p_related_lines_candidate": 91,
+    "shared_stored_area_writes_unchanged": 4
+  },
+  "input_git_commit": "4332f206c03b187a5574c2e9cabc5329a915b6ea",
+  "linux_portability_smoke": {
+    "build": "200/200 objects compiled and linked",
+    "compiler": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+    "cross_platform_agreement": {
+      "G1_length_only_and_area_stale": {
+        "identical": true,
+        "linux": [
+          76,
+          76
+        ],
+        "windows": [
+          76,
+          76
+        ]
+      },
+      "G1_max_rel": {
+        "identical": true,
+        "linux": "5.480783e-02",
+        "windows": "5.480783e-02"
+      },
+      "G4_max_rel": {
+        "identical": true,
+        "linux": "9.999936e-01",
+        "windows": "9.999936e-01"
+      },
+      "G4_rejected_and_length_only": {
+        "identical": true,
+        "linux": [
+          188,
+          133
+        ],
+        "windows": [
+          188,
+          133
+        ]
+      },
+      "conservation_max_relative_residual": {
+        "identical": true,
+        "linux": "4.822e-11",
+        "windows": "4.822e-11"
+      },
+      "diagnostic_regression_guard": {
+        "identical": true,
+        "linux": "5/5 PASS",
+        "windows": "5/5 PASS"
+      },
+      "donor_cap_A_particles_final_k1_5": {
+        "identical": true,
+        "linux": "4.882812500000002e-12",
+        "windows": "4.882812500000002e-12"
+      },
+      "donor_cap_relative_difference": {
+        "identical": true,
+        "linux": 0.0,
+        "windows": 0.0
+      },
+      "only_difference": "rejected-species abort exit code (Windows 22, Linux 6) -- platform convention",
+      "saturation_plateau": {
+        "identical": true,
+        "linux": "4.871033e-12",
+        "windows": "4.871033e-12"
+      }
+    },
+    "evidence": "evidence/stages/C04/LINUX_SMOKE.md",
+    "images": {
+      "baseline_plus_diagnostic": "9cbbcef72891bc1d83fd111ebd9be10b553670f2226005d6e892d02bc3ef75c7",
+      "repaired_plus_diagnostic": "af1964856ce49a3449a1f9e3d6c9e28ddad305cacfe4df960b6ac54fd696e3a9"
+    },
+    "is_release_evidence": false,
+    "platform": "WSL1 / Ubuntu 24.04.1 LTS / kernel 4.4.0-26100-Microsoft / working tree on drvfs",
+    "platform_class": "smoke-only",
+    "why_not_reference_capable": "WSL1 is a syscall translation layer, not a Linux kernel; C02 policy in tools/repro/linux_env.sh forbids it as release evidence. WSL2 cannot start because virtualization is disabled in firmware, which an agent must not change.",
+    "windows_workarounds_needed_on_linux": "none of D-C02-01..05; D-C02-06 persists (source-tree issue)"
+  },
+  "mandatory_validation": {
+    "capped_transfer_equals_available_amount": "PASS",
+    "clean_build_and_runtime": "PASS",
+    "donors_never_materially_negative": "PASS",
+    "no_trigger_controls_unchanged": "PASS",
+    "rejected_growth_restores_geometry_and_B": "PASS",
+    "second_half_uses_accepted_post_growth_area": "PASS",
+    "static_suite_passes": "PASS"
+  },
+  "near_miss": "the first complete matrix reported TIMEOUT on all 14 executions, which would have supported the false conclusion that the branch-forcing parameters are numerically intractable; the harness now asserts that a max_step override actually took effect and throws otherwise",
+  "next_prompt": "C04 is complete and reference-qualified. C05 is the next stage in PROMPT_INDEX order; C07 remains gated on its own prerequisites. Neither has been started.",
+  "output_git_commit": "3f6031deb8fc35f911e37b74aa81e1c38fa490a8",
+  "pass_criteria": [
+    "host classification reference-capable under DEC-PLATFORM-001",
+    "provenance resolved and exact for all four independently built images",
+    "all qualification checks pass",
+    "release_evidence is exactly true",
+    "RT-1 passes with its own evidence references",
+    "RT-2 passes with its own evidence references",
+    "mandatory donor-cap equality row passes",
+    "corrected residual definitions M1/M2/M3 intact",
+    "geometry fixtures pass including G0 observation-neutrality",
+    "provenance regression fixtures pass including fail-closed",
+    "trajectory-neutrality checks pass with correct comparison semantics",
+    "no unexplained deviations or image reuse remain",
+    "chemistry candidate bytes unchanged"
+  ],
+  "pass_criteria_audit": [
+    {
+      "criterion": "host classification reference-capable",
+      "evidence": "linux_env.sh -> reference-capable; kernel 6.17.0-1021-gcp, ext4",
+      "n": 1,
+      "result": "PASS"
+    },
+    {
+      "criterion": "provenance resolved and exact for all four images",
+      "evidence": "per_image_provenance_resolved_and_exact; four clean trees, exact commits",
+      "n": 2,
+      "result": "PASS"
+    },
+    {
+      "criterion": "all qualification checks pass",
+      "evidence": "9/9",
+      "n": 3,
+      "result": "PASS"
+    },
+    {
+      "criterion": "release_evidence exactly true",
+      "evidence": "QUALIFICATION_REFERENCE.json release_evidence=true, not_release_evidence_because=[]",
+      "n": 4,
+      "result": "PASS"
+    },
+    {
+      "criterion": "RT-1 with own evidence",
+      "evidence": "see RT-1",
+      "n": 5,
+      "result": "PASS"
+    },
+    {
+      "criterion": "RT-2 with own evidence",
+      "evidence": "see RT-2",
+      "n": 6,
+      "result": "PASS"
+    },
+    {
+      "criterion": "mandatory donor-cap equality row",
+      "evidence": "A_particles_final == fA0*V_cell; rel 0.00e+00 at k1=5 and k1=20",
+      "n": 7,
+      "result": "PASS"
+    },
+    {
+      "criterion": "corrected residual definitions M1/M2/M3 intact",
+      "evidence": "M2 max relative closure residual 4.822133e-11; M3 rows present",
+      "n": 8,
+      "result": "PASS"
+    },
+    {
+      "criterion": "geometry fixtures pass incl. G0 neutrality",
+      "evidence": "7 fixtures, failing=0, neutrality PASS over 1348 lines",
+      "n": 9,
+      "result": "PASS"
+    },
+    {
+      "criterion": "provenance regression fixtures incl. fail-closed",
+      "evidence": "7/7",
+      "n": 10,
+      "result": "PASS"
+    },
+    {
+      "criterion": "trajectory-neutrality with correct comparison semantics",
+      "evidence": "G0 textually identical line-for-line; diagnostic on/off identical",
+      "n": 11,
+      "result": "PASS"
+    },
+    {
+      "criterion": "no unexplained deviations or image reuse",
+      "evidence": "four distinct binary hashes from four independent configure+build records; the WSL1 image-reuse deviation is eliminated",
+      "n": 12,
+      "result": "PASS"
+    },
+    {
+      "criterion": "chemistry candidate bytes unchanged",
+      "evidence": "candidate images 9519fc24..ffba02; baseline images 711ae2ca..614678",
+      "n": 13,
+      "result": "PASS"
+    }
+  ],
+  "patch": {
+    "baseline_sha256": "711ae2caa6e7aabb5c084fe841d2d90edb85ee53e7abc7a859d7de00e6614678",
+    "candidate_hash_matches_reviewed": true,
+    "candidate_sha256": "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02",
+    "deletions": 9,
+    "file": "src/chemistry/bmx_chem_K.H",
+    "files_changed": 1,
+    "insertions": 24,
+    "patch_sha256": "9dabe5c1b92b01fb99ceb8d1953b982c6a311930efa9f8b2bfc21673832eedc4"
+  },
+  "patch_commit": "adb427331e180cd0b4faa74a4ab2098381b2eabb",
+  "provenance_repair": {
+    "after": {
+      "linux": "48375fc42b36d238241656796ae4e7938a42ff21 (translated across platforms)",
+      "windows": "48375fc42b36d238241656796ae4e7938a42ff21"
+    },
+    "before": {
+      "linux": "empty",
+      "windows": "AMReX hash only"
+    },
+    "behavioural_change_to_model": "none",
+    "commit": "8428a5d354025f2a222deae287679bf2e89a4a9b",
+    "defects_fixed": [
+      "get_git_info() invoked with no arguments captured nothing into any variable on any platform",
+      "linked-worktree .git is a FILE with an absolute gitdir in the creating platform's syntax",
+      "writeBuildInfo() skipped the line when empty, so no-provenance looked like not-printed"
+    ],
+    "fail_closed_option": "BMX_REQUIRE_PROVENANCE (default OFF)",
+    "finding": "D-C04-08",
+    "known_limitation": "AMReX's own HASH1 remains empty on Linux; that code is inside the pinned submodule and is deliberately not modified. BMX provenance is authoritative.",
+    "owner": "integrator",
+    "regression_fixture": {
+      "checks": [
+        {
+          "check": "live_worktree_resolves",
+          "detail": "status=RESOLVED commit=48375fc42b36 dirty=dirty note=linked worktree, absolute gitdir",
+          "status": "PASS"
+        },
+        {
+          "check": "ordinary_checkout_directory",
+          "detail": "expected RESOLVED, got RESOLVED, commit=9dd6d56f0641",
+          "status": "PASS"
+        },
+        {
+          "check": "worktree_relative_pointer",
+          "detail": "expected RESOLVED, got RESOLVED, commit=48375fc42b36, matches live worktree=True",
+          "status": "PASS"
+        },
+        {
+          "check": "worktree_foreign_absolute_pointer",
+          "detail": "expected RESOLVED, got RESOLVED, commit=48375fc42b36, matches live worktree=True",
+          "status": "PASS"
+        },
+        {
+          "check": "worktree_unresolvable_pointer",
+          "detail": "expected UNAVAILABLE, got UNAVAILABLE, note=gitdir 'Q:/definitely/not/here/.git/worktrees/nope' does not exist on this host",
+          "status": "PASS"
+        },
+        {
+          "check": "not_a_repository",
+          "detail": "expected UNAVAILABLE, got UNAVAILABLE, note=no .git entry at C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-provenance-c",
+          "status": "PASS"
+        },
+        {
+          "check": "fail_closed_when_provenance_required",
+          "detail": "REQUIRE=OFF exit=0 (must be 0), REQUIRE=ON exit=1 (must be non-zero)",
+          "status": "PASS"
+        }
+      ],
+      "linux": "7/7 PASS",
+      "path": "tools/repro/check_build_provenance.py",
+      "windows": "7/7 PASS"
+    },
+    "root_cause_detail": "CMake IS_ABSOLUTE uses HOST syntax, so on Linux it reports FALSE for 'C:/Users/...' and the pointer was joined onto the source dir, producing '<src>/C:/Users/...'"
+  },
+  "qualification_sequence": {
+    "driver": "tools/repro/run_c04_qualification.py",
+    "geometry_driver_port": {
+      "equivalence": "both run on Windows; identical verdicts and max_rel agreeing to within 1e-15 on all 7 fixtures",
+      "from": "run_p07_geometry_fixtures.ps1",
+      "reason": "PowerShell-only driver prevented the sequence from running end-to-end on Linux (RT-1)",
+      "to": "run_p07_geometry_fixtures.py"
+    },
+    "linux_deviation_disclosed": "the Linux run reused the two instrumented images for all four image slots with bmx.print_sums defaulting OFF for the non-instrumented roles; behaviourally sound but not the same artefact layout as Windows. A reference-host qualification must build all four.",
+    "platform_gate": "release_evidence is emitted only when platform class is reference-capable AND provenance resolved AND every check passed; there is no override flag",
+    "remaining_for_RT1": "on a C02-compliant reference Linux host, configure all four images with -DBMX_REQUIRE_PROVENANCE=ON and run the driver; that closes RT-2 in the same pass",
+    "runs": {
+      "linux": {
+        "checks_passed": 8,
+        "checks_total": 8,
+        "evidence": "evidence/stages/C04/QUALIFICATION_LINUX.json",
+        "not_release_evidence_because": [
+          "platform class is 'smoke-only', not 'reference-capable' (RT-1 unsatisfied)"
+        ],
+        "platform_class": "smoke-only",
+        "release_evidence": false
+      },
+      "windows": {
+        "checks_passed": 8,
+        "checks_total": 8,
+        "evidence": "evidence/stages/C04/QUALIFICATION_WINDOWS.json",
+        "not_release_evidence_because": [
+          "platform class is 'windows-development', not 'reference-capable' (RT-1 unsatisfied)"
+        ],
+        "platform_class": "windows-development",
+        "release_evidence": false
+      }
+    },
+    "steps": [
+      "identity",
+      "build",
+      "geometry",
+      "diagnostic",
+      "donor_cap",
+      "provenance"
+    ]
+  },
+  "reference_host_routes_remaining": [
+    {
+      "authorization_needed": "none beyond access",
+      "blocker": "user must provide one",
+      "route": "organization/lab-managed native Linux host",
+      "status": "QUALIFIES"
+    },
+    {
+      "blocker": "DEC-PLATFORM-001 s105 explicit per-action spend authorization and s100-104 account legitimacy confirmation",
+      "note": "DEC-PLATFORM-001 s63-67 records that the owner has GCE capacity and that it is only usable for claim-bearing runs if Linux is the reference platform",
+      "route": "GCE Linux instance",
+      "status": "UNRESOLVED - owner decision"
+    },
+    {
+      "blocker": "Hyper-V hypervisor launch failed at boot: 'Either SVM not present or not enabled in BIOS'. All software components installed; nested virtualization is not exposed by Blade.",
+      "route": "WSL2 on this machine",
+      "status": "CLOSED - conclusively tested"
+    },
+    {
+      "blocker": "provider capability; outside the project and not an agent action",
+      "route": "ask Blade/Shadow to enable nested virtualization",
+      "status": "UNRESOLVED - provider question"
+    }
+  ],
+  "reference_host_run": {
+    "all_configured_with": "-DBMX_REQUIRE_PROVENANCE=ON",
+    "authorization": "owner, DEC-PLATFORM-001 s104 + s105; cap USD 100/account",
+    "checks_passed": "9/9",
+    "estimated_cost_usd": "under 2",
+    "evidence_root": "evidence/stages/C04/reference/",
+    "executed_utc": "2026-08-01T02:19:10Z",
+    "four_independent_builds": true,
+    "host": {
+      "account": "redacted@example.invalid",
+      "arch": "x86_64",
+      "classification_source": "tools/repro/linux_env.sh",
+      "distro": "Ubuntu 24.04.4 LTS",
+      "filesystem": "ext4",
+      "instance": "bmx-c04-qual",
+      "kernel": "6.17.0-1021-gcp",
+      "machine_type": "n2-standard-8",
+      "min_cpu_platform": "Intel Cascade Lake",
+      "nproc": 8,
+      "platform_class": "reference-capable",
+      "project": "project-a4ddb38c-cbe3-43a7-8d0",
+      "provider": "Google Compute Engine",
+      "s91_cpu_pinning_satisfied": true,
+      "zone": "us-west1-b"
+    },
+    "image_reuse": "none - four distinct binaries from four independent configure+build records",
+    "images": {
+      "c03-baseline-release": {
+        "chemistry": "711ae2caa6e7aabb5c084fe841d2d90edb85ee53e7abc7a859d7de00e6614678",
+        "commit": "7743106d8e1c1f9ae845afc198d920ac513042ff",
+        "sha256": "e74b4377e266f8966e3f979f0dfde9b8e6458f595effa7f0e6d2929b053909af",
+        "worktree": "clean"
+      },
+      "c04-baseline-diag-release": {
+        "chemistry": "711ae2caa6e7aabb5c084fe841d2d90edb85ee53e7abc7a859d7de00e6614678",
+        "commit": "7743106d8e1c1f9ae845afc198d920ac513042ff",
+        "sha256": "320bb021dae13a075527b302bc7f9cefbda6035e395e10d71384bb1de07e3d88",
+        "worktree": "clean"
+      },
+      "c04-diag-release": {
+        "chemistry": "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02",
+        "commit": "b686981faa9dcc8505ed668b4e394fc553afd93f",
+        "sha256": "661766e9283018f01cfc6205378192bd4743d3385540f975017630c0523ee2c4",
+        "worktree": "clean"
+      },
+      "c04-p07-release": {
+        "chemistry": "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02",
+        "commit": "b686981faa9dcc8505ed668b4e394fc553afd93f",
+        "sha256": "d2655f1e8a2136b98a2d6531914d646c25da4388027cbc22596111dfe5cf90d2",
+        "worktree": "clean"
+      }
+    },
+    "instance_deleted": true,
+    "release_evidence": true,
+    "residual_cloud_resources": "none (0 instances, 0 disks)",
+    "toolchain": {
+      "cmake": "3.28.3",
+      "g++": "13.3.0",
+      "gcc": "13.3.0",
+      "git": "2.43.0",
+      "mpi": "Open MPI 4.1.6",
+      "ninja": "1.11.1",
+      "python3": "3.12.3"
+    }
+  },
+  "reissue_commit": "9e1cfb17ccee7e7796f74d3e4a04a5ea66d50e05",
+  "reissued_at": "2026-07-31T15:41:18.223152+00:00",
+  "release_status": {
+    "formal_p05_p18_acceptance": false,
+    "label": "RESEARCH-USE-CANDIDATE \u2014 RG-SW INCOMPLETE",
+    "rg_sci": "NO-GO",
+    "rg_sw": "INCOMPLETE"
+  },
+  "release_transition_note": "RT-1 and RT-2 were exercised in one execution but carry separate verdicts and separate evidence pointers, as required.",
+  "release_transition_requirements": [
+    {
+      "evidence": [
+        "evidence/stages/C04/reference/QUALIFICATION_REFERENCE.json",
+        "evidence/stages/C04/reference/logs/environment.txt",
+        "evidence/stages/C04/reference/GEOMETRY_REFERENCE.json",
+        "evidence/stages/C04/reference/DONOR_CAP_REFERENCE.json"
+      ],
+      "id": "RT-1",
+      "owner": "user (host provisioning) / writer (execution)",
+      "requirement": "reference-platform qualification per DEC-PLATFORM-001",
+      "state": "PASS",
+      "verdict_basis": "linux_env.sh classified the host reference-capable: native Linux, Ubuntu 24.04.4 LTS, kernel 6.17.0-1021-gcp, ext4 rootfs, no microsoft marker. The complete qualification sequence ran there and emitted release_evidence: true."
+    },
+    {
+      "evidence": [
+        "evidence/stages/C04/reference/PROVENANCE_REFERENCE.json",
+        "evidence/stages/C04/reference/logs/c03-baseline-release.provenance.log",
+        "evidence/stages/C04/reference/logs/c04-p07-release.provenance.log",
+        "evidence/stages/C04/reference/logs/c04-baseline-diag-release.provenance.log",
+        "evidence/stages/C04/reference/logs/c04-diag-release.provenance.log",
+        "evidence/stages/C04/reference/logs/failclosed.log"
+      ],
+      "id": "RT-2",
+      "owner": "integrator",
+      "requirement": "build provenance recorded, failing closed when unavailable",
+      "state": "PASS",
+      "verdict_basis": "all four independently built images report RESOLVED provenance with a 40-character commit on a CLEAN worktree; every image was configured with -DBMX_REQUIRE_PROVENANCE=ON; the fail-closed negative test aborted configuration as required; the provenance regression fixture passed 7/7 on the reference host."
+    }
+  ],
+  "reviewed_candidate_kernel_sha256": "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02",
+  "separation_of_concerns": {
+    "instrumentation": {
+      "behavioural_change_to_model": "none",
+      "commit": "5481856f46ba4bd2432dd21800fe9dbec8d10a15",
+      "files": [
+        "src/bmx.cpp",
+        "src/bmx.H",
+        "src/setup/bmx_init.cpp"
+      ],
+      "finding": "D-C04-05",
+      "gate": "bmx.print_sums (default off)",
+      "owner": "integrator"
+    },
+    "reviewed_chemistry_candidate": {
+      "commit": "adb427331e180cd0b4faa74a4ab2098381b2eabb",
+      "file": "src/chemistry/bmx_chem_K.H",
+      "sha256": "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02",
+      "unchanged_by_instrumentation": true
+    }
+  },
+  "stage_id": "C04",
+  "stage_identifier_reconciliation": {
+    "D-C04-05": {
+      "commit": "5481856f46ba4bd2432dd21800fe9dbec8d10a15",
+      "files": [
+        "src/bmx.cpp",
+        "src/bmx.H",
+        "src/setup/bmx_init.cpp",
+        "tools/repro/check_sums_diagnostic.py"
+      ],
+      "work": "conservation/fluid diagnostic bmx::ComputeAndPrintSums"
+    },
+    "D-C04-08": {
+      "commit": "8428a5d354025f2a222deae287679bf2e89a4a9b",
+      "files": [
+        "CMakeLists.txt",
+        "src/CMakeLists.txt",
+        "src/io/bmx_build_info.cpp",
+        "tools/CMake/BMX_Provenance.cmake",
+        "tools/CMake/bmx_provenance.H.in",
+        "tools/repro/check_build_provenance.py"
+      ],
+      "work": "build provenance for linked worktrees across platforms"
+    },
+    "answer": "No. They are two distinct work items; no renumbering occurred.",
+    "both_integrator_owned": true,
+    "either_touches_chemistry": false,
+    "file_overlap": "zero (verified by comm -12 over both commits' file lists)",
+    "question": "was D-C04-05 renumbered to D-C04-08?"
+  },
+  "started_at": "2026-07-30",
+  "static_suite": {
+    "hashes_verified_before_execution": true,
+    "passed": 6,
+    "test_sha256": "25945b64695553d19dcad65b17eeaf6fd5fc5d9a4606daae03ab501ce11e2f52",
+    "tests": 6
+  },
+  "status": "PASS",
+  "status_qualifier": "C04 gate met AND reference-platform qualified. The complete qualification sequence was executed on a C02-compliant reference-capable host (GCE n2-standard-8, native Linux, kernel 6.17.0-1021-gcp, ext4) with release_evidence: true. RT-1 and RT-2 both satisfied. C05 and C07 are no longer blocked by B-PLATFORM-01.",
+  "unmet_hooks": [
+    {
+      "fixture": "F3_area_refresh_tip",
+      "hook": "AT_P07_LOCAL_AREA_REFRESH / AT_P07_STORED_AREA_BRANCHES",
+      "why": "difference signature (202 lines, max_rel 1.851e-04) is identical to the stock reference S1_stock_short, so it is fully explained by the area-refresh repair that stock parameters already trigger; this fixture does NOT demonstrate that its own targeted branch was reached"
+    },
+    {
+      "fixture": "F4_rejected_growth",
+      "hook": "AT_P07_REJECTED_GROWTH_CARBON_ROLLBACK",
+      "why": "difference signature (2014 lines, max_rel 2.614e-04) is identical to the stock reference S2_stock_long, so it is fully explained by the area-refresh repair that stock parameters already trigger; this fixture does NOT demonstrate that its own targeted branch was reached"
+    }
+  ],
+  "why_not_pass": null
+}

@@ -1,0 +1,88 @@
+{
+  "artifact_type": "C09_FEATURE_OFF_SEMANTIC_TEST",
+  "c08_executable": {
+    "path": "C:\\b\\BMX-shadow-handoff-20260721\\build-c08-reference-a33\\bmx.exe",
+    "sha256": "5c0d593945adc983846a6b24b82764a8aaf302d9a60e69af0afe1e42ebbfa1fc"
+  },
+  "c08_reference_source": {
+    "clean": true,
+    "commit": "a33e37749450432fb15c1021fc554a26f4e3fc7d",
+    "path": "C:\\b\\BMX-shadow-handoff-20260721\\c08-reference-a33",
+    "tree": "333613990076476707f7e8aa82b1119e2d9a3f58"
+  },
+  "c09_executable": {
+    "path": "C:\\b\\BMX-shadow-handoff-20260721\\build-c09-native-release-definitive\\bmx.exe",
+    "sha256": "33a191e180288783a0e9fc5f7ca25ac08e298b43e68fa37f0414e5b19c37b996"
+  },
+  "claim_boundary": "Windows CPU engineering feature-off regression at 15-digit AMReX particle-output precision; not bitwise executable identity or release host evidence.",
+  "fixtures": [
+    {
+      "c08_exit": 0,
+      "c09_exit": 0,
+      "checks": {
+        "both_exits_zero": true,
+        "both_particle_layouts_are_8": true,
+        "c08_reserved_slots_exact_zero": true,
+        "c09_reserved_slots_exact_zero": true,
+        "semantic_trajectory_identical": true,
+        "split_exercised_when_required": true,
+        "target_branch_exercised": true
+      },
+      "engineering_overrides": [
+        "bmx.max_step=40"
+      ],
+      "id": "G1_tip_length_only",
+      "split_or_new_particle_events": 2,
+      "status": "PASS",
+      "target_branch": "TIP_LENGTH_ONLY",
+      "target_branch_count": 76,
+      "trajectory": {
+        "c09_dumps": 41,
+        "differing_values": 0,
+        "dumps_compared": 41,
+        "fields_differing": [],
+        "first_difference": null,
+        "identical": true,
+        "particle_records_compared": 79,
+        "reference_dumps": 41
+      }
+    },
+    {
+      "c08_exit": 0,
+      "c09_exit": 0,
+      "checks": {
+        "both_exits_zero": true,
+        "both_particle_layouts_are_8": true,
+        "c08_reserved_slots_exact_zero": true,
+        "c09_reserved_slots_exact_zero": true,
+        "semantic_trajectory_identical": true,
+        "split_exercised_when_required": true,
+        "target_branch_exercised": true
+      },
+      "engineering_overrides": [
+        "bmx.max_step=30",
+        "chem_species.max_seg_length=6.0e-4",
+        "chem_species.seg_split_length=3.0e-4"
+      ],
+      "id": "G4_nontip_rejected",
+      "split_or_new_particle_events": 19,
+      "status": "PASS",
+      "target_branch": "NONTIP_REJECTED",
+      "target_branch_count": 188,
+      "trajectory": {
+        "c09_dumps": 31,
+        "differing_values": 0,
+        "dumps_compared": 31,
+        "fields_differing": [],
+        "first_difference": null,
+        "identical": true,
+        "particle_records_compared": 341,
+        "reference_dumps": 31
+      }
+    }
+  ],
+  "method": "Exact comparison of every G1/G4 particle dump between the qualified C08 source and C09 with p11_geometry absent/default-off, covering growth, split, topology, geometry, all six legacy chemistry values, and both reserved slots in all three particle blocks.",
+  "particle_ascii_precision_digits": 15,
+  "stage": "C09/P11",
+  "status": "PASS"
+}

@@ -1,0 +1,1173 @@
+# Recommended BMX phosphorus decision contract
+
+The answers below are the decisions I recommend adopting for the bounded, exploratory, uncalibrated v1 model. They are sufficiently explicit for implementation and preregistration, but they do **not** constitute prior mentor approval: the proposal packet itself states that its recommendations remain unapproved until reviewed. 
+
+## Decision summary
+
+| Topic                     | Recommended decision                                                                                 |
+| ------------------------- | ---------------------------------------------------------------------------------------------------- |
+| P10 deletion/removal      | Prohibited in v1; any unmapped destruction hard-aborts before state disappears                       |
+| P10 orphan bonds          | Deterministically remap to valid successors; unresolved or material-bearing orphan hard-aborts       |
+| P10 simultaneous topology | Exactly-once snapshot rule for disjoint events; overlapping/conflicting events hard-abort atomically |
+| Out-of-domain particles   | No removal; hard-wall projection/sliding, with abort on an unresolved escaped state                  |
+| D uptake                  | Inward-only, area-scaled uptake with (k_{u,D}) in cm/s                                               |
+| (k_{\mathrm{export}})     | First-order on local D **amount**; units s(^{-1})                                                    |
+| Central P setting         | (q_P=3\times10^{-5}\ \mathrm{mol/cm^3}), (k_{gP}/k_{gB}=1)                                           |
+| Interpretation of centre  | Engineering comparison coordinate only; never a biological baseline                                  |
+| P12                       | Fixed 48 h deterministic experiment; canonical run plus exact clean rerun                            |
+| P14 recipient             | External receipt ledger only; no explicit host state in v1                                           |
+| P15                       | Staged OFAT plus targeted reduced-factorial crosses                                                  |
+| P16                       | Actual classification remains blocked on the external strategy author's frozen C-only contract                             |
+| Divider                   | Hard nonpenetration on solid portions; aperture remains mechanically open                            |
+| Outer x/z boundaries      | Mesh-P no-flux; particles hard, tangentially sliding                                                 |
+| Validation data           | Candidate external quantitative data exist, but no accepted frozen BMX holdout yet                   |
+| RG-SCI                    | Remains `NO-GO` until calibration and independently held-out validation are completed                |
+
+---
+
+# 1. P10 topology-transfer semantics
+
+## 1.1 Governing invariant
+
+A topology operation is **not** a phosphorus source or sink. Every pre-event mole of D, E, and F must have exactly one of these outcomes before the original owner disappears:
+
+1. It is assigned exactly once to a live successor particle.
+2. It is credited exactly once to an already-approved cumulative destination such as `structural_p` or `exported_p`.
+3. The update hard-aborts before any state is destroyed.
+
+For v1, `other_exit_d`, `other_exit_e`, `other_exit_f`, and `other_exit_events` should remain zero. No lysis, absorbing boundary, unexplained cleanup loss, or generic particle-death pathway is authorized.
+
+## 1.2 Exact event rules
+
+| Event                                                            | Classification                | Required behavior                                                                                                         | Reason code                                | Conservation destination                      |
+| ---------------------------------------------------------------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ | --------------------------------------------- |
+| Parent disappears because of split                               | Permitted topology transfer   | Capture D/E/F amounts before the split; partition each amount by resulting child volume; commit once                      | `P10_SPLIT_PARENT_REPLACED`                | Successor-child internal D/E/F                |
+| Predecessor disappears because of an approved fusion/replacement | Permitted topology transfer   | Add participating amounts before recomputing concentrations in the unique successor                                       | `P10_FUSION_PREDECESSOR_REPLACED`          | Successor internal D/E/F                      |
+| Raw particle deletion without a complete successor map           | Prohibited; hard abort        | Abort before marking, deleting, compacting, or redistributing the particle                                                | `P10_ABORT_UNMAPPED_PARTICLE_DELETION`     | None; no ledger mutation                      |
+| Out-of-domain particle removal                                   | Prohibited; hard abort        | Do not delete it. Apply the boundary rule; if a valid in-domain state cannot be constructed, abort                        | `P10_ABORT_OUT_OF_DOMAIN_PARTICLE`         | None; no ledger mutation                      |
+| Bond endpoint replaced by topology                               | Permitted remap               | Resolve each old endpoint through the frozen predecessor-to-successor map                                                 | `P10_BOND_ENDPOINT_REMAPPED`               | No P transfer; bond is not an inventory owner |
+| Redundant zero-state self-loop or duplicate bond after remapping | Permitted zero-amount cleanup | Canonically prune the redundant relationship                                                                              | `P10_ZERO_STATE_BOND_PRUNED`               | `NONE_ZERO_AMOUNT`                            |
+| Bond has no unique live successor endpoint                       | Hard abort                    | Abort the entire topology stage before cleanup                                                                            | `P10_ABORT_ORPHAN_BOND_NO_SUCCESSOR`       | None                                          |
+| Orphaned bond has nonzero pending material/transfer state        | Hard abort                    | Abort; do not export or assign the amount arbitrarily                                                                     | `P10_ABORT_ORPHAN_BOND_PENDING_MATERIAL`   | None                                          |
+| Disjoint simultaneous topology events                            | Permitted exactly-once batch  | Evaluate from one pre-event snapshot; each predecessor participates in at most one event and each amount is assigned once | `P10_SIMULTANEOUS_DISJOINT_BATCH`          | Corresponding successors                      |
+| Simultaneous events share a particle, bond, or destination       | Rejected; hard abort          | Reject the entire batch before any topology mutation                                                                      | `P10_ABORT_SIMULTANEOUS_TOPOLOGY_CONFLICT` | None                                          |
+
+## 1.3 Simultaneous-event ownership rule
+
+Use an **exactly-once multi-event rule**, not outcome-dependent serialization:
+
+1. Capture a single immutable pre-topology snapshot.
+2. Generate a canonical event key such as:
+
+```text
+(event_type, minimum_global_particle_id, maximum_global_particle_id, target_id)
+```
+
+3. Build a conflict graph in which events are connected when they share a particle, bond, or proposed successor.
+4. Events in singleton/disjoint components may be executed in canonical order for byte-level determinism, but their scientific semantics remain snapshot-based.
+5. Any connected component containing more than one competing event causes an atomic hard abort of the complete topology stage.
+6. No partial subset may commit before conflict detection finishes.
+
+This avoids both duplicate ownership and arbitrary order-dependent biology.
+
+## 1.4 Orphaned-bond material
+
+**Material attached to an orphaned bond does not leave the system and is not transferred to a convenient neighboring particle.**
+
+The v1 representation should treat D/E/F as particle-owned, not bond-owned. Any bond-local quantity used during transport must be fully committed or zero before topology cleanup begins. Therefore:
+
+* A topological bond relationship may be remapped or pruned.
+* A bond may not carry persistent unaccounted P.
+* Detection of nonzero bond-local material during orphan cleanup is a hard failure.
+* No `other_exit_*` ledger is credited.
+
+## 1.5 Required event record before disappearance
+
+Every permitted predecessor replacement must write, before destruction:
+
+```text
+event_id
+global_step
+simulation_time
+reason_code
+event_type
+ordered_predecessor_ids
+ordered_successor_ids
+predecessor_D/E/F_amounts
+successor_D/E/F_amounts
+ledger_destination
+effective_configuration_hash
+pre_topology_hash
+post_topology_hash
+local_conservation_residual
+MPI_owner_before
+MPI_owner_after
+```
+
+The event record and material transfer must be one atomic transaction. A state may not disappear first and be ledgered afterward.
+
+## 1.6 Already-approved non-topology destinations
+
+Two apparent “disappearances” are already accounted transformations rather than particle deletion:
+
+* Accepted E used for realized growth goes to `structural_p`, reason code `P13_ACCEPTED_GROWTH_STRUCTURALIZATION`.
+* Accepted D export goes to `exported_p`, reason code `P14_INTERFACE_EXPORT_ACCEPTED`.
+
+Neither authorizes deleting the particle itself.
+
+---
+
+# 2. D membrane-uptake coefficient and law
+
+## Decision
+
+Do **not** use the reversible carbon equation as the primary D uptake law. In particular, do not copy either the reverse term or the unexplained `0.5` prefactor.
+
+Use inward-only, surface-area-scaled uptake:
+
+[
+J_{u,i}
+=======
+
+k_{u,D}\max(C^m_{D,i},0),
+]
+
+where
+
+[
+J_{u,i}\quad [\mathrm{mol\ P,cm^{-2},s^{-1}}],
+]
+
+and
+
+[
+\Delta N^{\mathrm{req}}_{u,i}
+=============================
+
+A^u_i,J_{u,i},\Delta t.
+]
+
+Here:
+
+* (C^m_{D,i}) is interpolated mesh-D concentration in (\mathrm{mol/cm^3}).
+* (A_i^u) is the eligible hyphal area in (\mathrm{cm^2}), counted exactly once.
+* (k_{u,D}) has units (\mathrm{cm/s}).
+* The outward coefficient is exactly zero in v1.
+
+The proposed exploratory range is:
+
+[
+k_{u,D}\in
+{2\times10^{-6},\ 2\times10^{-5},\ 2\times10^{-4}}
+\ \mathrm{cm/s},
+]
+
+with
+
+[
+k_{u,D}^{\mathrm{centre}}
+=========================
+
+2\times10^{-5}\ \mathrm{cm/s}.
+]
+
+This centre is a BMX-continuity/engineering value, not a measured whole-hypha phosphate uptake coefficient. 
+
+## Shared-donor cap
+
+When several segments draw from the same represented mesh donor cell (j), calculate every request before committing any transfer:
+
+[
+R_j=\sum_{i\in j}\Delta N^{\mathrm{req}}_{u,i},
+]
+
+[
+s_j
+===
+
+\begin{cases}
+\min\left(1,\dfrac{\max(N^m_{D,j},0)}{R_j}\right), & R_j>0,[6pt]
+0, & R_j=0,
+\end{cases}
+]
+
+[
+\Delta N^{\mathrm{acc}}_{u,i}
+=============================
+
+s_j\Delta N^{\mathrm{req}}_{u,i}.
+]
+
+Then atomically debit mesh D and credit internal D. This makes the result independent of particle iteration order and prevents donor overdraw. 
+
+## Why the carbon form should not be copied
+
+A reversible term would imply a D efflux mechanism that has not been selected or calibrated. A future reversible model may introduce an independently named (k_{out,D}), also in cm/s, but it should not silently inherit the carbon reverse coefficient. The proposal explicitly treats reversible linear exchange as a later alternative rather than the primary v1 law. 
+
+**Answer to the “leave unselected” option:** the law, units, range, and engineering centre should be selected now; their biological interpretation remains unselected.
+
+---
+
+# 3. P export coefficient
+
+## Operand and law
+
+(k_{\mathrm{export}}) operates on local internal-D **amount**, in moles, not directly on concentration.
+
+For segment (i), let (f_i^I\in[0,1]) be its geometrically eligible interface fraction and
+
+[
+N^I_{D,i}=f_i^I N_{D,i}.
+]
+
+Then:
+
+[
+\Delta N^{\mathrm{req}}_{P,i}
+=============================
+
+N^I_{D,i}
+\left(1-e^{-k_{\mathrm{export}}\Delta t}\right),
+]
+
+[
+\Delta N^{\mathrm{acc}}_{P,i}
+=============================
+
+\min\left(
+\Delta N^{\mathrm{req}}*{P,i},
+N*{D,i}
+\right).
+]
+
+Therefore,
+
+[
+k_{\mathrm{export}}\quad [\mathrm{s^{-1}}].
+]
+
+Using an amount operand is important because it remains well defined through volume changes and segment refinement. The contact fraction supplies the local geometric scaling. 
+
+## Values
+
+Use:
+
+[
+k_{\mathrm{export}}
+\in
+{0,\ 10^{-6},\ 10^{-5},\ 10^{-4}}\ \mathrm{s^{-1}}.
+]
+
+Interpretation:
+
+* `0 s^-1`: mandatory no-export control and current claim-bearing central setting.
+* `1e-6 s^-1`: slow exploratory export.
+* `1e-5 s^-1`: provisional export-enabled engineering centre.
+* `1e-4 s^-1`: fast exploratory sensitivity.
+
+The nonzero values are broad model-only sensitivities, not empirical estimates. Nonzero export should remain off in science-labelled runs until the mentor explicitly authorizes the law and range. Synthetic and analytical operator tests may use `TEST_ONLY: 1e-5 s^-1`.  
+
+Thus, the law and units should **not** remain unselected; only the choice of a nonzero biological/scientific default remains unselected.
+
+---
+
+# 4. Central provisional P setting
+
+Select:
+
+[
+\boxed{q_P=3\times10^{-5}\ \mathrm{mol/cm^3}}
+]
+
+which is 30 mM P-equivalent, and
+
+[
+\boxed{\frac{k_{gP}}{k_{gB}}=1}.
+]
+
+Use the exact label:
+
+```text
+PROVISIONAL_ENGINEERING_CENTER_NOT_BIOLOGICAL_BASELINE
+```
+
+Recommended associated centre:
+
+```text
+q_P                      = 3e-5 mol/cm3
+k_gP / k_gB              = 1
+k_DE                     = 1e-5 s^-1
+k_ED                     = 0 s^-1
+initial reserve fraction = 0.1
+initial D:E:F allocation = 0:1:0
+mesh A                   = 20 mM A-equivalent
+mesh D                   = 1.61e-8 and 4.52e-8 mol/cm3, co-primary arms
+D_D_mesh                 = 1e-6 cm2/s
+k_u,D                    = 2e-5 cm/s
+D_D_bond                 = 1.25e-6 cm2/s
+k_export                 = 0 s^-1 until nonzero authorization
+F coefficients           = exactly 0
+```
+
+The low and high mesh-D conditions remain two co-primary environments; neither should be called the baseline. 
+
+**Confirmed interpretation:** this is only an engineering comparison coordinate. It must never be described as calibrated, representative, normal, optimal, wild-type, or biologically baseline.
+
+---
+
+# 5. P12 uptake-only experiment contract
+
+## Fixed protocol
+
+```text
+Scientific endpoint: 48 h = 172800 s
+Observation times:
+0, 0.5, 1, 2, 4, 8, 12, 24, 36, 48 h
+
+Checkpoint/restart split:
+24 h checkpoint, restart, continue to 48 h
+
+Global conservation ledger:
+every global update
+
+Network:
+one fixed, pre-existing, hash-bound network
+
+Internal initialization:
+D = E = F = 0
+
+Environmental D:
+1.61e-8 and 4.52e-8 mol/cm3, separate co-primary cases
+```
+
+The endpoint is fixed. Do not stop when a chosen depletion percentage appears, and do not extend the run because depletion is absent. Machine timeout is operational failure, not a scientific stopping rule. 
+
+## Required cases for each mesh-D arm
+
+1. Active uptake with the full-surface rule.
+2. (k_{u,D}=0).
+3. Empty/no-network control.
+4. Zero-mesh-D control.
+5. Terminal-zone uptake sensitivity.
+6. Area-matched terminal-zone sensitivity.
+7. Continuous 48 h versus 24 h checkpoint/restart continuation.
+8. All three membrane-coefficient sensitivities.
+9. All three approved mesh-diffusion sensitivities.
+10. Representative grid, timestep, rank, and decomposition repeats as numerical checks.
+
+Growth, branching, nonessential topology, bonded transport, D↔E reactions, export, and reward remain disabled. 
+
+## Replication
+
+Yes: **one canonical deterministic run plus one exact clean-environment rerun is sufficient** for each approved case.
+
+The two executions establish numerical reproducibility. They are not pooled or reported as (n=2), and they are not biological replicates. 
+
+## Seed policy
+
+No stochastic seed applies:
+
+```text
+seed_applicability = NOT_APPLICABLE_DETERMINISTIC_FIXED_NETWORK
+ordered_seed_list  = []
+network_sha256     = <required>
+```
+
+Where software requires a seed field syntactically, use a fixed sentinel such as `0`, but assert that no random-number stream was initialized or consumed.
+
+## Required outputs
+
+At every scheduled observation:
+
+* Full mesh-D concentration field.
+* Per-particle internal-D amount and concentration.
+* Total mesh D and total internal D.
+* Requested, accepted, and rejected uptake.
+* Eligible uptake area.
+* Donor-cell scaling factors.
+* Instantaneous and cumulative uptake in mol/s and mol.
+* Uptake per eligible area.
+* Near-network and far-field mesh-D summaries.
+* Frozen physical-distance-to-network depletion summaries.
+* Signed boundary flux for every face class.
+* Reference total P, accounted total P, and conservation residual.
+* Checkpoint/restart identity and state hashes.
+* Effective configuration, build, source, grid, timestep, rank, and decomposition identities.
+* Explicit zero assertions for internal E/F, structural P, exported P, and A reward.
+
+The primary P12 observables are mesh-D loss, internal-D gain, cumulative uptake, uptake per eligible area, near/far D, distance-binned qualitative depletion, conservation, and boundary sensitivity. 
+
+## Grid and timestep
+
+Do **not** select one physical resolution in the science decision. Permit a predeclared convergence study to select it.
+
+Use at least three nested grid/timestep levels. The numerical contract must freeze:
+
+* convergence observables,
+* acceptance tolerances,
+* stability and positivity requirements,
+* conservation requirements,
+* and the production-level selection rule
+
+before comparing low and high D outcomes. Use the coarsest level that passes the frozen numerical contract. Observation times must be reached exactly through timestep clipping or a validated conservative output method. Grid levels, timesteps, MPI ranks, and decompositions are numerical checks, not replicates.
+
+---
+
+# 6. P14 recipient-pool representation
+
+Select:
+
+```text
+Exported-P recipient = external receipt ledger only
+Explicit host state  = no, not in v1
+Carbon reward        = local A, unchanged
+```
+
+The external representation should contain:
+
+* cumulative `exported_p` in mol P,
+* accepted export per event,
+* requested and rejected export,
+* event time and segment ID,
+* interface-active fraction,
+* corresponding local-A credit,
+* configuration and geometry hashes,
+* and checkpoint-persistent cumulative totals.
+
+No explicit host concentration, capacity, demand, delay, recycling, growth, or host-side transport state should be invented. None of those laws or parameters is currently supplied. The existing contract already specifies an atomic local-D debit and local-A credit, with approximately (7.736) mol A-equivalent credited per mol P exported. 
+
+An explicit host state would be a separate model extension requiring its own storage, units, owner, initialization, capacity, kinetics, conservation boundary, restart representation, and validation data.
+
+---
+
+# 7. P15 full experiment matrix
+
+## Matrix rule
+
+Use a **staged design combining OFAT families with targeted reduced-factorial crosses**.
+
+Do not use either:
+
+* a pure full factorial, which would unnecessarily multiply uncalibrated axes, or
+* pure OFAT, which would miss interactions that are structurally required by the equations.
+
+The proposal specifically identifies quota–growth, supply, and initial C/P limitation as interactions that must be crossed. 
+
+## Stage 0 — numerical and software qualification
+
+Before scientific runs, pass:
+
+* analytical diffusion, uptake, reaction, bonded-transport, growth, and export fixtures;
+* global/local conservation;
+* continuous/restart equivalence;
+* grid/timestep convergence;
+* segment-refinement stability;
+* MPI/rank/thread/decomposition stability;
+* divider and outer-boundary geometry;
+* case-generation and effective-configuration hashing;
+* invalid-state and reason-code fixtures.
+
+These are not scientific treatment cells.
+
+## Stage 1 — central co-primary comparison
+
+Run the complete central configuration at both:
+
+[
+C_D^m=1.61\times10^{-8}
+\quad\text{and}\quad
+4.52\times10^{-8}\ \mathrm{mol/cm^3}.
+]
+
+Neither D arm may be dropped after seeing results.
+
+## Stage 2 — required one-factor families
+
+Run each family at both D arms unless explicitly stated otherwise.
+
+| Factor                        | Required values                                                                                      |
+| ----------------------------- | ---------------------------------------------------------------------------------------------------- |
+| (q_P)                         | (3\times10^{-6}, 3\times10^{-5}, 3\times10^{-4}\ \mathrm{mol/cm^3}), with (k_{gP}/k_{gB}=1)          |
+| (k_{gP}/k_{gB})               | 0.1, 1, 10, with (q_P=3\times10^{-5}\ \mathrm{mol/cm^3})                                             |
+| D↔E reactions                 | ((k_{DE},k_{ED})=(10^{-5},0),(10^{-6},10^{-6}),(10^{-5},10^{-5}),(10^{-4},10^{-4})\ \mathrm{s^{-1}}) |
+| Initial reserve fraction      | 0, 0.1, 0.3, primary E allocation                                                                    |
+| Initial allocation diagnostic | D:E:F = 1:0:0 at reserve 0.1                                                                         |
+| Mesh A                        | 0, 5, 20, 80 mM A-equivalent                                                                         |
+| Mesh-D diffusion              | (10^{-7},10^{-6},10^{-5}\ \mathrm{cm^2/s})                                                           |
+| Membrane uptake               | (2\times10^{-6},2\times10^{-5},2\times10^{-4}\ \mathrm{cm/s})                                        |
+| Bonded D transport            | (0,1.25\times10^{-7},1.25\times10^{-6},1.25\times10^{-5}\ \mathrm{cm^2/s})                           |
+| Uptake localization           | full-surface, terminal-zone                                                                          |
+| x-domain                      | ([-0.5,0.5],[-1,1],[-2,2]\ \mathrm{cm})                                                              |
+| Export                        | 0 plus every explicitly authorized nonzero (k_{\mathrm{export}})                                     |
+
+## Stage 3 — required targeted crosses
+
+### Cross A: quota × P-growth coefficient
+
+Full (3\times3):
+
+[
+q_P\in{3,30,300}\ \mathrm{mM},
+\qquad
+k_{gP}/k_{gB}\in{0.1,1,10}.
+]
+
+### Cross B: environmental D × membrane coefficient
+
+Full (2\times3):
+
+[
+C_D^m\in{\mathrm{low},\mathrm{high}},
+\qquad
+k_{u,D}\in{2\times10^{-6},2\times10^{-5},2\times10^{-4}}\ \mathrm{cm/s}.
+]
+
+### Cross C: reserve × bootstrap A
+
+Full (3\times4):
+
+[
+f_{\mathrm{reserve}}\in{0,0.1,0.3},
+\qquad
+A_m\in{0,5,20,80}\ \mathrm{mM}.
+]
+
+Run the complete cross at both D arms. Computational limits may divide it into scheduled batches, but may not justify selecting only favorable cells.
+
+### Cross D: initial allocation × reaction mode
+
+At reserve 0.1:
+
+```text
+allocation = 0:1:0 or 1:0:0
+reaction   = one-way centre or one of the three symmetric reversible levels
+```
+
+### Cross E: contact × export
+
+Only after nonzero export authorization:
+
+```text
+contact = valid or invalid
+k_export = 0 and every authorized nonzero level
+```
+
+No-contact cells remain mandatory. The exact staged matrix and crossing rules are specified in the proposal packet. 
+
+## Expansion rule
+
+Add another complete factor-pair cross only when a frozen screening analysis finds at least one of:
+
+1. Limiting-resource identity changes across both factors.
+2. One factor’s effect reverses sign across levels of the other.
+3. A paired difference-in-differences exceeds
+
+[
+\max\left(0.20|Y_{\mathrm{centre}}|,\ 2E_{\mathrm{num}}\right)
+]
+
+for a predeclared primary scalar.
+4. Robust Pareto membership changes under the factor.
+
+When triggered, expand the entire pair across both D arms and all controls—not only favorable cells.
+
+## Required controls and ablations
+
+* Feature-off, P07-fixed carbon reference.
+* Empty/no-fungus control where meaningful.
+* Zero mesh D.
+* Zero internal reserve.
+* Zero mesh A.
+* Zero uptake.
+* D↔E reactions off.
+* Bonded transport off.
+* P-supported growth unavailable: (E=0) and no D→E.
+* Export/reward off.
+* Valid contact versus no-contact geometry.
+* Zero internal D at the interface.
+* E-initialized versus D-initialized reserve diagnostic.
+* F-zero assertion in every cell.
+* Continuous versus restart.
+* Small, central, and large domains.
+* Grid/timestep/rank/thread/decomposition checks.
+* One 432 h central numerical-stability case, not used to replace the 216 h result.
+
+## Duration and observations
+
+```text
+Scientific endpoint: 216 h = 9 d
+Observations:
+0, 6, 12, 24, 48, 72, 96, 144, 216 h
+
+Restart comparison:
+72 h checkpoint, continue to 216 h
+
+Long-run numerical stability:
+one predeclared central case to 432 h
+```
+
+The 216 h horizon is a literature-linked exploratory observation window, not a validated BMX biological timescale. 
+
+## Replicates
+
+For stochastic growth-enabled experiments:
+
+```text
+Screening:     n = 5 independent network blocks per configuration
+Claim-bearing: n = 10 independent network blocks per complete comparison family
+Escalation:    n = 20 for the whole affected family
+Maximum:       n = 20; unresolved thereafter
+```
+
+Escalate the entire family from 10 to 20 when:
+
+* (\mathrm{IQR}/|\mathrm{median}|>0.50) for a nonzero primary scalar;
+* the paired 95% bootstrap interval spans both at least 20% improvement and at least 20% worsening;
+* leave-one-block-out robust Pareto membership changes for more than 20% of valid configurations; or
+* fewer than 8 of 10 blocks are valid for intrinsic model reasons.
+
+Do not keep sampling until significance appears. 
+
+## Seed policy
+
+Freeze the experiment contract before generating seeds:
+
+[
+\mathrm{digest}_b
+=================
+
+\operatorname{SHA256}
+\left(
+\texttt{contract-hash}
+\parallel
+\texttt{uint64_big_endian}(b)
+\right),
+]
+
+[
+\mathrm{seed}_b
+===============
+
+\operatorname{uint64_big_endian}
+\left(
+\mathrm{digest}_b[0:8]
+\right).
+]
+
+Use block indices:
+
+```text
+screening: 0...4
+claim:     0...9
+escalated: 0...19
+```
+
+Use the same block seed across every matched treatment. Derive process-specific streams by hashing the block digest with names such as:
+
+```text
+initial_network
+branching
+fusion
+mechanics
+```
+
+Store both the full digest and integer seed. Literal seed numbers are reproducibility identifiers, not scientific parameters. 
+
+## Primary comparisons
+
+Predeclare:
+
+1. High versus low environmental D at the central engineering coordinate.
+2. Every OFAT level versus its matched centre within the same D arm.
+3. (q_P\times k_{gP}/k_{gB}) interaction.
+4. Environmental D × uptake-coefficient interaction.
+5. Reserve × mesh-A interaction.
+6. Initial allocation × reaction-mode interaction.
+7. Contact × export interaction, when nonzero export is authorized.
+8. Every active mechanism versus its corresponding zero/disabled control.
+9. Feature-on versus P07-fixed feature-off carbon behavior.
+10. Continuous versus restart and central versus expanded-domain agreement.
+
+Use paired block-level differences for matched stochastic configurations.
+
+## Null and adverse findings that must be reported
+
+Report all of the following when observed:
+
+* No measurable uptake beyond numerical uncertainty.
+* No qualitative local depletion by the fixed endpoint.
+* No D→E conversion.
+* E never becoming limiting.
+* No P-dependent change in accepted growth.
+* No effect of bonded D transport.
+* No export despite valid contact.
+* No A reward because no P was exported.
+* No environmental-D response.
+* No factor interaction.
+* Reversed or adverse effects.
+* All tested configurations tied within numerical uncertainty.
+* No valid wave/plateau interval.
+* Boundary-dominated outcomes.
+* Nonconverged, nonfinite, conservation-failing, crashed, or incomplete cells.
+* A comparison still unresolved at (n=20).
+
+No outcome-based outlier deletion or imputation is allowed. Infrastructure failures may be rerun with identical input and seed; intrinsic model failures remain results. 
+
+## Claims P15 may test
+
+P15 may test:
+
+* whether the implemented model conserves P under the frozen operators;
+* whether it produces or fails to produce qualitative local depletion by a fixed endpoint;
+* whether D uptake, D↔E conversion, bonded transport, structuralization, P limitation, export, and reward engage through their intended operators;
+* the direction and uncertainty of predeclared model sensitivities;
+* the presence or absence of the targeted model interactions;
+* numerical and qualitative robustness across resolution, restart, decomposition, and domain checks.
+
+## Explicitly prohibited interpretations
+
+Do not claim:
+
+* calibration of (q_P), (k_{gP}), uptake, transport, or export;
+* a biological baseline;
+* an optimal or best parameter set;
+* quantitative agreement with a published depletion profile;
+* predictive front speed, transfer distance, depletion extent, or host benefit;
+* that 216 h is the true BMX biological timescale;
+* that a visually plausible field validates biology;
+* that one environmental D arm should be selected after seeing outcomes;
+* that null, failed, or adverse cells can be removed from the matrix;
+* publication-level biological conclusions.
+
+The intended output is an exploratory mechanism-sensitivity map, not parameter estimation. 
+
+---
+
+# 8. P16 explorer/exploiter experiment
+
+## 8.1 Current scientific status
+
+Actual P16 execution remains:
+
+```text
+strategy_class           = UNCLASSIFIED_FOR_P16
+P16_actual_science_status = BLOCKED_ON_EXTERNAL_STRATEGY_BASELINE
+```
+
+until the external strategy author's frozen C-only strategy contract is supplied and reproduced.
+
+That dependency must contain the exact source, executable, strategy definitions, ordered configuration memberships, input files, objectives, normalization, replicate unit, seeds, raw outputs, scripts, expected outputs, Pareto result, and claim limitations. 
+
+## 8.2 Precise semantic definitions
+
+Subject to the external strategy author's actual frozen definitions:
+
+* **Explorer:** a prospectively classified C-only strategy that allocates more strongly toward range expansion, with the hypothesis of higher front/wave speed and lower local saturation density.
+* **Exploiter:** a prospectively classified C-only strategy that allocates more strongly toward local network densification/resource-extraction capacity, with the hypothesis of higher saturation density and lower range-expansion speed.
+
+These are hypotheses associated with predeclared classes. Realized BMX outcomes may not assign or change the label.
+
+The 2026 PNAS study describes the empirical framing as fast range expansion versus fast resource extraction and reports an exploration–exploitation Pareto front, but this does not supply an automatic configuration mapping into BMX. ([PubMed][1])
+
+## 8.3 Use of (q_P) and (k_{gP})
+
+**Prohibited for defining strategy membership.**
+
+They may be used only as matched, within-strategy phosphorus sensitivities after explorer/exploiter labels have been frozen from the C-only authority.
+
+Therefore:
+
+```text
+low q_P ≠ explorer by definition
+high q_P ≠ exploiter by definition
+high k_gP ≠ explorer or exploiter by definition
+realized high uptake ≠ exploiter by definition
+realized high speed ≠ explorer by definition
+```
+
+Outcome-based or parameter-based relabeling would be circular. 
+
+## 8.4 Required configurations
+
+For every configuration in the external strategy author's frozen explorer and exploiter membership tables, apply a matched P overlay containing:
+
+* both low and high environmental-D arms;
+* the provisional central P setting;
+* identical uptake, transport, reaction, reserve, geometry, and export contracts;
+* all four A arms as a separate sensitivity stratum unless the external strategy author's configuration already fixes A;
+* matched replicate blocks and seeds.
+
+No favorable subset may be selected. Configurations absent from the external strategy author's table remain unclassified and do not enter strategy contrasts. 
+
+## 8.5 Primary objectives
+
+the external strategy author's frozen objective contract has precedence and must be reproduced exactly.
+
+Only when an independent fallback is explicitly authorized should the following pair be used:
+
+### Objective 1 — range-expansion wave speed
+
+[
+v_{\mathrm{wave}}\quad [\mathrm{cm/s}]
+]
+
+Direction: **maximize**.
+
+Estimate front position over a frozen valid wave interval and regress:
+
+[
+x_f(t)=v_{\mathrm{wave}}t+b.
+]
+
+If no valid interval exists under the frozen fit criteria, the objective is missing; do not replace it with an endpoint displacement after observing the run.
+
+### Objective 2 — saturation hyphal length density
+
+[
+\rho_{\mathrm{sat}}
+\quad
+[\mathrm{cm\ hypha/cm^2\ quasi\text{-}2D\ area}]
+]
+
+Direction: **maximize**.
+
+Estimate the plateau behind the fitted front over the same predeclared wave interval.
+
+The proposal recommends these as the smallest interpretable fallback pair and treats conservation, runtime, uptake, export, and carbon cost as annotations or quality gates rather than additional primary objectives. 
+
+Because the public replication package also contains surface-area-density analyses, saturation hyphal surface-area density should be reported as a mandatory secondary robustness annotation. It should replace length density as a primary objective only through an explicit amendment or the external strategy author's authoritative contract—not silently. The public package contains the figure notebooks, datatables, simulation code, and raw-data processing code used for the published analyses. ([GitHub][2])
+
+## 8.6 Approved secondary observables
+
+Report descriptively, but do not use for primary dominance without renewed approval:
+
+| Observable                            |                                Unit | Status                                           |
+| ------------------------------------- | ----------------------------------: | ------------------------------------------------ |
+| Endpoint spatial reach/front position |                                  cm | Secondary                                        |
+| Qualitative depletion field           | concentration field and frozen bins | Secondary; no quantitative depletion-front claim |
+| Total accepted D uptake               |                               mol P | Secondary                                        |
+| Accepted P export                     |                               mol P | Secondary                                        |
+| Export rate                           |                             mol P/s | Secondary                                        |
+| Structural-P accumulation             |                               mol P | Secondary                                        |
+| Internal D and E                      |                               mol P | Secondary                                        |
+| Fungal volume/growth                  |                                 cm³ | Secondary                                        |
+| Network length                        |                                  cm | Secondary                                        |
+| Carbon subsidy                        |                    mol A-equivalent | Secondary                                        |
+| Carbon cost per accepted export       |              mol A-equivalent/mol P | Descriptive imposed-model quantity               |
+| Uptake or export per network volume   |                           mol P/cm³ | Secondary efficiency annotation                  |
+| Uptake or export per network length   |                            mol P/cm | Secondary efficiency annotation                  |
+| Failure probability                   |                            fraction | Quality/completeness annotation                  |
+| Conservation/restart error            |               mol or relative error | Admissibility gate, never a fungal objective     |
+| Runtime                               |                           wall time | Engineering metadata, never a fungal objective   |
+
+Quantitative depletion extent should not be a Pareto objective while the claim boundary remains qualitative.
+
+## 8.7 Normalization
+
+Compute dominance in raw units.
+
+For visualization only, min–max normalize over the complete valid, frozen reference set within each predeclared environment/sensitivity stratum:
+
+[
+z_{c,k}
+=======
+
+\frac{\widetilde y_{c,k}-y_k^{\min}}
+{y_k^{\max}-y_k^{\min}}.
+]
+
+Do not mix low-D and high-D environments into one normalization reference unless a pooled frontier was prospectively declared.
+
+When
+
+[
+y_k^{\max}-y_k^{\min}\le\epsilon_k,
+]
+
+set every display value for that objective to `0.5`, mark it:
+
+```text
+NONDISCRIMINATING
+```
+
+and omit it from dominance. If that leaves fewer than two discriminating objectives, report `NO_TWO_OBJECTIVE_FRONTIER` rather than manufacturing a trade-off. 
+
+## 8.8 Replicates and seeds
+
+Primary rule: inherit the external strategy author's exact replicate unit, ordered seeds, pairing, and aggregation. Do not silently replace them.
+
+Until supplied, P16 science remains blocked.
+
+Only under an explicitly approved independent fallback should P16 use the P15 policy:
+
+* (n=5) screening,
+* (n=10) claim-bearing,
+* (n=20) whole-family escalation,
+* paired block seeds generated from the frozen contract hash.
+
+## 8.9 Aggregation and uncertainty
+
+For each configuration:
+
+* display every valid replicate point;
+* report median, IQR, and minimum–maximum;
+* use configuration-level medians for dominance;
+* at (n\ge10), compute paired 95% bootstrap intervals using 10,000 block resamples;
+* report both a point-estimate frontier and a conservative robust frontier;
+* report an uncertain-membership set;
+* run leave-one-block-out frontier stability;
+* report valid, invalid, failed, and incomplete counts.
+
+Robust dominance requires a configuration’s lower uncertainty bound to be at least as good as another configuration’s upper bound on every objective, within the frozen numerical epsilon, and clearly better on at least one. 
+
+## 8.10 Interpretation
+
+Confirm:
+
+```text
+Pareto interpretation = frontier only; no arbitrary winner
+```
+
+A nondominated configuration means only that no other admissible tested configuration was at least as good on every frozen objective and clearly better on one. It does not establish adaptation, superiority, biological optimality, or a preferred intervention. 
+
+## 8.11 Tie and duplicate handling
+
+This may be delegated to the writer as a deterministic technical rule, but the exact rule must be frozen before outcomes:
+
+1. Define
+
+[
+\epsilon_k
+==========
+
+\max
+\left(
+E_{\mathrm{num},k},
+10^{-12}\times\text{reference-scale}_k
+\right).
+]
+
+2. Values within (\epsilon_k) are equal on objective (k).
+3. Do not break scientific ties using configuration ID, runtime, or input order.
+4. Configuration ID may sort display rows only.
+5. Duplicate executions with identical effective-configuration and seed hashes are not independent observations.
+6. Byte-identical duplicate executions remain duplicate provenance records.
+7. Nonidentical duplicates for the same configuration and seed are a reproducibility failure.
+8. Different configurations with identical objective coordinates remain distinct coincident points; neither is selected as a winner.
+
+## 8.12 Missing, incomplete, and nonfinite handling
+
+This may also be delegated technically, subject to these frozen rules:
+
+* No imputation.
+* No post-hoc substitute objective.
+* Missing or nonfinite objectives are excluded from dominance with a visible reason code.
+* Failed runs remain in the completeness table.
+* Infrastructure failures may be rerun only with identical input and seed.
+* Intrinsic model failures may not be repeatedly rerun until they pass.
+* Input order and worker completion order may not change output.
+* If more than 20% of a predeclared strategy family lacks valid objectives, mark that family’s frontier `UNINTERPRETABLE`.
+* Unclassified configurations may be displayed descriptively but may not enter explorer/exploiter contrasts.
+
+These rules match the proposal’s deterministic handling contract. 
+
+---
+
+# 9. Geometry
+
+## Particle-divider response
+
+Select:
+
+```text
+hard nonpenetration / remove outward normal motion
+```
+
+For the **solid divider and frame**:
+
+1. Detect the first physical contact of the finite-radius segment capsule.
+2. Project the proposed point or segment to the nearest valid fungus-side position.
+3. Remove the displacement/velocity component normal to the solid surface.
+4. Preserve tangential movement.
+5. Apply the constraint before geometry acceptance and before B/E debit.
+6. Record attempted penetration, projected motion, tangential motion, and rejected growth.
+
+Do not use elastic reflection, a penalty/repulsive force, or particle deletion. Elastic reflection introduces an arbitrary rebound; repulsive forces introduce stiffness and timestep dependence; deletion creates an unauthorized material exit. 
+
+## Aperture behavior
+
+The aperture interior is not a solid wall. A segment may pass through or occupy the aperture when its finite-radius geometry fits.
+
+At aperture edges:
+
+* solid-frame collision has precedence;
+* contact/export eligibility is evaluated exactly once per segment per update;
+* no Eulerian mesh-P flux is permitted through the aperture, consistent with the already-frozen divider rule.
+
+Thus fungal mechanical access and Eulerian P permeability remain separate concepts.
+
+## Outer x-boundary conditions
+
+For mesh D and inactive mesh F:
+
+[
+\mathbf n\cdot(-D\nabla C)=0
+]
+
+at both (x_{\min}) and (x_{\max}) in the primary closed-domain experiment.
+
+Particles use the same hard, nonpenetrating, tangentially sliding wall rule. No out-of-domain deletion is permitted.
+
+## Outer z-boundary conditions
+
+For mesh D and inactive mesh F:
+
+[
+\mathbf n\cdot(-D\nabla C)=0
+]
+
+at (z_{\min}) and (z_{\max}).
+
+Particles again use hard nonpenetration with tangential motion retained. The y direction remains periodic.
+
+The primary domain and sensitivities are:
+
+```text
+central x:       [-1, 1] cm
+small x:         [-0.5, 0.5] cm
+large x:         [-2, 2] cm
+z:               [0, 1.2] cm
+periodic y:      [0, 0.1) cm
+```
+
+A fixed-concentration reservoir at (x_{\max}) may be used only as an explicitly ledgered sensitivity, never as the primary closed-system boundary. 
+
+---
+
+# 10. Independent quantitative validation
+
+## Answer
+
+```text
+Candidate independent quantitative source data exist = YES
+Frozen, accepted BMX held-out validation set exists = NO
+RG-SCI status = NO-GO
+```
+
+This distinction matters. External quantitative data are available, but they have not yet been converted into a frozen calibration/validation contract for BMX.
+
+## Location and ownership
+
+Two relevant public packages are available:
+
+1. `Cocopyth/PC_2025`: a replication package containing figure notebooks, associated datatables, simulation code, raw-data processing links, and ML-model code/data. ([GitHub][2])
+2. `Cocopyth/AMFTravellingWave`: the reproducibility package for the 2025 Nature study. Its documentation states that the associated Figshare package, DOI `10.6084/m9.figshare.27889143`, includes source data for the main figures and a subsample of raw data, along with reproducible image-analysis and post-processing workflows. ([GitHub][3])
+
+These are maintained under the paper authors’ public `Cocopyth` repositories. The exact Figshare and repository license terms should be preserved in any redistributed validation bundle.
+
+## Available measured or derived fields
+
+The public materials appear to contain or derive:
+
+* plate/replicate identifiers;
+* observation time;
+* network expansion/hull speed;
+* hyphal length density;
+* hyphal surface-area density;
+* biovolume density;
+* estimated hyphal radius;
+* fungal strain;
+* root/host genotype;
+* fungal-side and treatment conditions;
+* spatial region/bin information;
+* total extracted P in (\mu\mathrm g);
+* wet and dry weight;
+* integrated hyphal surface area;
+* network morphology and figure-source tables;
+* ML width-extraction data;
+* a subsample of raw image data.
+
+The replication code explicitly constructs plate-level speed, surface-area density, biovolume density, length density, radius, strain, fungal condition, and root fields.  The P-analysis notebook reads P-specific folders and time-series tables and uses spatial position, treatment, total P, wet/dry weight, and integrated surface-area variables.
+
+This is enough to justify a formal data-inventory and observation-model stage. It does **not** yet prove that every desired item—such as all original microscopy, exact divider geometry, full raw spatial P fields, or all unpublished replicate metadata—is available.
+
+## Holdout design
+
+Never split individual timepoints from the same plate between calibration and validation. The experimental unit must be the complete plate/network replicate.
+
+Use two validation layers:
+
+### A. In-distribution plate holdout
+
+Within each sufficiently populated stratum defined by:
+
+```text
+fungal strain × root genotype × P treatment
+```
+
+hash-sort the complete plate IDs and prospectively assign:
+
+```text
+calibration/analysis development: 70%
+qualification:                    15%
+final sealed validation:          15%
+```
+
+All timepoints, images, spatial measurements, and derived values from one plate remain in the same partition.
+
+### B. Condition-level extrapolative holdout
+
+Before fitting, reserve one complete biological condition family—preferably:
+
+* one root genotype, or
+* one fungal strain with sufficient replicates, or
+* one entire low-P treatment family—
+
+that is not used to select coefficients, observation equations, normalization, thresholds, or claim language.
+
+The exact family should be selected by a completeness audit and frozen before inspecting BMX agreement, not selected because it produces a favorable result.
+
+## What may be validated
+
+With an approved mapping and sufficient metadata, potential held-out comparisons include:
+
+* wave/front speed;
+* saturation length or surface-area density;
+* network radius and expansion trajectories;
+* spatially aggregated P extraction;
+* total P transferred or depleted;
+* qualitative depletion ordering across space;
+* treatment-direction effects;
+* root-genotype or fungal-strain contrasts.
+
+Direct pointwise profile validation requires matching geometry, observation operator, spatial registration, sampling volume, and experimental uncertainty. It cannot be inferred merely from a visually similar field.
+
+## Why RG-SCI remains `NO-GO`
+
+The external data have already informed some contextual choices, such as plausible time horizons and qualitative trade-off framing. Therefore, those exact observations cannot automatically serve as untouched validation evidence.
+
+`RG-SCI:GO` requires all of the following to be completed first:
+
+1. Freeze exact dataset versions and hashes.
+2. Inventory plate IDs, conditions, missingness, units, geometry, and measurement uncertainty.
+3. Define the experimental-to-BMX observation operator.
+4. Freeze calibration, qualification, and sealed validation partitions.
+5. Ensure no held-out plate or condition influenced parameter selection.
+6. Predeclare quantitative validation metrics and acceptance thresholds.
+7. Validate numerical convergence independently of empirical agreement.
+8. Execute the sealed holdout only once under the frozen contract.
+9. Retain failed and null comparisons.
+10. Obtain independent scientific review of the mapping and interpretation.
+
+Until that occurs, the public datasets are **candidate validation resources**, not completed validation evidence. The appropriate status remains:
+
+```text
+RG-SW: eligible to proceed under the bounded exploratory contract
+RG-SCI: NO-GO
+```
+
+Adopting the P10 rules above closes the mentor-owned C08 topology blocker, but C08 still separately requires the integrator-owned seams and eligible independent review of the frozen operator order identified in the supplied bundle.
+
+[1]: https://pubmed.ncbi.nlm.nih.gov/41650214/ "https://pubmed.ncbi.nlm.nih.gov/41650214/"
+[2]: https://github.com/Cocopyth/PC_2025 "https://github.com/Cocopyth/PC_2025"
+[3]: https://github.com/Cocopyth/AMFTravellingWave "https://github.com/Cocopyth/AMFTravellingWave"

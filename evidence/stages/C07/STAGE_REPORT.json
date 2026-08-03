@@ -1,0 +1,136 @@
+{
+  "artifact_type": "C07_STAGE_REPORT",
+  "stage_id": "C07",
+  "phase": "P09_THREE_STATE_INFRASTRUCTURE",
+  "status": "PASS",
+  "completed_at": "2026-08-01T07:43:14Z",
+  "writer": {
+    "agent": "Codex",
+    "role": "sole product-branch writer from e7a69521",
+    "independent_x01_x09_review_eligible": false
+  },
+  "post_stage_review_followup": {
+    "finding": "REVIEW-C07-001",
+    "status": "CLOSED",
+    "original_evidence_disposition": "supplemental only: normalized stdout from no-trigger controls cannot establish semantic feature-off equivalence",
+    "verdict_evidence": "evidence/stages/C07/FEATURE_OFF_SEMANTIC.json",
+    "followup_git_commit": "1cbaabe386c9496a55e5d2cdcd562c1981f307a9"
+  },
+  "input_git_commit": "947100e966200c5dc8f1a40ef7480b5d0ead096b",
+  "input_git_tree": "3aaef073d25d94289f70d9f4b5afdb85de034a7d",
+  "output_git_commit": "295e89563b6ef1e03e128c8f79b45606b62f6599",
+  "input_identity": {
+    "authoritative_branch": "rgsw/product",
+    "pre_stage_status": "clean",
+    "candidate_commit": "adb427331e180cd0b4faa74a4ab2098381b2eabb",
+    "input_src_chemistry_tree": "423d11cb32c9773bb89c028900b4fcd48d6e4d02",
+    "amrex_commit": "cbdc6580ee3d78cccdd37172e4ba077ee181f483",
+    "amrex_tree": "fb714dc6e693c18f7c441d1d1febe4a5e8bf9ea6",
+    "kernel_sha256": "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02",
+    "p07_reference_executable_sha256": "64b9aaccd6a97599e8bb0df17640018e89533ed7627e947800ae33b0426bef7c"
+  },
+  "authority": {
+    "authoritative_handoff": "evidence/handoff/CLAUDE_TO_CODEX_WRITER_HANDOFF.md",
+    "recovered_prompt_attachment_sha256": "d314e0b16234e92e26108a0b8bbac87d1337b09c3f226ff17ac486421f5da3e3",
+    "c07_prompt_lines": "643-693",
+    "transfer_exception": "User authorized Codex during C07 only to modify src/des/bmx_calc_txfr.cpp as needed for the 6/7-mesh to 8-particle separation and explicit maps; kernel frozen; no C08+ behavior",
+    "b_c07_01": "CLOSED"
+  },
+  "layout": {
+    "disabled_mesh": ["A", "B", "C", "D", "F", "P"],
+    "enabled_mesh": ["A", "B", "C", "D", "F", "P_D", "P_F"],
+    "disabled_particle": ["A", "B", "C", "D", "F", "P", "reserved_P_E", "reserved_P_F"],
+    "enabled_particle": ["A", "B", "C", "D", "F", "P_D", "P_E", "P_F"],
+    "disabled_map": "0>0,1>1,2>2,3>3,4>4,5>5",
+    "enabled_map": "0>0,1>1,2>2,3>3,4>4,5>5,6>7",
+    "mesh_E_exists": false,
+    "particle_stride": 8,
+    "particle_blocks": 3
+  },
+  "checkpoint_metadata_scaffold": {
+    "minimum_schema": 2,
+    "layout_hash_sha256": "522cb38eacea08c97093860e26b34973b0b0e945545aef54adbd032946d8d669",
+    "decision_contract_sha256": "96e83a4b752f02b6721a364adffbfd6178bd9e97a9b5a24f2e0121744a23d87b",
+    "units_decision_source_sha256": "6d8581062e25cfec2c2b4b6630d98278a7473687d512443f6fed64fde8068271",
+    "operator_order_id": "UNBOUND:P10-U02",
+    "global_ledger_schema_id": "DEFERRED:P10/P14-INTEGRATION",
+    "schema_ready": false,
+    "claim": "scaffolding only; no checkpoint-v2 readiness or restart-roundtrip claim"
+  },
+  "source_changes": [
+    "src/chemistry/bmx_chem_layout.H",
+    "src/chemistry/bmx_chem.H",
+    "src/chemistry/bmx_chem.cpp",
+    "src/mods/bmx_fluid_parms.cpp",
+    "src/setup/bmx_init_fluid.cpp",
+    "src/des/bmx_pc_init.cpp",
+    "src/io/bmx_plt.cpp",
+    "src/des/bmx_calc_txfr.cpp"
+  ],
+  "tool_changes": [
+    "tools/repro/c07_layout_unit.cpp",
+    "tools/repro/run_c07_layout_unit.ps1",
+    "tools/repro/run_c07_static_test.py",
+    "tools/repro/run_c07_schema_tests.py",
+    "tools/repro/run_c07_feature_off.py",
+    "tools/repro/analyze_p07_geometry.py",
+    "tools/repro/run_c07_semantic_feature_off.py",
+    "tools/repro/native_windows_env.ps1",
+    "tools/repro/configure_native_windows.ps1"
+  ],
+  "build": {
+    "platform": "Microsoft Windows NT 10.0.26200.0",
+    "compiler": "MSVC 19.44.35228",
+    "cmake": "4.4.0",
+    "configuration": "Release; double; CPU; MPI on; OMP/GPU/Hypre off",
+    "clean_build_steps": "200/200",
+    "executable_sha256": "f86889fc0def576f520340c91f14847aed7f2facf0362349852b1e259bcb1b67",
+    "executable_size_bytes": 2405376,
+    "cmake_cache_sha256": "d7bfb8303d2262071c922cbc9d19bbc54d4b9e41a0ebe567ace0a72883dbdd91",
+    "compile_commands_sha256": "8b6059e2417504d9b337a15db7614f13b3019452ae2ea6708548302bdf2a0eff"
+  },
+  "tests": [
+    {"id": "static_layout_and_ownership", "result": "PASS", "checks": 10, "evidence": "evidence/stages/C07/STATIC_TEST.json"},
+    {"id": "layout_map_unit", "result": "PASS"},
+    {"id": "fresh_configure", "result": "PASS"},
+    {"id": "clean_build", "result": "PASS", "steps": 200},
+    {"id": "runtime_schema_matrix", "result": "PASS", "cases": 9, "evidence": "evidence/stages/C07/SCHEMA_TESTS.json"},
+    {"id": "runtime_smoke", "result": "PASS", "cases": ["describe", "max_step=0", "max_step=1", "max_step=1 MPI-2"]},
+    {"id": "feature_off_p07_stdout_controls", "result": "PASS_SUPPLEMENTAL", "cases": 3, "differing_lines": 0, "limitation": "no-trigger fixtures and normalized stdout do not establish semantic equivalence", "evidence": "evidence/stages/C07/FEATURE_OFF.json"},
+    {"id": "feature_off_p07_semantic_growth_split", "result": "PASS", "cases": ["G1_tip_length_only", "G4_nontip_rejected"], "dumps_compared": 72, "particle_records_compared": 420, "semantic_differences": 0, "reserved_slot_observations": 2520, "reserved_slot_nonzero": 0, "precision_digits": 15, "evidence": "evidence/stages/C07/FEATURE_OFF_SEMANTIC.json"},
+    {"id": "kernel_frozen", "result": "PASS", "sha256": "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02"},
+    {"id": "git_diff_check", "result": "PASS"}
+  ],
+  "inherited_authoritative_blockers": [
+    {"id": "B-S00-03", "status": "OPEN", "c07_effect": "does not block P09 infrastructure; gates C06B and P12/P15/P16 science contracts"},
+    {"id": "B-C02-01", "status": "OPEN"},
+    {"id": "B-C03-02", "status": "OPEN"},
+    {"id": "D-C04-07", "status": "OPEN"}
+  ],
+  "stale_blockers_not_reopened": ["B-C04-01", "B-PLATFORM-01"],
+  "closed_blockers_not_reopened": ["B-S00-01"],
+  "findings": [
+    {"id": "D-C07-01", "status": "OPEN", "detail": "configuration names slot 4 F while the frozen kernel names and actively uses that legacy slot as E; C07 preserves frozen bytes and assigns no new meaning"},
+    {"id": "REVIEW-C07-001", "status": "CLOSED", "detail": "semantic G1/G4 cross-ABI qualification exercised growth, rejection, and split paths; all 420 compared records were identical and all 2520 C07 reserved-slot observations were zero"}
+  ],
+  "external_resources_launched": [],
+  "external_spend_usd": 0,
+  "claims_established": [
+    "C07 P09 engineering storage and I/O plumbing passes its mandatory validation",
+    "enabled and disabled schemas use distinct mesh counts and an eight-slot particle ABI",
+    "P_E has no mesh representation",
+    "enabled later P operators and active P_F diffusion fail closed",
+    "feature-off semantic particle trajectories match P07 exactly for G1 growth and G4 growth/split/rejection at particle-ASCII precision 15, with C07 reserved slots exactly zero throughout"
+  ],
+  "claims_not_established": [
+    "checkpoint schema-v2 readiness or legacy checkpoint migration",
+    "P10 or later behavior",
+    "any calibrated or predictive biological result",
+    "full-plate, publication, or production readiness",
+    "formal P05-P18 acceptance",
+    "RG-SW:GO",
+    "RG-SCI:GO",
+    "Codex independence for later X01-X09 review of these bytes"
+  ],
+  "next_action": "Record the post-stage review follow-up commit, then proceed only under the separate C08 execution authority and its still-binding gates."
+}

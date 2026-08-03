@@ -1,0 +1,83 @@
+{
+  "artifact_type": "C08_REDISTRIBUTION_GUARD_TEST",
+  "cases": {
+    "checkpoint_out_of_domain": {
+      "checks": {
+        "aborted_before_update_ledger": true,
+        "before_particle_deserialization": true,
+        "exact_reason": true,
+        "not_misclassified_as_deletion": true,
+        "restart_exit_nonzero": true,
+        "seed_exit_zero": true
+      },
+      "exit_code": 22,
+      "log": "C:\\b\\BMX-shadow-handoff-20260721\\runs\\c08-redistribution-review-final-1r\\checkpoint_out_of_domain_restart\\stdout.log",
+      "mutation": {
+        "coordinate_index": 2,
+        "mutation": "replace the first serialized particle coordinate",
+        "new_coordinate": 0.1001,
+        "path": "C:\\b\\BMX-shadow-handoff-20260721\\runs\\c08-redistribution-review-final-1r\\checkpoint_out_of_domain_restart\\chk_bad\\particles\\Level_1\\DATA_00000",
+        "previous_coordinate": 0.0752
+      },
+      "status": "PASS"
+    },
+    "negative_id": {
+      "checks": {
+        "aborted_before_update_ledger": true,
+        "before_particle_deserialization": true,
+        "exact_reason": true,
+        "not_misclassified_as_boundary": true,
+        "restart_exit_nonzero": true,
+        "seed_checkpoint_exists": true,
+        "seed_exit_zero": true
+      },
+      "exit_code": 22,
+      "log": "C:\\b\\BMX-shadow-handoff-20260721\\runs\\c08-redistribution-review-final-1r\\negative_id_restart\\stdout.log",
+      "mutation": {
+        "after_high_word_hex": "0x00000000",
+        "before_high_word_hex": "0x80000000",
+        "mutation": "clear the AMReX m_idcpu positive-sign bit for particle 0",
+        "path": "C:\\b\\BMX-shadow-handoff-20260721\\runs\\c08-redistribution-review-final-1r\\negative_id_restart\\chk_bad\\particles\\Level_1\\DATA_00000"
+      },
+      "status": "PASS"
+    },
+    "nonperiodic_out_of_domain": {
+      "checks": {
+        "aborted_before_initial_ledger": true,
+        "exact_reason": true,
+        "exit_nonzero": true,
+        "no_particle_output_after_abort": true,
+        "not_misclassified_as_deletion": true
+      },
+      "exit_code": 22,
+      "log": "C:\\b\\BMX-shadow-handoff-20260721\\runs\\c08-redistribution-review-final-1r\\nonperiodic_out_of_domain\\stdout.log",
+      "status": "PASS"
+    },
+    "periodic_wrap": {
+      "checks": {
+        "exit_zero": true,
+        "expected_periodic_coordinate": true,
+        "no_guard_abort": true,
+        "one_particle_retained": true,
+        "wrapped_inside_domain": true
+      },
+      "exit_code": 0,
+      "log": "C:\\b\\BMX-shadow-handoff-20260721\\runs\\c08-redistribution-review-final-1r\\periodic_wrap\\stdout.log",
+      "status": "PASS",
+      "wrapped_x": 9.9999999999989e-05
+    }
+  },
+  "claim_boundary": "engineering pre-invalidation routing test; runtime evidence covers both derived Redistribute routing and prevalidation before pinned Restart's internal redistribution, including the recorded MPI rank counts; static source ordering covers every base Redistribute/Regrid delegation",
+  "executable": {
+    "path": "C:\\b\\BMX-shadow-handoff-20260721\\build-c08-native-release-review-final-clean\\bmx.exe",
+    "sha256": "ab726982f693e1e873dc45bbcaa6e2f94cc9968852e9433f712a5bd06c1a700e"
+  },
+  "method": "exercise an enabled nonperiodic escape through unguarded-at-call-site ASCII initialization, retain and wrap an enabled periodic escape, and restart checkpoints whose first AMReX identity sign bit or first nonperiodic coordinate was corrupted",
+  "mpi": {
+    "checkpoint_restart_ranks": 1,
+    "mpiexec": null,
+    "seed_and_direct_ranks": 1
+  },
+  "stage": "C08",
+  "status": "PASS"
+}

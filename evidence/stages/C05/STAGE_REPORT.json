@@ -1,0 +1,322 @@
+{
+  "artifacts": {
+    "comparator": "tools/repro/p08_comparator.py",
+    "contract": [
+      "contracts/p08/COMPARISON_CONTRACT.md",
+      "contracts/p08/COMPARISON_CONTRACT.json",
+      "contracts/p08/CONTRACT.sha256"
+    ],
+    "extractor": "tools/repro/p08_extract_observations.py",
+    "synthetic_suite": "tools/repro/run_p08_selftest.py"
+  },
+  "blockers": [
+    {
+      "detail": "biology decisions unresolved; mentor packet unsent; gates the P12/P15/P16 experiment contracts",
+      "id": "B-S00-03",
+      "owner": "user/mentor"
+    },
+    {
+      "detail": "six defects worked around in the Windows build config",
+      "id": "B-C02-01",
+      "owner": "writer + review"
+    },
+    {
+      "detail": "C02 image hash not reproducible after install-path rename",
+      "id": "B-C03-02",
+      "owner": "writer"
+    },
+    {
+      "detail": "volume closure drifts during evolution; reported, not enforced",
+      "id": "D-C04-07",
+      "owner": "integrator (P10)"
+    }
+  ],
+  "blockers_in_c05_scope": [],
+  "claims_established": [
+    "the four defect mappings covered by D1-D4 are reproduced in baseline and corrected in repaired",
+    "under predeclared rules, on a reference-qualified platform",
+    "every dimension traceable to raw evidence",
+    "no platform-attributable confound"
+  ],
+  "claims_still_prohibited": [
+    "any phosphorus behaviour is correct",
+    "any conservation property of the model as a whole (D-C04-07 open)",
+    "any scientific or biological result",
+    "P07 phase success",
+    "formal P05-P18 acceptance",
+    "RG-SW:GO",
+    "RG-SCI:GO"
+  ],
+  "comparator_defect_found_by_real_data": {
+    "disproof": "underlying values agree across platforms to ten significant figures",
+    "fix": "grouping key now includes fixture; a group present on only one platform is treated as not comparable rather than as agreement",
+    "pattern": "second time in this project a harness passed synthetic tests and failed on real structure: synthetic fixtures verify the logic, not the shape of the real data",
+    "regression_guard_added": "sweep_rows_are_not_platform_variance",
+    "root_cause": "d8_platform grouped by (tree, observable), OMITTING fixture, so all six k1 rows of the sweep collapsed into one group and disagreed with each other; the comparator was reporting the sweep varying and calling it platform variance",
+    "symptom": "first real run returned D8 CONTRADICTORY, claiming cross-platform variance",
+    "why_synthetic_suite_missed_it": "the D8 case used a single fixture, so a key missing fixture behaved correctly"
+  },
+  "comparator_kinds": {
+    "EXACT": [
+      "donor-cap equality",
+      "stored-area staleness",
+      "91 phosphorus lines",
+      "identity continuity",
+      "all cross-platform comparisons"
+    ],
+    "INVARIANT": [
+      "baseline transfer monotonicity",
+      "predicted-equals-observed branch classification",
+      "rejection counts"
+    ],
+    "TOLERANCE": {
+      "declared_before_run": true,
+      "observed_spread": 1.82e-15,
+      "threshold_relative": 1e-06,
+      "used_once": "D1 saturation spread",
+      "widened_after_outcome": false
+    }
+  },
+  "completed_at": "2026-08-01T02:42:20.762095+00:00",
+  "conclusion": "Within the carbon-only scope of P07 and on the identities recorded in this record, the defect mappings covered by D1, D2, D3, D4 are reproduced in the baseline tree and corrected in the repaired tree, observed directly rather than inferred. Carbon-only scope and identity continuity hold, and cross-platform variance is zero, so no observed difference is platform-attributable. This record makes NO claim about phosphorus behaviour, about any conservation property of the model as a whole, about any scientific or biological result, about P07 phase success, about formal P05-P18 acceptance, or about RG-SW:GO or RG-SCI:GO.",
+  "contract": {
+    "id": "CON-P08-001",
+    "json_sha256": "f43bf3febc951befac7b4ad98ca08c18fb19c70b2ea6f52d2b557c7f6de5ee5a",
+    "md_sha256": "811a34cbe00fe841c3eecd169e411d796b00d2c298b5179d3b4c5da07fbd3839",
+    "path": "contracts/p08/",
+    "predeclaration_commit": "6f981670e932481bdd64358ec86aa937eb9ee840"
+  },
+  "contradictions": [],
+  "deliberate_asymmetry_restated": "dP1/dP2 continue to use the stale new_cell_area while carbon moves to the refreshed carbon_exchange_area; phosphorus retains exactly the CDEF-03 staleness that carbon just had repaired, and nothing here may be read as evidence that phosphorus area handling is correct",
+  "determinism": {
+    "byte_identical": true,
+    "canonical_record_sha256": "3bfd94345d596e70ceb504ad17816cfd0041871c04671ec464a05c5a0ab34fcc",
+    "real_bundle_shuffles": 25,
+    "synthetic_shuffles": 12
+  },
+  "dimensions": [
+    {
+      "detail": "baseline uncapped across 6 k1 rows; repaired saturates (spread 1.82e-15 <= 1e-06) and final content equals fA0*V_cell exactly on 4 rows",
+      "dimension": "D1",
+      "evidence": [
+        "evidence/stages/C04/reference\\DONOR_CAP_REFERENCE.json"
+      ],
+      "name": "CDEF-01/02 second-half donor cap",
+      "result": "REPAIR_VERIFIED"
+    },
+    {
+      "detail": "trees differ on 5 fixture(s) with a directly observed tip growth branch",
+      "dimension": "D2",
+      "evidence": [
+        "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G1_tip_length_only\\GEOMETRY.json",
+        "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G2_tip_radius_only\\GEOMETRY.json",
+        "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G3_tip_proportional\\GEOMETRY.json",
+        "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G4_nontip_rejected\\GEOMETRY.json",
+        "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G5_nontip_radial\\GEOMETRY.json"
+      ],
+      "name": "CDEF-03 first-half stale exchange area",
+      "result": "REPAIR_VERIFIED"
+    },
+    {
+      "detail": "both tip branches execute as predicted with stored area unchanged on 4 fixture(s), and the trees differ there",
+      "dimension": "D3",
+      "evidence": [
+        "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G1_tip_length_only\\GEOMETRY.json",
+        "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G2_tip_radius_only\\GEOMETRY.json",
+        "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G4_nontip_rejected\\GEOMETRY.json",
+        "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G5_nontip_radial\\GEOMETRY.json"
+      ],
+      "name": "CDEF-04 tip stored-area staleness",
+      "result": "REPAIR_VERIFIED"
+    },
+    {
+      "detail": "188 non-tip rejection(s) observed; cB differs between trees",
+      "dimension": "D4",
+      "evidence": [
+        "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G4_nontip_rejected\\GEOMETRY.json"
+      ],
+      "name": "CDEF-05 non-tip rejected-growth rollback",
+      "result": "REPAIR_VERIFIED"
+    },
+    {
+      "detail": "all phosphorus lines byte-identical; patch scope is one file",
+      "dimension": "D5",
+      "evidence": [
+        "evidence/stages/C04/STAGE_REPORT.json"
+      ],
+      "name": "carbon-only scope preserved",
+      "result": "UNCHANGED_INVARIANT"
+    },
+    {
+      "detail": "no conclusion asserts phosphorus correctness; the dP1/dP2 asymmetry is restated",
+      "dimension": "D6",
+      "evidence": [
+        "evidence/stages/C04/STAGE_REPORT.json"
+      ],
+      "name": "phosphorus excluded from claims",
+      "result": "UNCHANGED_INVARIANT"
+    },
+    {
+      "detail": "all 3 identity checks match the frozen chain",
+      "dimension": "D7",
+      "evidence": [
+        "evidence/stages/C04/reference\\QUALIFICATION_REFERENCE.json"
+      ],
+      "name": "source/build/executable identity continuity",
+      "result": "UNCHANGED_INVARIANT"
+    },
+    {
+      "detail": "cross-platform variance is zero across 2 platforms (gce-reference-linux, windows-development) on 19 tree/fixture/observable groups; no observed difference is platform-attributable",
+      "dimension": "D8",
+      "evidence": [
+        "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G1_tip_length_only\\GEOMETRY.json",
+        "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G2_tip_radius_only\\GEOMETRY.json",
+        "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G3_tip_proportional\\GEOMETRY.json",
+        "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G4_nontip_rejected\\GEOMETRY.json",
+        "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G5_nontip_radial\\GEOMETRY.json",
+        "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G6_no_growth_stock_init\\GEOMETRY.json",
+        "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G7_no_growth_exact_init\\GEOMETRY.json",
+        "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs\\c04-p07-donor-cap-fixture\\DONOR_CAP_FIXTURE.json",
+        "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs\\c04-p07-geometry\\G1_tip_length_only\\GEOMETRY.json",
+        "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs\\c04-p07-geometry\\G2_tip_radius_only\\GEOMETRY.json",
+        "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs\\c04-p07-geometry\\G3_tip_proportional\\GEOMETRY.json",
+        "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs\\c04-p07-geometry\\G4_nontip_rejected\\GEOMETRY.json",
+        "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs\\c04-p07-geometry\\G5_nontip_radial\\GEOMETRY.json",
+        "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs\\c04-p07-geometry\\G6_no_growth_stock_init\\GEOMETRY.json",
+        "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs\\c04-p07-geometry\\G7_no_growth_exact_init\\GEOMETRY.json",
+        "evidence/stages/C04/reference\\DONOR_CAP_REFERENCE.json"
+      ],
+      "name": "platform-only differences not attributed to P07",
+      "result": "UNCHANGED_INVARIANT"
+    }
+  ],
+  "evidence_hashes": {
+    "BUNDLE.json": "3c8cc0bf19cef3839dbd190af305d36193b2309c646f71c6795001d9ab78a733",
+    "COMPARISON_RECORD.json": "78a7320dc7c7b3bcabd9681a77b4dd9fab802a2745c7c58a5465aa365a188add",
+    "SELFTEST.json": "2322bc79649dd2874b82d1ccf164ea155d1b6950ebcbc769ae8b913a89143390"
+  },
+  "generation": {
+    "amrex_commit": "cbdc6580ee3d78cccdd37172e4ba077ee181f483",
+    "amrex_tree": "fb714dc6e693c18f7c441d1d1febe4a5e8bf9ea6",
+    "baseline_commit": "389e9e35a1c7291a4af795b2e39f2db1f0012b61",
+    "baseline_kernel_sha256": "711ae2caa6e7aabb5c084fe841d2d90edb85ee53e7abc7a859d7de00e6614678",
+    "candidate_commit": "adb427331e180cd0b4faa74a4ab2098381b2eabb",
+    "candidate_kernel_sha256": "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02",
+    "reference_images": {
+      "c03-baseline-release": {
+        "chemistry": "711ae2caa6e7aabb5c084fe841d2d90edb85ee53e7abc7a859d7de00e6614678",
+        "commit": "7743106d8e1c1f9ae845afc198d920ac513042ff",
+        "sha256": "e74b4377e266f8966e3f979f0dfde9b8e6458f595effa7f0e6d2929b053909af",
+        "worktree": "clean"
+      },
+      "c04-baseline-diag-release": {
+        "chemistry": "711ae2caa6e7aabb5c084fe841d2d90edb85ee53e7abc7a859d7de00e6614678",
+        "commit": "7743106d8e1c1f9ae845afc198d920ac513042ff",
+        "sha256": "320bb021dae13a075527b302bc7f9cefbda6035e395e10d71384bb1de07e3d88",
+        "worktree": "clean"
+      },
+      "c04-diag-release": {
+        "chemistry": "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02",
+        "commit": "b686981faa9dcc8505ed668b4e394fc553afd93f",
+        "sha256": "661766e9283018f01cfc6205378192bd4743d3385540f975017630c0523ee2c4",
+        "worktree": "clean"
+      },
+      "c04-p07-release": {
+        "chemistry": "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02",
+        "commit": "b686981faa9dcc8505ed668b4e394fc553afd93f",
+        "sha256": "d2655f1e8a2136b98a2d6531914d646c25da4388027cbc22596111dfe5cf90d2",
+        "worktree": "clean"
+      }
+    }
+  },
+  "input_git_commit": "6f981670e932481bdd64358ec86aa937eb9ee840",
+  "mandatory_validation": {
+    "both_trees_built_one_toolchain_same_ordered_cases": "PASS",
+    "comparator_input_order_independent": "PASS",
+    "dimensions_frozen_before_outcomes": "PASS",
+    "every_conclusion_traces_to_raw_evidence": "PASS",
+    "exact_tolerance_invariant_distinguished": "PASS",
+    "missing_extra_duplicate_wrong_generation_contradictory_tests_pass": "PASS",
+    "no_model_source_altered": "PASS",
+    "platform_only_differences_not_attributed": "PASS"
+  },
+  "next_prompt": "C06A is already complete (fd8b0ed). C06B is gated on the mentor response (B-S00-03, user action). C07 (P09) is the next implementable stage.",
+  "output_git_commit": "bbc9ff79feb082f17500a24b0a95878fcde8227a",
+  "platform_comparison_class": {
+    "cross_platform_variance": "zero",
+    "groups_compared": 19,
+    "platforms": [
+      "gce-reference-linux",
+      "windows-development"
+    ],
+    "rule": "a difference may be attributed to P07 ONLY when it appears between baseline and repaired WITHIN a single platform; a difference for the same tree ACROSS platforms is platform-only and may never be attributed to the repair"
+  },
+  "predeclaration_honesty": {
+    "blind": false,
+    "ordering_verifiable_from_git": true,
+    "protections": [
+      "every rule derives from the five reviewed defect mappings (CDEF-01..05) and AGENTS.md tolerances, both predating the observations",
+      "no rule cites a numeric value taken from an observed outcome",
+      "every outcome class including the four the real data never produces is exercised by synthetic fixtures containing none of the real measurements"
+    ],
+    "statement": "the raw observations already existed and the writer had seen them; they were produced by C04. Presenting this as a blind predeclaration would be false."
+  },
+  "role": "primary writer (Claude), product lane",
+  "source_changes": {
+    "model_source_altered": false,
+    "note": "C05 owns the comparison harness, schemas, fixtures, analysis and evidence only",
+    "reviewed_candidate_kernel_sha256": "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02"
+  },
+  "stage_id": "C05",
+  "status": "PASS",
+  "supported_dimensions": [
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "D5",
+    "D6",
+    "D7",
+    "D8"
+  ],
+  "synthetic_suite": {
+    "cases": 23,
+    "covers": [
+      "historical failure + repaired success",
+      "both fail",
+      "both pass",
+      "contradictory dimensions",
+      "missing historical member",
+      "missing repaired member",
+      "duplicate member",
+      "extra member",
+      "wrong generation / source chain",
+      "untraceable derived record",
+      "incomplete derived output",
+      "platform-only difference misclassified as repair effect",
+      "single platform cannot decide attribution",
+      "difference without observed branch execution",
+      "no rejection observed",
+      "tolerance boundary just inside and just outside",
+      "sweep rows are not platform variance",
+      "input-order independence"
+    ],
+    "failures": [],
+    "path": "tools/repro/run_p08_selftest.py",
+    "status": "PASS"
+  },
+  "traceability": {
+    "dimensions_without_evidence": [],
+    "sources_per_dimension": {
+      "D1": 1,
+      "D2": 5,
+      "D3": 4,
+      "D4": 1,
+      "D5": 1,
+      "D6": 1,
+      "D7": 1,
+      "D8": 16
+    }
+  },
+  "undecided": []
+}

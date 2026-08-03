@@ -1,0 +1,122 @@
+{
+  "stage_id": "C01",
+  "status": "PASS",
+  "started_at": "2026-07-30",
+  "completed_at": "2026-07-30",
+  "input_git_commit": "389e9e35a1c7291a4af795b2e39f2db1f0012b61",
+  "input_git_tree": "1c73deedf0eb2feea833a7fddbc431ae9754d977",
+  "output_git_commit": "9a9a0840969d466c32ae3ade481238e604c7dd8c",
+  "amrex_commit": "cbdc6580ee3d78cccdd37172e4ba077ee181f483",
+  "amrex_tree": "fb714dc6e693c18f7c441d1d1febe4a5e8bf9ea6",
+  "contract_hashes": {},
+  "environment_hash": null,
+  "environment_note": "No build performed; presence inventory only. See ENVIRONMENT.md. No configuration hash is meaningful until C02 establishes a build identity.",
+  "build_hashes": {},
+
+  "files_changed": [
+    {"path": "AGENTS.md", "reason": "shared durable agent rules installed at product root"},
+    {"path": "CLAUDE.md", "reason": "Claude entry point importing AGENTS.md"},
+    {"path": "evidence/session/SESSION_BOOTSTRAP.md", "reason": "S00 evidence relocated into the product worktree for version control"},
+    {"path": "evidence/stages/C01/STAGE_REPORT.md", "reason": "stage report"},
+    {"path": "evidence/stages/C01/STAGE_REPORT.json", "reason": "machine-readable stage report"},
+    {"path": "evidence/stages/C01/SOURCE_IDENTITY_VERIFIED.json", "reason": "immutable verified source/dependency identity record"},
+    {"path": "evidence/stages/C01/ENVIRONMENT.md", "reason": "environment recapture superseding the package summary"},
+    {"path": "evidence/stages/C01/COMMIT.txt", "reason": "records the stage commit hash; written by the follow-up commit"}
+  ],
+  "production_source_files_changed": 0,
+
+  "commands": [
+    {"command": "Get-FileHash <package.zip> -Algorithm SHA256", "exit_code": 0},
+    {"command": "Expand-Archive -Path <package.zip> -DestinationPath planning-package -Force", "exit_code": 0},
+    {"command": "sha256sum -c MANIFEST.sha256", "exit_code": 0, "result": "153 OK, 0 failed"},
+    {"command": "git clone --no-hardlinks --no-checkout <lane> repo", "exit_code": 0},
+    {"command": "git -C repo checkout --detach 389e9e35a1c7291a4af795b2e39f2db1f0012b61", "exit_code": 0},
+    {"command": "git clone --no-hardlinks --no-checkout <lane>/.git/modules/subprojects/amrex repo/subprojects/amrex", "exit_code": 0},
+    {"command": "git -C repo/subprojects/amrex checkout --detach cbdc6580ee3d78cccdd37172e4ba077ee181f483", "exit_code": 0},
+    {"command": "git -C repo submodule init", "exit_code": 0},
+    {"command": "git -C repo worktree add --detach worktrees/baseline 389e9e3", "exit_code": 0},
+    {"command": "git -C repo worktree add -b rgsw/product worktrees/product 389e9e3", "exit_code": 0},
+    {"command": "git -C repo worktree add --detach worktrees/review 389e9e3", "exit_code": 0},
+    {"command": "git ls-files --eol / git ls-files -s / git status --porcelain / git submodule status", "exit_code": 0},
+    {"command": "cmp + sha256sum over 04_SOURCE_SNAPSHOT vs checkout (108 files)", "exit_code": 0, "result": "108 byte-identical, 0 different, 0 missing"}
+  ],
+
+  "tests": [
+    {"id": "C01-T1-package-sha256", "status": "PASS", "evidence": "SOURCE_IDENTITY_VERIFIED.json:planning_package"},
+    {"id": "C01-T2-package-manifest", "status": "PASS", "evidence": "153/153 members OK"},
+    {"id": "C01-T3-bmx-commit-tree", "status": "PASS", "evidence": "389e9e3 / 1c73dee exact match"},
+    {"id": "C01-T4-amrex-commit-tree", "status": "PASS", "evidence": "cbdc658 / fb714dc exact match"},
+    {"id": "C01-T5-amrex-gitlink", "status": "PASS", "evidence": "gitlink in canonical tree equals pinned commit"},
+    {"id": "C01-T6-clean-worktrees", "status": "PASS", "evidence": "4/4 clean git status prior to evidence files"},
+    {"id": "C01-T7-p05-isolation", "status": "PASS", "evidence": "disjoint paths, no shared branches/objects/outputs"},
+    {"id": "C01-T8-snapshot-equivalence", "status": "PASS", "evidence": "108/108 byte-identical"},
+    {"id": "C01-T9-lane-repo-unmodified", "status": "PASS", "evidence": "lane HEAD dfe1eef unchanged, 0 dirty, 5 worktrees still registered"}
+  ],
+
+  "numerical_results": {},
+
+  "tree_metadata": {
+    "tracked_files": 370,
+    "eol_lf": 192,
+    "eol_binary": 177,
+    "eol_crlf_or_mixed": 0,
+    "eol_index_worktree_mismatches": 0,
+    "symlinks": 0,
+    "exec_mode_files": 5,
+    "gitlinks": 1,
+    "core_autocrlf": "false",
+    "core_fileMode": "false",
+    "gitattributes_present": false
+  },
+
+  "workspaces": [
+    {"role": "git_store_and_pristine", "path": "BMX-RG-SW/repo", "ref": "detached", "commit": "389e9e35a1c7291a4af795b2e39f2db1f0012b61", "clean": true},
+    {"role": "baseline", "path": "BMX-RG-SW/worktrees/baseline", "ref": "detached", "commit": "389e9e35a1c7291a4af795b2e39f2db1f0012b61", "clean": true},
+    {"role": "product_writer", "path": "BMX-RG-SW/worktrees/product", "ref": "rgsw/product", "commit": "389e9e35a1c7291a4af795b2e39f2db1f0012b61", "clean": true},
+    {"role": "independent_review", "path": "BMX-RG-SW/worktrees/review", "ref": "detached", "commit": "389e9e35a1c7291a4af795b2e39f2db1f0012b61", "clean": true}
+  ],
+
+  "claims_enabled": [],
+  "claims_still_prohibited": [
+    "formal P05-P18 acceptance",
+    "empirical calibration",
+    "predictive validity",
+    "full-plate validity",
+    "production qualification",
+    "publication readiness",
+    "RG-SW:GO",
+    "RG-SCI:GO",
+    "platform is qualified",
+    "source compiles",
+    "any scientific result exists"
+  ],
+
+  "blockers": [
+    {
+      "id": "B-S00-01",
+      "owner": "writer",
+      "dependency": "C02 build spike",
+      "safe_boundary": "blocks C02 and all downstream stages",
+      "detail": "No qualified build platform. Native Windows has no C++ compiler (no cl, g++, clang++, ninja, make, msbuild). Only complete toolchain is WSL version 1 Ubuntu 24.04, unproven for AMReX/MPI."
+    },
+    {
+      "id": "B-S00-03",
+      "owner": "user/mentor",
+      "dependency": "mentor/MENTOR_QUESTIONS_URGENT.md",
+      "safe_boundary": "blocks C06B contract freeze and final runs in C10, C11, C12, C14, C15",
+      "detail": "All biology-dependent decisions unresolved; mentor packet not yet sent."
+    }
+  ],
+  "blockers_resolved_by_this_stage": ["B-S00-02"],
+  "blockers_in_mandatory_scope_of_C01": [],
+
+  "release_status": {
+    "rg_sw": "INCOMPLETE",
+    "rg_sci": "NO-GO",
+    "formal_p05_p18_acceptance": false,
+    "label": "RESEARCH-USE-CANDIDATE — RG-SW INCOMPLETE"
+  },
+
+  "next_prompt": "prompts/claude/C02_FIRST_FOUR_HOUR_BUILD_SPIKE.md",
+  "manifest_sha256": null
+}

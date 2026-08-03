@@ -1,0 +1,60 @@
+{
+  "artifact_type": "C13_RNG_TOPOLOGY_DECOMPOSITION_ADOPTION_EVIDENCE",
+  "stage": "C13/P15 Stage 0",
+  "generated": "2026-08-02",
+  "status": "CLOSED_USER_ADOPTED_PENDING_IMPLEMENTATION_AND_REVIEW",
+  "classification": "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+  "decision_id": "D-C13-04-RNG-TOPOLOGY-DECOMPOSITION",
+  "contract": {
+    "path": "contracts/p15/RNG_TOPOLOGY_DECOMPOSITION_CONTRACT_V1.json",
+    "contract_id": "UDC-20260802-C13-RNG-TOPOLOGY-DECOMPOSITION-V1",
+    "sha256": "059f067b94673838efba143c5a4615aaf79dcacc78a456317a81578daa37eba0"
+  },
+  "known_answer_vectors": {
+    "path": "contracts/p15/RNG_TOPOLOGY_DECOMPOSITION_KAT_V1.json",
+    "sha256": "ef47fa935b64671dd2f93e93640308b9620055587083f0c5c5a55aa1f95edcb7"
+  },
+  "authority": {
+    "kind": "EXPLICIT_PROJECT_OWNER_ADOPTION_IN_CURRENT_TASK",
+    "date": "2026-08-02",
+    "exact_text_path": "contracts/p15/RNG_TOPOLOGY_DECOMPOSITION_ADOPTION_TEXT_V1.txt",
+    "exact_text_sha256": "f64eb1598bcf174d9480ca2f7e930423242b22b56373ae3867296cef2b394850",
+    "message_matches_exact_text": true
+  },
+  "package": {
+    "source_path_at_adoption": "C:/Users/Shadow/Downloads/C13_D-C13-04_decision_package_v1.zip",
+    "sha256": "68d576d69f62d0ff877dd7bfed06be33d54ac3b9048efe39181d8a92ca8a78c8",
+    "manifest_verified": true,
+    "normative_kat_passed_before_implementation": true,
+    "decision_package_commit": "a9f383c7bde137b2e2ad74d7353a87203bfc2374"
+  },
+  "source_binding": {
+    "input_head": "096021480271fde968eb7227e30affcaaa111232",
+    "input_tree": "68d77ac0b75734063e5a0313a4041c600bfee424",
+    "source_archive_sha256": "9402571b1a6c0cbff3edc2d13041b0c4bfd085c7b79371e5100fca329d9a0bd7"
+  },
+  "frozen_bytes": {
+    "global_operator_order_sha256": "bb63c219a860687d91ce1acf06a667c9208abf026b32f18acfc64884bb696dd6",
+    "global_operator_order_changed": false,
+    "chemistry_kernel_sha256": "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02",
+    "chemistry_kernel_changed": false
+  },
+  "authorization": {
+    "stage0_implementation": true,
+    "analytical_and_short_engineering_qualification": true,
+    "forced_topology_P0_to_P5": true,
+    "checkpoint_and_rank_change_qualification": true,
+    "216h_outcome_execution": false,
+    "P15_science_outcomes": false,
+    "required_next_external_gate": "independent exact-source and numerical-contract PASS"
+  },
+  "claims_not_made": [
+    "mentor approval",
+    "CLOSED_SCIENTIFIC",
+    "biological calibration",
+    "predictive validation",
+    "RG-SCI progress",
+    "C13 PASS",
+    "P15 scientific interpretation"
+  ]
+}

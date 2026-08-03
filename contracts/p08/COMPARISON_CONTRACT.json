@@ -1,0 +1,151 @@
+{
+  "caveat": "frozen for implementation, NOT mentor approval; subject to independent numerical review before final runs",
+  "class": "technical policy",
+  "classes": [
+    "REPRODUCED",
+    "REPAIR_VERIFIED",
+    "UNCHANGED_INVARIANT",
+    "CONTRADICTORY",
+    "INCONCLUSIVE"
+  ],
+  "comparators": {
+    "EXACT": "bitwise equality of parsed double or text line; no tolerance",
+    "INVARIANT": "sign, bound, monotonicity, saturation shape, or count",
+    "TOLERANCE": "relative difference against a threshold stated in this contract or AGENTS.md; never introduced or widened after an outcome is seen"
+  },
+  "conclusion_rule": {
+    "if_any_contradictory_or_inconclusive": "the conclusion must name it and must not claim overall support for P07",
+    "may_not_state": [
+      "any phosphorus behaviour is correct",
+      "any conservation property of the model as a whole",
+      "any scientific or biological result",
+      "P07 phase success",
+      "formal P05-P18 acceptance",
+      "RG-SW:GO",
+      "RG-SCI:GO"
+    ],
+    "may_state": [
+      "which defect mappings are REPRODUCED and REPAIR_VERIFIED",
+      "that carbon-only scope held",
+      "that identity continuity held",
+      "that no observed difference is platform-attributable"
+    ]
+  },
+  "contract_id": "CON-P08-001",
+  "date": "2026-08-01",
+  "determinism": "comparison record must be byte-identical under any input ordering; comparator sorts by canonical key and the synthetic suite verifies by shuffling",
+  "dimensions": [
+    {
+      "comparator": [
+        "INVARIANT",
+        "EXACT"
+      ],
+      "contradictory_when": "repaired exceeds available, or baseline saturates while repaired does not",
+      "derives_from": "bmx_chem_K.H:2188,:2220",
+      "id": "D1",
+      "name": "CDEF-01/02 second-half donor cap",
+      "observable": "fluid-side A_particles and A_fluid over the k1 sweep",
+      "repair_verified_when": "repaired saturates (constant within 1e-6 relative for rows with alpha_prime>1) AND A_particles_final == fA0*V_cell exactly",
+      "reproduced_when": "baseline transfer grows monotonically with k1 (not capped)"
+    },
+    {
+      "comparator": [
+        "EXACT"
+      ],
+      "derives_from": "bmx_chem_K.H:1623",
+      "id": "D2",
+      "inconclusive_when": "they differ but no branch execution was observed",
+      "name": "CDEF-03 first-half stale exchange area",
+      "observable": "particle cA, cC after a tip growth step",
+      "repair_verified_when": "trees differ on a fixture where a tip growth branch is directly observed to execute"
+    },
+    {
+      "comparator": [
+        "INVARIANT",
+        "EXACT"
+      ],
+      "contradictory_when": "predicted and observed branches disagree on any transition",
+      "derives_from": "bmx_chem_K.H:2064,:2072",
+      "id": "D3",
+      "name": "CDEF-04 tip stored-area staleness",
+      "observable": "branch classification plus stored realIdx::area",
+      "repair_verified_when": "additionally repaired cA/cC differ from baseline on those fixtures",
+      "reproduced_when": "both branches execute in baseline with stored area left bit-unchanged on every transition"
+    },
+    {
+      "comparator": [
+        "INVARIANT",
+        "EXACT"
+      ],
+      "derives_from": "bmx_chem_K.H:2098",
+      "id": "D4",
+      "name": "CDEF-05 non-tip rejected-growth rollback",
+      "observable": "particle cB, vol, dvdt, dadt on non-tip segments",
+      "repair_verified_when": "rejections observed AND repaired cB restored while baseline cB remains debited"
+    },
+    {
+      "comparator": [
+        "EXACT"
+      ],
+      "contradictory_when": "any P-line changed",
+      "derives_from": "P07 phosphorus exclusion boundary",
+      "id": "D5",
+      "name": "carbon-only scope preserved",
+      "observable": "91 phosphorus-bearing source lines and diff scope",
+      "unchanged_invariant_when": "all 91 P-lines byte-identical and the patch touches exactly one file"
+    },
+    {
+      "comparator": [
+        "INVARIANT"
+      ],
+      "derives_from": "spec requirement",
+      "id": "D6",
+      "name": "phosphorus excluded from claims",
+      "observable": "claim text of this stage's report",
+      "unchanged_invariant_when": "no conclusion asserts phosphorus correctness and the dP1/dP2 asymmetry is restated"
+    },
+    {
+      "comparator": [
+        "EXACT"
+      ],
+      "contradictory_when": "any identity mismatches - hard stop",
+      "derives_from": "spec requirement",
+      "id": "D7",
+      "name": "source/build/executable identity continuity",
+      "observable": "baseline and candidate commits and kernel hashes, AMReX commit and tree, four image SHA-256s, per-image provenance",
+      "unchanged_invariant_when": "every identity matches the frozen value and every image reports RESOLVED provenance on a clean tree"
+    },
+    {
+      "comparator": [
+        "EXACT"
+      ],
+      "derives_from": "spec synthetic branch: platform-only difference incorrectly classified as repair effect",
+      "id": "D8",
+      "inconclusive_when": "fewer than two platforms available for the same tree",
+      "name": "platform-only differences not attributed to P07",
+      "observable": "same-tree observables across all platforms exercised",
+      "platform_comparison_class": "a difference may be attributed to P07 ONLY when it appears between baseline and repaired WITHIN a single platform; a difference for the SAME tree ACROSS platforms is platform-only and may never be attributed to the repair",
+      "unchanged_invariant_when": "cross-platform variance is zero for each tree"
+    }
+  ],
+  "inconclusive_is_not_a_pass": true,
+  "membership_rules": {
+    "duplicate_member": "hard error",
+    "extra_member": "hard error",
+    "missing_member": "hard error, dimension INCONCLUSIVE",
+    "untraceable_derived_record": "hard error",
+    "wrong_generation": "hard error"
+  },
+  "predeclaration_honesty": {
+    "observations_already_existed": true,
+    "protection": [
+      "every rule derives from the five reviewed P07 defect mappings (CDEF-01..05) and AGENTS.md tolerances, which predate the observations",
+      "no rule references a numeric value taken from an observed outcome",
+      "every outcome class is exercised by synthetic fixtures independent of the real data"
+    ],
+    "seen_by_writer_before_contract": true
+  },
+  "replaces": "planning-package/02_REQUIREMENTS/P08_COMPARISON_HARNESS_SPEC_DRAFT.md [UNSPECIFIED] rules",
+  "status": "FROZEN_FOR_IMPLEMENTATION",
+  "version": 1
+}

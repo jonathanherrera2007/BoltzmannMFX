@@ -1,0 +1,68 @@
+{
+  "artifact_type": "C13_RNG_TOPOLOGY_DECOMPOSITION_CONTRACT_CHANGELOG",
+  "decision_id": "D-C13-05-RNG-SIDE-BRANCH-GRADIENT-REACHABILITY",
+  "from": {
+    "contract_path": "contracts/p15/RNG_TOPOLOGY_DECOMPOSITION_CONTRACT_V1.json",
+    "contract_id": "UDC-20260802-C13-RNG-TOPOLOGY-DECOMPOSITION-V1",
+    "contract_sha256": "059f067b94673838efba143c5a4615aaf79dcacc78a456317a81578daa37eba0",
+    "kat_path": "contracts/p15/RNG_TOPOLOGY_DECOMPOSITION_KAT_V1.json",
+    "kat_sha256": "ef47fa935b64671dd2f93e93640308b9620055587083f0c5c5a55aa1f95edcb7"
+  },
+  "to": {
+    "contract_path": "contracts/p15/RNG_TOPOLOGY_DECOMPOSITION_CONTRACT_V1_1.json",
+    "contract_id": "UDC-20260802-C13-RNG-TOPOLOGY-DECOMPOSITION-V1.1",
+    "contract_sha256": "0198837e2fffcca34cc87febe13c51637f61ea9acc0c755025928fcb7e90cd17",
+    "kat_path": "contracts/p15/RNG_TOPOLOGY_DECOMPOSITION_KAT_V1_1.json",
+    "kat_sha256": "607de0acab001f97544545bb16128766f657e7a7f74ee981c76a39fe08f1df1b"
+  },
+  "selected_option": "OPTION_1_PRESERVE_FROZEN_BEHAVIOR_REMOVE_UNREACHABLE_GN_NONZERO_CASE",
+  "normative_changes": [
+    {
+      "json_pointer": "/side_branch_gradient_reachability",
+      "change": "Added exact source-bound proof that frozen setNewSegment makes effective side-branch gn==0.0 mandatory."
+    },
+    {
+      "json_pointer": "/draw_schedule/4",
+      "change": "Geometry draw ordinal 0 is mandatory for every accepted side branch; accepted geometry draws are exactly [0,1,2]."
+    },
+    {
+      "json_pointer": "/canonical_candidates/candidate_field_enumerations/precondition_mask_bits/15",
+      "change": "Clarified bit 15 as the frozen effective setNewSegment gradient norm, without changing its bit position."
+    },
+    {
+      "json_pointer": "/qualification_matrix/forced_cases",
+      "change": "Removed unreachable gn!=0 forced case; replaced zero/nonzero pair with one nonzero-stored-input fixture that must still produce effective gn==0.0 and all three geometry draws."
+    },
+    {
+      "json_pointer": "/implementation_boundary",
+      "change": "Explicitly prohibits option 2 behavior and binds fail-closed guard C13_ABORT_SIDE_BRANCH_GRADIENT_REACHABILITY_DIVERGENCE."
+    },
+    {
+      "json_pointer": "/mandatory_pre_216h_tests",
+      "change": "Added reachability/schedule KAT and mutation-fault requirement."
+    },
+    {
+      "json_pointer": "/closure_rule",
+      "change": "Adoption supersedes v1, preserves D-C13-04 closure status, and closes D-C13-05 pending implementation/review while C13 remains BLOCKED."
+    }
+  ],
+  "kat_changes": [
+    "Added exact event type 0x12 draw vectors for side-branch sign, deflection, and azimuth ordinals 0,1,2.",
+    "Added a reachability vector with deliberately nonzero stored gradient bits and exact +0.0 effective gradient/norm expectations.",
+    "Added an accepted side-branch candidate descriptor with precondition bit 15 and materialized_draw_count=4.",
+    "Recomputed every contract-hash-dependent chain, file header, batch header, and checkpoint state vector."
+  ],
+  "unchanged_bindings": [
+    "RNG key bytes and field ordering",
+    "SHA-256 key-to-draw mapping and binary64 conversion",
+    "all event-type values and draw ordinal namespaces",
+    "global operator order O06 then O07 then O08",
+    "child identity allocation",
+    "ledger record schemas and domains",
+    "checkpoint schema and continuation semantics",
+    "CPU/OpenMP platform scope and GPU exclusion",
+    "frozen chemistry-kernel bytes and hash",
+    "all biological, transport, terminal-zone, P12-P14, fusion-distance, amount-routing, and chemistry decisions"
+  ],
+  "explicitly_not_authorized": "Nonzero-gradient side branching or any growth/topology behavior change."
+}

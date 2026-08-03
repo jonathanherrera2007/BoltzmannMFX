@@ -1,0 +1,57 @@
+{
+  "artifact_type": "C12_EVIDENCE_MANIFEST",
+  "stage": "C12/P14",
+  "generated": "2026-08-02",
+  "status": "PASS",
+  "artifacts": [
+    {
+      "path": "evidence/stages/C12V2/ANALYTICAL_UNIT.json",
+      "sha256": "916a0c3fa3fea8c265191374340bc2421b3dc5c2e19acab9d68973fc62615f78"
+    },
+    {
+      "path": "evidence/stages/C12V2/BINDING_ADOPTION.json",
+      "sha256": "796bb7a3284fd7ec14861e55438295c0640702e40432d552608b3e3f37e5f85a"
+    },
+    {
+      "path": "evidence/stages/C12V2/BINDING_ADOPTION.md",
+      "sha256": "36fc7925a2930247176b7fd54881146a4fffb78ff7d68db3e0ee82a6d48aa059"
+    },
+    {
+      "path": "evidence/stages/C12V2/BUILD.json",
+      "sha256": "ba663fb181ebe902340e09bff11f8e126e004da4545082b5db6a56d8ee12e641"
+    },
+    {
+      "path": "evidence/stages/C12V2/FEATURE_OFF_SEMANTIC.json",
+      "sha256": "25b9a601d82fe53c56cf44e4a7de834c8edf869836b21aed3c16c41c13a5ead2"
+    },
+    {
+      "path": "evidence/stages/C12V2/NATIVE_RUNTIME.json",
+      "sha256": "8ed4b536d6a0b826da31f66d5242eec232990ab223d997fd52fb1576a1255a10"
+    },
+    {
+      "path": "evidence/stages/C12V2/P10_REDISTRIBUTION_REGRESSION.json",
+      "sha256": "dc9a22625dd1f4c73c3b93e577e54604c9ced687bd3f1a8343df514c56336a56"
+    },
+    {
+      "path": "evidence/stages/C12V2/P10_TOPOLOGY_REGRESSION.json",
+      "sha256": "0960ac02619f425679dc59c6f2b538eaa0463216a4d7805b3123d09920254558"
+    },
+    {
+      "path": "evidence/stages/C12V2/P12_RUNTIME_REGRESSION.json",
+      "sha256": "acf190a5138c2a1c8cb2e9812b44333d1b2adbe69d03d6629a082153bfdba8c7"
+    },
+    {
+      "path": "evidence/stages/C12V2/P13_RUNTIME_REGRESSION.json",
+      "sha256": "8ce343a6ec8a00932d912bf9c547fb515d5ac0ee9b832cfa2e071215ed7d0008"
+    },
+    {
+      "path": "evidence/stages/C12V2/STATIC.json",
+      "sha256": "eb3125538af758c442250c773fd7839039761c3d04cef3fbd2313786be0ffa86"
+    },
+    {
+      "path": "evidence/stages/C12V2/raw/native_build.log",
+      "sha256": "64cc5f1c53b31875e4c49715a9a9ac623be6d95f67d9906e982b1c869e539ae1"
+    }
+  ],
+  "claim_boundary": "Manifest of C12 Windows RG-SW engineering evidence only; not release-host reproduction, mentor approval, calibration, CLOSED_SCIENTIFIC, predictive validation, or C13 scientific-outcome authorization."
+}

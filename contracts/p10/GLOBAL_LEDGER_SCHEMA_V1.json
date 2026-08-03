@@ -1,0 +1,74 @@
+{
+  "artifact_type": "P10_GLOBAL_LEDGER_SCHEMA",
+  "schema_id": "bmx-p10-global-ledger-v1",
+  "status": "WRITER_FROZEN_INTEGRATED_PENDING_INDEPENDENT_REVIEW",
+  "amount_unit": "mol elemental-P-equivalent",
+  "topology_contract_id": "bmx-p10-topology-event-v1",
+  "topology_contract_sha256": "a6a5a8a8d299ee3e0cfc30f6d359d84ed13fb9872db7cf51bfb38777b800bdfb",
+  "fields": [
+    {
+      "name": "reference_bound",
+      "type": "boolean",
+      "rule": "false only before the initial accounted state has been captured"
+    },
+    {
+      "name": "reference_total_p",
+      "type": "binary64_amount",
+      "rule": "nonnegative; zero when reference_bound is false"
+    },
+    {
+      "name": "structural_p",
+      "type": "binary64_cumulative_amount",
+      "rule": "nonnegative"
+    },
+    {
+      "name": "exported_p",
+      "type": "binary64_cumulative_amount",
+      "rule": "nonnegative"
+    },
+    {
+      "name": "other_exit_d",
+      "type": "binary64_cumulative_amount",
+      "rule": "exactly zero in v1"
+    },
+    {
+      "name": "other_exit_e",
+      "type": "binary64_cumulative_amount",
+      "rule": "exactly zero in v1"
+    },
+    {
+      "name": "other_exit_f",
+      "type": "binary64_cumulative_amount",
+      "rule": "exactly zero in v1"
+    },
+    {
+      "name": "other_exit_events",
+      "type": "uint64_cumulative_count",
+      "rule": "exactly zero in v1"
+    }
+  ],
+  "instantaneous_terms": [
+    "mesh_D",
+    "mesh_F",
+    "internal_D",
+    "internal_E",
+    "internal_F"
+  ],
+  "accounted_total_formula": "mesh_D + mesh_F + internal_D + internal_E + internal_F + structural_p + exported_p + other_exit_d + other_exit_e + other_exit_f",
+  "residual_formula": "accounted_total - reference_total_p",
+  "local_tolerance": "abs(residual) <= 64 * eps_double * S_L1",
+  "integrated_tolerance": "abs(residual) <= max(1e-28 mol, 1e-10 * S_L1)",
+  "hard_failures": [
+    "NaN or infinity",
+    "negative amount above the applicable conservation tolerance",
+    "any nonzero other_exit_d, other_exit_e, other_exit_f, or other_exit_events value",
+    "unbound reference at a required end-of-update audit",
+    "raw or negative-ID particle deletion without a complete successor map",
+    "nonperiodic out-of-domain particle loss during redistribution",
+    "orphan bond without a unique live successor or with pending material",
+    "simultaneous topology events that share a particle, bond, or destination",
+    "checkpoint field, order, identifier, or schema mismatch"
+  ],
+  "later_stage_boundary": "structural_p and exported_p mutations remain zero until their separately authorized P13 and P14 transactions; C08 introduces no C09-or-later behavior",
+  "claim_boundary": "This schema preserves technical accounting fields but does not authorize any deferred event to remove or route state."
+}

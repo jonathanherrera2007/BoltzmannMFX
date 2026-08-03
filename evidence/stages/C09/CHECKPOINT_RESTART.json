@@ -1,0 +1,253 @@
+{
+  "artifact_type": "C09_CHECKPOINT_RESTART_TEST",
+  "claim_boundary": "Windows CPU engineering restart evidence; not release-host evidence or independent numerical review.",
+  "corruptions": [
+    {
+      "checks": {
+        "before_field_deserialization": true,
+        "before_particle_deserialization": true,
+        "clear_reason": true,
+        "exit_nonzero": true
+      },
+      "exit_code": 22,
+      "expected_token": "expected 'Checkpoint version: 3'",
+      "id": "legacy_version",
+      "log": "C:\\b\\BMX-shadow-handoff-20260721\\runs\\c09-checkpoint-definitive\\corrupt_legacy_version\\stdout.log",
+      "status": "PASS"
+    },
+    {
+      "checks": {
+        "before_field_deserialization": true,
+        "before_particle_deserialization": true,
+        "clear_reason": true,
+        "exit_nonzero": true
+      },
+      "exit_code": 22,
+      "expected_token": "p11 geometry enabled state mismatch",
+      "id": "geometry_enabled",
+      "log": "C:\\b\\BMX-shadow-handoff-20260721\\runs\\c09-checkpoint-definitive\\corrupt_geometry_enabled\\stdout.log",
+      "status": "PASS"
+    },
+    {
+      "checks": {
+        "before_field_deserialization": true,
+        "before_particle_deserialization": true,
+        "clear_reason": true,
+        "exit_nonzero": true
+      },
+      "exit_code": 22,
+      "expected_token": "P11 geometry contract identity mismatch",
+      "id": "geometry_contract_hash",
+      "log": "C:\\b\\BMX-shadow-handoff-20260721\\runs\\c09-checkpoint-definitive\\corrupt_geometry_contract_hash\\stdout.log",
+      "status": "PASS"
+    },
+    {
+      "checks": {
+        "before_field_deserialization": true,
+        "before_particle_deserialization": true,
+        "clear_reason": true,
+        "exit_nonzero": true
+      },
+      "exit_code": 22,
+      "expected_token": "P11 geometry contract identity mismatch",
+      "id": "geometry_stage",
+      "log": "C:\\b\\BMX-shadow-handoff-20260721\\runs\\c09-checkpoint-definitive\\corrupt_geometry_stage\\stdout.log",
+      "status": "PASS"
+    },
+    {
+      "checks": {
+        "before_field_deserialization": true,
+        "before_particle_deserialization": true,
+        "clear_reason": true,
+        "exit_nonzero": true
+      },
+      "exit_code": 22,
+      "expected_token": "P11 geometry domain or periodicity mismatch",
+      "id": "geometry_domain",
+      "log": "C:\\b\\BMX-shadow-handoff-20260721\\runs\\c09-checkpoint-definitive\\corrupt_geometry_domain\\stdout.log",
+      "status": "PASS"
+    },
+    {
+      "checks": {
+        "before_field_deserialization": true,
+        "before_particle_deserialization": true,
+        "clear_reason": true,
+        "exit_nonzero": true
+      },
+      "exit_code": 22,
+      "expected_token": "P11 geometry domain or periodicity mismatch",
+      "id": "geometry_periodicity",
+      "log": "C:\\b\\BMX-shadow-handoff-20260721\\runs\\c09-checkpoint-definitive\\corrupt_geometry_periodicity\\stdout.log",
+      "status": "PASS"
+    },
+    {
+      "checks": {
+        "before_field_deserialization": true,
+        "before_particle_deserialization": true,
+        "clear_reason": true,
+        "exit_nonzero": true
+      },
+      "exit_code": 22,
+      "expected_token": "checkpoint geometry lines differ from serialized P11 identity",
+      "id": "generic_geometry_lines",
+      "log": "C:\\b\\BMX-shadow-handoff-20260721\\runs\\c09-checkpoint-definitive\\corrupt_generic_geometry_lines\\stdout.log",
+      "status": "PASS"
+    },
+    {
+      "checks": {
+        "before_field_deserialization": true,
+        "before_particle_deserialization": true,
+        "clear_reason": true,
+        "exit_nonzero": true
+      },
+      "exit_code": 22,
+      "expected_token": "missing BMX_SCHEMA_V3_END marker",
+      "id": "schema_marker",
+      "log": "C:\\b\\BMX-shadow-handoff-20260721\\runs\\c09-checkpoint-definitive\\corrupt_schema_marker\\stdout.log",
+      "status": "PASS"
+    }
+  ],
+  "executable": {
+    "path": "C:\\b\\BMX-shadow-handoff-20260721\\build-c09-native-release-definitive\\bmx.exe",
+    "sha256": "33a191e180288783a0e9fc5f7ca25ac08e298b43e68fa37f0414e5b19c37b996"
+  },
+  "feature_off_checkpoint": {
+    "checks": {
+      "no_p11_event": true,
+      "p11_disabled": true,
+      "p11_disabled_identity_canonical": true,
+      "restart_exit_zero": true,
+      "schema_v3": true,
+      "write_exit_zero": true
+    },
+    "status": "PASS"
+  },
+  "method": "Checkpoint/restart continuous-versus-staged comparison at one and two ranks, two-to-one rank-change restart, exact once-per-update event identity, schema-v3 mutation rejection before field/particle reads, and canonical feature-off checkpoint roundtrip.",
+  "mpi_rank_change": {
+    "checks": {
+      "both_restarts_completed_deserialization": true,
+      "checkpoint_rank2_exit_zero": true,
+      "continuous_rank2_exit_zero": true,
+      "rank_change_event_identity_exact": true,
+      "restart_2_to_1_exit_zero": true,
+      "restart_2_to_1_particle_equivalent": true,
+      "restart_2_to_2_exit_zero": true,
+      "restart_2_to_2_particle_equivalent": true,
+      "restart_2_to_2_selected_payload_exact": true
+    },
+    "particle_comparison_2_to_1": {
+      "exact_discrete_fields": true,
+      "exact_identifiers": true,
+      "exact_schema": true,
+      "first_difference": null,
+      "floating_failures": 0,
+      "floating_tolerance": 1e-12,
+      "max_relative_difference": 0.0,
+      "status": "PASS"
+    },
+    "particle_comparison_2_to_2": {
+      "exact_discrete_fields": true,
+      "exact_identifiers": true,
+      "exact_schema": true,
+      "first_difference": null,
+      "floating_failures": 0,
+      "floating_tolerance": 1e-12,
+      "max_relative_difference": 0.0,
+      "status": "PASS"
+    },
+    "ranks": {
+      "checkpoint_write": 2,
+      "continuous": 2,
+      "rank_change_restart": 1,
+      "same_rank_restart": 2
+    }
+  },
+  "stage": "C09/P11",
+  "status": "PASS",
+  "valid_rank1": {
+    "checks": {
+      "continuous_exit_zero": true,
+      "particle_restart_equivalent": true,
+      "restart_completed_deserialization": true,
+      "restart_exit_zero": true,
+      "restart_update_event_identity_exact": true,
+      "schema_header_complete": true,
+      "selected_checkpoint_payload_exact": true,
+      "staged_exit_zero": true
+    },
+    "continuous_events": [
+      {
+        "attempted_penetration": 0,
+        "contact_id_checksum": 1,
+        "contract": "bmx-p11-split-plate-geometry-v1",
+        "line": "P11_GEOMETRY_EVENTS contract=bmx-p11-split-plate-geometry-v1 update_id=0 window_contact=1 true_crossing=1 solid_contact=0 contact_id_checksum=1 attempted_penetration=0 projected_motion=0 tangential_motion=0 rejected_growth=0",
+        "projected_motion": 0,
+        "rejected_growth": 0,
+        "solid_contact": 0,
+        "tangential_motion": 0,
+        "true_crossing": 1,
+        "update_id": 0,
+        "window_contact": 1
+      },
+      {
+        "attempted_penetration": 0,
+        "contact_id_checksum": 1,
+        "contract": "bmx-p11-split-plate-geometry-v1",
+        "line": "P11_GEOMETRY_EVENTS contract=bmx-p11-split-plate-geometry-v1 update_id=1 window_contact=1 true_crossing=1 solid_contact=0 contact_id_checksum=1 attempted_penetration=0 projected_motion=0 tangential_motion=0 rejected_growth=0",
+        "projected_motion": 0,
+        "rejected_growth": 0,
+        "solid_contact": 0,
+        "tangential_motion": 0,
+        "true_crossing": 1,
+        "update_id": 1,
+        "window_contact": 1
+      }
+    ],
+    "continuous_selected_payload_hashes": {
+      "Header": "8da530878b49df75f0eac96c0b4901df079cfb20e74ecc0184c57a3bae05c1b6",
+      "Level_0/X_k_D_00000": "33f5ce18b5ff045931aba110642029823a992a7be595b2916d73b00ab90fa785",
+      "Level_0/X_k_H": "0428f1340edf7ed589b22df0211199c2a9a32d2bf3ee46fe99e0e7cd578f8ae1",
+      "Level_0/volfrac_D_00000": "eacd22e919c3e003bd796df9da4951bcb28209ed540c5d7816d04b93310e4ca7",
+      "Level_0/volfrac_H": "1c951af783a4622455e075d1f4bf74eb53c79692bf9a40c61cd9329141defa18",
+      "particles/Header": "b0f01b0429471905835b6dd7fee43497b7cd047d1ed78cbb80bc66adcd5d6057",
+      "particles/Level_0/DATA_00000": "497c504dd92a38f4f2d10f60e5902eb2efd792ea665a3b4354734ed6dbc2c5b9",
+      "particles/Level_0/Particle_H": "81683ce798314600596a555ba08530206db0cf5b5e50b848985913a18dc15ddf"
+    },
+    "header_missing": [],
+    "particle_comparison": {
+      "exact_discrete_fields": true,
+      "exact_identifiers": true,
+      "exact_schema": true,
+      "first_difference": null,
+      "floating_failures": 0,
+      "floating_tolerance": 1e-12,
+      "max_relative_difference": 0.0,
+      "status": "PASS"
+    },
+    "restart_events": [
+      {
+        "attempted_penetration": 0,
+        "contact_id_checksum": 1,
+        "contract": "bmx-p11-split-plate-geometry-v1",
+        "line": "P11_GEOMETRY_EVENTS contract=bmx-p11-split-plate-geometry-v1 update_id=1 window_contact=1 true_crossing=1 solid_contact=0 contact_id_checksum=1 attempted_penetration=0 projected_motion=0 tangential_motion=0 rejected_growth=0",
+        "projected_motion": 0,
+        "rejected_growth": 0,
+        "solid_contact": 0,
+        "tangential_motion": 0,
+        "true_crossing": 1,
+        "update_id": 1,
+        "window_contact": 1
+      }
+    ],
+    "restarted_selected_payload_hashes": {
+      "Header": "8da530878b49df75f0eac96c0b4901df079cfb20e74ecc0184c57a3bae05c1b6",
+      "Level_0/X_k_D_00000": "33f5ce18b5ff045931aba110642029823a992a7be595b2916d73b00ab90fa785",
+      "Level_0/X_k_H": "0428f1340edf7ed589b22df0211199c2a9a32d2bf3ee46fe99e0e7cd578f8ae1",
+      "Level_0/volfrac_D_00000": "eacd22e919c3e003bd796df9da4951bcb28209ed540c5d7816d04b93310e4ca7",
+      "Level_0/volfrac_H": "1c951af783a4622455e075d1f4bf74eb53c79692bf9a40c61cd9329141defa18",
+      "particles/Header": "b0f01b0429471905835b6dd7fee43497b7cd047d1ed78cbb80bc66adcd5d6057",
+      "particles/Level_0/DATA_00000": "497c504dd92a38f4f2d10f60e5902eb2efd792ea665a3b4354734ed6dbc2c5b9",
+      "particles/Level_0/Particle_H": "81683ce798314600596a555ba08530206db0cf5b5e50b848985913a18dc15ddf"
+    }
+  }
+}

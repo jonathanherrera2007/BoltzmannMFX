@@ -1,0 +1,25 @@
+{
+  "artifact_type": "C10_REFERENCE_RAW_ARCHIVE_POINTER",
+  "generated": "2026-08-02",
+  "raw_archive": {
+    "name": "C10_REFERENCE_RAW.tar.gz",
+    "sha256": "5421afd5bf82b6bc6d705937caf0f67b59d71d2044c5e86ea5a866e2e251d6ab",
+    "size_bytes": 107600919,
+    "contents": "All reference qualification and selected-timing run directories.",
+    "repository_storage": "Not committed because it is a 107.6 MB generated run archive.",
+    "retrieved_local_path": "C:\\b\\BMX-shadow-handoff-20260721\\c10-reference-results-0f38760-20260802\\artifacts\\C10_REFERENCE_RAW.tar.gz"
+  },
+  "compact_archive": {
+    "name": "C10_REFERENCE_EVIDENCE.tar.gz",
+    "sha256": "66c14705a35fdf68e7efe132054455c2a8730d6a1cf26d52847abf6c543224ab",
+    "size_bytes": 2927269,
+    "contents": "Reference results, logs, CMake cache, executable and extractor.",
+    "repository_storage": "Unpacked review-relevant members are committed under evidence/stages/C10V2/reference; the binary archive is retained outside Git.",
+    "retrieved_local_path": "C:\\b\\BMX-shadow-handoff-20260721\\c10-reference-results-0f38760-20260802\\artifacts\\C10_REFERENCE_EVIDENCE.tar.gz"
+  },
+  "manifest": {
+    "path": "artifacts/REFERENCE_MANIFEST.sha256",
+    "entries": 22,
+    "verification": "PASS"
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "artifact_type": "C13_RNG_TOPOLOGY_CONTRACT_CONFLICT",
+  "stage": "C13/P15 Stage 0",
+  "generated": "2026-08-02",
+  "status": "BLOCKED",
+  "blocker_id": "D-C13-05-RNG-SIDE-BRANCH-GRADIENT-REACHABILITY",
+  "classification": "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+  "adopted_input": {
+    "decision_id": "D-C13-04-RNG-TOPOLOGY-DECOMPOSITION",
+    "contract_id": "UDC-20260802-C13-RNG-TOPOLOGY-DECOMPOSITION-V1",
+    "contract_path": "contracts/p15/RNG_TOPOLOGY_DECOMPOSITION_CONTRACT_V1.json",
+    "contract_sha256": "059f067b94673838efba143c5a4615aaf79dcacc78a456317a81578daa37eba0",
+    "kat_path": "contracts/p15/RNG_TOPOLOGY_DECOMPOSITION_KAT_V1.json",
+    "kat_sha256": "ef47fa935b64671dd2f93e93640308b9620055587083f0c5c5a55aa1f95edcb7",
+    "package_commit": "a9f383c7bde137b2e2ad74d7353a87203bfc2374",
+    "adoption_commit": "1f877be92190dd4bffa1b701f3aa8260235170c2",
+    "disposition": "CLOSED_USER_ADOPTED_PENDING_IMPLEMENTATION_AND_REVIEW"
+  },
+  "exact_conflict": {
+    "frozen_source_requirement": {
+      "path": "src/chemistry/bmx_chem_K.H",
+      "sha256": "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02",
+      "function": "setNewSegment",
+      "relevant_lines": [490, 491, 492, 493, 494, 495, 496, 820],
+      "dataflow": [
+        "Read gx, gy, and gz from the parent particle.",
+        "Execute unconditional if (true) and set gx=gy=gz=0.0.",
+        "For SECOND_1/SECOND_2 side branching, compute gn=sqrt(gx*gx+gy*gy+gz*gz).",
+        "Therefore every reachable accepted side branch enters the exact gn==0.0 branch."
+      ]
+    },
+    "contract_requirements": [
+      {
+        "json_path": "$.canonical_candidates.O06.deterministic_binding",
+        "requirement": "Gradient and geometry formulas must be byte-for-byte equivalent to frozen setNewSegment; only explicit draws and child identities may replace inherited RNG/NextID inputs."
+      },
+      {
+        "json_path": "$.draw_schedule[accepted-side-branch-geometry].consumption",
+        "requirement": "When gn!=0.0, draw ordinal 0 must be absent; ordinals 1 and 2 retain their semantic numbers."
+      },
+      {
+        "json_path": "$.qualification.forced_cases",
+        "requirement": "Both side branch with gn==0 and side branch with gn!=0 are mandatory across P0-P5."
+      }
+    ],
+    "satisfiable_together": false,
+    "proof": "Byte-equivalent frozen execution forces gn to exactly zero before the side-branch test. A reachable gn!=0 case requires bypassing or changing that forced zeroing, which changes growth-direction behavior and exceeds both the contract's replacement boundary and the owner's no-growth-change adoption boundary.",
+    "kat_scope_note": "The normative KAT passes, but it validates serialized keys, draws, identities, ledgers, chains, and checkpoint state. It does not exercise frozen setNewSegment control-flow reachability, so KAT PASS does not resolve this contradiction."
+  },
+  "implementation_disposition": {
+    "product_source_change_retained": false,
+    "src_tree_before": "dd10ce05a9d12a84244a3d3cf713ca9ab279e16b",
+    "src_tree_after": "dd10ce05a9d12a84244a3d3cf713ca9ab279e16b",
+    "reason": "Incomplete wiring was removed before commit because either implementation choice would silently choose precedence between contradictory normative requirements.",
+    "build_run": false,
+    "runtime_qualification_run": false,
+    "independent_review_requested": false,
+    "outcome_hours_run": 0
+  },
+  "required_resolution": {
+    "owner": "project owner/technical contract authority, followed by independent exact-source and numerical-contract review",
+    "recommended_choice": {
+      "id": "PRESERVE_FROZEN_GROWTH_SEMANTICS",
+      "required_contract_change": "Issue a new hash-bound contract/KAT revision that removes the unreachable gn!=0 side-branch forced case and states that accepted side-branch geometry always materializes sign draw ordinal 0 under the frozen v1 formula.",
+      "effects": "Preserves frozen kernel bytes, frozen operator order, and existing growth-direction behavior."
+    },
+    "alternative_choice": {
+      "id": "AUTHORIZE_NONZERO_GRADIENT_SIDE_BRANCH_BEHAVIOR",
+      "required_contract_change": "Prospectively bind the nonzero-gradient source, normalization, geometry formulas, draw schedule, and qualification vectors, and explicitly authorize the resulting growth-direction behavior change while retaining or deliberately revising the byte-equivalence clause.",
+      "effects": "Changes topology/growth behavior and therefore requires new explicit authority and independent review; it cannot be inferred from the current adoption."
+    },
+    "prohibited_workaround": "Do not satisfy gn!=0 only in a synthetic helper or inject a nonzero gradient after the frozen zeroing while claiming frozen-formula equivalence."
+  },
+  "verification": {
+    "kat_command": "python tools/c13_rng_topology_contract_kat.py contracts/p15/RNG_TOPOLOGY_DECOMPOSITION_KAT_V1.json",
+    "kat_exit_code": 0,
+    "kat_result": "PASS: contract SHA; 6 draws; 4 identities; candidate; 3 event IDs; projection; RNG/topology records; event subset; 2 chain inits; 2 file/batch/chain vectors; checkpoint state",
+    "adoption_head": "1f877be92190dd4bffa1b701f3aa8260235170c2",
+    "adoption_tree": "24149f9c620c0608b67f9f6565dcec4428eeceaf",
+    "working_tree_clean_before_evidence_edit": true
+  },
+  "frozen_bytes": {
+    "global_order_path": "contracts/p10/OPERATOR_ORDER_V1.json",
+    "global_order_sha256": "bb63c219a860687d91ce1acf06a667c9208abf026b32f18acfc64884bb696dd6",
+    "global_order_changed": false,
+    "kernel_path": "src/chemistry/bmx_chem_K.H",
+    "kernel_sha256": "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02",
+    "kernel_changed": false
+  },
+  "execution_boundary": {
+    "qualification_216h": "PROHIBITED_AND_NOT_RUN",
+    "P15_science": "PROHIBITED_AND_NOT_RUN",
+    "C14_or_later": "NOT_STARTED",
+    "external_resources": "none",
+    "external_spend_usd": 0
+  },
+  "claim_boundary": "RG-SW Stage-0 specification consistency blocker only; not implementation qualification, independent acceptance, mentor approval, CLOSED_SCIENTIFIC, calibration, predictive validation, RG-SCI progress, C13 PASS, a 216-hour outcome, or P15 science."
+}

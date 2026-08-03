@@ -1,0 +1,44 @@
+{
+  "artifact_type": "C12_BLOCKER_REPORT",
+  "stage": "C12/P14",
+  "status": "BLOCKED",
+  "blocker_ids": [
+    "D-C12-01-INTERFACE-FRACTION-DEFINITION",
+    "D-C12-02-REWARD-CONVERSION-CONSTANT"
+  ],
+  "root_cause": "The adopted P14 contract freezes the export equation and dimensional relationship but leaves two executable operands underdetermined: the geometry-to-f_I mapping and the exact mol-A-per-mol-P multiplier.",
+  "operator_order": {
+    "status": "FITS_EXISTING_ORDER",
+    "slot": "O09_INTERFACE_EXPORT_TRANSACTION",
+    "global_order_changed": false,
+    "fit_evidence": "contracts/p14/OPERATOR_FIT_V1.json",
+    "fit_evidence_sha256": "72193a1034d4148d167f059c347053d2206fa580cce9a156ec705304e7f378e7"
+  },
+  "authority_audit": {
+    "path": "evidence/stages/C12/AUTHORITY_GAP_AUDIT.json",
+    "sha256": "29af6123d97ed39c5ff3a529f44ac6ef42336796f8f41f8e73dcbb9609499ea1"
+  },
+  "required_user_bindings": [
+    {
+      "id": "C12-R01",
+      "question": "What exact executable rule maps P11 finite-radius geometry to f_I?",
+      "minimum_complete_answer": "Define whether f_I is binary or continuous. If continuous, define the measured primitive, numerator, denominator, boundary/tolerance behavior, and how the result remains invariant under segment refinement."
+    },
+    {
+      "id": "C12-R02",
+      "question": "What exact executable conversion credits A per mole of accepted P export?",
+      "minimum_complete_answer": "Either bind literal 7.736 exactly as mol A-equivalent per mol P, or bind exact M_P and M_C constants and the expression 3*M_P/M_C."
+    }
+  ],
+  "prohibited_response": "Do not infer an f_I measure from the binary P11 predicate, promote a prototype contact rule, select an atomic-mass table, or silently treat an approximate printed value as exact.",
+  "work_completed_before_gate": [
+    "verified the adopted attachment is byte-identical to the preserved V2 source",
+    "reconciled every P14 decision field and the verified pre-mentor P14 inventory",
+    "froze the unchanged O09 technical fit",
+    "confirmed C11 source and frozen-kernel bytes remain unchanged"
+  ],
+  "source_implementation_started": false,
+  "c13_started": false,
+  "external_resources": "none",
+  "external_spend_usd": 0
+}

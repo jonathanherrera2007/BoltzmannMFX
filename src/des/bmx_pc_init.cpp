@@ -52,10 +52,27 @@ void BMXParticleContainer::InitParticlesAscii (const std::string& file)
 
     Gpu::HostVector<ParticleType> host_particles(np);
 
-    std::vector<amrex::Real> init_conc = FLUID::init_conc;
+    const std::vector<amrex::Real>& init_conc =
+        bmxchem->getParticleInitialConcentrations();
+    if (init_conc.size() != NUM_PARTICLE_CHEM_COMPONENTS) {
+      amrex::Abort("P09 particle initialization did not provide eight "
+                   "committed chemistry values");
+    }
+    const auto layout_mode =
+        BMXChemLayout::classifyMeshSpecies(FLUID::chem_species);
 
     for (int i = 0; i < np; i++)
     {
+      // Initialize the complete allocated record before binding input fields.
+      // This covers structural/utility storage, all chemistry blocks, and all
+      // reserved integer metadata without assigning any later-stage behavior.
+      for (int r = 0; r < MAX_CHEM_REAL_VAR; ++r) {
+        host_particles[i].rdata(r) = 0.0;
+      }
+      for (int n = 0; n < MAX_CHEM_INT_VAR; ++n) {
+        host_particles[i].idata(n) = 0;
+      }
+
       // Read from input file
       ifs >> host_particles[i].pos(0);
       ifs >> host_particles[i].pos(1);
@@ -84,10 +101,8 @@ void BMXParticleContainer::InitParticlesAscii (const std::string& file)
       ifs >> host_particles[i].rdata(realIdx::dadt);       // 25
       ifs >> host_particles[i].rdata(realIdx::dvdt);
       ifs >> host_particles[i].idata(intIdx::cell_type);   // 27
-      for (int c=0; c<FLUID::nchem_species; c++) 
-      {
-       host_particles[i].rdata(realIdx::first_data+c) = init_conc[c];
-        //host_particles[i].rdata(realIdx::first_data+c) = tmp[c];
+      for (int c = 0; c < NUM_PARTICLE_CHEM_COMPONENTS; ++c) {
+        host_particles[i].rdata(realIdx::first_data+c) = init_conc[c];
       }
       bmxchem->setIntegers(&host_particles[i].idata(0));
       host_particles[i].rdata(realIdx::bond_scale) = 1.0;
@@ -109,7 +124,7 @@ void BMXParticleContainer::InitParticlesAscii (const std::string& file)
     // host_particles[3].rdata(realIdx::first_data+1) = 1.0e-5;
     for (int i = 0; i < np; i++)
     {
-      printf("PARTICLE: %d:%d x: %f y: %f z: %f theta: %f phi: %f [A]: %e [B]: %e [C]: %e type: %d\n",
+      printf("PARTICLE: %d:%d x: %f y: %f z: %f theta: %f phi: %f type: %d",
           (int)host_particles[i].id(),
           (int)host_particles[i].cpu(),
           host_particles[i].pos(0),
@@ -117,11 +132,19 @@ void BMXParticleContainer::InitParticlesAscii (const std::string& file)
           host_particles[i].pos(2),
           host_particles[i].rdata(realIdx::theta),
           host_particles[i].rdata(realIdx::phi),
-          host_particles[i].rdata(realIdx::first_data),
-          host_particles[i].rdata(realIdx::first_data+1),
-          host_particles[i].rdata(realIdx::first_data+2),
           host_particles[i].idata(intIdx::cell_type)
           );
+      const int print_count =
+          layout_mode == BMXChemLayout::MeshMode::enabled
+              ? NUM_PARTICLE_CHEM_COMPONENTS
+              : amrex::min(FLUID::nchem_species,
+                           NUM_PARTICLE_CHEM_COMPONENTS);
+      for (int c = 0; c < print_count; ++c)
+      {
+        printf(" [%s]: %e", BMXChemLayout::particleName(layout_mode, c),
+               host_particles[i].rdata(realIdx::first_data+c));
+      }
+      printf("\n");
     }
 
     auto& aos = particles.GetArrayOfStructs();
@@ -133,4 +156,3 @@ void BMXParticleContainer::InitParticlesAscii (const std::string& file)
 
   Redistribute();
 }
-

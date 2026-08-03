@@ -1,0 +1,47 @@
+{
+  "artifact_type": "C10_V2_PREREVIEW_ENGINEERING",
+  "stage": "C10/P12",
+  "status": "PASS_PENDING_INDEPENDENT_REVIEW",
+  "source_base_commit": "6b0a8a9113cd8d2a7d21c30239ccb743428e1140",
+  "candidate_commit": "The commit containing this artifact; resolve with git rev-parse HEAD in a clean checkout.",
+  "numerical_contract": {
+    "id": "USER-DIRECTED-20260801-P12-NUMERICAL-V2",
+    "sha256": "43d64a8f4ec6c8c00379fc3d9605441cb900479fcdd8db9e78e6fc1edd28f81f",
+    "review_status": "PENDING"
+  },
+  "unchanged_scientific_contract": {
+    "id": "UDC-20260801-P12-UPTAKE-ONLY-V1",
+    "sha256": "2094aed3c8ef21a257d2c597352793384d01a1efc3d72936d5c5108d308f8804"
+  },
+  "unchanged_operator_order": {
+    "id": "bmx-p10-global-order-v1",
+    "sha256": "bb63c219a860687d91ce1acf06a667c9208abf026b32f18acfc64884bb696dd6"
+  },
+  "implementation": [
+    "Volume-consistent V2 schedule is frozen separately from V1.",
+    "Runtime configuration requires the exact V2 ID and SHA-256.",
+    "Checkpoint schema v5 binds the numerical contract and restores cumulative run-wide clipping extrema.",
+    "Each uptake update records step and run minimum donor scale, maximum eta, and zero-inventory/positive-request events.",
+    "The V2 qualification runner checks V1 preservation and refuses execution unless an independent review artifact approves the exact clean source commit and V2 hash.",
+    "The runner includes coupled grid/time qualification, fixed-grid temporal confirmation, deterministic reruns, one/two-rank comparison, restart comparison, positivity, conservation, inactive-ledger, no-clipping, and coarsest-passing selection gates."
+  ],
+  "prereview_checks": {
+    "analytical_unit": {"status": "PASS", "checks": 34, "evidence": "evidence/stages/C10V2/ANALYTICAL_UNIT.json"},
+    "native_compile": {"status": "PASS", "claim_boundary": "dirty prereview compile check only; not provenance-qualified", "executable_sha256": "4bdddfc0e9aa326bec0da9c1e6acc7727b4c71b5bbd60183985f8f008e85b721"},
+    "native_runtime_controls": {"status": "PASS", "cases": 15, "evidence": "evidence/stages/C10V2/NATIVE_RUNTIME.json"},
+    "checkpoint_schema_v5": {"status": "PASS", "includes": "one-rank, two-rank, 2-to-1 restart, corruption rejection", "evidence": "evidence/stages/C10V2/CHECKPOINT_SCHEMA_V5.json"},
+    "static_scope_and_freezes": {"status": "PASS", "evidence": "evidence/stages/C10V2/STATIC.json"},
+    "python_syntax": {"status": "PASS"},
+    "frozen_kernel": {"status": "PASS", "sha256": "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02"}
+  },
+  "non_outcomes_only": true,
+  "v2_48h_outcomes_executed": false,
+  "production_resolution_selected": false,
+  "blocker": {
+    "id": "D-C10-02-NUMERICAL-CONVERGENCE",
+    "status": "BLOCKED_PENDING_INDEPENDENT_NUMERICAL_REVIEW"
+  },
+  "later_stages_started": false,
+  "external_resources": "none",
+  "external_spend_usd": 0
+}

@@ -1,0 +1,832 @@
+{
+  "generation": {
+    "amrex_commit": "cbdc6580ee3d78cccdd37172e4ba077ee181f483",
+    "amrex_tree": "fb714dc6e693c18f7c441d1d1febe4a5e8bf9ea6",
+    "baseline_commit": "389e9e35a1c7291a4af795b2e39f2db1f0012b61",
+    "baseline_kernel_sha256": "711ae2caa6e7aabb5c084fe841d2d90edb85ee53e7abc7a859d7de00e6614678",
+    "candidate_commit": "adb427331e180cd0b4faa74a4ab2098381b2eabb",
+    "candidate_kernel_sha256": "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02",
+    "reference_images": {
+      "c03-baseline-release": {
+        "chemistry": "711ae2caa6e7aabb5c084fe841d2d90edb85ee53e7abc7a859d7de00e6614678",
+        "commit": "7743106d8e1c1f9ae845afc198d920ac513042ff",
+        "sha256": "e74b4377e266f8966e3f979f0dfde9b8e6458f595effa7f0e6d2929b053909af",
+        "worktree": "clean"
+      },
+      "c04-baseline-diag-release": {
+        "chemistry": "711ae2caa6e7aabb5c084fe841d2d90edb85ee53e7abc7a859d7de00e6614678",
+        "commit": "7743106d8e1c1f9ae845afc198d920ac513042ff",
+        "sha256": "320bb021dae13a075527b302bc7f9cefbda6035e395e10d71384bb1de07e3d88",
+        "worktree": "clean"
+      },
+      "c04-diag-release": {
+        "chemistry": "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02",
+        "commit": "b686981faa9dcc8505ed668b4e394fc553afd93f",
+        "sha256": "661766e9283018f01cfc6205378192bd4743d3385540f975017630c0523ee2c4",
+        "worktree": "clean"
+      },
+      "c04-p07-release": {
+        "chemistry": "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02",
+        "commit": "b686981faa9dcc8505ed668b4e394fc553afd93f",
+        "sha256": "d2655f1e8a2136b98a2d6531914d646c25da4388027cbc22596111dfe5cf90d2",
+        "worktree": "clean"
+      }
+    }
+  },
+  "observations": [
+    {
+      "alpha_prime": 0.3267256359733385,
+      "dimension": "D1",
+      "fixture": "k1_0.5",
+      "k1": 0.5,
+      "observable": "delta_A_particles",
+      "over_available": false,
+      "platform": "gce-reference-linux",
+      "source": "evidence/stages/C04/reference\\DONOR_CAP_REFERENCE.json",
+      "tree": "baseline",
+      "value": 1.2617374821994632e-13
+    },
+    {
+      "dimension": "D8",
+      "fixture": "k1_0.5",
+      "k1": 0.5,
+      "observable": "delta_A_particles",
+      "platform": "gce-reference-linux",
+      "source": "evidence/stages/C04/reference\\DONOR_CAP_REFERENCE.json",
+      "tree": "baseline",
+      "value": 1.2617374821994632e-13
+    },
+    {
+      "alpha_prime": 0.3267256359733385,
+      "dimension": "D1",
+      "fixture": "k1_0.5",
+      "k1": 0.5,
+      "observable": "delta_A_particles",
+      "over_available": false,
+      "platform": "gce-reference-linux",
+      "source": "evidence/stages/C04/reference\\DONOR_CAP_REFERENCE.json",
+      "tree": "candidate",
+      "value": 4.569057502930556e-12
+    },
+    {
+      "dimension": "D8",
+      "fixture": "k1_0.5",
+      "k1": 0.5,
+      "observable": "delta_A_particles",
+      "platform": "gce-reference-linux",
+      "source": "evidence/stages/C04/reference\\DONOR_CAP_REFERENCE.json",
+      "tree": "candidate",
+      "value": 4.569057502930556e-12
+    },
+    {
+      "alpha_prime": 0.653451271946677,
+      "dimension": "D1",
+      "fixture": "k1_1",
+      "k1": 1.0,
+      "observable": "delta_A_particles",
+      "over_available": false,
+      "platform": "gce-reference-linux",
+      "source": "evidence/stages/C04/reference\\DONOR_CAP_REFERENCE.json",
+      "tree": "baseline",
+      "value": 2.4947845422790507e-13
+    },
+    {
+      "dimension": "D8",
+      "fixture": "k1_1",
+      "k1": 1.0,
+      "observable": "delta_A_particles",
+      "platform": "gce-reference-linux",
+      "source": "evidence/stages/C04/reference\\DONOR_CAP_REFERENCE.json",
+      "tree": "baseline",
+      "value": 2.4947845422790507e-13
+    },
+    {
+      "alpha_prime": 0.653451271946677,
+      "dimension": "D1",
+      "fixture": "k1_1",
+      "k1": 1.0,
+      "observable": "delta_A_particles",
+      "over_available": false,
+      "platform": "gce-reference-linux",
+      "source": "evidence/stages/C04/reference\\DONOR_CAP_REFERENCE.json",
+      "tree": "candidate",
+      "value": 4.868219158726102e-12
+    },
+    {
+      "dimension": "D8",
+      "fixture": "k1_1",
+      "k1": 1.0,
+      "observable": "delta_A_particles",
+      "platform": "gce-reference-linux",
+      "source": "evidence/stages/C04/reference\\DONOR_CAP_REFERENCE.json",
+      "tree": "candidate",
+      "value": 4.868219158726102e-12
+    },
+    {
+      "alpha_prime": 1.306902543893354,
+      "dimension": "D1",
+      "fixture": "k1_2",
+      "k1": 2.0,
+      "observable": "delta_A_particles",
+      "over_available": false,
+      "platform": "gce-reference-linux",
+      "source": "evidence/stages/C04/reference\\DONOR_CAP_REFERENCE.json",
+      "tree": "baseline",
+      "value": 4.877042284988348e-13
+    },
+    {
+      "dimension": "D8",
+      "fixture": "k1_2",
+      "k1": 2.0,
+      "observable": "delta_A_particles",
+      "platform": "gce-reference-linux",
+      "source": "evidence/stages/C04/reference\\DONOR_CAP_REFERENCE.json",
+      "tree": "baseline",
+      "value": 4.877042284988348e-13
+    },
+    {
+      "alpha_prime": 1.306902543893354,
+      "dimension": "D1",
+      "fixture": "k1_2",
+      "k1": 2.0,
+      "observable": "delta_A_particles",
+      "over_available": false,
+      "platform": "gce-reference-linux",
+      "source": "evidence/stages/C04/reference\\DONOR_CAP_REFERENCE.json",
+      "tree": "candidate",
+      "value": 4.871032500000001e-12
+    },
+    {
+      "dimension": "D8",
+      "fixture": "k1_2",
+      "k1": 2.0,
+      "observable": "delta_A_particles",
+      "platform": "gce-reference-linux",
+      "source": "evidence/stages/C04/reference\\DONOR_CAP_REFERENCE.json",
+      "tree": "candidate",
+      "value": 4.871032500000001e-12
+    },
+    {
+      "dimension": "D1",
+      "fixture": "k1_2",
+      "k1": 2.0,
+      "observable": "final_equals_available",
+      "platform": "gce-reference-linux",
+      "source": "evidence/stages/C04/reference\\DONOR_CAP_REFERENCE.json",
+      "tree": "candidate",
+      "value": true
+    },
+    {
+      "alpha_prime": 3.2672563597333846,
+      "dimension": "D1",
+      "fixture": "k1_5",
+      "k1": 5.0,
+      "observable": "delta_A_particles",
+      "over_available": false,
+      "platform": "gce-reference-linux",
+      "source": "evidence/stages/C04/reference\\DONOR_CAP_REFERENCE.json",
+      "tree": "baseline",
+      "value": 1.1391731658547444e-12
+    },
+    {
+      "dimension": "D8",
+      "fixture": "k1_5",
+      "k1": 5.0,
+      "observable": "delta_A_particles",
+      "platform": "gce-reference-linux",
+      "source": "evidence/stages/C04/reference\\DONOR_CAP_REFERENCE.json",
+      "tree": "baseline",
+      "value": 1.1391731658547444e-12
+    },
+    {
+      "alpha_prime": 3.2672563597333846,
+      "dimension": "D1",
+      "fixture": "k1_5",
+      "k1": 5.0,
+      "observable": "delta_A_particles",
+      "over_available": false,
+      "platform": "gce-reference-linux",
+      "source": "evidence/stages/C04/reference\\DONOR_CAP_REFERENCE.json",
+      "tree": "candidate",
+      "value": 4.8710325000000015e-12
+    },
+    {
+      "dimension": "D8",
+      "fixture": "k1_5",
+      "k1": 5.0,
+      "observable": "delta_A_particles",
+      "platform": "gce-reference-linux",
+      "source": "evidence/stages/C04/reference\\DONOR_CAP_REFERENCE.json",
+      "tree": "candidate",
+      "value": 4.8710325000000015e-12
+    },
+    {
+      "dimension": "D1",
+      "fixture": "k1_5",
+      "k1": 5.0,
+      "observable": "final_equals_available",
+      "platform": "gce-reference-linux",
+      "source": "evidence/stages/C04/reference\\DONOR_CAP_REFERENCE.json",
+      "tree": "candidate",
+      "value": true
+    },
+    {
+      "alpha_prime": 13.069025438933538,
+      "dimension": "D1",
+      "fixture": "k1_20",
+      "k1": 20.0,
+      "observable": "delta_A_particles",
+      "over_available": false,
+      "platform": "gce-reference-linux",
+      "source": "evidence/stages/C04/reference\\DONOR_CAP_REFERENCE.json",
+      "tree": "baseline",
+      "value": 3.287036796906513e-12
+    },
+    {
+      "dimension": "D8",
+      "fixture": "k1_20",
+      "k1": 20.0,
+      "observable": "delta_A_particles",
+      "platform": "gce-reference-linux",
+      "source": "evidence/stages/C04/reference\\DONOR_CAP_REFERENCE.json",
+      "tree": "baseline",
+      "value": 3.287036796906513e-12
+    },
+    {
+      "alpha_prime": 13.069025438933538,
+      "dimension": "D1",
+      "fixture": "k1_20",
+      "k1": 20.0,
+      "observable": "delta_A_particles",
+      "over_available": false,
+      "platform": "gce-reference-linux",
+      "source": "evidence/stages/C04/reference\\DONOR_CAP_REFERENCE.json",
+      "tree": "candidate",
+      "value": 4.8710325000000015e-12
+    },
+    {
+      "dimension": "D8",
+      "fixture": "k1_20",
+      "k1": 20.0,
+      "observable": "delta_A_particles",
+      "platform": "gce-reference-linux",
+      "source": "evidence/stages/C04/reference\\DONOR_CAP_REFERENCE.json",
+      "tree": "candidate",
+      "value": 4.8710325000000015e-12
+    },
+    {
+      "dimension": "D1",
+      "fixture": "k1_20",
+      "k1": 20.0,
+      "observable": "final_equals_available",
+      "platform": "gce-reference-linux",
+      "source": "evidence/stages/C04/reference\\DONOR_CAP_REFERENCE.json",
+      "tree": "candidate",
+      "value": true
+    },
+    {
+      "alpha_prime": 65.34512719466768,
+      "dimension": "D1",
+      "fixture": "k1_100",
+      "k1": 100.0,
+      "observable": "delta_A_particles",
+      "over_available": false,
+      "platform": "gce-reference-linux",
+      "source": "evidence/stages/C04/reference\\DONOR_CAP_REFERENCE.json",
+      "tree": "baseline",
+      "value": 4.870055586973302e-12
+    },
+    {
+      "dimension": "D8",
+      "fixture": "k1_100",
+      "k1": 100.0,
+      "observable": "delta_A_particles",
+      "platform": "gce-reference-linux",
+      "source": "evidence/stages/C04/reference\\DONOR_CAP_REFERENCE.json",
+      "tree": "baseline",
+      "value": 4.870055586973302e-12
+    },
+    {
+      "alpha_prime": 65.34512719466768,
+      "dimension": "D1",
+      "fixture": "k1_100",
+      "k1": 100.0,
+      "observable": "delta_A_particles",
+      "over_available": false,
+      "platform": "gce-reference-linux",
+      "source": "evidence/stages/C04/reference\\DONOR_CAP_REFERENCE.json",
+      "tree": "candidate",
+      "value": 4.871032499999993e-12
+    },
+    {
+      "dimension": "D8",
+      "fixture": "k1_100",
+      "k1": 100.0,
+      "observable": "delta_A_particles",
+      "platform": "gce-reference-linux",
+      "source": "evidence/stages/C04/reference\\DONOR_CAP_REFERENCE.json",
+      "tree": "candidate",
+      "value": 4.871032499999993e-12
+    },
+    {
+      "dimension": "D1",
+      "fixture": "k1_100",
+      "k1": 100.0,
+      "observable": "final_equals_available",
+      "platform": "gce-reference-linux",
+      "source": "evidence/stages/C04/reference\\DONOR_CAP_REFERENCE.json",
+      "tree": "candidate",
+      "value": true
+    },
+    {
+      "dimension": "D8",
+      "fixture": "G1_tip_length_only",
+      "observable": "max_rel",
+      "platform": "gce-reference-linux",
+      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G1_tip_length_only\\GEOMETRY.json",
+      "tree": "pair",
+      "value": 0.05480782749107253
+    },
+    {
+      "branch_execution_observed": true,
+      "dimension": "D2",
+      "fixture": "G1_tip_length_only",
+      "observable": "trees_differ",
+      "platform": "gce-reference-linux",
+      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G1_tip_length_only\\GEOMETRY.json",
+      "tree": "both",
+      "value": true
+    },
+    {
+      "dimension": "D3",
+      "fixture": "G1_tip_length_only",
+      "observable": "predicted_equals_observed",
+      "platform": "gce-reference-linux",
+      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G1_tip_length_only\\GEOMETRY.json",
+      "tree": "both",
+      "value": true
+    },
+    {
+      "dimension": "D3",
+      "fixture": "G1_tip_length_only",
+      "observable": "area_left_stale",
+      "platform": "gce-reference-linux",
+      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G1_tip_length_only\\GEOMETRY.json",
+      "tree": "both",
+      "value": true
+    },
+    {
+      "dimension": "D3",
+      "fixture": "G1_tip_length_only",
+      "observable": "trees_differ",
+      "platform": "gce-reference-linux",
+      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G1_tip_length_only\\GEOMETRY.json",
+      "tree": "both",
+      "value": true
+    },
+    {
+      "dimension": "D8",
+      "fixture": "G2_tip_radius_only",
+      "observable": "max_rel",
+      "platform": "gce-reference-linux",
+      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G2_tip_radius_only\\GEOMETRY.json",
+      "tree": "pair",
+      "value": 0.11484406645344886
+    },
+    {
+      "branch_execution_observed": true,
+      "dimension": "D2",
+      "fixture": "G2_tip_radius_only",
+      "observable": "trees_differ",
+      "platform": "gce-reference-linux",
+      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G2_tip_radius_only\\GEOMETRY.json",
+      "tree": "both",
+      "value": true
+    },
+    {
+      "dimension": "D3",
+      "fixture": "G2_tip_radius_only",
+      "observable": "predicted_equals_observed",
+      "platform": "gce-reference-linux",
+      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G2_tip_radius_only\\GEOMETRY.json",
+      "tree": "both",
+      "value": true
+    },
+    {
+      "dimension": "D3",
+      "fixture": "G2_tip_radius_only",
+      "observable": "area_left_stale",
+      "platform": "gce-reference-linux",
+      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G2_tip_radius_only\\GEOMETRY.json",
+      "tree": "both",
+      "value": true
+    },
+    {
+      "dimension": "D3",
+      "fixture": "G2_tip_radius_only",
+      "observable": "trees_differ",
+      "platform": "gce-reference-linux",
+      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G2_tip_radius_only\\GEOMETRY.json",
+      "tree": "both",
+      "value": true
+    },
+    {
+      "dimension": "D8",
+      "fixture": "G3_tip_proportional",
+      "observable": "max_rel",
+      "platform": "gce-reference-linux",
+      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G3_tip_proportional\\GEOMETRY.json",
+      "tree": "pair",
+      "value": 0.005557531993133672
+    },
+    {
+      "branch_execution_observed": true,
+      "dimension": "D2",
+      "fixture": "G3_tip_proportional",
+      "observable": "trees_differ",
+      "platform": "gce-reference-linux",
+      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G3_tip_proportional\\GEOMETRY.json",
+      "tree": "both",
+      "value": true
+    },
+    {
+      "dimension": "D8",
+      "fixture": "G4_nontip_rejected",
+      "observable": "max_rel",
+      "platform": "gce-reference-linux",
+      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G4_nontip_rejected\\GEOMETRY.json",
+      "tree": "pair",
+      "value": 0.9999935780521666
+    },
+    {
+      "branch_execution_observed": true,
+      "dimension": "D2",
+      "fixture": "G4_nontip_rejected",
+      "observable": "trees_differ",
+      "platform": "gce-reference-linux",
+      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G4_nontip_rejected\\GEOMETRY.json",
+      "tree": "both",
+      "value": true
+    },
+    {
+      "dimension": "D3",
+      "fixture": "G4_nontip_rejected",
+      "observable": "predicted_equals_observed",
+      "platform": "gce-reference-linux",
+      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G4_nontip_rejected\\GEOMETRY.json",
+      "tree": "both",
+      "value": true
+    },
+    {
+      "dimension": "D3",
+      "fixture": "G4_nontip_rejected",
+      "observable": "area_left_stale",
+      "platform": "gce-reference-linux",
+      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G4_nontip_rejected\\GEOMETRY.json",
+      "tree": "both",
+      "value": true
+    },
+    {
+      "dimension": "D3",
+      "fixture": "G4_nontip_rejected",
+      "observable": "trees_differ",
+      "platform": "gce-reference-linux",
+      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G4_nontip_rejected\\GEOMETRY.json",
+      "tree": "both",
+      "value": true
+    },
+    {
+      "dimension": "D4",
+      "fixture": "G4_nontip_rejected",
+      "observable": "rejections_observed",
+      "platform": "gce-reference-linux",
+      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G4_nontip_rejected\\GEOMETRY.json",
+      "tree": "both",
+      "value": 188
+    },
+    {
+      "dimension": "D4",
+      "fixture": "G4_nontip_rejected",
+      "observable": "cB_differs",
+      "platform": "gce-reference-linux",
+      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G4_nontip_rejected\\GEOMETRY.json",
+      "tree": "both",
+      "value": true
+    },
+    {
+      "dimension": "D8",
+      "fixture": "G5_nontip_radial",
+      "observable": "max_rel",
+      "platform": "gce-reference-linux",
+      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G5_nontip_radial\\GEOMETRY.json",
+      "tree": "pair",
+      "value": 0.0921950312689999
+    },
+    {
+      "branch_execution_observed": true,
+      "dimension": "D2",
+      "fixture": "G5_nontip_radial",
+      "observable": "trees_differ",
+      "platform": "gce-reference-linux",
+      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G5_nontip_radial\\GEOMETRY.json",
+      "tree": "both",
+      "value": true
+    },
+    {
+      "dimension": "D3",
+      "fixture": "G5_nontip_radial",
+      "observable": "predicted_equals_observed",
+      "platform": "gce-reference-linux",
+      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G5_nontip_radial\\GEOMETRY.json",
+      "tree": "both",
+      "value": true
+    },
+    {
+      "dimension": "D3",
+      "fixture": "G5_nontip_radial",
+      "observable": "area_left_stale",
+      "platform": "gce-reference-linux",
+      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G5_nontip_radial\\GEOMETRY.json",
+      "tree": "both",
+      "value": true
+    },
+    {
+      "dimension": "D3",
+      "fixture": "G5_nontip_radial",
+      "observable": "trees_differ",
+      "platform": "gce-reference-linux",
+      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G5_nontip_radial\\GEOMETRY.json",
+      "tree": "both",
+      "value": true
+    },
+    {
+      "dimension": "D8",
+      "fixture": "G6_no_growth_stock_init",
+      "observable": "max_rel",
+      "platform": "gce-reference-linux",
+      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G6_no_growth_stock_init\\GEOMETRY.json",
+      "tree": "pair",
+      "value": 2.285363621866748e-05
+    },
+    {
+      "dimension": "D8",
+      "fixture": "G7_no_growth_exact_init",
+      "observable": "max_rel",
+      "platform": "gce-reference-linux",
+      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-reference\\runs\\c04-p07-geometry\\G7_no_growth_exact_init\\GEOMETRY.json",
+      "tree": "pair",
+      "value": 0.0
+    },
+    {
+      "dimension": "D8",
+      "fixture": "k1_0.5",
+      "k1": 0.5,
+      "observable": "delta_A_particles",
+      "platform": "windows-development",
+      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs\\c04-p07-donor-cap-fixture\\DONOR_CAP_FIXTURE.json",
+      "tree": "baseline",
+      "value": 1.2617374821994632e-13
+    },
+    {
+      "dimension": "D8",
+      "fixture": "k1_0.5",
+      "k1": 0.5,
+      "observable": "delta_A_particles",
+      "platform": "windows-development",
+      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs\\c04-p07-donor-cap-fixture\\DONOR_CAP_FIXTURE.json",
+      "tree": "candidate",
+      "value": 4.569057502930556e-12
+    },
+    {
+      "dimension": "D8",
+      "fixture": "k1_1",
+      "k1": 1.0,
+      "observable": "delta_A_particles",
+      "platform": "windows-development",
+      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs\\c04-p07-donor-cap-fixture\\DONOR_CAP_FIXTURE.json",
+      "tree": "baseline",
+      "value": 2.4947845422790507e-13
+    },
+    {
+      "dimension": "D8",
+      "fixture": "k1_1",
+      "k1": 1.0,
+      "observable": "delta_A_particles",
+      "platform": "windows-development",
+      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs\\c04-p07-donor-cap-fixture\\DONOR_CAP_FIXTURE.json",
+      "tree": "candidate",
+      "value": 4.868219158726102e-12
+    },
+    {
+      "dimension": "D8",
+      "fixture": "k1_2",
+      "k1": 2.0,
+      "observable": "delta_A_particles",
+      "platform": "windows-development",
+      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs\\c04-p07-donor-cap-fixture\\DONOR_CAP_FIXTURE.json",
+      "tree": "baseline",
+      "value": 4.877042284988348e-13
+    },
+    {
+      "dimension": "D8",
+      "fixture": "k1_2",
+      "k1": 2.0,
+      "observable": "delta_A_particles",
+      "platform": "windows-development",
+      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs\\c04-p07-donor-cap-fixture\\DONOR_CAP_FIXTURE.json",
+      "tree": "candidate",
+      "value": 4.871032500000001e-12
+    },
+    {
+      "dimension": "D8",
+      "fixture": "k1_5",
+      "k1": 5.0,
+      "observable": "delta_A_particles",
+      "platform": "windows-development",
+      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs\\c04-p07-donor-cap-fixture\\DONOR_CAP_FIXTURE.json",
+      "tree": "baseline",
+      "value": 1.1391731658547444e-12
+    },
+    {
+      "dimension": "D8",
+      "fixture": "k1_5",
+      "k1": 5.0,
+      "observable": "delta_A_particles",
+      "platform": "windows-development",
+      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs\\c04-p07-donor-cap-fixture\\DONOR_CAP_FIXTURE.json",
+      "tree": "candidate",
+      "value": 4.8710325000000015e-12
+    },
+    {
+      "dimension": "D8",
+      "fixture": "k1_20",
+      "k1": 20.0,
+      "observable": "delta_A_particles",
+      "platform": "windows-development",
+      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs\\c04-p07-donor-cap-fixture\\DONOR_CAP_FIXTURE.json",
+      "tree": "baseline",
+      "value": 3.287036796906513e-12
+    },
+    {
+      "dimension": "D8",
+      "fixture": "k1_20",
+      "k1": 20.0,
+      "observable": "delta_A_particles",
+      "platform": "windows-development",
+      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs\\c04-p07-donor-cap-fixture\\DONOR_CAP_FIXTURE.json",
+      "tree": "candidate",
+      "value": 4.8710325000000015e-12
+    },
+    {
+      "dimension": "D8",
+      "fixture": "k1_100",
+      "k1": 100.0,
+      "observable": "delta_A_particles",
+      "platform": "windows-development",
+      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs\\c04-p07-donor-cap-fixture\\DONOR_CAP_FIXTURE.json",
+      "tree": "baseline",
+      "value": 4.870055586973302e-12
+    },
+    {
+      "dimension": "D8",
+      "fixture": "k1_100",
+      "k1": 100.0,
+      "observable": "delta_A_particles",
+      "platform": "windows-development",
+      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs\\c04-p07-donor-cap-fixture\\DONOR_CAP_FIXTURE.json",
+      "tree": "candidate",
+      "value": 4.871032499999993e-12
+    },
+    {
+      "dimension": "D8",
+      "fixture": "G1_tip_length_only",
+      "observable": "max_rel",
+      "platform": "windows-development",
+      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs\\c04-p07-geometry\\G1_tip_length_only\\GEOMETRY.json",
+      "tree": "pair",
+      "value": 0.05480782749107253
+    },
+    {
+      "dimension": "D8",
+      "fixture": "G2_tip_radius_only",
+      "observable": "max_rel",
+      "platform": "windows-development",
+      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs\\c04-p07-geometry\\G2_tip_radius_only\\GEOMETRY.json",
+      "tree": "pair",
+      "value": 0.11484406645344886
+    },
+    {
+      "dimension": "D8",
+      "fixture": "G3_tip_proportional",
+      "observable": "max_rel",
+      "platform": "windows-development",
+      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs\\c04-p07-geometry\\G3_tip_proportional\\GEOMETRY.json",
+      "tree": "pair",
+      "value": 0.005557531993133672
+    },
+    {
+      "dimension": "D8",
+      "fixture": "G4_nontip_rejected",
+      "observable": "max_rel",
+      "platform": "windows-development",
+      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs\\c04-p07-geometry\\G4_nontip_rejected\\GEOMETRY.json",
+      "tree": "pair",
+      "value": 0.9999935780521666
+    },
+    {
+      "dimension": "D8",
+      "fixture": "G5_nontip_radial",
+      "observable": "max_rel",
+      "platform": "windows-development",
+      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs\\c04-p07-geometry\\G5_nontip_radial\\GEOMETRY.json",
+      "tree": "pair",
+      "value": 0.0921950312689999
+    },
+    {
+      "dimension": "D8",
+      "fixture": "G6_no_growth_stock_init",
+      "observable": "max_rel",
+      "platform": "windows-development",
+      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs\\c04-p07-geometry\\G6_no_growth_stock_init\\GEOMETRY.json",
+      "tree": "pair",
+      "value": 2.285363621866748e-05
+    },
+    {
+      "dimension": "D8",
+      "fixture": "G7_no_growth_exact_init",
+      "observable": "max_rel",
+      "platform": "windows-development",
+      "source": "C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs\\c04-p07-geometry\\G7_no_growth_exact_init\\GEOMETRY.json",
+      "tree": "pair",
+      "value": 0.0
+    },
+    {
+      "dimension": "D5",
+      "fixture": "patch",
+      "observable": "p_lines_identical",
+      "platform": "gce-reference-linux",
+      "source": "evidence/stages/C04/STAGE_REPORT.json",
+      "tree": "both",
+      "value": true
+    },
+    {
+      "dimension": "D5",
+      "fixture": "patch",
+      "observable": "files_changed",
+      "platform": "gce-reference-linux",
+      "source": "evidence/stages/C04/STAGE_REPORT.json",
+      "tree": "both",
+      "value": 1
+    },
+    {
+      "dimension": "D6",
+      "fixture": "report",
+      "observable": "no_phosphorus_correctness_claim",
+      "platform": "gce-reference-linux",
+      "source": "evidence/stages/C04/STAGE_REPORT.json",
+      "tree": "both",
+      "value": true
+    },
+    {
+      "dimension": "D6",
+      "fixture": "report",
+      "observable": "asymmetry_restated",
+      "platform": "gce-reference-linux",
+      "source": "evidence/stages/C04/STAGE_REPORT.json",
+      "tree": "both",
+      "value": true
+    },
+    {
+      "dimension": "D7",
+      "fixture": "identity",
+      "observable": "kernel_hash_matches",
+      "platform": "gce-reference-linux",
+      "source": "evidence/stages/C04/reference\\QUALIFICATION_REFERENCE.json",
+      "tree": "both",
+      "value": true
+    },
+    {
+      "dimension": "D7",
+      "fixture": "identity",
+      "observable": "amrex_matches",
+      "platform": "gce-reference-linux",
+      "source": "evidence/stages/C04/reference\\QUALIFICATION_REFERENCE.json",
+      "tree": "both",
+      "value": true
+    },
+    {
+      "dimension": "D7",
+      "fixture": "identity",
+      "observable": "per_image_provenance_exact",
+      "platform": "gce-reference-linux",
+      "source": "evidence/stages/C04/reference\\QUALIFICATION_REFERENCE.json",
+      "tree": "both",
+      "value": true
+    }
+  ],
+  "platforms": [
+    "gce-reference-linux",
+    "windows-development"
+  ],
+  "required_members": []
+}

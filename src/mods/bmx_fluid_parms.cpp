@@ -13,6 +13,7 @@
 
 #include <bmx_fluid_parms.H>
 #include <bmx_chem_species_parms.H>
+#include <bmx_chem_layout.H>
 
 namespace FLUID
 {
@@ -80,6 +81,13 @@ namespace FLUID
 
         nchem_species = chem_species.size();
 
+        std::string layout_error;
+        const auto layout_mode =
+            BMXChemLayout::classifyMeshSpecies(chem_species, &layout_error);
+        if (layout_mode == BMXChemLayout::MeshMode::invalid) {
+          amrex::Abort("P09 fluid schema invalid: " + layout_error);
+        }
+
         amrex::Print() << " " << std::endl;
 
         amrex::Print() << " Reading in " << chem_species.size() << " chem_species from the inputs file" << std::endl;
@@ -89,6 +97,14 @@ namespace FLUID
         D_k0.resize(nchem_species);
 
         ppFluid.getarr("chem_species_diff", D_k0);
+        if (static_cast<int>(D_k0.size()) != nchem_species) {
+          amrex::Abort("fluid.chem_species_diff count must match "
+                       "fluid.chem_species count");
+        }
+        if (layout_mode == BMXChemLayout::MeshMode::enabled &&
+            D_k0[6] != 0.0) {
+          amrex::Abort("enabled P09 mesh P_F diffusion must be exactly zero");
+        }
         for (int n = 0; n < nchem_species; n++)
            amrex::Print() << "diff coeffs for chem_species " << n << " is " << D_k0[n] << std::endl;
 
@@ -96,11 +112,32 @@ namespace FLUID
 
 #ifdef NEW_CHEM
         ppFluid.getarr("init_conc_species", init_conc);
+        if (static_cast<int>(init_conc.size()) != nchem_species) {
+          amrex::Abort("fluid.init_conc_species count must match "
+                       "fluid.chem_species count");
+        }
         for (int n = 0; n < nchem_species; n++)
            amrex::Print() << "Initial concentration for chem_species " << n << " is " << init_conc[n] << std::endl;
 
         amrex::Print() << " " << std::endl;
 #endif
+
+        chem_species_id.resize(nchem_species);
+        for (int n = 0; n < nchem_species; ++n) {
+          chem_species_id[n] = BMXChemLayout::meshToParticle(n, layout_mode);
+        }
+
+        // Preserve the feature-off P07 diagnostic stream byte-for-byte.  The
+        // explicit P09 layout declaration is emitted only for the new schema.
+        if (layout_mode == BMXChemLayout::MeshMode::enabled) {
+          amrex::Print() << "BMX_P09_LAYOUT mode="
+                         << BMXChemLayout::modeName(layout_mode)
+                         << " mesh_components=" << nchem_species
+                         << " particle_components="
+                         << BMXChemLayout::particle_components
+                         << " layout_id=" << BMXChemLayout::layout_id
+                         << std::endl;
+        }
 
 
       }

@@ -1,0 +1,37 @@
+# Line-ending policy.
+#
+# Added after a Python rewrite on Windows silently converted
+# tools/repro/configure_linux.sh to CRLF, which made it fail on Linux with
+#   configure_linux.sh: line 21: $'\r': command not found
+# The reference platform is Linux (DEC-PLATFORM-001), so a CRLF shell script is
+# a hard break, and it is exactly the kind of defect that only shows up on the
+# platform the release depends on.
+#
+# Text files that are executed or parsed keep LF in the working tree on every
+# platform. Checkpoint data, images and archives are marked binary so git never
+# touches them -- several contain 0x0D bytes and must not be "normalised".
+
+* -text
+
+*.sh      text eol=lf
+*.py      text eol=lf
+*.cmake   text eol=lf
+*.H.in    text eol=lf
+*.dat     text eol=lf
+*.md      text eol=lf
+*.json    text eol=lf
+CMakeLists.txt text eol=lf
+.gitattributes text eol=lf
+.gitignore     text eol=lf
+
+# PowerShell is Windows-side tooling; CRLF is correct there.
+*.ps1     text eol=crlf
+
+# Never normalise.
+*.jpg     binary
+*.png     binary
+*.gz      binary
+*.bundle  binary
+exec/**/chk*/**   binary
+exec/**/plt*/**   binary
+contracts/USER_ADOPTED_DECISION_CONTRACT_20260801_V2.txt binary

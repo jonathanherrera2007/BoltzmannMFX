@@ -1,0 +1,35 @@
+{
+  "artifact_type": "USER_ADOPTED_PROVISIONAL_DECISION_CONTRACT_MANIFEST",
+  "contract_id": "UDC-20260801-MENTOR-DECISION-FREEZE-V2",
+  "status": "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+  "source": {
+    "path": "contracts/USER_ADOPTED_DECISION_CONTRACT_20260801_V2.txt",
+    "sha256": "34e8414c09e6528fc86399ceb4902cb5fc6907d9562fcf7a78cb3a8e4e333066",
+    "source_kind": "user-attached pasted text",
+    "mentor_approval_claimed": false
+  },
+  "supersedes": {
+    "prior_contract_path": "contracts/USER_APPROVED_DECISION_CONTRACT_20260801.txt",
+    "prior_contract_sha256": "283eace4f34e0a3d6961d49db2ab2c75ac6e384a9077a7044313a20f7bd4bc93",
+    "points": [
+      "P12 and P15 science-labelled uptake uses inward-only Michaelis-Menten rather than the linear law",
+      "the mesh-D diffusivity centre is 5.0e-6 cm^2 s^-1",
+      "the provisionally adopted nonzero export centre is 5.26977773579e-6 s^-1",
+      "the P16 fallback exploitation objective is hyphal surface-area density"
+    ]
+  },
+  "linear_law_status": "ENGINEERING_REGRESSION_COMPARATOR",
+  "linear_law_claim_prohibition": "The linear comparator may carry neither a P12 nor a P15 claim.",
+  "reconciliation_policy": {
+    "covered_scientific_or_experimental_entries": "CLOSED_USER_ADOPTED",
+    "classification": "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+    "preserve_residual_gaps": true,
+    "prohibited_status": "CLOSED_SCIENTIFIC"
+  },
+  "p16": {
+    "memberships": [],
+    "status": "BLOCKED_ON_EXTERNAL_STRATEGY_BASELINE",
+    "software_claim_label": "SYNTHETIC_NONSCIENTIFIC"
+  },
+  "claim_boundary": "Binding for authorized implementation and preregistration only; not mentor approval, calibration, validation, or a predictive scientific claim."
+}

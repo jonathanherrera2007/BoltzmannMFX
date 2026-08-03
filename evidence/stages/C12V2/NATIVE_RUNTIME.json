@@ -1,0 +1,1497 @@
+{
+  "artifact_type": "C12_P14_NATIVE_RUNTIME",
+  "stage": "C12/P14",
+  "status": "PASS",
+  "cases": {
+    "no_contact": {
+      "status": "PASS",
+      "checks": {
+        "exit_zero": true,
+        "contract_bound": true,
+        "step_count": true,
+        "fraction_class": true,
+        "request_identity": true,
+        "receipt_identity": true,
+        "reward_exact": true,
+        "bootstrap_separate_zero_credit": true,
+        "no_negative_or_cap": true,
+        "global_p_conservation": true,
+        "f_inactive": true
+      },
+      "steps": [
+        {
+          "update_id": 0,
+          "interface_fraction_sum": 0.0,
+          "active_volume": 0.0,
+          "active_d_basis": 0.0,
+          "requested_p": 0.0,
+          "accepted_p": 0.0,
+          "rejected_p": 0.0,
+          "exported_p": 0.0,
+          "exchange_derived_a": 0.0,
+          "bootstrap_a_credit": 0.0,
+          "particles": 1,
+          "eligible": 0,
+          "true_crossings": 0,
+          "solid_contacts": 0,
+          "accepted_events": 0,
+          "donor_capped_events": 0,
+          "cumulative_exported_p": 0.0,
+          "cumulative_exchange_derived_a": 0.0
+        }
+      ],
+      "ledgers": [
+        {
+          "boundary": "O01_PRE_UPDATE_LEDGER",
+          "reference_total": 1.2566370614359172e-10,
+          "accounted": 1.2566370614359172e-10,
+          "residual": 0.0,
+          "tolerance": 2.5132741228718344e-20
+        },
+        {
+          "boundary": "O10_POST_UPDATE_LEDGER",
+          "reference_total": 1.2566370614359172e-10,
+          "accounted": 1.2566370614359172e-10,
+          "residual": 0.0,
+          "tolerance": 2.5132741228718344e-20
+        }
+      ],
+      "returncode": 0
+    },
+    "tangency": {
+      "status": "PASS",
+      "checks": {
+        "exit_zero": true,
+        "contract_bound": true,
+        "step_count": true,
+        "fraction_class": true,
+        "request_identity": true,
+        "receipt_identity": true,
+        "reward_exact": true,
+        "bootstrap_separate_zero_credit": true,
+        "no_negative_or_cap": true,
+        "global_p_conservation": true,
+        "f_inactive": true
+      },
+      "steps": [
+        {
+          "update_id": 0,
+          "interface_fraction_sum": 0.0,
+          "active_volume": 0.0,
+          "active_d_basis": 0.0,
+          "requested_p": 0.0,
+          "accepted_p": 0.0,
+          "rejected_p": 0.0,
+          "exported_p": 0.0,
+          "exchange_derived_a": 0.0,
+          "bootstrap_a_credit": 0.0,
+          "particles": 1,
+          "eligible": 1,
+          "true_crossings": 0,
+          "solid_contacts": 0,
+          "accepted_events": 0,
+          "donor_capped_events": 0,
+          "cumulative_exported_p": 0.0,
+          "cumulative_exchange_derived_a": 0.0
+        }
+      ],
+      "ledgers": [
+        {
+          "boundary": "O01_PRE_UPDATE_LEDGER",
+          "reference_total": 1.2566370614359172e-10,
+          "accounted": 1.2566370614359172e-10,
+          "residual": 0.0,
+          "tolerance": 2.5132741228718344e-20
+        },
+        {
+          "boundary": "O10_POST_UPDATE_LEDGER",
+          "reference_total": 1.2566370614359172e-10,
+          "accounted": 1.2566370614359172e-10,
+          "residual": 0.0,
+          "tolerance": 2.5132741228718344e-20
+        }
+      ],
+      "returncode": 0
+    },
+    "partial_contact": {
+      "status": "PASS",
+      "checks": {
+        "exit_zero": true,
+        "contract_bound": true,
+        "step_count": true,
+        "fraction_class": true,
+        "request_identity": true,
+        "receipt_identity": true,
+        "reward_exact": true,
+        "bootstrap_separate_zero_credit": true,
+        "no_negative_or_cap": true,
+        "global_p_conservation": true,
+        "f_inactive": true
+      },
+      "steps": [
+        {
+          "update_id": 0,
+          "interface_fraction_sum": 0.666666666664772,
+          "active_volume": 3.141592653580865e-06,
+          "active_d_basis": 3.1415926535808654e-09,
+          "requested_p": 1.6555481733915744e-19,
+          "accepted_p": 1.6555481733915744e-19,
+          "rejected_p": 0.0,
+          "exported_p": 1.6555481733915744e-19,
+          "exchange_derived_a": 1.2807320669357218e-18,
+          "bootstrap_a_credit": 0.0,
+          "particles": 1,
+          "eligible": 1,
+          "true_crossings": 0,
+          "solid_contacts": 0,
+          "accepted_events": 1,
+          "donor_capped_events": 0,
+          "cumulative_exported_p": 1.6555481733915744e-19,
+          "cumulative_exchange_derived_a": 1.2807320669357218e-18
+        }
+      ],
+      "ledgers": [
+        {
+          "boundary": "O01_PRE_UPDATE_LEDGER",
+          "reference_total": 4.712388980384691e-09,
+          "accounted": 4.712388980384691e-09,
+          "residual": 0.0,
+          "tolerance": 9.424777960769382e-19
+        },
+        {
+          "boundary": "O10_POST_UPDATE_LEDGER",
+          "reference_total": 4.712388980384691e-09,
+          "accounted": 4.712388980384691e-09,
+          "residual": 0.0,
+          "tolerance": 9.424777960769382e-19
+        }
+      ],
+      "returncode": 0
+    },
+    "full_contact": {
+      "status": "PASS",
+      "checks": {
+        "exit_zero": true,
+        "contract_bound": true,
+        "step_count": true,
+        "fraction_class": true,
+        "request_identity": true,
+        "receipt_identity": true,
+        "reward_exact": true,
+        "bootstrap_separate_zero_credit": true,
+        "no_negative_or_cap": true,
+        "global_p_conservation": true,
+        "f_inactive": true
+      },
+      "steps": [
+        {
+          "update_id": 0,
+          "interface_fraction_sum": 1.0,
+          "active_volume": 2.5132741228718345e-07,
+          "active_d_basis": 2.5132741228718344e-10,
+          "requested_p": 1.3244385387170233e-20,
+          "accepted_p": 1.3244385387170233e-20,
+          "rejected_p": 0.0,
+          "exported_p": 1.3244385387170233e-20,
+          "exchange_derived_a": 1.0245856535514892e-19,
+          "bootstrap_a_credit": 0.0,
+          "particles": 1,
+          "eligible": 1,
+          "true_crossings": 0,
+          "solid_contacts": 0,
+          "accepted_events": 1,
+          "donor_capped_events": 0,
+          "cumulative_exported_p": 1.3244385387170233e-20,
+          "cumulative_exchange_derived_a": 1.0245856535514892e-19
+        }
+      ],
+      "ledgers": [
+        {
+          "boundary": "O01_PRE_UPDATE_LEDGER",
+          "reference_total": 2.5132741228718344e-10,
+          "accounted": 2.5132741228718344e-10,
+          "residual": 0.0,
+          "tolerance": 5.026548245743669e-20
+        },
+        {
+          "boundary": "O10_POST_UPDATE_LEDGER",
+          "reference_total": 2.5132741228718344e-10,
+          "accounted": 2.5132741228718344e-10,
+          "residual": 0.0,
+          "tolerance": 5.026548245743669e-20
+        }
+      ],
+      "returncode": 0
+    },
+    "oblique_contact": {
+      "status": "PASS",
+      "checks": {
+        "exit_zero": true,
+        "contract_bound": true,
+        "step_count": true,
+        "fraction_class": true,
+        "request_identity": true,
+        "receipt_identity": true,
+        "reward_exact": true,
+        "bootstrap_separate_zero_credit": true,
+        "no_negative_or_cap": true,
+        "global_p_conservation": true,
+        "f_inactive": true
+      },
+      "steps": [
+        {
+          "update_id": 0,
+          "interface_fraction_sum": 0.25499999999985795,
+          "active_volume": 3.2678846178586553e-07,
+          "active_d_basis": 3.2678846178586555e-10,
+          "requested_p": 1.722101178134507e-20,
+          "accepted_p": 1.722101178134507e-20,
+          "rejected_p": 0.0,
+          "exported_p": 1.722101178134507e-20,
+          "exchange_derived_a": 1.3322174714048547e-19,
+          "bootstrap_a_credit": 0.0,
+          "particles": 1,
+          "eligible": 1,
+          "true_crossings": 1,
+          "solid_contacts": 0,
+          "accepted_events": 1,
+          "donor_capped_events": 0,
+          "cumulative_exported_p": 1.722101178134507e-20,
+          "cumulative_exchange_derived_a": 1.3322174714048547e-19
+        }
+      ],
+      "ledgers": [
+        {
+          "boundary": "O01_PRE_UPDATE_LEDGER",
+          "reference_total": 1.2815233795531278e-09,
+          "accounted": 1.2815233795531278e-09,
+          "residual": 0.0,
+          "tolerance": 2.5630467591062557e-19
+        },
+        {
+          "boundary": "O10_POST_UPDATE_LEDGER",
+          "reference_total": 1.2815233795531278e-09,
+          "accounted": 1.281523379553128e-09,
+          "residual": 2.0679515313825692e-25,
+          "tolerance": 2.5630467591062557e-19
+        }
+      ],
+      "returncode": 0
+    },
+    "solid_edge": {
+      "status": "PASS",
+      "checks": {
+        "exit_zero": true,
+        "contract_bound": true,
+        "step_count": true,
+        "fraction_class": true,
+        "request_identity": true,
+        "receipt_identity": true,
+        "reward_exact": true,
+        "bootstrap_separate_zero_credit": true,
+        "no_negative_or_cap": true,
+        "global_p_conservation": true,
+        "f_inactive": true,
+        "solid_precedence_observed": true
+      },
+      "steps": [
+        {
+          "update_id": 0,
+          "interface_fraction_sum": 0.0,
+          "active_volume": 0.0,
+          "active_d_basis": 0.0,
+          "requested_p": 0.0,
+          "accepted_p": 0.0,
+          "rejected_p": 0.0,
+          "exported_p": 0.0,
+          "exchange_derived_a": 0.0,
+          "bootstrap_a_credit": 0.0,
+          "particles": 1,
+          "eligible": 0,
+          "true_crossings": 0,
+          "solid_contacts": 1,
+          "accepted_events": 0,
+          "donor_capped_events": 0,
+          "cumulative_exported_p": 0.0,
+          "cumulative_exchange_derived_a": 0.0
+        }
+      ],
+      "ledgers": [
+        {
+          "boundary": "O01_PRE_UPDATE_LEDGER",
+          "reference_total": 2.5132741228718344e-10,
+          "accounted": 2.5132741228718344e-10,
+          "residual": 0.0,
+          "tolerance": 5.026548245743669e-20
+        },
+        {
+          "boundary": "O10_POST_UPDATE_LEDGER",
+          "reference_total": 2.5132741228718344e-10,
+          "accounted": 2.5132741228718344e-10,
+          "residual": 0.0,
+          "tolerance": 5.026548245743669e-20
+        }
+      ],
+      "returncode": 0
+    },
+    "window_contact_only": {
+      "status": "PASS",
+      "checks": {
+        "exit_zero": true,
+        "contract_bound": true,
+        "step_count": true,
+        "fraction_class": true,
+        "request_identity": true,
+        "receipt_identity": true,
+        "reward_exact": true,
+        "bootstrap_separate_zero_credit": true,
+        "no_negative_or_cap": true,
+        "global_p_conservation": true,
+        "f_inactive": true,
+        "crossing_not_required": true
+      },
+      "steps": [
+        {
+          "update_id": 0,
+          "interface_fraction_sum": 0.05263157894437674,
+          "active_volume": 1.5707963267056095e-09,
+          "active_d_basis": 1.5707963267056097e-12,
+          "requested_p": 8.277740866510874e-23,
+          "accepted_p": 8.277740866510874e-23,
+          "rejected_p": 0.0,
+          "exported_p": 8.277740866510874e-23,
+          "exchange_derived_a": 6.403660334332813e-22,
+          "bootstrap_a_credit": 0.0,
+          "particles": 1,
+          "eligible": 1,
+          "true_crossings": 0,
+          "solid_contacts": 0,
+          "accepted_events": 1,
+          "donor_capped_events": 0,
+          "cumulative_exported_p": 8.277740866510874e-23,
+          "cumulative_exchange_derived_a": 6.403660334332813e-22
+        }
+      ],
+      "ledgers": [
+        {
+          "boundary": "O01_PRE_UPDATE_LEDGER",
+          "reference_total": 2.984513020910304e-11,
+          "accounted": 2.984513020910304e-11,
+          "residual": 0.0,
+          "tolerance": 5.969026041820608e-21
+        },
+        {
+          "boundary": "O10_POST_UPDATE_LEDGER",
+          "reference_total": 2.984513020910304e-11,
+          "accounted": 2.984513020910304e-11,
+          "residual": 0.0,
+          "tolerance": 5.969026041820608e-21
+        }
+      ],
+      "returncode": 0
+    },
+    "true_crossing": {
+      "status": "PASS",
+      "checks": {
+        "exit_zero": true,
+        "contract_bound": true,
+        "step_count": true,
+        "fraction_class": true,
+        "request_identity": true,
+        "receipt_identity": true,
+        "reward_exact": true,
+        "bootstrap_separate_zero_credit": true,
+        "no_negative_or_cap": true,
+        "global_p_conservation": true,
+        "f_inactive": true,
+        "crossing_diagnostic_only": true
+      },
+      "steps": [
+        {
+          "update_id": 0,
+          "interface_fraction_sum": 0.2549999999998578,
+          "active_volume": 3.2044245066598026e-07,
+          "active_d_basis": 3.2044245066598026e-10,
+          "requested_p": 1.6886591368632634e-20,
+          "accepted_p": 1.6886591368632634e-20,
+          "rejected_p": 0.0,
+          "exported_p": 1.6886591368632634e-20,
+          "exchange_derived_a": 1.3063467082774206e-19,
+          "bootstrap_a_credit": 0.0,
+          "particles": 1,
+          "eligible": 1,
+          "true_crossings": 1,
+          "solid_contacts": 0,
+          "accepted_events": 1,
+          "donor_capped_events": 0,
+          "cumulative_exported_p": 1.6886591368632634e-20,
+          "cumulative_exchange_derived_a": 1.3063467082774206e-19
+        }
+      ],
+      "ledgers": [
+        {
+          "boundary": "O01_PRE_UPDATE_LEDGER",
+          "reference_total": 1.2566370614359176e-09,
+          "accounted": 1.2566370614359176e-09,
+          "residual": 0.0,
+          "tolerance": 2.5132741228718353e-19
+        },
+        {
+          "boundary": "O10_POST_UPDATE_LEDGER",
+          "reference_total": 1.2566370614359176e-09,
+          "accounted": 1.2566370614359176e-09,
+          "residual": 0.0,
+          "tolerance": 2.5132741228718353e-19
+        }
+      ],
+      "returncode": 0
+    },
+    "rate_0": {
+      "status": "PASS",
+      "checks": {
+        "exit_zero": true,
+        "contract_bound": true,
+        "step_count": true,
+        "fraction_class": true,
+        "request_identity": true,
+        "receipt_identity": true,
+        "reward_exact": true,
+        "bootstrap_separate_zero_credit": true,
+        "no_negative_or_cap": true,
+        "global_p_conservation": true,
+        "f_inactive": true,
+        "rate_response": true
+      },
+      "steps": [
+        {
+          "update_id": 0,
+          "interface_fraction_sum": 1.0,
+          "active_volume": 2.5132741228718345e-07,
+          "active_d_basis": 2.5132741228718344e-10,
+          "requested_p": 0.0,
+          "accepted_p": 0.0,
+          "rejected_p": 0.0,
+          "exported_p": 0.0,
+          "exchange_derived_a": 0.0,
+          "bootstrap_a_credit": 0.0,
+          "particles": 1,
+          "eligible": 1,
+          "true_crossings": 0,
+          "solid_contacts": 0,
+          "accepted_events": 0,
+          "donor_capped_events": 0,
+          "cumulative_exported_p": 0.0,
+          "cumulative_exchange_derived_a": 0.0
+        }
+      ],
+      "ledgers": [
+        {
+          "boundary": "O01_PRE_UPDATE_LEDGER",
+          "reference_total": 2.5132741228718344e-10,
+          "accounted": 2.5132741228718344e-10,
+          "residual": 0.0,
+          "tolerance": 5.026548245743669e-20
+        },
+        {
+          "boundary": "O10_POST_UPDATE_LEDGER",
+          "reference_total": 2.5132741228718344e-10,
+          "accounted": 2.5132741228718344e-10,
+          "residual": 0.0,
+          "tolerance": 5.026548245743669e-20
+        }
+      ],
+      "returncode": 0
+    },
+    "rate_1": {
+      "status": "PASS",
+      "checks": {
+        "exit_zero": true,
+        "contract_bound": true,
+        "step_count": true,
+        "fraction_class": true,
+        "request_identity": true,
+        "receipt_identity": true,
+        "reward_exact": true,
+        "bootstrap_separate_zero_credit": true,
+        "no_negative_or_cap": true,
+        "global_p_conservation": true,
+        "f_inactive": true,
+        "rate_response": true
+      },
+      "steps": [
+        {
+          "update_id": 0,
+          "interface_fraction_sum": 1.0,
+          "active_volume": 2.5132741228718345e-07,
+          "active_d_basis": 2.5132741228718344e-10,
+          "requested_p": 2.51314846335441e-14,
+          "accepted_p": 2.51314846335441e-14,
+          "rejected_p": 0.0,
+          "exported_p": 2.51314846335441e-14,
+          "exchange_derived_a": 1.9441716512509715e-13,
+          "bootstrap_a_credit": 0.0,
+          "particles": 1,
+          "eligible": 1,
+          "true_crossings": 0,
+          "solid_contacts": 0,
+          "accepted_events": 1,
+          "donor_capped_events": 0,
+          "cumulative_exported_p": 2.51314846335441e-14,
+          "cumulative_exchange_derived_a": 1.9441716512509715e-13
+        }
+      ],
+      "ledgers": [
+        {
+          "boundary": "O01_PRE_UPDATE_LEDGER",
+          "reference_total": 2.5132741228718344e-10,
+          "accounted": 2.5132741228718344e-10,
+          "residual": 0.0,
+          "tolerance": 5.026548245743669e-20
+        },
+        {
+          "boundary": "O10_POST_UPDATE_LEDGER",
+          "reference_total": 2.5132741228718344e-10,
+          "accounted": 2.5132741228718344e-10,
+          "residual": 0.0,
+          "tolerance": 5.026548245743669e-20
+        }
+      ],
+      "returncode": 0
+    },
+    "rate_2": {
+      "status": "PASS",
+      "checks": {
+        "exit_zero": true,
+        "contract_bound": true,
+        "step_count": true,
+        "fraction_class": true,
+        "request_identity": true,
+        "receipt_identity": true,
+        "reward_exact": true,
+        "bootstrap_separate_zero_credit": true,
+        "no_negative_or_cap": true,
+        "global_p_conservation": true,
+        "f_inactive": true,
+        "rate_response": true
+      },
+      "steps": [
+        {
+          "update_id": 0,
+          "interface_fraction_sum": 1.0,
+          "active_volume": 2.5132741228718345e-07,
+          "active_d_basis": 2.5132741228718344e-10,
+          "requested_p": 1.3240906878411984e-13,
+          "accepted_p": 1.3240906878411984e-13,
+          "rejected_p": 0.0,
+          "exported_p": 1.3240906878411984e-13,
+          "exchange_derived_a": 1.024316556113951e-12,
+          "bootstrap_a_credit": 0.0,
+          "particles": 1,
+          "eligible": 1,
+          "true_crossings": 0,
+          "solid_contacts": 0,
+          "accepted_events": 1,
+          "donor_capped_events": 0,
+          "cumulative_exported_p": 1.3240906878411984e-13,
+          "cumulative_exchange_derived_a": 1.024316556113951e-12
+        }
+      ],
+      "ledgers": [
+        {
+          "boundary": "O01_PRE_UPDATE_LEDGER",
+          "reference_total": 2.5132741228718344e-10,
+          "accounted": 2.5132741228718344e-10,
+          "residual": 0.0,
+          "tolerance": 5.026548245743669e-20
+        },
+        {
+          "boundary": "O10_POST_UPDATE_LEDGER",
+          "reference_total": 2.5132741228718344e-10,
+          "accounted": 2.5132741228718344e-10,
+          "residual": 0.0,
+          "tolerance": 5.026548245743669e-20
+        }
+      ],
+      "returncode": 0
+    },
+    "rate_3": {
+      "status": "PASS",
+      "checks": {
+        "exit_zero": true,
+        "contract_bound": true,
+        "step_count": true,
+        "fraction_class": true,
+        "request_identity": true,
+        "receipt_identity": true,
+        "reward_exact": true,
+        "bootstrap_separate_zero_credit": true,
+        "no_negative_or_cap": true,
+        "global_p_conservation": true,
+        "f_inactive": true,
+        "rate_response": true
+      },
+      "steps": [
+        {
+          "update_id": 0,
+          "interface_fraction_sum": 1.0,
+          "active_volume": 2.5132741228718345e-07,
+          "active_d_basis": 2.5132741228718344e-10,
+          "requested_p": 2.512017904584644e-13,
+          "accepted_p": 2.512017904584644e-13,
+          "rejected_p": 0.0,
+          "exported_p": 2.512017904584644e-13,
+          "exchange_derived_a": 1.9432970509866806e-12,
+          "bootstrap_a_credit": 0.0,
+          "particles": 1,
+          "eligible": 1,
+          "true_crossings": 0,
+          "solid_contacts": 0,
+          "accepted_events": 1,
+          "donor_capped_events": 0,
+          "cumulative_exported_p": 2.512017904584644e-13,
+          "cumulative_exchange_derived_a": 1.9432970509866806e-12
+        }
+      ],
+      "ledgers": [
+        {
+          "boundary": "O01_PRE_UPDATE_LEDGER",
+          "reference_total": 2.5132741228718344e-10,
+          "accounted": 2.5132741228718344e-10,
+          "residual": 0.0,
+          "tolerance": 5.026548245743669e-20
+        },
+        {
+          "boundary": "O10_POST_UPDATE_LEDGER",
+          "reference_total": 2.5132741228718344e-10,
+          "accounted": 2.5132741228718344e-10,
+          "residual": 0.0,
+          "tolerance": 5.026548245743669e-20
+        }
+      ],
+      "returncode": 0
+    },
+    "rate_4": {
+      "status": "PASS",
+      "checks": {
+        "exit_zero": true,
+        "contract_bound": true,
+        "step_count": true,
+        "fraction_class": true,
+        "request_identity": true,
+        "receipt_identity": true,
+        "reward_exact": true,
+        "bootstrap_separate_zero_credit": true,
+        "no_negative_or_cap": true,
+        "global_p_conservation": true,
+        "f_inactive": true,
+        "rate_response": true
+      },
+      "steps": [
+        {
+          "update_id": 0,
+          "interface_fraction_sum": 1.0,
+          "active_volume": 2.5132741228718345e-07,
+          "active_d_basis": 2.5132741228718344e-10,
+          "requested_p": 2.5007495356488457e-12,
+          "accepted_p": 2.5007495356488457e-12,
+          "rejected_p": 0.0,
+          "exported_p": 2.5007495356488457e-12,
+          "exchange_derived_a": 1.934579840777947e-11,
+          "bootstrap_a_credit": 0.0,
+          "particles": 1,
+          "eligible": 1,
+          "true_crossings": 0,
+          "solid_contacts": 0,
+          "accepted_events": 1,
+          "donor_capped_events": 0,
+          "cumulative_exported_p": 2.5007495356488457e-12,
+          "cumulative_exchange_derived_a": 1.934579840777947e-11
+        }
+      ],
+      "ledgers": [
+        {
+          "boundary": "O01_PRE_UPDATE_LEDGER",
+          "reference_total": 2.5132741228718344e-10,
+          "accounted": 2.5132741228718344e-10,
+          "residual": 0.0,
+          "tolerance": 5.026548245743669e-20
+        },
+        {
+          "boundary": "O10_POST_UPDATE_LEDGER",
+          "reference_total": 2.5132741228718344e-10,
+          "accounted": 2.5132741228718344e-10,
+          "residual": 0.0,
+          "tolerance": 5.026548245743669e-20
+        }
+      ],
+      "returncode": 0
+    },
+    "continuous_rank1": {
+      "status": "PASS",
+      "checks": {
+        "exit_zero": true,
+        "contract_bound": true,
+        "step_count": true,
+        "fraction_class": true,
+        "request_identity": true,
+        "receipt_identity": true,
+        "reward_exact": true,
+        "bootstrap_separate_zero_credit": true,
+        "no_negative_or_cap": true,
+        "global_p_conservation": true,
+        "f_inactive": true,
+        "analytical_exponential": true
+      },
+      "steps": [
+        {
+          "update_id": 0,
+          "interface_fraction_sum": 1.0,
+          "active_volume": 2.5132741228718345e-07,
+          "active_d_basis": 2.5132741228718344e-10,
+          "requested_p": 1.3240906878411984e-13,
+          "accepted_p": 1.3240906878411984e-13,
+          "rejected_p": 0.0,
+          "exported_p": 1.3240906878411984e-13,
+          "exchange_derived_a": 1.024316556113951e-12,
+          "bootstrap_a_credit": 0.0,
+          "particles": 1,
+          "eligible": 1,
+          "true_crossings": 0,
+          "solid_contacts": 0,
+          "accepted_events": 1,
+          "donor_capped_events": 0,
+          "cumulative_exported_p": 1.3240906878411984e-13,
+          "cumulative_exchange_derived_a": 1.024316556113951e-12
+        },
+        {
+          "update_id": 1,
+          "interface_fraction_sum": 1.0,
+          "active_volume": 2.5132741228718345e-07,
+          "active_d_basis": 2.511950032183993e-10,
+          "requested_p": 1.3233931052998938e-13,
+          "accepted_p": 1.3233931052998938e-13,
+          "rejected_p": 0.0,
+          "exported_p": 1.3233931052998938e-13,
+          "exchange_derived_a": 1.0237769062599978e-12,
+          "bootstrap_a_credit": 0.0,
+          "particles": 1,
+          "eligible": 1,
+          "true_crossings": 0,
+          "solid_contacts": 0,
+          "accepted_events": 1,
+          "donor_capped_events": 0,
+          "cumulative_exported_p": 2.647483793141092e-13,
+          "cumulative_exchange_derived_a": 2.048093462373949e-12
+        },
+        {
+          "update_id": 2,
+          "interface_fraction_sum": 1.0,
+          "active_volume": 2.5132741228718345e-07,
+          "active_d_basis": 2.5106266390786934e-10,
+          "requested_p": 1.3226958902722397e-13,
+          "accepted_p": 1.3226958902722397e-13,
+          "rejected_p": 0.0,
+          "exported_p": 1.3226958902722397e-13,
+          "exchange_derived_a": 1.0232375407146046e-12,
+          "bootstrap_a_credit": 0.0,
+          "particles": 1,
+          "eligible": 1,
+          "true_crossings": 0,
+          "solid_contacts": 0,
+          "accepted_events": 1,
+          "donor_capped_events": 0,
+          "cumulative_exported_p": 3.970179683413332e-13,
+          "cumulative_exchange_derived_a": 3.0713310030885536e-12
+        },
+        {
+          "update_id": 3,
+          "interface_fraction_sum": 1.0,
+          "active_volume": 2.5132741228718345e-07,
+          "active_d_basis": 2.5093039431884213e-10,
+          "requested_p": 1.321999042564615e-13,
+          "accepted_p": 1.321999042564615e-13,
+          "rejected_p": 0.0,
+          "exported_p": 1.321999042564615e-13,
+          "exchange_derived_a": 1.0226984593279861e-12,
+          "bootstrap_a_credit": 0.0,
+          "particles": 1,
+          "eligible": 1,
+          "true_crossings": 0,
+          "solid_contacts": 0,
+          "accepted_events": 1,
+          "donor_capped_events": 0,
+          "cumulative_exported_p": 5.292178725977947e-13,
+          "cumulative_exchange_derived_a": 4.09402946241654e-12
+        }
+      ],
+      "ledgers": [
+        {
+          "boundary": "CHECKPOINT_WRITE",
+          "reference_total": 2.5132741228718344e-10,
+          "accounted": 2.5132741228718344e-10,
+          "residual": 0.0,
+          "tolerance": 5.026548245743669e-20
+        },
+        {
+          "boundary": "O01_PRE_UPDATE_LEDGER",
+          "reference_total": 2.5132741228718344e-10,
+          "accounted": 2.5132741228718344e-10,
+          "residual": 0.0,
+          "tolerance": 5.026548245743669e-20
+        },
+        {
+          "boundary": "O10_POST_UPDATE_LEDGER",
+          "reference_total": 2.5132741228718344e-10,
+          "accounted": 2.5132741228718344e-10,
+          "residual": 0.0,
+          "tolerance": 5.026548245743669e-20
+        },
+        {
+          "boundary": "O01_PRE_UPDATE_LEDGER",
+          "reference_total": 2.5132741228718344e-10,
+          "accounted": 2.5132741228718344e-10,
+          "residual": 0.0,
+          "tolerance": 5.026548245743669e-20
+        },
+        {
+          "boundary": "O10_POST_UPDATE_LEDGER",
+          "reference_total": 2.5132741228718344e-10,
+          "accounted": 2.5132741228718344e-10,
+          "residual": 0.0,
+          "tolerance": 5.026548245743669e-20
+        },
+        {
+          "boundary": "CHECKPOINT_WRITE",
+          "reference_total": 2.5132741228718344e-10,
+          "accounted": 2.5132741228718344e-10,
+          "residual": 0.0,
+          "tolerance": 5.026548245743669e-20
+        },
+        {
+          "boundary": "O01_PRE_UPDATE_LEDGER",
+          "reference_total": 2.5132741228718344e-10,
+          "accounted": 2.5132741228718344e-10,
+          "residual": 0.0,
+          "tolerance": 5.026548245743669e-20
+        },
+        {
+          "boundary": "O10_POST_UPDATE_LEDGER",
+          "reference_total": 2.5132741228718344e-10,
+          "accounted": 2.5132741228718344e-10,
+          "residual": 0.0,
+          "tolerance": 5.026548245743669e-20
+        },
+        {
+          "boundary": "O01_PRE_UPDATE_LEDGER",
+          "reference_total": 2.5132741228718344e-10,
+          "accounted": 2.5132741228718344e-10,
+          "residual": 0.0,
+          "tolerance": 5.026548245743669e-20
+        },
+        {
+          "boundary": "O10_POST_UPDATE_LEDGER",
+          "reference_total": 2.5132741228718344e-10,
+          "accounted": 2.513274122871835e-10,
+          "residual": 5.169878828456423e-26,
+          "tolerance": 5.02654824574367e-20
+        },
+        {
+          "boundary": "CHECKPOINT_WRITE",
+          "reference_total": 2.5132741228718344e-10,
+          "accounted": 2.513274122871835e-10,
+          "residual": 5.169878828456423e-26,
+          "tolerance": 5.02654824574367e-20
+        }
+      ],
+      "returncode": 0
+    },
+    "continuous_rank2": {
+      "status": "PASS",
+      "checks": {
+        "exit_zero": true,
+        "contract_bound": true,
+        "step_count": true,
+        "fraction_class": true,
+        "request_identity": true,
+        "receipt_identity": true,
+        "reward_exact": true,
+        "bootstrap_separate_zero_credit": true,
+        "no_negative_or_cap": true,
+        "global_p_conservation": true,
+        "f_inactive": true
+      },
+      "steps": [
+        {
+          "update_id": 0,
+          "interface_fraction_sum": 1.0,
+          "active_volume": 2.5132741228718345e-07,
+          "active_d_basis": 2.5132741228718344e-10,
+          "requested_p": 1.3240906878411984e-13,
+          "accepted_p": 1.3240906878411984e-13,
+          "rejected_p": 0.0,
+          "exported_p": 1.3240906878411984e-13,
+          "exchange_derived_a": 1.024316556113951e-12,
+          "bootstrap_a_credit": 0.0,
+          "particles": 1,
+          "eligible": 1,
+          "true_crossings": 0,
+          "solid_contacts": 0,
+          "accepted_events": 1,
+          "donor_capped_events": 0,
+          "cumulative_exported_p": 1.3240906878411984e-13,
+          "cumulative_exchange_derived_a": 1.024316556113951e-12
+        },
+        {
+          "update_id": 1,
+          "interface_fraction_sum": 1.0,
+          "active_volume": 2.5132741228718345e-07,
+          "active_d_basis": 2.511950032183993e-10,
+          "requested_p": 1.3233931052998938e-13,
+          "accepted_p": 1.3233931052998938e-13,
+          "rejected_p": 0.0,
+          "exported_p": 1.3233931052998938e-13,
+          "exchange_derived_a": 1.0237769062599978e-12,
+          "bootstrap_a_credit": 0.0,
+          "particles": 1,
+          "eligible": 1,
+          "true_crossings": 0,
+          "solid_contacts": 0,
+          "accepted_events": 1,
+          "donor_capped_events": 0,
+          "cumulative_exported_p": 2.647483793141092e-13,
+          "cumulative_exchange_derived_a": 2.048093462373949e-12
+        },
+        {
+          "update_id": 2,
+          "interface_fraction_sum": 1.0,
+          "active_volume": 2.5132741228718345e-07,
+          "active_d_basis": 2.5106266390786934e-10,
+          "requested_p": 1.3226958902722397e-13,
+          "accepted_p": 1.3226958902722397e-13,
+          "rejected_p": 0.0,
+          "exported_p": 1.3226958902722397e-13,
+          "exchange_derived_a": 1.0232375407146046e-12,
+          "bootstrap_a_credit": 0.0,
+          "particles": 1,
+          "eligible": 1,
+          "true_crossings": 0,
+          "solid_contacts": 0,
+          "accepted_events": 1,
+          "donor_capped_events": 0,
+          "cumulative_exported_p": 3.970179683413332e-13,
+          "cumulative_exchange_derived_a": 3.0713310030885536e-12
+        },
+        {
+          "update_id": 3,
+          "interface_fraction_sum": 1.0,
+          "active_volume": 2.5132741228718345e-07,
+          "active_d_basis": 2.5093039431884213e-10,
+          "requested_p": 1.321999042564615e-13,
+          "accepted_p": 1.321999042564615e-13,
+          "rejected_p": 0.0,
+          "exported_p": 1.321999042564615e-13,
+          "exchange_derived_a": 1.0226984593279861e-12,
+          "bootstrap_a_credit": 0.0,
+          "particles": 1,
+          "eligible": 1,
+          "true_crossings": 0,
+          "solid_contacts": 0,
+          "accepted_events": 1,
+          "donor_capped_events": 0,
+          "cumulative_exported_p": 5.292178725977947e-13,
+          "cumulative_exchange_derived_a": 4.09402946241654e-12
+        }
+      ],
+      "ledgers": [
+        {
+          "boundary": "CHECKPOINT_WRITE",
+          "reference_total": 2.5132741228718344e-10,
+          "accounted": 2.5132741228718344e-10,
+          "residual": 0.0,
+          "tolerance": 5.026548245743669e-20
+        },
+        {
+          "boundary": "O01_PRE_UPDATE_LEDGER",
+          "reference_total": 2.5132741228718344e-10,
+          "accounted": 2.5132741228718344e-10,
+          "residual": 0.0,
+          "tolerance": 5.026548245743669e-20
+        },
+        {
+          "boundary": "O10_POST_UPDATE_LEDGER",
+          "reference_total": 2.5132741228718344e-10,
+          "accounted": 2.5132741228718344e-10,
+          "residual": 0.0,
+          "tolerance": 5.026548245743669e-20
+        },
+        {
+          "boundary": "O01_PRE_UPDATE_LEDGER",
+          "reference_total": 2.5132741228718344e-10,
+          "accounted": 2.5132741228718344e-10,
+          "residual": 0.0,
+          "tolerance": 5.026548245743669e-20
+        },
+        {
+          "boundary": "O10_POST_UPDATE_LEDGER",
+          "reference_total": 2.5132741228718344e-10,
+          "accounted": 2.5132741228718344e-10,
+          "residual": 0.0,
+          "tolerance": 5.026548245743669e-20
+        },
+        {
+          "boundary": "CHECKPOINT_WRITE",
+          "reference_total": 2.5132741228718344e-10,
+          "accounted": 2.5132741228718344e-10,
+          "residual": 0.0,
+          "tolerance": 5.026548245743669e-20
+        },
+        {
+          "boundary": "O01_PRE_UPDATE_LEDGER",
+          "reference_total": 2.5132741228718344e-10,
+          "accounted": 2.5132741228718344e-10,
+          "residual": 0.0,
+          "tolerance": 5.026548245743669e-20
+        },
+        {
+          "boundary": "O10_POST_UPDATE_LEDGER",
+          "reference_total": 2.5132741228718344e-10,
+          "accounted": 2.5132741228718344e-10,
+          "residual": 0.0,
+          "tolerance": 5.026548245743669e-20
+        },
+        {
+          "boundary": "O01_PRE_UPDATE_LEDGER",
+          "reference_total": 2.5132741228718344e-10,
+          "accounted": 2.5132741228718344e-10,
+          "residual": 0.0,
+          "tolerance": 5.026548245743669e-20
+        },
+        {
+          "boundary": "O10_POST_UPDATE_LEDGER",
+          "reference_total": 2.5132741228718344e-10,
+          "accounted": 2.513274122871835e-10,
+          "residual": 5.169878828456423e-26,
+          "tolerance": 5.02654824574367e-20
+        },
+        {
+          "boundary": "CHECKPOINT_WRITE",
+          "reference_total": 2.5132741228718344e-10,
+          "accounted": 2.513274122871835e-10,
+          "residual": 5.169878828456423e-26,
+          "tolerance": 5.02654824574367e-20
+        }
+      ],
+      "returncode": 0
+    },
+    "decomposition_rank2": {
+      "status": "PASS",
+      "checks": {
+        "exit_zero": true,
+        "contract_bound": true,
+        "step_count": true,
+        "fraction_class": true,
+        "request_identity": true,
+        "receipt_identity": true,
+        "reward_exact": true,
+        "bootstrap_separate_zero_credit": true,
+        "no_negative_or_cap": true,
+        "global_p_conservation": true,
+        "f_inactive": true
+      },
+      "steps": [
+        {
+          "update_id": 0,
+          "interface_fraction_sum": 1.0,
+          "active_volume": 2.5132741228718345e-07,
+          "active_d_basis": 2.5132741228718344e-10,
+          "requested_p": 1.3240906878411984e-13,
+          "accepted_p": 1.3240906878411984e-13,
+          "rejected_p": 0.0,
+          "exported_p": 1.3240906878411984e-13,
+          "exchange_derived_a": 1.024316556113951e-12,
+          "bootstrap_a_credit": 0.0,
+          "particles": 1,
+          "eligible": 1,
+          "true_crossings": 0,
+          "solid_contacts": 0,
+          "accepted_events": 1,
+          "donor_capped_events": 0,
+          "cumulative_exported_p": 1.3240906878411984e-13,
+          "cumulative_exchange_derived_a": 1.024316556113951e-12
+        },
+        {
+          "update_id": 1,
+          "interface_fraction_sum": 1.0,
+          "active_volume": 2.5132741228718345e-07,
+          "active_d_basis": 2.511950032183993e-10,
+          "requested_p": 1.3233931052998938e-13,
+          "accepted_p": 1.3233931052998938e-13,
+          "rejected_p": 0.0,
+          "exported_p": 1.3233931052998938e-13,
+          "exchange_derived_a": 1.0237769062599978e-12,
+          "bootstrap_a_credit": 0.0,
+          "particles": 1,
+          "eligible": 1,
+          "true_crossings": 0,
+          "solid_contacts": 0,
+          "accepted_events": 1,
+          "donor_capped_events": 0,
+          "cumulative_exported_p": 2.647483793141092e-13,
+          "cumulative_exchange_derived_a": 2.048093462373949e-12
+        },
+        {
+          "update_id": 2,
+          "interface_fraction_sum": 1.0,
+          "active_volume": 2.5132741228718345e-07,
+          "active_d_basis": 2.5106266390786934e-10,
+          "requested_p": 1.3226958902722397e-13,
+          "accepted_p": 1.3226958902722397e-13,
+          "rejected_p": 0.0,
+          "exported_p": 1.3226958902722397e-13,
+          "exchange_derived_a": 1.0232375407146046e-12,
+          "bootstrap_a_credit": 0.0,
+          "particles": 1,
+          "eligible": 1,
+          "true_crossings": 0,
+          "solid_contacts": 0,
+          "accepted_events": 1,
+          "donor_capped_events": 0,
+          "cumulative_exported_p": 3.970179683413332e-13,
+          "cumulative_exchange_derived_a": 3.0713310030885536e-12
+        },
+        {
+          "update_id": 3,
+          "interface_fraction_sum": 1.0,
+          "active_volume": 2.5132741228718345e-07,
+          "active_d_basis": 2.5093039431884213e-10,
+          "requested_p": 1.321999042564615e-13,
+          "accepted_p": 1.321999042564615e-13,
+          "rejected_p": 0.0,
+          "exported_p": 1.321999042564615e-13,
+          "exchange_derived_a": 1.0226984593279861e-12,
+          "bootstrap_a_credit": 0.0,
+          "particles": 1,
+          "eligible": 1,
+          "true_crossings": 0,
+          "solid_contacts": 0,
+          "accepted_events": 1,
+          "donor_capped_events": 0,
+          "cumulative_exported_p": 5.292178725977947e-13,
+          "cumulative_exchange_derived_a": 4.09402946241654e-12
+        }
+      ],
+      "ledgers": [
+        {
+          "boundary": "O01_PRE_UPDATE_LEDGER",
+          "reference_total": 2.5132741228718344e-10,
+          "accounted": 2.5132741228718344e-10,
+          "residual": 0.0,
+          "tolerance": 5.026548245743669e-20
+        },
+        {
+          "boundary": "O10_POST_UPDATE_LEDGER",
+          "reference_total": 2.5132741228718344e-10,
+          "accounted": 2.5132741228718344e-10,
+          "residual": 0.0,
+          "tolerance": 5.026548245743669e-20
+        },
+        {
+          "boundary": "O01_PRE_UPDATE_LEDGER",
+          "reference_total": 2.5132741228718344e-10,
+          "accounted": 2.5132741228718344e-10,
+          "residual": 0.0,
+          "tolerance": 5.026548245743669e-20
+        },
+        {
+          "boundary": "O10_POST_UPDATE_LEDGER",
+          "reference_total": 2.5132741228718344e-10,
+          "accounted": 2.5132741228718344e-10,
+          "residual": 0.0,
+          "tolerance": 5.026548245743669e-20
+        },
+        {
+          "boundary": "O01_PRE_UPDATE_LEDGER",
+          "reference_total": 2.5132741228718344e-10,
+          "accounted": 2.5132741228718344e-10,
+          "residual": 0.0,
+          "tolerance": 5.026548245743669e-20
+        },
+        {
+          "boundary": "O10_POST_UPDATE_LEDGER",
+          "reference_total": 2.5132741228718344e-10,
+          "accounted": 2.5132741228718344e-10,
+          "residual": 0.0,
+          "tolerance": 5.026548245743669e-20
+        },
+        {
+          "boundary": "O01_PRE_UPDATE_LEDGER",
+          "reference_total": 2.5132741228718344e-10,
+          "accounted": 2.5132741228718344e-10,
+          "residual": 0.0,
+          "tolerance": 5.026548245743669e-20
+        },
+        {
+          "boundary": "O10_POST_UPDATE_LEDGER",
+          "reference_total": 2.5132741228718344e-10,
+          "accounted": 2.513274122871835e-10,
+          "residual": 5.169878828456423e-26,
+          "tolerance": 5.02654824574367e-20
+        }
+      ],
+      "returncode": 0
+    },
+    "restart_1_to_1": {
+      "status": "PASS",
+      "checks": {
+        "exit_zero": true,
+        "contract_bound": true,
+        "step_count": true,
+        "fraction_class": true,
+        "request_identity": true,
+        "receipt_identity": true,
+        "reward_exact": true,
+        "bootstrap_separate_zero_credit": true,
+        "no_negative_or_cap": true,
+        "global_p_conservation": true,
+        "f_inactive": true
+      },
+      "steps": [
+        {
+          "update_id": 2,
+          "interface_fraction_sum": 1.0,
+          "active_volume": 2.5132741228718345e-07,
+          "active_d_basis": 2.5106266390786934e-10,
+          "requested_p": 1.3226958902722397e-13,
+          "accepted_p": 1.3226958902722397e-13,
+          "rejected_p": 0.0,
+          "exported_p": 1.3226958902722397e-13,
+          "exchange_derived_a": 1.0232375407146046e-12,
+          "bootstrap_a_credit": 0.0,
+          "particles": 1,
+          "eligible": 1,
+          "true_crossings": 0,
+          "solid_contacts": 0,
+          "accepted_events": 1,
+          "donor_capped_events": 0,
+          "cumulative_exported_p": 3.970179683413332e-13,
+          "cumulative_exchange_derived_a": 3.0713310030885536e-12
+        },
+        {
+          "update_id": 3,
+          "interface_fraction_sum": 1.0,
+          "active_volume": 2.5132741228718345e-07,
+          "active_d_basis": 2.5093039431884213e-10,
+          "requested_p": 1.321999042564615e-13,
+          "accepted_p": 1.321999042564615e-13,
+          "rejected_p": 0.0,
+          "exported_p": 1.321999042564615e-13,
+          "exchange_derived_a": 1.0226984593279861e-12,
+          "bootstrap_a_credit": 0.0,
+          "particles": 1,
+          "eligible": 1,
+          "true_crossings": 0,
+          "solid_contacts": 0,
+          "accepted_events": 1,
+          "donor_capped_events": 0,
+          "cumulative_exported_p": 5.292178725977947e-13,
+          "cumulative_exchange_derived_a": 4.09402946241654e-12
+        }
+      ],
+      "ledgers": [
+        {
+          "boundary": "O01_PRE_UPDATE_LEDGER",
+          "reference_total": 2.5132741228718344e-10,
+          "accounted": 2.5132741228718344e-10,
+          "residual": 0.0,
+          "tolerance": 5.026548245743669e-20
+        },
+        {
+          "boundary": "O10_POST_UPDATE_LEDGER",
+          "reference_total": 2.5132741228718344e-10,
+          "accounted": 2.5132741228718344e-10,
+          "residual": 0.0,
+          "tolerance": 5.026548245743669e-20
+        },
+        {
+          "boundary": "O01_PRE_UPDATE_LEDGER",
+          "reference_total": 2.5132741228718344e-10,
+          "accounted": 2.5132741228718344e-10,
+          "residual": 0.0,
+          "tolerance": 5.026548245743669e-20
+        },
+        {
+          "boundary": "O10_POST_UPDATE_LEDGER",
+          "reference_total": 2.5132741228718344e-10,
+          "accounted": 2.513274122871835e-10,
+          "residual": 5.169878828456423e-26,
+          "tolerance": 5.02654824574367e-20
+        }
+      ],
+      "returncode": 0
+    },
+    "restart_2_to_1": {
+      "status": "PASS",
+      "checks": {
+        "exit_zero": true,
+        "contract_bound": true,
+        "step_count": true,
+        "fraction_class": true,
+        "request_identity": true,
+        "receipt_identity": true,
+        "reward_exact": true,
+        "bootstrap_separate_zero_credit": true,
+        "no_negative_or_cap": true,
+        "global_p_conservation": true,
+        "f_inactive": true
+      },
+      "steps": [
+        {
+          "update_id": 2,
+          "interface_fraction_sum": 1.0,
+          "active_volume": 2.5132741228718345e-07,
+          "active_d_basis": 2.5106266390786934e-10,
+          "requested_p": 1.3226958902722397e-13,
+          "accepted_p": 1.3226958902722397e-13,
+          "rejected_p": 0.0,
+          "exported_p": 1.3226958902722397e-13,
+          "exchange_derived_a": 1.0232375407146046e-12,
+          "bootstrap_a_credit": 0.0,
+          "particles": 1,
+          "eligible": 1,
+          "true_crossings": 0,
+          "solid_contacts": 0,
+          "accepted_events": 1,
+          "donor_capped_events": 0,
+          "cumulative_exported_p": 3.970179683413332e-13,
+          "cumulative_exchange_derived_a": 3.0713310030885536e-12
+        },
+        {
+          "update_id": 3,
+          "interface_fraction_sum": 1.0,
+          "active_volume": 2.5132741228718345e-07,
+          "active_d_basis": 2.5093039431884213e-10,
+          "requested_p": 1.321999042564615e-13,
+          "accepted_p": 1.321999042564615e-13,
+          "rejected_p": 0.0,
+          "exported_p": 1.321999042564615e-13,
+          "exchange_derived_a": 1.0226984593279861e-12,
+          "bootstrap_a_credit": 0.0,
+          "particles": 1,
+          "eligible": 1,
+          "true_crossings": 0,
+          "solid_contacts": 0,
+          "accepted_events": 1,
+          "donor_capped_events": 0,
+          "cumulative_exported_p": 5.292178725977947e-13,
+          "cumulative_exchange_derived_a": 4.09402946241654e-12
+        }
+      ],
+      "ledgers": [
+        {
+          "boundary": "O01_PRE_UPDATE_LEDGER",
+          "reference_total": 2.5132741228718344e-10,
+          "accounted": 2.5132741228718344e-10,
+          "residual": 0.0,
+          "tolerance": 5.026548245743669e-20
+        },
+        {
+          "boundary": "O10_POST_UPDATE_LEDGER",
+          "reference_total": 2.5132741228718344e-10,
+          "accounted": 2.5132741228718344e-10,
+          "residual": 0.0,
+          "tolerance": 5.026548245743669e-20
+        },
+        {
+          "boundary": "O01_PRE_UPDATE_LEDGER",
+          "reference_total": 2.5132741228718344e-10,
+          "accounted": 2.5132741228718344e-10,
+          "residual": 0.0,
+          "tolerance": 5.026548245743669e-20
+        },
+        {
+          "boundary": "O10_POST_UPDATE_LEDGER",
+          "reference_total": 2.5132741228718344e-10,
+          "accounted": 2.513274122871835e-10,
+          "residual": 5.169878828456423e-26,
+          "tolerance": 5.02654824574367e-20
+        }
+      ],
+      "returncode": 0
+    },
+    "checkpoint_contract_mutation": {
+      "status": "PASS",
+      "checks": {
+        "exit_nonzero": true,
+        "expected_reason": true,
+        "no_completed_export_step": true
+      },
+      "returncode": 22,
+      "expected_token": "P14 contract, O09 fit, interface, reward, or parameter identity mismatch"
+    },
+    "checkpoint_algebra_mutation": {
+      "status": "PASS",
+      "checks": {
+        "exit_nonzero": true,
+        "expected_reason": true,
+        "no_completed_export_step": true
+      },
+      "returncode": 22,
+      "expected_token": "P14 checkpoint violates export, reward, or provenance algebra"
+    },
+    "checkpoint_global_mutation": {
+      "status": "PASS",
+      "checks": {
+        "exit_nonzero": true,
+        "expected_reason": true,
+        "no_completed_export_step": true
+      },
+      "returncode": 22,
+      "expected_token": "P14 export ledger differs from global exported P"
+    },
+    "invalid_rate": {
+      "status": "PASS",
+      "checks": {
+        "exit_nonzero": true,
+        "expected_reason": true,
+        "no_completed_export_step": true
+      },
+      "returncode": 22,
+      "expected_token": "P14 k_export is outside the five adopted levels"
+    },
+    "invalid_multiplier": {
+      "status": "PASS",
+      "checks": {
+        "exit_nonzero": true,
+        "expected_reason": true,
+        "no_completed_export_step": true
+      },
+      "returncode": 22,
+      "expected_token": "P14 contract, O09 fit, interface, reward, or stage identity mismatch"
+    }
+  },
+  "mpi_rank1_rank2_equivalent": true,
+  "decomposition_equivalent": true,
+  "restart_1_to_1_equivalent": true,
+  "restart_2_to_1_equivalent": true,
+  "executable": {
+    "path": "C:\\b\\BMX-shadow-handoff-20260721\\build-c12-native-final\\bmx.exe",
+    "sha256": "910425149ee025d4701d8a42525e3c3ffdc03489284e3b537afadf0945633540"
+  },
+  "contract": {
+    "id": "bmx-p14-export-reward-v1",
+    "sha256": "01a9d6eb7291cc8bc0c98f52afbf3c5ea1c86da4fd3f992a02665e283f81ff4e"
+  },
+  "operator_fit": {
+    "id": "bmx-p14-o09-fit-v1",
+    "sha256": "72193a1034d4148d167f059c347053d2206fa580cce9a156ec705304e7f378e7"
+  },
+  "frozen_kernel_sha256": "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02",
+  "global_order_sha256": "bb63c219a860687d91ce1acf06a667c9208abf026b32f18acfc64884bb696dd6",
+  "expected_hashes": {
+    "kernel": "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02",
+    "global_order": "bb63c219a860687d91ce1acf06a667c9208abf026b32f18acfc64884bb696dd6"
+  },
+  "external_resources": "none",
+  "external_spend_usd": 0,
+  "claim_boundary": "Windows CPU software/numerical qualification under USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE; not mentor approval, calibration, predictive validation, or C13 science."
+}

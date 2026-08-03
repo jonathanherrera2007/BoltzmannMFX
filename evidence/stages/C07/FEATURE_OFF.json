@@ -1,0 +1,15 @@
+{
+  "stage": "C07",
+  "test": "feature_off_p07_frozen_comparator",
+  "method": "C03 normalize() unchanged, followed only by the C04-reviewed BMX git hash provenance-line removal",
+  "p07_executable_sha256": "64b9aaccd6a97599e8bb0df17640018e89533ed7627e947800ae33b0426bef7c",
+  "c07_executable_sha256": "f86889fc0def576f520340c91f14847aed7f2facf0362349852b1e259bcb1b67",
+  "fixtures": [
+    {"id": "N2_init_only", "ranks": 1, "arguments": ["bmx.max_step=0"], "normalized_sha256": "75741020163811e7cfbbe16a1a9f3dba0be003b2ab0cf57017695fed675977e6", "differing_lines": 0, "status": "PASS"},
+    {"id": "N1_no_growth", "ranks": 1, "arguments": ["bmx.max_step=20", "chem_species.kv=0.0"], "normalized_sha256": "b972c33e07f0fc494d4979e22f03f1b21246d71473948ea80eaa63ed2d5da31e", "differing_lines": 0, "status": "PASS"},
+    {"id": "N3_no_growth_2rank", "ranks": 2, "arguments": ["bmx.max_step=20", "chem_species.kv=0.0"], "normalized_sha256": "7b8fca046ca8fc2235ea3afff1c2dd717f8821abd48461697068b36e027ffeae", "differing_lines": 0, "status": "PASS"}
+  ],
+  "raw_run_root": "C:\\b\\BMX-shadow-handoff-20260721\\runs\\c07-feature-off",
+  "passed": true,
+  "claim_boundary": "engineering feature-off regression only; not scientific validation"
+}

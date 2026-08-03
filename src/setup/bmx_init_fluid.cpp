@@ -9,6 +9,7 @@
 #include <bmx_calc_cell.H>
 #include <bmx_fluid_parms.H>
 #include <bmx_chem_species_parms.H>
+#include <bmx_chem_layout.H>
 
 using namespace amrex;
 
@@ -26,16 +27,26 @@ void set_ic_chem_species (const Box& sbx,
                           const GpuArray<Real, 3>& /*p_hi*/,
                           const Array4<Real> X_k_arr)
 {
-  Vector<Real> h_vec(NUM_CHEM_COMPONENTS,0.0);
-  Gpu::DeviceVector<Real> d_vec(NUM_CHEM_COMPONENTS);
-  int ii;
+  const int nchem_species = X_k_arr.nComp();
+  if (nchem_species != FLUID::nchem_species ||
+      static_cast<int>(FLUID::init_conc.size()) != nchem_species) {
+    amrex::Abort("P09 mesh initialization count does not match the validated "
+                 "fluid chemistry schema");
+  }
+  std::string layout_error;
+  if (BMXChemLayout::classifyMeshSpecies(FLUID::chem_species, &layout_error) ==
+      BMXChemLayout::MeshMode::invalid) {
+    amrex::Abort("P09 mesh initialization rejected: " + layout_error);
+  }
+  Vector<Real> h_vec(nchem_species,0.0);
+  Gpu::DeviceVector<Real> d_vec(nchem_species);
+
   // Initialize h_vec (on host)
-  for (ii=0; ii<NUM_CHEM_COMPONENTS; ii++) h_vec[ii] = FLUID::init_conc[ii];
+  for (int ii=0; ii<nchem_species; ii++) h_vec[ii] = FLUID::init_conc[ii];
+
   // Copy host to device
   Gpu::copy(Gpu::hostToDevice,h_vec.begin(),h_vec.end(),d_vec.begin());
   auto vec_ptr = d_vec.data();
-
-  const int nchem_species = X_k_arr.nComp();
 
   // We set the coeffs at cell centers to D_k in the lower region and 0 above zhi
   Real zhi = FLUID::surface_location;

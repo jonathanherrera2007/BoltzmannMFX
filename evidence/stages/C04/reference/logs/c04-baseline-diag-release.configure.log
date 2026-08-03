@@ -1,0 +1,69 @@
+platform      : native Linux / Ubuntu 24.04.4 LTS / kernel 6.17.0-1021-gcp
+class         : reference-capable
+compiler      : g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+cmake         : cmake version 3.28.3
+mpi           : g++ -I/usr/lib/x86_64-linux-gnu/openmpi/include -I/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -L/usr/lib/x86_64-linux-gnu/openmpi/lib -lmpi_cxx -lmpi
+generator     : Ninja
+nproc         : 8
+
+source : /home/jherrera2007/bmx-c04-qual/baseline-diag-src
+build  : /home/jherrera2007/bmx-c04-qual/build/c04-baseline-diag-release
+
+-- The C compiler identification is GNU 13.3.0
+-- The CXX compiler identification is GNU 13.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/gcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/g++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Build type set by user to 'Release'.
+-- No AMReX installation found: cloning AMReX repo
+-- CMake version: 3.28.3
+-- AMReX installation directory: /usr/local
+-- Build type set by user to 'Release'.
+-- Building AMReX with AMReX_SPACEDIM = 3
+-- Configuring AMReX with the following options enabled: 
+--    AMReX_PRECISION = DOUBLE
+--    AMReX_MPI
+--    AMReX_AMRLEVEL
+--    AMReX_EB
+--    AMReX_LINEAR_SOLVERS
+--    AMReX_PARTICLES
+--    AMReX_PARTICLES_PRECISION = DOUBLE
+--    AMReX_PROBINIT
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- Found MPI_C: /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi.so (found version "3.1") 
+-- Found MPI_CXX: /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi_cxx.so (found version "3.1") 
+-- Found MPI: TRUE (found version "3.1") found components: C CXX 
+-- AMReX configuration summary: 
+--    Build type               = Release
+--    Install directory        = /usr/local
+--    C++ compiler             = /usr/bin/g++
+--    C++ defines              = 
+--    C++ flags                = -O2 -DNDEBUG  -w 
+--    C++ include paths        = -I/home/jherrera2007/bmx-c04-qual/baseline-diag-src/subprojects/amrex/Src/Base -I/home/jherrera2007/bmx-c04-qual/baseline-diag-src/subprojects/amrex/Src/Base/Parser -I/home/jherrera2007/bmx-c04-qual/baseline-diag-src/subprojects/amrex/Src/Boundary -I/home/jherrera2007/bmx-c04-qual/baseline-diag-src/subprojects/amrex/Src/AmrCore -I/home/jherrera2007/bmx-c04-qual/baseline-diag-src/subprojects/amrex/Src/Amr -I/home/jherrera2007/bmx-c04-qual/baseline-diag-src/subprojects/amrex/Src/EB -I/home/jherrera2007/bmx-c04-qual/baseline-diag-src/subprojects/amrex/Src/LinearSolvers/MLMG -I/home/jherrera2007/bmx-c04-qual/baseline-diag-src/subprojects/amrex/Src/Particle -I/usr/lib/x86_64-linux-gnu/openmpi/include -I/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi
+--    Link line                = /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi.so /usr/lib/x86_64-linux-gnu/openmpi/lib/libmpi_cxx.so
+-- BMX  branch: (HEAD detached from 389e9e3)
+-- BMX  commit: 7743106d8e1c1f9ae845afc198d920ac513042ff
+-- BMX provenance: 7743106d8e1c1f9ae845afc198d920ac513042ff (HEAD, clean) -- ordinary checkout
+-- Found Git: /usr/bin/git (found version "2.43.0") 
+-- BMX configuration summary: 
+--   C++ defines           = 
+--   C++ compiler          = /usr/bin/g++
+--   C++ flags             = -O2 -DNDEBUG  -Werror=return-type
+--    BMX includes         = -I/home/jherrera2007/bmx-c04-qual/baseline-diag-src/src -I/home/jherrera2007/bmx-c04-qual/build/c04-baseline-diag-release/bmx_generated -I/home/jherrera2007/bmx-c04-qual/baseline-diag-src/src/interpolation -I/home/jherrera2007/bmx-c04-qual/baseline-diag-src/src/deposition -I/home/jherrera2007/bmx-c04-qual/baseline-diag-src/src/des -I/home/jherrera2007/bmx-c04-qual/baseline-diag-src/src/diffusion -I/home/jherrera2007/bmx-c04-qual/baseline-diag-src/src/leveldata -I/home/jherrera2007/bmx-c04-qual/baseline-diag-src/src/setup -I/home/jherrera2007/bmx-c04-qual/baseline-diag-src/src/util -I/home/jherrera2007/bmx-c04-qual/baseline-diag-src/src/mods -I/home/jherrera2007/bmx-c04-qual/baseline-diag-src/src/timestepping -I/home/jherrera2007/bmx-c04-qual/baseline-diag-src/src/chemistry -I/home/jherrera2007/bmx-c04-qual/baseline-diag-src/subprojects/amrex/Src/Base -I/home/jherrera2007/bmx-c04-qual/baseline-diag-src/subprojects/amrex/Src/Base/Parser -I/home/jherrera2007/bmx-c04-qual/baseline-diag-src/subprojects/amrex/Src/Boundary -I/home/jherrera2007/bmx-c04-qual/baseline-diag-src/subprojects/amrex/Src/AmrCore -I/home/jherrera2007/bmx-c04-qual/baseline-diag-src/subprojects/amrex/Src/Amr -I/home/jherrera2007/bmx-c04-qual/baseline-diag-src/subprojects/amrex/Src/EB -I/home/jherrera2007/bmx-c04-qual/baseline-diag-src/subprojects/amrex/Src/LinearSolvers/MLMG -I/home/jherrera2007/bmx-c04-qual/baseline-diag-src/subprojects/amrex/Src/Particle -I/home/jherrera2007/bmx-c04-qual/build/c04-baseline-diag-release/subprojects/amrex -I/home/jherrera2007/bmx-c04-qual/baseline-diag-src/subprojects/amrex/Tools/C_scripts
+--    BMX link line        = Threads::Threads MPI::MPI_C MPI::MPI_CXX
+-- Configuring done (1.7s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/jherrera2007/bmx-c04-qual/build/c04-baseline-diag-release
+
+extra cmake args: -DBMX_REQUIRE_PROVENANCE=ON
+configure OK -> /home/jherrera2007/bmx-c04-qual/build/c04-baseline-diag-release
+platform class: reference-capable

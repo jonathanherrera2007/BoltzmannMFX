@@ -1,0 +1,120 @@
+{
+  "artifact_type": "RGSW_C01_VERIFIED_SOURCE_IDENTITY",
+  "stage_id": "C01",
+  "captured_at": "2026-07-30",
+  "immutable": true,
+  "note": "Recorded by C01 from actual local Git metadata. Any later disagreement between this record and a stage report is resolved in favour of actual bytes re-measured with the commands listed in STAGE_REPORT.md.",
+
+  "planning_package": {
+    "expected_sha256": "014607d34400638a5a915674e500b1b8afbacfebf0159801f8b7e5f32cac74a1",
+    "actual_sha256": "014607d34400638a5a915674e500b1b8afbacfebf0159801f8b7e5f32cac74a1",
+    "verdict": "MATCH",
+    "size_bytes": 321212,
+    "origin_path_in_package": "/mnt/data/BMX_RESEARCH_GRADE_GPT_PRO_PLANNING_PACKAGE_20260730.zip",
+    "local_path": "C:\\Users\\Shadow\\Documents\\Codex\\2026-07-28\\how\\outputs\\BMX_RESEARCH_GRADE_GPT_PRO_PLANNING_PACKAGE_20260730.zip",
+    "extracted_to": "BMX-RG-SW/planning-package/",
+    "internal_manifest": "MANIFEST.sha256",
+    "internal_manifest_members": 153,
+    "internal_manifest_ok": 153,
+    "internal_manifest_failed": 0
+  },
+
+  "bmx": {
+    "expected_commit_sha1": "389e9e35a1c7291a4af795b2e39f2db1f0012b61",
+    "actual_commit_sha1": "389e9e35a1c7291a4af795b2e39f2db1f0012b61",
+    "expected_tree_sha1": "1c73deedf0eb2feea833a7fddbc431ae9754d977",
+    "actual_tree_sha1": "1c73deedf0eb2feea833a7fddbc431ae9754d977",
+    "verdict": "MATCH",
+    "commit_author": "Jonathan Herrera",
+    "commit_date": "Thu Jul 9 15:44:58 2026 -0700",
+    "commit_subject": "Add phosphorus transport and growth sensitivity review",
+    "tracked_file_count": 370,
+    "canonical_upstream_remote": "https://github.com/jonathanherrera2007/BoltzmannMFX.git"
+  },
+
+  "amrex": {
+    "expected_commit_sha1": "cbdc6580ee3d78cccdd37172e4ba077ee181f483",
+    "actual_commit_sha1": "cbdc6580ee3d78cccdd37172e4ba077ee181f483",
+    "expected_tree_sha1": "fb714dc6e693c18f7c441d1d1febe4a5e8bf9ea6",
+    "actual_tree_sha1": "fb714dc6e693c18f7c441d1d1febe4a5e8bf9ea6",
+    "verdict": "MATCH",
+    "describe": "22.07-4-gcbdc6580e",
+    "gitlink_in_canonical_bmx_tree": "cbdc6580ee3d78cccdd37172e4ba077ee181f483",
+    "gitlink_matches_pin": true,
+    "canonical_upstream_remote": "https://github.com/AMReX-codes/amrex.git",
+    "acquired_offline_from": "local object database of the pre-existing lane repository (see object_provenance)"
+  },
+
+  "object_provenance": {
+    "source_repository": "C:\\Users\\Shadow\\Documents\\Codex\\2026-07-25\\github-plugin-github-openai-curated-remote-3\\work\\BoltzmannMFX",
+    "classification": "live multi-lane scratch workspace; NOT a baseline and NOT a writer for this product",
+    "why_acceptable": "Git commit and tree SHA-1s are self-verifying. Both required BMX identities and both required AMReX identities were reproduced exactly after cloning. No trust is placed in the lane workspace state itself.",
+    "clone_mode": "--no-hardlinks (object stores are physically independent; a later gc/prune in the lane repository cannot affect this product)",
+    "amrex_objects_from": "<lane>/.git/modules/subprojects/amrex",
+    "lane_repository_modified": false
+  },
+
+  "tree_metadata": {
+    "core_autocrlf": "false",
+    "core_fileMode": "false",
+    "gitattributes_present": false,
+    "eol_index_lf": 192,
+    "eol_index_binary": 177,
+    "eol_index_crlf_or_mixed": 0,
+    "eol_index_worktree_mismatch_count": 0,
+    "symlink_count": 0,
+    "executable_mode_100755_count": 5,
+    "executable_mode_100755_paths": [
+      ".github/workflows/dependencies/documentation.sh",
+      "docs/models/model1/model1.tex",
+      "exec/pair_test/sep.pl",
+      "exec/wall_test/zloc.pl",
+      "tools/DEBUG/amrex-max-vel"
+    ],
+    "gitlink_count": 1,
+    "note_on_fileMode": "core.fileMode=false is required on this Windows host; executable bits are preserved in the index but are not enforceable in the working tree. Build and run scripts must not depend on the working-tree executable bit."
+  },
+
+  "snapshot_comparison": {
+    "compared": "planning-package/04_SOURCE_SNAPSHOT vs canonical checkout",
+    "files_in_snapshot": 108,
+    "byte_identical": 108,
+    "identical_modulo_line_endings": 0,
+    "content_different": 0,
+    "missing_in_checkout": 0,
+    "verdict": "NO UNEXPECTED SOURCE DIFFERENCES",
+    "note": "The snapshot is a strict subset (108 of 370 tracked files); absence of a file from the snapshot is expected and is not a difference."
+  },
+
+  "not_independently_verified": [
+    {
+      "field": "bmx_snapshot_tree_sha256 = b9ed9fb18aa3a059adc01fd5a525e5abfe6ade3a36aea25043b32825c8424a78",
+      "reason": "The package does not specify the algorithm used to fold a tree into this digest, so it cannot be recomputed. Superseded in practice by the Git tree SHA-1 match and the 108/108 byte-identical file comparison."
+    },
+    {
+      "field": "bmx_manifest_sha256 = 28470fa9af9bda7b4be711291c255ff671f6f5efb31f2f71dc4b48d9047bb6a3",
+      "reason": "The referenced source manifest file is not present inside the package; no manifest with this digest was found to check."
+    }
+  ],
+
+  "workspaces": [
+    {"role": "git store + pristine canonical reference (never edited)", "path": "BMX-RG-SW/repo", "ref": "detached 389e9e3", "branch": null, "dirty_entries": 0},
+    {"role": "untouched baseline (C03)", "path": "BMX-RG-SW/worktrees/baseline", "ref": "detached 389e9e3", "branch": null, "dirty_entries": 0},
+    {"role": "product / primary writer (C04+)", "path": "BMX-RG-SW/worktrees/product", "ref": "389e9e3", "branch": "rgsw/product", "dirty_entries": 0},
+    {"role": "independent reviewer, read-only", "path": "BMX-RG-SW/worktrees/review", "ref": "detached 389e9e3", "branch": null, "dirty_entries": 0}
+  ],
+
+  "isolation": {
+    "p05_workspace": "C:\\Users\\Shadow\\Documents\\Codex\\2026-07-25\\perform-a-strict-read-only-import\\work\\p05-production-readiness",
+    "path_overlap_with_product": false,
+    "shared_branches": false,
+    "shared_object_store": false,
+    "shared_build_or_output_dirs": false,
+    "p05_touched_by_this_stage": false,
+    "writers_on_product_branch": 1
+  },
+
+  "formal_acceptance": false,
+  "rg_sw_status": "INCOMPLETE",
+  "rg_sci_status": "NO-GO"
+}

@@ -1,0 +1,832 @@
+{
+  "artifact_type": "C13_RNG_TOPOLOGY_DECOMPOSITION_KNOWN_ANSWER_TESTS",
+  "contract_id": "UDC-20260802-C13-RNG-TOPOLOGY-DECOMPOSITION-V1.1",
+  "contract_sha256": "0198837e2fffcca34cc87febe13c51637f61ea9acc0c755025928fcb7e90cd17",
+  "status": "NORMATIVE_KAT_FOR_PROPOSED_SUPERSEDING_CONTRACT_BYTES",
+  "draw_vectors": [
+    {
+      "id": "adopted_seed_split_kind",
+      "input": {
+        "master_seed": 2461941894568478670,
+        "seed_block": 0,
+        "update": 0,
+        "slot": 6,
+        "event_type": 1,
+        "parent": 1,
+        "target": 0,
+        "candidate": 0,
+        "draw": 0,
+        "retry": 0
+      },
+      "expected": {
+        "key_hex": "424d58433133524e474b45595631000000010601222a931bf36807ce00000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000",
+        "digest_hex": "7a3a41c915f266c669e84bcc9e70a9c004f845ac6ae134330bcd2fcfa9345a56",
+        "raw_uint64": "8807424353188865734",
+        "mantissa53": "4300500172455500",
+        "uniform_bits_hex": "0x3fde8e9072457c98",
+        "uniform_hex": "0x1.e8e9072457c98p-2"
+      }
+    },
+    {
+      "id": "adopted_seed_tip_theta",
+      "input": {
+        "master_seed": 2461941894568478670,
+        "seed_block": 0,
+        "update": 0,
+        "slot": 6,
+        "event_type": 17,
+        "parent": 1,
+        "target": 0,
+        "candidate": 0,
+        "draw": 0,
+        "retry": 0
+      },
+      "expected": {
+        "key_hex": "424d58433133524e474b45595631000000010611222a931bf36807ce00000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000",
+        "digest_hex": "9121e96f9ac937098127f60a997c2d12391fd68a0c059e427351d8453ed47b4b",
+        "raw_uint64": "10457896475278522121",
+        "mantissa53": "5106394763319590",
+        "uniform_bits_hex": "0x3fe2243d2df35926",
+        "uniform_hex": "0x1.2243d2df35926p-1"
+      }
+    },
+    {
+      "id": "adopted_seed_tip_phi",
+      "input": {
+        "master_seed": 2461941894568478670,
+        "seed_block": 0,
+        "update": 0,
+        "slot": 6,
+        "event_type": 17,
+        "parent": 1,
+        "target": 0,
+        "candidate": 0,
+        "draw": 1,
+        "retry": 0
+      },
+      "expected": {
+        "key_hex": "424d58433133524e474b45595631000000010611222a931bf36807ce00000000000000000000000000000000000000000000000100000000000000000000000000000001000000000000000000000000",
+        "digest_hex": "740af6bad7a18c33a0f6c76960f489880ded0e018d53ef2241633a8ac0c7e0cb",
+        "raw_uint64": "8361766940508785715",
+        "mantissa53": "4082894013920305",
+        "uniform_bits_hex": "0x3fdd02bdaeb5e862",
+        "uniform_hex": "0x1.d02bdaeb5e862p-2"
+      }
+    },
+    {
+      "id": "adopted_seed_branch_predicate",
+      "input": {
+        "master_seed": 2461941894568478670,
+        "seed_block": 0,
+        "update": 7,
+        "slot": 6,
+        "event_type": 2,
+        "parent": 9,
+        "target": 0,
+        "candidate": 0,
+        "draw": 0,
+        "retry": 0
+      },
+      "expected": {
+        "key_hex": "424d58433133524e474b45595631000000010602222a931bf36807ce00000000000000000000000000000007000000000000000900000000000000000000000000000000000000000000000000000000",
+        "digest_hex": "9fa37e9729744e1936181e2405e5d13c4d05fa4e0d55b06dd211a8785f347b1c",
+        "raw_uint64": "11503177060935028249",
+        "mantissa53": "5616785674284681",
+        "uniform_bits_hex": "0x3fe3f46fd2e52e89",
+        "uniform_hex": "0x1.3f46fd2e52e89p-1"
+      }
+    },
+    {
+      "id": "adopted_seed_branch_sign_mandatory",
+      "input": {
+        "master_seed": 2461941894568478670,
+        "seed_block": 0,
+        "update": 7,
+        "slot": 6,
+        "event_type": 18,
+        "parent": 9,
+        "target": 0,
+        "candidate": 0,
+        "draw": 0,
+        "retry": 0
+      },
+      "expected": {
+        "key_hex": "424d58433133524e474b45595631000000010612222a931bf36807ce00000000000000000000000000000007000000000000000900000000000000000000000000000000000000000000000000000000",
+        "digest_hex": "aee385e270e1b94761f5e344d2b19a69df7f61a5a7b3148c1a8c0ccee8683a80",
+        "raw_uint64": "12602063389915724103",
+        "mantissa53": "6153351264607287",
+        "uniform_bits_hex": "0x3fe5dc70bc4e1c37",
+        "uniform_hex": "0x1.5dc70bc4e1c37p-1"
+      }
+    },
+    {
+      "id": "adopted_seed_branch_theta",
+      "input": {
+        "master_seed": 2461941894568478670,
+        "seed_block": 0,
+        "update": 7,
+        "slot": 6,
+        "event_type": 18,
+        "parent": 9,
+        "target": 0,
+        "candidate": 0,
+        "draw": 1,
+        "retry": 0
+      },
+      "expected": {
+        "key_hex": "424d58433133524e474b45595631000000010612222a931bf36807ce00000000000000000000000000000007000000000000000900000000000000000000000000000001000000000000000000000000",
+        "digest_hex": "ce24da0e5795f5db74b2e229cae8b663b8a8f7ae68454a279638f52ffdd59ad8",
+        "raw_uint64": "14854237226108581339",
+        "mantissa53": "7253045520560830",
+        "uniform_bits_hex": "0x3fe9c49b41caf2be",
+        "uniform_hex": "0x1.9c49b41caf2bep-1"
+      }
+    },
+    {
+      "id": "adopted_seed_branch_phi",
+      "input": {
+        "master_seed": 2461941894568478670,
+        "seed_block": 0,
+        "update": 7,
+        "slot": 6,
+        "event_type": 18,
+        "parent": 9,
+        "target": 0,
+        "candidate": 0,
+        "draw": 2,
+        "retry": 0
+      },
+      "expected": {
+        "key_hex": "424d58433133524e474b45595631000000010612222a931bf36807ce00000000000000000000000000000007000000000000000900000000000000000000000000000002000000000000000000000000",
+        "digest_hex": "e1e63488587946acb89d9919152925483666f271314e71f11a6fa5c7950a1d31",
+        "raw_uint64": "16277755663381776044",
+        "mantissa53": "7948122882510632",
+        "uniform_bits_hex": "0x3fec3cc6910b0f28",
+        "uniform_hex": "0x1.c3cc6910b0f28p-1"
+      }
+    },
+    {
+      "id": "adopted_seed_fusion_predicate",
+      "input": {
+        "master_seed": 2461941894568478670,
+        "seed_block": 0,
+        "update": 9,
+        "slot": 8,
+        "event_type": 32,
+        "parent": 12,
+        "target": 4,
+        "candidate": 2,
+        "draw": 0,
+        "retry": 0
+      },
+      "expected": {
+        "key_hex": "424d58433133524e474b45595631000000010820222a931bf36807ce00000000000000000000000000000009000000000000000c00000000000000040000000200000000000000000000000000000000",
+        "digest_hex": "8ada27e1c422fc775ac82837fcdda515c120d6933ea586d5bb59e36b4e17cd8c",
+        "raw_uint64": "10005353372768730231",
+        "mantissa53": "4885426451547231",
+        "uniform_bits_hex": "0x3fe15b44fc38845f",
+        "uniform_hex": "0x1.15b44fc38845fp-1"
+      }
+    },
+    {
+      "id": "max_field_serialization",
+      "input": {
+        "master_seed": 18446744073709551615,
+        "seed_block": 18446744073709551615,
+        "update": 18446744073709551615,
+        "slot": 8,
+        "event_type": 32,
+        "parent": 18446744073709551615,
+        "target": 18446744073709551615,
+        "candidate": 4294967295,
+        "draw": 4294967295,
+        "retry": 0
+      },
+      "expected": {
+        "key_hex": "424d58433133524e474b45595631000000010820ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff000000000000000000000000",
+        "digest_hex": "489d3038bf878b7970628ce36440a43e97bf894c2d09d9fb7b82cfbe0fc9f8ae",
+        "raw_uint64": "5232391362364017529",
+        "mantissa53": "2554878594904305",
+        "uniform_bits_hex": "0x3fd2274c0e2fe1e2",
+        "uniform_hex": "0x1.2274c0e2fe1e2p-2"
+      }
+    }
+  ],
+  "side_branch_reachability_vector": {
+    "input": {
+      "positions": [
+        "SECOND_1",
+        "SECOND_2"
+      ],
+      "stored_gradient_bits_hex": [
+        "0x3ff0000000000000",
+        "0xc000000000000000",
+        "0x4008000000000000"
+      ],
+      "frozen_unconditional_override_bits_hex": [
+        "0x0000000000000000",
+        "0x0000000000000000",
+        "0x0000000000000000"
+      ],
+      "predicate_event_type": 2,
+      "predicate_draw_ordinals": [
+        0
+      ],
+      "geometry_event_type": 18,
+      "geometry_draw_ordinals": [
+        0,
+        1,
+        2
+      ]
+    },
+    "expected": {
+      "effective_gradient_bits_hex": [
+        "0x0000000000000000",
+        "0x0000000000000000",
+        "0x0000000000000000"
+      ],
+      "effective_gradient_norm_bits_hex": "0x0000000000000000",
+      "gn_nonzero_reachable": false,
+      "mandatory_sign_geometry_draw_ordinal": 0,
+      "geometry_draw_ordinals": [
+        0,
+        1,
+        2
+      ],
+      "geometry_draw_count": 3,
+      "candidate_total_draw_count_including_predicate": 4,
+      "precondition_mask_bit15_set": true,
+      "failure_code_if_nonzero": "C13_ABORT_SIDE_BRANCH_GRADIENT_REACHABILITY_DIVERGENCE"
+    }
+  },
+  "side_branch_candidate_descriptor_vector": {
+    "input": {
+      "update": 7,
+      "slot": 6,
+      "candidate_kind": 3,
+      "deterministic_status": 2,
+      "parent": 9,
+      "target": 0,
+      "candidate": 0,
+      "precondition_mask": 1015829,
+      "resolved_event_type": 4,
+      "materialized_draw_count": 4
+    },
+    "expected": {
+      "descriptor_hex": "000000000000000706030002000000000000000900000000000000000000000000000000000f80150404000000000000",
+      "rng_digest_hex": "8b44e9cc06cfd19a46107435ae8a10f9822635c889e10d7f2b6eaf875573b49f",
+      "topology_digest_hex": "5ce90d5a6c2beff0326afbb7fd409eb3bd978c574f96b62b2e68202edffaf998"
+    }
+  },
+  "identity_vectors": [
+    {
+      "logical_id": "1",
+      "amrex_id": 1,
+      "cpu_namespace": 0
+    },
+    {
+      "logical_id": "2147483647",
+      "amrex_id": 2147483647,
+      "cpu_namespace": 0
+    },
+    {
+      "logical_id": "2147483648",
+      "amrex_id": 1,
+      "cpu_namespace": 1
+    },
+    {
+      "logical_id": "36028797002186752",
+      "amrex_id": 2147483647,
+      "cpu_namespace": 16777215
+    }
+  ],
+  "candidate_descriptor_vector": {
+    "input": {
+      "update": 9,
+      "slot": 8,
+      "candidate_kind": 5,
+      "deterministic_status": 2,
+      "parent": 12,
+      "target": 4,
+      "candidate": 2,
+      "precondition_mask": 884237,
+      "resolved_event_type": 5,
+      "materialized_draw_count": 1
+    },
+    "expected": {
+      "descriptor_hex": "000000000000000908050002000000000000000c00000000000000040000000200000000000d7e0d0501000000000000",
+      "rng_digest_hex": "0a3df7b9b60c54577720ae8f709a9d5ed4c4b050bf9d9da7c9f76f59097bbba6",
+      "topology_digest_hex": "0d2ea8cdf0ea8f4e7be320153cbc847f0225cb980e7651e159b6a4de730f4da7"
+    }
+  },
+  "event_id_vectors": [
+    {
+      "id": "tip_extension_one_child",
+      "input": {
+        "slot": 6,
+        "event_type": 2,
+        "update": 0,
+        "parent": 1,
+        "target": 0,
+        "candidate": 0,
+        "children": [
+          3
+        ]
+      },
+      "expected": {
+        "preimage_hex": "424d582d4331332d544f504f2d4556454e542d49442d5631000001060200000000000000000000000000000001000000000000000000000000010000000000000000000003",
+        "event_id_hex": "98402cc6dd36bcfa778e6120ab82f7095d8fe8f9692dceba0fa6b9a84d6c9014"
+      }
+    },
+    {
+      "id": "tip_bifurcation_two_children",
+      "input": {
+        "slot": 6,
+        "event_type": 3,
+        "update": 0,
+        "parent": 1,
+        "target": 0,
+        "candidate": 0,
+        "children": [
+          3,
+          4
+        ]
+      },
+      "expected": {
+        "preimage_hex": "424d582d4331332d544f504f2d4556454e542d49442d56310000010603000000000000000000000000000000010000000000000000000000000200000000000000000000030000000000000004",
+        "event_id_hex": "07e5a1995ee9ba08b822cce4ecf6f152fa2c87c9aff52d8aef1c0b0d8b357bfc"
+      }
+    },
+    {
+      "id": "fusion_target_split",
+      "input": {
+        "slot": 8,
+        "event_type": 5,
+        "update": 9,
+        "parent": 12,
+        "target": 4,
+        "candidate": 2,
+        "children": [
+          17
+        ]
+      },
+      "expected": {
+        "preimage_hex": "424d582d4331332d544f504f2d4556454e542d49442d563100000108050000000000000009000000000000000c000000000000000400000002010000000000000000000011",
+        "event_id_hex": "bd20871117f267442548fc6355bad8c941913d7466fe4e0c448b07a98ee6c7c2"
+      }
+    }
+  ],
+  "projection_hash_vector": {
+    "input": {
+      "records": [
+        {
+          "logical_id": 4,
+          "amrex_id": 4,
+          "cpu_namespace": 0,
+          "cell_type": 2,
+          "position": 2,
+          "n_bnds": 1,
+          "fuse_flag": 0,
+          "split_flag": 0,
+          "fuse_tip": 0,
+          "fix_site": -1,
+          "projection_flags": 1,
+          "target": 0,
+          "tau_bits": 4598175219545276416,
+          "scalar_bits": [
+            0,
+            4607182418800017408,
+            13830554455654793216,
+            4602678819172646912,
+            4611686018427387904,
+            4614256656552045848,
+            4618760256179416344,
+            4613937818241073152,
+            4616189618054758400,
+            4607182418800017408,
+            4591870180066957722,
+            4596373779694328218,
+            4599075939470750515
+          ],
+          "bonds": [
+            [
+              12,
+              0,
+              1
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ]
+        },
+        {
+          "logical_id": 12,
+          "amrex_id": 12,
+          "cpu_namespace": 0,
+          "cell_type": 2,
+          "position": 1,
+          "n_bnds": 1,
+          "fuse_flag": 1,
+          "split_flag": 0,
+          "fuse_tip": 1,
+          "fix_site": 0,
+          "projection_flags": 1,
+          "target": 4,
+          "tau_bits": 4604930618986332160,
+          "scalar_bits": [
+            4607182418800017408,
+            4611686018427387904,
+            4613937818241073152,
+            4598175219545276416,
+            4609434218613702656,
+            0,
+            4614256656552045848,
+            4611686018427387904,
+            4613937818241073152,
+            4604930618986332160,
+            4600877379321698714,
+            4602678819172646912,
+            4603579539098121011
+          ],
+          "bonds": [
+            [
+              4,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ]
+        }
+      ]
+    },
+    "expected": {
+      "record_hex": [
+        "00000000000000040000000400000000000000020000000200000001000000000000000000000000ffffffff0000000100000000000000003fd000000000000000000000000000003ff0000000000000bff00000000000003fe00000000000004000000000000000400921fb54442d18401921fb54442d18400800000000000040100000000000003ff00000000000003fb999999999999a3fc999999999999a3fd3333333333333000000000000000c0000000000000001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "000000000000000c0000000c00000000000000020000000100000001000000010000000000000001000000000000000100000000000000043fe80000000000003ff0000000000000400000000000000040080000000000003fd00000000000003ff80000000000000000000000000000400921fb54442d18400000000000000040080000000000003fe80000000000003fd999999999999a3fe00000000000003fe333333333333300000000000000040000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      ],
+      "projection_hash_hex": "d26be98a98d3172a156c368781a52f2ae32c2efd938147b184482d0b8d30b182"
+    },
+    "post_fixture": {
+      "records": [
+        {
+          "logical_id": 4,
+          "amrex_id": 4,
+          "cpu_namespace": 0,
+          "cell_type": 2,
+          "position": 2,
+          "n_bnds": 2,
+          "fuse_flag": 0,
+          "split_flag": 0,
+          "fuse_tip": 0,
+          "fix_site": -1,
+          "projection_flags": 1,
+          "target": 0,
+          "tau_bits": 4598175219545276416,
+          "scalar_bits": [
+            0,
+            4607182418800017408,
+            13830554455654793216,
+            4602678819172646912,
+            4611686018427387904,
+            4614256656552045848,
+            4618760256179416344,
+            4613937818241073152,
+            4616189618054758400,
+            4607182418800017408,
+            4591870180066957722,
+            4596373779694328218,
+            4599075939470750515
+          ],
+          "bonds": [
+            [
+              12,
+              0,
+              1
+            ],
+            [
+              17,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ]
+        },
+        {
+          "logical_id": 12,
+          "amrex_id": 12,
+          "cpu_namespace": 0,
+          "cell_type": 2,
+          "position": 1,
+          "n_bnds": 1,
+          "fuse_flag": 1,
+          "split_flag": 0,
+          "fuse_tip": 1,
+          "fix_site": 0,
+          "projection_flags": 1,
+          "target": 4,
+          "tau_bits": 4604930618986332160,
+          "scalar_bits": [
+            4607182418800017408,
+            4611686018427387904,
+            4613937818241073152,
+            4598175219545276416,
+            4609434218613702656,
+            0,
+            4614256656552045848,
+            4611686018427387904,
+            4613937818241073152,
+            4604930618986332160,
+            4600877379321698714,
+            4602678819172646912,
+            4603579539098121011
+          ],
+          "bonds": [
+            [
+              4,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ]
+        },
+        {
+          "logical_id": 17,
+          "amrex_id": 17,
+          "cpu_namespace": 0,
+          "cell_type": 2,
+          "position": 2,
+          "n_bnds": 1,
+          "fuse_flag": 0,
+          "split_flag": 0,
+          "fuse_tip": 0,
+          "fix_site": -1,
+          "projection_flags": 1,
+          "target": 0,
+          "tau_bits": 0,
+          "scalar_bits": [
+            4602678819172646912,
+            4607182418800017408,
+            4609434218613702656,
+            4598175219545276416,
+            4607182418800017408,
+            0,
+            0,
+            4607182418800017408,
+            4607182418800017408,
+            4607182418800017408,
+            4596373779694328218,
+            4598175219545276416,
+            4599075939470750515
+          ],
+          "bonds": [
+            [
+              4,
+              0,
+              1
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ]
+        }
+      ],
+      "record_hex": [
+        "00000000000000040000000400000000000000020000000200000002000000000000000000000000ffffffff0000000100000000000000003fd000000000000000000000000000003ff0000000000000bff00000000000003fe00000000000004000000000000000400921fb54442d18401921fb54442d18400800000000000040100000000000003ff00000000000003fb999999999999a3fc999999999999a3fd3333333333333000000000000000c0000000000000001000000000000001100000001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "000000000000000c0000000c00000000000000020000000100000001000000010000000000000001000000000000000100000000000000043fe80000000000003ff0000000000000400000000000000040080000000000003fd00000000000003ff80000000000000000000000000000400921fb54442d18400000000000000040080000000000003fe80000000000003fd999999999999a3fe00000000000003fe333333333333300000000000000040000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "00000000000000110000001100000000000000020000000200000001000000000000000000000000ffffffff00000001000000000000000000000000000000003fe00000000000003ff00000000000003ff80000000000003fd00000000000003ff0000000000000000000000000000000000000000000003ff00000000000003ff00000000000003ff00000000000003fc999999999999a3fd00000000000003fd333333333333300000000000000040000000000000001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      ],
+      "projection_hash_hex": "685b9ff872444a0908b33215543b1a949cc2c5f99fcbf92e199929ba9d15f682"
+    }
+  },
+  "rng_record_vector": {
+    "input": {
+      "event_type": 32,
+      "slot": 8,
+      "update": 9,
+      "time_bits": "0x3ff0000000000000",
+      "parent": 12,
+      "target": 4,
+      "candidate": 2,
+      "draw": 0,
+      "retry": 0,
+      "use_code": 14,
+      "draw_status": 0,
+      "decision_code": 1,
+      "threshold_bits": "0x3ff0000000000000",
+      "key_hex": "424d58433133524e474b45595631000000010820222a931bf36807ce00000000000000000000000000000009000000000000000c00000000000000040000000200000000000000000000000000000000",
+      "digest_hex": "8ada27e1c422fc775ac82837fcdda515c120d6933ea586d5bb59e36b4e17cd8c",
+      "raw_uint64": "10005353372768730231",
+      "uniform_bits": "0x3fe15b44fc38845f",
+      "event_plan_ordinal": 0
+    },
+    "expected": {
+      "record_hex": "524e47310001200800000000000000093ff0000000000000000000000000000c0000000000000004000000020000000000000000000e00013ff0000000000000424d58433133524e474b45595631000000010820222a931bf36807ce00000000000000000000000000000009000000000000000c000000000000000400000002000000000000000000000000000000008ada27e1c422fc775ac82837fcdda515c120d6933ea586d5bb59e36b4e17cd8c8ada27e1c422fc773fe15b44fc38845f00000000000000000000000000000000",
+      "event_rng_subset_hex": "96a2f1a37b3173243c23756e69212888fab9a29b4fb91d68efc24a5d7d525ccc"
+    }
+  },
+  "topology_record_vector": {
+    "input": {
+      "event_type": 5,
+      "slot": 8,
+      "update": 9,
+      "time_bits": "0x3ff0000000000000",
+      "event_ordinal": 0,
+      "candidate": 2,
+      "predecessor_count": 2,
+      "successor_count": 3,
+      "child_count": 1,
+      "flags": 13,
+      "parent": 12,
+      "target": 4,
+      "event_id_hex": "bd20871117f267442548fc6355bad8c941913d7466fe4e0c448b07a98ee6c7c2",
+      "pre_topology_hex": "d26be98a98d3172a156c368781a52f2ae32c2efd938147b184482d0b8d30b182",
+      "post_topology_hex": "685b9ff872444a0908b33215543b1a949cc2c5f99fcbf92e199929ba9d15f682",
+      "config_hex": "1111111111111111111111111111111111111111111111111111111111111111",
+      "destination_code": 1,
+      "reason_code": 2,
+      "predecessors": [
+        12,
+        4,
+        0,
+        0
+      ],
+      "successors": [
+        12,
+        4,
+        17,
+        0
+      ],
+      "children": [
+        17,
+        0
+      ],
+      "pre_amount_bits": [
+        "0x3fe0000000000000",
+        "0x3fe8000000000000",
+        "0x3feccccccccccccd"
+      ],
+      "post_amount_bits": [
+        "0x3fe0000000000000",
+        "0x3fe8000000000000",
+        "0x3feccccccccccccd"
+      ],
+      "residual_bits": [
+        "0x0000000000000000",
+        "0x0000000000000000",
+        "0x0000000000000000"
+      ],
+      "rng_subset_hex": "96a2f1a37b3173243c23756e69212888fab9a29b4fb91d68efc24a5d7d525ccc"
+    },
+    "expected": {
+      "record_hex": "544f50310001050800000000000000093ff00000000000000000000000000000000000020203010d000000000000000c0000000000000004bd20871117f267442548fc6355bad8c941913d7466fe4e0c448b07a98ee6c7c2d26be98a98d3172a156c368781a52f2ae32c2efd938147b184482d0b8d30b182685b9ff872444a0908b33215543b1a949cc2c5f99fcbf92e199929ba9d15f68211111111111111111111111111111111111111111111111111111111111111110001000200000000000000000000000c000000000000000400000000000000000000000000000000000000000000000c000000000000000400000000000000110000000000000000000000000000001100000000000000003fe00000000000003fe80000000000003feccccccccccccd3fe00000000000003fe80000000000003feccccccccccccd00000000000000000000000000000000000000000000000096a2f1a37b3173243c23756e69212888fab9a29b4fb91d68efc24a5d7d525ccc0000000000000000"
+    }
+  },
+  "chain_init_vector": {
+    "input": {
+      "contract_sha256": "0198837e2fffcca34cc87febe13c51637f61ea9acc0c755025928fcb7e90cd17",
+      "master_seed": "2461941894568478670",
+      "seed_block": "0",
+      "initial_network_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "generated_configuration_sha256": "1111111111111111111111111111111111111111111111111111111111111111"
+    },
+    "expected": {
+      "rng_chain_hex": "87e4523d494866ba848b2ff37dea78c2d1b69606ebb3256186958ba8b627ff1b",
+      "topology_chain_hex": "3cc7fbf3821a7e8ff125363e91f7cc6cd3b75f2d3efc1c21459f5fa5450d27d3"
+    }
+  },
+  "ledger_vectors": [
+    {
+      "ledger_kind": "RNG",
+      "input": {
+        "previous_chain_hex": "87e4523d494866ba848b2ff37dea78c2d1b69606ebb3256186958ba8b627ff1b",
+        "slot": 8,
+        "update": 9,
+        "time_bits": "0x3ff0000000000000",
+        "candidate_descriptors_hex": [
+          "000000000000000908050002000000000000000c00000000000000040000000200000000000d7e0d0501000000000000"
+        ],
+        "records_hex": [
+          "524e47310001200800000000000000093ff0000000000000000000000000000c0000000000000004000000020000000000000000000e00013ff0000000000000424d58433133524e474b45595631000000010820222a931bf36807ce00000000000000000000000000000009000000000000000c000000000000000400000002000000000000000000000000000000008ada27e1c422fc775ac82837fcdda515c120d6933ea586d5bb59e36b4e17cd8c8ada27e1c422fc773fe15b44fc38845f00000000000000000000000000000000"
+        ],
+        "cumulative_record_count": 1
+      },
+      "expected": {
+        "candidate_digest_hex": "0a3df7b9b60c54577720ae8f709a9d5ed4c4b050bf9d9da7c9f76f59097bbba6",
+        "records_digest_hex": "60ffbff3b2083dfabfb6382339212a208159a0e1dbc35dc3780f71aea1b33f23",
+        "new_chain_hex": "09e74ae2ac7ea32ff1e7e1191c6b48e1a2a6f86bdcd140316693dbac57652a48",
+        "file_header_hex": "424d58433133524e474c454447563100000101010198837e2fffcca34cc87febe13c51637f61ea9acc0c755025928fcb7e90cd1700000000000000000000000000000000000000000000000000000000000000001111111111111111111111111111111111111111111111111111111111111111000000000000000000000000",
+        "batch_header_hex": "424d58433133424154434856310000000001010800000000000000093ff000000000000000000000000000010a3df7b9b60c54577720ae8f709a9d5ed4c4b050bf9d9da7c9f76f59097bbba6000000000000000160ffbff3b2083dfabfb6382339212a208159a0e1dbc35dc3780f71aea1b33f2387e4523d494866ba848b2ff37dea78c2d1b69606ebb3256186958ba8b627ff1b09e74ae2ac7ea32ff1e7e1191c6b48e1a2a6f86bdcd140316693dbac57652a48000000000000000100000000"
+      }
+    },
+    {
+      "ledger_kind": "TOPOLOGY",
+      "input": {
+        "previous_chain_hex": "3cc7fbf3821a7e8ff125363e91f7cc6cd3b75f2d3efc1c21459f5fa5450d27d3",
+        "slot": 8,
+        "update": 9,
+        "time_bits": "0x3ff0000000000000",
+        "candidate_descriptors_hex": [
+          "000000000000000908050002000000000000000c00000000000000040000000200000000000d7e0d0501000000000000"
+        ],
+        "records_hex": [
+          "544f50310001050800000000000000093ff00000000000000000000000000000000000020203010d000000000000000c0000000000000004bd20871117f267442548fc6355bad8c941913d7466fe4e0c448b07a98ee6c7c2d26be98a98d3172a156c368781a52f2ae32c2efd938147b184482d0b8d30b182685b9ff872444a0908b33215543b1a949cc2c5f99fcbf92e199929ba9d15f68211111111111111111111111111111111111111111111111111111111111111110001000200000000000000000000000c000000000000000400000000000000000000000000000000000000000000000c000000000000000400000000000000110000000000000000000000000000001100000000000000003fe00000000000003fe80000000000003feccccccccccccd3fe00000000000003fe80000000000003feccccccccccccd00000000000000000000000000000000000000000000000096a2f1a37b3173243c23756e69212888fab9a29b4fb91d68efc24a5d7d525ccc0000000000000000"
+        ],
+        "cumulative_record_count": 1
+      },
+      "expected": {
+        "candidate_digest_hex": "0d2ea8cdf0ea8f4e7be320153cbc847f0225cb980e7651e159b6a4de730f4da7",
+        "records_digest_hex": "9123394d7e0852c7c74ba826bcd821bc690fd8679e300ae58362005c8d71c4d4",
+        "new_chain_hex": "a23ba050b3e8c0655b9f6a8fe6b6f1221086be9fbaaa8263e8040888f868db35",
+        "file_header_hex": "424d58433133544f504c454447563100000102010198837e2fffcca34cc87febe13c51637f61ea9acc0c755025928fcb7e90cd1700000000000000000000000000000000000000000000000000000000000000001111111111111111111111111111111111111111111111111111111111111111000000000000000000000000",
+        "batch_header_hex": "424d58433133424154434856310000000001020800000000000000093ff000000000000000000000000000010d2ea8cdf0ea8f4e7be320153cbc847f0225cb980e7651e159b6a4de730f4da700000000000000019123394d7e0852c7c74ba826bcd821bc690fd8679e300ae58362005c8d71c4d43cc7fbf3821a7e8ff125363e91f7cc6cd3b75f2d3efc1c21459f5fa5450d27d3a23ba050b3e8c0655b9f6a8fe6b6f1221086be9fbaaa8263e8040888f868db35000000000000000100000000"
+      }
+    }
+  ],
+  "state_vector": {
+    "input": {
+      "contract_sha": "0198837e2fffcca34cc87febe13c51637f61ea9acc0c755025928fcb7e90cd17",
+      "network_sha": "0000000000000000000000000000000000000000000000000000000000000000",
+      "config_sha": "1111111111111111111111111111111111111111111111111111111111111111",
+      "master_seed": "2461941894568478670",
+      "seed_block": 0,
+      "next_update": 10,
+      "next_logical_id": 18,
+      "completed_o06": 10,
+      "completed_o08": 10,
+      "candidate_count": 37,
+      "rng_record_count": 1,
+      "topology_record_count": 1,
+      "child_count": 1,
+      "time_bits": "0x3ff0000000000000",
+      "rng_chain_hex": "09e74ae2ac7ea32ff1e7e1191c6b48e1a2a6f86bdcd140316693dbac57652a48",
+      "topology_chain_hex": "a23ba050b3e8c0655b9f6a8fe6b6f1221086be9fbaaa8263e8040888f868db35",
+      "last_completed_update": 9
+    },
+    "expected": {
+      "state_hex": "424d5843313352545354415445563100000100010198837e2fffcca34cc87febe13c51637f61ea9acc0c755025928fcb7e90cd1700000000000000000000000000000000000000000000000000000000000000001111111111111111111111111111111111111111111111111111111111111111222a931bf36807ce0000000000000000000000000000000a0000000000000012000000000000000a000000000000000a00000000000000250000000000000001000000000000000100000000000000013ff000000000000009e74ae2ac7ea32ff1e7e1191c6b48e1a2a6f86bdcd140316693dbac57652a48a23ba050b3e8c0655b9f6a8fe6b6f1221086be9fbaaa8263e8040888f868db350000007ffffffffd0000000000000009000000000000000000000000000000000000000000000000000000000000000000000000",
+      "state_sha256": "fd148dd16e915634597b855d063ff508259ea7eff9ae1c67f622d89133be294e"
+    }
+  },
+  "verification_command": "python3 tools/c13_rng_topology_contract_kat_v1_1.py contracts/p15/RNG_TOPOLOGY_DECOMPOSITION_KAT_V1_1.json"
+}

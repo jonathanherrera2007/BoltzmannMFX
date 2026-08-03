@@ -1,0 +1,108 @@
+{
+  "cases": [
+    {
+      "exit_code": 0,
+      "expected_exit": 0,
+      "id": "disabled_valid",
+      "log": "C:\\b\\BMX-shadow-handoff-20260721\\runs\\c08-schema-review-final\\disabled_valid\\stdout.log",
+      "missing_file_tokens": [],
+      "missing_output_tokens": [],
+      "status": "PASS",
+      "unexpected_file_tokens": [],
+      "unexpected_output_tokens": []
+    },
+    {
+      "exit_code": 0,
+      "expected_exit": 0,
+      "id": "enabled_valid",
+      "log": "C:\\b\\BMX-shadow-handoff-20260721\\runs\\c08-schema-review-final\\enabled_valid\\stdout.log",
+      "missing_file_tokens": [],
+      "missing_output_tokens": [],
+      "status": "PASS",
+      "unexpected_file_tokens": [],
+      "unexpected_output_tokens": []
+    },
+    {
+      "exit_code": 0,
+      "expected_exit": 0,
+      "id": "enabled_plot_metadata",
+      "log": "C:\\b\\BMX-shadow-handoff-20260721\\runs\\c08-schema-review-final\\enabled_plot_metadata\\stdout.log",
+      "missing_file_tokens": [],
+      "missing_output_tokens": [],
+      "status": "PASS",
+      "unexpected_file_tokens": [],
+      "unexpected_output_tokens": []
+    },
+    {
+      "exit_code": 22,
+      "expected_exit": "nonzero",
+      "id": "reject_simultaneous_P_PD",
+      "log": "C:\\b\\BMX-shadow-handoff-20260721\\runs\\c08-schema-review-final\\reject_simultaneous_P_PD\\stdout.log",
+      "missing_file_tokens": [],
+      "missing_output_tokens": [],
+      "status": "PASS",
+      "unexpected_file_tokens": [],
+      "unexpected_output_tokens": []
+    },
+    {
+      "exit_code": 22,
+      "expected_exit": "nonzero",
+      "id": "reject_mesh_PE",
+      "log": "C:\\b\\BMX-shadow-handoff-20260721\\runs\\c08-schema-review-final\\reject_mesh_PE\\stdout.log",
+      "missing_file_tokens": [],
+      "missing_output_tokens": [],
+      "status": "PASS",
+      "unexpected_file_tokens": [],
+      "unexpected_output_tokens": []
+    },
+    {
+      "exit_code": 22,
+      "expected_exit": "nonzero",
+      "id": "reject_missing_PF",
+      "log": "C:\\b\\BMX-shadow-handoff-20260721\\runs\\c08-schema-review-final\\reject_missing_PF\\stdout.log",
+      "missing_file_tokens": [],
+      "missing_output_tokens": [],
+      "status": "PASS",
+      "unexpected_file_tokens": [],
+      "unexpected_output_tokens": []
+    },
+    {
+      "exit_code": 22,
+      "expected_exit": "nonzero",
+      "id": "reject_reordered",
+      "log": "C:\\b\\BMX-shadow-handoff-20260721\\runs\\c08-schema-review-final\\reject_reordered\\stdout.log",
+      "missing_file_tokens": [],
+      "missing_output_tokens": [],
+      "status": "PASS",
+      "unexpected_file_tokens": [],
+      "unexpected_output_tokens": []
+    },
+    {
+      "exit_code": 22,
+      "expected_exit": "nonzero",
+      "id": "reject_nonzero_PF_diffusion",
+      "log": "C:\\b\\BMX-shadow-handoff-20260721\\runs\\c08-schema-review-final\\reject_nonzero_PF_diffusion\\stdout.log",
+      "missing_file_tokens": [],
+      "missing_output_tokens": [],
+      "status": "PASS",
+      "unexpected_file_tokens": [],
+      "unexpected_output_tokens": []
+    },
+    {
+      "exit_code": 22,
+      "expected_exit": "nonzero",
+      "id": "reject_missing_internal_initialization",
+      "log": "C:\\b\\BMX-shadow-handoff-20260721\\runs\\c08-schema-review-final\\reject_missing_internal_initialization\\stdout.log",
+      "missing_file_tokens": [],
+      "missing_output_tokens": [],
+      "status": "PASS",
+      "unexpected_file_tokens": [],
+      "unexpected_output_tokens": []
+    }
+  ],
+  "claim_boundary": "engineering plumbing tests only; no biological values or scientific result",
+  "executable": "C:\\b\\BMX-shadow-handoff-20260721\\build-c08-native-release-review-final-clean\\bmx.exe",
+  "passed": true,
+  "stage": "C07",
+  "test": "runtime_schema_matrix"
+}

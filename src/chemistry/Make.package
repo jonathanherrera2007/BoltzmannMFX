@@ -10,3 +10,11 @@ CEXE_headers += bmx_cell_interaction_K.H
 
 CEXE_sources += bmx_chem.cpp
 CEXE_sources += bmx_cell_interaction.cpp
+CEXE_headers += bmx_phosphorus_uptake_K.H
+CEXE_sources += bmx_phosphorus_uptake.cpp
+CEXE_headers += bmx_phosphorus_reactions_K.H
+CEXE_sources += bmx_phosphorus_reactions.cpp
+CEXE_headers += bmx_phosphorus_export_K.H
+CEXE_sources += bmx_phosphorus_export.cpp
+CEXE_headers += bmx_p15_stage0_K.H
+CEXE_sources += bmx_p15_stage0.cpp

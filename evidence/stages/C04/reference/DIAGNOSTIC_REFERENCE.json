@@ -1,0 +1,48 @@
+{
+  "case_dir": "/home/jherrera2007/bmx-c04-qual/product/exec/fungi",
+  "checks": [
+    {
+      "check": "field_map_matches_first_data_and_species_order",
+      "detail": "first_data=28, A=mesh0/part28, B=mesh1/part29, C=mesh2/part30",
+      "status": "PASS"
+    },
+    {
+      "check": "particle_totals_match_independent_dump_reference",
+      "detail": "A=1.1780000000e-14 (rel 0.0e+00); B=0.0000000000e+00 (rel 0.0e+00); C=1.1780000000e-15 (rel 0.0e+00)",
+      "status": "PASS"
+    },
+    {
+      "check": "fluid_totals_match_analytic_initial_condition",
+      "detail": "A=6.0000000000e-08 (rel 5.1e-15); B=0.0000000000e+00 (rel 0.0e+00); C=6.0000000000e-09 (rel 3.9e-14)",
+      "status": "PASS"
+    },
+    {
+      "check": "reordered_species_is_rejected",
+      "detail": "exit=6, diagnostic-owned abort=True",
+      "status": "PASS"
+    },
+    {
+      "check": "enabling_diagnostic_is_trajectory_neutral",
+      "detail": "708 non-diagnostic lines compared, identical",
+      "status": "PASS"
+    }
+  ],
+  "component_map": {
+    "A": {
+      "mesh": 0,
+      "particle": 28
+    },
+    "B": {
+      "mesh": 1,
+      "particle": 29
+    },
+    "C": {
+      "mesh": 2,
+      "particle": 30
+    }
+  },
+  "exe": "/home/jherrera2007/bmx-c04-qual/build/c04-diag-release/bmx",
+  "failures": [],
+  "first_data": 28,
+  "status": "PASS"
+}

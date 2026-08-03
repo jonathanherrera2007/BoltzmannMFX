@@ -1,0 +1,19 @@
+{
+  "artifact_type": "C10_BLOCKER_REPORT",
+  "stage": "C10/P12",
+  "status": "BLOCKED",
+  "blocker_id": "D-C10-02-NUMERICAL-CONVERGENCE",
+  "root_cause": "At L2 in the low-D arm, one-to-one donor-cell amount is smaller than the pre-diffusion per-step request, activating the frozen shared-donor cap only at the finest level.",
+  "observations": {
+    "l1_to_l2_low_cumulative_uptake_relative_difference": 0.6562069705917112,
+    "preregistered_limit": 0.02,
+    "l2_low_minimum_donor_scale": 0.5969698781537861,
+    "l2_low_rejected_mol": 9.73557376528791e-13,
+    "selected_production_level": null
+  },
+  "prohibited_response": "Do not tune an arm, parameter, grid, timestep, or acceptance threshold after observing this failure.",
+  "required_resolution": "Freeze and independently review a new numerical contract, then repeat the complete convergence matrix.",
+  "later_stages_started": false,
+  "external_resources": "none",
+  "external_spend_usd": 0
+}

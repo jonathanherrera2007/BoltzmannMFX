@@ -1,0 +1,46 @@
+{
+    "artifact_type":  "C11_NATIVE_BUILD",
+    "stage":  "C11/P13",
+    "status":  "PASS",
+    "source":  {
+                   "path":  "C:\\b\\BMX-shadow-handoff-20260721\\BMX-RG-SW-C07-product",
+                   "head":  "ff059edbc5bf10d61936a43b2b5bdfb05d69c133",
+                   "tree":  "75cdcbe62472504b68c376bc4ee2a9831d604c67",
+                   "dirty_before_configure":  false,
+                   "status_capture":  "before build and before evidence outputs were opened"
+               },
+    "amrex":  {
+                  "commit":  "cbdc6580ee3d78cccdd37172e4ba077ee181f483",
+                  "tree":  "fb714dc6e693c18f7c441d1d1febe4a5e8bf9ea6"
+              },
+    "configuration":  {
+                          "build_type":  "Release",
+                          "cxx_compiler":  "C:/Program1/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe",
+                          "cxx_standard":  "17",
+                          "bmx_mpi":  "ON",
+                          "bmx_omp":  "OFF",
+                          "bmx_gpu_backend":  "NONE",
+                          "amrex_spacedim":  "3"
+                      },
+    "contracts":  {
+                      "reaction_liebig_sha256":  "06f575a09b56178d74f809003fec532d6d3d509b972e62c29da21754cab0d26d",
+                      "operator_fit_sha256":  "ea6e8dc2ca3f69fe2f366801c9df8ec9832b58f399d605c88d91527ff2098407",
+                      "global_order_sha256":  "bb63c219a860687d91ce1acf06a667c9208abf026b32f18acfc64884bb696dd6",
+                      "authority_source_sha256":  "283eace4f34e0a3d6961d49db2ab2c75ac6e384a9077a7044313a20f7bd4bc93"
+                  },
+    "frozen_kernel_sha256":  "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02",
+    "executable":  {
+                       "path":  "C:\\b\\BMX-shadow-handoff-20260721\\build-c11-native-final\\bmx.exe",
+                       "size_bytes":  2552832,
+                       "sha256":  "a7a2700556b553f7cfae298bbe681474fff9086cdab5a8c83d53b4869fd38825"
+                   },
+    "raw_log":  "C:\\b\\BMX-shadow-handoff-20260721\\BMX-RG-SW-C07-product\\evidence\\stages\\C11\\raw\\native_build.log",
+    "raw_log_sha256":  "2f8edf8ae8d129a4f43ce46e56a874b2798ae51d3b9cd652ec8f1b473dcb1521",
+    "cmake_cache_sha256":  "c168a31b17aa81697525cabcde15aff669aef0f42dcd762154b65f3363290913",
+    "warnings":  [
+                     "Two inherited MSVC C4244 diagnostics originate in std::numeric instantiated by pinned AMReX particle I/O; no C11 source warning was emitted."
+                 ],
+    "external_resources":  "none",
+    "external_spend_usd":  0,
+    "claim_boundary":  "Clean Windows native C11 engineering build; not release-host, mentor-approved, calibrated, predictive, or C12+ evidence."
+}

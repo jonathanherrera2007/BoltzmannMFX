@@ -8,8 +8,20 @@
 #include <bmx_dem_parms.H>
 #include <bmx_bc_parms.H>
 #include <bmx_pc.H>
+#include <bmx_pc_phosphorus.H>
 
 using namespace amrex;
+
+namespace
+{
+#ifdef NEW_CHEM
+  using BMXNeighborBase =
+      amrex::NeighborParticleContainer<MAX_CHEM_REAL_VAR,MAX_CHEM_INT_VAR>;
+#else
+  using BMXNeighborBase =
+      amrex::NeighborParticleContainer<realData::count,intData::count>;
+#endif
+}
 
 int  BMXParticleContainer::domain_bc[6] {0};
 
@@ -39,6 +51,40 @@ BMXParticleContainer::BMXParticleContainer (AmrCore* amr_core)
     nlev         = amr_core->finestLevel()+1;
     finest_level = amr_core->finestLevel();
     reset_neighborhood = true;
+}
+
+
+void
+BMXParticleContainer::Redistribute (int lev_min, int lev_max,
+                                    int nGrow, int local)
+{
+    BMXPhosphorus::requireRedistributionSafe(*this);
+    BMXNeighborBase::Redistribute(lev_min, lev_max, nGrow, local);
+}
+
+void
+BMXParticleContainer::Regrid (const DistributionMapping& dmap,
+                              const BoxArray& ba)
+{
+    BMXPhosphorus::requireRedistributionSafe(*this);
+    BMXNeighborBase::Regrid(dmap, ba);
+}
+
+void
+BMXParticleContainer::Regrid (const DistributionMapping& dmap,
+                              const BoxArray& ba, int lev)
+{
+    BMXPhosphorus::requireRedistributionSafe(*this);
+    BMXNeighborBase::Regrid(dmap, ba, lev);
+}
+
+void
+BMXParticleContainer::Regrid (
+    const Vector<DistributionMapping>& dmap,
+    const Vector<BoxArray>& ba)
+{
+    BMXPhosphorus::requireRedistributionSafe(*this);
+    BMXNeighborBase::Regrid(dmap, ba);
 }
 
 void BMXParticleContainer::AllocData ()
@@ -106,7 +152,20 @@ BMXParticleContainer::computeParticleVolume () const
     return r;
 }
 
-Real 
+Real
+BMXParticleContainer::computeParticleArea () const
+{
+    auto r = amrex::ReduceSum(*this, [=]
+       AMREX_GPU_HOST_DEVICE (const ParticleType& p) // noexcept -> amrex::Real
+       {
+           return p.rdata(realIdx::area);
+       });
+    ParallelDescriptor::ReduceRealSum(r);
+
+    return r;
+}
+
+Real
 BMXParticleContainer::computeParticleContent (int comp) const
 {
     auto r = amrex::ReduceSum(*this, [=]
@@ -148,4 +207,3 @@ void BMXParticleContainer::writeAllAtLevel (int lev)
        }
     }
 }
-

@@ -1,0 +1,40 @@
+{
+  "schema": "bmx-p12-numerical-preregistration-v1",
+  "stage": "C10",
+  "contract_id": "UDC-20260801-P12-UPTAKE-ONLY-V1",
+  "contract_sha256": "2094aed3c8ef21a257d2c597352793384d01a1efc3d72936d5c5108d308f8804",
+  "frozen_before_48h_outcomes": true,
+  "evidence_seen_before_freeze": "analytical unit tests and one/four-update engineering controls only; no 48 h trajectory, profile, or cumulative-uptake result",
+  "claim_boundary": "engineering preregistration pending independent numerical review; not release evidence",
+  "uniform_grid_time_levels": [
+    {"id": "L0", "n_cell": [8, 8, 4], "dt_s": 1800.0},
+    {"id": "L1", "n_cell": [16, 16, 8], "dt_s": 900.0},
+    {"id": "L2", "n_cell": [32, 32, 16], "dt_s": 450.0}
+  ],
+  "duration_s": 172800.0,
+  "observation_times_s": [0.0, 1800.0, 3600.0, 7200.0, 14400.0, 28800.0, 43200.0, 86400.0, 129600.0, 172800.0],
+  "checkpoint_restart": {"checkpoint_s": 86400.0, "finish_s": 172800.0},
+  "solver_guard": {"diffusion_rtol_max": 1e-13, "diffusion_atol": 0.0, "reason": "default MLMG tolerance violated the pre-existing P10 integrated ledger during the first one-step engineering attempt"},
+  "acceptance_gates": {
+    "positivity": "no mesh or internal D amount below the frozen P10 negative-amount tolerance",
+    "conservation": "every P10 O01/O10/checkpoint residual is within max(1e-28 mol,1e-10*S_L1)",
+    "cumulative_uptake": "successive-level final cumulative accepted uptake relative difference <= 0.02",
+    "profile": "successive-level volume-weighted mesh-D profile L1 relative difference <= 0.05 at every observation",
+    "restart": "same-rank continuous/restart cumulative ledgers exact and state fields within the existing P10-U04 comparator",
+    "selection": "use the coarsest level for which it and every finer successor satisfy all gates"
+  },
+  "replicate_policy": "canonical deterministic run plus one clean-environment deterministic rerun; byte-identical inputs and hashes required",
+  "seed_policy": {"rng_used": false, "ordered_seeds": [], "parser_sentinel_if_required": 0},
+  "review_gate": {
+    "independent_numerical_review_required_before_48h_outcome_runs": true,
+    "writer_is_independent_reviewer": false,
+    "status": "PENDING"
+  },
+  "technical_gate_disposition": {
+    "id": "D-C10-01",
+    "scope": "TIP_005/TIP_010/TIP_020/TIP_010_AREA_MATCHED",
+    "gap": "exact graph-distance origin, partial-segment area rule, branch tie handling, and initial area-match normalization are not specified by the adopted source",
+    "status": "RESOLVED_FOR_HASH_BOUND_FIXED_NETWORK_ONLY",
+    "rationale": "The fixed network contains exactly one 0.003 cm live-tip segment, wholly inside the smallest 0.005 cm zone. All tip cases therefore use its complete stored surface and the area-matched multiplier is exactly one. Runtime aborts if any non-tip, longer segment, or topology would require an unstated graph-distance, branch-tie, partial-area, or normalization rule."
+  }
+}

@@ -13,6 +13,10 @@
 #include <bmx_calc_fluid_coeffs.H>
 #include <bmx_chem_species_parms.H>
 
+#include <exception>
+#include <limits>
+#include <string>
+
 using BMXParIter = BMXParticleContainer::BMXParIter;
 using PairIndex = BMXParticleContainer::PairIndex;
 
@@ -63,12 +67,41 @@ bmx::InitParams ()
     m_verbose = 0;
     pp.query("verbose", m_verbose);
 
+    // Flag to enable the fluid/particle content diagnostic in
+    // ComputeAndPrintSums(). Read-only reporting; default off so that leaving
+    // it unset reproduces prior behaviour exactly.
+    pp.query("print_sums", print_sums);
+
     pp.query("ooo_debug", ooo_debug);
 
     // Initialize random number generator
-    int seed = 77389;
-    pp.query("seed", seed);
-    amrex::ResetRandomSeed(seed+ParallelDescriptor::MyProc()+1);
+    // AMReX accepts a 64-bit unsigned seed, and P15's prospective seed does
+    // not fit the inherited 32-bit parser.  Parse the token losslessly while
+    // preserving the established per-rank +1 stream offset.
+    std::string seed_token = "77389";
+    pp.query("seed", seed_token);
+    if (seed_token.empty() ||
+        seed_token.find_first_not_of("0123456789") != std::string::npos) {
+      amrex::Abort("bmx.seed must be a positive decimal uint64 value");
+    }
+    amrex::ULong seed = 0;
+    try {
+      std::size_t consumed = 0;
+      seed = static_cast<amrex::ULong>(
+          std::stoull(seed_token, &consumed, 10));
+      if (consumed != seed_token.size()) {
+        amrex::Abort("bmx.seed contains trailing non-decimal data");
+      }
+    } catch (const std::exception&) {
+      amrex::Abort("bmx.seed is outside the uint64 range");
+    }
+    const amrex::ULong rank_offset = static_cast<amrex::ULong>(
+        ParallelDescriptor::MyProc()) + 1;
+    if (seed == 0 || seed >
+            std::numeric_limits<amrex::ULong>::max()-rank_offset) {
+      amrex::Abort("bmx.seed plus the per-rank stream offset overflows uint64");
+    }
+    amrex::ResetRandomSeed(seed+rank_offset);
 
     // The default type is "AsciiFile" but we can over-write that in the inputs
     // file with "Random"

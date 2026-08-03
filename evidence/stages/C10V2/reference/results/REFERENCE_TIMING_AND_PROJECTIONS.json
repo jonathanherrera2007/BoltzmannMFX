@@ -1,0 +1,575 @@
+{
+  "arms": {
+    "high": {
+      "maximum_wall_s": 0.9134263010000723,
+      "mean_wall_s": 0.9088503634002336,
+      "median_wall_s": 0.9089595030000055,
+      "minimum_wall_s": 0.9036963520002246,
+      "repeat_summaries": [
+        {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.5537650344849064e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 1.7824620834051695e-10,
+            "residual": 6.979336418416171e-25,
+            "tolerance": 3.61599946750003e-20
+          },
+          "last_uptake": {
+            "accepted": 2.6597608259246467e-14,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.5537650344849064e-12,
+            "cum_area_time": 0.8821592171280158,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.5537650344849064e-12,
+            "max_eta": 0.03821881847720755,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 2.6597608259246467e-14,
+            "run_max_eta": 0.03821881847720755,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 96,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 96,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.629118388182784e-26,
+          "status": "PASS",
+          "wall_s": 0.9074622070002079
+        },
+        {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.5537650344849064e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 1.7824620834051695e-10,
+            "residual": 6.979336418416171e-25,
+            "tolerance": 3.61599946750003e-20
+          },
+          "last_uptake": {
+            "accepted": 2.6597608259246467e-14,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.5537650344849064e-12,
+            "cum_area_time": 0.8821592171280158,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.5537650344849064e-12,
+            "max_eta": 0.03821881847720755,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 2.6597608259246467e-14,
+            "run_max_eta": 0.03821881847720755,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 96,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 96,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.629118388182784e-26,
+          "status": "PASS",
+          "wall_s": 0.9089595030000055
+        },
+        {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.5537650344849064e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 1.7824620834051695e-10,
+            "residual": 6.979336418416171e-25,
+            "tolerance": 3.61599946750003e-20
+          },
+          "last_uptake": {
+            "accepted": 2.6597608259246467e-14,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.5537650344849064e-12,
+            "cum_area_time": 0.8821592171280158,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.5537650344849064e-12,
+            "max_eta": 0.03821881847720755,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 2.6597608259246467e-14,
+            "run_max_eta": 0.03821881847720755,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 96,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 96,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.629118388182784e-26,
+          "status": "PASS",
+          "wall_s": 0.9134263010000723
+        },
+        {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.5537650344849064e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 1.7824620834051695e-10,
+            "residual": 6.979336418416171e-25,
+            "tolerance": 3.61599946750003e-20
+          },
+          "last_uptake": {
+            "accepted": 2.6597608259246467e-14,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.5537650344849064e-12,
+            "cum_area_time": 0.8821592171280158,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.5537650344849064e-12,
+            "max_eta": 0.03821881847720755,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 2.6597608259246467e-14,
+            "run_max_eta": 0.03821881847720755,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 96,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 96,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.629118388182784e-26,
+          "status": "PASS",
+          "wall_s": 0.9107074540006579
+        },
+        {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.5537650344849064e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 1.7824620834051695e-10,
+            "residual": 6.979336418416171e-25,
+            "tolerance": 3.61599946750003e-20
+          },
+          "last_uptake": {
+            "accepted": 2.6597608259246467e-14,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.5537650344849064e-12,
+            "cum_area_time": 0.8821592171280158,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.5537650344849064e-12,
+            "max_eta": 0.03821881847720755,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 2.6597608259246467e-14,
+            "run_max_eta": 0.03821881847720755,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 96,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 96,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.629118388182784e-26,
+          "status": "PASS",
+          "wall_s": 0.9036963520002246
+        }
+      ],
+      "status": "PASS",
+      "wall_s": [
+        0.9074622070002079,
+        0.9089595030000055,
+        0.9134263010000723,
+        0.9107074540006579,
+        0.9036963520002246
+      ]
+    },
+    "low": {
+      "maximum_wall_s": 0.9146924659999058,
+      "mean_wall_s": 0.9085002734000227,
+      "median_wall_s": 0.9068460409998806,
+      "minimum_wall_s": 0.9025999530003901,
+      "repeat_summaries": [
+        {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.454928699524047e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 6.194506181679273e-11,
+            "residual": -5.816113682013476e-25,
+            "tolerance": 1.2879998103263411e-20
+          },
+          "last_uptake": {
+            "accepted": 2.5542415206884e-14,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.454928699524046e-12,
+            "cum_area_time": 0.8821592171280158,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.454928699524046e-12,
+            "max_eta": 0.10569655916071392,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 2.5542415206884e-14,
+            "run_max_eta": 0.10569655916071392,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 96,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 96,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.488663508511601e-26,
+          "status": "PASS",
+          "wall_s": 0.9146924659999058
+        },
+        {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.454928699524047e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 6.194506181679273e-11,
+            "residual": -5.816113682013476e-25,
+            "tolerance": 1.2879998103263411e-20
+          },
+          "last_uptake": {
+            "accepted": 2.5542415206884e-14,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.454928699524046e-12,
+            "cum_area_time": 0.8821592171280158,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.454928699524046e-12,
+            "max_eta": 0.10569655916071392,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 2.5542415206884e-14,
+            "run_max_eta": 0.10569655916071392,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 96,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 96,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.488663508511601e-26,
+          "status": "PASS",
+          "wall_s": 0.9068460409998806
+        },
+        {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.454928699524047e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 6.194506181679273e-11,
+            "residual": -5.816113682013476e-25,
+            "tolerance": 1.2879998103263411e-20
+          },
+          "last_uptake": {
+            "accepted": 2.5542415206884e-14,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.454928699524046e-12,
+            "cum_area_time": 0.8821592171280158,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.454928699524046e-12,
+            "max_eta": 0.10569655916071392,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 2.5542415206884e-14,
+            "run_max_eta": 0.10569655916071392,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 96,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 96,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.488663508511601e-26,
+          "status": "PASS",
+          "wall_s": 0.9124205819998679
+        },
+        {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.454928699524047e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 6.194506181679273e-11,
+            "residual": -5.816113682013476e-25,
+            "tolerance": 1.2879998103263411e-20
+          },
+          "last_uptake": {
+            "accepted": 2.5542415206884e-14,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.454928699524046e-12,
+            "cum_area_time": 0.8821592171280158,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.454928699524046e-12,
+            "max_eta": 0.10569655916071392,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 2.5542415206884e-14,
+            "run_max_eta": 0.10569655916071392,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 96,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 96,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.488663508511601e-26,
+          "status": "PASS",
+          "wall_s": 0.9025999530003901
+        },
+        {
+          "checks": {
+            "all_o01_ledgers": true,
+            "all_o10_ledgers": true,
+            "all_recorded_boundary_conservation": true,
+            "all_uptake_rows": true,
+            "cumulative_rejection_roundoff_only": true,
+            "eta_headroom": true,
+            "exit_zero": true,
+            "explicit_inactive_ledgers_zero": true,
+            "finite_diagnostics": true,
+            "internal_e_f_zero": true,
+            "positive_uptake_activity": true,
+            "scale_never_clipped": true,
+            "trajectory_extrema_consistent": true,
+            "zero_inventory_positive_request_absent": true
+          },
+          "last_o10": {
+            "boundary": "O10_POST_UPDATE_LEDGER",
+            "internal_d": 2.454928699524047e-12,
+            "internal_e": 0.0,
+            "internal_f": 0.0,
+            "mesh_d": 6.194506181679273e-11,
+            "residual": -5.816113682013476e-25,
+            "tolerance": 1.2879998103263411e-20
+          },
+          "last_uptake": {
+            "accepted": 2.5542415206884e-14,
+            "area": 5.105088062083415e-06,
+            "cum_accepted": 2.454928699524046e-12,
+            "cum_area_time": 0.8821592171280158,
+            "cum_rejected": 0.0,
+            "cum_requested": 2.454928699524046e-12,
+            "max_eta": 0.10569655916071392,
+            "min_scale": 1.0,
+            "rejected": 0.0,
+            "requested": 2.5542415206884e-14,
+            "run_max_eta": 0.10569655916071392,
+            "run_min_scale": 1.0,
+            "run_positive_request_updates": 96,
+            "run_zero_inventory_positive_request_updates": 0,
+            "update": 96,
+            "zero_inventory_positive_request": 0
+          },
+          "rejection_tolerance_mol": 3.488663508511601e-26,
+          "status": "PASS",
+          "wall_s": 0.9059423250000691
+        }
+      ],
+      "status": "PASS",
+      "wall_s": [
+        0.9146924659999058,
+        0.9068460409998806,
+        0.9124205819998679,
+        0.9025999530003901,
+        0.9059423250000691
+      ]
+    }
+  },
+  "artifact_type": "C10_REFERENCE_HOST_TIMING_AND_PROJECTIONS",
+  "benchmark_configuration": {
+    "checkpoint_step": 48,
+    "dt_s": 1800.0,
+    "duration_s": 172800,
+    "mpi_ranks": 1,
+    "n_cell": [
+      8,
+      8,
+      4
+    ],
+    "plot_interval_updates": 1,
+    "repeats_per_arm": 5,
+    "selected_grid": "L0",
+    "updates": 96
+  },
+  "claim_boundary": "Reference-host timing of the frozen C10/P12 uptake-only selected configuration; not a P15 science-campaign runtime guarantee.",
+  "executable_sha256": "30d9e79289d1c9fe4324aaefe0d3bfb998f650578431fcc4b2e32a4f0dafbe4b",
+  "projection_basis": {
+    "concurrent_n2_standard_8_instances": 9,
+    "configurations": 151,
+    "conservative_wall_s": 0.9089595030000055,
+    "representative_wall_s": 0.9079027719999431,
+    "scheduling_model": "one run per instance at a time; perfect wave scheduling; excludes queue, provisioning, transfer, and retry overhead"
+  },
+  "projections": {
+    "n=10": {
+      "aggregate_instance_hours_representative": 0.38081477381108725,
+      "nine_instance_elapsed_hours_arm_median_range": [
+        0.04231948191332777,
+        0.042418110140000256
+      ],
+      "nine_instance_elapsed_hours_representative": 0.04236879602666401,
+      "nine_instance_waves": 168,
+      "total_runs": 1510
+    },
+    "n=20": {
+      "aggregate_instance_hours_representative": 0.7616295476221745,
+      "nine_instance_elapsed_hours_arm_median_range": [
+        0.08463896382665553,
+        0.08483622028000051
+      ],
+      "nine_instance_elapsed_hours_representative": 0.08473759205332802,
+      "nine_instance_waves": 336,
+      "total_runs": 3020
+    },
+    "n=5": {
+      "aggregate_instance_hours_representative": 0.19040738690554362,
+      "nine_instance_elapsed_hours_arm_median_range": [
+        0.021159740956663883,
+        0.021209055070000128
+      ],
+      "nine_instance_elapsed_hours_representative": 0.021184398013332006,
+      "nine_instance_waves": 84,
+      "total_runs": 755
+    }
+  },
+  "source_commit": "0f38760b4daba3acbfd4b658c9ac522523b5c69b",
+  "status": "PASS"
+}

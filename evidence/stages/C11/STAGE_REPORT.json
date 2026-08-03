@@ -1,0 +1,115 @@
+{
+  "artifact_type": "C11_STAGE_REPORT",
+  "stage": "C11/P13",
+  "generated": "2026-08-02",
+  "status": "PASS",
+  "engineering_implementation": "PASS",
+  "windows_native_qualification": "PASS",
+  "claim_boundary": "C11/P13 passes software and numerical engineering qualification under a provisional user-adopted decision contract. It does not select a biological baseline, establish mentor approval, calibration, predictive validity, RG-SCI progress, release-host reproduction, or C12+ behavior.",
+  "source": {
+    "implementation_commit": "ff059edbc5bf10d61936a43b2b5bdfb05d69c133",
+    "implementation_tree": "75cdcbe62472504b68c376bc4ee2a9831d604c67",
+    "branch": "rgsw/c11-p13",
+    "clean_before_final_build": true
+  },
+  "contracts": {
+    "reaction_liebig_id": "bmx-p13-reaction-liebig-v1",
+    "reaction_liebig_sha256": "06f575a09b56178d74f809003fec532d6d3d509b972e62c29da21754cab0d26d",
+    "operator_fit_id": "bmx-p13-o02-fit-v1",
+    "operator_fit_sha256": "ea6e8dc2ca3f69fe2f366801c9df8ec9832b58f399d605c88d91527ff2098407",
+    "global_operator_order_id": "bmx-p10-global-order-v1",
+    "global_operator_order_sha256": "bb63c219a860687d91ce1acf06a667c9208abf026b32f18acfc64884bb696dd6",
+    "authority_source_sha256": "283eace4f34e0a3d6961d49db2ab2c75ac6e384a9077a7044313a20f7bd4bc93",
+    "frozen_kernel_sha256": "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02"
+  },
+  "authority": {
+    "classification": "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+    "closed_scientific_claimed": false,
+    "biological_baseline_selected": false,
+    "rate_values_classification": "SENSITIVITIES_ONLY",
+    "mentor_approval_claimed": false
+  },
+  "operator_order": {
+    "status": "FITS_EXISTING_ORDER",
+    "slot": "O02_LOCAL_MESH_PARTICLE_UPDATE",
+    "global_order_changed": false,
+    "rationale": "The frozen O02 text already requires membrane transfer, then enabled local D/E reaction, then growth eligibility from the post-reaction state, with admissible geometry before B/E debit and structural-P credit only for accepted realized growth. C11 fills those clauses without adding, deleting, or reordering a global operator.",
+    "independent_reviewer_claimed": false,
+    "writer_independence_note": "Codex is the implementation writer and makes no independent-review claim. P13-U05 is a writer-owned technical fit freeze under the adopted contract."
+  },
+  "implementation": {
+    "reaction": "D/E forward and reverse requested amounts are derived from one common pre-reaction state, independently donor-capped, and committed simultaneously.",
+    "growth": "Liebig growth uses min(carbon-supported, E-supported) volume growth, then independently caps by B amount, E amount, and native admissible geometry.",
+    "atomic_commit": "Only accepted volume growth debits B and E; the exact E debit credits persistent structural P. Rejected or geometry-ineligible growth consumes neither donor.",
+    "feature_off": "The frozen chemistry kernel receives its original parameter pointer and is byte-unchanged when P13 is disabled.",
+    "feature_on": "For fungal particles only, the frozen kernel's legacy B-only growth and inert-P limiter are disabled in a copied parameter vector; P13 then executes exactly once in O02.",
+    "F_state": "inactive and conserved; no F reaction, transfer, debit, or credit is introduced",
+    "checkpoint_schema": 6,
+    "P12_P13_combination": "fails closed because C11 does not preregister a combined uptake/reaction experiment"
+  },
+  "build": {
+    "status": "PASS",
+    "executable_sha256": "a7a2700556b553f7cfae298bbe681474fff9086cdab5a8c83d53b4869fd38825",
+    "source_clean_before_configure": true,
+    "amrex_commit": "cbdc6580ee3d78cccdd37172e4ba077ee181f483",
+    "warnings": "Two inherited C4244 diagnostics in pinned AMReX/std::numeric particle I/O; no C11 source warning."
+  },
+  "qualification": {
+    "analytical_unit": {
+      "status": "PASS",
+      "checks": 43,
+      "sha256": "bed7efc8d9e96ab88ada01f4552fe625d147815904c4fa23f27dacc48fd2d3c1"
+    },
+    "native_runtime": {
+      "status": "PASS",
+      "cases": 18,
+      "one_rank_two_rank_equivalent": true,
+      "restart_1_to_1": "PASS",
+      "restart_2_to_1": "PASS",
+      "checkpoint_mutations_rejected": 5,
+      "sha256": "0cf3d2b28924aa742bca6a3e65a29dae97a28ea525ef3ab1b9e5112b68d756eb"
+    },
+    "feature_off_semantic": {
+      "status": "PASS",
+      "fixtures": ["G1_tip_length_only", "G4_nontip_rejected"],
+      "differing_semantic_values": 0,
+      "sha256": "6c3589626d1dd1ee28271683f340c2397fd94d0e710640add6593b4840c6d916"
+    },
+    "P10_topology_regression": {
+      "status": "PASS",
+      "runs": 4,
+      "sha256": "fdc9cdfae5722d3cb6a93749a11c9b9330ee7ab09c1e8fed496b7a5f4a23fc5b"
+    },
+    "P10_redistribution_regression": {
+      "status": "PASS",
+      "cases": 4,
+      "ranks": 2,
+      "restart_ranks": 1,
+      "sha256": "9a0452dfdb49e23e9f38e2fa87249d462f75f252729c336774e2b678eb188249"
+    },
+    "static": {
+      "status": "PASS",
+      "checks": 24,
+      "out_of_scope_paths": [],
+      "sha256": "9265af7a59c186dc55f9a5410496a8c6f62aac9a70aea588ac70452c5f174f42"
+    }
+  },
+  "blocker_disposition": {
+    "id": "P13-U05-OPERATOR-ORDERING",
+    "decision_status_preserved": "CLOSED_USER_ADOPTED",
+    "authority_residual_gap_preserved": "position within the frozen global operator order",
+    "technical_fit_status": "CLOSED_TECHNICAL_EXISTING_O02_SLOT",
+    "global_order_changed": false
+  },
+  "remaining_boundaries": [
+    "No P13 rate or quota value is a biological baseline.",
+    "Scientific interpretation remains pending mentor override.",
+    "This Windows qualification is not release-host evidence.",
+    "Combined P12+P13 execution remains fail-closed pending the separately authorized C13 Stage 0 contract."
+  ],
+  "later_stage_behavior_present": false,
+  "next_stage": "C12/P14 is separately user-authorized; C12 was not started by this report.",
+  "release_evidence": false,
+  "external_resources": "none",
+  "external_spend_usd": 0
+}

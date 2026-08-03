@@ -5,6 +5,9 @@
 //
 #include "AMReX_buildInfo.H"
 #include <bmx.H>
+#include <bmx_provenance.H>   // generated at configure time (D-C04-08)
+#include <cstring>
+#include <string>
 
 namespace
 {
@@ -49,6 +52,27 @@ void writeBuildInfo ()
   }
 
   std::cout << "\n";
+
+  // BMX-resolved provenance (D-C04-08).
+  //
+  // Printed unconditionally, including the UNAVAILABLE case. The previous code
+  // only printed AMReX's hash when it was non-empty, so a build carrying NO
+  // provenance was indistinguishable from one that simply did not print it --
+  // failing open. An artefact that cannot say which commit produced it has to
+  // say so.
+  std::cout << "BMX          provenance:   " << BMX_PROVENANCE_STATUS << "\n";
+  if (std::string(BMX_PROVENANCE_STATUS) == "RESOLVED") {
+    std::cout << "BMX          commit:       " << BMX_GIT_COMMIT << "\n";
+    std::cout << "BMX          branch:       " << BMX_GIT_BRANCH << "\n";
+    std::cout << "BMX          worktree:     " << BMX_GIT_DIRTY << "\n";
+    std::cout << "BMX          describe:     " << BMX_GIT_DESCRIBE << "\n";
+  } else {
+    std::cout << "BMX          commit:       UNAVAILABLE -- "
+              << BMX_PROVENANCE_NOTE << "\n";
+    std::cout << "WARNING: this build cannot be attributed to a source commit "
+                 "and must not carry release evidence.\n";
+  }
+  std::cout << "BMX          source dir:   " << BMX_SOURCE_DIR << "\n";
 
   const char* githash1 = buildInfoGetGitHash(1);
   const char* githash2 = buildInfoGetGitHash(2);

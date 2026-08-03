@@ -1,0 +1,32 @@
+{
+  "artifact_type": "P14_OPERATOR_ORDER_FIT",
+  "contract_id": "bmx-p14-o09-fit-v1",
+  "status": "WRITER_FROZEN_BEFORE_C12_IMPLEMENTATION",
+  "stage": "C12",
+  "input_commit": "5afe3298823011a3506d3799ccdbe815f162a227",
+  "global_operator_order": {
+    "contract_id": "bmx-p10-global-order-v1",
+    "sha256": "bb63c219a860687d91ce1acf06a667c9208abf026b32f18acfc64884bb696dd6",
+    "slot": "O09_INTERFACE_EXPORT_TRANSACTION",
+    "changed": false
+  },
+  "fit_rationale": "O09 already reserves an eligible-final-topology-segment transaction that computes the request and caps first, atomically debits local D and credits local A in the same update, and updates export ledgers exactly once. P14 can fill those clauses without adding, removing, or reordering a global operator.",
+  "transaction_order_within_o09": [
+    "evaluate eligibility and the separately bound interface-active fraction for each final-topology segment at most once",
+    "read the segment-local internal-D amount and compute the exponential export request",
+    "compute all donor and interface caps before mutation",
+    "atomically commit the accepted local-D debit, local-A credit, and external host-receipt ledger credit",
+    "update requested, accepted, rejected, export, and reward ledgers exactly once"
+  ],
+  "p14_u07_disposition": "CLOSED_TECHNICAL_EXISTING_O09_SLOT",
+  "implementation_gate": {
+    "status": "BLOCKED",
+    "blocker_ids": [
+      "D-C12-01-INTERFACE-FRACTION-DEFINITION",
+      "D-C12-02-REWARD-CONVERSION-CONSTANT"
+    ],
+    "reason": "The existing O09 placement is complete, but the adopted P14 source does not define the interface-active fraction f_I or freeze an exact executable carbon-to-phosphorus molar conversion. This artifact does not select either missing rule."
+  },
+  "stop_condition": "Any implementation that cannot fit the existing O09 clauses must propose new exact operator-order bytes and stop for independent review before implementation or outcome execution.",
+  "claim_boundary": "Technical order fit only; no interface-fraction rule, atomic-mass convention, biological value, calibration, prediction, P15 behavior, or scientific approval is selected by this artifact."
+}

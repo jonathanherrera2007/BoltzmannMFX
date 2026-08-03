@@ -1,0 +1,80 @@
+{
+  "artifact_type": "C10_V2_FINAL_INDEPENDENT_ACCEPTANCE",
+  "status": "PASS",
+  "acceptance_id": "IA-20260802-C10-V2-FINAL",
+  "implementation_commit": "0f38760b4daba3acbfd4b658c9ac522523b5c69b",
+  "implementation_tree": "511e3d1ec6ec5148aa0548b6256c85b52a3b68a2",
+  "evidence_commit_reviewed": "3c4a0806c9d345b3ce8809076447c22784d5cbff",
+  "reviewer_identity": "Claude (Opus 5) acting as independent reviewer; writer role for rgsw/product handed to Codex at e7a6952 and not resumed. Same reviewer as IR-20260801-P10-U02 and IR-20260801-P12-NUMERICAL-V2.",
+  "reviewer_is_implementation_writer": false,
+  "read_only_review": true,
+  "review_method": "Read-only inspection of the clean checkout at evidence commit 3c4a0806. Verified `git status --porcelain` empty and HEAD == 3c4a0806 before reading. No repository file was written or modified by the reviewer. All hashes below were recomputed locally rather than accepted from the report.",
+  "windows_result_sha256": "e25ff8256a1ab151cea3b007228b261bd1c4d8b83fa34234d71371d62b2d0ab0",
+  "reference_result_sha256": "b3d72145bfd9310d4d0f2ea171bbcb0e814debe36bbac56ac6e52103e7b89d43",
+  "reference_timing_sha256": "2473d2f8675077d6e9ede062f128b1a8307035bd23f21f8bf03ce5f75ed0d2e5",
+  "confirmations": {
+    "reference_host_qualified": true,
+    "provenance_exact": true,
+    "frozen_gates_pass": true,
+    "cross_platform_claim_values_exact": true,
+    "contrast_claim_bounded": true,
+    "timing_projection_scope_bounded": true,
+    "crlf_overlay_representation_only": true,
+    "manifest_recovery_packaging_only": true,
+    "cloud_resources_deleted": true,
+    "d_c10_02_closable_from_engineering_standpoint": true
+  },
+  "itemized_findings": {
+    "1_reference_host": "CONFIRMED from record. n2-standard-8 in us-west1-b with minimum_cpu_platform 'Intel Cascade Lake' and observed_cpu_platform 'Intel Cascade Lake'. Pinning the microarchitecture is what makes cross-platform exactness meaningful rather than accidental.",
+    "2_provenance": "CONFIRMED by local recomputation. Implementation commit resolves; tree 511e3d1ec6ec5148aa0548b6256c85b52a3b68a2 matches; frozen kernel 9519fc24...ffba02 unchanged; global order byte-identical at bb63c219...96dd6; V2 numerical contract 43d64a8f...d28f81f; uptake contract 2094aed3...308f8804; prerun review bda12aef...87a3ea2 is byte-identical to the artifact I issued and was not modified in placement.",
+    "3_frozen_gates_and_selection": "CONFIRMED. Run-wide maximum eta 0.10654141714024555 against the 0.25 limit (2.35x headroom). Minimum donor scale 1.0 exactly, not merely within the 0.9999999999999858 gate. Maximum cumulative rejected 0.0 mol exactly. All eight comparisons pass: L0_vs_L1 and L1_vs_L2 for both arms, and T0_vs_T1 and T1_vs_T2 for both arms. L0 selection is therefore legitimate under the frozen rule, which permits L0 only when both successive coupled comparisons pass for both arms. The prohibited repair 'select L1 only because L0 and L1 agree' was not exercised, and no level was removed.",
+    "4_cross_platform": "CONFIRMED. 240 canonical value comparisons across 12 case groups with 0 differences, plus exact object comparison of coupled comparisons, temporal comparisons, saturation prediction and selection. The five exclusions (wall-clock, platform-specific executable/extractor hashes, filesystem paths, platform labels, non-canonical MPI/restart floating diagnostics already judged by their own frozen tolerances) are appropriate and are declared rather than silently omitted. The claim boundary correctly does not assert byte-identity of every file.",
+    "5_contrast": "CONFIRMED, and this is the substantive scientific-design result of C10. Concentration ratio high/low is 2.8074534161490687. Predicted initial flux ratio was 1.039154791108985. Measured 48 h cumulative uptake ratio is 1.04026 (L0), 1.04037 (L1), 1.04056 (L2). The measured 48 h contrast therefore sits within about 0.1 percent of the predicted initial-flux contrast, meaning depletion and replenishment over 48 h added essentially no additional separation. The prediction was recorded before the runs and the result is reported against it without tuning, arm substitution, or any biological amplification claim.",
+    "6_timing_scope": "CONFIRMED as stated, with a caution recorded as F-16. The report explicitly bounds the timings to the C10 uptake-only fixture.",
+    "7_crlf_overlay": "CONFIRMED. The repository copy follows the LF JSON policy while the archive member preserves the byte-exact CRLF output emitted by the Windows runner. Both representations are retained, so no evidence bytes were lost, and no model, parameter, order or gate was touched.",
+    "8_manifest_recovery": "CONFIRMED FROM RECORD. The single aborted first attempt is disclosed in invocation_note with scientific_or_numerical_change=false, and the qualifying attempt used a fresh run root with no run output reused. That is the correct handling of a tooling error rather than a retry-until-pass. I confirm this from the recorded evidence; I did not independently reproduce the packaging step.",
+    "9_cloud_deleted": "CONFIRMED. instance_deleted and boot_disk_deleted are both true, both post-delete inventories are empty, and the two after-delete listing hashes are identical. Instance lifecycle 5049.563 s (1.40 h).",
+    "10_closable": "CONFIRMED from an engineering standpoint. See scope limits below."
+  },
+  "prospective_prediction_outcome": {
+    "note": "Two forward predictions made before outcomes existed were confirmed by the runs, which is the strongest evidence in this stage.",
+    "eta_prediction": {
+      "forward_predicted_low_arm": 0.102,
+      "observed_run_wide_max": 0.10654141714024555,
+      "agreement_percent": 4.26,
+      "significance": "Confirms the h^3 donor-volume derivation approved in IR-20260801-P12-NUMERICAL-V2. The V1 failure, the V2 repair, and the observed outcome are all consistent with eta = R/N scaling as dt/h^3."
+    },
+    "contrast_prediction": {
+      "predicted_initial_flux_ratio": 1.039154791108985,
+      "measured_48h_ratio_L0": 1.04026036885716,
+      "agreement_percent": 0.11
+    }
+  },
+  "new_findings": [
+    {
+      "id": "F-16",
+      "severity": "LOW",
+      "blocking": false,
+      "summary": "The 151-configuration projections pair a P15-shaped configuration count with C10 uptake-only runtimes.",
+      "detail": "The projections (n=5 1.27 min, n=10 2.54 min, n=20 5.08 min on nine instances) are arithmetically correct from the 0.909 s median and are explicitly bounded to the C10 fixture. The risk is presentational: 151 is the P15 configuration count, so a reader encountering these numbers later may treat them as a P15 campaign estimate. C10 is a frozen network over 48 h with no growth, no reactions, no topology change and no export; P15 runs 216 h with every mechanism active. The realistic gap is orders of magnitude, not a factor. Recommend either dropping the 151 framing from the C10 artifact or stating the expected order-of-magnitude gap alongside it.",
+      "required_before_c10_closure": false
+    },
+    {
+      "id": "F-17",
+      "severity": "INFO",
+      "blocking": false,
+      "summary": "Cloud billing is unsettled, so no measured cost anchor exists yet.",
+      "detail": "exact_billed_usd is null with billing_status 'not yet settled'. The recorded 1.40 h lifecycle on an n2-standard-8 implies roughly 0.54 USD on-demand plus a small disk charge, which is nominal against the authorized cap and is not a concern for C10. It matters later: the P15 campaign decision needs a measured cost per instance-hour rather than a list-price estimate. Recommend querying and recording actual billing once settled, before the P15 budget decision.",
+      "required_before_c10_closure": false
+    }
+  ],
+  "commendations": [
+    "The single aborted attempt was disclosed with its cause, an explicit scientific_or_numerical_change=false, and confirmation that a fresh run root was used with no output reused. Disclosing a failed attempt that could simply have been omitted is the behaviour this project's evidence standard depends on.",
+    "The saturation prediction was recorded in the contract before the runs and the near-null measured contrast is reported against it plainly, rather than being reframed, amplified, or attributed to biology.",
+    "Minimum donor scale is exactly 1.0 and cumulative rejected is exactly 0.0 mol. The no-clipping condition is met absolutely rather than within tolerance.",
+    "Microarchitecture pinning was applied and the observed platform recorded, which is what allows the 240/240 cross-platform result to mean something."
+  ],
+  "acceptance_scope": "This artifact accepts the C10/P12 V2 implementation at commit 0f38760b and its accumulated Windows and Linux reference outcome evidence, and supports closing D-C10-02-NUMERICAL-CONVERGENCE from an engineering standpoint. It authorizes recording C10 as PASS.",
+  "claim_boundary": "This acceptance establishes numerical and software correctness only: conservation within the frozen tolerances, correct operator engagement and non-engagement, mesh and timestep convergence, deterministic and platform-invariant reproduction, and exact attribution. It does NOT establish that the uptake law, J_max, K_m, the mesh-D diffusivity, the chosen arms, or any other scientific value is biologically correct. Every scientific parameter in this stage remains USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE. This is not mentor approval, calibration, predictive validation, RG-SCI progress, or authorization for C11 or any later stage.",
+  "recommendation_for_p15": "The measured near-null low/high contrast (1.040 against a 2.807 concentration ratio) is a design finding, not a defect. Both approved D arms sit at 94.1 and 97.8 percent of transporter saturation, so they cannot discriminate on uptake rate, and 48 h of depletion did not separate them. P15 currently treats these same two arms as co-primary across the entire matrix. Revisiting the arm concentrations, or explicitly accepting that the environmental-D factor is expected to be near-null, should happen before the campaign is costed and run rather than after."
+}

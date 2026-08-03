@@ -1,0 +1,43 @@
+{
+  "checks": [
+    {
+      "check": "live_worktree_resolves",
+      "detail": "status=RESOLVED commit=48375fc42b36 dirty=dirty note=linked worktree, absolute gitdir",
+      "status": "PASS"
+    },
+    {
+      "check": "ordinary_checkout_directory",
+      "detail": "expected RESOLVED, got RESOLVED, commit=9dd6d56f0641",
+      "status": "PASS"
+    },
+    {
+      "check": "worktree_relative_pointer",
+      "detail": "expected RESOLVED, got RESOLVED, commit=48375fc42b36, matches live worktree=True",
+      "status": "PASS"
+    },
+    {
+      "check": "worktree_foreign_absolute_pointer",
+      "detail": "expected RESOLVED, got RESOLVED, commit=48375fc42b36, matches live worktree=True",
+      "status": "PASS"
+    },
+    {
+      "check": "worktree_unresolvable_pointer",
+      "detail": "expected UNAVAILABLE, got UNAVAILABLE, note=gitdir 'Q:/definitely/not/here/.git/worktrees/nope' does not exist on this host",
+      "status": "PASS"
+    },
+    {
+      "check": "not_a_repository",
+      "detail": "expected UNAVAILABLE, got UNAVAILABLE, note=no .git entry at C:/Users/Shadow/Documents/Codex/BMX-RG-SW/runs/c04-provenance-c",
+      "status": "PASS"
+    },
+    {
+      "check": "fail_closed_when_provenance_required",
+      "detail": "REQUIRE=OFF exit=0 (must be 0), REQUIRE=ON exit=1 (must be non-zero)",
+      "status": "PASS"
+    }
+  ],
+  "failures": [],
+  "live_commit": "48375fc42b36d238241656796ae4e7938a42ff21",
+  "source_dir": "C:\\Users\\Shadow\\Documents\\Codex\\BMX-RG-SW\\worktrees\\product",
+  "status": "PASS"
+}

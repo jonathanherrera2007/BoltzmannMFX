@@ -13,6 +13,7 @@
 #include <AMReX_Geometry.H>
 
 #include <bmx.H>
+#include "bmx_checkpoint_schema.H"
 #include <bmx_fluid_parms.H>
 #include <bmx_dem_parms.H>
 
@@ -77,8 +78,19 @@ bmx::WriteCheckHeader (const std::string& name,
 
       HeaderFile.precision(17);
 
+      // Serialize the live level-zero geometry.  A default-constructed
+      // Geometry has no domain/cell spacing and cannot establish the P11
+      // checkpoint identity (or reproduce the legacy geometry lines).
+      const Geometry& geometry = Geom(0);
+
       if (is_checkpoint)
-         HeaderFile << "Checkpoint version: 1\n";
+      {
+         HeaderFile << BMXCheckpointSchema::version_line << "\n";
+         const auto mode =
+             BMXChemLayout::classifyMeshSpecies(FLUID::chem_species);
+         BMXCheckpointSchema::writeMetadata(
+             HeaderFile, mode, FLUID::chem_species, geometry);
+      }
       else
          HeaderFile << "HyperCLaw-V1.1\n";
 
@@ -89,8 +101,6 @@ bmx::WriteCheckHeader (const std::string& name,
       HeaderFile << nstep << "\n";
       HeaderFile << dt << "\n";
       HeaderFile << time << "\n";
-
-      Geometry geometry;
 
       // Geometry
       for (int i = 0; i < BL_SPACEDIM; ++i)
@@ -117,6 +127,10 @@ bmx::WriteCheckPointFile (std::string& check_file,
                            Real time)
 {
     BL_PROFILE("bmx::WriteCheckPointFile()");
+
+    // Reject an unbound or non-conservative enabled state before creating a
+    // partial checkpoint directory.
+    AuditP10Ledger("CHECKPOINT_WRITE", true);
 
     const std::string& checkpointname = amrex::Concatenate( check_file, nstep );
 

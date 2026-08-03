@@ -1,0 +1,150 @@
+{
+  "artifact_type": "C13_EVIDENCE_MANIFEST",
+  "stage": "C13/P15 Stage 0",
+  "revision": "POST_D-C13-04_ADOPTION_AND_D-C13-05_BLOCKER",
+  "generated": "2026-08-02",
+  "status": "BLOCKED",
+  "classification": "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+  "authoritative_snapshot": {
+    "commit": "8136485e197590327c661a13107f298d899a66fe",
+    "tree": "b81774ec5944c142e6cb18781b18974dd40c9ee5",
+    "blocker_evidence_payload_commit": "91836c51529480ba0db44ec32d446d568dacd547",
+    "evidence_identity_recorder_commit": "8136485e197590327c661a13107f298d899a66fe"
+  },
+  "hash_contract": {
+    "algorithm": "SHA-256",
+    "input": "raw Git blob bytes at authoritative_snapshot.commit:path",
+    "text_normalization": "Git-normalized LF bytes where repository attributes select text/eol=lf; BUILD.log remains its raw committed CRLF blob because it is marked -text",
+    "excluded_self_references": [
+      "evidence/stages/C13/COMMIT.txt",
+      "evidence/stages/C13/EVIDENCE_MANIFEST.json"
+    ]
+  },
+  "adopted_rng_topology_inputs": {
+    "decision_id": "D-C13-04-RNG-TOPOLOGY-DECOMPOSITION",
+    "status": "CLOSED_USER_ADOPTED_PENDING_IMPLEMENTATION_AND_REVIEW",
+    "contract_path": "contracts/p15/RNG_TOPOLOGY_DECOMPOSITION_CONTRACT_V1.json",
+    "contract_sha256": "059f067b94673838efba143c5a4615aaf79dcacc78a456317a81578daa37eba0",
+    "kat_path": "contracts/p15/RNG_TOPOLOGY_DECOMPOSITION_KAT_V1.json",
+    "kat_sha256": "ef47fa935b64671dd2f93e93640308b9620055587083f0c5c5a55aa1f95edcb7",
+    "kat_status": "PASS"
+  },
+  "artifacts": [
+    {
+      "path": "evidence/stages/C13/ANALYTICAL_UNIT.json",
+      "sha256": "4b55ee8e591d743b1c8966c62ebc469384a711198a4cfc5042aa2c51e1455ce0",
+      "status": "HISTORICAL_49_OF_49_PASS_DETERMINISTIC_SCOPE"
+    },
+    {
+      "path": "evidence/stages/C13/AUTHORITY_GATE.json",
+      "sha256": "58b4610a71c9d03acc833dcf6a8f8286b485e9bf8c958a0c5f8b307f507c4e7f",
+      "status": "SUPERSEDED_SPECIFICATION_GATE_RECORD"
+    },
+    {
+      "path": "evidence/stages/C13/BINDING_ADOPTION.json",
+      "sha256": "abccfe73ac20ba28dd5ed3e56b4c9932d314b87e275ff978d2e9c07cf67ee961",
+      "status": "PRIOR_DETERMINISTIC_BINDING_ADOPTION"
+    },
+    {
+      "path": "evidence/stages/C13/BINDING_ADOPTION.md",
+      "sha256": "4f502fabd80f82234008ffdf3d379ed4a8dcb9f51fc1bf9b9ce00ea6c0e62866"
+    },
+    {
+      "path": "evidence/stages/C13/BLOCKER_REPORT.json",
+      "sha256": "40c2ecf1fbfb0aa19cdceb34ba1c3f998c5eeb38571ab30897a8978905e7d27d",
+      "status": "BLOCKED_D-C13-05"
+    },
+    {
+      "path": "evidence/stages/C13/BLOCKER_REPORT.md",
+      "sha256": "cbdb1d0f1f31bc9ee2edd90e4312263ab6db485187232104096a6d1548772a30"
+    },
+    {
+      "path": "evidence/stages/C13/BUILD.json",
+      "sha256": "2f62d1a33529aab8abf27f9fa3fe71f76014ad01e4d38a6d58277291d335f5f8",
+      "status": "HISTORICAL_PASS_DETERMINISTIC_CANDIDATE"
+    },
+    {
+      "path": "evidence/stages/C13/BUILD.log",
+      "sha256": "850019abb7acc246c3b02216b27ba3fbd441134504757d0c144c6adad34d1c2a"
+    },
+    {
+      "path": "evidence/stages/C13/D-C13-04_DECISION_PACKAGE_V1.md",
+      "sha256": "95749c9600476f755b6f04d228f6c36ddd671fa3829d6dac8dfe1ee02903f1dd",
+      "status": "VERIFIED_DECISION_PACKAGE_RECORD"
+    },
+    {
+      "path": "evidence/stages/C13/EVIDENCE_HASH_REPAIR.json",
+      "sha256": "f16f3005b399f8d1c94e95e3b5839bc967a16700695ee0125fa2c98132621fbb",
+      "status": "CORRECTED_BEFORE_D-C13-04_ADOPTION"
+    },
+    {
+      "path": "evidence/stages/C13/FEATURE_OFF_STAGE0.json",
+      "sha256": "22ed33efa99f1d2291b18aeb26128c3900e830b06205ef428de1f6fb45ce475a",
+      "status": "HISTORICAL_2_OF_2_PASS_DETERMINISTIC_SCOPE"
+    },
+    {
+      "path": "evidence/stages/C13/INTEGRATOR_HANDOFF.md",
+      "sha256": "a913d897382d157721ae20ec6823b47e21a5b060388fa5b9fea2a454edaaeb36",
+      "status": "BLOCKED_D-C13-05"
+    },
+    {
+      "path": "evidence/stages/C13/NATIVE_RUNTIME_STAGE0.json",
+      "sha256": "c1c3b3fc98eb69571be44844ecc49007a44ce525caf6a3d6b574d776db0e43fc",
+      "status": "HISTORICAL_17_OF_17_PASS_DETERMINISTIC_SCOPE"
+    },
+    {
+      "path": "evidence/stages/C13/RNG_TOPOLOGY_ADOPTION_V1.json",
+      "sha256": "c913720de35fc51bb60d89d34a76c6515dd6ce1c6a1510282e0f70c88a831f6c",
+      "status": "CLOSED_USER_ADOPTED_PENDING_IMPLEMENTATION_AND_REVIEW"
+    },
+    {
+      "path": "evidence/stages/C13/RNG_TOPOLOGY_ADOPTION_V1.md",
+      "sha256": "fbb60cb867eb823cc87d69519ddb150d44cc5f60ad70fe7d1ccdedb85fd10dd1"
+    },
+    {
+      "path": "evidence/stages/C13/RNG_TOPOLOGY_CONTRACT_CONFLICT_V1.json",
+      "sha256": "61c2669ce433683c99b9726e6436deb67deb4a9f5e18af591176003889caea94",
+      "status": "BLOCKED_D-C13-05"
+    },
+    {
+      "path": "evidence/stages/C13/RNG_TOPOLOGY_CONTRACT_CONFLICT_V1.md",
+      "sha256": "004ace03747543b6b9f48d8bd3345f75ebf2d43c72cbfcff7bb3afafbbad3204"
+    },
+    {
+      "path": "evidence/stages/C13/RNG_TOPOLOGY_DIAGNOSTIC.json",
+      "sha256": "b3a9f837774884a576459c9dafe2de81ecb0dfa3d8f054ba27c9c3ec8d39bd13",
+      "status": "PRESERVED_PRE_ADOPTION_REPRODUCTION"
+    },
+    {
+      "path": "evidence/stages/C13/STAGE_REPORT.json",
+      "sha256": "b8603f970f31386be98385e5e5f592cb647f330de73d7b2c38ae3f982a691499",
+      "status": "BLOCKED_D-C13-05"
+    },
+    {
+      "path": "evidence/stages/C13/STAGE_REPORT.md",
+      "sha256": "2910ba25ca339a585b393d5bfe5a99e3aa220985a14798d81630f265826a4f7d"
+    },
+    {
+      "path": "evidence/stages/C13/STATIC.json",
+      "sha256": "6dd3ef6537b9bb28baec5d87b982365da5e9478d661c289711aa7454cae7dd81",
+      "status": "PRESERVED_ORIGINAL_SPECIFICATION_GATE_RECORD"
+    },
+    {
+      "path": "evidence/stages/C13/STATIC_STAGE0.json",
+      "sha256": "a3af1f27faf986c3648a9bb9b67816d82b992a7c7dc598a84568bec22c5a3213",
+      "status": "HISTORICAL_25_OF_25_PASS_DETERMINISTIC_SCOPE"
+    }
+  ],
+  "source_disposition": {
+    "src_tree": "dd10ce05a9d12a84244a3d3cf713ca9ab279e16b",
+    "rng_topology_product_source_change_retained": false,
+    "frozen_kernel_sha256": "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02",
+    "global_order_sha256": "bb63c219a860687d91ce1acf06a667c9208abf026b32f18acfc64884bb696dd6"
+  },
+  "controlling_blocker": "D-C13-05-RNG-SIDE-BRANCH-GRADIENT-REACHABILITY",
+  "qualification_216h": "PROHIBITED_AND_NOT_RUN",
+  "P15_science": "PROHIBITED_AND_NOT_RUN",
+  "external_resources": "none",
+  "external_spend_usd": 0,
+  "claim_boundary": "Evidence manifest for a blocked RG-SW Stage-0 specification-consistency gate only; not implementation qualification, independent acceptance, mentor approval, CLOSED_SCIENTIFIC, calibration, predictive validation, RG-SCI progress, release qualification, C13 PASS, a 216-hour outcome, or P15 science."
+}

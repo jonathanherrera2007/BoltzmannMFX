@@ -1,0 +1,19 @@
+{
+  "stage": "C07",
+  "test": "runtime_schema_matrix",
+  "executable_sha256": "f86889fc0def576f520340c91f14847aed7f2facf0362349852b1e259bcb1b67",
+  "cases": [
+    {"id": "disabled_valid", "expected_exit": 0, "exit_code": 0, "status": "PASS"},
+    {"id": "enabled_valid", "expected_exit": 0, "exit_code": 0, "max_step": 1, "status": "PASS"},
+    {"id": "enabled_plot_metadata", "expected_exit": 0, "exit_code": 0, "status": "PASS", "mesh_P_E_absent": true, "particle_semantic_names": 24},
+    {"id": "reject_simultaneous_P_PD", "expected_exit": "nonzero", "exit_code": 22, "status": "PASS"},
+    {"id": "reject_mesh_PE", "expected_exit": "nonzero", "exit_code": 22, "status": "PASS"},
+    {"id": "reject_missing_PF", "expected_exit": "nonzero", "exit_code": 22, "status": "PASS"},
+    {"id": "reject_reordered", "expected_exit": "nonzero", "exit_code": 22, "status": "PASS"},
+    {"id": "reject_nonzero_PF_diffusion", "expected_exit": "nonzero", "exit_code": 22, "status": "PASS"},
+    {"id": "reject_missing_internal_initialization", "expected_exit": "nonzero", "exit_code": 22, "status": "PASS"}
+  ],
+  "raw_run_root": "C:\\b\\BMX-shadow-handoff-20260721\\runs\\c07-schema",
+  "passed": true,
+  "claim_boundary": "engineering plumbing tests only; no biological values or scientific result"
+}

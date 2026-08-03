@@ -1,0 +1,51 @@
+{
+  "artifact_type": "C13_STAGE0_BINDING_ADOPTION_EVIDENCE",
+  "stage": "C13/P15 Stage 0",
+  "generated": "2026-08-02",
+  "status": "IMPLEMENTATION_AUTHORIZED_PENDING_INDEPENDENT_REVIEW",
+  "classification": "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+  "input_commit": "013a9cca7ff1084a0b1e80543b7de1ea37061ab7",
+  "input_src_tree": "10ba9b7703a5715a47919714f17d9b9f258c40f5",
+  "decision_id": "UDC-20260802-C13-STAGE0-BINDINGS-V1",
+  "decision_contract": "contracts/p15/C13_BINDING_ADOPTION_V1.json",
+  "decision_contract_sha256": "c726cc575684e078d3c3359ececef28fde91daf5050aec273161b734710875d7",
+  "source": {
+    "path_at_adoption": "C:/Users/Shadow/.codex/attachments/3186333f-00d2-46e0-863c-36290cc3dc47/pasted-text.txt",
+    "sha256": "cbd1eedddf31b94c8a9d23d7b2d3329f065a007824387c70435d1004fdc6f350",
+    "size_bytes": 40449,
+    "lines": 1272,
+    "read_completely": true
+  },
+  "bound_contracts": {
+    "bonded_D": "e6022bffb56defa13cb31e7c0ac2097dfd197c9513e2f3e2e3a5ade37feeda44",
+    "numerical_216h": "c4d8dd50bb9c4b2b945e80410d71c4b822a32b29a325d7bb9ca5a8ec53531182",
+    "terminal_zone": "272106fabb9af9221d13c9f3b82fa9a963bea831c0a983747986789452b1bfe6",
+    "operator_fit": "4e391b63796f61cade7381a0a4168c6aa2d607272cd0c009cedef5aec4ad7168"
+  },
+  "blocker_disposition": [
+    {"id": "D-C13-01-BONDED-D-DISCRETIZATION", "status": "CLOSED_USER_ADOPTED"},
+    {"id": "D-C13-02-INTEGRATED-NUMERICAL-PREREGISTRATION", "status": "CLOSED_USER_ADOPTED_PENDING_INDEPENDENT_REVIEW_BEFORE_OUTCOME"},
+    {"id": "D-C13-03-TERMINAL-ZONE-GENERAL-TOPOLOGY", "status": "CLOSED_USER_ADOPTED"}
+  ],
+  "frozen_bytes": {
+    "global_order_sha256": "bb63c219a860687d91ce1acf06a667c9208abf026b32f18acfc64884bb696dd6",
+    "global_order_changed": false,
+    "kernel_sha256": "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02",
+    "kernel_changed": false
+  },
+  "authorization": {
+    "product_implementation": true,
+    "analytical_and_short_engineering_fixtures": true,
+    "216h_outcome_execution": false,
+    "required_next_external_gate": "independent exact-source and numerical-contract review",
+    "P15_science_outcomes": false
+  },
+  "claims_not_made": [
+    "mentor approval",
+    "CLOSED_SCIENTIFIC",
+    "biological calibration",
+    "predictive validation",
+    "RG-SCI progress",
+    "P15 scientific interpretation"
+  ]
+}

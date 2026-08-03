@@ -1,0 +1,95 @@
+{
+  "artifact_type": "C13_RNG_TOPOLOGY_DECOMPOSITION_V1_1_ADOPTION_EVIDENCE",
+  "stage": "C13/P15 Stage 0",
+  "generated": "2026-08-03",
+  "status": "CLOSED_USER_ADOPTED_PENDING_IMPLEMENTATION_AND_REVIEW",
+  "classification": "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+  "decision_ids": [
+    "D-C13-04-RNG-TOPOLOGY-DECOMPOSITION",
+    "D-C13-05-RNG-SIDE-BRANCH-GRADIENT-REACHABILITY"
+  ],
+  "contract": {
+    "path": "contracts/p15/RNG_TOPOLOGY_DECOMPOSITION_CONTRACT_V1_1.json",
+    "contract_id": "UDC-20260802-C13-RNG-TOPOLOGY-DECOMPOSITION-V1.1",
+    "sha256": "0198837e2fffcca34cc87febe13c51637f61ea9acc0c755025928fcb7e90cd17"
+  },
+  "known_answer_vectors": {
+    "path": "contracts/p15/RNG_TOPOLOGY_DECOMPOSITION_KAT_V1_1.json",
+    "sha256": "607de0acab001f97544545bb16128766f657e7a7f74ee981c76a39fe08f1df1b"
+  },
+  "superseded_provenance": {
+    "contract_path": "contracts/p15/RNG_TOPOLOGY_DECOMPOSITION_CONTRACT_V1.json",
+    "contract_sha256": "059f067b94673838efba143c5a4615aaf79dcacc78a456317a81578daa37eba0",
+    "kat_path": "contracts/p15/RNG_TOPOLOGY_DECOMPOSITION_KAT_V1.json",
+    "kat_sha256": "ef47fa935b64671dd2f93e93640308b9620055587083f0c5c5a55aa1f95edcb7",
+    "retained_unchanged": true
+  },
+  "authority": {
+    "kind": "EXPLICIT_PROJECT_OWNER_OPTION_1_SELECTION_AND_HASH_BINDING_IN_CURRENT_TASK",
+    "source_path": "C:/Users/Shadow/.codex/attachments/a27fcd6f-0b68-4a12-aae0-232f8dc61ff8/pasted-text.txt",
+    "source_sha256": "a165a85542c2666518724925dc0e743095c55b9176fddd7a584e99a297264290",
+    "source_explicitly_selects_option_1": true,
+    "source_states_superseding_contract_now_binds": true,
+    "source_names_contract_and_kat_hashes": true,
+    "adjacent_exact_adoption_text_path": "contracts/p15/RNG_TOPOLOGY_DECOMPOSITION_ADOPTION_TEXT_V1_1.txt",
+    "adjacent_exact_adoption_text_sha256": "3ff7d18e3a22a06de915ebd7339a8ebbf397b36f7d2d7aa14e15b660fefc3ec9",
+    "source_is_byte_identical_to_adjacent_exact_text": false,
+    "binding_basis": "The project-owner request expressly selects Option 1, prohibits nonzero-gradient side branching, states that the superseding contract now binds, and identifies both exact artifact hashes."
+  },
+  "package": {
+    "source_path_at_adoption": "C:/Users/Shadow/Downloads/C13_D-C13-05_decision_package_v1.zip",
+    "zip_sha256": "338b72945cd40461819b8f83b6f1be13ca969e922b5685a2a425e9c2cd6fa38d",
+    "manifest_sha256": "d9524d607d8921f074521a20524e01e0a52ee2e039b04d3c1498faf505ea7d9a",
+    "patch_sha256": "874cb53355c1e17bf811a6aef51091f5a4ffdb8431e9ce0616957d11f00191cf",
+    "manifest_all_files_verified": true,
+    "sidecars_verified": true,
+    "json_parsed": true,
+    "patch_add_only": true,
+    "patch_product_src_files": 0,
+    "patch_apply_check_current_head": true,
+    "package_commit": "5a8cb37a45da49f175d7e959e4178661cd474bf8"
+  },
+  "validation": {
+    "current_head_before_package": "421736bff65f59f360b56a8b4c8a7b95f1b29ed2",
+    "current_tree_before_package": "d1a862f82072bb9bbf6ac91c6a09f821c3d6e5f6",
+    "package_commit_tree": "dcdaa630edae360c888683286365e8cd968b37ad",
+    "product_src_tree_before_and_after": "dd10ce05a9d12a84244a3d3cf713ca9ab279e16b",
+    "normative_kat": "PASS",
+    "normative_draw_vectors": 9,
+    "side_branch_reachability_schedule_candidate": "PASS",
+    "unrelated_normative_subtrees_unchanged": true,
+    "all_six_v1_draw_vectors_unchanged": true
+  },
+  "selected_resolution": {
+    "id": "OPTION_1_PRESERVE_FROZEN_BEHAVIOR_REMOVE_UNREACHABLE_GN_NONZERO_CASE",
+    "accepted_side_branch_effective_gn": "+0.0 exact binary64",
+    "geometry_draw_ordinals": [0, 1, 2],
+    "total_candidate_draws_including_predicate": 4,
+    "nonzero_effective_gn_qualified": false,
+    "fail_closed_code": "C13_ABORT_SIDE_BRANCH_GRADIENT_REACHABILITY_DIVERGENCE"
+  },
+  "frozen_bytes": {
+    "global_operator_order_sha256": "bb63c219a860687d91ce1acf06a667c9208abf026b32f18acfc64884bb696dd6",
+    "global_operator_order_changed": false,
+    "chemistry_kernel_sha256": "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02",
+    "chemistry_kernel_changed": false
+  },
+  "authorization": {
+    "stage0_implementation": true,
+    "analytical_and_short_engineering_qualification": true,
+    "forced_topology_P0_to_P5": true,
+    "checkpoint_and_rank_change_qualification": true,
+    "216h_outcome_execution": false,
+    "P15_science_outcomes": false,
+    "required_next_external_gate_after_clean_engineering_qualification": "independent exact-source and numerical-contract PASS"
+  },
+  "claims_not_made": [
+    "mentor approval",
+    "CLOSED_SCIENTIFIC",
+    "biological calibration",
+    "predictive validation",
+    "RG-SCI progress",
+    "C13 PASS",
+    "P15 scientific interpretation"
+  ]
+}

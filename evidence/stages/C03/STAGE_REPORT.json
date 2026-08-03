@@ -1,0 +1,169 @@
+{
+  "stage_id": "C03",
+  "status": "PASS",
+  "started_at": "2026-07-30",
+  "completed_at": "2026-07-30",
+  "input_git_commit": "24113e1",
+  "baseline_worktree_commit": "389e9e35a1c7291a4af795b2e39f2db1f0012b61",
+  "baseline_worktree_tree": "1c73deedf0eb2feea833a7fddbc431ae9754d977",
+  "output_git_commit": "49942b4214a52dab20b1db1544c403d86909e5bc",
+  "amrex_commit": "cbdc6580ee3d78cccdd37172e4ba077ee181f483",
+
+  "scope_disclaimer": "Lean product-oriented baseline. Does NOT reproduce the Control Tower P06 package structure and makes NO claim of official P06 acceptance. The package's own P06 spec is marked PRELIMINARY_TEMPLATE_DEPENDENCY_BLOCKED.",
+
+  "platform_interruption": {
+    "symptom": "configure failed: no Visual Studio installation with the MSVC x64 toolset was found",
+    "actual_cause": "VS Build Tools installation was RENAMED from C:\\Program to C:\\Program1",
+    "why_misdiagnosed_initially": "vswhere kept reporting the old path while marking the instance isComplete:false, so -latest returned nothing and -all returned a non-existent directory; initially recorded as possible toolchain loss, corrected by the user",
+    "fix": "tools/repro/native_windows_env.ps1 now resolves via BMX_VS_ROOT override, then vswhere (-latest then -all), then directory scan of C:\\ and both Program Files roots, validating EVERY candidate against VC\\Auxiliary\\Build\\vcvars64.bat before acceptance; it prints the chosen root and how it was found",
+    "resolved_root": "C:\\Program1 (via directory scan)",
+    "toolset_unchanged": "14.44.35207"
+  },
+
+  "reproducibility_consequence": {
+    "id": "B-C03-02",
+    "detail": "The installation root is embedded in the AMReX build-info banner and in every absolute path in compile_commands.json. C02's recorded image hash e3c8ee0869a2a04a142bdd672ecc431dce946be2e6f98a7e1c9815c19488a9bc is bound to the old C:\\Program root and will NOT reproduce.",
+    "c02_evidence_status": "C02 PASS stands as accurate history: the image is untouched, still present, still executes, still hashes to its recorded value",
+    "baseline_image_hash": "e2effe2c375890d70cc28c40ab038ef00cc3e86cf384e25f1683f164918a9b9a",
+    "note": "same 2,369,536 bytes as the C02 image; differs only in embedded paths"
+  },
+
+  "frozen_baseline_identity": {
+    "bmx_commit": "389e9e35a1c7291a4af795b2e39f2db1f0012b61",
+    "bmx_tree": "1c73deedf0eb2feea833a7fddbc431ae9754d977",
+    "amrex_commit": "cbdc6580ee3d78cccdd37172e4ba077ee181f483",
+    "bmx_chem_K_H_sha256": "711ae2caa6e7aabb5c084fe841d2d90edb85ee53e7abc7a859d7de00e6614678",
+    "bmx_chem_K_H_lines": 2908,
+    "executable_sha256": "e2effe2c375890d70cc28c40ab038ef00cc3e86cf384e25f1683f164918a9b9a",
+    "executable_bytes": 2369536,
+    "build_seconds": 191,
+    "toolchain": "MSVC 19.44.35228.0 (toolset 14.44.35207) at C:\\Program1, Ninja 1.12.1, CMake 4.4.0, MS-MPI",
+    "phosphorus_state": "feature-off reference: chem_species.p_growth_limit=0; mesh species A B C D F P (legacy 6-component order)"
+  },
+
+  "p07_drift_check": {
+    "result": "NO DRIFT",
+    "detail": "bmx_chem_K.H is byte-identical to E-C6-KERNEL in P07_ISOLATED_CARBON_REPAIR_PREP_SANITIZED.md, whose stop conditions include 'drift between the historical Q05 kernel and the adopted successor source'",
+    "locators_checked": [
+      {"id": "CDEF-01", "locator": "bmx_chem_K.H:2173-2179", "found": "if (fA_tmp < 0.0) { cA -= dA2/new_cell_vol; ... } -- second-half A donor-exhaustion cap", "verdict": "locator accurate"},
+      {"id": "CDEF-02", "locator": "bmx_chem_K.H:2205-2211", "found": "if (fC_tmp < 0.0) { cC -= dC2/new_cell_vol; ... } -- C analogue", "verdict": "locator accurate"}
+    ],
+    "explicitly_not_claimed": "acceptance of the defect mappings, or that the code is or is not defective; that is C04 under a fresh exact-scope review"
+  },
+
+  "run_matrix": [
+    {"id": "B01_init_only", "ranks": 1, "exit": 0, "elapsed_s": 0.184},
+    {"id": "B02_steps20", "ranks": 1, "exit": 0, "elapsed_s": 1.443},
+    {"id": "B03_steps20_rerun", "ranks": 1, "exit": 0, "elapsed_s": 1.297},
+    {"id": "B04_steps20_seed2", "ranks": 1, "exit": 0, "elapsed_s": 1.301},
+    {"id": "B05_ckpt_write", "ranks": 1, "exit": 0, "elapsed_s": 0.739, "note": "produced 29-member chk00010"},
+    {"id": "B06_ckpt_restart", "ranks": 1, "exit": 0, "elapsed_s": 0.788, "note": "restarted from chk00010 and continued to step 20"},
+    {"id": "B07_steps20_2rank", "ranks": 2, "exit": 0, "elapsed_s": 1.025},
+    {"id": "B08_steps200_growth", "ranks": 1, "exit": 0, "elapsed_s": 12.311}
+  ],
+  "cases_executed": 8,
+  "cases_failed": 0,
+
+  "analysis": {
+    "comparator": "normalized RAW log (wall-clock timing lines removed)",
+    "analyzer_deterministic": true,
+    "analyzer_determinism_evidence": "run twice, output bytes identical",
+    "determinism_B02_vs_B03": {"identical": true, "differing_lines": 0},
+    "seed_B02_vs_B04": {"identical": true, "differing_lines": 0},
+    "ranks_B02_vs_B07_raw": {"identical": false, "differing_lines": 24},
+    "ranks_B02_vs_B07_no_decomposition_metadata": {"identical": false, "differing_lines": 7}
+  },
+
+  "analyzer_false_positive_corrected": {
+    "what": "the first analyzer compared a parsed observable stream and reported all three comparisons identical",
+    "why_wrong": "BMX prints species max/min at roughly one significant figure (e.g. '2e-05 0'), far too coarse to detect differences; the 1-rank vs 2-rank pair it called identical has 24 differing raw lines",
+    "fix": "authoritative comparator is now the normalized raw log; the parsed stream is retained only as a coarse view and explicitly labelled",
+    "effect": "determinism and seed results were re-derived with the corrected comparator"
+  },
+
+  "cross_rank_residual_difference": {
+    "one_rank": "Generating new growth tip. Parent id: 1 cpu: 0 child id: 2 cpu: 0",
+    "two_rank": "Generating new growth tip. Parent id: 1 cpu: 0 child id: 1 cpu: 1",
+    "physics_identical": true,
+    "physics_evidence": "same trigger length 0.00350903, same parent",
+    "identity_decomposition_dependent": true,
+    "ordering_differs": "rank stdout interleaves; under 2 ranks these lines appear after 'AMReX finalized'",
+    "classification": "OBSERVATION, not a defect finding",
+    "consequences": [
+      "a raw-log comparator can never be a valid cross-rank comparator here; C16 must compare canonical identities and metrics",
+      "P10 (C08) must preserve ledgers across MPI redistribution even though (id, cpu) is not stable across decompositions"
+    ]
+  },
+
+  "historical_defect_observations": {
+    "negative_species_minimum_records": 0,
+    "nonfinite_records": 0,
+    "interpretation": "This baseline configuration did NOT exhibit a negative minimum. Recorded as a fact about this configuration and run length. NOT evidence that CDEF-01/CDEF-02 are absent, and NOT a prediction about what P07 will change: the donor-exhaustion branches may simply never be reached here. Building fixtures that reach them is C04 work (AT_P07_DONOR_CAP_A, AT_P07_DONOR_CAP_C).",
+    "particle_growth": "count grows 1 -> 2 within 20 steps and remains 2 through 200 steps in B08; growth and tip generation occur, further splitting does not"
+  },
+
+  "artifacts": {
+    "run_index": "runs/c03-baseline/RUN_INDEX.json",
+    "manifest": "runs/c03-baseline/BASELINE_MANIFEST.json",
+    "manifest_member_count": 65,
+    "manifest_total_bytes": 3908409,
+    "manifest_sha256": "85020bf14a204d87e57377b378af431492c5a0ac38d0643cabd8c8803a1ab18e",
+    "analysis": "runs/c03-baseline/BASELINE_ANALYSIS.json"
+  },
+
+  "tests": [
+    {"id": "C03-T1-baseline-build", "status": "PASS", "evidence": "200/200 objects, bmx.exe e2effe2c..."},
+    {"id": "C03-T2-matrix-complete", "status": "PASS", "evidence": "8/8 cases exit 0"},
+    {"id": "C03-T3-manifest", "status": "PASS", "evidence": "65/65 members hashed"},
+    {"id": "C03-T4-replayable", "status": "PASS", "evidence": "RUN_INDEX.json records exact argv per case"},
+    {"id": "C03-T5-no-product-changes", "status": "PASS", "evidence": "baseline git status clean, HEAD 389e9e3, tree 1c73deed"},
+    {"id": "C03-T6-sufficient-for-p08", "status": "PASS", "evidence": "per-case raw logs, normalized hashes, deterministic analyzer reusable by C05"},
+    {"id": "C03-T7-analyzer-deterministic", "status": "PASS", "evidence": "two runs produced byte-identical output"},
+    {"id": "C03-T8-checkpoint-write-read", "status": "PASS", "evidence": "B05 wrote 29-member chk00010; B06 restarted from it"},
+    {"id": "C03-T9-no-source-tree-pollution", "status": "PASS", "evidence": "no compile_commands.json in baseline worktree; CMakeLists:159 copies only if EXISTS, which is false on a fresh build directory"}
+  ],
+
+  "files_changed": [
+    {"path": "tools/repro/native_windows_env.ps1", "reason": "hardened toolchain discovery"},
+    {"path": "tools/repro/run_baseline_matrix.ps1", "reason": "baseline run matrix, run index, artefact hashing"},
+    {"path": "tools/repro/analyze_baseline.py", "reason": "deterministic derived analysis from raw output"},
+    {"path": "evidence/stages/C03/STAGE_REPORT.md", "reason": "stage report"},
+    {"path": "evidence/stages/C03/STAGE_REPORT.json", "reason": "machine-readable stage report"},
+    {"path": "evidence/stages/C03/COMMIT.txt", "reason": "stage commit hash"}
+  ],
+  "production_source_files_changed": 0,
+
+  "claims_enabled": [
+    "an untouched canonical baseline was built and executed on the declared platform",
+    "its raw outputs are hashed, indexed, and deterministically summarisable",
+    "bmx_chem_K.H is drift-free against the historical P07 evidence kernel"
+  ],
+  "claims_still_prohibited": [
+    "official P06 acceptance",
+    "that any defect is present or absent",
+    "conservation or restart correctness (restart ran; no correctness comparator exists until C06B)",
+    "rank invariance",
+    "platform qualification",
+    "any scientific result",
+    "empirical calibration",
+    "formal P05-P18 acceptance",
+    "RG-SW:GO",
+    "RG-SCI:GO"
+  ],
+
+  "blockers": [
+    {"id": "B-C03-02", "owner": "writer", "dependency": "rebuild C02 under C:\\Program1 when a fresh C02 hash is needed", "safe_boundary": "non-blocking", "detail": "C02 image hash not reproducible after the install-path rename"},
+    {"id": "B-S00-03", "owner": "user/mentor", "dependency": "mentor/MENTOR_QUESTIONS_URGENT.md", "safe_boundary": "blocks C06B and final runs C10-C15", "detail": "biology decisions unresolved"},
+    {"id": "B-C02-01", "owner": "writer + independent review", "dependency": "evidence/stages/C02/DEFECTS.md", "safe_boundary": "D-C02-05 before any final run", "detail": "six defects worked around in build config"}
+  ],
+  "blockers_resolved_by_this_stage": ["B-C03-01"],
+
+  "release_status": {
+    "rg_sw": "INCOMPLETE",
+    "rg_sci": "NO-GO",
+    "formal_p05_p18_acceptance": false,
+    "label": "RESEARCH-USE-CANDIDATE — RG-SW INCOMPLETE"
+  },
+
+  "next_prompt": "prompts/claude/C04_P07_CARBON_REPAIR_IMPLEMENT_AND_VALIDATE.md"
+}

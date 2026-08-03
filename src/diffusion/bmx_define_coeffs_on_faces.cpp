@@ -6,6 +6,7 @@
 #include <AMReX_MultiFabUtil.H>
 #include <bmx_diffusion_op.H>
 #include <bmx_fluid_parms.H>
+#include <bmx_phosphorus_geometry_K.H>
 
 using namespace amrex;
 
@@ -72,7 +73,21 @@ void DiffusionOp::define_coeffs_on_faces ( const Vector< MultiFab const* > D_k_i
 
         auto& geom = amrcore->Geom(lev);
 
+        // C09/P11 is explicitly default-off.  When enabled, validating every
+        // active level here makes the physical mask independent of AMR index
+        // space and fails before an unaligned face can enter the operator.
+        const auto p11_geometry =
+            BMXPhosphorusGeometry::loadAndValidate(
+                geom, FLUID::chem_species);
+        Gpu::DeviceScalar<amrex::Long> p11_masked_faces_gpu(0);
+        Gpu::DeviceScalar<int> p11_nonzero_mask_gpu(0);
+        auto* p11_masked_faces = p11_masked_faces_gpu.dataPtr();
+        auto* p11_nonzero_mask = p11_nonzero_mask_gpu.dataPtr();
+
+        Real dx = geom.CellSize(0);
         Real dz = geom.CellSize(2);
+        Real xlo = geom.ProbLo(0);
+        int xsmall = geom.Domain().smallEnd(0);
         Real zhi = FLUID::surface_location;
 
         //
@@ -104,6 +119,27 @@ void DiffusionOp::define_coeffs_on_faces ( const Vector< MultiFab const* > D_k_i
                //  printf("bx[%d,%d,%d,%d] is zero\n",i,j,k,n);
                      bx_arr(i,j,k,n) = 0.;
                      }
+
+              // The aperture never reopens Eulerian phosphorus diffusion.
+              // Only enabled-layout P_D/P_F are masked; all legacy species
+              // retain the coefficient produced by the pre-C09 code above.
+              const Real x_face =
+                  xlo + static_cast<Real>(i - xsmall) * dx;
+              const bool p11_mask_target =
+                  BMXPhosphorusGeometry::isMaskedMeshComponent(
+                      n, p11_geometry) &&
+                  BMXPhosphorusGeometry::isDividerFace(
+                      x_face, p11_geometry);
+              bx_arr(i,j,k,n) =
+                  BMXPhosphorusGeometry::maskedFaceCoefficient(
+                      bx_arr(i,j,k,n), 0, n, x_face, p11_geometry);
+              if (p11_mask_target) {
+                amrex::Gpu::Atomic::Add(
+                    p11_masked_faces, amrex::Long(1));
+                if (bx_arr(i,j,k,n) != Real(0.0)) {
+                  amrex::Gpu::Atomic::Exch(p11_nonzero_mask, 1);
+                }
+              }
           });
 
           Box const& ybx = mfi.nodaltilebox(1);
@@ -139,5 +175,20 @@ void DiffusionOp::define_coeffs_on_faces ( const Vector< MultiFab const* > D_k_i
                        }
           });
         } // mfi
+        if (p11_geometry.enabled) {
+          Gpu::synchronize();
+          amrex::Long masked_faces = p11_masked_faces_gpu.dataValue();
+          int nonzero_mask = p11_nonzero_mask_gpu.dataValue();
+          ParallelDescriptor::ReduceLongSum(masked_faces);
+          ParallelDescriptor::ReduceIntMax(nonzero_mask);
+          if (nonzero_mask != 0) {
+            amrex::Abort(
+                "P11 divider mask failed to set a P_D/P_F face to exact zero");
+          }
+          amrex::Print()
+              << "P11_DIVIDER_MASK level=" << lev
+              << " masked_faces=" << masked_faces
+              << " nonzero_faces=" << nonzero_mask << '\n';
+        }
     } // lev
 }

@@ -1,0 +1,38 @@
+{
+  "artifact_type": "C13_P15_OPERATOR_FIT",
+  "contract_id": "bmx-p15-c13-operator-fit-v1",
+  "status": "USER_DIRECTED_TECHNICAL_FIT",
+  "classification": "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+  "authority_source_sha256": "cbd1eedddf31b94c8a9d23d7b2d3329f065a007824387c70435d1004fdc6f350",
+  "global_operator_order": {
+    "id": "bmx-p10-global-order-v1",
+    "sha256": "bb63c219a860687d91ce1acf06a667c9208abf026b32f18acfc64884bb696dd6",
+    "changed": false
+  },
+  "frozen_kernel": {
+    "path": "src/chemistry/bmx_chem_K.H",
+    "sha256": "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02",
+    "changed": false
+  },
+  "fits": [
+    {
+      "behavior": "Build the current-topology physical metric graph and terminal eligible areas once before any O02 amount mutation.",
+      "slot": "O02_LOCAL_MESH_PARTICLE_UPDATE",
+      "reason": "Eligible uptake area is an input to the already frozen membrane request/arbitration transaction; topology created later becomes visible on the next update."
+    },
+    {
+      "behavior": "Apply conservative finite-volume D-only diffusion over canonical graph junctions after split and before fusion.",
+      "slot": "O07_BONDED_TRANSPORT",
+      "reason": "O07 already reserves D-mobile, E-immobile, F-zero bonded transport over final post-split ownership."
+    },
+    {
+      "behavior": "Evaluate export after final topology and bonded transport.",
+      "slot": "O09_INTERFACE_EXPORT_TRANSACTION",
+      "reason": "Unchanged C12/P14 fit; C13 adds no export reorder."
+    }
+  ],
+  "numerical_contract_effect": "The 216-hour preregistration selects no new operator and does not change sequence.",
+  "new_order_review_required": false,
+  "independent_review_boundary": "Independent review applies to frozen source and numerical contract before 216-hour qualification outcomes, not to a new global order.",
+  "claim_boundary": "Technical placement only; no biological parameter, calibration, predictive, or outcome claim."
+}

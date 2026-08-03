@@ -127,6 +127,40 @@ include(BMXSetupAMReX)
 
 get_git_info( )
 
+#
+# Build provenance (D-C04-08).
+#
+# get_git_info() above is invoked with no arguments, so its ${ARGC} guards
+# never fire and it captures nothing -- it only prints. Provenance that the
+# binary can actually report is resolved here instead, and works in linked
+# worktrees on both Windows and Linux.
+#
+# BMX_REQUIRE_PROVENANCE is OFF by default so ordinary development builds are
+# unaffected. Turn it ON for any build whose output is intended as release
+# evidence; configure then fails rather than emitting an unattributable binary.
+#
+include(BMX_Provenance)
+option(BMX_REQUIRE_PROVENANCE
+       "Fail configuration if build provenance cannot be established" OFF)
+
+bmx_resolve_provenance("${CMAKE_CURRENT_SOURCE_DIR}")
+set(BMX_PROVENANCE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
+
+if(BMX_PROVENANCE_STATUS STREQUAL "RESOLVED")
+  message(STATUS "BMX provenance: ${BMX_GIT_COMMIT} (${BMX_GIT_BRANCH}, ${BMX_GIT_DIRTY}) -- ${BMX_PROVENANCE_NOTE}")
+else()
+  message(WARNING "BMX provenance UNAVAILABLE: ${BMX_PROVENANCE_NOTE}")
+endif()
+
+if(BMX_REQUIRE_PROVENANCE)
+  bmx_require_provenance()
+endif()
+
+configure_file(
+  ${CMAKE_CURRENT_SOURCE_DIR}/tools/CMake/bmx_provenance.H.in
+  ${CMAKE_CURRENT_BINARY_DIR}/bmx_generated/bmx_provenance.H
+  @ONLY)
+
 # Set some cache variable for the whole project
 set( MAIN ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp CACHE INTERNAL "Main source file")
 

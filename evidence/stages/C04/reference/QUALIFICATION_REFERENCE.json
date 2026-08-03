@@ -1,0 +1,108 @@
+{
+  "all_checks_passed": true,
+  "classification_source": "classification from tools/repro/linux_env.sh",
+  "failures": [],
+  "generated_utc": "2026-08-01T02:19:10.266244+00:00",
+  "not_release_evidence_because": [],
+  "platform": "native Linux / Ubuntu 24.04.4 LTS / kernel 6.17.0-1021-gcp",
+  "platform_class": "reference-capable",
+  "provenance_resolved": true,
+  "reference_capable": true,
+  "release_evidence": true,
+  "steps": [
+    {
+      "detail": "9519fc24ec7ea15f... matches the reviewed candidate",
+      "expected": "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02",
+      "sha256": "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02",
+      "status": "PASS",
+      "step": "identity_reviewed_candidate_kernel"
+    },
+    {
+      "commit": "cbdc6580ee3d78cccdd37172e4ba077ee181f483",
+      "detail": "commit cbdc6580ee3d, tree fb714dc6e693",
+      "status": "PASS",
+      "step": "identity_amrex",
+      "tree": "fb714dc6e693c18f7c441d1d1febe4a5e8bf9ea6"
+    },
+    {
+      "detail": "status=RESOLVED commit=b686981faa9d dirty=clean",
+      "provenance": {
+        "BMX_GIT_BRANCH": "HEAD",
+        "BMX_GIT_COMMIT": "b686981faa9dcc8505ed668b4e394fc553afd93f",
+        "BMX_GIT_COMMIT_SHORT": "b686981faa9d",
+        "BMX_GIT_DESCRIBE": "v0.1-144-gb686981faa9d",
+        "BMX_GIT_DIRTY": "clean",
+        "BMX_PROVENANCE_NOTE": "ordinary checkout",
+        "BMX_PROVENANCE_STATUS": "RESOLVED"
+      },
+      "status": "PASS",
+      "step": "identity_build_provenance"
+    },
+    {
+      "detail": "reused existing images",
+      "images": {
+        "baseline": "e74b4377e266f8966e3f979f0dfde9b8e6458f595effa7f0e6d2929b053909af",
+        "baseline_diag": "320bb021dae13a075527b302bc7f9cefbda6035e395e10d71384bb1de07e3d88",
+        "candidate": "d2655f1e8a2136b98a2d6531914d646c25da4388027cbc22596111dfe5cf90d2",
+        "candidate_diag": "661766e9283018f01cfc6205378192bd4743d3385540f975017630c0523ee2c4"
+      },
+      "status": "PASS",
+      "step": "build_images_present"
+    },
+    {
+      "detail": "all four images report RESOLVED provenance on a clean tree",
+      "images": {
+        "baseline": {
+          "commit": "7743106d8e1c1f9ae845afc198d920ac513042ff",
+          "sha256": "e74b4377e266f8966e3f979f0dfde9b8e6458f595effa7f0e6d2929b053909af",
+          "status": "RESOLVED",
+          "worktree": "clean"
+        },
+        "baseline_diag": {
+          "commit": "7743106d8e1c1f9ae845afc198d920ac513042ff",
+          "sha256": "320bb021dae13a075527b302bc7f9cefbda6035e395e10d71384bb1de07e3d88",
+          "status": "RESOLVED",
+          "worktree": "clean"
+        },
+        "candidate": {
+          "commit": "b686981faa9dcc8505ed668b4e394fc553afd93f",
+          "sha256": "d2655f1e8a2136b98a2d6531914d646c25da4388027cbc22596111dfe5cf90d2",
+          "status": "RESOLVED",
+          "worktree": "clean"
+        },
+        "candidate_diag": {
+          "commit": "b686981faa9dcc8505ed668b4e394fc553afd93f",
+          "sha256": "661766e9283018f01cfc6205378192bd4743d3385540f975017630c0523ee2c4",
+          "status": "RESOLVED",
+          "worktree": "clean"
+        }
+      },
+      "status": "PASS",
+      "step": "per_image_provenance_resolved_and_exact"
+    },
+    {
+      "detail": "7 fixtures, failing=0, neutrality=PASS",
+      "index": "/home/jherrera2007/bmx-c04-qual/runs/c04-p07-geometry/GEOMETRY_INDEX.json",
+      "status": "PASS",
+      "step": "geometry_matrix"
+    },
+    {
+      "detail": "5/5 checks",
+      "index": "/home/jherrera2007/bmx-c04-qual/runs/c04-diag-check/DIAGNOSTIC_CHECKS.json",
+      "status": "PASS",
+      "step": "diagnostic_regression_guard"
+    },
+    {
+      "detail": "verdict=CAP_FIRES_AND_TRANSFER_EQUALS_AVAILABLE, saturation=True, transfer_equals_available=True",
+      "index": "/home/jherrera2007/bmx-c04-qual/runs/c04-p07-donor-cap-fixture/DONOR_CAP_FIXTURE.json",
+      "status": "PASS",
+      "step": "donor_cap_fixture"
+    },
+    {
+      "detail": "7/7 checks",
+      "index": "/home/jherrera2007/bmx-c04-qual/runs/c04-provenance-check/PROVENANCE_CHECKS.json",
+      "status": "PASS",
+      "step": "provenance_regression_fixture"
+    }
+  ]
+}

@@ -7,6 +7,9 @@
 #include <bmx_dem_parms.H>
 #include <bmx_bc_parms.H>
 #include <bmx_cell_interaction_K.H>
+#include <bmx_fluid_parms.H>
+
+#include <atomic>
 
 using namespace amrex;
 
@@ -19,6 +22,19 @@ void BMXParticleContainer::EvolveParticles (Real dt,
     BL_PROFILE("bmx_dem::EvolveParticles()");
 
     Real eps = std::numeric_limits<Real>::epsilon();
+    const auto p11_update_binding =
+        BMXPhosphorusGeometry::readInputBinding();
+    std::atomic<amrex::Long> p11_attempted_update{0};
+    std::atomic<amrex::Long> p11_projected_update{0};
+    std::atomic<amrex::Long> p11_tangential_update{0};
+    if (p11_update_binding.enabled) {
+      p11_attempted_penetrations = 0;
+      p11_projected_motions = 0;
+      p11_tangential_motions = 0;
+      // C09 owns mechanics only.  The explicit field remains zero until a
+      // later authorized growth/debit operator records an actual rejection.
+      p11_rejected_growth = 0;
+    }
 
     // If this is first pass through this routine, check to see if
     // DEM::neighborhood parameter needs to be reset
@@ -38,6 +54,10 @@ void BMXParticleContainer::EvolveParticles (Real dt,
 
     for (int lev = 0; lev <= finest_level; lev++)
     {
+
+    const auto p11_geometry =
+        BMXPhosphorusGeometry::loadAndValidate(
+            Geom(lev), FLUID::chem_species);
 
     int n_at_lev = this->NumberOfParticlesAtLevel(lev);
     amrex::Print() << "In Evolve Particles with " << n_at_lev << " particles at level " << lev << std::endl;
@@ -349,15 +369,28 @@ void BMXParticleContainer::EvolveParticles (Real dt,
             int z_hi_bc = BC::domain_bc[5];
 
             bool verbose = p_verbose;
+            Gpu::DeviceScalar<int> p11_geometry_failure_gpu(0);
+            Gpu::DeviceScalar<amrex::Long> p11_attempted_gpu(0);
+            Gpu::DeviceScalar<amrex::Long> p11_projected_gpu(0);
+            Gpu::DeviceScalar<amrex::Long> p11_tangential_gpu(0);
+            int* p11_geometry_failure =
+                p11_geometry_failure_gpu.dataPtr();
+            auto* p11_attempted = p11_attempted_gpu.dataPtr();
+            auto* p11_projected = p11_projected_gpu.dataPtr();
+            auto* p11_tangential = p11_tangential_gpu.dataPtr();
             amrex::ParallelFor(nrp,
               [pstruct,subdt,fc_ptr,ntot,eps,p_hi,p_lo,
                x_lo_bc,x_hi_bc,y_lo_bc,y_hi_bc,z_lo_bc,z_hi_bc,
-              verbose]
+               verbose,p11_geometry,p11_geometry_failure,p11_attempted,
+               p11_projected,p11_tangential]
               AMREX_GPU_DEVICE (int i) noexcept
               {
                 auto& particle = pstruct[i];
 
                 RealVect ppos(particle.pos());
+                Real old_pos[3] = {ppos[0], ppos[1], ppos[2]};
+                const Real old_theta = particle.rdata(realIdx::theta);
+                const Real old_phi = particle.rdata(realIdx::phi);
 
                 particle.rdata(realIdx::velx) = fc_ptr[i];
                 particle.rdata(realIdx::vely) = fc_ptr[i+ntot];
@@ -472,6 +505,35 @@ void BMXParticleContainer::EvolveParticles (Real dt,
                   particle.rdata(realIdx::phi) = phi;
                 }
 
+                const auto geometry_result = constrainP11ParticleMotion(
+                    old_pos, &ppos[0], &particle.rdata(0),
+                    &particle.idata(0), old_theta, old_phi,
+                    &particle.rdata(realIdx::velx),
+                    &particle.rdata(realIdx::wx), p11_geometry);
+                if (geometry_result.attempted_penetration) {
+                  amrex::Gpu::Atomic::Add(p11_attempted, amrex::Long(1));
+                }
+                if (geometry_result.projected) {
+                  amrex::Gpu::Atomic::Add(p11_projected, amrex::Long(1));
+                }
+                if (geometry_result.tangential_motion) {
+                  amrex::Gpu::Atomic::Add(p11_tangential, amrex::Long(1));
+                }
+                if (!geometry_result.valid) {
+                  amrex::Gpu::Atomic::Exch(p11_geometry_failure, 1);
+                  ppos[0] = old_pos[0];
+                  ppos[1] = old_pos[1];
+                  ppos[2] = old_pos[2];
+                  particle.rdata(realIdx::theta) = old_theta;
+                  particle.rdata(realIdx::phi) = old_phi;
+                  particle.rdata(realIdx::velx) = Real(0.0);
+                  particle.rdata(realIdx::vely) = Real(0.0);
+                  particle.rdata(realIdx::velz) = Real(0.0);
+                  particle.rdata(realIdx::wx) = Real(0.0);
+                  particle.rdata(realIdx::wy) = Real(0.0);
+                  particle.rdata(realIdx::wz) = Real(0.0);
+                }
+
                 particle.pos(0) = ppos[0];
                 particle.pos(1) = ppos[1];
                 particle.pos(2) = ppos[2];
@@ -492,6 +554,18 @@ void BMXParticleContainer::EvolveParticles (Real dt,
             BL_PROFILE_VAR_STOP(des_time_march);
 
             amrex::Gpu::synchronize();
+
+            if (p11_geometry_failure_gpu.dataValue() != 0) {
+              amrex::Abort(
+                  "P11 particle geometry rejected an invalid initial or "
+                  "unprojectable capsule before redistribution");
+            }
+            p11_attempted_update.fetch_add(
+                p11_attempted_gpu.dataValue(), std::memory_order_relaxed);
+            p11_projected_update.fetch_add(
+                p11_projected_gpu.dataValue(), std::memory_order_relaxed);
+            p11_tangential_update.fetch_add(
+                p11_tangential_gpu.dataValue(), std::memory_order_relaxed);
 
 
             /********************************************************************
@@ -528,11 +602,123 @@ void BMXParticleContainer::EvolveParticles (Real dt,
 
     } // lev
 
+    if (p11_update_binding.enabled) {
+      p11_attempted_penetrations =
+          p11_attempted_update.load(std::memory_order_relaxed);
+      p11_projected_motions =
+          p11_projected_update.load(std::memory_order_relaxed);
+      p11_tangential_motions =
+          p11_tangential_update.load(std::memory_order_relaxed);
+    }
+
 #ifdef _OPENMP
 #pragma omp parallel if (amrex::Gpu::notInLaunchRegion())
 #endif
 
     BL_PROFILE_REGION_STOP("bmx_dem::EvolveParticles()");
+}
+
+void BMXParticleContainer::AuditP11GeometryEvents (int update_id)
+{
+  const auto p11_binding = BMXPhosphorusGeometry::readInputBinding();
+  if (!p11_binding.enabled) return;
+  if (update_id <= p11_last_audit_update) {
+    amrex::Abort(
+        "P11 geometry event audit rejected a duplicate or out-of-order update id");
+  }
+  p11_last_audit_update = update_id;
+
+  // One traversal of each final owned AoS entry makes the logical event key
+  // (stable AMReX particle id, update_id, contract_id) unique without any
+  // cell-, tile-, rank-, periodic-image-, or AMR-dependent discovery pass.
+  amrex::Long window_contacts = 0;
+  amrex::Long true_crossings = 0;
+  amrex::Long solid_contacts = 0;
+  amrex::Long contact_id_checksum = 0;
+  int invalid_geometry = 0;
+  for (int lev = 0; lev <= finest_level; ++lev) {
+    const auto event_geometry =
+        BMXPhosphorusGeometry::loadAndValidate(
+            Geom(lev), FLUID::chem_species);
+    for (BMXParIter pti(*this, lev); pti.isValid(); ++pti) {
+      PairIndex index(pti.index(), pti.LocalTileIndex());
+      auto& tile = GetParticles(lev)[index];
+      auto& aos = tile.GetArrayOfStructs();
+      ParticleType* particles = aos().dataPtr();
+      const int owned_count = tile.numRealParticles();
+      Gpu::DeviceScalar<amrex::Long> contacts_gpu(0);
+      Gpu::DeviceScalar<amrex::Long> crossings_gpu(0);
+      Gpu::DeviceScalar<amrex::Long> solids_gpu(0);
+      Gpu::DeviceScalar<amrex::Long> checksum_gpu(0);
+      Gpu::DeviceScalar<int> invalid_gpu(0);
+      auto* contacts = contacts_gpu.dataPtr();
+      auto* crossings = crossings_gpu.dataPtr();
+      auto* solids = solids_gpu.dataPtr();
+      auto* checksum = checksum_gpu.dataPtr();
+      auto* invalid = invalid_gpu.dataPtr();
+      amrex::ParallelFor(
+          owned_count,
+          [particles,event_geometry,contacts,crossings,solids,checksum,invalid]
+          AMREX_GPU_DEVICE (int particle_index) noexcept
+          {
+            const auto& particle = particles[particle_index];
+            if (particle.idata(intIdx::cell_type) != cellType::FUNGI) {
+              return;
+            }
+            const Real position[3] = {
+                particle.pos(0), particle.pos(1), particle.pos(2)};
+            const auto classification = classifyP11ParticleGeometry(
+                position, &particle.rdata(0), &particle.idata(0),
+                event_geometry);
+            if (!classification.valid) {
+              amrex::Gpu::Atomic::Exch(invalid, 1);
+              return;
+            }
+            if (classification.solid_contact) {
+              amrex::Gpu::Atomic::Add(solids, amrex::Long(1));
+            }
+            if (classification.window_contact) {
+              amrex::Gpu::Atomic::Add(contacts, amrex::Long(1));
+              amrex::Gpu::Atomic::Add(
+                  checksum, static_cast<amrex::Long>(particle.id()));
+            }
+            if (classification.true_crossing) {
+              amrex::Gpu::Atomic::Add(crossings, amrex::Long(1));
+            }
+          });
+      window_contacts += contacts_gpu.dataValue();
+      true_crossings += crossings_gpu.dataValue();
+      solid_contacts += solids_gpu.dataValue();
+      contact_id_checksum += checksum_gpu.dataValue();
+      invalid_geometry = amrex::max(invalid_geometry,
+                                    invalid_gpu.dataValue());
+    }
+  }
+  ParallelDescriptor::ReduceLongSum(window_contacts);
+  ParallelDescriptor::ReduceLongSum(true_crossings);
+  ParallelDescriptor::ReduceLongSum(solid_contacts);
+  ParallelDescriptor::ReduceLongSum(contact_id_checksum);
+  ParallelDescriptor::ReduceLongSum(p11_attempted_penetrations);
+  ParallelDescriptor::ReduceLongSum(p11_projected_motions);
+  ParallelDescriptor::ReduceLongSum(p11_tangential_motions);
+  ParallelDescriptor::ReduceLongSum(p11_rejected_growth);
+  ParallelDescriptor::ReduceIntMax(invalid_geometry);
+  if (invalid_geometry != 0) {
+    amrex::Abort(
+        "P11 geometry event audit rejected a nonfinite or invalid capsule");
+  }
+  amrex::Print()
+      << "P11_GEOMETRY_EVENTS contract="
+      << BMXPhosphorusGeometry::contract_id
+      << " update_id=" << update_id
+      << " window_contact=" << window_contacts
+      << " true_crossing=" << true_crossings
+      << " solid_contact=" << solid_contacts
+      << " contact_id_checksum=" << contact_id_checksum
+      << " attempted_penetration=" << p11_attempted_penetrations
+      << " projected_motion=" << p11_projected_motions
+      << " tangential_motion=" << p11_tangential_motions
+      << " rejected_growth=" << p11_rejected_growth << '\n';
 }
 
 /*******************************************************************************

@@ -1,0 +1,143 @@
+{
+  "artifact_type": "P14_EXPORT_REWARD_CONTRACT",
+  "schema_version": 1,
+  "contract_id": "bmx-p14-export-reward-v1",
+  "stage": "C12/P14",
+  "status": "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+  "frozen_before_implementation": true,
+  "authority": {
+    "decision_id": "UDC-20260802-P14-C12-BINDINGS-V1",
+    "authority_kind": "EXPLICIT_USER_IMPLEMENTATION_AND_PREREGISTRATION_AUTHORITY_FOR_RG_SW",
+    "adopted_at": "2026-08-02",
+    "supersedes_blockers": [
+      "D-C12-01-INTERFACE-FRACTION-DEFINITION",
+      "D-C12-02-REWARD-CONVERSION-CONSTANT"
+    ],
+    "classification": "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+    "mentor_approval": false,
+    "calibration": false,
+    "closed_scientific": false,
+    "predictive_validation": false
+  },
+  "dependencies": {
+    "user_adopted_v2_sha256": "34e8414c09e6528fc86399ceb4902cb5fc6907d9562fcf7a78cb3a8e4e333066",
+    "p11_geometry_contract_id": "bmx-p11-split-plate-geometry-v1",
+    "p11_geometry_contract_sha256": "6a4329f013c857c664a11d669747845006a6c0c9d34f568625b6939d1462acba",
+    "global_operator_order_id": "bmx-p10-global-order-v1",
+    "global_operator_order_sha256": "bb63c219a860687d91ce1acf06a667c9208abf026b32f18acfc64884bb696dd6",
+    "global_operator_slot": "O09_INTERFACE_EXPORT_TRANSACTION",
+    "global_operator_order_changed": false,
+    "frozen_kernel_sha256": "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02"
+  },
+  "transaction": {
+    "eligible_particle_kind": "final-topology fungal segment",
+    "donor": "segment-local internal P_D amount",
+    "recipient": "external exported_p host-receipt ledger",
+    "reward_recipient": "same segment's local internal A pool",
+    "evaluate_at_most_once_per_segment_per_update": true,
+    "request_expression": "delta_N_P_requested = f_I * N_D * (1 - exp(-k_export * dt))",
+    "accepted_expression": "delta_N_P_accepted = min(max(delta_N_P_requested,0), max(N_D,0))",
+    "rejected_expression": "delta_N_P_rejected = delta_N_P_requested - delta_N_P_accepted",
+    "commit": "compute request and all caps first, then atomically debit local D, credit exported_p, and credit local A in the same O09 update",
+    "ledger_rule": "requested, accepted, rejected, exported_p receipt, and exchange-derived A reward update exactly once; bootstrap A remains separate",
+    "F_state": "inactive and unchanged"
+  },
+  "interface_fraction": {
+    "name": "continuous finite-radius axial-contact fraction",
+    "segment_centerline": "p_i(s) = (1-s)*a_i + s*b_i for s in [0,1]",
+    "aperture_closed_support_xz_cm": {
+      "x": [-0.05, 0.05],
+      "z": [0.8, 1.0]
+    },
+    "active_parameter_set": "S_i = {s in [0,1] : distance_2D((p_i.x(s),p_i.z(s)), W_xz) < r_i}",
+    "boundary_policy": "apply the existing P11 boundary-snapping and tolerance policy before measuring S_i; distance within tolerance of r_i is tangency and contributes zero active measure",
+    "eligible_expression": "if valid fungal geometry has P11 window_contact=1 and solid_contact=0, f_I = normalized_interval_measure(S_i); otherwise f_I=0",
+    "normalized_measure": "one-dimensional parameter-interval measure of S_i divided by measure([0,1]); because measure([0,1])=1 this is the axial centerline-length fraction",
+    "solid_frame_precedence": true,
+    "true_crossing_role": "diagnostic only; not an additional P14 eligibility requirement",
+    "prohibited_inputs": [
+      "cell occupancy",
+      "AMR level",
+      "rank",
+      "tile",
+      "decomposition"
+    ],
+    "hard_abort_inputs": [
+      "invalid or nonfinite geometry",
+      "nonpositive centerline length",
+      "nonpositive owning volume",
+      "nonfinite f_I",
+      "f_I outside [0,1]"
+    ]
+  },
+  "segment_refinement": {
+    "scope": "geometry-preserving collinear subdivision with unchanged radius and the same physical union",
+    "child_rule": "recompute every child from its final geometry; never inherit the parent f_I",
+    "volume_identity": "f_parent * V_parent = sum_j(f_child_j * V_child_j)",
+    "amount_identity_after_c08_partition": "f_parent * N_D_parent = sum_j(f_child_j * N_D_child_j)",
+    "comparator": "P10 local tolerance: abs(residual) <= 64*epsilon_double*S_L1",
+    "excluded_as_physical_topology_changes": [
+      "radius change",
+      "orientation change",
+      "branching",
+      "change of geometric union"
+    ]
+  },
+  "reward": {
+    "executable_symbol": "P14_REWARD_MOLAR_MULTIPLIER",
+    "exact_decimal": "7.736",
+    "exact_rational": {
+      "numerator": 967,
+      "denominator": 125
+    },
+    "units": "mol A-equivalent per mol elemental-P accepted and exported",
+    "expression": "delta_N_A = 7.736 * delta_N_P_accepted",
+    "applies_to": "accepted export only",
+    "atomic_mass_constants_prohibited": true,
+    "atomic_mass_table_derivation_prohibited": true,
+    "bootstrap_A_and_exchange_derived_A_provenance_separate": true
+  },
+  "k_export": {
+    "units": "s^-1",
+    "approved_levels": [
+      "0",
+      "1e-6",
+      "5.26977773579e-6",
+      "1e-5",
+      "1e-4"
+    ],
+    "matched_zero_control_required_for_every_enabled_case": true
+  },
+  "qualification_obligations": [
+    "feature-off identity",
+    "no-contact geometry",
+    "tangency geometry",
+    "partial-contact geometry",
+    "full-contact geometry",
+    "oblique-contact geometry",
+    "solid-edge precedence",
+    "window-contact-only eligibility",
+    "true-crossing diagnostic-only eligibility",
+    "analytical exponential export",
+    "all five adopted k_export levels",
+    "exact zero-export controls",
+    "donor cap and nonnegative local D",
+    "exact 7.736 reward relation",
+    "atomic export/reward behavior",
+    "local and global P conservation",
+    "bootstrap-A versus exchange-derived-A provenance",
+    "checkpoint/restart equivalence",
+    "one-rank/two-rank and decomposition stability",
+    "geometry-preserving one-to-two, one-to-four, and one-to-eight segment-refinement identity",
+    "invalid/nonfinite and deliberate fault injection",
+    "unchanged frozen-kernel and global-order hashes"
+  ],
+  "stop_conditions": [
+    "P14 cannot remain in O09",
+    "OPERATOR_ORDER_V1.json would change",
+    "the frozen chemistry kernel would change",
+    "a qualification obligation fails",
+    "an unstated P14 or P15 value is required"
+  ],
+  "claim_boundary": "Binding implementation and preregistration authority for RG-SW only. This is not mentor approval, calibration, CLOSED_SCIENTIFIC, predictive validation, C13 scientific-outcome authorization, active-F authorization, or formal P05-P18 acceptance."
+}

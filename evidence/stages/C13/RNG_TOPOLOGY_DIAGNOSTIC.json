@@ -1,0 +1,137 @@
+{
+  "artifact_type": "C13_P15_STOCHASTIC_TOPOLOGY_DIAGNOSTIC",
+  "stage": "C13/P15 Stage 0",
+  "status": "BLOCKED",
+  "classification": "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+  "purpose": "One-update pre-review diagnostic of the preregistered exact RNG and topology-event identity requirement across P0/P1 ownership.",
+  "seed": 2461941894568478670,
+  "initial_network_sha256": "3f11787ce173e57dd60ff2c7d3d85779b9a1c63b018e7ab2ced75671ad833233",
+  "generator_sha256": "175e520767f8c78d1e0ae93cb39ffd0583c9efc0c9db41f2e80dd0b96a81c1c0",
+  "cases": {
+    "P0": {
+      "mpi_ranks": 1,
+      "box_array": [
+        1,
+        1,
+        1
+      ],
+      "returncode": 0
+    },
+    "P1": {
+      "mpi_ranks": 2,
+      "box_array": [
+        2,
+        1,
+        1
+      ],
+      "returncode": 0
+    }
+  },
+  "particle_comparison": {
+    "status": "FAIL",
+    "exact_schema": true,
+    "exact_identifiers": false,
+    "exact_discrete_fields": true,
+    "floating_tolerance": 1e-12,
+    "floating_failures": 0,
+    "max_relative_difference": 0.0,
+    "first_difference": null
+  },
+  "topology_evidence": {
+    "P0_created_particles": [
+      {
+        "stable_id": 3,
+        "stable_cpu": 0,
+        "amrex_id": 3,
+        "amrex_cpu": 0,
+        "position_cm": [
+          0.197519553539154,
+          0.0498081681753332,
+          0.900506084279017
+        ],
+        "radius_cm": 0.0005,
+        "length_cm": 0.015,
+        "theta": 1.63832554336299,
+        "phi": 0.0256388158581591,
+        "bond_count": 1,
+        "bond_ids": [
+          1,
+          -1,
+          -1,
+          -1
+        ],
+        "bond_cpus": [
+          0,
+          -1,
+          -1,
+          -1
+        ],
+        "bond_sites": [
+          2,
+          -1,
+          -1,
+          -1
+        ]
+      }
+    ],
+    "P1_created_particles": [
+      {
+        "stable_id": 1,
+        "stable_cpu": 1,
+        "amrex_id": 1,
+        "amrex_cpu": 1,
+        "position_cm": [
+          0.197500060881142,
+          0.050021056663246,
+          0.900021675570508
+        ],
+        "radius_cm": 0.0005,
+        "length_cm": 0.015,
+        "theta": 1.57368640688585,
+        "phi": 6.28037773666654,
+        "bond_count": 1,
+        "bond_ids": [
+          1,
+          -1,
+          -1,
+          -1
+        ],
+        "bond_cpus": [
+          0,
+          -1,
+          -1,
+          -1
+        ],
+        "bond_sites": [
+          2,
+          -1,
+          -1,
+          -1
+        ]
+      }
+    ],
+    "P0_post_update_sha256": "b6c52f0933eba37d993cd933594775a8e91bb72d6cd426827cf8ca76d250fe51",
+    "P1_post_update_sha256": "53e9135cd89c24c6756f6dbb9e961711712a74d41087f8be97042d767992adc2",
+    "P0_topology_log": [
+      "LENGTH:       0.02000000",
+      "Generating new growth tip. Parent id: 1 cpu: 0 child id: 3 cpu: 0",
+      "New tip parent id: 1 cpu: 0 child id: 3 cpu: 0"
+    ],
+    "P1_topology_log": [
+      "LENGTH:       0.02000000",
+      "Generating new growth tip. Parent id: 1 cpu: 0 child id: 1 cpu: 1",
+      "New tip parent id: 1 cpu: 0 child id: 1 cpu: 1"
+    ]
+  },
+  "root_cause": {
+    "observed": "The same parent and one-update split predicate generated a different child stable key and different child geometry when particle ownership moved from MPI rank 0 to rank 1.",
+    "inherited_stream_initialization": "src/setup/bmx_init.cpp resets AMReX with bmx.seed plus the current MPI rank plus one; frozen checkSplit/setNewSegment then consume that rank-local stream.",
+    "missing_binding": "The numerical preregistration requires an exact RNG key/draw ledger but does not bind the stateless key tuple, key-to-seed hash/PRNG, draw domains/order, deterministic child-ID allocation, or checkpoint representation. Selecting those bytes would alter stochastic topology outcomes."
+  },
+  "diagnosis": "The inherited per-rank AMReX stream does not satisfy the frozen cross-decomposition RNG/event identity requirement on this non-outcome fixture; source freeze must remain blocked pending a stateless canonical RNG/event implementation.",
+  "qualification_outcomes_enabled": false,
+  "outcome_hours": 0,
+  "external_resources": "none",
+  "external_spend_usd": 0,
+  "claim_boundary": "Engineering diagnostic only; not independent review, a 216-hour qualification outcome, mentor approval, calibration, predictive validation, or P15 science."
+}

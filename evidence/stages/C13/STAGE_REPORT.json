@@ -1,0 +1,113 @@
+{
+  "artifact_type": "C13_STAGE_REPORT",
+  "stage": "C13/P15 Stage 0",
+  "revision": "POST_D-C13-04_ADOPTION_CONTRACT_CONSISTENCY_GATE",
+  "generated": "2026-08-02",
+  "status": "BLOCKED",
+  "engineering_implementation": "DETERMINISTIC_SCOPE_IMPLEMENTED_RNG_TOPOLOGY_NOT_IMPLEMENTED_CONTRACT_CONFLICT",
+  "classification": "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+  "claim_boundary": "RG-SW Stage-0 engineering/specification evidence only; not independent acceptance, mentor approval, CLOSED_SCIENTIFIC, calibration, predictive validation, RG-SCI progress, release qualification, a 216-hour outcome, P15 science, or C13 PASS.",
+  "input": {
+    "branch": "rgsw/c13-p15-stage0",
+    "adoption_input_commit": "096021480271fde968eb7227e30affcaaa111232",
+    "adoption_input_tree": "68d77ac0b75734063e5a0313a4041c600bfee424",
+    "decision_package_commit": "a9f383c7bde137b2e2ad74d7353a87203bfc2374",
+    "adoption_evidence_commit": "1f877be92190dd4bffa1b701f3aa8260235170c2",
+    "blocker_evidence_payload_commit": "91836c51529480ba0db44ec32d446d568dacd547",
+    "adoption_head_tree": "24149f9c620c0608b67f9f6565dcec4428eeceaf",
+    "src_tree": "dd10ce05a9d12a84244a3d3cf713ca9ab279e16b",
+    "src_diff_from_adoption_input": "NONE",
+    "c12_status": "PASS"
+  },
+  "dependency": {
+    "amrex_commit": "cbdc6580ee3d78cccdd37172e4ba077ee181f483",
+    "amrex_tree": "fb714dc6e693c18f7c441d1d1febe4a5e8bf9ea6",
+    "submodule_worktree_clean": true
+  },
+  "prior_deterministic_candidate": {
+    "decision_commit": "e3eb56f3d02d64d2ab21efb4e3a435d36e59541d",
+    "implementation_commit": "7cd952ec22172a023de25f84952263c896458730",
+    "clean_build_recorder_commit": "a475b3f968e17327f2ffe28d0d48a781d35e3e65",
+    "source_tree": "dd10ce05a9d12a84244a3d3cf713ca9ab279e16b",
+    "executable_sha256": "57eb7cfdbf2e8cec705f65046f84220d8832278ed0ea3634efccdc513e97041b",
+    "passed_evidence": {
+      "analytical": "49/49 PASS",
+      "static": "25/25 PASS",
+      "short_native": "17/17 PASS",
+      "feature_off": "2/2 PASS"
+    },
+    "scope_note": "These remain historical qualification of the deterministic Stage-0 candidate; they do not qualify the newly adopted RNG/topology contract because it has not been implemented."
+  },
+  "rng_topology_adoption": {
+    "decision_id": "D-C13-04-RNG-TOPOLOGY-DECOMPOSITION",
+    "status": "CLOSED_USER_ADOPTED_PENDING_IMPLEMENTATION_AND_REVIEW",
+    "contract_id": "UDC-20260802-C13-RNG-TOPOLOGY-DECOMPOSITION-V1",
+    "contract_path": "contracts/p15/RNG_TOPOLOGY_DECOMPOSITION_CONTRACT_V1.json",
+    "contract_sha256": "059f067b94673838efba143c5a4615aaf79dcacc78a456317a81578daa37eba0",
+    "kat_path": "contracts/p15/RNG_TOPOLOGY_DECOMPOSITION_KAT_V1.json",
+    "kat_sha256": "ef47fa935b64671dd2f93e93640308b9620055587083f0c5c5a55aa1f95edcb7",
+    "kat_status": "PASS",
+    "authority_evidence": "evidence/stages/C13/RNG_TOPOLOGY_ADOPTION_V1.json"
+  },
+  "current_blocker": {
+    "id": "D-C13-05-RNG-SIDE-BRANCH-GRADIENT-REACHABILITY",
+    "status": "OPEN",
+    "owner": "project owner/technical contract authority plus independent exact-source and numerical-contract reviewer",
+    "root_cause": "Frozen setNewSegment unconditionally zeroes gx/gy/gz before side-branch gn is computed. The adopted contract requires both byte-equivalent frozen geometry and a mandatory reachable gn!=0 side-branch case.",
+    "satisfiable_without_new_authority": false,
+    "evidence": [
+      "evidence/stages/C13/RNG_TOPOLOGY_CONTRACT_CONFLICT_V1.json",
+      "evidence/stages/C13/RNG_TOPOLOGY_CONTRACT_CONFLICT_V1.md",
+      "evidence/stages/C13/BLOCKER_REPORT.json",
+      "evidence/stages/C13/BLOCKER_REPORT.md"
+    ],
+    "conflict_json_sha256_at_payload_commit": "61c2669ce433683c99b9726e6436deb67deb4a9f5e18af591176003889caea94",
+    "recommended_resolution": "Preserve frozen growth semantics and issue a new hash-bound contract/KAT revision removing the unreachable gn!=0 side-branch case and binding sign draw ordinal 0 as always materialized for accepted side branches.",
+    "alternative_resolution": "Explicitly authorize and bind nonzero-gradient side-branch behavior as a prospective growth/topology change, then obtain independent review.",
+    "prohibited_workaround": "Do not use a synthetic-only helper or inject a gradient after the frozen zeroing while claiming byte-equivalent formulas."
+  },
+  "current_continuation": {
+    "product_source_files_changed": [],
+    "product_source_change_retained": false,
+    "new_build": "NOT_RUN_BLOCKED_AT_PREIMPLEMENTATION_CONTRACT_GATE",
+    "new_runtime_qualification": "NOT_RUN_BLOCKED_AT_PREIMPLEMENTATION_CONTRACT_GATE",
+    "independent_source_review": "NOT_REQUESTED_NO_IMPLEMENTATION_CANDIDATE",
+    "qualification_216h": "PROHIBITED_AND_NOT_RUN",
+    "science_outcomes": "PROHIBITED_AND_NOT_RUN"
+  },
+  "commands": [
+    {
+      "command": "python tools/c13_rng_topology_contract_kat.py contracts/p15/RNG_TOPOLOGY_DECOMPOSITION_KAT_V1.json",
+      "exit_code": 0,
+      "result": "PASS: all normative contract/KAT vectors"
+    },
+    {
+      "command": "rg -n -C 8 \"Real gx =|if \\(true\\)|Real gn =\" src/chemistry/bmx_chem_K.H",
+      "exit_code": 0,
+      "result": "Confirmed unconditional gradient zeroing before both gn computations"
+    },
+    {
+      "command": "rg -n -C 4 \"gn!=0|byte-for-byte equivalent|forced_cases\" contracts/p15/RNG_TOPOLOGY_DECOMPOSITION_CONTRACT_V1.json",
+      "exit_code": 0,
+      "result": "Confirmed byte-equivalence, conditional draw, and mandatory gn!=0 requirements"
+    }
+  ],
+  "frozen_bytes": {
+    "global_order_id": "bmx-p10-global-order-v1",
+    "global_order_sha256": "bb63c219a860687d91ce1acf06a667c9208abf026b32f18acfc64884bb696dd6",
+    "global_order_changed": false,
+    "kernel_sha256": "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02",
+    "kernel_changed": false
+  },
+  "conservation_restart_effect": "No new executable was produced and no new state was run. Prior deterministic conservation/restart evidence remains historical; no stochastic-topology restart or decomposition claim is made.",
+  "stage_sequence": {
+    "c12": "PASS",
+    "c13_stage0": "BLOCKED",
+    "c13_216h": "NOT_RUN",
+    "c13_science": "NOT_RUN",
+    "c14": "NOT_STARTED"
+  },
+  "release_evidence": false,
+  "external_resources": "none",
+  "external_spend_usd": 0
+}

@@ -1,0 +1,18 @@
+{
+  "artifact_type": "C10_REFERENCE_POSTPROCESS_RECOVERY",
+  "checks": {
+    "qualification_pass": true,
+    "selected_dt_1800": true,
+    "selected_grid_l0": true,
+    "source_commit_exact": true,
+    "static_pass": true,
+    "timing_pass": true
+  },
+  "outcomes_rerun": false,
+  "postprocess_failure": "The original driver invoked sha256sum -c with a manifest path while its current directory was the handoff root; relative manifest entries therefore resolved incorrectly.",
+  "qualification_sha256": "b3d72145bfd9310d4d0f2ea171bbcb0e814debe36bbac56ac6e52103e7b89d43",
+  "recovery_scope": "evidence verification and packaging only",
+  "static_sha256": "deeaa66d60aa8d479bb0530727a597e484f22ccbfed5582c981d7fe9af131c85",
+  "status": "PASS",
+  "timing_sha256": "2473d2f8675077d6e9ede062f128b1a8307035bd23f21f8bf03ce5f75ed0d2e5"
+}

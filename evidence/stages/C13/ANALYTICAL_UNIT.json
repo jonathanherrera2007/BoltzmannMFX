@@ -1,0 +1,32 @@
+{
+    "artifact_type":  "C13_P15_ANALYTICAL_STAGE0_UNIT",
+    "stage":  "C13/P15 Stage 0",
+    "status":  "PASS",
+    "checks_executed":  49,
+    "fixtures":  [
+                     "unequal-radius unequal-length degree-two conductance",
+                     "degree-three junction elimination",
+                     "degree-four junction elimination",
+                     "two-segment exponential-equilibration convergence",
+                     "exact D_bond=0 arithmetic identity",
+                     "pairwise and global conservation",
+                     "positivity and no-new-extremum",
+                     "proportional donor arbitration and cap ledger",
+                     "isolated/simple/branch/tie/partial/two-ended terminal geometry",
+                     "1-to-2, 1-to-4, and 1-to-8 representation refinement",
+                     "invalid and nonfinite operands"
+                 ],
+    "output":  "C13_P15_UNIT PASS checks=49",
+    "source_sha256":  "3701a0315c4843056320feb2a1edae9afca88c9fdc99e90e2e07dcd00ca5f964",
+    "header_sha256":  "a52c40aab1759ff3ff027b2b3d5a0352cd30439f8204c59dd25b5dd1c3a1df6f",
+    "bonded_contract_sha256":  "e6022bffb56defa13cb31e7c0ac2097dfd197c9513e2f3e2e3a5ade37feeda44",
+    "terminal_contract_sha256":  "272106fabb9af9221d13c9f3b82fa9a963bea831c0a983747986789452b1bfe6",
+    "numerical_contract_sha256":  "c4d8dd50bb9c4b2b945e80410d71c4b822a32b29a325d7bb9ca5a8ec53531182",
+    "frozen_global_order_sha256":  "bb63c219a860687d91ce1acf06a667c9208abf026b32f18acfc64884bb696dd6",
+    "frozen_kernel_sha256":  "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02",
+    "outcome_hours":  0,
+    "independent_review_gate_crossed":  false,
+    "external_resources":  "none",
+    "external_spend_usd":  0,
+    "claim_boundary":  "Deterministic C13 Stage 0 analytical engineering tests only; not a 216-hour outcome, mentor approval, calibration, predictive validation, or science."
+}

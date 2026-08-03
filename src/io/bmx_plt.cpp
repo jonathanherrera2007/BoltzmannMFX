@@ -9,6 +9,7 @@
 #include <AMReX_ParmParse.H>
 
 #include <bmx.H>
+#include <bmx_chem.H>
 #include <bmx_fluid_parms.H>
 #include <bmx_dem_parms.H>
 
@@ -237,13 +238,22 @@ bmx::WritePlotFile (std::string& plot_file, int nstep, Real time )
         real_comp_names.push_back("random_vy");
         real_comp_names.push_back("random_vz");
         Vector<int> write_real_comp = Vector<int>(MAX_CHEM_REAL_VAR,1);
-        int i;
-        for (i=realIdx::count-1; i<MAX_CHEM_REAL_VAR; i++) {
-          char c[2];
-          c[1] = '\0';
-          c[0] = static_cast<char>(static_cast<int>('A')+(i-realIdx::count+1)%26);
-          real_comp_names.push_back(c);
+        const auto layout_mode =
+            BMXChemLayout::classifyMeshSpecies(FLUID::chem_species);
+        const char* const block_prefix[BMXChemLayout::particle_blocks] =
+            {"chem_committed_", "chem_working_", "chem_increment_"};
+        for (int block = 0; block < BMXChemLayout::particle_blocks; ++block) {
+          for (int component = 0;
+               component < NUM_PARTICLE_CHEM_COMPONENTS; ++component) {
+            real_comp_names.push_back(
+                std::string(block_prefix[block]) +
+                BMXChemLayout::particleName(layout_mode, component));
+          }
         }
+        AMREX_ALWAYS_ASSERT_WITH_MESSAGE(
+            static_cast<int>(real_comp_names.size()) == MAX_CHEM_REAL_VAR,
+            "P09 particle plot names do not match particle real storage");
+        int i;
         int_comp_names.push_back("num_reals");
         int_comp_names.push_back("num_ints");
         int_comp_names.push_back("total_reals");

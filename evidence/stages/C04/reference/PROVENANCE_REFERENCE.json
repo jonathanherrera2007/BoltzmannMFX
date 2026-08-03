@@ -1,0 +1,43 @@
+{
+  "checks": [
+    {
+      "check": "live_worktree_resolves",
+      "detail": "status=RESOLVED commit=b686981faa9d dirty=clean note=ordinary checkout",
+      "status": "PASS"
+    },
+    {
+      "check": "ordinary_checkout_directory",
+      "detail": "expected RESOLVED, got RESOLVED, commit=51e653365b6a",
+      "status": "PASS"
+    },
+    {
+      "check": "worktree_relative_pointer",
+      "detail": "expected RESOLVED, got RESOLVED, commit=b686981faa9d, matches live worktree=True",
+      "status": "PASS"
+    },
+    {
+      "check": "worktree_foreign_absolute_pointer",
+      "detail": "expected RESOLVED, got RESOLVED, commit=b686981faa9d, matches live worktree=True",
+      "status": "PASS"
+    },
+    {
+      "check": "worktree_unresolvable_pointer",
+      "detail": "expected UNAVAILABLE, got UNAVAILABLE, note=gitdir 'Q:/definitely/not/here/.git/worktrees/nope' does not exist on this host",
+      "status": "PASS"
+    },
+    {
+      "check": "not_a_repository",
+      "detail": "expected UNAVAILABLE, got UNAVAILABLE, note=no .git entry at /home/jherrera2007/bmx-c04-qual/runs/c04-provenance-check/not_a",
+      "status": "PASS"
+    },
+    {
+      "check": "fail_closed_when_provenance_required",
+      "detail": "REQUIRE=OFF exit=0 (must be 0), REQUIRE=ON exit=1 (must be non-zero)",
+      "status": "PASS"
+    }
+  ],
+  "failures": [],
+  "live_commit": "b686981faa9dcc8505ed668b4e394fc553afd93f",
+  "source_dir": "/home/jherrera2007/bmx-c04-qual/product",
+  "status": "PASS"
+}

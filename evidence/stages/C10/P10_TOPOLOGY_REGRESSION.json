@@ -1,0 +1,370 @@
+{
+  "artifact_type": "C08_TOPOLOGY_AMOUNT_TEST",
+  "claim_boundary": "engineering pure-volume, topology, bound-ledger, and MPI plumbing test; does not select biological values or provide independent operator-order review",
+  "comparisons": {
+    "growth_1_rank": {
+      "frozen_tolerance": "abs(residual) <= 64 * eps_double * S_L1",
+      "reference": "same particle before the enabled pure-volume update",
+      "rows": [
+        {
+          "control_amount": 1.1780000000000001e-14,
+          "field": "committed.P_D",
+          "residual": 3.1554436208840472e-30,
+          "s_l1": 2.3560000000000006e-14,
+          "split_amount": 1.1780000000000004e-14,
+          "status": "PASS",
+          "tolerance": 3.348077370901593e-28
+        },
+        {
+          "control_amount": 1.7670000000000002e-14,
+          "field": "committed.P_E",
+          "residual": 3.1554436208840472e-30,
+          "s_l1": 3.5340000000000004e-14,
+          "split_amount": 1.7670000000000005e-14,
+          "status": "PASS",
+          "tolerance": 5.022116056352389e-28
+        },
+        {
+          "control_amount": 2.9450000000000003e-14,
+          "field": "committed.P_F",
+          "residual": 6.310887241768095e-30,
+          "s_l1": 5.890000000000001e-14,
+          "split_amount": 2.945000000000001e-14,
+          "status": "PASS",
+          "tolerance": 8.370193427253981e-28
+        },
+        {
+          "control_amount": 0.0,
+          "field": "working.P_D",
+          "residual": 0.0,
+          "s_l1": 0.0,
+          "split_amount": 0.0,
+          "status": "PASS",
+          "tolerance": 0.0
+        },
+        {
+          "control_amount": 0.0,
+          "field": "working.P_E",
+          "residual": 0.0,
+          "s_l1": 0.0,
+          "split_amount": 0.0,
+          "status": "PASS",
+          "tolerance": 0.0
+        },
+        {
+          "control_amount": 0.0,
+          "field": "working.P_F",
+          "residual": 0.0,
+          "s_l1": 0.0,
+          "split_amount": 0.0,
+          "status": "PASS",
+          "tolerance": 0.0
+        },
+        {
+          "control_amount": 0.0,
+          "field": "increment.P_D",
+          "residual": 0.0,
+          "s_l1": 0.0,
+          "split_amount": 0.0,
+          "status": "PASS",
+          "tolerance": 0.0
+        },
+        {
+          "control_amount": 0.0,
+          "field": "increment.P_E",
+          "residual": 0.0,
+          "s_l1": 0.0,
+          "split_amount": 0.0,
+          "status": "PASS",
+          "tolerance": 0.0
+        },
+        {
+          "control_amount": 0.0,
+          "field": "increment.P_F",
+          "residual": 0.0,
+          "s_l1": 0.0,
+          "split_amount": 0.0,
+          "status": "PASS",
+          "tolerance": 0.0
+        }
+      ],
+      "status": "PASS"
+    },
+    "split_1_rank": {
+      "frozen_tolerance": "abs(residual) <= 64 * eps_double * S_L1",
+      "reference": "control_1_rank",
+      "rows": [
+        {
+          "control_amount": 1.1780000000000001e-14,
+          "field": "committed.P_D",
+          "residual": -1.735493991486226e-29,
+          "s_l1": 2.3559999999999984e-14,
+          "split_amount": 1.1779999999999984e-14,
+          "status": "PASS",
+          "tolerance": 3.3480773709015898e-28
+        },
+        {
+          "control_amount": 1.7670000000000002e-14,
+          "field": "committed.P_E",
+          "residual": -2.524354896707238e-29,
+          "s_l1": 3.533999999999998e-14,
+          "split_amount": 1.7669999999999977e-14,
+          "status": "PASS",
+          "tolerance": 5.022116056352385e-28
+        },
+        {
+          "control_amount": 2.9450000000000003e-14,
+          "field": "committed.P_F",
+          "residual": 1.262177448353619e-29,
+          "s_l1": 5.890000000000002e-14,
+          "split_amount": 2.9450000000000016e-14,
+          "status": "PASS",
+          "tolerance": 8.370193427253983e-28
+        },
+        {
+          "control_amount": 0.0,
+          "field": "working.P_D",
+          "residual": 0.0,
+          "s_l1": 0.0,
+          "split_amount": 0.0,
+          "status": "PASS",
+          "tolerance": 0.0
+        },
+        {
+          "control_amount": 0.0,
+          "field": "working.P_E",
+          "residual": 0.0,
+          "s_l1": 0.0,
+          "split_amount": 0.0,
+          "status": "PASS",
+          "tolerance": 0.0
+        },
+        {
+          "control_amount": 0.0,
+          "field": "working.P_F",
+          "residual": 0.0,
+          "s_l1": 0.0,
+          "split_amount": 0.0,
+          "status": "PASS",
+          "tolerance": 0.0
+        },
+        {
+          "control_amount": 0.0,
+          "field": "increment.P_D",
+          "residual": 0.0,
+          "s_l1": 0.0,
+          "split_amount": 0.0,
+          "status": "PASS",
+          "tolerance": 0.0
+        },
+        {
+          "control_amount": 0.0,
+          "field": "increment.P_E",
+          "residual": 0.0,
+          "s_l1": 0.0,
+          "split_amount": 0.0,
+          "status": "PASS",
+          "tolerance": 0.0
+        },
+        {
+          "control_amount": 0.0,
+          "field": "increment.P_F",
+          "residual": 0.0,
+          "s_l1": 0.0,
+          "split_amount": 0.0,
+          "status": "PASS",
+          "tolerance": 0.0
+        }
+      ],
+      "status": "PASS"
+    },
+    "split_2_rank": {
+      "frozen_tolerance": "abs(residual) <= 64 * eps_double * S_L1",
+      "reference": "control_1_rank",
+      "rows": [
+        {
+          "control_amount": 1.1780000000000001e-14,
+          "field": "committed.P_D",
+          "residual": -1.735493991486226e-29,
+          "s_l1": 2.3559999999999984e-14,
+          "split_amount": 1.1779999999999984e-14,
+          "status": "PASS",
+          "tolerance": 3.3480773709015898e-28
+        },
+        {
+          "control_amount": 1.7670000000000002e-14,
+          "field": "committed.P_E",
+          "residual": -2.524354896707238e-29,
+          "s_l1": 3.533999999999998e-14,
+          "split_amount": 1.7669999999999977e-14,
+          "status": "PASS",
+          "tolerance": 5.022116056352385e-28
+        },
+        {
+          "control_amount": 2.9450000000000003e-14,
+          "field": "committed.P_F",
+          "residual": 1.262177448353619e-29,
+          "s_l1": 5.890000000000002e-14,
+          "split_amount": 2.9450000000000016e-14,
+          "status": "PASS",
+          "tolerance": 8.370193427253983e-28
+        },
+        {
+          "control_amount": 0.0,
+          "field": "working.P_D",
+          "residual": 0.0,
+          "s_l1": 0.0,
+          "split_amount": 0.0,
+          "status": "PASS",
+          "tolerance": 0.0
+        },
+        {
+          "control_amount": 0.0,
+          "field": "working.P_E",
+          "residual": 0.0,
+          "s_l1": 0.0,
+          "split_amount": 0.0,
+          "status": "PASS",
+          "tolerance": 0.0
+        },
+        {
+          "control_amount": 0.0,
+          "field": "working.P_F",
+          "residual": 0.0,
+          "s_l1": 0.0,
+          "split_amount": 0.0,
+          "status": "PASS",
+          "tolerance": 0.0
+        },
+        {
+          "control_amount": 0.0,
+          "field": "increment.P_D",
+          "residual": 0.0,
+          "s_l1": 0.0,
+          "split_amount": 0.0,
+          "status": "PASS",
+          "tolerance": 0.0
+        },
+        {
+          "control_amount": 0.0,
+          "field": "increment.P_E",
+          "residual": 0.0,
+          "s_l1": 0.0,
+          "split_amount": 0.0,
+          "status": "PASS",
+          "tolerance": 0.0
+        },
+        {
+          "control_amount": 0.0,
+          "field": "increment.P_F",
+          "residual": 0.0,
+          "s_l1": 0.0,
+          "split_amount": 0.0,
+          "status": "PASS",
+          "tolerance": 0.0
+        }
+      ],
+      "status": "PASS"
+    }
+  },
+  "engineering_overrides": {
+    "control_max_seg_length": 0.01,
+    "fusion_probability": 0.0,
+    "initial_particle_P": [
+      2e-05,
+      3e-05,
+      5e-05
+    ],
+    "kP": 0.0,
+    "krP": 0.0,
+    "kv": 0.0,
+    "mass_transfer_P": 0.0,
+    "p_growth_limit": 0.0,
+    "pure_volume_kv": 40000.0,
+    "split_max_seg_length": 0.0025
+  },
+  "executable": {
+    "path": "C:\\b\\BMX-shadow-handoff-20260721\\build-c10-native-release-definitive\\bmx.exe",
+    "sha256": "8efdf36d3e8cbd022b5a3dbc4e3d5b54889cee8a2fcf90410387bf5f3ae6c4df"
+  },
+  "initial_amount_vectors_identical": true,
+  "method": "compare global committed/working concentration-owned D/E/F amounts and signed extensive transfer amounts for a nonzero owning-volume change and between a no-split control and an otherwise identical forced isolated-tip split",
+  "particle_ascii_precision_digits": 15,
+  "runs": {
+    "control_1_rank": {
+      "checks": {
+        "bound_initial_ledger": true,
+        "enabled_particle_layout": true,
+        "exit_zero": true,
+        "expected_final_particle_count": true,
+        "initial_particle_count_one": true,
+        "post_update_ledger": true,
+        "split_marker_matches_case": true,
+        "two_dumps": true
+      },
+      "dump_count": 2,
+      "exit_code": 0,
+      "final_particle_count": 1,
+      "initial_particle_count": 1,
+      "log": "C:\\b\\BMX-shadow-handoff-20260721\\c10-topology-definitive\\control_1_rank\\stdout.log",
+      "status": "PASS"
+    },
+    "growth_1_rank": {
+      "checks": {
+        "bound_initial_ledger": true,
+        "enabled_particle_layout": true,
+        "exit_zero": true,
+        "expected_final_particle_count": true,
+        "initial_particle_count_one": true,
+        "owning_volume_changed": true,
+        "post_update_ledger": true,
+        "split_marker_matches_case": true,
+        "two_dumps": true
+      },
+      "dump_count": 2,
+      "exit_code": 0,
+      "final_particle_count": 1,
+      "initial_particle_count": 1,
+      "log": "C:\\b\\BMX-shadow-handoff-20260721\\c10-topology-definitive\\growth_1_rank\\stdout.log",
+      "status": "PASS"
+    },
+    "split_1_rank": {
+      "checks": {
+        "bound_initial_ledger": true,
+        "enabled_particle_layout": true,
+        "exit_zero": true,
+        "expected_final_particle_count": true,
+        "initial_particle_count_one": true,
+        "post_update_ledger": true,
+        "split_marker_matches_case": true,
+        "two_dumps": true
+      },
+      "dump_count": 2,
+      "exit_code": 0,
+      "final_particle_count": 2,
+      "initial_particle_count": 1,
+      "log": "C:\\b\\BMX-shadow-handoff-20260721\\c10-topology-definitive\\split_1_rank\\stdout.log",
+      "status": "PASS"
+    },
+    "split_2_rank": {
+      "checks": {
+        "bound_initial_ledger": true,
+        "enabled_particle_layout": true,
+        "exit_zero": true,
+        "expected_final_particle_count": true,
+        "initial_particle_count_one": true,
+        "post_update_ledger": true,
+        "split_marker_matches_case": true,
+        "two_dumps": true
+      },
+      "dump_count": 2,
+      "exit_code": 0,
+      "final_particle_count": 2,
+      "initial_particle_count": 1,
+      "log": "C:\\b\\BMX-shadow-handoff-20260721\\c10-topology-definitive\\split_2_rank\\stdout.log",
+      "status": "PASS"
+    }
+  },
+  "stage": "C08",
+  "status": "PASS"
+}

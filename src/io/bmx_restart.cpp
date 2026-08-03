@@ -12,8 +12,13 @@
 #include <AMReX_Geometry.H>
 
 #include <bmx.H>
+#include "bmx_checkpoint_schema.H"
 #include <bmx_fluid_parms.H>
 #include <bmx_dem_parms.H>
+#include <bmx_pc_phosphorus.H>
+#include <bmx_phosphorus_geometry_K.H>
+
+#include <cmath>
 
 namespace
 {
@@ -23,6 +28,7 @@ namespace
 void
 bmx::Restart (std::string& restart_file, int *nstep, Real *dt, Real *time)
 {
+    p10_restart_metadata_expected = true;
     if (ooo_debug) amrex::Print() << "Restart" << std::endl;
     BL_PROFILE("bmx::Restart()");
 
@@ -48,67 +54,112 @@ bmx::Restart (std::string& restart_file, int *nstep, Real *dt, Real *time)
       std::string fileCharPtrString(fileCharPtr.dataPtr());
       std::istringstream is(fileCharPtrString, std::istringstream::in);
 
-      std::string line, word;
+      std::string line;
+
+      auto reject_header = [](const std::string& reason)
+      {
+        amrex::Abort(
+            "P09 checkpoint rejected before particle deserialization: " +
+            reason);
+      };
+
+      auto read_scalar_line = [&is, &reject_header](auto& value,
+                                                    const char* field)
+      {
+        std::string scalar_line;
+        if (!std::getline(is, scalar_line)) {
+          reject_header(std::string("missing ") + field);
+        }
+        std::istringstream values(scalar_line);
+        std::string extra;
+        if (!(values >> value) || (values >> extra)) {
+          reject_header(std::string("malformed ") + field);
+        }
+      };
+
+      auto read_geometry_line = [&is, &reject_header](Real* values,
+                                                      const char* field)
+      {
+        std::string geometry_line;
+        if (!std::getline(is, geometry_line)) {
+          reject_header(std::string("missing ") + field);
+        }
+        std::istringstream coordinates(geometry_line);
+        for (int direction = 0; direction < BL_SPACEDIM; ++direction) {
+          if (!(coordinates >> values[direction]) ||
+              !std::isfinite(values[direction])) {
+            reject_header(std::string("malformed ") + field);
+          }
+        }
+        std::string extra;
+        if (coordinates >> extra) {
+          reject_header(std::string("extra coordinates in ") + field);
+        }
+      };
 
       std::getline(is, line);
+      BMXCheckpointSchema::validateVersionLine(line);
+      const auto checkpoint_mode =
+          BMXChemLayout::classifyMeshSpecies(FLUID::chem_species);
+      const auto checkpoint_geometry =
+          BMXCheckpointSchema::readValidateAndRestoreMetadata(
+              is, checkpoint_mode, FLUID::chem_species, Geom(0));
 
-      int  nlevs;
-      int  int_tmp;
-      Real real_tmp;
-
-      is >> nlevs;
-      GotoNextLine(is);
+      int nlevs = 0;
+      read_scalar_line(nlevs, "level count");
+      if (nlevs <= 0 || nlevs > maxLevel()+1) {
+        reject_header("invalid level count");
+      }
 
       // Time stepping controls
-      is >> int_tmp;
-      *nstep = int_tmp;
-      GotoNextLine(is);
+      read_scalar_line(*nstep, "step number");
+      read_scalar_line(*dt, "time-step size");
+      read_scalar_line(*time, "simulation time");
+      const bool valid_initial_dt = (*nstep == 0 && *dt == -1.0);
+      if (*nstep < 0 || !std::isfinite(*dt) ||
+          (!valid_initial_dt && *dt <= 0.0) ||
+          !std::isfinite(*time) || *time < 0.0) {
+        reject_header("invalid time-stepping controls");
+      }
 
-      is >> real_tmp;
-      *dt = real_tmp;
-      GotoNextLine(is);
-
-      is >> real_tmp;
-      *time = real_tmp;
-      GotoNextLine(is);
-
-        std::getline(is, line);
-        {
-            std::istringstream lis(line);
-            int i = 0;
-            while (lis >> word) {
-               prob_lo[i++] = std::stod(word);
-            }
+      read_geometry_line(prob_lo, "prob_lo");
+      read_geometry_line(prob_hi, "prob_hi");
+      BMXCheckpointSchema::validateGeometryLines(
+          checkpoint_geometry, prob_lo, prob_hi);
+      for (int direction = 0; direction < BL_SPACEDIM; ++direction) {
+        if (prob_hi[direction] <= prob_lo[direction]) {
+          reject_header("prob_hi must be greater than prob_lo");
         }
+      }
 
-        std::getline(is, line);
-        {
-            std::istringstream lis(line);
-            int i = 0;
-            while (lis >> word) {
-               prob_hi[i++] = std::stod(word);
-            }
-        }
-
+        Vector<BoxArray> checkpoint_box_arrays(nlevs);
         for (int lev = 0; lev < nlevs; ++lev) {
 
             RealBox rb(prob_lo,prob_hi);
             Geom(lev).ProbDomain(rb);
             Geom(lev).ResetDefaultProbDomain(rb);
 
-            BoxArray ba;
-            ba.readFrom(is);
+            BMXPhosphorusGeometry::loadAndValidate(
+                Geom(lev), FLUID::chem_species);
+
+            checkpoint_box_arrays[lev].readFrom(is);
+            if (!is.good()) reject_header("malformed BoxArray");
             GotoNextLine(is);
 
-            // Particle data is loaded into the BMXParticleContainer's base
-            // class using amrex::NeighborParticleContainer::Restart
-
-            if ( (DEM::solve) and lev == 0)
-              pc->Restart(restart_file, "particles");
-
-            amrex::Print() << "  Finished reading particle data" << std::endl;
-
             if (FLUID::solve) AllocateArrays(lev);
+        }
+
+        // Only deserialize particles after the complete BMX header has passed
+        // schema, scalar, geometry, and BoxArray validation.
+        if (DEM::solve) {
+          // Pinned AMReX's non-virtual Restart implementation redistributes
+          // internally before returning. Scan its native checkpoint payload
+          // first so invalid identities or unresolved nonperiodic positions
+          // cannot be compacted before the C08 guard observes them.
+          BMXPhosphorus::requireCheckpointParticlesSafe(
+              *pc, restart_file, "particles");
+          pc->Restart(restart_file, "particles");
+          amrex::Print() << "  Finished reading particle data" << std::endl;
         }
     }
 
@@ -173,9 +224,11 @@ bmx::Restart (std::string& restart_file, int *nstep, Real *dt, Real *time)
           pc->SetParticleBoxArray       (lev, grids[lev]);
           pc->SetParticleDistributionMap(lev,  dmap[lev]);
         }
+        BMXPhosphorus::requireRedistributionSafe(*pc);
         pc->Redistribute();
 
        // We need to do this on restart regardless of whether we replicate
+       BMXPhosphorus::requireRedistributionSafe(*pc);
        pc->Redistribute();
     }
 

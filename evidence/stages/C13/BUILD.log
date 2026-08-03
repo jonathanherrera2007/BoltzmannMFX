@@ -1,0 +1,382 @@
+C13_NATIVE_BUILD_LOG_V1
+source=C:\b\BMX-shadow-handoff-20260721\BMX-C13-freeze
+build=C:\b\BMX-shadow-handoff-20260721\build-c13-native-freeze
+source_head=a475b3f968e17327f2ffe28d0d48a781d35e3e65
+source_tree=7adcbb63aa2a42f66e08ef1c0eab2636a688657d
+source_dirty=false
+BEGIN fresh_configure
+VS root      : C:\Program1  (via directory scan of C:\)
+MSVC toolset : 14.44.35207
+cl.exe       : C:\Program1\VC\Tools\MSVC\14.44.35207\bin\Hostx64\x64\cl.exe
+ninja        : C:\Program1\Common7\IDE\CommonExtensions\Microsoft\CMake\Ninja\ninja.exe
+rc.exe       : C:\Program Files (x86)\Windows Kits\10\bin\10.0.26100.0\x64\rc.exe
+mt.exe       : C:\Program Files (x86)\Windows Kits\10\bin\10.0.26100.0\x64\mt.exe
+cmake        : C:\Program Files\CMake\bin\cmake.exe
+MS-MPI inc   : C:\Program Files (x86)\Microsoft SDKs\MPI\Include
+MS-MPI lib   : C:\Program Files (x86)\Microsoft SDKs\MPI\Lib\x64\msmpi.lib
+source : C:\b\BMX-shadow-handoff-20260721\BMX-C13-freeze
+build  : C:\b\BMX-shadow-handoff-20260721\build-c13-native-freeze
+-- The C compiler identification is MSVC 19.44.35228.0
+-- The CXX compiler identification is MSVC 19.44.35228.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: C:/Program1/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: C:/Program1/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Build type set by user to 'Release'.
+CMake Warning (author) at CMakeLists.txt:108 (elseif):
+  ELSEIF called with no arguments, it will be skipped.
+This warning is for project developers.  Use -Wno-author to suppress it.
+System.Management.Automation.RemoteException
+-- No AMReX installation found: cloning AMReX repo
+-- CMake version: 4.4.0
+-- AMReX installation directory: C:/Program Files (x86)/BMX-Exa
+-- Build type set by user to 'Release'.
+-- Building AMReX with AMReX_SPACEDIM = 3
+-- Configuring AMReX with the following options enabled: 
+--    AMReX_PRECISION = DOUBLE
+--    AMReX_MPI
+--    AMReX_AMRLEVEL
+--    AMReX_EB
+--    AMReX_LINEAR_SOLVERS
+--    AMReX_PARTICLES
+--    AMReX_PARTICLES_PRECISION = DOUBLE
+--    AMReX_PROBINIT
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+-- Looking for pthread_create in pthreads
+-- Looking for pthread_create in pthreads - not found
+-- Looking for pthread_create in pthread
+-- Looking for pthread_create in pthread - not found
+-- Found Threads: TRUE
+-- Found MPI_C: C:/Program Files (x86)/Microsoft SDKs/MPI/Lib/x64/msmpi.lib (found version "2.0")
+-- Found MPI_CXX: C:/Program Files (x86)/Microsoft SDKs/MPI/Lib/x64/msmpi.lib (found version "2.0")
+-- Found MPI: TRUE (found version "2.0") found components: C CXX
+-- AMReX configuration summary: 
+--    Build type               = Release
+--    Install directory        = C:/Program Files (x86)/BMX-Exa
+--    C++ compiler             = C:/Program1/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe
+--    C++ defines              = 
+--    C++ flags                = /O2 /DNDEBUG /DWIN32 /D_WINDOWS /EHsc /w /D_USE_MATH_DEFINES /std:c++17 /Zc:lambda -w /Zc:preprocessor /Zc:__cplusplus
+--    C++ include paths        = -IC:/b/BMX-shadow-handoff-20260721/BMX-C13-freeze/subprojects/amrex/Src/Base -IC:/b/BMX-shadow-handoff-20260721/BMX-C13-freeze/subprojects/amrex/Src/Base/Parser -IC:/b/BMX-shadow-handoff-20260721/BMX-C13-freeze/subprojects/amrex/Src/Boundary -IC:/b/BMX-shadow-handoff-20260721/BMX-C13-freeze/subprojects/amrex/Src/AmrCore -IC:/b/BMX-shadow-handoff-20260721/BMX-C13-freeze/subprojects/amrex/Src/Amr -IC:/b/BMX-shadow-handoff-20260721/BMX-C13-freeze/subprojects/amrex/Src/EB -IC:/b/BMX-shadow-handoff-20260721/BMX-C13-freeze/subprojects/amrex/Src/LinearSolvers/MLMG -IC:/b/BMX-shadow-handoff-20260721/BMX-C13-freeze/subprojects/amrex/Src/Particle -IC:/Program Files (x86)/Microsoft SDKs/MPI/Include
+--    Link line                = C:/Program Files (x86)/Microsoft SDKs/MPI/Lib/x64/msmpi.lib
+CMake Warning at tools/CMake/BMX_Utils.cmake:16 (message):
+  Failing to retrieve BMX Git branch
+Call Stack (most recent call first):
+  CMakeLists.txt:128 (get_git_info)
+System.Management.Automation.RemoteException
+System.Management.Automation.RemoteException
+-- BMX  commit: a475b3f968e17327f2ffe28d0d48a781d35e3e65
+-- BMX provenance: a475b3f968e17327f2ffe28d0d48a781d35e3e65 (HEAD, clean) -- linked worktree, absolute gitdir
+-- Found Git: C:/Program Files/Git/cmd/git.exe (found version "2.55.0.windows.3")
+-- BMX configuration summary: 
+--   C++ defines           = 
+--   C++ compiler          = C:/Program1/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe
+--   C++ flags             = /O2 /DNDEBUG /DWIN32 /D_WINDOWS /EHsc /w /D_USE_MATH_DEFINES /std:c++17 /Zc:lambda /Zc:preprocessor /Zc:__cplusplus
+--    BMX includes         = -IC:/b/BMX-shadow-handoff-20260721/BMX-C13-freeze/src -IC:/b/BMX-shadow-handoff-20260721/build-c13-native-freeze/bmx_generated -IC:/b/BMX-shadow-handoff-20260721/BMX-C13-freeze/src/interpolation -IC:/b/BMX-shadow-handoff-20260721/BMX-C13-freeze/src/deposition -IC:/b/BMX-shadow-handoff-20260721/BMX-C13-freeze/src/des -IC:/b/BMX-shadow-handoff-20260721/BMX-C13-freeze/src/diffusion -IC:/b/BMX-shadow-handoff-20260721/BMX-C13-freeze/src/leveldata -IC:/b/BMX-shadow-handoff-20260721/BMX-C13-freeze/src/setup -IC:/b/BMX-shadow-handoff-20260721/BMX-C13-freeze/src/util -IC:/b/BMX-shadow-handoff-20260721/BMX-C13-freeze/src/mods -IC:/b/BMX-shadow-handoff-20260721/BMX-C13-freeze/src/timestepping -IC:/b/BMX-shadow-handoff-20260721/BMX-C13-freeze/src/chemistry -IC:/b/BMX-shadow-handoff-20260721/BMX-C13-freeze/subprojects/amrex/Src/Base -IC:/b/BMX-shadow-handoff-20260721/BMX-C13-freeze/subprojects/amrex/Src/Base/Parser -IC:/b/BMX-shadow-handoff-20260721/BMX-C13-freeze/subprojects/amrex/Src/Boundary -IC:/b/BMX-shadow-handoff-20260721/BMX-C13-freeze/subprojects/amrex/Src/AmrCore -IC:/b/BMX-shadow-handoff-20260721/BMX-C13-freeze/subprojects/amrex/Src/Amr -IC:/b/BMX-shadow-handoff-20260721/BMX-C13-freeze/subprojects/amrex/Src/EB -IC:/b/BMX-shadow-handoff-20260721/BMX-C13-freeze/subprojects/amrex/Src/LinearSolvers/MLMG -IC:/b/BMX-shadow-handoff-20260721/BMX-C13-freeze/subprojects/amrex/Src/Particle -IC:/b/BMX-shadow-handoff-20260721/build-c13-native-freeze/subprojects/amrex -IC:/b/BMX-shadow-handoff-20260721/BMX-C13-freeze/subprojects/amrex/Tools/C_scripts
+--    BMX link line        = Threads::Threads MPI::MPI_C MPI::MPI_CXX
+-- Configuring done (12.7s)
+-- Generating done (1.7s)
+-- Build files have been written to: C:/b/BMX-shadow-handoff-20260721/build-c13-native-freeze
+
+configure OK -> C:\b\BMX-shadow-handoff-20260721\build-c13-native-freeze
+END fresh_configure exit_code=0
+BEGIN fresh_build
+VS root      : C:\Program1  (via directory scan of C:\)
+MSVC toolset : 14.44.35207
+cl.exe       : C:\Program1\VC\Tools\MSVC\14.44.35207\bin\Hostx64\x64\cl.exe
+ninja        : C:\Program1\Common7\IDE\CommonExtensions\Microsoft\CMake\Ninja\ninja.exe
+rc.exe       : C:\Program Files (x86)\Windows Kits\10\bin\10.0.26100.0\x64\rc.exe
+mt.exe       : C:\Program Files (x86)\Windows Kits\10\bin\10.0.26100.0\x64\mt.exe
+cmake        : C:\Program Files\CMake\bin\cmake.exe
+MS-MPI inc   : C:\Program Files (x86)\Microsoft SDKs\MPI\Include
+MS-MPI lib   : C:\Program Files (x86)\Microsoft SDKs\MPI\Lib\x64\msmpi.lib
+build  : C:\b\BMX-shadow-handoff-20260721\build-c13-native-freeze
+target : bmx
+[1/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_Version.cpp.obj
+[2/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_error_fi.cpp.obj
+[3/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_BlockMutex.cpp.obj
+[4/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_parmparse_fi.cpp.obj
+[5/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX.cpp.obj
+[6/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_FileSystem.cpp.obj
+[7/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_Utility.cpp.obj
+[8/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_ParmParse.cpp.obj
+[9/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_Random.cpp.obj
+[10/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_ParallelDescriptor.cpp.obj
+[11/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_ParallelContext.cpp.obj
+[12/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_ForkJoin.cpp.obj
+[13/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_DistributionMapping.cpp.obj
+[14/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_AsyncOut.cpp.obj
+[15/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_BackgroundThread.cpp.obj
+[16/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_BArena.cpp.obj
+[17/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_Arena.cpp.obj
+[18/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_PArena.cpp.obj
+[19/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_CArena.cpp.obj
+[20/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_NFiles.cpp.obj
+[21/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_parstream.cpp.obj
+[22/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_VisMF.cpp.obj
+[23/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_FPC.cpp.obj
+[24/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_IntConv.cpp.obj
+[25/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_VectorIO.cpp.obj
+[26/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_FabConv.cpp.obj
+[27/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_BoxIterator.cpp.obj
+[28/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_Box.cpp.obj
+[29/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_IndexType.cpp.obj
+[30/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_IntVect.cpp.obj
+[31/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_Periodicity.cpp.obj
+[32/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_Orientation.cpp.obj
+[33/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_RealBox.cpp.obj
+[34/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_BoxList.cpp.obj
+[35/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_RealVect.cpp.obj
+[36/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_BoxDomain.cpp.obj
+[37/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_BoxArray.cpp.obj
+[38/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_FArrayBox.cpp.obj
+[39/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_BaseFab.cpp.obj
+[40/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_IArrayBox.cpp.obj
+[41/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_MFCopyDescriptor.cpp.obj
+[42/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_iMultiFab.cpp.obj
+[43/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_MultiFab.cpp.obj
+[44/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_MFIter.cpp.obj
+[45/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_Geometry.cpp.obj
+[46/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_CoordSys.cpp.obj
+[47/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_FabArrayBase.cpp.obj
+[48/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_BCRec.cpp.obj
+[49/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_PhysBCFunct.cpp.obj
+[50/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_MultiFabUtil.cpp.obj
+[51/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_BCUtil.cpp.obj
+[52/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_FilFC_C.cpp.obj
+[53/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_FilND_C.cpp.obj
+[54/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_NonLocalBC.cpp.obj
+[55/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_PlotFileUtil.cpp.obj
+[56/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_PlotFileDataImpl.cpp.obj
+[57/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_GpuControl.cpp.obj
+[58/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_GpuDevice.cpp.obj
+[59/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_GpuUtility.cpp.obj
+[60/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_FilCC_C.cpp.obj
+[61/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_GpuAsyncArray.cpp.obj
+[62/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_GpuElixir.cpp.obj
+[63/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_MemPool.cpp.obj
+[64/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\Parser\AMReX_Parser.cpp.obj
+[65/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_BLBackTrace.cpp.obj
+[66/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\Parser\AMReX_Parser_Exe.cpp.obj
+[67/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\AMReX_Machine.cpp.obj
+[68/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\Parser\amrex_parser.lex.cpp.obj
+[69/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\Parser\amrex_parser.tab.cpp.obj
+[70/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\Parser\AMReX_Parser_Y.cpp.obj
+[71/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\Parser\AMReX_IParser.cpp.obj
+[72/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\Parser\AMReX_IParser_Exe.cpp.obj
+[73/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\Parser\amrex_iparser.lex.cpp.obj
+[74/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\Parser\amrex_iparser.tab.cpp.obj
+[75/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Base\Parser\AMReX_IParser_Y.cpp.obj
+[76/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Boundary\AMReX_BndryRegister.cpp.obj
+[77/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Boundary\AMReX_Mask.cpp.obj
+[78/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Boundary\AMReX_MultiMask.cpp.obj
+[79/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Boundary\AMReX_FabSet.cpp.obj
+[80/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Boundary\AMReX_LO_BCTYPES.cpp.obj
+[81/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Boundary\AMReX_BndryData.cpp.obj
+[82/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Boundary\AMReX_MacBndry.cpp.obj
+[83/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Boundary\AMReX_InterpBndryData.cpp.obj
+[84/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\AmrCore\AMReX_Cluster.cpp.obj
+[85/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\AmrCore\AMReX_AmrCore.cpp.obj
+[86/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Boundary\AMReX_YAFluxRegister.cpp.obj
+[87/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\AmrCore\AMReX_ErrorList.cpp.obj
+[88/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\AmrCore\AMReX_FillPatchUtil.cpp.obj
+[89/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\AmrCore\AMReX_InterpBase.cpp.obj
+[90/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\AmrCore\AMReX_MFInterpolater.cpp.obj
+[91/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\AmrCore\AMReX_FluxRegister.cpp.obj
+[92/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\AmrCore\AMReX_Interpolater.cpp.obj
+[93/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\AmrCore\AMReX_TagBox.cpp.obj
+[94/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\AmrCore\AMReX_AmrMesh.cpp.obj
+[95/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\AmrCore\AMReX_InterpFaceRegister.cpp.obj
+[96/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Amr\AMReX_Derive.cpp.obj
+[97/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Amr\AMReX_Amr.cpp.obj
+[98/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Amr\AMReX_StateData.cpp.obj
+[99/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Amr\AMReX_StateDescriptor.cpp.obj
+[100/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Amr\AMReX_AuxBoundaryData.cpp.obj
+[101/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Amr\AMReX_AmrLevel.cpp.obj
+[102/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\EB\AMReX_EBFArrayBox.cpp.obj
+[103/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\EB\AMReX_EBFabFactory.cpp.obj
+[104/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\EB\AMReX_EBCellFlag.cpp.obj
+[105/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\EB\AMReX_EBDataCollection.cpp.obj
+[106/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\EB\AMReX_EBMultiFabUtil.cpp.obj
+[107/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\EB\AMReX_MultiCutFab.cpp.obj
+[108/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\EB\AMReX_EBInterpolater.cpp.obj
+[109/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\EB\AMReX_EBMFInterpolater.cpp.obj
+[110/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\EB\AMReX_EBAmrUtil.cpp.obj
+[111/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\EB\AMReX_EBFluxRegister.cpp.obj
+[112/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\EB\AMReX_EB_utils.cpp.obj
+[113/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\EB\AMReX_algoim.cpp.obj
+[114/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\EB\AMReX_distFcnElement.cpp.obj
+[115/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Amr\AMReX_Extrapolater.cpp.obj
+[116/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\EB\AMReX_EB2_MultiGFab.cpp.obj
+[117/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\EB\AMReX_EB2_3D_C.cpp.obj
+[118/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\EB\AMReX_EB2_ND_C.cpp.obj
+[119/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\EB\AMReX_EB2.cpp.obj
+[120/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\EB\AMReX_EB2_Level.cpp.obj
+[121/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\EB\AMReX_EB_STL_utils.cpp.obj
+[122/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\EB\AMReX_EB2_Level_STL.cpp.obj
+[123/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\EB\AMReX_EB2_IndexSpace_STL.cpp.obj
+[124/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\EB\AMReX_WriteEBSurface.cpp.obj
+[125/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\EB\AMReX_EBToPVD.cpp.obj
+[126/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\LinearSolvers\MLMG\AMReX_MLMGBndry.cpp.obj
+[127/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\LinearSolvers\MLMG\AMReX_MLMG.cpp.obj
+[128/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\LinearSolvers\MLMG\AMReX_MLLinOp.cpp.obj
+[129/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\LinearSolvers\MLMG\AMReX_MLCellLinOp.cpp.obj
+[130/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\LinearSolvers\MLMG\AMReX_MLCGSolver.cpp.obj
+[131/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\LinearSolvers\MLMG\AMReX_MLNodeLinOp.cpp.obj
+[132/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\LinearSolvers\MLMG\AMReX_MLABecLaplacian.cpp.obj
+[133/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\LinearSolvers\MLMG\AMReX_MLALaplacian.cpp.obj
+[134/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\LinearSolvers\MLMG\AMReX_MLPoisson.cpp.obj
+[135/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\LinearSolvers\MLMG\AMReX_MLCellABecLap.cpp.obj
+[136/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\LinearSolvers\MLMG\AMReX_MLNodeLaplacian.cpp.obj
+[137/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\LinearSolvers\MLMG\AMReX_MLNodeLaplacian_misc.cpp.obj
+[138/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\LinearSolvers\MLMG\AMReX_MLNodeLaplacian_sync.cpp.obj
+[139/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\LinearSolvers\MLMG\AMReX_MLTensorOp_grad.cpp.obj
+[140/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\LinearSolvers\MLMG\AMReX_MLNodeTensorLaplacian.cpp.obj
+[141/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\LinearSolvers\MLMG\AMReX_MLNodeLaplacian_eb.cpp.obj
+[142/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\LinearSolvers\MLMG\AMReX_MLEBNodeFDLaplacian.cpp.obj
+[143/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\LinearSolvers\MLMG\AMReX_MLTensorOp.cpp.obj
+[144/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\LinearSolvers\MLMG\AMReX_MLEBABecLap.cpp.obj
+[145/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\LinearSolvers\MLMG\AMReX_MLEBABecLap_F.cpp.obj
+[146/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\LinearSolvers\MLMG\AMReX_MLEBTensorOp.cpp.obj
+[147/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Particle\AMReX_ParticleMPIUtil.cpp.obj
+[148/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Particle\AMReX_TracerParticles.cpp.obj
+[149/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Particle\AMReX_ParticleUtil.cpp.obj
+[150/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Particle\AMReX_ParticleBufferMap.cpp.obj
+[151/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\LinearSolvers\MLMG\AMReX_MLEBTensorOp_bc.cpp.obj
+[152/208] Building CXX object src\CMakeFiles\buildInfobmxcore.dir\__\bmxcore\AMReX_buildInfo.cpp.obj
+[153/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Particle\AMReX_ParticleCommunication.cpp.obj
+[154/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\Particle\AMReX_ParticleContainerBase.cpp.obj
+[155/208] Building CXX object CMakeFiles\bmx.dir\src\main.cpp.obj
+[156/208] Building CXX object src\CMakeFiles\bmxcore.dir\bmx.cpp.obj
+[157/208] Building CXX object src\CMakeFiles\bmxcore.dir\io\bmx_io.cpp.obj
+[158/208] Building CXX object src\CMakeFiles\bmxcore.dir\io\bmx_build_info.cpp.obj
+[159/208] Building CXX object src\CMakeFiles\bmxcore.dir\io\bmx_checkpoint_schema.cpp.obj
+[160/208] Building CXX object src\CMakeFiles\bmxcore.dir\io\bmx_chk.cpp.obj
+C:\Program1\VC\Tools\MSVC\14.44.35207\include\numeric(33): warning C4244: '=': conversion from '__int64' to '_Ty', possible loss of data
+        with
+        [
+            _Ty=long
+        ]
+C:\Program1\VC\Tools\MSVC\14.44.35207\include\numeric(33): note: the template instantiation context (the oldest one first) is
+C:\b\BMX-shadow-handoff-20260721\BMX-C13-freeze\src\des\bmx_pc.H(199): note: see reference to class template instantiation 'amrex::NeighborParticleContainer<52,35,0,0>' being compiled
+C:\b\BMX-shadow-handoff-20260721\BMX-C13-freeze\subprojects\amrex\Src\Particle\AMReX_NeighborParticles.H(34): note: see reference to class template instantiation 'amrex::ParticleContainer<52,35,0,0,amrex::DefaultAllocator>' being compiled
+C:\b\BMX-shadow-handoff-20260721\BMX-C13-freeze\subprojects\amrex\Src\Particle\AMReX_ParticleContainerI.H(287): note: while compiling class template member function 'void amrex::ParticleContainer<52,35,0,0,amrex::DefaultAllocator>::reserveData(void)'
+C:\b\BMX-shadow-handoff-20260721\BMX-C13-freeze\subprojects\amrex\Src\Particle\AMReX_ParticleIO.H(43): note: while compiling class template member function 'void amrex::ParticleContainer<52,35,0,0,amrex::DefaultAllocator>::Checkpoint(const std::string &,const std::string &,bool,const amrex::Vector<std::string,std::allocator<std::string>> &,const amrex::Vector<std::string,std::allocator<std::string>> &) const'
+C:\b\BMX-shadow-handoff-20260721\BMX-C13-freeze\subprojects\amrex\Src\Particle\AMReX_ParticleContainer.H(722): note: see the first reference to 'amrex::ParticleContainer<52,35,0,0,amrex::DefaultAllocator>::Checkpoint' in 'amrex::ParticleContainer<52,35,0,0,amrex::DefaultAllocator>::Checkpoint'
+C:\b\BMX-shadow-handoff-20260721\BMX-C13-freeze\src\io\bmx_chk.cpp(172): note: see the first reference to 'amrex::ParticleContainer<52,35,0,0,amrex::DefaultAllocator>::Checkpoint' in 'bmx::WriteCheckPointFile'
+C:\b\BMX-shadow-handoff-20260721\BMX-C13-freeze\subprojects\amrex\Src\Particle\AMReX_ParticleIO.H(78): note: see reference to function template instantiation 'void amrex::ParticleContainer<52,35,0,0,amrex::DefaultAllocator>::WriteBinaryParticleData<amrex::ParticleContainer<52,35,0,0,amrex::DefaultAllocator>::Checkpoint::<lambda_1>>(const std::string &,const std::string &,const amrex::Vector<int,std::allocator<int>> &,const amrex::Vector<int,std::allocator<int>> &,const amrex::Vector<std::string,std::allocator<std::string>> &,const amrex::Vector<std::string,std::allocator<std::string>> &,F &&,bool) const' being compiled
+        with
+        [
+            F=amrex::ParticleContainer<52,35,0,0,amrex::DefaultAllocator>::Checkpoint::<lambda_1>
+        ]
+C:\b\BMX-shadow-handoff-20260721\BMX-C13-freeze\subprojects\amrex\Src\Particle\AMReX_ParticleIO.H(388): note: see reference to function template instantiation 'void amrex::WriteBinaryParticleDataAsync<amrex::ParticleContainer<52,35,0,0,amrex::DefaultAllocator>,0>(const PC &,const std::string &,const std::string &,const amrex::Vector<int,std::allocator<int>> &,const amrex::Vector<int,std::allocator<int>> &,const amrex::Vector<std::string,std::allocator<std::string>> &,const amrex::Vector<std::string,std::allocator<std::string>> &,bool)' being compiled
+        with
+        [
+            PC=amrex::ParticleContainer<52,35,0,0,amrex::DefaultAllocator>
+        ]
+C:\b\BMX-shadow-handoff-20260721\BMX-C13-freeze\subprojects\amrex\Src\Particle\AMReX_WriteBinaryParticleData.H(678): note: see reference to function template instantiation '_Ty std::accumulate<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<__int64>>>,long>(const _InIt,const _InIt,_Ty)' being compiled
+        with
+        [
+            _Ty=long,
+            _InIt=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<amrex::Long>>>
+        ]
+C:\Program1\VC\Tools\MSVC\14.44.35207\include\numeric(42): note: see reference to function template instantiation '_Ty std::accumulate<_InIt,_Ty,std::plus<void>>(const _InIt,const _InIt,_Ty,_Fn)' being compiled
+        with
+        [
+            _Ty=long,
+            _InIt=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<amrex::Long>>>,
+            _Fn=std::plus<void>
+        ]
+[161/208] Building CXX object src\CMakeFiles\bmxcore.dir\io\bmx_plt.cpp.obj
+C:\Program1\VC\Tools\MSVC\14.44.35207\include\numeric(33): warning C4244: '=': conversion from '__int64' to '_Ty', possible loss of data
+        with
+        [
+            _Ty=long
+        ]
+C:\Program1\VC\Tools\MSVC\14.44.35207\include\numeric(33): note: the template instantiation context (the oldest one first) is
+C:\b\BMX-shadow-handoff-20260721\BMX-C13-freeze\src\des\bmx_pc.H(199): note: see reference to class template instantiation 'amrex::NeighborParticleContainer<52,35,0,0>' being compiled
+C:\b\BMX-shadow-handoff-20260721\BMX-C13-freeze\subprojects\amrex\Src\Particle\AMReX_NeighborParticles.H(34): note: see reference to class template instantiation 'amrex::ParticleContainer<52,35,0,0,amrex::DefaultAllocator>' being compiled
+C:\b\BMX-shadow-handoff-20260721\BMX-C13-freeze\subprojects\amrex\Src\Particle\AMReX_ParticleIO.H(223): note: while compiling class template member function 'void amrex::ParticleContainer<52,35,0,0,amrex::DefaultAllocator>::WritePlotFile(const std::string &,const std::string &,const amrex::Vector<int,std::allocator<int>> &,const amrex::Vector<int,std::allocator<int>> &,const amrex::Vector<std::string,std::allocator<std::string>> &,const amrex::Vector<std::string,std::allocator<std::string>> &) const'
+C:\b\BMX-shadow-handoff-20260721\BMX-C13-freeze\src\io\bmx_plt.cpp(300): note: see the first reference to 'amrex::ParticleContainer<52,35,0,0,amrex::DefaultAllocator>::WritePlotFile' in 'bmx::WritePlotFile'
+C:\b\BMX-shadow-handoff-20260721\BMX-C13-freeze\subprojects\amrex\Src\Particle\AMReX_ParticleIO.H(226): note: see reference to function template instantiation 'void amrex::ParticleContainer<52,35,0,0,amrex::DefaultAllocator>::WriteBinaryParticleData<amrex::ParticleContainer<52,35,0,0,amrex::DefaultAllocator>::WritePlotFile::<lambda_1>>(const std::string &,const std::string &,const amrex::Vector<int,std::allocator<int>> &,const amrex::Vector<int,std::allocator<int>> &,const amrex::Vector<std::string,std::allocator<std::string>> &,const amrex::Vector<std::string,std::allocator<std::string>> &,F &&,bool) const' being compiled
+        with
+        [
+            F=amrex::ParticleContainer<52,35,0,0,amrex::DefaultAllocator>::WritePlotFile::<lambda_1>
+        ]
+C:\b\BMX-shadow-handoff-20260721\BMX-C13-freeze\subprojects\amrex\Src\Particle\AMReX_ParticleIO.H(388): note: see reference to function template instantiation 'void amrex::WriteBinaryParticleDataAsync<amrex::ParticleContainer<52,35,0,0,amrex::DefaultAllocator>,0>(const PC &,const std::string &,const std::string &,const amrex::Vector<int,std::allocator<int>> &,const amrex::Vector<int,std::allocator<int>> &,const amrex::Vector<std::string,std::allocator<std::string>> &,const amrex::Vector<std::string,std::allocator<std::string>> &,bool)' being compiled
+        with
+        [
+            PC=amrex::ParticleContainer<52,35,0,0,amrex::DefaultAllocator>
+        ]
+C:\b\BMX-shadow-handoff-20260721\BMX-C13-freeze\subprojects\amrex\Src\Particle\AMReX_WriteBinaryParticleData.H(678): note: see reference to function template instantiation '_Ty std::accumulate<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<__int64>>>,long>(const _InIt,const _InIt,_Ty)' being compiled
+        with
+        [
+            _Ty=long,
+            _InIt=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<amrex::Long>>>
+        ]
+C:\Program1\VC\Tools\MSVC\14.44.35207\include\numeric(42): note: see reference to function template instantiation '_Ty std::accumulate<_InIt,_Ty,std::plus<void>>(const _InIt,const _InIt,_Ty,_Fn)' being compiled
+        with
+        [
+            _Ty=long,
+            _InIt=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<amrex::Long>>>,
+            _Fn=std::plus<void>
+        ]
+[162/208] Building CXX object src\CMakeFiles\bmxcore.dir\deposition\bmx_deposition_bcs.cpp.obj
+[163/208] Building CXX object src\CMakeFiles\bmxcore.dir\io\bmx_restart.cpp.obj
+[164/208] Building CXX object src\CMakeFiles\bmxcore.dir\des\bmx_pc.cpp.obj
+[165/208] Building CXX object src\CMakeFiles\bmxcore.dir\des\bmx_pc_export.cpp.obj
+[166/208] Building CXX object src\CMakeFiles\bmxcore.dir\des\bmx_pc_phosphorus.cpp.obj
+[167/208] Building CXX object src\CMakeFiles\bmxcore.dir\des\bmx_pc_init.cpp.obj
+[168/208] Building CXX object src\CMakeFiles\bmxcore.dir\des\bmx_pc_p15.cpp.obj
+[169/208] Building CXX object src\CMakeFiles\bmxcore.dir\des\bmx_pc_write.cpp.obj
+[170/208] Building CXX object src\CMakeFiles\bmxcore.dir\des\bmx_pc_interaction.cpp.obj
+[171/208] Building CXX object src\CMakeFiles\bmxcore.dir\des\bmx_calc_volume_fraction.cpp.obj
+[172/208] Building CXX object src\CMakeFiles\bmxcore.dir\des\bmx_split_particles.cpp.obj
+[173/208] Building CXX object src\CMakeFiles\bmxcore.dir\des\bmx_calc_txfr.cpp.obj
+[174/208] Building CXX object src\CMakeFiles\bmxcore.dir\des\bmx_pc_xchng.cpp.obj
+[175/208] Building CXX object src\CMakeFiles\bmxcore.dir\diffusion\bmx_define_coeffs_on_faces.cpp.obj
+[176/208] Building CXX object src\CMakeFiles\bmxcore.dir\diffusion\bmx_diffusion_op.cpp.obj
+[177/208] Building CXX object src\CMakeFiles\bmxcore.dir\des\bmx_pc_fusion.cpp.obj
+[178/208] Building CXX object src\CMakeFiles\bmxcore.dir\diffusion\bmx_diffuse_chem_species.cpp.obj
+[179/208] Building CXX object src\CMakeFiles\bmxcore.dir\setup\bmx_calc_cell.cpp.obj
+[180/208] Building CXX object src\CMakeFiles\bmxcore.dir\leveldata\bmx_leveldata.cpp.obj
+[181/208] Building CXX object src\CMakeFiles\bmxcore.dir\setup\bmx_init_fluid.cpp.obj
+[182/208] Building CXX object src\CMakeFiles\bmxcore.dir\setup\bmx_calc_fluid_coeffs.cpp.obj
+[183/208] Building CXX object src\CMakeFiles\bmxcore.dir\setup\bmx_init.cpp.obj
+[184/208] Building CXX object src\CMakeFiles\bmxcore.dir\setup\bmx_setup_solvers.cpp.obj
+[185/208] Building CXX object src\CMakeFiles\bmxcore.dir\setup\bmx_arrays.cpp.obj
+[186/208] Building CXX object src\CMakeFiles\bmxcore.dir\setup\bmx_set_bc_type.cpp.obj
+[187/208] Building CXX object src\CMakeFiles\bmxcore.dir\setup\bmx_tagging.cpp.obj
+[188/208] Building CXX object src\CMakeFiles\bmxcore.dir\util\bmx_filcc.cpp.obj
+[189/208] Building CXX object src\CMakeFiles\bmxcore.dir\util\bmx_regrid.cpp.obj
+[190/208] Building CXX object src\CMakeFiles\bmxcore.dir\util\bmx_set_chem_species_bcs.cpp.obj
+[191/208] Building CXX object src\CMakeFiles\bmxcore.dir\util\bmx_fillpatch.cpp.obj
+[192/208] Building CXX object src\CMakeFiles\bmxcore.dir\mods\bmx_fluid_parms.cpp.obj
+[193/208] Building CXX object src\CMakeFiles\bmxcore.dir\mods\bmx_chem_species_parms.cpp.obj
+[194/208] Building CXX object src\CMakeFiles\bmxcore.dir\util\bmx_util.cpp.obj
+[195/208] Building CXX object subprojects\amrex\Src\CMakeFiles\amrex.dir\LinearSolvers\MLMG\AMReX_MLNodeLaplacian_sten.cpp.obj
+[196/208] Building CXX object src\CMakeFiles\bmxcore.dir\mods\bmx_dem_parms.cpp.obj
+[197/208] Building CXX object src\CMakeFiles\bmxcore.dir\mods\bmx_bc_parms.cpp.obj
+[198/208] Linking CXX static library subprojects\amrex\Src\amrex.lib
+[199/208] Building CXX object src\CMakeFiles\bmxcore.dir\chemistry\bmx_phosphorus_uptake.cpp.obj
+[200/208] Building CXX object src\CMakeFiles\bmxcore.dir\timestepping\bmx_evolve.cpp.obj
+[201/208] Building CXX object src\CMakeFiles\bmxcore.dir\chemistry\bmx_phosphorus_reactions.cpp.obj
+[202/208] Building CXX object src\CMakeFiles\bmxcore.dir\chemistry\bmx_phosphorus_export.cpp.obj
+[203/208] Building CXX object src\CMakeFiles\bmxcore.dir\timestepping\bmx_evolve_fluid.cpp.obj
+[204/208] Building CXX object src\CMakeFiles\bmxcore.dir\chemistry\bmx_p15_stage0.cpp.obj
+[205/208] Linking CXX static library src\buildInfobmxcore.lib
+[206/208] Building CXX object src\CMakeFiles\bmxcore.dir\chemistry\bmx_chem.cpp.obj
+[207/208] Building CXX object src\CMakeFiles\bmxcore.dir\chemistry\bmx_cell_interaction.cpp.obj
+[208/208] Linking CXX executable bmx.exe
+
+build OK in 215 s
+executable   : C:\b\BMX-shadow-handoff-20260721\build-c13-native-freeze\bmx.exe
+size_bytes   : 2682880
+sha256       : 57eb7cfdbf2e8cec705f65046f84220d8832278ed0ea3634efccdc513e97041b
+END fresh_build exit_code=0

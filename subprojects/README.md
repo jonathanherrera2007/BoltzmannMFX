@@ -7,7 +7,7 @@ to the latest Github version
 cd $BMX_HOME
 ```
 ```
-git submodule foreach git pull git@github.com:AMReX-codes/amrex.git
+git submodule foreach git pull https://github.com/AMReX-codes/amrex.git
 ```
 ```
 cd subprojects

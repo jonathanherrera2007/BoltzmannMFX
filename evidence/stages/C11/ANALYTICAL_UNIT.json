@@ -1,0 +1,16 @@
+{
+    "artifact_type":  "C11_P13_ANALYTICAL_UNIT",
+    "stage":  "C11/P13",
+    "status":  "PASS",
+    "checks_executed":  43,
+    "output":  "C11_REACTION_UNIT PASS checks=43",
+    "source_sha256":  "adfe3125b6f46c4b34009a5f768accf8a5dffb204facfbde752ba20f4d3674d2",
+    "header_sha256":  "50bcea7962c67a4a4ffe7d9ff8297171bd419766990b50e3d7f01b046d104747",
+    "contract_sha256":  "06f575a09b56178d74f809003fec532d6d3d509b972e62c29da21754cab0d26d",
+    "operator_fit_sha256":  "ea6e8dc2ca3f69fe2f366801c9df8ec9832b58f399d605c88d91527ff2098407",
+    "frozen_global_order_sha256":  "bb63c219a860687d91ce1acf06a667c9208abf026b32f18acfc64884bb696dd6",
+    "frozen_kernel_sha256":  "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02",
+    "external_resources":  "none",
+    "external_spend_usd":  0,
+    "claim_boundary":  "Deterministic analytical P13 transaction tests only; no biological baseline, calibration, prediction, or C12+ behavior."
+}

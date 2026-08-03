@@ -1,0 +1,47 @@
+{
+    "artifact_type":  "C09_NATIVE_BUILD",
+    "stage":  "C09/P11",
+    "status":  "PASS",
+    "source":  {
+                   "path":  "C:\\b\\BMX-shadow-handoff-20260721\\BMX-RG-SW-C07-product",
+                   "head":  "72414be0f8e52aa438dd04ab5b04cff5bcda5839",
+                   "tree":  "2fd93f00110054cb1dfcc50172305d77ab5d542f",
+                   "dirty":  false,
+                   "status_capture":  "before build evidence outputs were opened"
+               },
+    "amrex":  {
+                  "commit":  "cbdc6580ee3d78cccdd37172e4ba077ee181f483",
+                  "tree":  "fb714dc6e693c18f7c441d1d1febe4a5e8bf9ea6"
+              },
+    "configuration":  {
+                          "build_type":  "Release",
+                          "cxx_compiler":  "C:/Program1/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe",
+                          "cxx_standard":  "17",
+                          "bmx_mpi":  "ON",
+                          "bmx_omp":  "OFF",
+                          "bmx_gpu_backend":  "NONE",
+                          "amrex_spacedim":  "3"
+                      },
+    "contracts":  {
+                      "geometry_sha256":  "6a4329f013c857c664a11d669747845006a6c0c9d34f568625b6939d1462acba",
+                      "decision_reconciliation_sha256":  "ddade9c36ee8be93da7a6f332fed31863a21c4d5e04cd377dca493c7ef6a7b64"
+                  },
+    "frozen_kernel_sha256":  "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02",
+    "executable":  {
+                       "path":  "C:\\b\\BMX-shadow-handoff-20260721\\build-c09-native-release-definitive\\bmx.exe",
+                       "size_bytes":  2511360,
+                       "sha256":  "33a191e180288783a0e9fc5f7ca25ac08e298b43e68fa37f0414e5b19c37b996"
+                   },
+    "commands":  [
+                     "powershell.exe -NoProfile -ExecutionPolicy Bypass -File tools/repro/configure_native_windows.ps1 -SourceDir C:\\b\\BMX-shadow-handoff-20260721\\BMX-RG-SW-C07-product -BuildDir C:\\b\\BMX-shadow-handoff-20260721\\build-c09-native-release-definitive -Fresh",
+                     "powershell.exe -NoProfile -ExecutionPolicy Bypass -File tools/repro/build_native_windows.ps1 -BuildDir C:\\b\\BMX-shadow-handoff-20260721\\build-c09-native-release-definitive -Target bmx -Parallel 4"
+                 ],
+    "raw_log":  "C:\\b\\BMX-shadow-handoff-20260721\\BMX-RG-SW-C07-product\\evidence\\stages\\C09\\raw\\native_build.log",
+    "raw_log_sha256":  "ed02a0a69f238b013f8f59b0d790f1e5d1b858e4c319f2b514006288a2dc8dc2",
+    "cmake_cache_sha256":  "0a3a1b0ada9e40d3c7ecf8d41c1a6bac442cd4a876f40ca945e62c1e74a1c484",
+    "warnings":  [
+                     "Inherited MSVC C4244 instantiations originate in the pinned AMReX/std::numeric code path; no C09 source warning was emitted."
+                 ],
+    "external_resources":  "none",
+    "external_spend_usd":  0
+}

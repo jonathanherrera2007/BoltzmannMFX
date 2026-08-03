@@ -1,0 +1,139 @@
+{
+  "schema": "bmx-p12-independent-numerical-review-v2",
+  "stage": "C10",
+  "status": "PASS",
+  "review_id": "IR-20260801-P12-NUMERICAL-V2",
+  "reviewed_contract_id": "USER-DIRECTED-20260801-P12-NUMERICAL-V2",
+  "reviewed_contract_sha256": "43d64a8f4ec6c8c00379fc3d9605441cb900479fcdd8db9e78e6fc1edd28f81f",
+  "reviewed_source_commit": "0f38760b4daba3acbfd4b658c9ac522523b5c69b",
+  "reviewer_identity": "Claude (Opus 5) acting as independent reviewer; writer role for rgsw/product handed to Codex at e7a6952 and not resumed. Same reviewer as IR-20260801-P10-U02.",
+  "reviewer_is_implementation_writer": false,
+  "read_only_worktree_or_detached_commit": true,
+  "review_method": "Read-only inspection of the clean checkout at the exact candidate commit. Verified `git status --porcelain` empty and HEAD == 0f38760b4daba3acbfd4b658c9ac522523b5c69b before reading. No file in the repository was written or modified by the reviewer. Note: a separate worktree was not created; byte identity with the candidate commit was established by the clean-tree and HEAD checks instead.",
+  "confirmations": {
+    "h_cubed_donor_volume_derivation": true,
+    "frozen_gates_not_weakened": true,
+    "no_post_hoc_scientific_parameter_change": true,
+    "o02_and_global_operator_order_unchanged": true,
+    "run_wide_clipping_diagnostics_correct": true,
+    "configuration_and_contract_hashing_exact": true,
+    "deterministic_mpi_and_restart_design_adequate": true
+  },
+  "verification_performed": {
+    "identity": {
+      "candidate_commit_resolves": true,
+      "worktree_clean": true,
+      "branch": "rgsw/c10-p12",
+      "v2_contract_sha256_recomputed_matches": true,
+      "frozen_kernel_sha256": "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02",
+      "frozen_kernel_unchanged": true,
+      "operator_order_file_byte_identical_to_approved": true,
+      "operator_order_sha256": "bb63c219a860687d91ce1acf06a667c9208abf026b32f18acfc64884bb696dd6"
+    },
+    "h_cubed_derivation": {
+      "relation": "eta_j = R_j / N_j with R_j proportional to dt and N_j proportional to V_cell = h^3; therefore dt proportional to h^3 holds eta invariant under uniform grid halving.",
+      "v1_schedule_dt_s": [1800.0, 900.0, 450.0],
+      "v1_scaling": "dt ~ h^1, so eta multiplies by 4 per level and by 16 from L0 to L2",
+      "v2_schedule_dt_s": [1800.0, 225.0, 28.125],
+      "v2_scaling": "dt ~ h^3, so eta is invariant across levels",
+      "v2_arithmetic_checked": "1800/8 = 225; 225/8 = 28.125; updates_48h 96 / 768 / 6144 all equal 172800/dt",
+      "v1_observed_l2_low_minimum_donor_scale": 0.5969698781537861,
+      "v1_implied_eta_at_l2": 1.6751,
+      "v2_forward_predicted_eta_low": 0.102,
+      "v1_predicted_eta_at_l2_from_forward_value": 1.632,
+      "agreement_percent": 2.6,
+      "not_back_fitted_argument": "Back-computing eta0 from the observed V1 failure yields 0.1047. The contract states 0.102, differing by 2.6 percent. A value tuned to the observed failure would reproduce it exactly; it does not. This is affirmative evidence that the expected eta was derived forward from the model rather than fitted to the failure."
+    },
+    "gates_not_weakened": {
+      "cumulative_uptake_relative_limit": {"v1": 0.02, "v2": 0.02, "changed": false},
+      "mesh_profile_l1_relative_limit": {"v1": 0.05, "v2": 0.05, "changed": false},
+      "positivity_conservation_restart_selection": "present in both, textually equivalent",
+      "gates_added_by_v2": [
+        "eta_max_run_max <= 0.25",
+        "s_min_run >= 1 - 64*epsilon_double (evaluated 0.9999999999999858, independently recomputed)",
+        "cumulative_rejected_mol <= max(1e-28 mol, 64*epsilon_double*N_requested)"
+      ],
+      "net_effect": "V2 retains every V1 gate at its original numeric value and adds three. The change strengthens acceptance; it does not widen it."
+    },
+    "science_unchanged": {
+      "method": "Full flattened key-by-key diff of V1 against V2.",
+      "only_changed_scalars": ["contract_id", "schema", "claim_boundary"],
+      "unchanged_verified": [
+        "j_max_mol_p_cm2_s = 2.95949412514e-12",
+        "k_m_mol_p_cm3 = 1.00084710414e-09",
+        "initial_mesh_d_arms low 1.61e-08 / high 4.52e-08",
+        "mesh_d_diffusivity_cm2_s = 5e-06",
+        "eligible_area = FULL_EXPOSED_EXTRARADICAL_SURFACE",
+        "duration_s = 172800.0 and all ten observation times",
+        "checkpoint_s = 86400.0"
+      ],
+      "uptake_contract_sha256_recomputed_matches": "2094aed3c8ef21a257d2c597352793384d01a1efc3d72936d5c5108d308f8804"
+    },
+    "v1_preservation": {
+      "all_hashes_recomputed_and_matched": true,
+      "artifacts": [
+        "contracts/p12/NUMERICAL_PREREGISTRATION_V1.json",
+        "evidence/stages/C10/BLOCKER_REPORT.json",
+        "evidence/stages/C10/BLOCKER_REPORT.md",
+        "evidence/stages/C10/P12_48H_GRID_TIME.json",
+        "evidence/stages/C10/STAGE_REPORT.json",
+        "evidence/stages/C10/STAGE_REPORT.md"
+      ]
+    },
+    "clipping_exemption": {
+      "exempt_fixture": "MULTIPLE_SEGMENTS_ONE_DONOR_ANALYTIC_CAP",
+      "assessment": "Correctly narrow. Only the no-clipping gate is exempt; conservation, exact arbitration, finite values, and requested = accepted + rejected remain mandatory. The fixture exists to exercise the cap deliberately, so exempting it from a no-clipping gate is necessary rather than permissive."
+    },
+    "runner_enforcement": {
+      "fail_closed_on": [
+        "runner numerical binding mismatch",
+        "numerical contract SHA-256 mismatch",
+        "numerical contract ID mismatch",
+        "failed V1 preregistration changed",
+        "failed V1 evidence changed",
+        "source worktree not clean",
+        "independent review gate failed"
+      ],
+      "enforces_reviewer_is_implementation_writer_false": true,
+      "assessment": "Adequate. The runner cannot execute a 48 h outcome without a signed review from a non-writer naming this exact commit and contract hash."
+    },
+    "no_later_stage_behaviour": {
+      "c11_or_p13_references_in_src": 0,
+      "confirmed": true
+    }
+  },
+  "review_findings": [
+    {
+      "id": "F-13",
+      "severity": "LOW",
+      "blocking": false,
+      "summary": "The eta_max <= 0.25 gate is a chosen threshold, not a derived bound.",
+      "detail": "Expected primary eta is 0.102 (low arm) and 0.038 (high arm), so the gate sits 2.45x above expectation and 4x below the eta = 1 clipping onset. That is a defensible conventional stability margin, and it was frozen before any V2 outcome existed (v2_outcomes_seen_before_freeze = false, and no V2 48 h run was performed), so it does not violate the prohibition on widening criteria after outcomes are seen. The finding is presentational: 0.25 appears alongside genuinely derived quantities and should be labelled explicitly as a conventional engineering margin so a later reader does not mistake it for a derived bound.",
+      "required_before_outcome_run": false
+    },
+    {
+      "id": "F-14",
+      "severity": "INFO",
+      "blocking": false,
+      "summary": "Expected eta values were not independently reproduced from first principles by the reviewer.",
+      "detail": "Reproducing 0.102 and 0.038 requires the hash-bound network file and the represented porosity phi, which the reviewer did not evaluate. The values do not gate anything (expected_is_not_acceptance = true) and are corroborated to 2.6 percent by the preserved V1 failure observation. Recorded for completeness, not as a defect.",
+      "required_before_outcome_run": false
+    },
+    {
+      "id": "F-15",
+      "severity": "LOW",
+      "blocking": false,
+      "summary": "The three-level study has no defined outcome if both successive comparisons fail.",
+      "detail": "production_grid_selection states L2 is not selectable because it has no finer successor. Selection can therefore only ever yield L0 or L1. If L0-to-L1 and L1-to-L2 both fail, no production level exists and C10 blocks a second time with no predeclared response. Recommend predeclaring now, before outcomes are seen, either an L3 extension (n_cell 64/64/32, dt 3.515625 s) or an explicit block-and-escalate path. Declaring it after a second failure would be the same category of post-hoc criterion change that V2 was created to avoid.",
+      "required_before_outcome_run": false
+    }
+  ],
+  "commendations": [
+    "The prohibited_repairs list enumerates thirteen specific tuning routes and forbids them by name, including 'choose an L2 timestep from the observed V1 scale' and 'use predicted saturation ratio as convergence proof'. This is a self-imposed anti-tuning guard written by the party who would benefit from tuning.",
+    "The V1 blocker report recorded 'Do not tune an arm, parameter, grid, timestep, or acceptance threshold after observing this failure' at the moment of failure, before the repair was designed.",
+    "Unavailable sandbox artifacts are recorded as stated provenance with byte identity explicitly not claimed, rather than asserted."
+  ],
+  "outcome_execution_authorized": true,
+  "authorization_scope": "Authorizes execution of the V2 48-hour coupled grid/time convergence study and its fixed-grid temporal confirmation at the exact contract hash and candidate commit named above.",
+  "claim_boundary": "This record closes only the independent numerical review of contract 43d64a8f at commit 0f38760b. It does not constitute C10 PASS, mentor approval, biological calibration, predictive validation, reference-host release evidence, or authorization for C11 or any later stage. C10 closure additionally requires the outcome study to pass its own gates and D-C10-02 to be formally closed."
+}

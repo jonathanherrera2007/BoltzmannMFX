@@ -1,0 +1,296 @@
+{
+  "artifact_type": "C08_CHECKPOINT_RESTART_REISSUE",
+  "claim_boundary": "engineering reissue of the C08 checkpoint/restart integrity test against schema v5, P12 numerical preregistration V2, and decision-contract SHA-256 34e8414c09e6528fc86399ceb4902cb5fc6907d9562fcf7a78cb3a8e4e333066, with a bound nonzero global ledger and exact topology-contract identity; when --mpiexec is provided it includes 2-rank checkpoint/restart and 2-to-1 rank-change restart through pinned AMReX's internal redistribution",
+  "corrupted_schema_cases": [
+    {
+      "checks": {
+        "before_particle_deserialization": true,
+        "clear_reason": true,
+        "exit_nonzero": true
+      },
+      "exit_code": 22,
+      "expected_token": "expected 'Checkpoint version: 5'",
+      "id": "legacy_version",
+      "log": "C:\\b\\BMX-shadow-handoff-20260721\\c10-v2-prereview-checkpoint-evidence\\corrupt_legacy_version\\stdout.log",
+      "status": "PASS"
+    },
+    {
+      "checks": {
+        "before_particle_deserialization": true,
+        "clear_reason": true,
+        "exit_nonzero": true
+      },
+      "exit_code": 22,
+      "expected_token": "layout_hash_sha256 mismatch",
+      "id": "layout_hash",
+      "log": "C:\\b\\BMX-shadow-handoff-20260721\\c10-v2-prereview-checkpoint-evidence\\corrupt_layout_hash\\stdout.log",
+      "status": "PASS"
+    },
+    {
+      "checks": {
+        "before_particle_deserialization": true,
+        "clear_reason": true,
+        "exit_nonzero": true
+      },
+      "exit_code": 22,
+      "expected_token": "mesh_component_count mismatch",
+      "id": "mesh_count",
+      "log": "C:\\b\\BMX-shadow-handoff-20260721\\c10-v2-prereview-checkpoint-evidence\\corrupt_mesh_count\\stdout.log",
+      "status": "PASS"
+    },
+    {
+      "checks": {
+        "before_particle_deserialization": true,
+        "clear_reason": true,
+        "exit_nonzero": true
+      },
+      "exit_code": 22,
+      "expected_token": "particle_component_names mismatch",
+      "id": "particle_names",
+      "log": "C:\\b\\BMX-shadow-handoff-20260721\\c10-v2-prereview-checkpoint-evidence\\corrupt_particle_names\\stdout.log",
+      "status": "PASS"
+    },
+    {
+      "checks": {
+        "before_particle_deserialization": true,
+        "clear_reason": true,
+        "exit_nonzero": true
+      },
+      "exit_code": 22,
+      "expected_token": "operator_order_id mismatch",
+      "id": "operator_order",
+      "log": "C:\\b\\BMX-shadow-handoff-20260721\\c10-v2-prereview-checkpoint-evidence\\corrupt_operator_order\\stdout.log",
+      "status": "PASS"
+    },
+    {
+      "checks": {
+        "before_particle_deserialization": true,
+        "clear_reason": true,
+        "exit_nonzero": true
+      },
+      "exit_code": 22,
+      "expected_token": "decision_contract_sha256 mismatch",
+      "id": "decision_contract_hash",
+      "log": "C:\\b\\BMX-shadow-handoff-20260721\\c10-v2-prereview-checkpoint-evidence\\corrupt_decision_contract_hash\\stdout.log",
+      "status": "PASS"
+    },
+    {
+      "checks": {
+        "before_particle_deserialization": true,
+        "clear_reason": true,
+        "exit_nonzero": true
+      },
+      "exit_code": 22,
+      "expected_token": "topology_event_contract_id mismatch",
+      "id": "topology_contract",
+      "log": "C:\\b\\BMX-shadow-handoff-20260721\\c10-v2-prereview-checkpoint-evidence\\corrupt_topology_contract\\stdout.log",
+      "status": "PASS"
+    },
+    {
+      "checks": {
+        "before_particle_deserialization": true,
+        "clear_reason": true,
+        "exit_nonzero": true
+      },
+      "exit_code": 22,
+      "expected_token": "nonfinite or negative cumulative ledger amount",
+      "id": "negative_ledger",
+      "log": "C:\\b\\BMX-shadow-handoff-20260721\\c10-v2-prereview-checkpoint-evidence\\corrupt_negative_ledger\\stdout.log",
+      "status": "PASS"
+    },
+    {
+      "checks": {
+        "before_particle_deserialization": true,
+        "clear_reason": true,
+        "exit_nonzero": true
+      },
+      "exit_code": 22,
+      "expected_token": "malformed unsigned field ledger_other_exit_events",
+      "id": "negative_event_count",
+      "log": "C:\\b\\BMX-shadow-handoff-20260721\\c10-v2-prereview-checkpoint-evidence\\corrupt_negative_event_count\\stdout.log",
+      "status": "PASS"
+    },
+    {
+      "checks": {
+        "before_particle_deserialization": true,
+        "clear_reason": true,
+        "exit_nonzero": true
+      },
+      "exit_code": 22,
+      "expected_token": "v1 other_exit_d/e/f/events must be exactly zero",
+      "id": "nonzero_other_exit",
+      "log": "C:\\b\\BMX-shadow-handoff-20260721\\c10-v2-prereview-checkpoint-evidence\\corrupt_nonzero_other_exit\\stdout.log",
+      "status": "PASS"
+    },
+    {
+      "checks": {
+        "before_particle_deserialization": true,
+        "clear_reason": true,
+        "exit_nonzero": true
+      },
+      "exit_code": 22,
+      "expected_token": "missing ledger_other_exit_events",
+      "id": "truncated_schema",
+      "log": "C:\\b\\BMX-shadow-handoff-20260721\\c10-v2-prereview-checkpoint-evidence\\corrupt_truncated_schema\\stdout.log",
+      "status": "PASS"
+    },
+    {
+      "checks": {
+        "before_particle_deserialization": true,
+        "clear_reason": true,
+        "exit_nonzero": true
+      },
+      "exit_code": 22,
+      "expected_token": "malformed level count",
+      "id": "extra_schema_field",
+      "log": "C:\\b\\BMX-shadow-handoff-20260721\\c10-v2-prereview-checkpoint-evidence\\corrupt_extra_schema_field\\stdout.log",
+      "status": "PASS"
+    }
+  ],
+  "disabled_feature_off_roundtrip": {
+    "checks": {
+      "disabled_mesh_names": true,
+      "disabled_mode": true,
+      "reserved_particle_names": true,
+      "restart_exit_zero": true,
+      "schema_v5": true,
+      "write_exit_zero": true
+    },
+    "status": "PASS"
+  },
+  "executable": {
+    "path": "C:\\b\\BMX-shadow-handoff-20260721\\build-c10-native-release-definitive\\bmx.exe",
+    "sha256": "4bdddfc0e9aa326bec0da9c1e6acc7727b4c71b5bbd60183985f8f008e85b721"
+  },
+  "mpi_roundtrip": {
+    "checks": {
+      "checkpoint_write_2_rank_exit_zero": true,
+      "continuous_2_rank_exit_zero": true,
+      "no_guard_abort": true,
+      "restart_2_to_1_completed_deserialization": true,
+      "restart_2_to_1_exit_zero": true,
+      "restart_2_to_1_particle_equivalent": true,
+      "restart_2_to_2_completed_deserialization": true,
+      "restart_2_to_2_exit_zero": true,
+      "restart_2_to_2_particle_equivalent": true,
+      "restart_2_to_2_selected_payload_exact": true
+    },
+    "continuous_selected_payload_hashes": {
+      "Header": "775cbc5082ad903bc45c3ebab91672f80c7d231aa39821868dfc00b6d0621e4d",
+      "Level_0/X_k_D_00000": "3569d6c9d754ea248a15e01be2d01dc60d79ec85c777b3127bb6f976683c9b40",
+      "Level_0/X_k_D_00001": "bccc1e736122fd62f4d050ae5a7e3e53216b77f17733980cb95002e2712baeff",
+      "Level_0/X_k_H": "501faff3fb7c87ced355687c5512039f54b0e2c910ff592decf32fd83f4b3e2f",
+      "Level_0/volfrac_D_00000": "16ea439880f1fe53f69d2448afcb640a31277efc0e4c2a101afcd8062f1d548e",
+      "Level_0/volfrac_D_00001": "b5af339eefb678ee44d63d2f7a1f7bcd9dc28830aafe32d2b7777408224b8896",
+      "Level_0/volfrac_H": "0bf108b24789d39e0342b630baee1c2a950fc6895f81a9adab9c916f44fe0187",
+      "Level_1/X_k_D_00000": "e14b29237f958e42441557349b411a090f00c2674731542ea140e75dd87be2ee",
+      "Level_1/X_k_D_00001": "7be248a84a9a1a695d8686362ee0637885785bed4fcb7e32a46c746fb24f84ee",
+      "Level_1/X_k_H": "c9ace89107c7aa5e11799cc258dabed16d9c3cfa04db0fa4d58f0b947273bd8e",
+      "Level_1/volfrac_D_00000": "1aca658c400d4579f961bc253ab5dbe28fefa32cc431f60dbd0e6d59ee57abf7",
+      "Level_1/volfrac_D_00001": "877c876263ab11a1def2d2191b43e333551b5b61a6d07cb583e7bd6a86d3b2d6",
+      "Level_1/volfrac_H": "3c6b0669264ed0df7a995f26f96586b0f25616ae7162cae383ff031e0396ead1",
+      "particles/Header": "358731905d35e4a26f16053890b6e6d3f8992fdb054c7aabf5973c35262c43d4",
+      "particles/Level_1/DATA_00001": "30c92b909031dee0c93e873c73ced80c008907db2eebd1b3722af630de792d49",
+      "particles/Level_1/Particle_H": "69d91a019d978223ac8e1cb15bc67c017dc1bbe70581047e51dab43dabf8e339"
+    },
+    "particle_comparison_2_to_1": {
+      "exact_discrete_fields": true,
+      "exact_identifiers": true,
+      "exact_schema": true,
+      "first_difference": null,
+      "floating_failures": 0,
+      "floating_tolerance": 1e-12,
+      "max_relative_difference": 0.0,
+      "status": "PASS"
+    },
+    "particle_comparison_2_to_2": {
+      "exact_discrete_fields": true,
+      "exact_identifiers": true,
+      "exact_schema": true,
+      "first_difference": null,
+      "floating_failures": 0,
+      "floating_tolerance": 1e-12,
+      "max_relative_difference": 0.0,
+      "status": "PASS"
+    },
+    "ranks": {
+      "checkpoint_write": 2,
+      "continuous": 2,
+      "rank_change_restart": 1,
+      "same_rank_restart": 2
+    },
+    "restarted_2_rank_selected_payload_hashes": {
+      "Header": "775cbc5082ad903bc45c3ebab91672f80c7d231aa39821868dfc00b6d0621e4d",
+      "Level_0/X_k_D_00000": "3569d6c9d754ea248a15e01be2d01dc60d79ec85c777b3127bb6f976683c9b40",
+      "Level_0/X_k_D_00001": "bccc1e736122fd62f4d050ae5a7e3e53216b77f17733980cb95002e2712baeff",
+      "Level_0/X_k_H": "501faff3fb7c87ced355687c5512039f54b0e2c910ff592decf32fd83f4b3e2f",
+      "Level_0/volfrac_D_00000": "16ea439880f1fe53f69d2448afcb640a31277efc0e4c2a101afcd8062f1d548e",
+      "Level_0/volfrac_D_00001": "b5af339eefb678ee44d63d2f7a1f7bcd9dc28830aafe32d2b7777408224b8896",
+      "Level_0/volfrac_H": "0bf108b24789d39e0342b630baee1c2a950fc6895f81a9adab9c916f44fe0187",
+      "Level_1/X_k_D_00000": "e14b29237f958e42441557349b411a090f00c2674731542ea140e75dd87be2ee",
+      "Level_1/X_k_D_00001": "7be248a84a9a1a695d8686362ee0637885785bed4fcb7e32a46c746fb24f84ee",
+      "Level_1/X_k_H": "c9ace89107c7aa5e11799cc258dabed16d9c3cfa04db0fa4d58f0b947273bd8e",
+      "Level_1/volfrac_D_00000": "1aca658c400d4579f961bc253ab5dbe28fefa32cc431f60dbd0e6d59ee57abf7",
+      "Level_1/volfrac_D_00001": "877c876263ab11a1def2d2191b43e333551b5b61a6d07cb583e7bd6a86d3b2d6",
+      "Level_1/volfrac_H": "3c6b0669264ed0df7a995f26f96586b0f25616ae7162cae383ff031e0396ead1",
+      "particles/Header": "358731905d35e4a26f16053890b6e6d3f8992fdb054c7aabf5973c35262c43d4",
+      "particles/Level_1/DATA_00001": "30c92b909031dee0c93e873c73ced80c008907db2eebd1b3722af630de792d49",
+      "particles/Level_1/Particle_H": "69d91a019d978223ac8e1cb15bc67c017dc1bbe70581047e51dab43dabf8e339"
+    },
+    "status": "PASS"
+  },
+  "raw_run_root": "C:\\b\\BMX-shadow-handoff-20260721\\c10-v2-prereview-checkpoint-evidence",
+  "stage": "C10_REISSUE_OF_C08_INVARIANTS",
+  "status": "PASS",
+  "valid_roundtrip": {
+    "checks": {
+      "bound_nonzero_reference": true,
+      "continuous_exit_zero": true,
+      "particle_restart_equivalent": true,
+      "restart_exit_zero": true,
+      "schema_header_complete": true,
+      "selected_checkpoint_payload_exact": true,
+      "staged_exit_zero": true
+    },
+    "continuous_selected_payload_hashes": {
+      "Header": "23e156ea2874c459707d29abb9744cba6b6d5a4d8fc7fe3a3509243dc9133708",
+      "Level_0/X_k_D_00000": "50ddeccc841bb84928c471ddd4a5ca7c9b980cee1e34e384ee63f9a0174a9b3f",
+      "Level_0/X_k_H": "6dfa23e74f7a4f3d9f5579e96738820cec59165629378530d14d55befc4a8ee3",
+      "Level_0/volfrac_D_00000": "1b9939bf82a38bf7e2d23aab172b96ee18951920067bebd308fdcf0fd467c0e3",
+      "Level_0/volfrac_H": "eab6091230e6969ead419589cdef691e402dfd847f73a09ca92e4ab21b644684",
+      "Level_1/X_k_D_00000": "5e5ef7c6f9a2ff28c56b1a55459ffbafa6d63f068ddfb29e92178dbaceeeb648",
+      "Level_1/X_k_H": "27e883a29f1c570b3eb55d35a33ac1488bf0e52b21357b617c394d9d8fa4e4d5",
+      "Level_1/volfrac_D_00000": "2e43ae87067c602ab1fb19ca341aa5dddebc9343d13343cd2cf6ca1f00902d55",
+      "Level_1/volfrac_H": "8c8b75cf43fcc33ab51f792e7958e58d699fd7a843af13d06fdac462033fd7ba",
+      "particles/Header": "8c0779677eaf93a8c4eaf58122efcf835506060182b2f0332ab543c1aeb5dd3c",
+      "particles/Level_1/DATA_00000": "30c92b909031dee0c93e873c73ced80c008907db2eebd1b3722af630de792d49",
+      "particles/Level_1/Particle_H": "f40356f3d64a657a6ee6fb299b1dfacc3f3f121274f4b125df35b9fca9c39056"
+    },
+    "missing_header_tokens": [],
+    "particle_comparison": {
+      "exact_discrete_fields": true,
+      "exact_identifiers": true,
+      "exact_schema": true,
+      "first_difference": null,
+      "floating_failures": 0,
+      "floating_tolerance": 1e-12,
+      "max_relative_difference": 0.0,
+      "status": "PASS"
+    },
+    "restarted_selected_payload_hashes": {
+      "Header": "23e156ea2874c459707d29abb9744cba6b6d5a4d8fc7fe3a3509243dc9133708",
+      "Level_0/X_k_D_00000": "50ddeccc841bb84928c471ddd4a5ca7c9b980cee1e34e384ee63f9a0174a9b3f",
+      "Level_0/X_k_H": "6dfa23e74f7a4f3d9f5579e96738820cec59165629378530d14d55befc4a8ee3",
+      "Level_0/volfrac_D_00000": "1b9939bf82a38bf7e2d23aab172b96ee18951920067bebd308fdcf0fd467c0e3",
+      "Level_0/volfrac_H": "eab6091230e6969ead419589cdef691e402dfd847f73a09ca92e4ab21b644684",
+      "Level_1/X_k_D_00000": "5e5ef7c6f9a2ff28c56b1a55459ffbafa6d63f068ddfb29e92178dbaceeeb648",
+      "Level_1/X_k_H": "27e883a29f1c570b3eb55d35a33ac1488bf0e52b21357b617c394d9d8fa4e4d5",
+      "Level_1/volfrac_D_00000": "2e43ae87067c602ab1fb19ca341aa5dddebc9343d13343cd2cf6ca1f00902d55",
+      "Level_1/volfrac_H": "8c8b75cf43fcc33ab51f792e7958e58d699fd7a843af13d06fdac462033fd7ba",
+      "particles/Header": "8c0779677eaf93a8c4eaf58122efcf835506060182b2f0332ab543c1aeb5dd3c",
+      "particles/Level_1/DATA_00000": "30c92b909031dee0c93e873c73ced80c008907db2eebd1b3722af630de792d49",
+      "particles/Level_1/Particle_H": "f40356f3d64a657a6ee6fb299b1dfacc3f3f121274f4b125df35b9fca9c39056"
+    },
+    "status": "PASS"
+  }
+}

@@ -1,0 +1,27 @@
+amrex-pinned.bundle: OK
+benchmark_c10_reference.py: OK
+bmx-product.bundle: OK
+IDENTITY.json: OK
+INDEPENDENT_NUMERICAL_REVIEW_V2.json: OK
+P12_48H_GRID_TIME_V1_EXACT.json: OK
+qualify_c10.sh: OK
+warning: remote HEAD refers to nonexistent ref, unable to checkout
+Note: switching to 'cbdc6580ee3d78cccdd37172e4ba077ee181f483'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+ M evidence/stages/C10/P12_48H_GRID_TIME.json
+source worktree is dirty before build

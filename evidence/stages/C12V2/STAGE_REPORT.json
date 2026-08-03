@@ -1,0 +1,139 @@
+{
+  "artifact_type": "C12_STAGE_REPORT",
+  "stage": "C12/P14",
+  "generated": "2026-08-02",
+  "status": "PASS",
+  "engineering_implementation": "PASS",
+  "windows_native_qualification": "PASS",
+  "claim_boundary": "C12/P14 passes Windows software and numerical engineering qualification under provisional user-adopted bindings. It does not establish mentor approval, calibration, CLOSED_SCIENTIFIC, predictive validity, RG-SCI progress, release-host reproduction, or any C13 scientific outcome.",
+  "source": {
+    "decision_only_commit": "ba8e1e8",
+    "implementation_commit": "478843838f7813e92071b9cae8b01bb0207a541f",
+    "build_recorder_commit": "9432628e47ed9defc9007cdbcda0f8956e813d63",
+    "clean_build_source_tree": "cb4840edf4a03b0f6e793c9305ced8bee19ab1a9",
+    "branch": "rgsw/c12-p14",
+    "clean_before_final_build": true,
+    "post_build_tooling_change": "The static ownership allow-list was extended only to name the already committed C12 native build recorder; no product source or executable byte changed."
+  },
+  "contracts": {
+    "export_reward_id": "bmx-p14-export-reward-v1",
+    "export_reward_sha256": "01a9d6eb7291cc8bc0c98f52afbf3c5ea1c86da4fd3f992a02665e283f81ff4e",
+    "operator_fit_id": "bmx-p14-o09-fit-v1",
+    "operator_fit_sha256": "72193a1034d4148d167f059c347053d2206fa580cce9a156ec705304e7f378e7",
+    "p11_geometry_sha256": "6a4329f013c857c664a11d669747845006a6c0c9d34f568625b6939d1462acba",
+    "global_operator_order_id": "bmx-p10-global-order-v1",
+    "global_operator_order_sha256": "bb63c219a860687d91ce1acf06a667c9208abf026b32f18acfc64884bb696dd6",
+    "frozen_kernel_sha256": "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02"
+  },
+  "authority": {
+    "decision_id": "UDC-20260802-P14-C12-BINDINGS-V1",
+    "classification": "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+    "mentor_approval_claimed": false,
+    "calibration_claimed": false,
+    "closed_scientific_claimed": false,
+    "predictive_validation_claimed": false
+  },
+  "operator_order": {
+    "status": "FITS_EXISTING_ORDER",
+    "slot": "O09_INTERFACE_EXPORT_TRANSACTION",
+    "global_order_changed": false,
+    "rationale": "O09 already reserves one final-topology segment transaction that computes eligibility, request, and caps before atomically debiting local D, crediting local A, and recording the external exported-P receipt. C12 fills that slot without adding, deleting, or reordering a global operator.",
+    "independent_reviewer_claimed": false,
+    "writer_independence_note": "Codex is the implementation writer and makes no independent-review claim. P14-U07 remains a writer-owned technical fit freeze under the user-adopted provisional authority."
+  },
+  "implementation": {
+    "interface_fraction": "For each final-topology fungal segment, compute the normalized axial parameter measure whose finite-radius centerline lies strictly inside the P11 aperture support after P11 snapping/tolerance; tangency is inactive and solid contact has precedence.",
+    "refinement": "Every child recomputes its fraction from final geometry; geometry-preserving collinear 1-to-2, 1-to-4, and 1-to-8 subdivisions preserve both active volume and active D amount within the P10 local tolerance.",
+    "export": "Compute the exponential request from f_I, local D, k_export, and dt; cap against the nonnegative donor before a same-update local-D debit and exported-P receipt credit.",
+    "reward": "Credit local exchange-derived A by the exact executable rational 967/125 = 7.736 times accepted elemental-P export; no atomic-mass constant or table derivation is present.",
+    "provenance": "Bootstrap A and exchange-derived A remain separate ledgers.",
+    "F_state": "inactive and unchanged",
+    "checkpoint_schema": 7
+  },
+  "build": {
+    "status": "PASS",
+    "executable_sha256": "910425149ee025d4701d8a42525e3c3ffdc03489284e3b537afadf0945633540",
+    "executable_size_bytes": 2577408,
+    "source_clean_before_configure": true,
+    "amrex_commit": "cbdc6580ee3d78cccdd37172e4ba077ee181f483",
+    "warnings": "Two inherited MSVC C4244 diagnostics in std::numeric instantiated by pinned AMReX particle I/O; no C12 source warning."
+  },
+  "qualification": {
+    "analytical_unit": {
+      "status": "PASS",
+      "checks": 137,
+      "sha256": "916a0c3fa3fea8c265191374340bc2421b3dc5c2e19acab9d68973fc62615f78"
+    },
+    "native_runtime": {
+      "status": "PASS",
+      "cases": 23,
+      "geometry_cases": 8,
+      "all_five_export_rates": true,
+      "one_rank_two_rank_equivalent": true,
+      "decomposition_equivalent": true,
+      "restart_1_to_1_equivalent": true,
+      "restart_2_to_1_equivalent": true,
+      "fault_cases": 5,
+      "sha256": "8ed4b536d6a0b826da31f66d5242eec232990ab223d997fd52fb1576a1255a10"
+    },
+    "feature_off_semantic": {
+      "status": "PASS",
+      "fixtures": ["G1_tip_length_only", "G4_nontip_rejected"],
+      "particle_records_compared": 420,
+      "differing_semantic_values": 0,
+      "sha256": "25b9a601d82fe53c56cf44e4a7de834c8edf869836b21aed3c16c41c13a5ead2"
+    },
+    "P10_topology_regression": {
+      "status": "PASS",
+      "runs": 4,
+      "sha256": "0960ac02619f425679dc59c6f2b538eaa0463216a4d7805b3123d09920254558"
+    },
+    "P10_redistribution_regression": {
+      "status": "PASS",
+      "cases": 4,
+      "ranks": 2,
+      "restart_ranks": 1,
+      "sha256": "dc9a22625dd1f4c73c3b93e577e54604c9ced687bd3f1a8343df514c56336a56"
+    },
+    "P12_runtime_regression": {
+      "status": "PASS",
+      "cases": 15,
+      "mpi_and_shared_cap_equivalent": true,
+      "sha256": "acf190a5138c2a1c8cb2e9812b44333d1b2adbe69d03d6629a082153bfdba8c7"
+    },
+    "P13_runtime_regression": {
+      "status": "PASS",
+      "cases": 18,
+      "one_step_and_four_step_mpi_equivalent": true,
+      "sha256": "8ce343a6ec8a00932d912bf9c547fb515d5ac0ee9b832cfa2e071215ed7d0008"
+    },
+    "static": {
+      "status": "PASS",
+      "checks": 27,
+      "out_of_scope_paths": [],
+      "sha256": "eb3125538af758c442250c773fd7839039761c3d04cef3fbd2313786be0ffa86"
+    }
+  },
+  "blocker_disposition": [
+    {
+      "id": "D-C12-01-INTERFACE-FRACTION-DEFINITION",
+      "status": "CLOSED_USER_ADOPTED",
+      "classification": "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE"
+    },
+    {
+      "id": "D-C12-02-REWARD-CONVERSION-CONSTANT",
+      "status": "CLOSED_USER_ADOPTED",
+      "classification": "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE"
+    }
+  ],
+  "remaining_boundaries": [
+    "P14 recipient-pool and operator-order decisions retain their documented residual gaps and provisional classification.",
+    "This Windows qualification is not release-host evidence.",
+    "No C13 scientific outcome was executed or authorized by this report."
+  ],
+  "later_stage_behavior_present": false,
+  "next_stage": "C13/P15 Stage 0 may begin under the existing user authorization; stop before every C13 scientific-outcome run.",
+  "release_evidence": false,
+  "external_resources": "none",
+  "external_spend_usd": 0
+}

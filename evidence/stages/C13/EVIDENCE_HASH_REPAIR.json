@@ -1,0 +1,38 @@
+{
+  "artifact_type": "C13_EVIDENCE_HASH_PORTABILITY_REPAIR",
+  "stage": "C13/P15 Stage 0",
+  "generated": "2026-08-02",
+  "status": "PASS",
+  "input_commit": "3176e76ec6d62c633c24d10768966f89a9d49a42",
+  "affected_artifact": {
+    "path": "evidence/stages/C13/AUTHORITY_GATE.json",
+    "git_object_source": "3176e76ec6d62c633c24d10768966f89a9d49a42:evidence/stages/C13/AUTHORITY_GATE.json",
+    "committed_blob_size_bytes": 9986,
+    "authoritative_committed_lf_sha256": "58b4610a71c9d03acc833dcf6a8f8286b485e9bf8c958a0c5f8b307f507c4e7f",
+    "informational_windows_checkout_crlf_sha256": "6baa34f2332a05d8464f7f4097d53fefd43b0bf8a8d74c07f552bad912fc13f4"
+  },
+  "corrected_references": [
+    "contracts/release_blockers.json",
+    "evidence/stages/C13/STATIC.json",
+    "evidence/stages/C13/STAGE_REPORT.json",
+    "evidence/stages/C13/STAGE_REPORT.md",
+    "evidence/stages/C13/BLOCKER_REPORT.json",
+    "evidence/stages/C13/BLOCKER_REPORT.md"
+  ],
+  "verification": {
+    "method": "SHA-256 over raw bytes emitted by git show of the committed blob",
+    "committed_blob_hash_recomputed": true,
+    "working_checkout_hash_recomputed": true,
+    "authoritative_hash_kind": "committed LF blob bytes",
+    "checkout_hash_kind": "informational Windows CRLF rendition"
+  },
+  "effects": {
+    "product_source_changed": false,
+    "src_tree_before": "10ba9b7703a5715a47919714f17d9b9f258c40f5",
+    "src_tree_after": "10ba9b7703a5715a47919714f17d9b9f258c40f5",
+    "c12_status_changed": false,
+    "c13_blocked_disposition_changed": false,
+    "scientific_authority_changed": false
+  },
+  "claim_boundary": "Evidence-reference portability repair only; no product, numerical, scientific, mentor, calibration, predictive, or outcome claim."
+}

@@ -14,7 +14,9 @@ add_library(bmxcore OBJECT)
 # Uncategorized
 target_include_directories(bmxcore
    PUBLIC
-   $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}>)
+   $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}>
+   # generated bmx_provenance.H (D-C04-08)
+   $<BUILD_INTERFACE:${CMAKE_BINARY_DIR}/bmx_generated>)
 
 # IMPORTANT: DO NOT ADD main.cpp HERE!
 target_sources(bmxcore

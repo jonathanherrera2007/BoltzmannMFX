@@ -1,0 +1,81 @@
+{
+  "schema": "bmx-p12-uptake-only-contract-v1",
+  "contract_id": "UDC-20260801-P12-UPTAKE-ONLY-V1",
+  "stage": "C10",
+  "phase": "P12_UPTAKE_ONLY_DEPLETION",
+  "authority": {
+    "classification": "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+    "mentor_approval_claimed": false,
+    "source_kind": "user-attached pasted text",
+    "source_sha256": "34e8414c09e6528fc86399ceb4902cb5fc6907d9562fcf7a78cb3a8e4e333066",
+    "named_artifacts_present_in_workspace": false,
+    "scope_consumed": "P12 only; P13 and later sections are not authority for C10"
+  },
+  "claim_boundary": "UPTAKE-ONLY / QUALITATIVE-DEPLETION / NOT-COMPLETE-PHOSPHORUS-BIOLOGY / NOT-CALIBRATED / NOT-PREDICTIVE",
+  "units": {
+    "length": "cm",
+    "time": "s",
+    "amount": "mol P",
+    "concentration": "mol P cm^-3",
+    "surface_flux": "mol P cm^-2 s^-1"
+  },
+  "uptake": {
+    "direction": "inward_only",
+    "law": "J_u=J_max*max(C_D_mesh,0)/(K_m+max(C_D_mesh,0)); requested=A_eligible*J_u*dt",
+    "reverse_term": false,
+    "half_prefactor": false,
+    "j_max": 2.95949412514e-12,
+    "k_m": 1.00084710414e-9,
+    "j_max_multipliers": [0.0, 0.3333333333333333333333333333333333, 1.0, 3.0],
+    "k_m_multipliers": [0.1, 1.0, 10.0]
+  },
+  "shared_donor": {
+    "request_sum": "R_j=sum_i requested_i from one common pre-operator state",
+    "scale": "s_j=R_j>0?min(1,max(N_D_mesh_j,0)/R_j):0",
+    "accepted": "accepted_i=s_j*requested_i",
+    "commit": "mesh D debit and internal D credit use accepted amount only",
+    "requirements": ["segment-order independent", "MPI-decomposition independent"]
+  },
+  "eligible_area": {
+    "primary": "FULL_EXPOSED_EXTRARADICAL_SURFACE",
+    "sensitivities": ["TIP_005", "TIP_010", "TIP_020", "TIP_010_AREA_MATCHED"]
+  },
+  "mesh_d_diffusivity": {
+    "primary": 5e-6,
+    "sensitivities": [1e-7, 1e-6, 5e-6, 1e-5]
+  },
+  "experiment": {
+    "initial_mesh_d_arms": [1.61e-8, 4.52e-8],
+    "initial_internal_d_e_f": [0.0, 0.0, 0.0],
+    "duration": 172800.0,
+    "observation_times": [0.0, 1800.0, 3600.0, 7200.0, 14400.0, 28800.0, 43200.0, 86400.0, 129600.0, 172800.0],
+    "checkpoint_time": 86400.0,
+    "replicates": "one canonical deterministic run plus one clean-environment deterministic rerun",
+    "rng": "not used; ordered seed list is empty; parser sentinel 0 only if required",
+    "network": "one hash-bound pre-existing fixed network",
+    "boundary_conditions": {"x": "no_flux", "y": "periodic", "z": "no_flux"}
+  },
+  "required_disabled_operators": [
+    "growth", "branching", "nonessential topology", "bonded D transport",
+    "D_to_E", "E_to_D", "export", "reward", "F formation", "F transport",
+    "divider", "window", "full_plate_scaling"
+  ],
+  "controls": {
+    "negative": ["J_MAX_ZERO", "EMPTY_NETWORK", "ZERO_MESH_D", "ZERO_D_DIFFUSION", "ZERO_ELIGIBLE_AREA"],
+    "positive": ["ONE_SEGMENT_ONE_DONOR_ANALYTIC", "MULTIPLE_SEGMENTS_ONE_DONOR_ANALYTIC_CAP", "ACTIVE_FULL_SURFACE_BOTH_ARMS"],
+    "integrity": ["FULL_VS_TIP", "TIP_AREA_MATCHED", "DONOR_ORDER_PERMUTATION", "SEGMENT_SUBDIVISION", "CONTINUOUS_VS_RESTART", "GRID_TIME_REFINEMENT", "MPI_DECOMPOSITION"]
+  },
+  "outputs": [
+    "full mesh D", "per-segment internal D amount and concentration",
+    "mesh and internal totals", "requested accepted rejected uptake",
+    "eligible area", "donor scaling", "instantaneous and cumulative uptake",
+    "uptake per area", "distance summaries", "signed boundary flux by face",
+    "minimum D", "global P ledger", "source build input run and contract hashes",
+    "explicit zero ledgers for E F structural export reward and growth"
+  ],
+  "numerics": {
+    "minimum_nested_grid_time_levels": 3,
+    "selection": "coarsest level passing prospectively frozen positivity conservation profile cumulative-uptake and restart gates",
+    "independent_numerical_review_required_for_release_evidence": true
+  }
+}

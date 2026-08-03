@@ -1,0 +1,910 @@
+{
+    "artifact_type":  "C06A_DECISION_RECONCILIATION",
+    "confirmed_decisions_used":  [
+                                     "MD-5b43f4b235dec87e-01",
+                                     "MD-5b43f4b235dec87e-02",
+                                     "MD-5b43f4b235dec87e-03",
+                                     "MD-5b43f4b235dec87e-04",
+                                     "MD-5b43f4b235dec87e-05",
+                                     "MD-5b43f4b235dec87e-06",
+                                     "MD-5b43f4b235dec87e-07",
+                                     "MD-5b43f4b235dec87e-08",
+                                     "MD-5b43f4b235dec87e-09",
+                                     "MD-88955e1dff7ca225-01",
+                                     "MD-88955e1dff7ca225-02",
+                                     "MDX-90a88d72294815f4-01",
+                                     "MDX-90a88d72294815f4-02",
+                                     "UDC-20260801-P10-U01",
+                                     "UDC-20260801-P11-SECTION-9",
+                                     "IR-20260801-P10-U02",
+                                     "UDC-20260801-MENTOR-DECISION-FREEZE-V2",
+                                     "UDC-20260801-P13-V1",
+                                     "UDC-20260802-P14-C12-BINDINGS-V1"
+                                 ],
+    "each_field_accounted_once":  true,
+    "fields":  [
+                   {
+                       "closed_by":  [
+                                         "MD-88955e1dff7ca225-01",
+                                         "MD-5b43f4b235dec87e-07",
+                                         "MD-5b43f4b235dec87e-04"
+                                     ],
+                       "phase":  "P09_P_THREE_STATE_INFRASTRUCTURE",
+                       "question":  "How do P_uptake, P_growth, and P_delivery map to any historical D/E/F terminology?",
+                       "rationale":  "D/E/F semantics are fully fixed: D exchangeable (mesh+internal, membrane+bonded transport), E internal-only growth precursor, F product/waste held inactive. The legacy names P_uptake/P_growth/P_delivery carry no separate semantics, so the canonical vocabulary is D/E/F and legacy aliases are REJECTED in enabled mode (AGENTS.md component order). No biology is chosen by naming.",
+                       "required_confirmation_kind":  "APPROVED_TECHNICAL_AND_SCIENTIFIC_CONTRACT",
+                       "residual_gap":  null,
+                       "status":  "CLOSED_TECHNICAL",
+                       "unknown_id":  "P09-U01-STATE-MAPPING"
+                   },
+                   {
+                       "closed_by":  [
+                                         "MD-5b43f4b235dec87e-06",
+                                         "MD-5b43f4b235dec87e-07",
+                                         "MD-5b43f4b235dec87e-04"
+                                     ],
+                       "phase":  "P09_P_THREE_STATE_INFRASTRUCTURE",
+                       "question":  "What are the exact meaning, unit, ownership, initialization, and serialization rules for each phosphorus state?",
+                       "rationale":  "Units, owning volumes, and amount rule n=C*V are stated exactly; mesh stores use represented available fluid volume (V_cell minus particle occupancy, no added porosity), fungal stores use segment volume; E has no mesh representation.",
+                       "required_confirmation_kind":  "APPROVED_TECHNICAL_AND_SCIENTIFIC_CONTRACT",
+                       "residual_gap":  null,
+                       "status":  "CLOSED_SCIENTIFIC",
+                       "unknown_id":  "P09-U02-STATE-SEMANTICS-UNITS-OWNERSHIP"
+                   },
+                   {
+                       "closed_by":  [
+
+                                     ],
+                       "phase":  "P09_P_THREE_STATE_INFRASTRUCTURE",
+                       "question":  "What compatibility policy applies when a legacy checkpoint lacks the three new states?",
+                       "rationale":  "Pure compatibility policy with no biological content. Frozen: reject legacy checkpoints before particle deserialization; require schema v2 carrying component names/counts, layout hash, operator-order ID, units contract, decision-contract hash and global ledgers (AGENTS.md).",
+                       "required_confirmation_kind":  "APPROVED_TECHNICAL_CONTRACT",
+                       "residual_gap":  null,
+                       "status":  "CLOSED_TECHNICAL",
+                       "unknown_id":  "P09-U03-LEGACY-CHECKPOINT-POLICY"
+                   },
+                   {
+                       "closed_by":  [
+                                         "MD-5b43f4b235dec87e-07",
+                                         "MD-5b43f4b235dec87e-04",
+                                         "UDC-20260801-P10-U01",
+                                         "UDC-20260801-MENTOR-DECISION-FREEZE-V2"
+                                     ],
+                       "phase":  "P10_P_CONSERVATION_TOPOLOGY_RESTART",
+                       "question":  "What exact phosphorus transfer rule applies to split, fusion, deletion, and ownership changes?",
+                       "rationale":  "User-adopted provisional decision; not mentor approval. The user-approved 2026-08-01 contract closes the full v1 topology rule: topology is never a source or sink; split partitions captured D/E/F amounts by successor volume; approved fusion/replacement adds amounts into a unique successor; raw deletion and unresolved nonperiodic out-of-domain loss abort before invalidation; bonds own no P and must remap/prune to unique live endpoints or abort; disjoint simultaneous events use one immutable snapshot exactly once, while overlapping events atomically abort before topology mutation. other_exit_d/e/f/events remain exactly zero.",
+                       "required_confirmation_kind":  "USER_APPROVED_BINDING_RG_SW_CONTRACT",
+                       "residual_gap":  "independent scientific confirmation remains required for RG-SCI; this C08 adoption does not authorize or close later-stage science decisions",
+                       "status":  "CLOSED_USER_ADOPTED",
+                       "unknown_id":  "P10-U01-TOPOLOGY-TRANSFER",
+                       "authority_classification":  "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+                       "source_sha256":  "34e8414c09e6528fc86399ceb4902cb5fc6907d9562fcf7a78cb3a8e4e333066"
+                   },
+                   {
+                       "closed_by":  [
+                                         "MD-5b43f4b235dec87e-01",
+                                         "MD-5b43f4b235dec87e-05",
+                                         "MD-5b43f4b235dec87e-03",
+                                         "IR-20260801-P10-U02"
+                                     ],
+                       "phase":  "P10_P_CONSERVATION_TOPOLOGY_RESTART",
+                       "question":  "Where in the approved update ordering do topology transfer and phosphorus conservation checks occur?",
+                       "rationale":  "Three orderings are fixed by decision: reactions off during uptake/D-transport validation; geometry attempted BEFORE debiting B/E; export caps computed before an atomic same-update debit/credit. C08 froze and versioned the complete technical order. Independent review IR-20260801-P10-U02 inspected the implementation and approved the exact unchanged OPERATOR_ORDER_V1.json artifact at SHA-256 bb63c219a860687d91ce1acf06a667c9208abf026b32f18acfc64884bb696dd6, with separately dispositioned implementation/evidence corrections and no sequence change requested.",
+                       "required_confirmation_kind":  "INDEPENDENT_TECHNICAL_REVIEW",
+                       "residual_gap":  null,
+                       "review_record_sha256":  "c033b950fc83c21b05ff9a7243d34c82b18e8f389916bd8dc9b4c9834e8d778a",
+                       "status":  "CLOSED_TECHNICAL",
+                       "unknown_id":  "P10-U02-OPERATOR-ORDERING"
+                   },
+                   {
+                       "closed_by":  [
+
+                                     ],
+                       "phase":  "P10_P_CONSERVATION_TOPOLOGY_RESTART",
+                       "question":  "What exact numerical conservation tolerance and comparison rule are approved?",
+                       "rationale":  "Numerical, not biological. Proposed and frozen subject to independent numerical review: local |residual| \u003c= 64*eps*S_L1; integrated |residual| \u003c= max(1e-28 mol, 1e-10*S_L1); NaN/Inf hard fail; negative amount above tolerance hard fail.",
+                       "required_confirmation_kind":  "APPROVED_NUMERICAL_CONTRACT",
+                       "residual_gap":  null,
+                       "status":  "CLOSED_TECHNICAL",
+                       "unknown_id":  "P10-U03-CONSERVATION-TOLERANCE"
+                   },
+                   {
+                       "closed_by":  [
+                                         "MD-5b43f4b235dec87e-07"
+                                     ],
+                       "phase":  "P10_P_CONSERVATION_TOPOLOGY_RESTART",
+                       "question":  "What fields, ordering, and numerical rule define checkpoint/restart equivalence?",
+                       "rationale":  "Decision requires checkpoint/restart to preserve state ownership and amounts. Comparator is numerical: exact identifiers and schema; floating fields \u003c= 1e-12 relative unless a stricter exact comparator applies.",
+                       "required_confirmation_kind":  "APPROVED_NUMERICAL_CONTRACT",
+                       "residual_gap":  null,
+                       "status":  "CLOSED_TECHNICAL",
+                       "unknown_id":  "P10-U04-RESTART-EQUIVALENCE"
+                   },
+                   {
+                       "closed_by":  [
+                                         "MD-5b43f4b235dec87e-09",
+                                         "UDC-20260801-P11-SECTION-9",
+                                         "UDC-20260801-MENTOR-DECISION-FREEZE-V2"
+                                     ],
+                       "phase":  "P11_SPLIT_PLATE_GEOMETRY",
+                       "question":  "Which coordinate system, plate dimensions, discretization, and divider representation are approved?",
+                       "rationale":  "User-adopted provisional decision; not mentor approval. Divider x=0; barrier -0.05\u003c=x\u003c0.05 cm; host x\u003c-0.05; fungus x\u003e=0.05; frame 0\u003c=z\u003c1.2 cm; aperture 0.8\u003c=z\u003c1.0; periodic width 0\u003c=y\u003c0.1 cm; central x domain [-1,1] with [-0.5,0.5] and [-2,2] sensitivities; staged geometry (no divider for uptake tests, abstract box for unit tests, local quasi-2D strip for interface work).",
+                       "required_confirmation_kind":  "APPROVED_GEOMETRY_CONTRACT",
+                       "residual_gap":  null,
+                       "status":  "CLOSED_USER_ADOPTED",
+                       "unknown_id":  "P11-U01-COORDINATE-CONTRACT",
+                       "authority_classification":  "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+                       "source_sha256":  "34e8414c09e6528fc86399ceb4902cb5fc6907d9562fcf7a78cb3a8e4e333066"
+                   },
+                   {
+                       "closed_by":  [
+                                         "MD-5b43f4b235dec87e-09",
+                                         "MD-88955e1dff7ca225-02",
+                                         "UDC-20260801-MENTOR-DECISION-FREEZE-V2"
+                                     ],
+                       "phase":  "P11_SPLIT_PLATE_GEOMETRY",
+                       "question":  "What exact spatial and temporal window permits contact and exchange?",
+                       "rationale":  "User-adopted provisional decision; not mentor approval. Aperture 0.8\u003c=z\u003c1.0 within frame 0\u003c=z\u003c1.2; eligible exporters are segments occupying window cells; at most one contact event per segment per update.",
+                       "required_confirmation_kind":  "APPROVED_GEOMETRY_CONTRACT",
+                       "residual_gap":  null,
+                       "status":  "CLOSED_USER_ADOPTED",
+                       "unknown_id":  "P11-U02-CONTACT-WINDOW",
+                       "authority_classification":  "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+                       "source_sha256":  "34e8414c09e6528fc86399ceb4902cb5fc6907d9562fcf7a78cb3a8e4e333066"
+                   },
+                   {
+                       "closed_by":  [
+                                         "MD-5b43f4b235dec87e-09",
+                                         "UDC-20260801-MENTOR-DECISION-FREEZE-V2"
+                                     ],
+                       "phase":  "P11_SPLIT_PLATE_GEOMETRY",
+                       "question":  "What deterministic rule establishes contact at faces, edges, corners, and equality boundaries?",
+                       "rationale":  "User-adopted provisional decision; not mentor approval. Finite-radius segment contact in physical coordinates, lower-inclusive/upper-exclusive bounds, at most once per owned surviving segment per update, AMR-invariant, grid-face aligned where practical. Residual face/edge/corner floating-point tolerance is a technical value to freeze, not a biological choice.",
+                       "required_confirmation_kind":  "APPROVED_GEOMETRY_CONTRACT",
+                       "residual_gap":  null,
+                       "status":  "CLOSED_USER_ADOPTED",
+                       "unknown_id":  "P11-U03-CONTACT-RULE",
+                       "authority_classification":  "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+                       "source_sha256":  "34e8414c09e6528fc86399ceb4902cb5fc6907d9562fcf7a78cb3a8e4e333066"
+                   },
+                   {
+                       "closed_by":  [
+                                         "MD-5b43f4b235dec87e-09",
+                                         "UDC-20260801-MENTOR-DECISION-FREEZE-V2"
+                                     ],
+                       "phase":  "P11_SPLIT_PLATE_GEOMETRY",
+                       "question":  "What motion and exchange behavior is permitted at or through the divider?",
+                       "rationale":  "User-adopted provisional decision; not mentor approval. MD-5b43f4b235dec87e-09 closes mesh P: no Eulerian mesh-P flux crosses the divider including the opening. The user\u0027s binding contract section 9 selects hard nonpenetration, projection to a valid fungus-side position, removal of outward normal motion, retained tangential motion, and solid-frame precedence at aperture edges. This is user-adopted RG-SW authority, not mentor approval.",
+                       "required_confirmation_kind":  "APPROVED_GEOMETRY_CONTRACT",
+                       "residual_gap":  null,
+                       "status":  "CLOSED_USER_ADOPTED",
+                       "unknown_id":  "P11-U04-DIVIDER-BEHAVIOR",
+                       "authority_classification":  "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+                       "source_sha256":  "34e8414c09e6528fc86399ceb4902cb5fc6907d9562fcf7a78cb3a8e4e333066"
+                   },
+                   {
+                       "closed_by":  [
+                                         "MD-5b43f4b235dec87e-09",
+                                         "UDC-20260801-P11-SECTION-9",
+                                         "UDC-20260801-MENTOR-DECISION-FREEZE-V2"
+                                     ],
+                       "phase":  "P11_SPLIT_PLATE_GEOMETRY",
+                       "question":  "Which external boundaries are no-flux, periodic, reflective, or otherwise constrained?",
+                       "rationale":  "User-adopted provisional decision; not mentor approval. MD-5b43f4b235dec87e-09 fixes periodic y over 0\u003c=y\u003c0.1 cm. The user\u0027s binding contract section 9 closes outer x/z as homogeneous no-flux for mesh D and inactive mesh F, with hard nonpenetrating tangentially sliding particle walls and no deletion. This is user-adopted RG-SW authority, not mentor approval.",
+                       "required_confirmation_kind":  "APPROVED_GEOMETRY_CONTRACT",
+                       "residual_gap":  null,
+                       "status":  "CLOSED_USER_ADOPTED",
+                       "unknown_id":  "P11-U05-NO-FLUX-PERIODICITY",
+                       "authority_classification":  "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+                       "source_sha256":  "34e8414c09e6528fc86399ceb4902cb5fc6907d9562fcf7a78cb3a8e4e333066"
+                   },
+                   {
+                       "closed_by":  [
+                                         "MD-5b43f4b235dec87e-02",
+                                         "MD-5b43f4b235dec87e-01",
+                                         "UDC-20260801-MENTOR-DECISION-FREEZE-V2"
+                                     ],
+                       "phase":  "P12_UPTAKE_ONLY_DEPLETION",
+                       "question":  "What exact uptake-only experiment cases, duration, initialization, and observations are approved?",
+                       "rationale":  "User-adopted provisional decision; not mentor approval. The user-adopted provisional P12 contract fixes the inward-only Michaelis-Menten surface law and parameter/sensitivity set, shared-donor cap, fixed pre-existing zero-internal-P network, low/high mesh-D arms, disabled operators, 48 h duration, observation cadence, checkpoint point, output set and uptake-only claim boundary. This is implementation authority pending mentor override, not mentor or independent scientific approval.",
+                       "required_confirmation_kind":  "APPROVED_EXPERIMENT_CONTRACT",
+                       "residual_gap":  null,
+                       "status":  "CLOSED_USER_ADOPTED",
+                       "unknown_id":  "P12-U01-EXPERIMENT-CONTRACT",
+                       "authority_classification":  "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+                       "source_sha256":  "34e8414c09e6528fc86399ceb4902cb5fc6907d9562fcf7a78cb3a8e4e333066"
+                   },
+                   {
+                       "closed_by":  [
+                                         "UDC-20260801-MENTOR-DECISION-FREEZE-V2"
+                                     ],
+                       "phase":  "P12_UPTAKE_ONLY_DEPLETION",
+                       "question":  "Which negative and positive controls are required?",
+                       "rationale":  "User-adopted provisional decision; not mentor approval. The user-adopted provisional contract freezes five negative controls, three positive controls, and the order/subdivision/restart/refinement/MPI integrity suite. This is not mentor approval.",
+                       "required_confirmation_kind":  "APPROVED_EXPERIMENT_CONTRACT",
+                       "residual_gap":  null,
+                       "status":  "CLOSED_USER_ADOPTED",
+                       "unknown_id":  "P12-U02-CONTROLS",
+                       "authority_classification":  "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+                       "source_sha256":  "34e8414c09e6528fc86399ceb4902cb5fc6907d9562fcf7a78cb3a8e4e333066"
+                   },
+                   {
+                       "closed_by":  [
+                                         "UDC-20260801-MENTOR-DECISION-FREEZE-V2"
+                                     ],
+                       "phase":  "P12_UPTAKE_ONLY_DEPLETION",
+                       "question":  "How many replicates are required for each approved case?",
+                       "rationale":  "User-adopted provisional decision; not mentor approval. The user-adopted provisional contract requires one canonical deterministic run plus one clean-environment deterministic rerun, explicitly not two biological replicates.",
+                       "required_confirmation_kind":  "APPROVED_EXPERIMENT_CONTRACT",
+                       "residual_gap":  null,
+                       "status":  "CLOSED_USER_ADOPTED",
+                       "unknown_id":  "P12-U03-REPLICATES",
+                       "authority_classification":  "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+                       "source_sha256":  "34e8414c09e6528fc86399ceb4902cb5fc6907d9562fcf7a78cb3a8e4e333066"
+                   },
+                   {
+                       "closed_by":  [
+                                         "UDC-20260801-MENTOR-DECISION-FREEZE-V2"
+                                     ],
+                       "phase":  "P12_UPTAKE_ONLY_DEPLETION",
+                       "question":  "Which exact ordered seeds are approved?",
+                       "rationale":  "User-adopted provisional decision; not mentor approval. The user-adopted provisional contract declares the deterministic fixed-network seed list empty and forbids RNG use; sentinel 0 is allowed only if a parser requires it.",
+                       "required_confirmation_kind":  "APPROVED_EXPERIMENT_CONTRACT",
+                       "residual_gap":  null,
+                       "status":  "CLOSED_USER_ADOPTED",
+                       "unknown_id":  "P12-U04-SEEDS",
+                       "authority_classification":  "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+                       "source_sha256":  "34e8414c09e6528fc86399ceb4902cb5fc6907d9562fcf7a78cb3a8e4e333066"
+                   },
+                   {
+                       "closed_by":  [
+
+                                     ],
+                       "phase":  "P12_UPTAKE_ONLY_DEPLETION",
+                       "question":  "What measured timeout is approved for the future authorized run?",
+                       "rationale":  "Operational, measured by the writer from actual runs; carries no scientific content.",
+                       "required_confirmation_kind":  "MEASURED_OPERATIONAL_CONTRACT",
+                       "residual_gap":  null,
+                       "status":  "CLOSED_MEASURED",
+                       "unknown_id":  "P12-U05-TIMEOUT"
+                   },
+                   {
+                       "closed_by":  [
+
+                                     ],
+                       "phase":  "P12_UPTAKE_ONLY_DEPLETION",
+                       "question":  "What measured byte and file-count quotas are approved?",
+                       "rationale":  "Operational, measured by the writer; carries no scientific content.",
+                       "required_confirmation_kind":  "MEASURED_OPERATIONAL_CONTRACT",
+                       "residual_gap":  null,
+                       "status":  "CLOSED_MEASURED",
+                       "unknown_id":  "P12-U06-OUTPUT-QUOTA"
+                   },
+                   {
+                       "closed_by":  [
+                                         "MDX-90a88d72294815f4-01",
+                                         "MDX-90a88d72294815f4-02",
+                                         "UDC-20260801-MENTOR-DECISION-FREEZE-V2"
+                                     ],
+                       "phase":  "P12_UPTAKE_ONLY_DEPLETION",
+                       "question":  "Which conclusions may and may not be drawn from the uptake-only experiment?",
+                       "rationale":  "User-adopted provisional decision; not mentor approval. Qualitative local depletion only. No quantitative profile, depletion extent, front speed, transfer range, profile norm, or calibrated pass threshold may be claimed.",
+                       "required_confirmation_kind":  "APPROVED_CLAIM_CONTRACT",
+                       "residual_gap":  null,
+                       "status":  "CLOSED_USER_ADOPTED",
+                       "unknown_id":  "P12-U07-CLAIM-BOUNDARY",
+                       "authority_classification":  "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+                       "source_sha256":  "34e8414c09e6528fc86399ceb4902cb5fc6907d9562fcf7a78cb3a8e4e333066"
+                   },
+                   {
+                       "closed_by":  [
+                                         "MD-5b43f4b235dec87e-01",
+                                         "UDC-20260801-P13-V1"
+                                     ],
+                       "phase":  "P13_P_REACTIONS_AND_LIEBIG",
+                       "question":  "Which exact phosphorus reactions are approved and which are prohibited?",
+                       "rationale":  "User-adopted provisional decision; not mentor approval. Active: D\u003c-\u003eE, plus E-\u003estructural P for accepted realized growth only, one-to-one mole-P. F formation exactly zero; F activation needs a separate decision.",
+                       "required_confirmation_kind":  "MENTOR_AND_USER_CONFIRMED_DESIGN",
+                       "residual_gap":  null,
+                       "status":  "CLOSED_USER_ADOPTED",
+                       "unknown_id":  "P13-U01-REACTION-INVENTORY",
+                       "authority_classification":  "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+                       "source_sha256":  "283eace4f34e0a3d6961d49db2ab2c75ac6e384a9077a7044313a20f7bd4bc93"
+                   },
+                   {
+                       "closed_by":  [
+                                         "MD-5b43f4b235dec87e-01",
+                                         "MD-5b43f4b235dec87e-06",
+                                         "UDC-20260801-P13-V1"
+                                     ],
+                       "phase":  "P13_P_REACTIONS_AND_LIEBIG",
+                       "question":  "What units and dimensional equations apply to every approved reaction rate?",
+                       "rationale":  "User-adopted provisional decision; not mentor approval. R_forward=k_forward*N_D, R_reverse=k_reverse*N_E, amount-based and donor-capped; k_DE in s^-1, rates mol/s, amounts mol.",
+                       "required_confirmation_kind":  "MENTOR_AND_USER_CONFIRMED_DESIGN",
+                       "residual_gap":  null,
+                       "status":  "CLOSED_USER_ADOPTED",
+                       "unknown_id":  "P13-U02-RATE-UNITS",
+                       "authority_classification":  "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+                       "source_sha256":  "283eace4f34e0a3d6961d49db2ab2c75ac6e384a9077a7044313a20f7bd4bc93"
+                   },
+                   {
+                       "closed_by":  [
+                                         "MD-5b43f4b235dec87e-01",
+                                         "UDC-20260801-P13-V1"
+                                     ],
+                       "phase":  "P13_P_REACTIONS_AND_LIEBIG",
+                       "question":  "What values and valid bounds apply to every approved rate and state?",
+                       "rationale":  "User-adopted provisional decision; not mentor approval. Approved AS SENSITIVITIES ONLY: one-way at 1e-5 s^-1; symmetric reversible at 1e-6, 1e-5, 1e-4 s^-1. Explicitly no biological baseline may be selected from these.",
+                       "required_confirmation_kind":  "MENTOR_AND_USER_CONFIRMED_DESIGN",
+                       "residual_gap":  null,
+                       "status":  "CLOSED_USER_ADOPTED",
+                       "unknown_id":  "P13-U03-RATE-VALUES-BOUNDS",
+                       "authority_classification":  "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+                       "source_sha256":  "283eace4f34e0a3d6961d49db2ab2c75ac6e384a9077a7044313a20f7bd4bc93"
+                   },
+                   {
+                       "closed_by":  [
+                                         "MD-5b43f4b235dec87e-01",
+                                         "UDC-20260801-P13-V1"
+                                     ],
+                       "phase":  "P13_P_REACTIONS_AND_LIEBIG",
+                       "question":  "Which exact evidence or mentor decision supports each reaction and parameter?",
+                       "rationale":  "User-adopted provisional decision; not mentor approval. Provenance is the confirmed decision itself, bound to the transmitted proposal and reply hashes.",
+                       "required_confirmation_kind":  "MENTOR_AND_USER_CONFIRMED_DESIGN",
+                       "residual_gap":  null,
+                       "status":  "CLOSED_USER_ADOPTED",
+                       "unknown_id":  "P13-U04-REACTION-SOURCES",
+                       "authority_classification":  "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+                       "source_sha256":  "283eace4f34e0a3d6961d49db2ab2c75ac6e384a9077a7044313a20f7bd4bc93"
+                   },
+                   {
+                       "closed_by":  [
+                                         "MD-5b43f4b235dec87e-01",
+                                         "MD-5b43f4b235dec87e-05",
+                                         "UDC-20260801-P13-V1"
+                                     ],
+                       "phase":  "P13_P_REACTIONS_AND_LIEBIG",
+                       "question":  "Where do reactions and resource limitation occur in the update ordering?",
+                       "rationale":  "User-adopted provisional decision; not mentor approval. Staging fixed (reactions off during uptake/transport validation; D/E isolated before P-limited growth; geometry attempted before B/E debit). Exact slot in the global order is part of the technical freeze in P10-U02.",
+                       "required_confirmation_kind":  "MENTOR_AND_USER_CONFIRMED_DESIGN",
+                       "residual_gap":  "position within the frozen global operator order",
+                       "status":  "CLOSED_USER_ADOPTED",
+                       "unknown_id":  "P13-U05-OPERATOR-ORDERING",
+                       "authority_classification":  "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+                       "source_sha256":  "283eace4f34e0a3d6961d49db2ab2c75ac6e384a9077a7044313a20f7bd4bc93",
+                       "technical_fit_status":  "CLOSED_TECHNICAL_EXISTING_O02_SLOT",
+                       "technical_fit_evidence":  "contracts/p13/OPERATOR_FIT_V1.json",
+                       "technical_fit_evidence_sha256":  "ea6e8dc2ca3f69fe2f366801c9df8ec9832b58f399d605c88d91527ff2098407",
+                       "global_operator_order_changed":  false
+                   },
+                   {
+                       "closed_by":  [
+                                         "MD-5b43f4b235dec87e-05",
+                                         "MD-88955e1dff7ca225-01",
+                                         "UDC-20260801-P13-V1"
+                                     ],
+                       "phase":  "P13_P_REACTIONS_AND_LIEBIG",
+                       "question":  "What exact formula and resource pools define Liebig limitation?",
+                       "rationale":  "User-adopted provisional decision; not mentor approval. q_B=k_gB/k_VB; G_C=k_VB*C_B*V; k_VP=k_gP/q_P; G_P=k_VP*C_E*V; G_Liebig=min(G_C,G_P). Accepted deltaV = min(timestep-supported Liebig growth, N_B/q_B, N_E/q_P, geometric allowance). Rejected/clipped/unrealized growth consumes nothing.",
+                       "required_confirmation_kind":  "MENTOR_AND_USER_CONFIRMED_DESIGN",
+                       "residual_gap":  null,
+                       "status":  "CLOSED_USER_ADOPTED",
+                       "unknown_id":  "P13-U06-LIEBIG-SEMANTICS",
+                       "authority_classification":  "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+                       "source_sha256":  "283eace4f34e0a3d6961d49db2ab2c75ac6e384a9077a7044313a20f7bd4bc93"
+                   },
+                   {
+                       "closed_by":  [
+
+                                     ],
+                       "phase":  "P13_P_REACTIONS_AND_LIEBIG",
+                       "question":  "How must zero, negative, missing, and non-finite inputs fail or clamp?",
+                       "rationale":  "Numerical safety, no biology: NaN/Inf hard fail; negative amount beyond tolerance hard fail; roundoff-scale clamps centralized, counted and reported, with unexplained clamps blocking release.",
+                       "required_confirmation_kind":  "MENTOR_AND_USER_CONFIRMED_DESIGN",
+                       "residual_gap":  null,
+                       "status":  "CLOSED_TECHNICAL",
+                       "unknown_id":  "P13-U07-ZERO-NEGATIVE-NONFINITE-POLICY"
+                   },
+                   {
+                       "closed_by":  [
+                                         "MD-5b43f4b235dec87e-05"
+                                     ],
+                       "phase":  "P13_P_REACTIONS_AND_LIEBIG",
+                       "question":  "Which carbon-limited, phosphorus-limited, co-limited, and saturating cases are required?",
+                       "rationale":  "The decision defines the min() semantics and the accepted-deltaV rule; enumerating carbon-limited, P-limited, exact-tie, near-tie, zero-B, zero-E, availability-capped, geometry-clipped and rejected-growth cases is test design, which the writer owns.",
+                       "required_confirmation_kind":  "MENTOR_AND_USER_CONFIRMED_DESIGN",
+                       "residual_gap":  null,
+                       "status":  "CLOSED_TECHNICAL",
+                       "unknown_id":  "P13-U08-LIMITING-CASE-CONTRACT"
+                   },
+                   {
+                       "closed_by":  [
+                                         "MD-88955e1dff7ca225-02",
+                                         "MD-88955e1dff7ca225-01",
+                                         "UDC-20260801-MENTOR-DECISION-FREEZE-V2"
+                                     ],
+                       "phase":  "P14_P_EXPORT_AND_CARBON_REWARD",
+                       "question":  "Which exact phosphorus pool may be donated?",
+                       "rationale":  "User-adopted provisional decision; not mentor approval. The exporting segment\u0027s LOCAL internal D pool.",
+                       "required_confirmation_kind":  "MENTOR_AND_USER_CONFIRMED_DESIGN",
+                       "residual_gap":  null,
+                       "status":  "CLOSED_USER_ADOPTED",
+                       "unknown_id":  "P14-U01-DONOR-POOL",
+                       "authority_classification":  "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+                       "source_sha256":  "34e8414c09e6528fc86399ceb4902cb5fc6907d9562fcf7a78cb3a8e4e333066"
+                   },
+                   {
+                       "closed_by":  [
+                                         "MD-88955e1dff7ca225-02",
+                                         "UDC-20260801-MENTOR-DECISION-FREEZE-V2"
+                                     ],
+                       "phase":  "P14_P_EXPORT_AND_CARBON_REWARD",
+                       "question":  "Which exact recipient pool receives exported phosphorus?",
+                       "rationale":  "User-adopted provisional decision; not mentor approval. The decision states the interface is the only place P leaves the combined soil-plus-network system, which implies an external host-receipt ledger rather than a modelled host state. Needs explicit confirmation, not a fresh decision.",
+                       "required_confirmation_kind":  "MENTOR_AND_USER_CONFIRMED_DESIGN",
+                       "residual_gap":  "confirm external receipt ledger vs explicit modelled host state",
+                       "status":  "CLOSED_USER_ADOPTED",
+                       "unknown_id":  "P14-U02-RECIPIENT-POOL",
+                       "authority_classification":  "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+                       "source_sha256":  "34e8414c09e6528fc86399ceb4902cb5fc6907d9562fcf7a78cb3a8e4e333066"
+                   },
+                   {
+                       "closed_by":  [
+                                         "MD-88955e1dff7ca225-02",
+                                         "MD-5b43f4b235dec87e-03",
+                                         "MD-5b43f4b235dec87e-06",
+                                         "UDC-20260801-MENTOR-DECISION-FREEZE-V2"
+                                     ],
+                       "phase":  "P14_P_EXPORT_AND_CARBON_REWARD",
+                       "question":  "Which carbon quantity constitutes the reward currency?",
+                       "rationale":  "User-adopted provisional decision; not mentor approval. The exporting segment\u0027s local A pool, in abstract A-equivalents (1 mol A-equivalent = 1 mol elemental-C equivalent for v1 dimensional accounting).",
+                       "required_confirmation_kind":  "MENTOR_AND_USER_CONFIRMED_DESIGN",
+                       "residual_gap":  null,
+                       "status":  "CLOSED_USER_ADOPTED",
+                       "unknown_id":  "P14-U03-CARBON-CURRENCY",
+                       "authority_classification":  "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+                       "source_sha256":  "34e8414c09e6528fc86399ceb4902cb5fc6907d9562fcf7a78cb3a8e4e333066"
+                   },
+                   {
+                       "closed_by":  [
+                                         "MD-5b43f4b235dec87e-03",
+                                         "UDC-20260801-MENTOR-DECISION-FREEZE-V2",
+                                         "UDC-20260802-P14-C12-BINDINGS-V1"
+                                     ],
+                       "phase":  "P14_P_EXPORT_AND_CARBON_REWARD",
+                       "question":  "What dimensionally valid conversion links transferred phosphorus to carbon reward?",
+                       "rationale":  "User-adopted provisional decision; not mentor approval. r=3 is retained as the mass-basis rationale, while the exact executable RG-SW multiplier is now frozen directly as 7.736 = 967/125 mol A-equivalent per mol accepted/exported elemental P. No atomic-mass constants or table derivation are used.",
+                       "required_confirmation_kind":  "MENTOR_AND_USER_CONFIRMED_DESIGN",
+                       "residual_gap":  null,
+                       "status":  "CLOSED_USER_ADOPTED",
+                       "unknown_id":  "P14-U04-CONVERSION",
+                       "authority_classification":  "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+                       "source_sha256":  "34e8414c09e6528fc86399ceb4902cb5fc6907d9562fcf7a78cb3a8e4e333066",
+                       "c12_implementation_gate_status":  "CLOSED_USER_ADOPTED_EXACT_EXECUTABLE_CONSTANT",
+                       "c12_implementation_gate_evidence":  "contracts/p14/EXPORT_REWARD_CONTRACT_V1.json",
+                       "c12_implementation_gate_evidence_sha256":  "01a9d6eb7291cc8bc0c98f52afbf3c5ea1c86da4fd3f992a02665e283f81ff4e",
+                       "c12_implementation_blocker":  null
+                   },
+                   {
+                       "closed_by":  [
+                                         "MD-5b43f4b235dec87e-03",
+                                         "UDC-20260801-MENTOR-DECISION-FREEZE-V2"
+                                     ],
+                       "phase":  "P14_P_EXPORT_AND_CARBON_REWARD",
+                       "question":  "What exact donor-limited cap prevents over-export?",
+                       "rationale":  "User-adopted provisional decision; not mentor approval. Donor/interface caps computed before the transaction; explicitly NO version-1 capacity or delay, so no additional interface cap beyond available local D.",
+                       "required_confirmation_kind":  "MENTOR_AND_USER_CONFIRMED_DESIGN",
+                       "residual_gap":  null,
+                       "status":  "CLOSED_USER_ADOPTED",
+                       "unknown_id":  "P14-U05-DONOR-CAP",
+                       "authority_classification":  "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+                       "source_sha256":  "34e8414c09e6528fc86399ceb4902cb5fc6907d9562fcf7a78cb3a8e4e333066"
+                   },
+                   {
+                       "closed_by":  [
+                                         "MD-88955e1dff7ca225-02",
+                                         "MD-5b43f4b235dec87e-09",
+                                         "UDC-20260801-MENTOR-DECISION-FREEZE-V2",
+                                         "UDC-20260802-P14-C12-BINDINGS-V1"
+                                     ],
+                       "phase":  "P14_P_EXPORT_AND_CARBON_REWARD",
+                       "question":  "What contact state and timing make an organism eligible to export or receive reward?",
+                       "rationale":  "User-adopted provisional decision; not mentor approval. Eligible final-topology fungal segments use a continuous finite-radius axial-contact fraction: normalized measure of centerline parameters whose x-z capsule interior overlaps the closed P11 aperture support, after P11 snapping/tolerance and with solid-frame precedence. Tangency contributes zero; true_crossing is diagnostic only; evaluation occurs at most once per segment per O09 update.",
+                       "required_confirmation_kind":  "MENTOR_AND_USER_CONFIRMED_DESIGN",
+                       "residual_gap":  null,
+                       "status":  "CLOSED_USER_ADOPTED",
+                       "unknown_id":  "P14-U06-CONTACT-ELIGIBILITY",
+                       "authority_classification":  "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+                       "source_sha256":  "34e8414c09e6528fc86399ceb4902cb5fc6907d9562fcf7a78cb3a8e4e333066",
+                       "c12_implementation_gate_status":  "CLOSED_USER_ADOPTED_EXACT_INTERFACE_FRACTION",
+                       "c12_implementation_gate_evidence":  "contracts/p14/EXPORT_REWARD_CONTRACT_V1.json",
+                       "c12_implementation_gate_evidence_sha256":  "01a9d6eb7291cc8bc0c98f52afbf3c5ea1c86da4fd3f992a02665e283f81ff4e",
+                       "c12_implementation_blocker":  null
+                   },
+                   {
+                       "closed_by":  [
+                                         "MD-5b43f4b235dec87e-03",
+                                         "UDC-20260801-MENTOR-DECISION-FREEZE-V2"
+                                     ],
+                       "phase":  "P14_P_EXPORT_AND_CARBON_REWARD",
+                       "question":  "Where do export, receipt, and reward occur in the update ordering?",
+                       "rationale":  "User-adopted provisional decision; not mentor approval. Transaction ordering closed: caps first, then atomic debit of local D and credit of local A in the SAME update. Global placement belongs to the P10-U02 technical freeze.",
+                       "required_confirmation_kind":  "MENTOR_AND_USER_CONFIRMED_DESIGN",
+                       "residual_gap":  "position within the frozen global operator order",
+                       "status":  "CLOSED_USER_ADOPTED",
+                       "unknown_id":  "P14-U07-OPERATOR-ORDERING",
+                       "authority_classification":  "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+                       "source_sha256":  "34e8414c09e6528fc86399ceb4902cb5fc6907d9562fcf7a78cb3a8e4e333066",
+                       "technical_fit_status":  "CLOSED_TECHNICAL_EXISTING_O09_SLOT",
+                       "technical_fit_evidence":  "contracts/p14/OPERATOR_FIT_V1.json",
+                       "technical_fit_evidence_sha256":  "72193a1034d4148d167f059c347053d2206fa580cce9a156ec705304e7f378e7",
+                       "global_operator_order_changed":  false
+                   },
+                   {
+                       "closed_by":  [
+                                         "MD-5b43f4b235dec87e-03",
+                                         "MD-5b43f4b235dec87e-07",
+                                         "UDC-20260801-MENTOR-DECISION-FREEZE-V2"
+                                     ],
+                       "phase":  "P14_P_EXPORT_AND_CARBON_REWARD",
+                       "question":  "Which export and reward state persists across checkpoint and restart?",
+                       "rationale":  "User-adopted provisional decision; not mentor approval. Decision requires separate requested/accepted/rejected, mol, mass, cumulative, bootstrap and exchange ledgers, and checkpoint preservation of ownership and amounts. Field list and schema are technical.",
+                       "required_confirmation_kind":  "MENTOR_AND_USER_CONFIRMED_DESIGN",
+                       "residual_gap":  null,
+                       "status":  "CLOSED_USER_ADOPTED",
+                       "unknown_id":  "P14-U08-PERSISTENCE-RESTART",
+                       "authority_classification":  "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+                       "source_sha256":  "34e8414c09e6528fc86399ceb4902cb5fc6907d9562fcf7a78cb3a8e4e333066"
+                   },
+                   {
+                       "closed_by":  [
+
+                                     ],
+                       "phase":  "P14_P_EXPORT_AND_CARBON_REWARD",
+                       "question":  "Which numerical tolerances apply to conservation, donor limits, and dimensional checks?",
+                       "rationale":  "Same frozen numerical contract as P10-U03/U04; no biology.",
+                       "required_confirmation_kind":  "MENTOR_AND_USER_CONFIRMED_DESIGN",
+                       "residual_gap":  null,
+                       "status":  "CLOSED_TECHNICAL",
+                       "unknown_id":  "P14-U09-NUMERICAL-TOLERANCES"
+                   },
+                   {
+                       "closed_by":  [
+                                         "MD-5b43f4b235dec87e-03",
+                                         "MD-5b43f4b235dec87e-08",
+                                         "MDX-90a88d72294815f4-01",
+                                         "UDC-20260801-MENTOR-DECISION-FREEZE-V2"
+                                     ],
+                       "phase":  "P14_P_EXPORT_AND_CARBON_REWARD",
+                       "question":  "Which implementation observations may not be interpreted as biological benefit?",
+                       "rationale":  "User-adopted provisional decision; not mentor approval. Reward is an accounting transaction, not calibrated host benefit. Bootstrap A never counts as host reward and must keep separate provenance from exchange-derived A.",
+                       "required_confirmation_kind":  "MENTOR_AND_USER_CONFIRMED_DESIGN",
+                       "residual_gap":  null,
+                       "status":  "CLOSED_USER_ADOPTED",
+                       "unknown_id":  "P14-U10-CLAIM-BOUNDARY",
+                       "authority_classification":  "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+                       "source_sha256":  "34e8414c09e6528fc86399ceb4902cb5fc6907d9562fcf7a78cb3a8e4e333066"
+                   },
+                   {
+                       "closed_by":  [
+                                         "MD-5b43f4b235dec87e-08",
+                                         "MD-5b43f4b235dec87e-05",
+                                         "UDC-20260801-MENTOR-DECISION-FREEZE-V2"
+                                     ],
+                       "phase":  "P15_FULL_DEPLETION_EXPERIMENT",
+                       "question":  "What exact full-depletion cases and factor matrix are approved?",
+                       "rationale":  "User-adopted provisional decision; not mentor approval. Partially constrained: bootstrap mesh-A arms are 0, 5, 20, 80 mM ({0,5e-6,2e-5,8e-5} mol/cm3) run initially at ONE central provisional P setting, expanding the cross-product only if sensitivity warrants. That central pair is not named, and no factor-crossing rule is given.",
+                       "required_confirmation_kind":  "APPROVED_EXPERIMENT_CONTRACT",
+                       "residual_gap":  "central provisional (q_P, k_gP/k_gB) pair; factor-crossing rule for the full matrix",
+                       "status":  "CLOSED_USER_ADOPTED",
+                       "unknown_id":  "P15-U01-EXPERIMENT-MATRIX",
+                       "authority_classification":  "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+                       "source_sha256":  "34e8414c09e6528fc86399ceb4902cb5fc6907d9562fcf7a78cb3a8e4e333066"
+                   },
+                   {
+                       "closed_by":  [
+                                         "UDC-20260801-MENTOR-DECISION-FREEZE-V2"
+                                     ],
+                       "phase":  "P15_FULL_DEPLETION_EXPERIMENT",
+                       "question":  "Which complete-model controls are required?",
+                       "rationale":  "User-adopted provisional decision; not mentor approval. Not specified.",
+                       "required_confirmation_kind":  "APPROVED_EXPERIMENT_CONTRACT",
+                       "residual_gap":  "required complete-model controls and ablations",
+                       "status":  "CLOSED_USER_ADOPTED",
+                       "unknown_id":  "P15-U02-CONTROLS",
+                       "authority_classification":  "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+                       "source_sha256":  "34e8414c09e6528fc86399ceb4902cb5fc6907d9562fcf7a78cb3a8e4e333066"
+                   },
+                   {
+                       "closed_by":  [
+                                         "UDC-20260801-MENTOR-DECISION-FREEZE-V2"
+                                     ],
+                       "phase":  "P15_FULL_DEPLETION_EXPERIMENT",
+                       "question":  "Which baseline and ablation comparisons are approved?",
+                       "rationale":  "User-adopted provisional decision; not mentor approval. Not specified.",
+                       "required_confirmation_kind":  "APPROVED_EXPERIMENT_CONTRACT",
+                       "residual_gap":  "predeclared primary comparisons and null findings",
+                       "status":  "CLOSED_USER_ADOPTED",
+                       "unknown_id":  "P15-U03-COMPARISONS",
+                       "authority_classification":  "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+                       "source_sha256":  "34e8414c09e6528fc86399ceb4902cb5fc6907d9562fcf7a78cb3a8e4e333066"
+                   },
+                   {
+                       "closed_by":  [
+                                         "UDC-20260801-MENTOR-DECISION-FREEZE-V2"
+                                     ],
+                       "phase":  "P15_FULL_DEPLETION_EXPERIMENT",
+                       "question":  "How many replicates are required for each approved case?",
+                       "rationale":  "User-adopted provisional decision; not mentor approval. Not specified; growth-enabled runs are stochastic so this matters.",
+                       "required_confirmation_kind":  "APPROVED_EXPERIMENT_CONTRACT",
+                       "residual_gap":  "replicate count per configuration",
+                       "status":  "CLOSED_USER_ADOPTED",
+                       "unknown_id":  "P15-U04-REPLICATES",
+                       "authority_classification":  "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+                       "source_sha256":  "34e8414c09e6528fc86399ceb4902cb5fc6907d9562fcf7a78cb3a8e4e333066"
+                   },
+                   {
+                       "closed_by":  [
+                                         "UDC-20260801-MENTOR-DECISION-FREEZE-V2"
+                                     ],
+                       "phase":  "P15_FULL_DEPLETION_EXPERIMENT",
+                       "question":  "Which exact ordered seeds are approved?",
+                       "rationale":  "User-adopted provisional decision; not mentor approval. Not specified.",
+                       "required_confirmation_kind":  "APPROVED_EXPERIMENT_CONTRACT",
+                       "residual_gap":  "ordered seed policy/list",
+                       "status":  "CLOSED_USER_ADOPTED",
+                       "unknown_id":  "P15-U05-SEEDS",
+                       "authority_classification":  "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+                       "source_sha256":  "34e8414c09e6528fc86399ceb4902cb5fc6907d9562fcf7a78cb3a8e4e333066"
+                   },
+                   {
+                       "closed_by":  [
+
+                                     ],
+                       "phase":  "P15_FULL_DEPLETION_EXPERIMENT",
+                       "question":  "What measured timeout and output quotas are approved?",
+                       "rationale":  "Operational, measured by the writer.",
+                       "required_confirmation_kind":  "MEASURED_OPERATIONAL_CONTRACT",
+                       "residual_gap":  null,
+                       "status":  "CLOSED_MEASURED",
+                       "unknown_id":  "P15-U06-EXECUTION-LIMITS"
+                   },
+                   {
+                       "closed_by":  [
+                                         "MDX-90a88d72294815f4-01",
+                                         "MDX-90a88d72294815f4-02",
+                                         "UDC-20260801-MENTOR-DECISION-FREEZE-V2"
+                                     ],
+                       "phase":  "P15_FULL_DEPLETION_EXPERIMENT",
+                       "question":  "What exact scientific claims, null findings, and prohibited interpretations are predeclared?",
+                       "rationale":  "User-adopted provisional decision; not mentor approval. The qualitative-only boundary carries over from the depletion decisions. The specific claim set and null findings for the full experiment are not predeclared.",
+                       "required_confirmation_kind":  "APPROVED_CLAIM_CONTRACT",
+                       "residual_gap":  "predeclared claim set and null findings for P15",
+                       "status":  "CLOSED_USER_ADOPTED",
+                       "unknown_id":  "P15-U07-CLAIMS",
+                       "authority_classification":  "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+                       "source_sha256":  "34e8414c09e6528fc86399ceb4902cb5fc6907d9562fcf7a78cb3a8e4e333066"
+                   },
+                   {
+                       "closed_by":  [
+                                         "UDC-20260801-MENTOR-DECISION-FREEZE-V2"
+                                     ],
+                       "phase":  "P16_EXPLORER_EXPLOITER_PARETO",
+                       "question":  "What exact explorer and exploiter strategies are approved?",
+                       "rationale":  "User-adopted provisional decision; not mentor approval. No explorer or exploiter definition exists.",
+                       "required_confirmation_kind":  "MENTOR_AND_USER_CONFIRMED_DESIGN",
+                       "residual_gap":  "explorer and exploiter definitions",
+                       "status":  "CLOSED_USER_ADOPTED",
+                       "unknown_id":  "P16-U01-STRATEGY-DEFINITIONS",
+                       "authority_classification":  "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+                       "source_sha256":  "34e8414c09e6528fc86399ceb4902cb5fc6907d9562fcf7a78cb3a8e4e333066"
+                   },
+                   {
+                       "closed_by":  [
+                                         "UDC-20260801-MENTOR-DECISION-FREEZE-V2"
+                                     ],
+                       "phase":  "P16_EXPLORER_EXPLOITER_PARETO",
+                       "question":  "Which exact objectives are included?",
+                       "rationale":  "User-adopted provisional decision; not mentor approval. Not specified.",
+                       "required_confirmation_kind":  "MENTOR_AND_USER_CONFIRMED_DESIGN",
+                       "residual_gap":  "objective list with units",
+                       "status":  "CLOSED_USER_ADOPTED",
+                       "unknown_id":  "P16-U02-OBJECTIVES",
+                       "authority_classification":  "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+                       "source_sha256":  "34e8414c09e6528fc86399ceb4902cb5fc6907d9562fcf7a78cb3a8e4e333066"
+                   },
+                   {
+                       "closed_by":  [
+                                         "UDC-20260801-MENTOR-DECISION-FREEZE-V2"
+                                     ],
+                       "phase":  "P16_EXPLORER_EXPLOITER_PARETO",
+                       "question":  "Which objectives are minimized and which are maximized?",
+                       "rationale":  "User-adopted provisional decision; not mentor approval. Not specified.",
+                       "required_confirmation_kind":  "MENTOR_AND_USER_CONFIRMED_DESIGN",
+                       "residual_gap":  "maximise/minimise per objective",
+                       "status":  "CLOSED_USER_ADOPTED",
+                       "unknown_id":  "P16-U03-OBJECTIVE-DIRECTIONS",
+                       "authority_classification":  "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+                       "source_sha256":  "34e8414c09e6528fc86399ceb4902cb5fc6907d9562fcf7a78cb3a8e4e333066"
+                   },
+                   {
+                       "closed_by":  [
+                                         "UDC-20260801-MENTOR-DECISION-FREEZE-V2"
+                                     ],
+                       "phase":  "P16_EXPLORER_EXPLOITER_PARETO",
+                       "question":  "What normalization references and zero-range behavior are approved?",
+                       "rationale":  "User-adopted provisional decision; not mentor approval. Not specified.",
+                       "required_confirmation_kind":  "MENTOR_AND_USER_CONFIRMED_DESIGN",
+                       "residual_gap":  "normalization references and zero-range behaviour",
+                       "status":  "CLOSED_USER_ADOPTED",
+                       "unknown_id":  "P16-U04-NORMALIZATION",
+                       "authority_classification":  "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+                       "source_sha256":  "34e8414c09e6528fc86399ceb4902cb5fc6907d9562fcf7a78cb3a8e4e333066"
+                   },
+                   {
+                       "closed_by":  [
+                                         "UDC-20260801-MENTOR-DECISION-FREEZE-V2"
+                                     ],
+                       "phase":  "P16_EXPLORER_EXPLOITER_PARETO",
+                       "question":  "How are exact ties, numerical ties, and duplicate points handled?",
+                       "rationale":  "User-adopted provisional decision; not mentor approval. Not specified. Could be delegated as a technical rule if the mentor prefers.",
+                       "required_confirmation_kind":  "MENTOR_AND_USER_CONFIRMED_DESIGN",
+                       "residual_gap":  "tie and duplicate handling",
+                       "status":  "CLOSED_USER_ADOPTED",
+                       "unknown_id":  "P16-U05-TIES-DUPLICATES",
+                       "authority_classification":  "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+                       "source_sha256":  "34e8414c09e6528fc86399ceb4902cb5fc6907d9562fcf7a78cb3a8e4e333066"
+                   },
+                   {
+                       "closed_by":  [
+                                         "UDC-20260801-MENTOR-DECISION-FREEZE-V2"
+                                     ],
+                       "phase":  "P16_EXPLORER_EXPLOITER_PARETO",
+                       "question":  "How are missing, incomplete, and non-finite observations handled?",
+                       "rationale":  "User-adopted provisional decision; not mentor approval. Not specified. Could be delegated as a technical rule.",
+                       "required_confirmation_kind":  "MENTOR_AND_USER_CONFIRMED_DESIGN",
+                       "residual_gap":  "missing/non-finite handling",
+                       "status":  "CLOSED_USER_ADOPTED",
+                       "unknown_id":  "P16-U06-MISSING-INVALID-DATA",
+                       "authority_classification":  "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+                       "source_sha256":  "34e8414c09e6528fc86399ceb4902cb5fc6907d9562fcf7a78cb3a8e4e333066"
+                   },
+                   {
+                       "closed_by":  [
+                                         "UDC-20260801-MENTOR-DECISION-FREEZE-V2"
+                                     ],
+                       "phase":  "P16_EXPLORER_EXPLOITER_PARETO",
+                       "question":  "Which ordered configurations belong to each strategy?",
+                       "rationale":  "User-adopted provisional decision; not mentor approval. Not specified.",
+                       "required_confirmation_kind":  "MENTOR_AND_USER_CONFIRMED_DESIGN",
+                       "residual_gap":  "ordered configurations per strategy",
+                       "status":  "CLOSED_USER_ADOPTED",
+                       "unknown_id":  "P16-U07-CONFIGURATIONS",
+                       "authority_classification":  "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+                       "source_sha256":  "34e8414c09e6528fc86399ceb4902cb5fc6907d9562fcf7a78cb3a8e4e333066"
+                   },
+                   {
+                       "closed_by":  [
+                                         "UDC-20260801-MENTOR-DECISION-FREEZE-V2"
+                                     ],
+                       "phase":  "P16_EXPLORER_EXPLOITER_PARETO",
+                       "question":  "How many replicates belong to each approved configuration?",
+                       "rationale":  "User-adopted provisional decision; not mentor approval. Not specified.",
+                       "required_confirmation_kind":  "MENTOR_AND_USER_CONFIRMED_DESIGN",
+                       "residual_gap":  "replicate count per configuration",
+                       "status":  "CLOSED_USER_ADOPTED",
+                       "unknown_id":  "P16-U08-REPLICATES",
+                       "authority_classification":  "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+                       "source_sha256":  "34e8414c09e6528fc86399ceb4902cb5fc6907d9562fcf7a78cb3a8e4e333066"
+                   },
+                   {
+                       "closed_by":  [
+                                         "UDC-20260801-MENTOR-DECISION-FREEZE-V2"
+                                     ],
+                       "phase":  "P16_EXPLORER_EXPLOITER_PARETO",
+                       "question":  "Which exact ordered seeds are approved?",
+                       "rationale":  "User-adopted provisional decision; not mentor approval. Not specified.",
+                       "required_confirmation_kind":  "MENTOR_AND_USER_CONFIRMED_DESIGN",
+                       "residual_gap":  "ordered seeds",
+                       "status":  "CLOSED_USER_ADOPTED",
+                       "unknown_id":  "P16-U09-SEEDS",
+                       "authority_classification":  "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+                       "source_sha256":  "34e8414c09e6528fc86399ceb4902cb5fc6907d9562fcf7a78cb3a8e4e333066"
+                   },
+                   {
+                       "closed_by":  [
+                                         "UDC-20260801-MENTOR-DECISION-FREEZE-V2"
+                                     ],
+                       "phase":  "P16_EXPLORER_EXPLOITER_PARETO",
+                       "question":  "What replicate aggregation, uncertainty, and dominance input rule is approved?",
+                       "rationale":  "User-adopted provisional decision; not mentor approval. Not specified.",
+                       "required_confirmation_kind":  "MENTOR_AND_USER_CONFIRMED_DESIGN",
+                       "residual_gap":  "aggregation, uncertainty and dominance input rule",
+                       "status":  "CLOSED_USER_ADOPTED",
+                       "unknown_id":  "P16-U10-AGGREGATION",
+                       "authority_classification":  "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+                       "source_sha256":  "34e8414c09e6528fc86399ceb4902cb5fc6907d9562fcf7a78cb3a8e4e333066"
+                   },
+                   {
+                       "closed_by":  [
+
+                                     ],
+                       "phase":  "P17_MENTOR_FINAL_INTERPRETATION_FREEZE",
+                       "question":  "Which final parameter values, if any, does the real mentor recommend after reviewing accepted results?",
+                       "rationale":  "By definition post-results; belongs to the post-results review, not the urgent packet.",
+                       "required_confirmation_kind":  "REAL_MENTOR_FEEDBACK_THEN_USER_CONFIRMATION",
+                       "residual_gap":  "post-results mentor review",
+                       "status":  "OPEN",
+                       "unknown_id":  "P17-U01-FINAL-PARAMETERS"
+                   },
+                   {
+                       "closed_by":  [
+
+                                     ],
+                       "phase":  "P17_MENTOR_FINAL_INTERPRETATION_FREEZE",
+                       "question":  "What calibration interpretation is supported by accepted evidence and real mentor feedback?",
+                       "rationale":  "Post-results; also gated on independent data that may not exist.",
+                       "required_confirmation_kind":  "REAL_MENTOR_FEEDBACK_THEN_USER_CONFIRMATION",
+                       "residual_gap":  "post-results mentor review",
+                       "status":  "OPEN",
+                       "unknown_id":  "P17-U02-CALIBRATION"
+                   },
+                   {
+                       "closed_by":  [
+
+                                     ],
+                       "phase":  "P17_MENTOR_FINAL_INTERPRETATION_FREEZE",
+                       "question":  "Which biological interpretations are supported, unsupported, or qualified?",
+                       "rationale":  "Post-results.",
+                       "required_confirmation_kind":  "REAL_MENTOR_FEEDBACK_THEN_USER_CONFIRMATION",
+                       "residual_gap":  "post-results mentor review",
+                       "status":  "OPEN",
+                       "unknown_id":  "P17-U03-BIOLOGICAL-INTERPRETATION"
+                   },
+                   {
+                       "closed_by":  [
+
+                                     ],
+                       "phase":  "P17_MENTOR_FINAL_INTERPRETATION_FREEZE",
+                       "question":  "How should the accepted Pareto frontier be interpreted without selecting an arbitrary winner?",
+                       "rationale":  "Post-results.",
+                       "required_confirmation_kind":  "REAL_MENTOR_FEEDBACK_THEN_USER_CONFIRMATION",
+                       "residual_gap":  "post-results mentor review",
+                       "status":  "OPEN",
+                       "unknown_id":  "P17-U04-PARETO-INTERPRETATION"
+                   },
+                   {
+                       "closed_by":  [
+
+                                     ],
+                       "phase":  "P17_MENTOR_FINAL_INTERPRETATION_FREEZE",
+                       "question":  "Which publication claims, limitations, and exclusions are confirmed?",
+                       "rationale":  "Post-results.",
+                       "required_confirmation_kind":  "REAL_MENTOR_FEEDBACK_THEN_USER_CONFIRMATION",
+                       "residual_gap":  "post-results mentor review",
+                       "status":  "OPEN",
+                       "unknown_id":  "P17-U05-PUBLICATION-CLAIMS"
+                   }
+               ],
+    "generated":  "2026-08-02",
+    "notes":  {
+                  "f_activation_trigger":  "MD-5b43f4b235dec87e-01 and -07: F infrastructure may exist but every F reaction, exchange and transport coefficient stays exactly zero. Scientific F activation requires a separate decision.",
+                  "renewed_review_trigger":  "MD-5b43f4b235dec87e-05 approves q_P and k_gP/k_gB as SENSITIVITIES ONLY and selects no biological baseline. Using them to define or compare explorer/exploiter strategies (P16) therefore requires renewed review before P16 executes.",
+                  "p10_u01_user_approval":  "UDC-20260801-P10-U01 is the user\u0027s explicit adoption of contracts/USER_APPROVED_DECISION_CONTRACT_20260801.txt (SHA-256 283eace4f34e0a3d6961d49db2ab2c75ac6e384a9077a7044313a20f7bd4bc93) for P10-U01. It closes the RG-SW C08 implementation gate as CLOSED_USER_ADOPTED, not as mentor or independent scientific approval.",
+                  "p11_section_9_user_approval":  "The user\u0027s later explicit C09 authorization activates only section 9 of the already-adopted contract as UDC-20260801-P11-SECTION-9. P11-U04 and P11-U05 are CLOSED_USER_ADOPTED, not CLOSED_SCIENTIFIC. No C10+ section is ingested by C09.",
+                  "p12_user_provisional_freeze":  "UDC-20260801-P12-UPTAKE-ONLY-V1 consumes only the P12 subset of the user\u0027s attached mentor-decision freeze (source SHA-256 34e8414c09e6528fc86399ceb4902cb5fc6907d9562fcf7a78cb3a8e4e333066). P12-U01 through U04 are CLOSED_USER_ADOPTED under the exact classification USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE, not CLOSED_SCIENTIFIC. P13+ sections remain unconsumed by C10.",
+                  "user_adopted_v2":  "The exact V2 source at SHA-256 34e8414c09e6528fc86399ceb4902cb5fc6907d9562fcf7a78cb3a8e4e333066 is binding for authorized implementation and preregistration under USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE. Covered entries are CLOSED_USER_ADOPTED, never CLOSED_SCIENTIFIC, and every pre-existing residual_gap is preserved. The four explicit supersessions are Michaelis-Menten uptake, mesh-D diffusivity centre 5e-6 cm2/s, k_export centre 5.26977773579e-6 s^-1, and P16 surface-area-density objective. The linear law is ENGINEERING_REGRESSION_COMPARATOR only.",
+                  "p14_c12_implementation_gate":  "P14-U07 fits the existing O09 slot without changing the frozen global order. UDC-20260802-P14-C12-BINDINGS-V1 closes D-C12-01 and D-C12-02 for RG-SW implementation by binding the continuous finite-radius axial-contact fraction and exact 7.736=967/125 multiplier. Classification remains USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE; this is not mentor approval, calibration, predictive validation, or CLOSED_SCIENTIFIC.",
+                  "c13_stage0_binding":  "UDC-20260802-C13-STAGE0-BINDINGS-V1, source SHA-256 cbd1eedddf31b94c8a9d23d7b2d3329f065a007824387c70435d1004fdc6f350, closes the three C13 specification gaps as CLOSED_USER_ADOPTED under USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE. It binds finite-volume bonded-D graph diffusion, the prospective 216-hour numerical contract, and general metric-graph terminal zones without changing OPERATOR_ORDER_V1.json or the frozen chemistry kernel. Independent numerical/source review remains mandatory before any 216-hour qualification outcome; no P15 science outcome is authorized.",
+                  "c13_stage0_engineering_status":  "D-C13-04-RNG-TOPOLOGY-DECOMPOSITION is OPEN. A forced one-update P0/P1 fixture at the exact adopted seed showed rank-dependent child identity and geometry because the inherited AMReX stream is seeded by rank. The frozen contracts do not bind a stateless key-to-draw algorithm, conditional draw schedule, canonical child-ID allocation, or checkpointed RNG/event ledger. C13 is blocked before exact-source review and all 216-hour outcomes rather than inventing those outcome-bearing technical bytes.",
+                  "p16_gate":  "memberships=[]; status=BLOCKED_ON_EXTERNAL_STRATEGY_BASELINE; software fixtures must be SYNTHETIC_NONSCIENTIFIC."
+              },
+    "status_counts":  {
+                          "CLOSED_MEASURED":  3,
+                          "CLOSED_SCIENTIFIC":  1,
+                          "CLOSED_TECHNICAL":  8,
+                          "CLOSED_USER_ADOPTED":  42,
+                          "OPEN":  5
+                      },
+    "total_fields":  59
+}

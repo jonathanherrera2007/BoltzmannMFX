@@ -5,8 +5,12 @@
 #
 CEXE_headers += bmx_des_K.H
 CEXE_headers += bmx_pc.H
+CEXE_headers += bmx_pc_phosphorus.H
 
 CEXE_sources += bmx_pc.cpp
+CEXE_sources += bmx_pc_phosphorus.cpp
+CEXE_sources += bmx_pc_export.cpp
+CEXE_sources += bmx_pc_p15.cpp
 CEXE_sources += bmx_pc.cpp
 CEXE_sources += bmx_pc_init.cpp
 CEXE_sources += bmx_pc_interaction.cpp

@@ -1,0 +1,280 @@
+{
+  "baseline_exe": "/home/jherrera2007/bmx-c04-qual/build/c04-baseline-diag-release/bmx",
+  "confounds_removed": [
+    "particle sits above fluid.surface_location where fluid A is zero -> surface raised to 0.2",
+    "rA = -k2*cA + kr2*cB*cC drains A faster than the exchange -> k2/kr2 zeroed",
+    "growth would change the area mid-step -> kv/kg zeroed"
+  ],
+  "conservation_max_relative_residual": 4.822132615927011e-11,
+  "geometry": {
+    "available_A_in_cell": 4.882812500000002e-12,
+    "c_length": 0.003,
+    "dtp": 0.0625,
+    "fA0": 2e-05,
+    "fine_cell_volume": 2.4414062500000006e-07,
+    "radius": {
+      "alpha_first_half": 0.653451271946677,
+      "alpha_second_half_repaired": 65.34512719466768,
+      "baseline": {
+        "A_fluid_final": 7.999511816440565e-08,
+        "A_fluid_initial": 7.999998821999257e-08,
+        "A_particles_final": 4.881835586973302e-12,
+        "A_particles_initial": 1.1780000000000001e-14,
+        "conservation_residual": 5.500993411547718e-23,
+        "delta_A_fluid": -4.870055586918292e-12,
+        "delta_A_particles": 4.870055586973302e-12,
+        "exit": 0,
+        "run_dir": "/home/jherrera2007/bmx-c04-qual/runs/c04-p07-donor-cap-fixture/k1_100/baseline",
+        "transfer_over_available": 0.9973873842121319
+      },
+      "k1": 100.0,
+      "repaired": {
+        "A_fluid_final": 7.999511718749262e-08,
+        "A_fluid_initial": 7.999998821999257e-08,
+        "A_particles_final": 4.882812499999993e-12,
+        "A_particles_initial": 1.1780000000000001e-14,
+        "conservation_residual": 4.631161298659925e-23,
+        "delta_A_fluid": -4.871032499953681e-12,
+        "delta_A_particles": 4.871032499999993e-12,
+        "exit": 0,
+        "run_dir": "/home/jherrera2007/bmx-c04-qual/runs/c04-p07-donor-cap-fixture/k1_100/repaired",
+        "transfer_equals_available": true,
+        "transfer_over_available": 0.9975874559999981
+      },
+      "repaired_capped": true,
+      "uncapped_request_true_area": 3.190680038802134e-10
+    },
+    "stored_area": 5.105088062083415e-08,
+    "stored_area_ratio": 100.0,
+    "true_area": 5.105088062083415e-06
+  },
+  "observable": "bmx.print_sums fluid-side totals (A_fluid, A_particles) at full precision",
+  "purpose": "runtime evidence for CDEF-01/CDEF-02, the second-half fluid donor cap",
+  "repaired_exe": "/home/jherrera2007/bmx-c04-qual/build/c04-diag-release/bmx",
+  "rows": [
+    {
+      "alpha_first_half": 0.0032672563597333846,
+      "alpha_second_half_repaired": 0.3267256359733385,
+      "baseline": {
+        "A_fluid_final": 7.999986204624459e-08,
+        "A_fluid_initial": 7.999998821999257e-08,
+        "A_particles_final": 1.3795374821994632e-13,
+        "A_particles_initial": 1.1780000000000001e-14,
+        "conservation_residual": 2.354556941370612e-22,
+        "delta_A_fluid": -1.2617374798449063e-13,
+        "delta_A_particles": 1.2617374821994632e-13,
+        "exit": 0,
+        "run_dir": "/home/jherrera2007/bmx-c04-qual/runs/c04-p07-donor-cap-fixture/k1_0.5/baseline",
+        "transfer_over_available": 0.025840383635444997
+      },
+      "k1": 0.5,
+      "repaired": {
+        "A_fluid_final": 7.999541916248966e-08,
+        "A_fluid_initial": 7.999998821999257e-08,
+        "A_particles_final": 4.580837502930556e-12,
+        "A_particles_initial": 1.1780000000000001e-14,
+        "conservation_residual": 1.7117145683592438e-23,
+        "delta_A_fluid": -4.569057502913439e-12,
+        "delta_A_particles": 4.569057502930556e-12,
+        "exit": 0,
+        "run_dir": "/home/jherrera2007/bmx-c04-qual/runs/c04-p07-donor-cap-fixture/k1_0.5/repaired",
+        "transfer_over_available": 0.9357429766001776
+      },
+      "repaired_capped": false,
+      "uncapped_request_true_area": 1.5953400194010672e-12
+    },
+    {
+      "alpha_first_half": 0.006534512719466769,
+      "alpha_second_half_repaired": 0.653451271946677,
+      "baseline": {
+        "A_fluid_final": 7.99997387415384e-08,
+        "A_fluid_initial": 7.999998821999257e-08,
+        "A_particles_final": 2.612584542279051e-13,
+        "A_particles_initial": 1.1780000000000001e-14,
+        "conservation_residual": 5.431341411237772e-23,
+        "delta_A_fluid": -2.4947845417359166e-13,
+        "delta_A_particles": 2.4947845422790507e-13,
+        "exit": 0,
+        "run_dir": "/home/jherrera2007/bmx-c04-qual/runs/c04-p07-donor-cap-fixture/k1_1/baseline",
+        "transfer_over_available": 0.05109318742587494
+      },
+      "k1": 1.0,
+      "repaired": {
+        "A_fluid_final": 7.99951200008339e-08,
+        "A_fluid_initial": 7.999998821999257e-08,
+        "A_particles_final": 4.8799991587261025e-12,
+        "A_particles_initial": 1.1780000000000001e-14,
+        "conservation_residual": 5.1776336466991076e-23,
+        "delta_A_fluid": -4.868219158674326e-12,
+        "delta_A_particles": 4.868219158726102e-12,
+        "exit": 0,
+        "run_dir": "/home/jherrera2007/bmx-c04-qual/runs/c04-p07-donor-cap-fixture/k1_1/repaired",
+        "transfer_over_available": 0.9970112837071055
+      },
+      "repaired_capped": false,
+      "uncapped_request_true_area": 3.1906800388021345e-12
+    },
+    {
+      "alpha_first_half": 0.013069025438933539,
+      "alpha_second_half_repaired": 1.306902543893354,
+      "baseline": {
+        "A_fluid_final": 7.999950051576411e-08,
+        "A_fluid_initial": 7.999998821999257e-08,
+        "A_particles_final": 4.994842284988348e-13,
+        "A_particles_initial": 1.1780000000000001e-14,
+        "conservation_residual": 3.2652328640516384e-23,
+        "delta_A_fluid": -4.877042284661825e-13,
+        "delta_A_particles": 4.877042284988348e-13,
+        "exit": 0,
+        "run_dir": "/home/jherrera2007/bmx-c04-qual/runs/c04-p07-donor-cap-fixture/k1_2/baseline",
+        "transfer_over_available": 0.09988182599656133
+      },
+      "k1": 2.0,
+      "repaired": {
+        "A_fluid_final": 7.999511718749262e-08,
+        "A_fluid_initial": 7.999998821999257e-08,
+        "A_particles_final": 4.882812500000001e-12,
+        "A_particles_initial": 1.1780000000000001e-14,
+        "conservation_residual": 4.631969092226871e-23,
+        "delta_A_fluid": -4.871032499953681e-12,
+        "delta_A_particles": 4.871032500000001e-12,
+        "exit": 0,
+        "run_dir": "/home/jherrera2007/bmx-c04-qual/runs/c04-p07-donor-cap-fixture/k1_2/repaired",
+        "transfer_equals_available": true,
+        "transfer_over_available": 0.9975874559999998
+      },
+      "repaired_capped": true,
+      "uncapped_request_true_area": 6.381360077604269e-12
+    },
+    {
+      "alpha_first_half": 0.03267256359733385,
+      "alpha_second_half_repaired": 3.2672563597333846,
+      "baseline": {
+        "A_fluid_final": 7.999884904682674e-08,
+        "A_fluid_initial": 7.999998821999257e-08,
+        "A_particles_final": 1.1509531658547443e-12,
+        "A_particles_initial": 1.1780000000000001e-14,
+        "conservation_residual": 2.476472933026495e-23,
+        "delta_A_fluid": -1.1391731658299796e-12,
+        "delta_A_particles": 1.1391731658547444e-12,
+        "exit": 0,
+        "run_dir": "/home/jherrera2007/bmx-c04-qual/runs/c04-p07-donor-cap-fixture/k1_5/baseline",
+        "transfer_over_available": 0.23330266436705155
+      },
+      "k1": 5.0,
+      "repaired": {
+        "A_fluid_final": 7.999511718749262e-08,
+        "A_fluid_initial": 7.999998821999257e-08,
+        "A_particles_final": 4.882812500000002e-12,
+        "A_particles_initial": 1.1780000000000001e-14,
+        "conservation_residual": 4.632049871583566e-23,
+        "delta_A_fluid": -4.871032499953681e-12,
+        "delta_A_particles": 4.8710325000000015e-12,
+        "exit": 0,
+        "run_dir": "/home/jherrera2007/bmx-c04-qual/runs/c04-p07-donor-cap-fixture/k1_5/repaired",
+        "transfer_equals_available": true,
+        "transfer_over_available": 0.997587456
+      },
+      "repaired_capped": true,
+      "uncapped_request_true_area": 1.595340019401067e-11
+    },
+    {
+      "alpha_first_half": 0.1306902543893354,
+      "alpha_second_half_repaired": 13.069025438933538,
+      "baseline": {
+        "A_fluid_final": 7.99967011831957e-08,
+        "A_fluid_initial": 7.999998821999257e-08,
+        "A_particles_final": 3.298816796906513e-12,
+        "A_particles_initial": 1.1780000000000001e-14,
+        "conservation_residual": 3.610756464893338e-23,
+        "delta_A_fluid": -3.2870367968704052e-12,
+        "delta_A_particles": 3.287036796906513e-12,
+        "exit": 0,
+        "run_dir": "/home/jherrera2007/bmx-c04-qual/runs/c04-p07-donor-cap-fixture/k1_20/baseline",
+        "transfer_over_available": 0.6731851360064536
+      },
+      "k1": 20.0,
+      "repaired": {
+        "A_fluid_final": 7.999511718749262e-08,
+        "A_fluid_initial": 7.999998821999257e-08,
+        "A_particles_final": 4.882812500000002e-12,
+        "A_particles_initial": 1.1780000000000001e-14,
+        "conservation_residual": 4.632049871583566e-23,
+        "delta_A_fluid": -4.871032499953681e-12,
+        "delta_A_particles": 4.8710325000000015e-12,
+        "exit": 0,
+        "run_dir": "/home/jherrera2007/bmx-c04-qual/runs/c04-p07-donor-cap-fixture/k1_20/repaired",
+        "transfer_equals_available": true,
+        "transfer_over_available": 0.997587456
+      },
+      "repaired_capped": true,
+      "uncapped_request_true_area": 6.381360077604269e-11
+    },
+    {
+      "alpha_first_half": 0.653451271946677,
+      "alpha_second_half_repaired": 65.34512719466768,
+      "baseline": {
+        "A_fluid_final": 7.999511816440565e-08,
+        "A_fluid_initial": 7.999998821999257e-08,
+        "A_particles_final": 4.881835586973302e-12,
+        "A_particles_initial": 1.1780000000000001e-14,
+        "conservation_residual": 5.500993411547718e-23,
+        "delta_A_fluid": -4.870055586918292e-12,
+        "delta_A_particles": 4.870055586973302e-12,
+        "exit": 0,
+        "run_dir": "/home/jherrera2007/bmx-c04-qual/runs/c04-p07-donor-cap-fixture/k1_100/baseline",
+        "transfer_over_available": 0.9973873842121319
+      },
+      "k1": 100.0,
+      "repaired": {
+        "A_fluid_final": 7.999511718749262e-08,
+        "A_fluid_initial": 7.999998821999257e-08,
+        "A_particles_final": 4.882812499999993e-12,
+        "A_particles_initial": 1.1780000000000001e-14,
+        "conservation_residual": 4.631161298659925e-23,
+        "delta_A_fluid": -4.871032499953681e-12,
+        "delta_A_particles": 4.871032499999993e-12,
+        "exit": 0,
+        "run_dir": "/home/jherrera2007/bmx-c04-qual/runs/c04-p07-donor-cap-fixture/k1_100/repaired",
+        "transfer_equals_available": true,
+        "transfer_over_available": 0.9975874559999981
+      },
+      "repaired_capped": true,
+      "uncapped_request_true_area": 3.190680038802134e-10
+    }
+  ],
+  "saturation_observed": true,
+  "transfer_equals_available": true,
+  "transfer_equals_available_rows": [
+    {
+      "A_particles_final": 4.882812500000001e-12,
+      "available": 4.882812500000002e-12,
+      "equal": true,
+      "k1": 2.0,
+      "relative_difference": 1.6543612251060549e-16
+    },
+    {
+      "A_particles_final": 4.882812500000002e-12,
+      "available": 4.882812500000002e-12,
+      "equal": true,
+      "k1": 5.0,
+      "relative_difference": 0.0
+    },
+    {
+      "A_particles_final": 4.882812500000002e-12,
+      "available": 4.882812500000002e-12,
+      "equal": true,
+      "k1": 20.0,
+      "relative_difference": 0.0
+    },
+    {
+      "A_particles_final": 4.882812499999993e-12,
+      "available": 4.882812500000002e-12,
+      "equal": true,
+      "k1": 100.0,
+      "relative_difference": 1.81979734761666e-15
+    }
+  ],
+  "verdict": "CAP_FIRES_AND_TRANSFER_EQUALS_AVAILABLE",
+  "why_not_sign_flip": "a sign flip only occurs when the BASELINE cap fires; this construction keeps the baseline under the cap by design, so only the repaired side activates and the sign test is blind to it"
+}

@@ -1,0 +1,85 @@
+{
+  "artifact_type": "C12_STAGE_REPORT",
+  "stage": "C12/P14",
+  "generated": "2026-08-02",
+  "status": "BLOCKED",
+  "engineering_implementation": "NOT_STARTED_AT_BINDING_AUTHORITY_GATE",
+  "claim_boundary": "C12 records a technical O09 fit and a specification-completeness blocker only. It implements no export/reward behavior and makes no mentor, scientific, calibration, predictive, release-host, P15, or later-stage claim.",
+  "source": {
+    "stage_base_commit": "5afe3298823011a3506d3799ccdbe815f162a227",
+    "stage_base_tree": "4ff25357439e103074e5a4ac07c59c9a1dd133e2",
+    "stage_base_src_tree": "ef72f6930912a57e95a942dd7742a8584d7bc684",
+    "c11_implementation_src_tree": "ef72f6930912a57e95a942dd7742a8584d7bc684",
+    "implementation_commit": null,
+    "source_changes": [],
+    "branch": "rgsw/c12-p14"
+  },
+  "contracts": {
+    "authority_source_sha256": "34e8414c09e6528fc86399ceb4902cb5fc6907d9562fcf7a78cb3a8e4e333066",
+    "authority_attachment_byte_identical": true,
+    "p11_geometry_sha256": "6a4329f013c857c664a11d669747845006a6c0c9d34f568625b6939d1462acba",
+    "p14_operator_fit_id": "bmx-p14-o09-fit-v1",
+    "p14_operator_fit_sha256": "72193a1034d4148d167f059c347053d2206fa580cce9a156ec705304e7f378e7",
+    "global_operator_order_id": "bmx-p10-global-order-v1",
+    "global_operator_order_sha256": "bb63c219a860687d91ce1acf06a667c9208abf026b32f18acfc64884bb696dd6",
+    "frozen_kernel_sha256": "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02"
+  },
+  "authority": {
+    "classification": "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+    "p14_decision_statuses_changed": false,
+    "preexisting_residual_gaps_changed": false,
+    "closed_scientific_claimed": false,
+    "mentor_approval_claimed": false
+  },
+  "operator_order": {
+    "status": "FITS_EXISTING_ORDER",
+    "slot": "O09_INTERFACE_EXPORT_TRANSACTION",
+    "global_order_changed": false,
+    "rationale": "O09 already requires final-topology eligibility, request and caps before mutation, same-update atomic local-D debit/local-A credit, and exactly-once export ledgers.",
+    "independent_reviewer_claimed": false,
+    "writer_independence_note": "Codex is the product-branch writer and makes no independent-review claim. P14-U07 is a writer-owned technical fit freeze."
+  },
+  "blockers": [
+    {
+      "id": "D-C12-01-INTERFACE-FRACTION-DEFINITION",
+      "status": "OPEN",
+      "required_resolution": "Bind an exact executable mapping from P11 finite-radius geometry to f_I, including segment-refinement behavior."
+    },
+    {
+      "id": "D-C12-02-REWARD-CONVERSION-CONSTANT",
+      "status": "OPEN",
+      "required_resolution": "Bind either literal 7.736 exactly or exact M_P and M_C constants for 3*M_P/M_C."
+    }
+  ],
+  "evidence": {
+    "authority_gap_audit": {
+      "status": "BLOCKING_GAPS_CONFIRMED",
+      "sha256": "29af6123d97ed39c5ff3a529f44ac6ef42336796f8f41f8e73dcbb9609499ea1"
+    },
+    "blocker_report": {
+      "status": "BLOCKED",
+      "sha256": "58ab4c62e6c599f6229643aaedac90c250970c410277f52db50942e1566e16b1"
+    },
+    "static": {
+      "status": "PASS_TO_BLOCKER_BOUNDARY",
+      "checks": 10,
+      "sha256": "5a9c0975cf12add045b4a52ecd3fe1fb84326a0c29f3c03dec61540cd5ed148a"
+    }
+  },
+  "qualification": {
+    "build": "NOT_RUN_NO_SOURCE_IMPLEMENTATION",
+    "analytical": "NOT_RUN_BLOCKED_BEFORE_IMPLEMENTATION",
+    "native_runtime": "NOT_RUN_BLOCKED_BEFORE_IMPLEMENTATION",
+    "feature_off": "NOT_RUN_C11_SOURCE_UNCHANGED",
+    "checkpoint_restart": "NOT_RUN_NO_C12_SCHEMA_CHANGE"
+  },
+  "stage_sequence": {
+    "c11": "PASS",
+    "c12": "BLOCKED",
+    "c13": "NOT_STARTED_DUE_TO_C12_GATE"
+  },
+  "later_stage_behavior_present": false,
+  "release_evidence": false,
+  "external_resources": "none",
+  "external_spend_usd": 0
+}

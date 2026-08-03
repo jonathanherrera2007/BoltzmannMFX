@@ -1,0 +1,71 @@
+{
+  "artifact_type": "P10_GLOBAL_OPERATOR_ORDER_CONTRACT",
+  "contract_id": "bmx-p10-global-order-v1",
+  "status": "WRITER_FROZEN_PENDING_INDEPENDENT_REVIEW",
+  "scope": "enabled P09 three-state mode",
+  "frozen_before_final_runs": true,
+  "topology_contract_id": "bmx-p10-topology-event-v1",
+  "topology_contract_sha256": "a6a5a8a8d299ee3e0cfc30f6d359d84ed13fb9872db7cf51bfb38777b800bdfb",
+  "sequence": [
+    {
+      "id": "O01_PRE_UPDATE_LEDGER",
+      "operation": "Capture the pre-update canonical global phosphorus ledger before any state-changing operator."
+    },
+    {
+      "id": "O02_LOCAL_MESH_PARTICLE_UPDATE",
+      "operation": "Interpolate mesh state and execute membrane D/F transfer, then any enabled local D/E reaction, then growth eligibility. Attempt geometry before debiting B or E; only accepted realized volume may atomically debit B/E and credit the E debit to structural P. Rejected, clipped, or unrealized growth consumes neither B nor E. F coefficients remain exactly zero."
+    },
+    {
+      "id": "O03_PARTICLE_TO_MESH_COMMIT",
+      "operation": "Deposit signed extensive membrane-transfer increments to mapped mesh components and commit the matching particle state exactly once."
+    },
+    {
+      "id": "O04_MESH_GEOMETRY_AND_TRANSPORT",
+      "operation": "Update represented available fluid volume, then apply mesh transport/diffusion using the resulting ownership volumes. Mesh P_E is prohibited and all P_F transport coefficients remain exactly zero."
+    },
+    {
+      "id": "O05_PARTICLE_MECHANICS",
+      "operation": "Advance particle mechanics without changing D/E/F ownership except through an explicitly audited owning-volume change."
+    },
+    {
+      "id": "O06_SPLIT_TOPOLOGY",
+      "operation": "Apply ordinary, tip, and branch splits with pre-captured extensive D/E/F amounts partitioned by resulting particle volume, then redistribute."
+    },
+    {
+      "id": "O07_BONDED_TRANSPORT",
+      "operation": "Apply bonded transport after split. D is mobile, E is immobile, and F transport infrastructure remains coefficient-zero; audit per-state global internal amounts across transport and redistribution."
+    },
+    {
+      "id": "O08_FUSION_TOPOLOGY",
+      "operation": "Apply tip/interior fusion, fusion-created splits, relationship cleanup, and redistribution with exactly-once amount ownership. Disjoint events use one pre-topology snapshot; shared-particle/bond/destination conflicts abort the complete batch before child creation. Raw deletion and nonperiodic out-of-domain loss abort before invalidation or redistribution. Bond endpoints remap to unique live owners; zero-state duplicate/self relationships prune; unresolved or material-bearing orphans abort."
+    },
+    {
+      "id": "O09_INTERFACE_EXPORT_TRANSACTION",
+      "operation": "For an eligible final-topology segment, compute request and caps first, then atomically debit local D and credit local A in the same update; update export ledgers exactly once."
+    },
+    {
+      "id": "O10_POST_UPDATE_LEDGER",
+      "operation": "Capture the post-update canonical global phosphorus ledger and enforce the frozen integrated residual, non-finite, and negative-amount policies before output or checkpoint."
+    }
+  ],
+  "fixed_relations": [
+    "uptake and D-transport validation runs keep reactions off",
+    "local D/E operators are isolated before P-limited growth validation",
+    "geometry is attempted before any B/E debit",
+    "export caps precede the atomic D-debit/A-credit transaction"
+  ],
+  "current_source_mapping": {
+    "O01": "src/timestepping/bmx_evolve.cpp::bmx::Evolve -> bmx::AuditP10Ledger before any update",
+    "O02_to_O04": "src/timestepping/bmx_evolve.cpp::EvolveFluid",
+    "pure_owning_volume": "src/des/bmx_calc_txfr.cpp captures D/E/F amounts before the frozen kernel and restores them against the resulting volume",
+    "O05": "src/timestepping/bmx_evolve.cpp::EvolveParticles",
+    "O06": "src/des/bmx_split_particles.cpp",
+    "O07": "src/des/bmx_pc_xchng.cpp",
+    "O08": "src/des/bmx_pc_fusion.cpp",
+    "O09": "reserved for separately authorized P14 implementation; not invoked by C08",
+    "O10": "src/timestepping/bmx_evolve.cpp::bmx::Evolve -> bmx::AuditP10Ledger before output/checkpoint"
+  },
+  "c08_integration_status": "O01 and O10 are integrated with a bound MPI-global ledger; pure volume, split, bonded transport, fusion-created split, MPI-global topology conflict, bond-owner, restart, and checkpoint boundaries are fail-closed. Derived Redistribute/Regrid wrappers preflight every product entry point before delegating to pinned AMReX, and serialized particle identities/coordinates are prevalidated before pinned Restart's internal nonvirtual redistribution. The clean C08 engineering suite passes. Independent review of these exact writer-frozen bytes remains pending. O09 and all C09-or-later behavior remain unimplemented.",
+  "review_gate": "An independent reviewer must approve or supersede this writer freeze before C08 final qualification or any final outcome run.",
+  "claim_boundary": "This is a technical ordering freeze. It selects no biological rate, initial value, tolerance, experiment arm, or scientific baseline."
+}

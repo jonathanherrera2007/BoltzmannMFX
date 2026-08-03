@@ -7,6 +7,8 @@
 #include <bmx_dem_parms.H>
 #include <bmx_bc_parms.H>
 #include <bmx_chem_K.H>
+#include <bmx_fluid_parms.H>
+#include <bmx_pc_phosphorus.H>
 
 using namespace amrex;
 
@@ -19,6 +21,13 @@ void BMXParticleContainer::ParticleExchange (Real dt,
     BL_PROFILE("bmx_dem::ParticleExchange()");
 
     Real eps = std::numeric_limits<Real>::epsilon();
+    const bool p10_enabled =
+        BMXChemLayout::classifyMeshSpecies(FLUID::chem_species) ==
+        BMXChemLayout::MeshMode::enabled;
+    BMXPhosphorus::ParticleTotals phosphorus_before;
+    if (p10_enabled) {
+      phosphorus_before = BMXPhosphorus::computeInternalAmounts(*this);
+    }
 
     for (int lev = 0; lev <= finest_level; lev++)
     {
@@ -72,6 +81,7 @@ void BMXParticleContainer::ParticleExchange (Real dt,
         // redistribute operation)
         if (n % 25 == 0) {
             clearNeighbors();
+            BMXPhosphorus::requireRedistributionSafe(*this);
             Redistribute(0, 0, 0, 1);
             fillNeighbors();
             // send in "false" for sort_neighbor_list option
@@ -192,6 +202,7 @@ void BMXParticleContainer::ParticleExchange (Real dt,
     // Redistribute particles at the end of all substeps (note that the particle
     // neighbour list needs to be reset when redistributing).
     clearNeighbors();
+    BMXPhosphorus::requireRedistributionSafe(*this);
     Redistribute(0, 0, 0, 1);
 
     } // lev
@@ -256,6 +267,14 @@ void BMXParticleContainer::ParticleExchange (Real dt,
       amrex::Gpu::Device::synchronize();
     }
     BL_PROFILE_VAR_STOP(des_time_march);
+    }
+
+    if (p10_enabled) {
+      const auto phosphorus_after =
+          BMXPhosphorus::computeInternalAmounts(*this);
+      BMXPhosphorus::requireIntegratedConservation(
+          phosphorus_before, phosphorus_after,
+          "bonded exchange and MPI redistribution");
     }
 
 

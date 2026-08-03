@@ -1,0 +1,165 @@
+{
+  "artifact_type": "BMX_P11_SPLIT_PLATE_GEOMETRY_CONTRACT",
+  "schema_version": 1,
+  "contract_id": "bmx-p11-split-plate-geometry-v1",
+  "stage": "C09/P11",
+  "status": "WRITER_FROZEN_BEFORE_FINAL_C09_OUTCOMES",
+  "authority": {
+    "confirmed_geometry_decision": "MD-5b43f4b235dec87e-09",
+    "units_decision": "MD-5b43f4b235dec87e-06",
+    "user_contract_id": "UDC-20260801-P11-SECTION-9",
+    "user_contract_path": "contracts/USER_APPROVED_DECISION_CONTRACT_20260801.txt",
+    "user_contract_sha256": "283eace4f34e0a3d6961d49db2ab2c75ac6e384a9077a7044313a20f7bd4bc93",
+    "user_contract_section": "9. Geometry, lines 976-1043 in the preserved source",
+    "binding_classification": "CLOSED_USER_ADOPTED",
+    "activation_authority": "user request: Continue through C09",
+    "claim_boundary": "Binding RG-SW user authority for C09 only; not mentor approval, calibrated biology, or independent scientific review"
+  },
+  "activation": {
+    "parameter_prefix": "p11_geometry",
+    "default_enabled": false,
+    "required_enabled_fields": {
+      "enabled": 1,
+      "schema_version": 1,
+      "contract_id": "bmx-p11-split-plate-geometry-v1",
+      "stage": "local_quasi_2d_interface"
+    },
+    "enabled_requires_three_state_mesh": true,
+    "unknown_or_mismatched_contract": "hard abort before geometry use or checkpoint field/particle deserialization"
+  },
+  "physical_reference_cm": {
+    "plate_diameter": 9.4,
+    "divider_thickness_qualifier": "approximately",
+    "divider_thickness": 0.1,
+    "frame_height": 1.2,
+    "opening_width": 5.0,
+    "opening_height": 0.2,
+    "simulation_role": "metadata_only"
+  },
+  "local_strip_cm": {
+    "coordinate_system": "cartesian",
+    "divider_x": 0.0,
+    "barrier_x": {
+      "lower": -0.05,
+      "upper": 0.05,
+      "interval": "lower-inclusive/upper-exclusive"
+    },
+    "host": "x < -0.05",
+    "fungus": "x >= 0.05",
+    "frame_z": {
+      "lower": 0.0,
+      "upper": 1.2,
+      "interval": "lower-inclusive/upper-exclusive"
+    },
+    "aperture_z": {
+      "lower": 0.8,
+      "upper": 1.0,
+      "interval": "lower-inclusive/upper-exclusive"
+    },
+    "periodic_y": {
+      "lower": 0.0,
+      "upper": 0.1,
+      "interval": "lower-inclusive/upper-exclusive"
+    },
+    "x_domains": [
+      [-1.0, 1.0],
+      [-0.5, 0.5],
+      [-2.0, 2.0]
+    ],
+    "output_normalization": "per_unit_modeled_width",
+    "full_width_extrapolation_allowed": false
+  },
+  "technical_tolerance": {
+    "name": "P11_COORDINATE_TOLERANCE_V1",
+    "formula_cm": "64 * epsilon_double * max(1 cm, absolute coordinate/domain span/segment radius/segment length)",
+    "freeze_time": "before C09 outcome observation",
+    "scalar_boundary_rule": "snap a scalar within the tolerance to the exact frozen boundary, then apply the lower-inclusive/upper-exclusive comparison",
+    "solid_contact_rule": "distance <= radius + tolerance counts as contact",
+    "solid_penetration_rule": "distance < max(0, radius - tolerance) counts as penetration",
+    "aperture_edge_rule": "solid-frame contact has precedence over window eligibility",
+    "face_edge_corner_rule": "apply every simultaneously active normal constraint in x then z order; retain motion tangent to all active normals",
+    "nonfinite_rule": "hard abort",
+    "review_boundary": "technical writer freeze; independent numerical review remains required before any final release run"
+  },
+  "capsule_predicates": {
+    "primitive": "centerline segment plus physical radius in cm",
+    "solid_geometry": "lower and upper frame rectangles extruded through periodic y; nonfungal particles see the aperture as solid",
+    "window_contact": "fungal capsule intersects the aperture volume and has no solid-frame contact",
+    "true_crossing": "window-contacting fungal capsule reaches both x < -0.05 and x >= 0.05",
+    "periodic_canonicalization": "map y to [0,0.1); the upper endpoint maps to the lower endpoint",
+    "cell_occupancy_used": false,
+    "volume_fraction_used": false,
+    "amr_or_decomposition_used": false
+  },
+  "particle_mechanics": {
+    "divider_response": "hard nonpenetration",
+    "solid_collision": "project the proposed capsule to the nearest valid side, remove outward normal displacement/velocity, preserve tangential translation",
+    "fungal_aperture": "passage allowed only without solid-frame contact",
+    "nonfungal_aperture": "solid",
+    "outer_x": "hard nonpenetration with tangential sliding",
+    "outer_z": "hard nonpenetration with tangential sliding",
+    "outer_y": "periodic",
+    "deletion_allowed": false,
+    "elastic_reflection_allowed": false,
+    "penalty_force_allowed": false,
+    "swept_motion_rule": "test old and proposed capsules plus both endpoint trajectories; on any solid penetration, project to the nearest valid fungus-side first-contact support plane",
+    "rotation_collision_rule": "retain the proposed orientation only after the translated capsule is nonpenetrating; otherwise reject the rotation and apply the translational constraint",
+    "event_boundary": "one final owned-particle traversal per EvolveParticles update after redistribution",
+    "event_identity": "globally stable AMReX particle id plus timestep update id plus geometry contract id",
+    "operational_motion_record": {
+      "attempted_penetration": "MPI-global count of particle-substep proposals that violate an internal or outer hard boundary",
+      "projected_motion": "MPI-global count of those proposals whose pose is projected to an allowed support surface",
+      "tangential_motion": "MPI-global count of projected proposals retaining a nonzero displacement tangent to every active normal",
+      "rejected_growth": "MPI-global count reserved for an authorized growth/debit operator; exactly zero in C09 because C09 introduces no growth or B/E debit behavior",
+      "counter_scope": "reset at each EvolveParticles update and emitted once with the final geometry event record",
+      "duplicate_update_rule": "duplicate or out-of-order update identifiers hard abort"
+    },
+    "chemistry_or_export_side_effect": false
+  },
+  "mesh_boundary": {
+    "divider_surface": "every x-normal face at x=0 on every active AMR level, including aperture",
+    "masked_enabled_mesh_components": ["P_D", "P_F"],
+    "required_coefficient": 0.0,
+    "legacy_species_unchanged": true,
+    "depends_on_particles_or_occupancy": false,
+    "outer_x_p_d_p_f": "homogeneous Neumann/no flux",
+    "outer_z_p_d_p_f": "homogeneous Neumann/no flux",
+    "outer_y": "periodic"
+  },
+  "grid_validation": {
+    "required_face_alignment": [
+      "x=-0.05",
+      "x=0",
+      "x=0.05",
+      "z=0",
+      "z=0.8",
+      "z=1.0",
+      "z=1.2"
+    ],
+    "scope": "every active AMR level",
+    "failure": "hard abort before geometry use"
+  },
+  "checkpoint": {
+    "schema_version": 3,
+    "serialized_fields": [
+      "enabled",
+      "geometry schema version",
+      "contract id and SHA-256",
+      "stage",
+      "domain bounds",
+      "periodicity"
+    ],
+    "comparison": "exact identifiers, exact periodicity, exact round-tripped binary Real domain values",
+    "legacy_or_mismatch": "reject before field or particle deserialization",
+    "event_dedup_persistence": "no cross-update set is stored; timestep identity is already checkpointed and each update performs one final owned traversal"
+  },
+  "prohibited": [
+    "P12 or later behavior",
+    "Eulerian P leakage through the aperture",
+    "active F transport or biology",
+    "export or carbon reward",
+    "full-plate scaling",
+    "calibrated or predictive claim",
+    "formal P05-P18 acceptance"
+  ]
+}

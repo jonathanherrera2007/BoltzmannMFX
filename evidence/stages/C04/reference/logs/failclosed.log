@@ -1,0 +1,14 @@
+CMake Error at /home/jherrera2007/bmx-c04-qual/product/tools/CMake/BMX_Provenance.cmake:213 (message):
+  BMX_REQUIRE_PROVENANCE is ON but build provenance could not be established.
+
+    reason: gitdir 'Q:/definitely/not/here/.git/worktrees/nope' does not exist on this host
+
+  A build that cannot say which commit produced it must not carry release
+  evidence.  Either configure from a checkout whose .git resolves on this
+  host, run tools/repro/repair_worktree_provenance.sh, or configure with
+  -DBMX_REQUIRE_PROVENANCE=OFF for a non-release build.
+Call Stack (most recent call first):
+  CMakeLists.txt:8 (bmx_require_provenance)
+
+
+-- Configuring incomplete, errors occurred!

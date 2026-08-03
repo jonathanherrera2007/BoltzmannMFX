@@ -1,0 +1,409 @@
+{
+  "artifact_type": "C09_GEOMETRY_RUNTIME_TEST",
+  "claim_boundary": "Windows CPU engineering qualification; not a calibrated biological claim, release-host evidence, or independent numerical review.",
+  "decomposition_checks": {
+    "level0_level1_exact_event_identity": true,
+    "rank1_rank2_exact_event_identity": true
+  },
+  "engineering_runtime_overrides": {
+    "internal_frame_tangential_slide_gravity": 20000.0,
+    "interpretation": "deterministic branch-forcing values only; not biological or physical research settings",
+    "outer_z_projection_gravity": 1000000.0,
+    "p_d_diffusion_cm2_per_s": 6e-10,
+    "p_f_diffusion_cm2_per_s": 0.0
+  },
+  "executable": {
+    "path": "C:\\b\\BMX-shadow-handoff-20260721\\build-c09-native-release-definitive\\bmx.exe",
+    "sha256": "33a191e180288783a0e9fc5f7ca25ac08e298b43e68fa37f0414e5b19c37b996"
+  },
+  "invalid_cases": {
+    "fungus_embedded_in_solid_frame": {
+      "checks": {
+        "clear_reason": true,
+        "exit_nonzero": true,
+        "no_geometry_event_committed": true
+      },
+      "exit_code": 22,
+      "expected_token": "P11 particle geometry rejected",
+      "log": "C:\\b\\BMX-shadow-handoff-20260721\\runs\\c09-geometry-runtime-definitive\\fungus_embedded_in_solid_frame\\stdout.log",
+      "status": "PASS"
+    },
+    "misaligned_grid": {
+      "checks": {
+        "clear_reason": true,
+        "exit_nonzero": true,
+        "no_geometry_event_committed": true
+      },
+      "exit_code": 22,
+      "expected_token": "is not grid-face aligned",
+      "log": "C:\\b\\BMX-shadow-handoff-20260721\\runs\\c09-geometry-runtime-definitive\\misaligned_grid\\stdout.log",
+      "status": "PASS"
+    },
+    "nonfungus_in_aperture": {
+      "checks": {
+        "clear_reason": true,
+        "exit_nonzero": true,
+        "no_geometry_event_committed": true
+      },
+      "exit_code": 22,
+      "expected_token": "P11 particle geometry rejected",
+      "log": "C:\\b\\BMX-shadow-handoff-20260721\\runs\\c09-geometry-runtime-definitive\\nonfungus_in_aperture\\stdout.log",
+      "status": "PASS"
+    },
+    "unapproved_domain": {
+      "checks": {
+        "clear_reason": true,
+        "exit_nonzero": true,
+        "no_geometry_event_committed": true
+      },
+      "exit_code": 22,
+      "expected_token": "x domain is not an approved central/sensitivity extent",
+      "log": "C:\\b\\BMX-shadow-handoff-20260721\\runs\\c09-geometry-runtime-definitive\\unapproved_domain\\stdout.log",
+      "status": "PASS"
+    },
+    "wrong_contract": {
+      "checks": {
+        "clear_reason": true,
+        "exit_nonzero": true,
+        "no_geometry_event_committed": true
+      },
+      "exit_code": 22,
+      "expected_token": "contract_id mismatch",
+      "log": "C:\\b\\BMX-shadow-handoff-20260721\\runs\\c09-geometry-runtime-definitive\\wrong_contract\\stdout.log",
+      "status": "PASS"
+    },
+    "wrong_mesh_layout": {
+      "checks": {
+        "clear_reason": true,
+        "exit_nonzero": true,
+        "no_geometry_event_committed": true
+      },
+      "exit_code": 22,
+      "expected_token": "requires the exact three-state mesh layout",
+      "log": "C:\\b\\BMX-shadow-handoff-20260721\\runs\\c09-geometry-runtime-definitive\\wrong_mesh_layout\\stdout.log",
+      "status": "PASS"
+    },
+    "wrong_periodicity": {
+      "checks": {
+        "clear_reason": true,
+        "exit_nonzero": true,
+        "no_geometry_event_committed": true
+      },
+      "exit_code": 22,
+      "expected_token": "periodicity must be nonperiodic x/z and periodic y",
+      "log": "C:\\b\\BMX-shadow-handoff-20260721\\runs\\c09-geometry-runtime-definitive\\wrong_periodicity\\stdout.log",
+      "status": "PASS"
+    },
+    "wrong_stage": {
+      "checks": {
+        "clear_reason": true,
+        "exit_nonzero": true,
+        "no_geometry_event_committed": true
+      },
+      "exit_code": 22,
+      "expected_token": "stage must be local_quasi_2d_interface",
+      "log": "C:\\b\\BMX-shadow-handoff-20260721\\runs\\c09-geometry-runtime-definitive\\wrong_stage\\stdout.log",
+      "status": "PASS"
+    }
+  },
+  "method": "Run the exact enabled C09 contract on all three approved x extents, one and two MPI ranks, and level-zero/level-one meshes; count one final finite-radius fungal aperture contact/crossing per update; mask a nonzero P_D face coefficient while P_F remains inactive; force the production internal-frame tangential-slide and outer-wall projection paths; then exercise contract, stage, periodicity, domain, grid-alignment, mesh-layout, and embedded-particle fail-closed paths.",
+  "motion_cases": {
+    "internal_frame_tangential_slide": {
+      "checks": {
+        "contract_exact": true,
+        "exit_zero": true,
+        "expected_final_solid_contact": true,
+        "expected_tangential_motion": true,
+        "no_growth_side_effect": true,
+        "no_interface_event": true,
+        "no_p11_abort": true,
+        "one_update_event": true,
+        "production_divider_faces_masked": true,
+        "projection_exercised_once": true
+      },
+      "divider_masks": [
+        {
+          "level": 0,
+          "line": "P11_DIVIDER_MASK level=0 masked_faces=96 nonzero_faces=0",
+          "masked_faces": 96,
+          "nonzero_faces": 0
+        }
+      ],
+      "events": [
+        {
+          "attempted_penetration": 1,
+          "contact_id_checksum": 0,
+          "contract": "bmx-p11-split-plate-geometry-v1",
+          "line": "P11_GEOMETRY_EVENTS contract=bmx-p11-split-plate-geometry-v1 update_id=0 window_contact=0 true_crossing=0 solid_contact=1 contact_id_checksum=0 attempted_penetration=1 projected_motion=1 tangential_motion=1 rejected_growth=0",
+          "projected_motion": 1,
+          "rejected_growth": 0,
+          "solid_contact": 1,
+          "tangential_motion": 1,
+          "true_crossing": 0,
+          "update_id": 0,
+          "window_contact": 0
+        }
+      ],
+      "exit_code": 0,
+      "log": "C:\\b\\BMX-shadow-handoff-20260721\\runs\\c09-geometry-runtime-definitive\\internal_frame_tangential_slide\\stdout.log",
+      "status": "PASS"
+    },
+    "outer_z_projection": {
+      "checks": {
+        "contract_exact": true,
+        "exit_zero": true,
+        "expected_final_solid_contact": true,
+        "expected_tangential_motion": true,
+        "no_growth_side_effect": true,
+        "no_interface_event": true,
+        "no_p11_abort": true,
+        "one_update_event": true,
+        "production_divider_faces_masked": true,
+        "projection_exercised_once": true
+      },
+      "divider_masks": [
+        {
+          "level": 0,
+          "line": "P11_DIVIDER_MASK level=0 masked_faces=96 nonzero_faces=0",
+          "masked_faces": 96,
+          "nonzero_faces": 0
+        }
+      ],
+      "events": [
+        {
+          "attempted_penetration": 1,
+          "contact_id_checksum": 0,
+          "contract": "bmx-p11-split-plate-geometry-v1",
+          "line": "P11_GEOMETRY_EVENTS contract=bmx-p11-split-plate-geometry-v1 update_id=0 window_contact=0 true_crossing=0 solid_contact=0 contact_id_checksum=0 attempted_penetration=1 projected_motion=1 tangential_motion=0 rejected_growth=0",
+          "projected_motion": 1,
+          "rejected_growth": 0,
+          "solid_contact": 0,
+          "tangential_motion": 0,
+          "true_crossing": 0,
+          "update_id": 0,
+          "window_contact": 0
+        }
+      ],
+      "exit_code": 0,
+      "log": "C:\\b\\BMX-shadow-handoff-20260721\\runs\\c09-geometry-runtime-definitive\\outer_z_projection\\stdout.log",
+      "status": "PASS"
+    }
+  },
+  "mpi": {
+    "decomposition_ranks": [
+      1,
+      2
+    ],
+    "mpiexec": "C:\\Program Files\\Microsoft MPI\\Bin\\mpiexec.exe"
+  },
+  "stage": "C09/P11",
+  "status": "PASS",
+  "valid_cases": {
+    "central_amr_rank2": {
+      "checks": {
+        "contact_once": true,
+        "contract_exact": true,
+        "crossing_once": true,
+        "exit_zero": true,
+        "motion_counters_present_and_zero_for_static_fixture": true,
+        "no_p11_abort": true,
+        "no_solid_contact": true,
+        "one_update_event": true,
+        "production_divider_faces_masked": true,
+        "required_amr_level_exercised": true
+      },
+      "divider_masks": [
+        {
+          "level": 0,
+          "line": "P11_DIVIDER_MASK level=0 masked_faces=96 nonzero_faces=0",
+          "masked_faces": 96,
+          "nonzero_faces": 0
+        },
+        {
+          "level": 1,
+          "line": "P11_DIVIDER_MASK level=1 masked_faces=160 nonzero_faces=0",
+          "masked_faces": 160,
+          "nonzero_faces": 0
+        }
+      ],
+      "events": [
+        {
+          "attempted_penetration": 0,
+          "contact_id_checksum": 1,
+          "contract": "bmx-p11-split-plate-geometry-v1",
+          "line": "P11_GEOMETRY_EVENTS contract=bmx-p11-split-plate-geometry-v1 update_id=0 window_contact=1 true_crossing=1 solid_contact=0 contact_id_checksum=1 attempted_penetration=0 projected_motion=0 tangential_motion=0 rejected_growth=0",
+          "projected_motion": 0,
+          "rejected_growth": 0,
+          "solid_contact": 0,
+          "tangential_motion": 0,
+          "true_crossing": 1,
+          "update_id": 0,
+          "window_contact": 1
+        }
+      ],
+      "exit_code": 0,
+      "log": "C:\\b\\BMX-shadow-handoff-20260721\\runs\\c09-geometry-runtime-definitive\\central_amr_rank2\\stdout.log",
+      "status": "PASS"
+    },
+    "central_rank1": {
+      "checks": {
+        "contact_once": true,
+        "contract_exact": true,
+        "crossing_once": true,
+        "exit_zero": true,
+        "motion_counters_present_and_zero_for_static_fixture": true,
+        "no_p11_abort": true,
+        "no_solid_contact": true,
+        "one_update_event": true,
+        "production_divider_faces_masked": true,
+        "required_amr_level_exercised": true
+      },
+      "divider_masks": [
+        {
+          "level": 0,
+          "line": "P11_DIVIDER_MASK level=0 masked_faces=96 nonzero_faces=0",
+          "masked_faces": 96,
+          "nonzero_faces": 0
+        }
+      ],
+      "events": [
+        {
+          "attempted_penetration": 0,
+          "contact_id_checksum": 1,
+          "contract": "bmx-p11-split-plate-geometry-v1",
+          "line": "P11_GEOMETRY_EVENTS contract=bmx-p11-split-plate-geometry-v1 update_id=0 window_contact=1 true_crossing=1 solid_contact=0 contact_id_checksum=1 attempted_penetration=0 projected_motion=0 tangential_motion=0 rejected_growth=0",
+          "projected_motion": 0,
+          "rejected_growth": 0,
+          "solid_contact": 0,
+          "tangential_motion": 0,
+          "true_crossing": 1,
+          "update_id": 0,
+          "window_contact": 1
+        }
+      ],
+      "exit_code": 0,
+      "log": "C:\\b\\BMX-shadow-handoff-20260721\\runs\\c09-geometry-runtime-definitive\\central_rank1\\stdout.log",
+      "status": "PASS"
+    },
+    "central_rank2": {
+      "checks": {
+        "contact_once": true,
+        "contract_exact": true,
+        "crossing_once": true,
+        "exit_zero": true,
+        "motion_counters_present_and_zero_for_static_fixture": true,
+        "no_p11_abort": true,
+        "no_solid_contact": true,
+        "one_update_event": true,
+        "production_divider_faces_masked": true,
+        "required_amr_level_exercised": true
+      },
+      "divider_masks": [
+        {
+          "level": 0,
+          "line": "P11_DIVIDER_MASK level=0 masked_faces=96 nonzero_faces=0",
+          "masked_faces": 96,
+          "nonzero_faces": 0
+        }
+      ],
+      "events": [
+        {
+          "attempted_penetration": 0,
+          "contact_id_checksum": 1,
+          "contract": "bmx-p11-split-plate-geometry-v1",
+          "line": "P11_GEOMETRY_EVENTS contract=bmx-p11-split-plate-geometry-v1 update_id=0 window_contact=1 true_crossing=1 solid_contact=0 contact_id_checksum=1 attempted_penetration=0 projected_motion=0 tangential_motion=0 rejected_growth=0",
+          "projected_motion": 0,
+          "rejected_growth": 0,
+          "solid_contact": 0,
+          "tangential_motion": 0,
+          "true_crossing": 1,
+          "update_id": 0,
+          "window_contact": 1
+        }
+      ],
+      "exit_code": 0,
+      "log": "C:\\b\\BMX-shadow-handoff-20260721\\runs\\c09-geometry-runtime-definitive\\central_rank2\\stdout.log",
+      "status": "PASS"
+    },
+    "large_rank1": {
+      "checks": {
+        "contact_once": true,
+        "contract_exact": true,
+        "crossing_once": true,
+        "exit_zero": true,
+        "motion_counters_present_and_zero_for_static_fixture": true,
+        "no_p11_abort": true,
+        "no_solid_contact": true,
+        "one_update_event": true,
+        "production_divider_faces_masked": true,
+        "required_amr_level_exercised": true
+      },
+      "divider_masks": [
+        {
+          "level": 0,
+          "line": "P11_DIVIDER_MASK level=0 masked_faces=192 nonzero_faces=0",
+          "masked_faces": 192,
+          "nonzero_faces": 0
+        }
+      ],
+      "events": [
+        {
+          "attempted_penetration": 0,
+          "contact_id_checksum": 1,
+          "contract": "bmx-p11-split-plate-geometry-v1",
+          "line": "P11_GEOMETRY_EVENTS contract=bmx-p11-split-plate-geometry-v1 update_id=0 window_contact=1 true_crossing=1 solid_contact=0 contact_id_checksum=1 attempted_penetration=0 projected_motion=0 tangential_motion=0 rejected_growth=0",
+          "projected_motion": 0,
+          "rejected_growth": 0,
+          "solid_contact": 0,
+          "tangential_motion": 0,
+          "true_crossing": 1,
+          "update_id": 0,
+          "window_contact": 1
+        }
+      ],
+      "exit_code": 0,
+      "log": "C:\\b\\BMX-shadow-handoff-20260721\\runs\\c09-geometry-runtime-definitive\\large_rank1\\stdout.log",
+      "status": "PASS"
+    },
+    "small_rank1": {
+      "checks": {
+        "contact_once": true,
+        "contract_exact": true,
+        "crossing_once": true,
+        "exit_zero": true,
+        "motion_counters_present_and_zero_for_static_fixture": true,
+        "no_p11_abort": true,
+        "no_solid_contact": true,
+        "one_update_event": true,
+        "production_divider_faces_masked": true,
+        "required_amr_level_exercised": true
+      },
+      "divider_masks": [
+        {
+          "level": 0,
+          "line": "P11_DIVIDER_MASK level=0 masked_faces=96 nonzero_faces=0",
+          "masked_faces": 96,
+          "nonzero_faces": 0
+        }
+      ],
+      "events": [
+        {
+          "attempted_penetration": 0,
+          "contact_id_checksum": 1,
+          "contract": "bmx-p11-split-plate-geometry-v1",
+          "line": "P11_GEOMETRY_EVENTS contract=bmx-p11-split-plate-geometry-v1 update_id=0 window_contact=1 true_crossing=1 solid_contact=0 contact_id_checksum=1 attempted_penetration=0 projected_motion=0 tangential_motion=0 rejected_growth=0",
+          "projected_motion": 0,
+          "rejected_growth": 0,
+          "solid_contact": 0,
+          "tangential_motion": 0,
+          "true_crossing": 1,
+          "update_id": 0,
+          "window_contact": 1
+        }
+      ],
+      "exit_code": 0,
+      "log": "C:\\b\\BMX-shadow-handoff-20260721\\runs\\c09-geometry-runtime-definitive\\small_rank1\\stdout.log",
+      "status": "PASS"
+    }
+  }
+}

@@ -9,6 +9,81 @@
 #include <math.h>
 #include <bmx_fluid_parms.H>
 #include <bmx_cell_interaction.H>
+#include <bmx_phosphorus_geometry_K.H>
+
+/**
+ * Apply the versioned P11 hard-geometry constraint to one proposed particle
+ * pose.  This adapter keeps particle-array knowledge out of the pure geometry
+ * module and introduces no chemistry, export, or reward side effect.
+ */
+AMREX_GPU_HOST_DEVICE AMREX_INLINE
+BMXPhosphorusGeometry::MotionConstraintResult
+constrainP11ParticleMotion(const Real *old_pos,
+                           Real *proposed_pos,
+                           Real *par,
+                           int *ipar,
+                           Real old_theta,
+                           Real old_phi,
+                           Real *vel,
+                           Real *rotv,
+                           const BMXPhosphorusGeometry::RuntimeConfig& config)
+{
+  BMXPhosphorusGeometry::Pose old_pose;
+  old_pose.center = {old_pos[0], old_pos[1], old_pos[2]};
+  old_pose.radius = par[realIdx::radius];
+  old_pose.length = ipar[intIdx::cell_type] == cellType::FUNGI
+                        ? par[realIdx::c_length]
+                        : Real(0.0);
+  old_pose.theta = old_theta;
+  old_pose.phi = old_phi;
+
+  BMXPhosphorusGeometry::Pose proposed_pose = old_pose;
+  proposed_pose.center = {proposed_pos[0], proposed_pos[1], proposed_pos[2]};
+  proposed_pose.theta = par[realIdx::theta];
+  proposed_pose.phi = par[realIdx::phi];
+
+  const bool fungal_segment =
+      ipar[intIdx::cell_type] == cellType::FUNGI;
+  const auto result = BMXPhosphorusGeometry::constrainMotion(
+      old_pose, proposed_pose, fungal_segment, vel, rotv, config);
+  if (result.valid) {
+    proposed_pos[0] = proposed_pose.center.x;
+    proposed_pos[1] = proposed_pose.center.y;
+    proposed_pos[2] = proposed_pose.center.z;
+    par[realIdx::theta] = proposed_pose.theta;
+    par[realIdx::phi] = proposed_pose.phi;
+  }
+  return result;
+}
+
+/**
+ * Classify one final owned particle for the once-per-update P11 event pass.
+ */
+AMREX_GPU_HOST_DEVICE AMREX_INLINE
+BMXPhosphorusGeometry::CapsuleClassification
+classifyP11ParticleGeometry(const Real *pos,
+                            const Real *par,
+                            const int *ipar,
+                            const BMXPhosphorusGeometry::RuntimeConfig& config)
+{
+  BMXPhosphorusGeometry::Pose pose;
+  pose.center = {pos[0], pos[1], pos[2]};
+  pose.radius = par[realIdx::radius];
+  pose.length = ipar[intIdx::cell_type] == cellType::FUNGI
+                    ? par[realIdx::c_length]
+                    : Real(0.0);
+  pose.theta = par[realIdx::theta];
+  pose.phi = par[realIdx::phi];
+  if (config.enabled && !BMXPhosphorusGeometry::validPose(pose)) {
+    BMXPhosphorusGeometry::CapsuleClassification invalid;
+    invalid.valid = 0;
+    return invalid;
+  }
+  return BMXPhosphorusGeometry::classifyCapsule(
+      BMXPhosphorusGeometry::makeCapsule(pose),
+      ipar[intIdx::cell_type] == cellType::FUNGI,
+      config);
+}
 
 /**
  * Calculate the maximum separation distance for which there is any

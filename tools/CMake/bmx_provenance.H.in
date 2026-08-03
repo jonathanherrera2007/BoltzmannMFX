@@ -1,0 +1,32 @@
+//
+//     Copyright (c) 2013 Battelle Memorial Institute
+//     Licensed under modified BSD License. A copy of this license can be found
+//     in the LICENSE file in the top level directory of this distribution.
+//
+// GENERATED FILE -- do not edit. Produced from tools/CMake/bmx_provenance.H.in
+// by tools/CMake/BMX_Provenance.cmake at configure time.
+//
+// BMX resolves its own build provenance rather than relying on AMReX's
+// generate_buildinfo(), which runs `git describe` in the source directory and
+// yields an empty string in a linked worktree whose `.git` pointer was written
+// on another platform (D-C04-08).
+//
+// BMX_PROVENANCE_STATUS is "RESOLVED" or "UNAVAILABLE". It is always printed,
+// including when unavailable: a build that cannot say which commit produced it
+// must announce that rather than omit the line and look like a build that
+// simply did not print provenance.
+
+#ifndef BMX_PROVENANCE_H_
+#define BMX_PROVENANCE_H_
+
+#define BMX_PROVENANCE_STATUS  "@BMX_PROVENANCE_STATUS@"
+#define BMX_PROVENANCE_NOTE    "@BMX_PROVENANCE_NOTE@"
+#define BMX_GIT_COMMIT         "@BMX_GIT_COMMIT@"
+#define BMX_GIT_COMMIT_SHORT   "@BMX_GIT_COMMIT_SHORT@"
+#define BMX_GIT_BRANCH         "@BMX_GIT_BRANCH@"
+#define BMX_GIT_DIRTY          "@BMX_GIT_DIRTY@"
+#define BMX_GIT_DESCRIBE       "@BMX_GIT_DESCRIBE@"
+#define BMX_SOURCE_DIR         "@BMX_PROVENANCE_SOURCE_DIR@"
+#define BMX_REQUIRE_PROVENANCE_SETTING "@BMX_REQUIRE_PROVENANCE@"
+
+#endif

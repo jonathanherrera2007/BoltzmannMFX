@@ -7,6 +7,7 @@
 #define _BMX_CHEM_K
 
 #include "bmx_cell_interaction_K.H"
+
 /**
  * Check to see if particle meets criteria for splitting
  * @param p_par real particle parameters
@@ -450,17 +451,13 @@ setNewCell(Real *pos_orig, Real *pos_new, Real *par_orig,
     ipar_new[intIdx::fuse_tip] = 0;
     /* Divide original increment evenly between two new cells */
     Real *p_vals = &par_orig[realIdx::first_data];
-    p_vals[10] = 0.5*p_vals[10];
-    p_vals[11] = 0.5*p_vals[11];
-    p_vals[12] = 0.5*p_vals[12];
-    p_vals[13] = 0.5*p_vals[13];
-    p_vals[14] = 0.5*p_vals[14];
+    for (int n = 0; n < NUM_CHEM_COMPONENTS; ++n) {
+      p_vals[2*NUM_CHEM_COMPONENTS + n] = 0.5*p_vals[2*NUM_CHEM_COMPONENTS + n];
+    }
     p_vals = &par_new[realIdx::first_data];
-    p_vals[10] = 0.5*p_vals[10];
-    p_vals[11] = 0.5*p_vals[11];
-    p_vals[12] = 0.5*p_vals[12];
-    p_vals[13] = 0.5*p_vals[13];
-    p_vals[14] = 0.5*p_vals[14];
+    for (int n = 0; n < NUM_CHEM_COMPONENTS; ++n) {
+      p_vals[2*NUM_CHEM_COMPONENTS + n] = 0.5*p_vals[2*NUM_CHEM_COMPONENTS + n];
+    }
   } else if (ipar_orig[intIdx::cell_type] == cellType::FUNGI) {
     // Fungi split handled in setNewSegment
   }
@@ -579,17 +576,13 @@ setNewSegment(Real *pos_orig, Real *pos_new, Real *par_orig,
 
     /* Divide original increment evenly between two new cells */
     Real *p_vals = &par_orig[realIdx::first_data];
-    p_vals[10] = 0.5*p_vals[10];
-    p_vals[11] = 0.5*p_vals[11];
-    p_vals[12] = 0.5*p_vals[12];
-    p_vals[13] = 0.5*p_vals[13];
-    p_vals[14] = 0.5*p_vals[14];
+    for (int n = 0; n < NUM_CHEM_COMPONENTS; ++n) {
+      p_vals[2*NUM_CHEM_COMPONENTS + n] = 0.5*p_vals[2*NUM_CHEM_COMPONENTS + n];
+    }
     p_vals = &par_new[realIdx::first_data];
-    p_vals[10] = 0.5*p_vals[10];
-    p_vals[11] = 0.5*p_vals[11];
-    p_vals[12] = 0.5*p_vals[12];
-    p_vals[13] = 0.5*p_vals[13];
-    p_vals[14] = 0.5*p_vals[14];
+    for (int n = 0; n < NUM_CHEM_COMPONENTS; ++n) {
+      p_vals[2*NUM_CHEM_COMPONENTS + n] = 0.5*p_vals[2*NUM_CHEM_COMPONENTS + n];
+    }
 
   } else if (position == siteLocation::TIP) {
     // Terminal segment (growth tip)
@@ -817,11 +810,9 @@ setNewSegment(Real *pos_orig, Real *pos_new, Real *par_orig,
 
     /* Set increments in new segment to zero */
     Real *p_vals = &par_new[realIdx::first_data];
-    p_vals[10] = 0.0;
-    p_vals[11] = 0.0;
-    p_vals[12] = 0.0;
-    p_vals[13] = 0.0;
-    p_vals[14] = 0.0;
+    for (int n = 0; n < NUM_CHEM_COMPONENTS; ++n) {
+      p_vals[2*NUM_CHEM_COMPONENTS + n] = 0.0;
+    }
 
   } else if (ipar_orig[intIdx::position] == siteLocation::SECOND_1
         || ipar_orig[intIdx::position] == siteLocation::SECOND_2) {
@@ -1022,11 +1013,9 @@ setNewSegment(Real *pos_orig, Real *pos_new, Real *par_orig,
 
     /* Set increments in new segment to zero */
     Real *p_vals = &par_new[realIdx::first_data];
-    p_vals[10] = 0.0;
-    p_vals[11] = 0.0;
-    p_vals[12] = 0.0;
-    p_vals[13] = 0.0;
-    p_vals[14] = 0.0;
+    for (int n = 0; n < NUM_CHEM_COMPONENTS; ++n) {
+      p_vals[2*NUM_CHEM_COMPONENTS + n] = 0.0;
+    }
 
   }
   ipar_new[intIdx::id] = id;
@@ -1291,17 +1280,14 @@ setSplitSegment(Real *pos_orig, Real *pos_new, Real *par_orig,
 
   /* Divide increments based on tau */
   Real *p_vals = &par_orig[realIdx::first_data];
-  p_vals[10] = tau_split*p_vals[10];
-  p_vals[11] = tau_split*p_vals[11];
-  p_vals[12] = tau_split*p_vals[12];
-  p_vals[13] = tau_split*p_vals[13];
-  p_vals[14] = tau_split*p_vals[14];
+  for (int n = 0; n < NUM_CHEM_COMPONENTS; ++n) {
+    p_vals[2*NUM_CHEM_COMPONENTS + n] = tau_split*p_vals[2*NUM_CHEM_COMPONENTS + n];
+  }
   p_vals = &par_new[realIdx::first_data];
-  p_vals[10] = (1.0-tau_split)*p_vals[10];
-  p_vals[11] = (1.0-tau_split)*p_vals[11];
-  p_vals[12] = (1.0-tau_split)*p_vals[12];
-  p_vals[13] = (1.0-tau_split)*p_vals[13];
-  p_vals[14] = (1.0-tau_split)*p_vals[14];
+  for (int n = 0; n < NUM_CHEM_COMPONENTS; ++n) {
+    p_vals[2*NUM_CHEM_COMPONENTS + n] =
+      (1.0-tau_split)*p_vals[2*NUM_CHEM_COMPONENTS + n];
+  }
 
 }
 
@@ -1447,7 +1433,8 @@ void xferMeshToParticleAndUpdateChem(Real grid_vol, Real npart,
     Real *chempar, int *cell_ipar)
 {
   Real k1, k2, k3, kr1, kr2, kr3, kg, kv;
-  Real k4, k5, k6, k7, kr4, kr5, kr6, kr7, kb, kbv;
+  Real k4, k5, k6, k7, kr4, kr5, kr6, kr7, kP, krP, kb, kbv;
+  Real p_growth_limit, qP;
   Real fluid_vol = grid_vol/npart;
   int cell_type =  cell_ipar[intIdx::cell_type];
   bool is_tip = (cell_ipar[intIdx::position] == siteLocation::TIP);
@@ -1474,6 +1461,10 @@ void xferMeshToParticleAndUpdateChem(Real grid_vol, Real npart,
   bacteria_radius_max = chempar[18];
   radius_max = chempar[19];
   length_max = chempar[20];
+  kP = chempar[21];
+  krP = chempar[22];
+  p_growth_limit = chempar[23];
+  qP = chempar[24];
   // check to see if particle can grow. Set growth rates to zero
   // if it cannot
 #if 0
@@ -1524,12 +1515,13 @@ void xferMeshToParticleAndUpdateChem(Real grid_vol, Real npart,
   // Define original concentrations
   // ********************************************************************
   // Fluid concentrations
-  Real fA, fB, fC, fD, fE;
+  Real fA, fB, fC, fD, fE, fP;
   fA = mesh_vals[0];
   fB = mesh_vals[1];
   fC = mesh_vals[2];
   fD = mesh_vals[3];
   fE = mesh_vals[4];
+  fP = mesh_vals[P_COMP];
 #if 0
   if (cell_type == cellType::FUNGI &&
       cell_ipar[intIdx::position] == siteLocation::TIP) {
@@ -1554,6 +1546,7 @@ void xferMeshToParticleAndUpdateChem(Real grid_vol, Real npart,
     if (fC < 0.0) std::printf("   internal NEGATIVE fluid concentration C : %16.8e\n",fC);
     if (fD < 0.0) std::printf("   internal NEGATIVE fluid concentration D : %16.8e\n",fD);
     if (fE < 0.0) std::printf("   internal NEGATIVE fluid concentration E : %16.8e\n",fE);
+    if (fP < 0.0) std::printf("   internal NEGATIVE fluid concentration P : %16.8e\n",fP);
 //#endif
 
    if (fA < 0.0 && fabs(fA) < 1.0e-15) fA = 0.0;
@@ -1561,16 +1554,18 @@ void xferMeshToParticleAndUpdateChem(Real grid_vol, Real npart,
    if (fC < 0.0 && fabs(fC) < 1.0e-15) fC = 0.0;
    if (fD < 0.0 && fabs(fD) < 1.0e-15) fD = 0.0;
    if (fE < 0.0 && fabs(fE) < 1.0e-15) fE = 0.0;
-   if (fA < 0. || fB < 0. || fC < 0. || fD < 0. || fE < 0.)
+   if (fP < 0.0 && fabs(fP) < 1.0e-15) fP = 0.0;
+   if (fA < 0. || fB < 0. || fC < 0. || fD < 0. || fE < 0. || fP < 0.)
      amrex::Abort("Negative fluid concentration into particle integrator");
 
   // Original cell concentrations
-  Real cA, cB, cC, cD, cE;
+  Real cA, cB, cC, cD, cE, cP;
   cA = p_vals[0];
   cB = p_vals[1];
   cC = p_vals[2];
   cD = p_vals[3];
   cE = p_vals[4];
+  cP = p_vals[P_COMP];
   int i;
   Real dtp = dt/static_cast<Real>(nloop);
 //  printf("   Cell concentration A,B,C (at 1): %16.8e %16.8e %16.8e\n",cA,cB,cC);
@@ -1580,31 +1575,34 @@ void xferMeshToParticleAndUpdateChem(Real grid_vol, Real npart,
   Real fC_tmp = fC;
   Real fD_tmp = fD;
   Real fE_tmp = fE;
+  Real fP_tmp = fP;
   Real cA0 = cA;
   Real cB0 = cB;
   Real cC0 = cC;
   Real cD0 = cD;
   Real cE0 = cE;
+  Real cP0 = cP;
   Real fA0 = fA_tmp;
   Real fB0 = fB_tmp;
   Real fC0 = fC_tmp;
   Real fD0 = fD_tmp;
   Real fE0 = fE_tmp;
+  Real fP0 = fP_tmp;
 
-  p_vals[5] = cA;
-  p_vals[6] = cB;
-  p_vals[7] = cC;
-  p_vals[8] = cD;
-  p_vals[9] = cE;
+  p_vals[NUM_CHEM_COMPONENTS] = cA;
+  p_vals[NUM_CHEM_COMPONENTS + 1] = cB;
+  p_vals[NUM_CHEM_COMPONENTS + 2] = cC;
+  p_vals[NUM_CHEM_COMPONENTS + 3] = cD;
+  p_vals[NUM_CHEM_COMPONENTS + 4] = cE;
+  p_vals[NUM_CHEM_COMPONENTS + P_COMP] = cP;
 
-  p_vals[10] = 0.0;
-  p_vals[11] = 0.0;
-  p_vals[12] = 0.0;
-  p_vals[13] = 0.0;
-  p_vals[14] = 0.0;
+  for (int n = 0; n < NUM_CHEM_COMPONENTS; ++n) {
+    p_vals[2*NUM_CHEM_COMPONENTS + n] = 0.0;
+  }
 
   Real new_cell_vol = cell_par[realIdx::vol];
   Real new_cell_area = cell_par[realIdx::area];
+  Real carbon_exchange_area = new_cell_area;
 #if 0
   if (cell_type == cellType::FUNGI &&
       cell_ipar[intIdx::position] == siteLocation::TIP) {
@@ -1623,19 +1621,21 @@ void xferMeshToParticleAndUpdateChem(Real grid_vol, Real npart,
     // 1) Update cA, cB, cC
     // 2) Update fA, fB, fC (approximate)
     // ********************************************************************
-    Real dA1, dB1, dC1, dD1, dE1;
+    Real dA1, dB1, dC1, dD1, dE1, dP1;
     if (cell_type == cellType::FUNGI) {
-      dA1 = 0.5*dtp*new_cell_area*(k1*fA_tmp-kr1*cA);
+      dA1 = 0.5*dtp*carbon_exchange_area*(k1*fA_tmp-kr1*cA);
       dB1 = 0.0;
-      dC1 = 0.5*dtp*new_cell_area*(k3*fC_tmp-kr3*cC);
+      dC1 = 0.5*dtp*carbon_exchange_area*(k3*fC_tmp-kr3*cC);
       dD1 = 0.0;
       dE1 = 0.0;
+      dP1 = 0.5*dtp*new_cell_area*(kP*fP_tmp-krP*cP);
     } else {
       dA1 = 0.5*dtp*new_cell_area*(k6*fA_tmp-kr6*cA);
       dB1 = 0.0;
       dC1 = 0.5*dtp*new_cell_area*(k7*fC_tmp-kr7*cC);
       dD1 = 0.5*dtp*new_cell_area*(k4*fD_tmp-kr4*cD);
       dE1 = 0.0;
+      dP1 = 0.0;
     }
 
     // Update cell values
@@ -1644,6 +1644,7 @@ void xferMeshToParticleAndUpdateChem(Real grid_vol, Real npart,
     cC += dC1/orig_cell_vol;
     cD += dD1/orig_cell_vol;
     cE += dE1/orig_cell_vol;
+    cP += dP1/orig_cell_vol;
 
     // Adjusted fluid values. Grid vol represents the volume of fluid in the
     // grid cell not occupied by the particle
@@ -1652,6 +1653,7 @@ void xferMeshToParticleAndUpdateChem(Real grid_vol, Real npart,
     Real dfC = dC1/fluid_vol;
     Real dfD = dD1/fluid_vol;
     Real dfE = dE1/fluid_vol;
+    Real dfP = dP1/fluid_vol;
     //if (dfA > fA_tmp) dfA = fA_tmp;
     //if (dfB > fB_tmp) dfB = fB_tmp;
     //if (dfC > fC_tmp) dfC = fC_tmp;
@@ -1660,6 +1662,7 @@ void xferMeshToParticleAndUpdateChem(Real grid_vol, Real npart,
     fC_tmp -= dfC;
     fD_tmp -= dfD;
     fE_tmp -= dfE;
+    fP_tmp -= dfP;
     Real cA1 = cA;
     Real cB1 = cB;
     Real cC1 = cC;
@@ -1670,6 +1673,8 @@ void xferMeshToParticleAndUpdateChem(Real grid_vol, Real npart,
     Real fC1 = fC_tmp;
     Real fD1 = fD_tmp;
     Real fE1 = fE_tmp;
+    Real cP1 = cP;
+    Real fP1 = fP_tmp;
     if (cA < 0.0) {
       cA -= dA1/orig_cell_vol;
       fA_tmp += dfA;
@@ -1750,6 +1755,22 @@ void xferMeshToParticleAndUpdateChem(Real grid_vol, Real npart,
       fE_tmp = 0.0;
       cE += dE1/orig_cell_vol;
     }
+    if (cP < 0.0) {
+      cP -= dP1/orig_cell_vol;
+      fP_tmp += dfP;
+      dP1 = -cP*orig_cell_vol;
+      cP = 0.0;
+      dfP = dP1/fluid_vol;
+      fP_tmp -= dfP;
+    }
+    if (fP_tmp < 0.0) {
+      cP -= dP1/orig_cell_vol;
+      fP_tmp += dfP;
+      dP1 = fP_tmp*fluid_vol;
+      dfP = dP1/fluid_vol;
+      fP_tmp = 0.0;
+      cP += dP1/orig_cell_vol;
+    }
 //  printf("   Cell concentration B (at 2): %16.8e\n",cB);
 
     if (cA < 0.0) {
@@ -1792,20 +1813,29 @@ void xferMeshToParticleAndUpdateChem(Real grid_vol, Real npart,
 //#endif
       if (fabs(cE) < 1.0e-15) cE = 0.0;
     }
+    if (cP < 0.0) {
+//#ifndef AMREX_USE_GPU
+      std::printf("   Internal concentration P : %16.8e\n"
+        "          cP0: %16.8e fP0: %16.8e\n"
+        "          cP1: %16.8e fP1: %16.8e\n",cP,cP0,fP0,cP1,fP1);
+//#endif
+      if (fabs(cP) < 1.0e-15) cP = 0.0;
+    }
     if (cA < 0.0) is_negative = true;
     if (cB < 0.0) is_negative = true;
     if (cC < 0.0) is_negative = true;
     if (cD < 0.0) is_negative = true;
     if (cE < 0.0) is_negative = true;
+    if (cP < 0.0) is_negative = true;
 
-    if (fA_tmp < 0. || fB_tmp < 0. || fC_tmp < 0. || fD_tmp < 0. || fE_tmp < 0.) 
+    if (fA_tmp < 0. || fB_tmp < 0. || fC_tmp < 0. || fD_tmp < 0. || fE_tmp < 0. || fP_tmp < 0.)
     {
 //#ifndef AMREX_USE_GPU
 //      std::cout << "Negative F_tmp values at first update " << fA_tmp
 //        << " " << fB_tmp << " " << fC_tmp << " " << fD_tmp
 //        << " " << fE_tmp << std::endl;
-      std::printf("Negative F_tmp values at first update %e %e %e %e %e\n",
-          fA_tmp,fB_tmp,fC_tmp,fD_tmp,fE_tmp);
+      std::printf("Negative F_tmp values at first update %e %e %e %e %e %e\n",
+          fA_tmp,fB_tmp,fC_tmp,fD_tmp,fE_tmp,fP_tmp);
 //#endif
       amrex::Abort("Negative fluid concentration at first update");
     }
@@ -1814,33 +1844,37 @@ void xferMeshToParticleAndUpdateChem(Real grid_vol, Real npart,
     // Compute changes due to reactions within the cell only 
     // Update cA, cB, cC
     // ********************************************************************
-    Real rA, rB, rC, rD, rE, rV, rbV;
+    Real rA, rB, rC, rD, rE, rP, rV, rbV;
     if (cell_type == cellType::FUNGI) {
       rA = -k2*cA + kr2*cB*cC;
       rB =  k2*cA - kr2*cB*cC;
       rC =  k2*cA - kr2*cB*cC;
       rD = 0.0;
       rE = 0.0;
+      rP = 0.0;
     } else {
       rA = k5*cC*cD - kr5*cE*cA;
       rB = 0.0;
       rC = -k5*cC*cD + kr5*cE*cA;
       rD = -k5*cC*cD + kr5*cE*cA;
       rE = k5*cC*cD - kr5*cE*cA;
+      rP = 0.0;
     }
 
     // Increment concentrations
-    Real dA3, dB3, dC3, dD3, dE3;
+    Real dA3, dB3, dC3, dD3, dE3, dP3;
     dA3 = dtp*rA;
     dB3 = dtp*rB;
     dC3 = dtp*rC;
     dD3 = dtp*rD;
     dE3 = dtp*rE;
+    dP3 = dtp*rP;
     cA += dA3;
     cB += dB3;
     cC += dC3;
     cD += dD3;
     cE += dE3;
+    cP += dP3;
 //  printf("   Cell concentration B (at 2a): %16.8e\n",cB);
     if (cell_type == cellType::FUNGI) {
       if (cA < 0.0) {
@@ -1922,6 +1956,7 @@ void xferMeshToParticleAndUpdateChem(Real grid_vol, Real npart,
     // reaction separately since it does not conserve A and B
     // ********************************************************************
     Real dV;
+    Real cB_before_growth = cB;
     if (cell_type == cellType::FUNGI) {
       rV =  kv*cB*orig_cell_vol;
       rB = -kg*cB;
@@ -1933,7 +1968,21 @@ void xferMeshToParticleAndUpdateChem(Real grid_vol, Real npart,
         // Assume a shorter time step if cB goes to zero for a full time step
         Real ttmp = -cB/rB;
         dV = ttmp*rV;
+        dB3 = -cB;
         cB = 0.0;
+      }
+      if (p_growth_limit != 0.0 && qP > 0.0 && dV > 0.0) {
+        Real dV_unlimited = dV;
+        Real p_amount = std::max(cP,0.0)*orig_cell_vol;
+        Real dV_P = p_amount/qP;
+        if (dV > dV_P) {
+          Real growth_fraction = dV_P/dV_unlimited;
+          dV = dV_P;
+          cB = cB_before_growth + growth_fraction*dB3;
+        }
+        cP -= qP*dV/orig_cell_vol;
+        if (cP < 0.0 && fabs(cP) < 1.0e-15) cP = 0.0;
+        rV = dV/dtp;
       }
     } else {
       rV =  kbv*cE*orig_cell_vol;
@@ -1955,10 +2004,12 @@ void xferMeshToParticleAndUpdateChem(Real grid_vol, Real npart,
     if (cA < 0.0) std::printf("   Intermediate internal concentration A: %16.8e\n",cA);
     if (cB < 0.0) std::printf("   Intermediate internal concentration B: %16.8e\n",cB);
     if (cC < 0.0) std::printf("   Intermediate internal concentration C: %16.8e\n",cC);
+    if (cP < 0.0) std::printf("   Intermediate internal concentration P: %16.8e\n",cP);
 //#endif
     if (cA < 0.0) is_negative = true;
     if (cB < 0.0) is_negative = true;
     if (cC < 0.0) is_negative = true;
+    if (cP < 0.0) is_negative = true;
 
     // ********************************************************************
     // Increment volume 
@@ -2046,10 +2097,24 @@ void xferMeshToParticleAndUpdateChem(Real grid_vol, Real npart,
           cell_par[realIdx::dadt] = 2.0*M_PI*(2.0*radius+c_length)*drdt;
         } else {
           // Cell volume doesn't change, reset everything to original values
+          cB = cB_before_growth;
           cell_par[realIdx::dvdt] = 0.0; 
           cell_par[realIdx::vol] = orig_cell_vol; 
           cell_par[realIdx::dadt] = 0.0;
         }
+      }
+      if (is_tip) {
+        Real carbon_radius = cell_par[realIdx::radius];
+        Real carbon_length = cell_par[realIdx::c_length];
+        if (cell_ipar[intIdx::n_bnds] == 0) {
+          carbon_exchange_area =
+            2.0*M_PI*carbon_radius*(carbon_radius+carbon_length);
+        } else {
+          carbon_exchange_area =
+            M_PI*carbon_radius*(carbon_radius+2.0*carbon_length);
+        }
+      } else {
+        carbon_exchange_area = cell_par[realIdx::area];
       }
     }
 
@@ -2060,6 +2125,7 @@ void xferMeshToParticleAndUpdateChem(Real grid_vol, Real npart,
     cC *= ratio;
     cD *= ratio;
     cE *= ratio;
+    cP *= ratio;
 
     // cell parameters
 
@@ -2067,19 +2133,21 @@ void xferMeshToParticleAndUpdateChem(Real grid_vol, Real npart,
     // Compute second exchange with fluid
     // Update cA, cB, cC
     // ********************************************************************
-    Real dA2, dB2, dC2, dD2, dE2;
+    Real dA2, dB2, dC2, dD2, dE2, dP2;
     if (cell_type == cellType::FUNGI) {
-      dA2 = 0.5*dtp*new_cell_area*(k1*fA_tmp-kr1*cA);
+      dA2 = 0.5*dtp*carbon_exchange_area*(k1*fA_tmp-kr1*cA);
       dB2 = 0.0;
-      dC2 = 0.5*dtp*new_cell_area*(k3*fC_tmp-kr3*cC);
+      dC2 = 0.5*dtp*carbon_exchange_area*(k3*fC_tmp-kr3*cC);
       dD2 = 0.0;
       dE2 = 0.0;
+      dP2 = 0.5*dtp*new_cell_area*(kP*fP_tmp-krP*cP);
     } else {
       dA2 = 0.5*dtp*new_cell_area*(k6*fA_tmp-kr6*cA);
       dB2 = 0.0;
       dC2 = 0.5*dtp*new_cell_area*(k7*fC_tmp-kr7*cC);
       dD2 = 0.5*dtp*new_cell_area*(k4*fD_tmp-kr4*cD);
       dE2 = 0.0;
+      dP2 = 0.0;
     }
 
     cA += dA2/new_cell_vol;
@@ -2087,6 +2155,7 @@ void xferMeshToParticleAndUpdateChem(Real grid_vol, Real npart,
     cC += dC2/new_cell_vol;
     cD += dD2/new_cell_vol;
     cE += dE2/new_cell_vol;
+    cP += dP2/new_cell_vol;
 //  printf("   Cell concentration B (at 3): %16.8e\n",cB);
 
     // ********************************************************************
@@ -2098,6 +2167,7 @@ void xferMeshToParticleAndUpdateChem(Real grid_vol, Real npart,
     dfC = dC2/fluid_vol;
     dfD = dD2/fluid_vol;
     dfE = dE2/fluid_vol;
+    dfP = dP2/fluid_vol;
     //if (dfA > fA_tmp) dfA = fA_tmp;
     //if (dfB > fB_tmp) dfB = fB_tmp;
     //if (dfC > fC_tmp) dfC = fC_tmp;
@@ -2106,6 +2176,7 @@ void xferMeshToParticleAndUpdateChem(Real grid_vol, Real npart,
     fC_tmp -= dfC;
     fD_tmp -= dfD;
     fE_tmp -= dfE;
+    fP_tmp -= dfP;
     if (cA < 0.0) {
       cA -= dA2/new_cell_vol;
       fA_tmp += dfA;
@@ -2117,8 +2188,8 @@ void xferMeshToParticleAndUpdateChem(Real grid_vol, Real npart,
     if (fA_tmp < 0.0) {
       cA -= dA2/new_cell_vol;
       fA_tmp += dfA;
-      dA2 = - fA_tmp*fluid_vol;
-      dfA = -fA_tmp;
+      dA2 = fA_tmp*fluid_vol;
+      dfA = dA2/fluid_vol;
       fA_tmp = 0.0;
       cA += dA2/new_cell_vol;
     }
@@ -2149,8 +2220,8 @@ void xferMeshToParticleAndUpdateChem(Real grid_vol, Real npart,
     if (fC_tmp < 0.0) {
       cC -= dC2/new_cell_vol;
       fC_tmp += dfC;
-      dC2 = - fC_tmp*fluid_vol;
-      dfC = -fC_tmp;
+      dC2 = fC_tmp*fluid_vol;
+      dfC = dC2/fluid_vol;
       fC_tmp = 0.0;
       cC += dC2/new_cell_vol;
     }
@@ -2186,40 +2257,60 @@ void xferMeshToParticleAndUpdateChem(Real grid_vol, Real npart,
       fE_tmp = 0.0;
       cE += dE2/new_cell_vol;
     }
+    if (cP < 0.0) {
+      cP -= dP2/new_cell_vol;
+      fP_tmp += dfP;
+      dP2 = -cP*new_cell_vol;
+      cP = 0.0;
+      dfP = dP2/fluid_vol;
+      fP_tmp -= dfP;
+    }
+    if (fP_tmp < 0.0) {
+      cP -= dP2/new_cell_vol;
+      fP_tmp += dfP;
+      dP2 = fP_tmp*fluid_vol;
+      dfP = dP2/fluid_vol;
+      fP_tmp = 0.0;
+      cP += dP2/new_cell_vol;
+    }
 
     if (cA < 0.0 && fabs(cA) < 1.0e-15) cA = 0.0;
     if (cB < 0.0 && fabs(cB) < 1.0e-15) cB = 0.0;
     if (cC < 0.0 && fabs(cC) < 1.0e-15) cC = 0.0;
     if (cD < 0.0 && fabs(cD) < 1.0e-15) cD = 0.0;
     if (cE < 0.0 && fabs(cE) < 1.0e-15) cE = 0.0;
+    if (cP < 0.0 && fabs(cP) < 1.0e-15) cP = 0.0;
 //#ifndef AMREX_USE_GPU
     if (cA < 0.0) std::printf("   Final internal concentration A: %16.8e\n",cA);
     if (cB < 0.0) std::printf("   Final internal concentration B: %16.8e\n",cB);
     if (cC < 0.0) std::printf("   Final internal concentration C: %16.8e\n",cC);
     if (cD < 0.0) std::printf("   Final internal concentration D: %16.8e\n",cD);
     if (cE < 0.0) std::printf("   Final internal concentration E: %16.8e\n",cE);
+    if (cP < 0.0) std::printf("   Final internal concentration P: %16.8e\n",cP);
 //#endif
     if (cA < 0.0) is_negative = true;
     if (cB < 0.0) is_negative = true;
     if (cC < 0.0) is_negative = true;
     if (cD < 0.0) is_negative = true;
     if (cE < 0.0) is_negative = true;
+    if (cP < 0.0) is_negative = true;
 
-    if (fA_tmp < 0. || fB_tmp < 0. || fC_tmp < 0. || fD_tmp < 0. || fE_tmp < 0.) 
+    if (fA_tmp < 0. || fB_tmp < 0. || fC_tmp < 0. || fD_tmp < 0. || fE_tmp < 0. || fP_tmp < 0.)
     {
 //#ifndef AMREX_USE_GPU
 //      std::cout << "Negative F_tmp values at second update " << fA_tmp << " " << fB_tmp << " " << fC_tmp << " " << fD_tmp << " " << fE_tmp << std::endl;
-      std::printf("Negative F_tmp values at second update %e %e %e %e %e\n",
-          fA_tmp,fB_tmp,fC_tmp,fD_tmp,fE_tmp);
+      std::printf("Negative F_tmp values at second update %e %e %e %e %e %e\n",
+          fA_tmp,fB_tmp,fC_tmp,fD_tmp,fE_tmp,fP_tmp);
 //#endif
       amrex::Abort("Negative fluid concentration at second update");
     }
 
-    p_vals[10] += -(dA1+dA2);
-    p_vals[11] += -(dB1+dB2);
-    p_vals[12] += -(dC1+dC2);
-    p_vals[13] += -(dD1+dD2);
-    p_vals[14] += -(dE1+dE2);
+    p_vals[2*NUM_CHEM_COMPONENTS] += -(dA1+dA2);
+    p_vals[2*NUM_CHEM_COMPONENTS + 1] += -(dB1+dB2);
+    p_vals[2*NUM_CHEM_COMPONENTS + 2] += -(dC1+dC2);
+    p_vals[2*NUM_CHEM_COMPONENTS + 3] += -(dD1+dD2);
+    p_vals[2*NUM_CHEM_COMPONENTS + 4] += -(dE1+dE2);
+    p_vals[2*NUM_CHEM_COMPONENTS + P_COMP] += -(dP1+dP2);
 
     orig_cell_vol = new_cell_vol;
   }
@@ -2233,9 +2324,9 @@ void xferMeshToParticleAndUpdateChem(Real grid_vol, Real npart,
   printf("   Final cell concentration C: %16.8e\n",cC);
 #endif
 #if 0
-  printf("   Increment for concentration A : %16.8e grid_vol: %16.8e\n",p_vals[6],grid_vol);
-  printf("   Increment for concentration B : %16.8e grid_vol: %16.8e\n",p_vals[7],grid_vol);
-  printf("   Increment for concentration C : %16.8e grid_vol: %16.8e\n",p_vals[8],grid_vol);
+  printf("   Increment for concentration A : %16.8e grid_vol: %16.8e\n",p_vals[NUM_CHEM_COMPONENTS + 1],grid_vol);
+  printf("   Increment for concentration B : %16.8e grid_vol: %16.8e\n",p_vals[NUM_CHEM_COMPONENTS + 2],grid_vol);
+  printf("   Increment for concentration C : %16.8e grid_vol: %16.8e\n",p_vals[NUM_CHEM_COMPONENTS + 3],grid_vol);
 #endif
   if (is_negative) {
 #ifndef AMREX_USE_GPU
@@ -2255,25 +2346,27 @@ void xferMeshToParticleAndUpdateChem(Real grid_vol, Real npart,
   // ********************************************************************
   // Now update the actual particle values 
   // ********************************************************************
-  p_vals[5] = cA;
-  p_vals[6] = cB;
-  p_vals[7] = cC;
-  p_vals[8] = cD;
-  p_vals[9] = cE;
-  p_vals[0] = p_vals[5];
-  p_vals[1] = p_vals[6];
-  p_vals[2] = p_vals[7];
-  p_vals[3] = p_vals[8];
-  p_vals[4] = p_vals[9];
+  p_vals[NUM_CHEM_COMPONENTS] = cA;
+  p_vals[NUM_CHEM_COMPONENTS + 1] = cB;
+  p_vals[NUM_CHEM_COMPONENTS + 2] = cC;
+  p_vals[NUM_CHEM_COMPONENTS + 3] = cD;
+  p_vals[NUM_CHEM_COMPONENTS + 4] = cE;
+  p_vals[NUM_CHEM_COMPONENTS + P_COMP] = cP;
+  p_vals[0] = p_vals[NUM_CHEM_COMPONENTS];
+  p_vals[1] = p_vals[NUM_CHEM_COMPONENTS + 1];
+  p_vals[2] = p_vals[NUM_CHEM_COMPONENTS + 2];
+  p_vals[3] = p_vals[NUM_CHEM_COMPONENTS + 3];
+  p_vals[4] = p_vals[NUM_CHEM_COMPONENTS + 4];
+  p_vals[P_COMP] = p_vals[NUM_CHEM_COMPONENTS + P_COMP];
 
 #if 0
   if (p_vals[1] > 1.0e-7) {
     printf("UPDATE Concentration B: %e id: %d cpu: %d\n",p_vals[1],
         cell_ipar[intIdx::id],cell_ipar[intIdx::cpu]);
   }
-  printf("   Final concentration increment for A: %16.8e\n",p_vals[6]);
-  printf("   Final concentration increment for B: %16.8e\n",p_vals[7]);
-  printf("   Final concentration increment for C: %16.8e\n",p_vals[8]);
+  printf("   Final concentration increment for A: %16.8e\n",p_vals[NUM_CHEM_COMPONENTS + 1]);
+  printf("   Final concentration increment for B: %16.8e\n",p_vals[NUM_CHEM_COMPONENTS + 2]);
+  printf("   Final concentration increment for C: %16.8e\n",p_vals[NUM_CHEM_COMPONENTS + 3]);
 #endif
 }
 
@@ -2288,11 +2381,9 @@ initExchange(Real *par, int *ipar)
 {
   if (ipar[intIdx::cell_type] == cellType::FUNGI) {
     Real *cnc = &par[realIdx::first_data];
-    cnc[5] = 0.0;
-    cnc[6] = 0.0;
-    cnc[7] = 0.0;
-    cnc[8] = 0.0;
-    cnc[9] = 0.0;
+    for (int n = 0; n < NUM_CHEM_COMPONENTS; ++n) {
+      cnc[NUM_CHEM_COMPONENTS + n] = 0.0;
+    }
   }
 }
 /**
@@ -2310,10 +2401,6 @@ evaluateExchange(Real *par1, Real *par2, int *ipar1, int *ipar2, Real *xpar, Rea
 {
   if (ipar1[intIdx::cell_type] == cellType::FUNGI &&
       ipar2[intIdx::cell_type] == cellType::FUNGI) {
-    // Mass exchange parameters
-    Real mtA = xpar[0];
-    Real mtB = xpar[1];
-    Real mtC = xpar[2];
     int i_id[4];
     int i_cpu[4];
     int j_id[4];
@@ -2359,12 +2446,6 @@ evaluateExchange(Real *par1, Real *par2, int *ipar1, int *ipar2, Real *xpar, Rea
       // Found a connection so calculate the exchange increment
        Real *cnc1 = &par1[realIdx::first_data];
        Real *cnc2 = &par2[realIdx::first_data];
-       Real cA_1 = cnc1[0];
-       Real cB_1 = cnc1[1];
-       Real cC_1 = cnc1[2];
-       Real cA_2 = cnc2[0];
-       Real cB_2 = cnc2[1];
-       Real cC_2 = cnc2[2];
        
        // Calculate area of septum
        Real rad1 = par1[realIdx::radius];
@@ -2377,44 +2458,28 @@ evaluateExchange(Real *par1, Real *par2, int *ipar1, int *ipar2, Real *xpar, Rea
 
        // Calculate exchange increment. Exchange is transfer from segment 1
        // to segment 2
-       Real dA = (cA_1-cA_2)*area*mtA*dt;
-       Real dB = (cB_1-cB_2)*area*mtB*dt;
-       Real dC = (cC_1-cC_2)*area*mtC*dt;
+       for (int n = 0; n < NUM_CHEM_COMPONENTS; ++n) {
+         Real d = (cnc1[n]-cnc2[n])*area*xpar[n]*dt;
 #if 0
     if (iid == 23 && icpu == 6) {
       printf("Evaluating exchange increment for i"
-          " id: 23 cpu: 6 j id: %d cpu: %d A1: %e B1: %e C1: %e"
-          " A2: %e B2: %e C2: %e\n",jid,jcpu,cnc1[3],cnc1[4],cnc1[5],
-          cnc2[3],cnc2[4],cnc2[5]);
+          " id: 23 cpu: 6 j id: %d cpu: %d species %d c1: %e c2: %e\n",
+          jid,jcpu,n,cnc1[n],cnc2[n]);
     }
 #endif
 
-       // Check to see if anything might go negative
-       if (dA/vol1 > cnc1[0]/static_cast<Real>(i_bnds)) {
-         dA = cnc1[0]*vol1/static_cast<Real>(i_bnds);
+         // Check to see if either segment would go negative.
+         if (d/vol1 > cnc1[n]/static_cast<Real>(i_bnds)) {
+           d = cnc1[n]*vol1/static_cast<Real>(i_bnds);
+         }
+         if (-d/vol2 > cnc2[n]/static_cast<Real>(j_bnds)) {
+           d = -cnc2[n]*vol2/static_cast<Real>(j_bnds);
+         }
+
+         // Update increments.
+         cnc1[NUM_CHEM_COMPONENTS + n] -= d/vol1;
+         cnc2[NUM_CHEM_COMPONENTS + n] += d/vol2;
        }
-       if (-dA/vol2 > cnc2[0]/static_cast<Real>(j_bnds)) {
-         dA = -cnc2[0]*vol2/static_cast<Real>(j_bnds);
-       }
-       if (dB/vol1 > cnc1[1]/static_cast<Real>(i_bnds)) {
-         dB = cnc1[1]*vol1/static_cast<Real>(i_bnds);
-       }
-       if (-dB/vol2 > cnc2[1]/static_cast<Real>(j_bnds)) {
-         dB = -cnc2[1]*vol2/static_cast<Real>(j_bnds);
-       }
-       if (dC/vol1 > cnc1[2]/static_cast<Real>(i_bnds)) {
-         dC = cnc1[2]*vol1/static_cast<Real>(i_bnds);
-       }
-       if (-dC/vol2 > cnc2[2]/static_cast<Real>(j_bnds)) {
-         dC = -cnc2[2]*vol2/static_cast<Real>(j_bnds);
-       }
-       // Update increments
-       cnc1[5] -= dA/vol1;
-       cnc1[6] -= dB/vol1;
-       cnc1[7] -= dC/vol1;
-       cnc2[5] += dA/vol2;
-       cnc2[6] += dB/vol2;
-       cnc2[7] += dC/vol2;
 
     } // if (i<i_bnds && j_bnds) ...
   }
@@ -2431,23 +2496,15 @@ applyIncrements(Real *par, int *ipar)
 {
   if (ipar[intIdx::cell_type] == cellType::FUNGI) {
     Real *cnc = &par[realIdx::first_data];
-    Real cA0 = cnc[0];
-    Real cB0 = cnc[1];
-    Real cC0 = cnc[2];
-    cnc[0] += cnc[5];
-    cnc[1] += cnc[6];
-    cnc[2] += cnc[7];
+    for (int n = 0; n < NUM_CHEM_COMPONENTS; ++n) {
+      Real c0 = cnc[n];
+      cnc[n] += cnc[NUM_CHEM_COMPONENTS + n];
 //#ifndef AMREX_USE_GPU
-    if (cnc[0] < 0.0) {
-      std::printf("Post xchng A1: %e pre xchng A0: %e\n",cnc[0],cA0);
-    }
-    if (cnc[1] < 0.0) {
-      std::printf("Post xchng B1: %e pre xchng B0: %e\n",cnc[1],cB0);
-    }
-    if (cnc[2] < 0.0) {
-      std::printf("Post xchng C1: %e pre xchng C0: %e\n",cnc[2],cC0);
-    }
+      if (cnc[n] < 0.0) {
+        std::printf("Post xchng species %d: %e pre xchng: %e\n",n,cnc[n],c0);
+      }
 //#endif
+    }
   }
 }
 

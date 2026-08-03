@@ -1,0 +1,16 @@
+{
+  "artifact_type": "C10_V1_BYTE_PRESERVATION",
+  "stage": "C10/P12",
+  "status": "PASS",
+  "preserved": {
+    "contracts/p12/NUMERICAL_PREREGISTRATION_V1.json": "dc5af4ff51cf077e9d494ae7d87c7d0a01ec51887101bd63764b0abc4460ce0e",
+    "evidence/stages/C10/P12_48H_GRID_TIME.json": "edeb759d86979f8b6077ba41cc8b9f07988d0f4162e7b39240008fa1dd0a4157",
+    "evidence/stages/C10/BLOCKER_REPORT.json": "b7a39a388a1016604608ae4d2df163f4444a53ebf968ddc9f3822e4c14760bf3",
+    "evidence/stages/C10/BLOCKER_REPORT.md": "3397ea6b6784625b06fe7a164b646fb3c35a3992504ca97c03ab144c29e897bf",
+    "evidence/stages/C10/STAGE_REPORT.json": "6699679fba747586937ab0832aa7b2dad2c771ac45366398fa44f192e995684b",
+    "evidence/stages/C10/STAGE_REPORT.md": "b7b7df0d7bba082fcc73823e5770f3e80c8796002386ab84307d0aff2838bc4f"
+  },
+  "verification": "Every listed SHA-256 was recomputed after the V2 freeze and prereview implementation. No V1 contract, failed outcome, blocker report, or stage report byte was changed.",
+  "v1_status": "FAILED_PRESERVED",
+  "v2_does_not_relabel_v1": true
+}

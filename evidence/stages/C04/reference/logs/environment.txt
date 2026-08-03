@@ -1,0 +1,16 @@
+date_utc      : 2026-08-01T02:19:10Z
+host          : bmx-c04-qual
+kernel        : Linux 6.17.0-1021-gcp x86_64 GNU/Linux
+arch          : x86_64
+distro        : Ubuntu 24.04.4 LTS
+platform_class: reference-capable
+gcc           : gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+g++           : g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+cmake         : cmake version 3.28.3
+python3       : Python 3.12.3
+mpicxx        : g++ -I/usr/lib/x86_64-linux-gnu/openmpi/include -I/usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -L/usr/lib/x86_64-linux-gnu/openmpi/lib -lmpi_cxx -lmpi
+mpirun        : mpirun (Open MPI) 4.1.6
+ninja         : 1.11.1
+git           : git version 2.43.0
+nproc         : 8
+filesystem    : ext4

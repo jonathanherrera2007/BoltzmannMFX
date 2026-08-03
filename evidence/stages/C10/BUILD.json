@@ -1,0 +1,33 @@
+{
+  "artifact_type": "C10_NATIVE_BUILD",
+  "stage": "C10/P12",
+  "status": "PASS",
+  "source": {
+    "head": "8f19296b190ad632de27ccc257c5764b1256b7e0",
+    "tree": "9c3f75fef302bbe0436c99bf51fbee0c07164faa",
+    "dirty_before_configure": false,
+    "branch": "rgsw/c10-p12"
+  },
+  "amrex": {
+    "commit": "cbdc6580ee3d78cccdd37172e4ba077ee181f483",
+    "tree": "fb714dc6e693c18f7c441d1d1febe4a5e8bf9ea6"
+  },
+  "configuration": {
+    "build_type": "Release",
+    "mpi": true,
+    "openmp": false,
+    "gpu_backend": "NONE",
+    "spacedim": 3,
+    "compiler": "MSVC 19.44.35228.0"
+  },
+  "executable": {
+    "path": "C:\\b\\BMX-shadow-handoff-20260721\\build-c10-native-release-definitive\\bmx.exe",
+    "size_bytes": 2528256,
+    "sha256": "8efdf36d3e8cbd022b5a3dbc4e3d5b54889cee8a2fcf90410387bf5f3ae6c4df"
+  },
+  "cmake_cache_sha256": "0f98f8449f4679248dc1da11c750c27c5af62d93e95904e3f955f98935b1483e",
+  "frozen_kernel_sha256": "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02",
+  "warnings": ["Two inherited MSVC C4244 diagnostics originate in std::numeric instantiated by pinned AMReX particle I/O; no C10 source warning was emitted."],
+  "external_resources": "none",
+  "external_spend_usd": 0
+}

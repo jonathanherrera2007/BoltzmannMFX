@@ -1,0 +1,79 @@
+{
+  "all_checks_passed": true,
+  "classification_source": "Windows is the development platform; DEC-PLATFORM-001 names Linux as reference",
+  "failures": [],
+  "generated_utc": "2026-07-31T16:37:26.209141+00:00",
+  "not_release_evidence_because": [
+    "platform class is 'windows-development', not 'reference-capable' (RT-1 unsatisfied)"
+  ],
+  "platform": "Windows / Windows-11-10.0.26200-SP0",
+  "platform_class": "windows-development",
+  "provenance_resolved": true,
+  "reference_capable": false,
+  "release_evidence": false,
+  "steps": [
+    {
+      "detail": "9519fc24ec7ea15f... matches the reviewed candidate",
+      "expected": "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02",
+      "sha256": "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02",
+      "status": "PASS",
+      "step": "identity_reviewed_candidate_kernel"
+    },
+    {
+      "commit": "cbdc6580ee3d78cccdd37172e4ba077ee181f483",
+      "detail": "commit cbdc6580ee3d, tree fb714dc6e693",
+      "status": "PASS",
+      "step": "identity_amrex",
+      "tree": "fb714dc6e693c18f7c441d1d1febe4a5e8bf9ea6"
+    },
+    {
+      "detail": "status=RESOLVED commit=aba613d39618 dirty=dirty",
+      "provenance": {
+        "BMX_GIT_BRANCH": "rgsw/product",
+        "BMX_GIT_COMMIT": "aba613d396189b1fea477683db04f447ab40888d",
+        "BMX_GIT_COMMIT_SHORT": "aba613d39618",
+        "BMX_GIT_DESCRIBE": "v0.1-127-gaba613d39618-dirty",
+        "BMX_GIT_DIRTY": "dirty",
+        "BMX_PROVENANCE_NOTE": "linked worktree, absolute gitdir",
+        "BMX_PROVENANCE_STATUS": "RESOLVED"
+      },
+      "status": "PASS",
+      "step": "identity_build_provenance"
+    },
+    {
+      "detail": "reused existing images",
+      "images": {
+        "baseline": "e2effe2c375890d70cc28c40ab038ef00cc3e86cf384e25f1683f164918a9b9a",
+        "baseline_diag": "1e55ee7892c6ee7707c642dd09dd81ebda21352bdfbf1e24153144ae2a0fdd35",
+        "candidate": "64b9aaccd6a97599e8bb0df17640018e89533ed7627e947800ae33b0426bef7c",
+        "candidate_diag": "bc133b41820aa94c10eb181662c614a11b6e76867f478216e82b1f81aa6de93a"
+      },
+      "status": "PASS",
+      "step": "build_images_present"
+    },
+    {
+      "detail": "7 fixtures, failing=0, neutrality=PASS",
+      "index": "C:\\Users\\Shadow\\Documents\\Codex\\BMX-RG-SW\\runs\\c04-p07-geometry\\GEOMETRY_INDEX.json",
+      "status": "PASS",
+      "step": "geometry_matrix"
+    },
+    {
+      "detail": "5/5 checks",
+      "index": "C:\\Users\\Shadow\\Documents\\Codex\\BMX-RG-SW\\runs\\c04-diag-check\\DIAGNOSTIC_CHECKS.json",
+      "status": "PASS",
+      "step": "diagnostic_regression_guard"
+    },
+    {
+      "detail": "verdict=CAP_FIRES_AND_TRANSFER_EQUALS_AVAILABLE, saturation=True, transfer_equals_available=True",
+      "index": "C:\\Users\\Shadow\\Documents\\Codex\\BMX-RG-SW\\runs\\c04-p07-donor-cap-fixture\\DONOR_CAP_FIXTURE.json",
+      "status": "PASS",
+      "step": "donor_cap_fixture"
+    },
+    {
+      "detail": "7/7 checks",
+      "index": "C:\\Users\\Shadow\\Documents\\Codex\\BMX-RG-SW\\runs\\c04-provenance-check\\PROVENANCE_CHECKS.json",
+      "status": "PASS",
+      "step": "provenance_regression_fixture"
+    }
+  ]
+}

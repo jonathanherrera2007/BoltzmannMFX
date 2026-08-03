@@ -1,0 +1,15 @@
+{
+    "artifact_type":  "C10_UPTAKE_ANALYTICAL_UNIT",
+    "stage":  "C10/P12",
+    "status":  "PASS",
+    "checks_executed":  34,
+    "output":  "C10_UPTAKE_UNIT PASS checks=34",
+    "source_sha256":  "3d59deb9e00e674efebaebafabe96b93d26f18b2246ee4cf560f14827246237b",
+    "header_sha256":  "219cfd75c0aa9416f47cfd23d2a160958a7feebea04dc3ab80311a93552c0d8c",
+    "contract_sha256":  "2094aed3c8ef21a257d2c597352793384d01a1efc3d72936d5c5108d308f8804",
+    "numerical_contract_sha256":  "43d64a8f4ec6c8c00379fc3d9605441cb900479fcdd8db9e78e6fc1edd28f81f",
+    "executable_sha256":  "1b117a89af79f6e12764702bb43f0170185c8e02e6d43eaffdc437514e72392e",
+    "external_resources":  "none",
+    "external_spend_usd":  0,
+    "claim_boundary":  "Pure deterministic analytical transaction tests; no native depletion claim, calibration, or release-host evidence."
+}

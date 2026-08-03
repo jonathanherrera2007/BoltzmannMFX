@@ -1,0 +1,267 @@
+{
+  "artifact_type": "P15_216H_NUMERICAL_PREREGISTRATION",
+  "schema": "bmx-p15-216h-numerical-preregistration-v1",
+  "contract_id": "UDC-20260802-C13-216H-NUMERICAL-V1",
+  "stage": "C13/P15 Stage 0",
+  "classification": "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+  "status": "FROZEN_PROSPECTIVE_PENDING_INDEPENDENT_NUMERICAL_REVIEW",
+  "frozen_before_any_216h_qualification_outcome": true,
+  "outcomes_seen_before_freeze": false,
+  "artifact_sha256_binding": "The adjacent NUMERICAL_PREREGISTRATION_V1.sha256 is the SHA-256 of these exact JSON bytes.",
+  "authority": {
+    "source_kind": "user-attached binding adopted by explicit read-and-act request",
+    "source_path_at_adoption": "C:/Users/Shadow/.codex/attachments/3186333f-00d2-46e0-863c-36290cc3dc47/pasted-text.txt",
+    "source_sha256": "cbd1eedddf31b94c8a9d23d7b2d3329f065a007824387c70435d1004fdc6f350",
+    "source_size_bytes": 40449,
+    "source_line_count": 1272
+  },
+  "review_gate": {
+    "independent_numerical_review_required_before_any_216h_outcome": true,
+    "implementation_writer_may_self_review": false,
+    "current_status": "PENDING",
+    "outcome_execution": "PROHIBITED_PENDING_INDEPENDENT_REVIEW",
+    "science_matrix_execution": "PROHIBITED_UNTIL_STAGE0_PASS"
+  },
+  "qualification_arms": [
+    {
+      "id": "Q-LOW",
+      "bonded_D_diffusivity_cm2_s": 1.25e-7
+    },
+    {
+      "id": "Q-HIGH",
+      "bonded_D_diffusivity_cm2_s": 1.25e-5
+    }
+  ],
+  "shared_case": {
+    "seed_block": 0,
+    "seed": 2461941894568478670,
+    "initial_network": "One physical initial particle/network file shared across every grid, timestep, restart, rank, thread, and decomposition case; freeze and hash before the first qualification run.",
+    "generated_configuration": "Freeze and hash before the first qualification run.",
+    "settings": [
+      "central P15 geometry and all other central P15 parameters",
+      "full-surface uptake",
+      "D/E reactions enabled",
+      "carbon/P growth limitation enabled",
+      "bonded D transport enabled",
+      "P14 export and exact 7.736 reward enabled",
+      "particle mechanics enabled",
+      "splitting, branching, fusion, and topology evolution enabled",
+      "all mandatory ledgers and provenance outputs enabled"
+    ],
+    "zero_bonded_diffusivity_control": "Run at the selected grid/timestep and prove exact zero bonded-D transfer; do not use it to select resolution."
+  },
+  "time_horizon": {
+    "endpoint_hours": 216,
+    "endpoint_seconds": 777600.0,
+    "observation_hours": [0, 6, 12, 24, 48, 72, 96, 144, 216],
+    "observation_seconds": [0.0, 21600.0, 43200.0, 86400.0, 172800.0, 259200.0, 345600.0, 518400.0, 777600.0],
+    "checkpoint_hours": 72,
+    "checkpoint_seconds": 259200.0,
+    "required_execution_forms": ["continuous 0-to-216h", "checkpoint/restart 0-to-72h-to-216h"],
+    "endpoint_only_decision_permitted": false
+  },
+  "uniform_spatial_levels": {
+    "amr_max_level": 0,
+    "domain_cm": {
+      "x": [-1.0, 1.0],
+      "y": [0.0, 0.1],
+      "z": [0.0, 1.2]
+    },
+    "periodicity": {"x": false, "y": true, "z": false},
+    "levels": [
+      {"id": "G0", "n_cell": [40, 2, 24], "uniform_spacing_cm": 0.05},
+      {"id": "G1", "n_cell": [80, 4, 48], "uniform_spacing_cm": 0.025},
+      {"id": "G2", "n_cell": [160, 8, 96], "uniform_spacing_cm": 0.0125}
+    ],
+    "aligned_P11_faces_cm": {
+      "x": [-0.05, 0.0, 0.05],
+      "z": [0.8, 1.0, 1.2]
+    },
+    "AMR_inheritance": "No outcome-bearing AMR configuration inherits this qualification; it requires a separate prospective equivalence contract."
+  },
+  "outer_timestep_levels": [
+    {"id": "T0", "dt_s": 0.5, "updates_216h": 1555200},
+    {"id": "T1", "dt_s": 0.25, "updates_216h": 3110400},
+    {"id": "T2", "dt_s": 0.125, "updates_216h": 6220800}
+  ],
+  "outer_timestep_note": "O07 may use contract-defined internal transport substeps; these levels are the integrated-model outer timestep.",
+  "continuous_scalar_observables": [
+    "total external/mesh elemental P",
+    "total internal D",
+    "total internal E",
+    "total structural P",
+    "total exported P",
+    "cumulative requested uptake",
+    "cumulative accepted uptake",
+    "cumulative rejected uptake",
+    "cumulative gross absolute bonded-D transfer counting each virtual pair once",
+    "cumulative rejected bonded-D transfer",
+    "cumulative P14 exchange-derived A",
+    "all enabled global A/B/C amount ledgers",
+    "all enabled A/B/C reaction ledgers",
+    "cumulative accepted growth volume",
+    "cumulative B debit associated with accepted growth",
+    "cumulative E debit associated with accepted growth",
+    "accepted growth volume partitioned by limiting-resource classification",
+    "current fungal volume",
+    "total centreline length",
+    "physical full exposed surface area",
+    "physical terminal-zone area for each enabled terminal mode",
+    "effective terminal uptake area for each enabled terminal mode",
+    "current segment count",
+    "current live-terminal count"
+  ],
+  "discrete_topology_observables": [
+    "cumulative branch-event count",
+    "cumulative split-event count",
+    "cumulative fusion-event count",
+    "cumulative removal-event count",
+    "current segment count",
+    "current live-terminal count"
+  ],
+  "vector_observables": {
+    "mesh_fields": "Every enabled Eulerian species field, volume-summed from each run onto fixed G0 analysis cells.",
+    "network_x_profiles": {
+      "domain_cm": [-1.0, 1.0],
+      "bin_count": 40,
+      "bin_width_cm": 0.05,
+      "quantities": [
+        "every enabled particle amount pool",
+        "fungal volume",
+        "centreline length",
+        "exposed surface area",
+        "accepted uptake",
+        "accepted export"
+      ],
+      "segment_partition": "Split every segment contribution analytically by centreline intersection with each bin; assigning the complete segment by particle centre is prohibited."
+    },
+    "claim_inputs": "All P15 profile/front input vectors before fitting or interpretation."
+  },
+  "scalar_comparator": {
+    "formula": "E_q = abs(q_c-q_f)/max(abs(q_c),abs(q_f),256*epsilon_binary64*S_q)",
+    "limit": 0.02,
+    "scope": "Every listed continuous scalar at every observation in both Q-LOW and Q-HIGH.",
+    "scales": {
+      "P_quantities": "initial total accounted elemental P",
+      "carbon_and_reward": "max(initial total enabled carbon-equivalent inventory,7.736*initial total accounted P)",
+      "volume_and_growth": "initial fungal volume",
+      "length": "initial centreline length",
+      "surface": "initial full exposed area",
+      "dimensionless_fraction": 1.0
+    }
+  },
+  "vector_comparator": {
+    "formula": "E_1 = sum_k(w_k*abs(x_c_k-x_f_k))/max(sum_k(w_k*abs(x_c_k)),sum_k(w_k*abs(x_f_k)),256*epsilon_binary64*S_x)",
+    "limit": 0.05,
+    "scope": "Every field and profile vector at every observation in both arms.",
+    "weights": {
+      "amount_per_bin": 1.0,
+      "concentration_or_density": "corresponding cell volume or physical bin width"
+    }
+  },
+  "discrete_topology_comparator": {
+    "formula": "abs(n_c-n_f) <= max(1,ceil(0.05*max(n_c,n_f)))",
+    "scope": "segment, tip, branch, split, fusion, and removal counts at every observation",
+    "parallel_matrix_override": "Parallel stability requires exact topology identity and event order."
+  },
+  "nonnegotiable_per_run_gates": [
+    "no NaN or infinity",
+    "no amount below frozen nonnegativity tolerance",
+    "global and local P conservation under the frozen P10 comparator",
+    "zero global net amount change from bonded transfer within permitted floating accumulation tolerance",
+    "exact 7.736 times accepted-export reward identity",
+    "complete requested/accepted/rejected uptake and bonded-D ledgers",
+    "no material bonded-D donor-cap activation",
+    "no missing observation, checkpoint, or provenance artifact",
+    "geometry and P11 contact validity",
+    "deterministic configuration and initial-state hash verification",
+    "continuous/restart equivalence under the frozen restart comparator",
+    "unchanged frozen-kernel and global-order hashes"
+  ],
+  "selection": {
+    "spatial": {
+      "runs": "G0, G1, and G2 at T2 for both qualification arms",
+      "G0": "select only if G0-to-G1 and G1-to-G2 both pass every gate and limit",
+      "G1": "select only if G0 is not selectable and G1-to-G2 passes every gate and limit",
+      "G2": "reference-only and not selectable without a finer level",
+      "failure": "If G1-to-G2 fails, issue NO_PRODUCTION_GRID and keep C13 blocked."
+    },
+    "temporal": {
+      "runs": "T0, T1, and T2 on the selected grid for both qualification arms",
+      "T0": "select only if T0-to-T1 and T1-to-T2 both pass every gate and limit",
+      "T1": "select only if T0 is not selectable and T1-to-T2 passes every gate and limit",
+      "T2": "reference-only and not selectable without a finer timestep",
+      "failure": "If T1-to-T2 fails, issue NO_PRODUCTION_TIMESTEP and keep C13 blocked."
+    },
+    "coupled_confirmation": {
+      "comparison": "selected (G*,T*) against jointly refined (G*+1,T*+1) for both arms through 216h",
+      "gates": "Every scalar, vector, topology, conservation, restart, provenance, and hard gate applies again.",
+      "failure": "No automatic post-outcome fallback or threshold relaxation; freeze and review a prospective v2 before another candidate."
+    }
+  },
+  "parallel_stability": {
+    "scope": "CPU MPI/OpenMP only",
+    "box_arrays": {
+      "B1": [1, 1, 1],
+      "B2X": [2, 1, 1],
+      "B4XZ": [2, 1, 2],
+      "B4YZ": [1, 2, 2]
+    },
+    "cases": [
+      {"id": "P0", "mpi_ranks": 1, "omp_threads_per_rank": 1, "box_array": "B1"},
+      {"id": "P1", "mpi_ranks": 2, "omp_threads_per_rank": 1, "box_array": "B2X"},
+      {"id": "P2", "mpi_ranks": 4, "omp_threads_per_rank": 1, "box_array": "B4XZ"},
+      {"id": "P3", "mpi_ranks": 4, "omp_threads_per_rank": 1, "box_array": "B4YZ"},
+      {"id": "P4", "mpi_ranks": 1, "omp_threads_per_rank": 4, "box_array": "B1"},
+      {"id": "P5", "mpi_ranks": 2, "omp_threads_per_rank": 2, "box_array": "B2X"}
+    ],
+    "arms": ["Q-LOW", "Q-HIGH"],
+    "duration_hours": 216,
+    "fixed_across_cases": [
+      "executable",
+      "compiler and floating-point flags",
+      "chemistry parameters",
+      "seed",
+      "physical initial state"
+    ],
+    "exact_requirements": [
+      "initial-state hash",
+      "canonical segment IDs",
+      "canonical bond and junction keys",
+      "topology-event identity and order",
+      "integer ledgers and topology counts",
+      "RNG key/draw ledger"
+    ],
+    "real_requirements": {
+      "geometry": "P11 geometry tolerance",
+      "canonical_state_vector_normalized_linf_max": 1.0e-12,
+      "aggregate_scalar_normalized_difference_max": 1.0e-12,
+      "canonical_sort": "mesh by cell index; particle data by stable particle key"
+    },
+    "rank_changing_restart_paths": [
+      "P0 continuous to 72h then restart as P2 to 216h",
+      "P2 continuous to 72h then restart as P0 to 216h"
+    ],
+    "topology_hash_mismatch": "immediate failure even if aggregates agree",
+    "GPU_inheritance": false
+  },
+  "long_stability_case": {
+    "prerequisite": "production grid/timestep selected and parallel matrix PASS",
+    "case": "central P15 case",
+    "endpoint_hours": 432,
+    "endpoint_seconds": 1555200.0,
+    "purpose": "stability and conservation qualification only",
+    "convergence_comparison": false,
+    "biological_outcome_claim": false,
+    "gates": "all hard numerical, conservation, provenance, and cap-activation gates"
+  },
+  "prohibited_actions": [
+    "run any 216h qualification outcome before independent numerical review",
+    "run any P15 scientific outcome matrix before C13 Stage 0 PASS",
+    "relax a threshold after observing an outcome",
+    "select G2 or T2 without a finer successor",
+    "apply this uniform-grid result to AMR",
+    "apply the CPU result to GPU execution"
+  ],
+  "claim_boundary": "Prospective RG-SW numerical qualification contract only; not mentor approval, calibration, predictive validation, biological-timescale validation, or scientific interpretation."
+}

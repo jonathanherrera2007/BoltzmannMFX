@@ -1,0 +1,40 @@
+{
+    "artifact_type":  "C08_NATIVE_BUILD",
+    "stage":  "C08",
+    "status":  "PASS",
+    "source":  {
+                   "path":  "C:\\b\\BMX-shadow-handoff-20260721\\BMX-RG-SW-C07-product",
+                   "head":  "a33e37749450432fb15c1021fc554a26f4e3fc7d",
+                   "tree":  "333613990076476707f7e8aa82b1119e2d9a3f58",
+                   "dirty":  false,
+                   "status_capture":  "before build evidence outputs were opened"
+               },
+    "amrex":  {
+                  "commit":  "cbdc6580ee3d78cccdd37172e4ba077ee181f483",
+                  "tree":  "fb714dc6e693c18f7c441d1d1febe4a5e8bf9ea6"
+              },
+    "configuration":  {
+                          "build_type":  "Release",
+                          "cxx_compiler":  "C:/Program1/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe",
+                          "cxx_standard":  "17",
+                          "bmx_mpi":  "ON",
+                          "bmx_omp":  "OFF",
+                          "bmx_gpu_backend":  "NONE",
+                          "amrex_spacedim":  "3"
+                      },
+    "frozen_kernel_sha256":  "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02",
+    "executable":  {
+                       "path":  "C:\\b\\BMX-shadow-handoff-20260721\\build-c08-native-release-review-final-clean\\bmx.exe",
+                       "size_bytes":  2487808,
+                       "sha256":  "ab726982f693e1e873dc45bbcaa6e2f94cc9968852e9433f712a5bd06c1a700e"
+                   },
+    "commands":  [
+                     "powershell.exe -NoProfile -ExecutionPolicy Bypass -File tools/repro/configure_native_windows.ps1 -SourceDir C:\\b\\BMX-shadow-handoff-20260721\\BMX-RG-SW-C07-product -BuildDir C:\\b\\BMX-shadow-handoff-20260721\\build-c08-native-release-review-final-clean -Fresh",
+                     "powershell.exe -NoProfile -ExecutionPolicy Bypass -File tools/repro/build_native_windows.ps1 -BuildDir C:\\b\\BMX-shadow-handoff-20260721\\build-c08-native-release-review-final-clean -Target bmx -Parallel 4"
+                 ],
+    "raw_log":  "C:\\b\\BMX-shadow-handoff-20260721\\BMX-RG-SW-C07-product\\evidence\\stages\\C08\\raw\\native_build.log",
+    "raw_log_sha256":  "7c365a0980b9540088dcfd9346e23223c86da257d683711fe89f387fe535f974",
+    "cmake_cache_sha256":  "03f2d09f1d1b6346971ba05edc9c3c9b0f75392768c776a7d65579de2296658e",
+    "external_resources":  "none",
+    "external_spend_usd":  0
+}

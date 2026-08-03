@@ -1,0 +1,107 @@
+{
+  "artifact_type": "C08_INDEPENDENT_REVIEW_DISPOSITION",
+  "stage": "C08",
+  "review_id": "IR-20260801-P10-U02",
+  "review_target_sha256": "bb63c219a860687d91ce1acf06a667c9208abf026b32f18acfc64884bb696dd6",
+  "operator_order_approved": true,
+  "operator_order_bytes_changed_after_review": false,
+  "qualified_source_commit": "a33e37749450432fb15c1021fc554a26f4e3fc7d",
+  "qualified_source_tree": "333613990076476707f7e8aa82b1119e2d9a3f58",
+  "findings": [
+    {
+      "id": "F-10",
+      "status": "RESOLVED",
+      "resolution": "P10-U01 is labeled CLOSED_USER_ADOPTED with an explicit RG-SCI residual, not CLOSED_SCIENTIFIC. The pre-existing user authorization and reconciliation note limit ingestion to P10-U01; later-stage decisions in the source remain unconsumed and their science gates remain open.",
+      "evidence": [
+        "contracts/decision_reconciliation.json",
+        "contracts/decision_reconciliation.md",
+        "contracts/release_blockers.json"
+      ]
+    },
+    {
+      "id": "F-9",
+      "status": "RESOLVED",
+      "resolution": "The checkpoint suite passes 2-rank continuous/write/restart and a 2-rank checkpoint restarted at 1 rank. All four redistribution guard cases pass at 1-to-1, 2-to-2, and 2-to-1 ranks, including corrupt identity and nonperiodic-coordinate rejection before particle deserialization.",
+      "evidence": [
+        "evidence/stages/C08/CHECKPOINT_RESTART.json",
+        "evidence/stages/C08/REDISTRIBUTION_GUARDS.json",
+        "evidence/stages/C08/REDISTRIBUTION_GUARDS_MPI2.json",
+        "evidence/stages/C08/REDISTRIBUTION_GUARDS_MPI2_TO_1.json"
+      ]
+    },
+    {
+      "id": "F-7",
+      "status": "RESOLVED",
+      "resolution": "negativeAboveIntegratedTolerance now receives the caller's actual S_L1. Pairwise checks use abs(before)+abs(after), global inventory checks use the L1 scale of all accounted live and cumulative inventory, and the unit test proves the 1e-10*S_L1 branch is reachable at system scale.",
+      "evidence": [
+        "src/des/bmx_pc_phosphorus.H",
+        "src/des/bmx_pc_phosphorus.cpp",
+        "tools/repro/c08_amount_unit.cpp",
+        "evidence/stages/C08/AMOUNT_UNIT.json"
+      ]
+    },
+    {
+      "id": "F-8",
+      "status": "RESOLVED",
+      "resolution": "The ownership check unions uncommitted paths with the committed three-dot diff from immutable pre-C08 commit 2e7bb249fecdd4c0764190b3e0ee3ee26f29f0d3. Final evidence checks 55 paths and reports no unexpected path.",
+      "evidence": [
+        "tools/repro/run_c08_static_test.py",
+        "evidence/stages/C08/STATIC.json"
+      ]
+    },
+    {
+      "id": "F-11",
+      "status": "RESOLVED",
+      "resolution": "Every enabled AuditP10Ledger boundary now performs an MPI-global L1 assertion that P_D/P_E/P_F working and increment blocks are finite and exactly empty before committed inventory is read. O01, O10, and CHECKPOINT_WRITE execute this path in the passing runtime suites.",
+      "evidence": [
+        "src/bmx.cpp",
+        "src/des/bmx_pc_phosphorus.cpp",
+        "evidence/stages/C08/TOPOLOGY_AMOUNT.json",
+        "evidence/stages/C08/CHECKPOINT_RESTART.json"
+      ]
+    },
+    {
+      "id": "F-1",
+      "status": "RESOLVED",
+      "resolution": "The final executable is self-attributed to clean source commit a33e37749450432fb15c1021fc554a26f4e3fc7d and tree 333613990076476707f7e8aa82b1119e2d9a3f58. The build wrapper captures logs outside the source tree until after linking, so the embedded provenance and BUILD.json agree.",
+      "evidence": [
+        "evidence/stages/C08/BUILD.json",
+        "evidence/stages/C08/raw/native_build.log"
+      ]
+    },
+    {
+      "id": "F-2",
+      "status": "ACCEPTED_NO_CODE_CHANGE",
+      "resolution": "The P ledger retains exported_p as the exchange-derived provenance hook. Bootstrap A remains a separate carbon-accounting concern outside C08, and O09 remains unimplemented. No C09-plus behavior was introduced."
+    },
+    {
+      "id": "F-3",
+      "status": "RESOLVED",
+      "resolution": "Final evidence uses 'clean build' only for the clean attributed source commit and separately identifies evidence generation after linking."
+    },
+    {
+      "id": "F-4",
+      "status": "RESOLVED",
+      "resolution": "BUILD.json and AMOUNT_UNIT.json are emitted as UTF-8 without a byte-order mark and parse with a strict UTF-8 JSON reader."
+    },
+    {
+      "id": "F-5",
+      "status": "RESOLVED_DOCUMENTATION",
+      "resolution": "O07 follows split so newly created children, ownership, bonds, and MPI placement are final before bonded transport. O08 follows bonded transport so fusion consumes the once-transported state and resolves successor ownership once. Reversing them would require transport over predecessor/stale relationships or an additional rebuild/remap and would change the legacy product sequence. This is technical dependency reasoning, not biological selection."
+    },
+    {
+      "id": "F-6",
+      "status": "ACCEPTED_NO_CODE_CHANGE",
+      "resolution": "The adopted v1 contract requires other_exit_d/e/f/events to remain exactly zero. Prohibited loss therefore aborts collectively using the topology reason code before mutation; it must not be converted into a nonzero exit-ledger route."
+    },
+    {
+      "id": "F-12",
+      "status": "INFORMATION_RETAINED",
+      "resolution": "No push, publication, external sharing, or mentor contact occurred. Existing claim and privacy boundaries remain in force."
+    }
+  ],
+  "all_required_corrections_resolved": true,
+  "c09_or_later_started": false,
+  "external_resources": "none",
+  "external_spend_usd": 0
+}

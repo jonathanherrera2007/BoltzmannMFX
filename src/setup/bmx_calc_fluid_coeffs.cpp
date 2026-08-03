@@ -20,7 +20,7 @@ void calc_D_k (const Box& bx,
   Real* p_D_k0 = D_k0_d.data();
 
   amrex::Print() << " IN CALC_D_k ";
-  for (int i=0; i<NUM_CHEM_COMPONENTS; i++) {
+  for (int i=0; i<nchem_species; i++) {
     amrex::Print() << " D_k["<<i<<"]: "<<FLUID::D_k0[i];
   }
   amrex::Print()<<std::endl;

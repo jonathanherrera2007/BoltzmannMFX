@@ -6,6 +6,9 @@
 #include <bmx.H>
 #include <bmx_fluid_parms.H>
 #include <bmx_dem_parms.H>
+#include <bmx_phosphorus_uptake_K.H>
+#include <bmx_phosphorus_export_K.H>
+#include <bmx_p15_stage0_K.H>
 
 // This subroutine is the driver for time stepping the whole system
 // (fluid + particles )
@@ -13,6 +16,17 @@ void
 bmx::Evolve (int nstep, Real & dt, Real & prev_dt, Real time, Real stop_time)
 {
     BL_PROFILE_REGION_START("bmx::Evolve");
+
+    const bool p15_enabled = BMXP15Stage0::enabled();
+    if (p15_enabled && DEM::solve && time == 0.0) {
+      // The initial physical network must exist before O01 and before the
+      // first O02 terminal-distance construction.  P15 canonicalizes by
+      // stable particle key using the inherited endpoint coincidence rule;
+      // legacy runs retain their historical initializer below.
+      BMXP15Stage0::initializeCanonicalBonds(*pc);
+    }
+
+    AuditP10Ledger("O01_PRE_UPDATE_LEDGER", true);
 
     Real coupling_timing(0.);
     Real drag_timing(0.);
@@ -92,16 +106,39 @@ bmx::Evolve (int nstep, Real & dt, Real & prev_dt, Real time, Real stop_time)
     }
     if (DEM::solve)
     {
-        if (time == 0.0) pc->InitBonds(particle_cost, knapsack_weight_type);
+      if (BMXPhosphorusUptake::enabled() && !p15_enabled) {
+        // P12 is a hash-bound fixed-network depletion experiment.  Particle
+        // mechanics and every topology operator are disabled by contract;
+        // O02/O03 uptake and O04 mesh diffusion have already completed in
+        // EvolveFluid, so advancing the particles here would change the
+        // experiment rather than merely integrate motion.
+        nsubsteps = 0;
+      } else {
+        if (!p15_enabled && time == 0.0) {
+          pc->InitBonds(particle_cost, knapsack_weight_type);
+        }
 //        if (time == 118401.0) pc->PrintConnectivity(particle_cost,knapsack_weight_type);
         pc->EvolveParticles(dt, particle_cost, knapsack_weight_type, nsubsteps);
         pc->split_particles(time);
+        // Legacy bonded exchange remains responsible for A/B/C. Enabled P09
+        // forces its P_D coefficient to exact zero; C13 then fills O07 with a
+        // separate canonical finite-volume D-only graph transaction.
         pc->ParticleExchange(dt, particle_cost, knapsack_weight_type, nsubsteps);
+        BMXP15Stage0::applyBondedDTransport(*pc, dt);
         if (pc->EvaluateTipFusion(particle_cost,knapsack_weight_type)) {
           amrex::Print()<<"Completing FUSION step"<<std::endl;
           pc->EvaluateInteriorFusion(particle_cost,knapsack_weight_type);
           pc->CleanupFusion(particle_cost,knapsack_weight_type);
         }
+      }
+      // P12 deliberately freezes topology and skips mechanics. P14 can still
+      // fill O09 on that final topology. Preserve feature-off P12 output by
+      // adding the P11 audit in the fixed-network path only when P14 is on.
+      if (!BMXPhosphorusUptake::enabled() || p15_enabled ||
+          BMXPhosphorusExport::enabled()) {
+        pc->AuditP11GeometryEvents(nstep);
+        pc->ApplyP14Export(nstep, dt);
+      }
         if ((nstep+1)%SPECIES::rg_frequency == 0) {
           RealVect cm;
           pc->CalculateFungalCM(particle_cost, knapsack_weight_type, cm);
@@ -111,6 +148,16 @@ bmx::Evolve (int nstep, Real & dt, Real & prev_dt, Real time, Real stop_time)
           pc->CalculateFungalRG(particle_cost, knapsack_weight_type, rg, masst);
           amrex::Print()<<"Total Fungal Mass: "<<masst<<std::endl;
           amrex::Print()<<"Fungal Radius of Gyration: "<<rg<<std::endl;
+          // --- Bisot-style network observables ---
+          // V (total volume) ~ carbon cost; S (total surface area) ~ P uptake
+          Real network_V = pc->computeParticleVolume();
+          Real network_S = pc->computeParticleArea();
+          amrex::Print()<<"Network total volume V (~carbon cost): "<<network_V<<std::endl;
+          amrex::Print()<<"Network total surface area S (~P uptake): "<<network_S<<std::endl;
+          if (FLUID::nchem_species > P_COMP) {
+            Real network_P = pc->computeParticleContent(realIdx::first_data + P_COMP);
+            amrex::Print()<<"Network total particle P content: "<<network_P<<std::endl;
+          }
           pc->CalculateFungalDensityProfile(particle_cost, knapsack_weight_type,
               SPECIES::dens_prof_bins,SPECIES::dens_prof_max);
         }
@@ -121,6 +168,7 @@ bmx::Evolve (int nstep, Real & dt, Real & prev_dt, Real time, Real stop_time)
     Real end_particles = ParallelDescriptor::second() - start_particles;
     ParallelDescriptor::ReduceRealMax(end_particles, ParallelDescriptor::IOProcessorNumber());
 
+    AuditP10Ledger("O10_POST_UPDATE_LEDGER", true);
     ComputeAndPrintSums();
 
     if (ParallelDescriptor::IOProcessor()) {

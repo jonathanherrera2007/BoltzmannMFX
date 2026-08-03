@@ -1,0 +1,339 @@
+{
+    "artifact_type":  "C13_RELEASE_BLOCKERS",
+    "blockers":  [
+                     {
+                         "id":  "D-C10-02-NUMERICAL-CONVERGENCE",
+                         "phase":  "P12_UPTAKE_ONLY_DEPLETION",
+                         "status":  "CLOSED",
+                         "owner":  "writer plus independent numerical reviewer",
+                         "residual_gap":  null,
+                         "latest_safe_implementation_boundary":  "C10/P12 V2 PASS at L0 (8x8x4), dt=1800 s; C11 remains unstarted and requires separate authorization",
+                         "closure_evidence":  "evidence/stages/C10V2/FINAL_INDEPENDENT_ACCEPTANCE.json",
+                         "closure_evidence_sha256":  "de1fb8ba26696a84ff0f0233e9fe269e091a384eb5034e86fc74250cbb72de58",
+                         "closure_acceptance_id":  "IA-20260802-C10-V2-FINAL"
+                     },
+                     {
+                         "id":  "P13-U05-OPERATOR-ORDERING",
+                         "latest_safe_implementation_boundary":  "P13 reaction enable",
+                         "owner":  "writer (technical freeze)",
+                         "phase":  "P13_P_REACTIONS_AND_LIEBIG",
+                         "residual_gap":  "position within the frozen global operator order",
+                         "status":  "CLOSED_USER_ADOPTED",
+                         "technical_fit_status":  "CLOSED_TECHNICAL_EXISTING_O02_SLOT",
+                         "technical_fit_evidence":  "contracts/p13/OPERATOR_FIT_V1.json",
+                         "technical_fit_evidence_sha256":  "ea6e8dc2ca3f69fe2f366801c9df8ec9832b58f399d605c88d91527ff2098407",
+                         "global_operator_order_changed":  false
+                     },
+                     {
+                         "id":  "D-C12-01-INTERFACE-FRACTION-DEFINITION",
+                         "latest_safe_implementation_boundary":  "before P14 source implementation",
+                         "owner":  "user/contract authority",
+                         "phase":  "P14_P_EXPORT_AND_CARBON_REWARD",
+                         "residual_gap":  null,
+                         "status":  "CLOSED_USER_ADOPTED",
+                         "evidence":  "evidence/stages/C12/AUTHORITY_GAP_AUDIT.json",
+                         "evidence_sha256":  "29af6123d97ed39c5ff3a529f44ac6ef42336796f8f41f8e73dcbb9609499ea1",
+                         "original_gap":  "exact executable mapping from P11 finite-radius geometry to interface-active fraction f_I, including segment-refinement behavior",
+                         "closure_classification":  "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+                         "closure_evidence":  "contracts/p14/EXPORT_REWARD_CONTRACT_V1.json",
+                         "closure_evidence_sha256":  "01a9d6eb7291cc8bc0c98f52afbf3c5ea1c86da4fd3f992a02665e283f81ff4e",
+                         "closure_decision_id":  "UDC-20260802-P14-C12-BINDINGS-V1"
+                     },
+                     {
+                         "id":  "D-C12-02-REWARD-CONVERSION-CONSTANT",
+                         "latest_safe_implementation_boundary":  "before P14 source implementation",
+                         "owner":  "user/contract authority",
+                         "phase":  "P14_P_EXPORT_AND_CARBON_REWARD",
+                         "residual_gap":  null,
+                         "status":  "CLOSED_USER_ADOPTED",
+                         "evidence":  "evidence/stages/C12/AUTHORITY_GAP_AUDIT.json",
+                         "evidence_sha256":  "29af6123d97ed39c5ff3a529f44ac6ef42336796f8f41f8e73dcbb9609499ea1",
+                         "original_gap":  "exact mol-A-per-mol-P executable multiplier, either as a literal or exact M_P and M_C constants",
+                         "closure_classification":  "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+                         "closure_evidence":  "contracts/p14/EXPORT_REWARD_CONTRACT_V1.json",
+                         "closure_evidence_sha256":  "01a9d6eb7291cc8bc0c98f52afbf3c5ea1c86da4fd3f992a02665e283f81ff4e",
+                         "closure_decision_id":  "UDC-20260802-P14-C12-BINDINGS-V1"
+                     },
+                     {
+                         "id":  "P14-U02-RECIPIENT-POOL",
+                         "latest_safe_implementation_boundary":  "P14 export enable",
+                         "owner":  "mentor/writer",
+                         "phase":  "P14_P_EXPORT_AND_CARBON_REWARD",
+                         "residual_gap":  "confirm external receipt ledger vs explicit modelled host state",
+                         "status":  "CLOSED_USER_ADOPTED"
+                     },
+                     {
+                         "id":  "P14-U07-OPERATOR-ORDERING",
+                         "latest_safe_implementation_boundary":  "P14 export enable",
+                         "owner":  "writer (technical freeze)",
+                         "phase":  "P14_P_EXPORT_AND_CARBON_REWARD",
+                         "residual_gap":  "position within the frozen global operator order",
+                         "status":  "CLOSED_USER_ADOPTED",
+                         "technical_fit_status":  "CLOSED_TECHNICAL_EXISTING_O09_SLOT",
+                         "technical_fit_evidence":  "contracts/p14/OPERATOR_FIT_V1.json",
+                         "technical_fit_evidence_sha256":  "72193a1034d4148d167f059c347053d2206fa580cce9a156ec705304e7f378e7",
+                         "global_operator_order_changed":  false
+                     },
+                     {
+                         "id":  "D-C13-01-BONDED-D-DISCRETIZATION",
+                         "latest_safe_implementation_boundary":  "before C13 integrated product-source implementation",
+                         "owner":  "user/contract authority plus independent numerical reviewer",
+                         "phase":  "P15_STAGE0_INTEGRATION_QUALIFICATION",
+                         "residual_gap":  "exact conservative conversion of the adopted bonded-D diffusivity in cm^2/s to a per-bond extensive amount, including area, effective length or equivalent conductance, exactly-once ownership, multi-bond donor arbitration, and refinement behavior",
+                         "status":  "CLOSED_USER_ADOPTED",
+                         "authority_classification":  "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+                         "evidence":  "evidence/stages/C13/AUTHORITY_GATE.json",
+                         "evidence_sha256":  "58b4610a71c9d03acc833dcf6a8f8286b485e9bf8c958a0c5f8b307f507c4e7f",
+                         "evidence_sha256_authority":  "committed LF blob bytes",
+                         "evidence_windows_checkout_crlf_sha256":  "6baa34f2332a05d8464f7f4097d53fefd43b0bf8a8d74c07f552bad912fc13f4",
+                         "closure_decision_id":  "UDC-20260802-C13-STAGE0-BINDINGS-V1",
+                         "closure_contract":  "contracts/p15/BONDED_D_TRANSPORT_CONTRACT_V1.json",
+                         "closure_contract_sha256":  "e6022bffb56defa13cb31e7c0ac2097dfd197c9513e2f3e2e3a5ade37feeda44",
+                         "closure_source_sha256":  "cbd1eedddf31b94c8a9d23d7b2d3329f065a007824387c70435d1004fdc6f350",
+                         "closure_scope":  "RG-SW implementation and engineering qualification only"
+                     },
+                     {
+                         "id":  "D-C13-02-INTEGRATED-NUMERICAL-PREREGISTRATION",
+                         "latest_safe_implementation_boundary":  "before C13 integrated grid/timestep qualification",
+                         "owner":  "user/technical preregistration authority plus independent numerical reviewer",
+                         "phase":  "P15_STAGE0_INTEGRATION_QUALIFICATION",
+                         "residual_gap":  "exact prospective 216-hour all-mechanism grid/timestep levels, comparison observables and formulas, limits, production-selection/fallback rule, and rank/thread/decomposition matrix",
+                         "status":  "CLOSED_USER_ADOPTED",
+                         "authority_classification":  "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+                         "evidence":  "evidence/stages/C13/AUTHORITY_GATE.json",
+                         "evidence_sha256":  "58b4610a71c9d03acc833dcf6a8f8286b485e9bf8c958a0c5f8b307f507c4e7f",
+                         "evidence_sha256_authority":  "committed LF blob bytes",
+                         "evidence_windows_checkout_crlf_sha256":  "6baa34f2332a05d8464f7f4097d53fefd43b0bf8a8d74c07f552bad912fc13f4",
+                         "closure_decision_id":  "UDC-20260802-C13-STAGE0-BINDINGS-V1",
+                         "closure_contract":  "contracts/p15/NUMERICAL_PREREGISTRATION_V1.json",
+                         "closure_contract_sha256":  "c4d8dd50bb9c4b2b945e80410d71c4b822a32b29a325d7bb9ca5a8ec53531182",
+                         "closure_source_sha256":  "cbd1eedddf31b94c8a9d23d7b2d3329f065a007824387c70435d1004fdc6f350",
+                         "outcome_execution_status":  "BLOCKED_PENDING_RNG_TOPOLOGY_IMPLEMENTATION_AND_INDEPENDENT_EXACT_SOURCE_NUMERICAL_CONTRACT_REVIEW"
+                     },
+                     {
+                         "id":  "D-C13-03-TERMINAL-ZONE-GENERAL-TOPOLOGY",
+                         "latest_safe_implementation_boundary":  "before P15 terminal-zone case generation or execution on an evolving/branched network",
+                         "owner":  "user/contract authority",
+                         "phase":  "P15_STAGE0_INTEGRATION_QUALIFICATION",
+                         "residual_gap":  "terminal-zone graph-distance origin, partial-segment eligible-area rule, branch-tie handling, area-matched normalization, and representation-refinement behavior for evolving/branched topology",
+                         "status":  "CLOSED_USER_ADOPTED",
+                         "authority_classification":  "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+                         "evidence":  "evidence/stages/C13/AUTHORITY_GATE.json",
+                         "evidence_sha256":  "58b4610a71c9d03acc833dcf6a8f8286b485e9bf8c958a0c5f8b307f507c4e7f",
+                         "evidence_sha256_authority":  "committed LF blob bytes",
+                         "evidence_windows_checkout_crlf_sha256":  "6baa34f2332a05d8464f7f4097d53fefd43b0bf8a8d74c07f552bad912fc13f4",
+                         "prior_limited_disposition":  "D-C10-01 was resolved for the hash-bound one-segment P12 fixed network only",
+                         "closure_decision_id":  "UDC-20260802-C13-STAGE0-BINDINGS-V1",
+                         "closure_contract":  "contracts/p15/TERMINAL_ZONE_CONTRACT_V1.json",
+                         "closure_contract_sha256":  "272106fabb9af9221d13c9f3b82fa9a963bea831c0a983747986789452b1bfe6",
+                         "closure_source_sha256":  "cbd1eedddf31b94c8a9d23d7b2d3329f065a007824387c70435d1004fdc6f350",
+                         "closure_scope":  "RG-SW implementation and engineering qualification only"
+                     },
+                     {
+                         "id":  "D-C13-04-RNG-TOPOLOGY-DECOMPOSITION",
+                         "latest_safe_implementation_boundary":  "before C13 exact-source review and every 216-hour qualification outcome",
+                         "owner":  "user/technical preregistration authority plus independent numerical reviewer",
+                         "phase":  "P15_STAGE0_INTEGRATION_QUALIFICATION",
+                         "residual_gap":  "Exact implementation, qualification, and independent review remain pending; the missing key/draw/identity/ledger specification itself is bound.",
+                         "status":  "CLOSED_USER_ADOPTED_PENDING_IMPLEMENTATION_AND_REVIEW",
+                         "authority_classification":  "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+                         "evidence":  "evidence/stages/C13/RNG_TOPOLOGY_ADOPTION_V1_1.json",
+                         "closure_decision_id":  "UDC-20260802-C13-RNG-TOPOLOGY-DECOMPOSITION-V1.1",
+                         "closure_contract":  "contracts/p15/RNG_TOPOLOGY_DECOMPOSITION_CONTRACT_V1_1.json",
+                         "closure_contract_sha256":  "0198837e2fffcca34cc87febe13c51637f61ea9acc0c755025928fcb7e90cd17",
+                         "closure_kat":  "contracts/p15/RNG_TOPOLOGY_DECOMPOSITION_KAT_V1_1.json",
+                         "closure_kat_sha256":  "607de0acab001f97544545bb16128766f657e7a7f74ee981c76a39fe08f1df1b",
+                         "superseded_contract_sha256":  "059f067b94673838efba143c5a4615aaf79dcacc78a456317a81578daa37eba0",
+                         "superseded_kat_sha256":  "ef47fa935b64671dd2f93e93640308b9620055587083f0c5c5a55aa1f95edcb7",
+                         "observed_failure":  "With the exact adopted seed and identical one-update physical fixture, P0 created child (3,0) with theta 1.63832554336299 and phi 0.0256388158581591, while P1 created child (1,1) with theta 1.57368640688585 and phi 6.28037773666654.",
+                         "outcome_execution_status":  "PROHIBITED_PENDING_IMPLEMENTATION_AND_INDEPENDENT_REVIEW"
+                     },
+                     {
+                         "id":  "D-C13-05-RNG-SIDE-BRANCH-GRADIENT-REACHABILITY",
+                         "latest_safe_implementation_boundary":  "before D-C13-04 product-source implementation and every 216-hour qualification outcome",
+                         "owner":  "project owner/technical contract authority plus independent exact-source and numerical-contract reviewer",
+                         "phase":  "P15_STAGE0_INTEGRATION_QUALIFICATION",
+                         "residual_gap":  "Exact v1.1 implementation, qualification, and independent review remain pending; the reachability decision itself is bound.",
+                         "status":  "CLOSED_USER_ADOPTED_PENDING_IMPLEMENTATION_AND_REVIEW",
+                         "authority_classification":  "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+                         "evidence":  "evidence/stages/C13/RNG_TOPOLOGY_ADOPTION_V1_1.json",
+                         "closure_decision_id":  "UDC-20260802-C13-RNG-TOPOLOGY-DECOMPOSITION-V1.1",
+                         "closure_contract_sha256":  "0198837e2fffcca34cc87febe13c51637f61ea9acc0c755025928fcb7e90cd17",
+                         "closure_kat_sha256":  "607de0acab001f97544545bb16128766f657e7a7f74ee981c76a39fe08f1df1b",
+                         "selected_resolution":  "OPTION_1_PRESERVE_FROZEN_BEHAVIOR_REMOVE_UNREACHABLE_GN_NONZERO_CASE",
+                         "outcome_execution_status":  "PROHIBITED_PENDING_IMPLEMENTATION_AND_INDEPENDENT_REVIEW"
+                     },
+                     {
+                         "id":  "P15-U01-EXPERIMENT-MATRIX",
+                         "latest_safe_implementation_boundary":  "P15 final run",
+                         "owner":  "mentor",
+                         "phase":  "P15_FULL_DEPLETION_EXPERIMENT",
+                         "residual_gap":  "central provisional (q_P, k_gP/k_gB) pair; factor-crossing rule for the full matrix",
+                         "status":  "CLOSED_USER_ADOPTED"
+                     },
+                     {
+                         "id":  "P15-U02-CONTROLS",
+                         "latest_safe_implementation_boundary":  "P15 final run",
+                         "owner":  "mentor",
+                         "phase":  "P15_FULL_DEPLETION_EXPERIMENT",
+                         "residual_gap":  "required complete-model controls and ablations",
+                         "status":  "CLOSED_USER_ADOPTED"
+                     },
+                     {
+                         "id":  "P15-U03-COMPARISONS",
+                         "latest_safe_implementation_boundary":  "P15 final run",
+                         "owner":  "mentor",
+                         "phase":  "P15_FULL_DEPLETION_EXPERIMENT",
+                         "residual_gap":  "predeclared primary comparisons and null findings",
+                         "status":  "CLOSED_USER_ADOPTED"
+                     },
+                     {
+                         "id":  "P15-U04-REPLICATES",
+                         "latest_safe_implementation_boundary":  "P15 final run",
+                         "owner":  "mentor",
+                         "phase":  "P15_FULL_DEPLETION_EXPERIMENT",
+                         "residual_gap":  "replicate count per configuration",
+                         "status":  "CLOSED_USER_ADOPTED"
+                     },
+                     {
+                         "id":  "P15-U05-SEEDS",
+                         "latest_safe_implementation_boundary":  "P15 final run",
+                         "owner":  "mentor",
+                         "phase":  "P15_FULL_DEPLETION_EXPERIMENT",
+                         "residual_gap":  "ordered seed policy/list",
+                         "status":  "CLOSED_USER_ADOPTED"
+                     },
+                     {
+                         "id":  "P15-U07-CLAIMS",
+                         "latest_safe_implementation_boundary":  "P15 final run",
+                         "owner":  "mentor/writer",
+                         "phase":  "P15_FULL_DEPLETION_EXPERIMENT",
+                         "residual_gap":  "predeclared claim set and null findings for P15",
+                         "status":  "CLOSED_USER_ADOPTED"
+                     },
+                     {
+                         "id":  "P16-U01-STRATEGY-DEFINITIONS",
+                         "latest_safe_implementation_boundary":  "P16 analysis execution",
+                         "owner":  "mentor",
+                         "phase":  "P16_EXPLORER_EXPLOITER_PARETO",
+                         "residual_gap":  "explorer and exploiter definitions",
+                         "status":  "CLOSED_USER_ADOPTED"
+                     },
+                     {
+                         "id":  "P16-U02-OBJECTIVES",
+                         "latest_safe_implementation_boundary":  "P16 analysis execution",
+                         "owner":  "mentor",
+                         "phase":  "P16_EXPLORER_EXPLOITER_PARETO",
+                         "residual_gap":  "objective list with units",
+                         "status":  "CLOSED_USER_ADOPTED"
+                     },
+                     {
+                         "id":  "P16-U03-OBJECTIVE-DIRECTIONS",
+                         "latest_safe_implementation_boundary":  "P16 analysis execution",
+                         "owner":  "mentor",
+                         "phase":  "P16_EXPLORER_EXPLOITER_PARETO",
+                         "residual_gap":  "maximise/minimise per objective",
+                         "status":  "CLOSED_USER_ADOPTED"
+                     },
+                     {
+                         "id":  "P16-U04-NORMALIZATION",
+                         "latest_safe_implementation_boundary":  "P16 analysis execution",
+                         "owner":  "mentor",
+                         "phase":  "P16_EXPLORER_EXPLOITER_PARETO",
+                         "residual_gap":  "normalization references and zero-range behaviour",
+                         "status":  "CLOSED_USER_ADOPTED"
+                     },
+                     {
+                         "id":  "P16-U05-TIES-DUPLICATES",
+                         "latest_safe_implementation_boundary":  "P16 analysis execution",
+                         "owner":  "mentor",
+                         "phase":  "P16_EXPLORER_EXPLOITER_PARETO",
+                         "residual_gap":  "tie and duplicate handling",
+                         "status":  "CLOSED_USER_ADOPTED"
+                     },
+                     {
+                         "id":  "P16-U06-MISSING-INVALID-DATA",
+                         "latest_safe_implementation_boundary":  "P16 analysis execution",
+                         "owner":  "mentor",
+                         "phase":  "P16_EXPLORER_EXPLOITER_PARETO",
+                         "residual_gap":  "missing/non-finite handling",
+                         "status":  "CLOSED_USER_ADOPTED"
+                     },
+                     {
+                         "id":  "P16-U07-CONFIGURATIONS",
+                         "latest_safe_implementation_boundary":  "P16 analysis execution",
+                         "owner":  "mentor",
+                         "phase":  "P16_EXPLORER_EXPLOITER_PARETO",
+                         "residual_gap":  "ordered configurations per strategy",
+                         "status":  "CLOSED_USER_ADOPTED"
+                     },
+                     {
+                         "id":  "P16-U08-REPLICATES",
+                         "latest_safe_implementation_boundary":  "P16 analysis execution",
+                         "owner":  "mentor",
+                         "phase":  "P16_EXPLORER_EXPLOITER_PARETO",
+                         "residual_gap":  "replicate count per configuration",
+                         "status":  "CLOSED_USER_ADOPTED"
+                     },
+                     {
+                         "id":  "P16-U09-SEEDS",
+                         "latest_safe_implementation_boundary":  "P16 analysis execution",
+                         "owner":  "mentor",
+                         "phase":  "P16_EXPLORER_EXPLOITER_PARETO",
+                         "residual_gap":  "ordered seeds",
+                         "status":  "CLOSED_USER_ADOPTED"
+                     },
+                     {
+                         "id":  "P16-U10-AGGREGATION",
+                         "latest_safe_implementation_boundary":  "P16 analysis execution",
+                         "owner":  "mentor",
+                         "phase":  "P16_EXPLORER_EXPLOITER_PARETO",
+                         "residual_gap":  "aggregation, uncertainty and dominance input rule",
+                         "status":  "CLOSED_USER_ADOPTED"
+                     },
+                     {
+                         "id":  "P17-U01-FINAL-PARAMETERS",
+                         "latest_safe_implementation_boundary":  "post-results review",
+                         "owner":  "mentor",
+                         "phase":  "P17_MENTOR_FINAL_INTERPRETATION_FREEZE",
+                         "residual_gap":  "post-results mentor review",
+                         "status":  "OPEN"
+                     },
+                     {
+                         "id":  "P17-U02-CALIBRATION",
+                         "latest_safe_implementation_boundary":  "post-results review",
+                         "owner":  "mentor",
+                         "phase":  "P17_MENTOR_FINAL_INTERPRETATION_FREEZE",
+                         "residual_gap":  "post-results mentor review",
+                         "status":  "OPEN"
+                     },
+                     {
+                         "id":  "P17-U03-BIOLOGICAL-INTERPRETATION",
+                         "latest_safe_implementation_boundary":  "post-results review",
+                         "owner":  "mentor",
+                         "phase":  "P17_MENTOR_FINAL_INTERPRETATION_FREEZE",
+                         "residual_gap":  "post-results mentor review",
+                         "status":  "OPEN"
+                     },
+                     {
+                         "id":  "P17-U04-PARETO-INTERPRETATION",
+                         "latest_safe_implementation_boundary":  "post-results review",
+                         "owner":  "mentor",
+                         "phase":  "P17_MENTOR_FINAL_INTERPRETATION_FREEZE",
+                         "residual_gap":  "post-results mentor review",
+                         "status":  "OPEN"
+                     },
+                     {
+                         "id":  "P17-U05-PUBLICATION-CLAIMS",
+                         "latest_safe_implementation_boundary":  "post-results review",
+                         "owner":  "mentor",
+                         "phase":  "P17_MENTOR_FINAL_INTERPRETATION_FREEZE",
+                         "residual_gap":  "post-results mentor review",
+                         "status":  "OPEN"
+                     }
+                 ],
+    "count":  30,
+    "generated":  "2026-08-02",
+    "rule":  "Any unresolved item affecting conservation, units, state identity, event ordering, boundary behaviour, restart persistence, or interpretation is an RG-SW release blocker.",
+    "blocker_count":  30
+}

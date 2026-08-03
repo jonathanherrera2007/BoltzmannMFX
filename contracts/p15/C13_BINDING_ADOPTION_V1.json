@@ -1,0 +1,85 @@
+{
+  "artifact_type": "C13_STAGE0_BINDING_ADOPTION",
+  "decision_id": "UDC-20260802-C13-STAGE0-BINDINGS-V1",
+  "stage": "C13/P15 Stage 0",
+  "classification": "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+  "status": "BINDING_FOR_RG_SW_IMPLEMENTATION_AND_PROSPECTIVE_PREREGISTRATION",
+  "artifact_sha256_binding": "The adjacent C13_BINDING_ADOPTION_V1.sha256 is the SHA-256 of these exact JSON bytes.",
+  "authority": {
+    "user_request": "Read and act on the attached pasted text containing the complete three-binding authorization.",
+    "source_path_at_adoption": "C:/Users/Shadow/.codex/attachments/3186333f-00d2-46e0-863c-36290cc3dc47/pasted-text.txt",
+    "source_sha256": "cbd1eedddf31b94c8a9d23d7b2d3329f065a007824387c70435d1004fdc6f350",
+    "source_size_bytes": 40449,
+    "source_line_count": 1272,
+    "attachment_read_completely": true
+  },
+  "evidence_portability_repair": {
+    "completed_before_binding": true,
+    "commit": "013a9cca7ff1084a0b1e80543b7de1ea37061ab7",
+    "authority_gate_path": "evidence/stages/C13/AUTHORITY_GATE.json",
+    "authoritative_committed_lf_sha256": "58b4610a71c9d03acc833dcf6a8f8286b485e9bf8c958a0c5f8b307f507c4e7f",
+    "informational_windows_checkout_crlf_sha256": "6baa34f2332a05d8464f7f4097d53fefd43b0bf8a8d74c07f552bad912fc13f4",
+    "product_source_changed": false,
+    "c12_reopened": false
+  },
+  "contracts": [
+    {
+      "blocker": "D-C13-01-BONDED-D-DISCRETIZATION",
+      "path": "contracts/p15/BONDED_D_TRANSPORT_CONTRACT_V1.json",
+      "contract_id": "UDC-20260802-C13-BONDED-D-V1",
+      "sha256": "e6022bffb56defa13cb31e7c0ac2097dfd197c9513e2f3e2e3a5ade37feeda44",
+      "status": "CLOSED_USER_ADOPTED"
+    },
+    {
+      "blocker": "D-C13-02-INTEGRATED-NUMERICAL-PREREGISTRATION",
+      "binding_alias": "D-C13-02-216H-NUMERICAL-PREREGISTRATION",
+      "path": "contracts/p15/NUMERICAL_PREREGISTRATION_V1.json",
+      "contract_id": "UDC-20260802-C13-216H-NUMERICAL-V1",
+      "sha256": "c4d8dd50bb9c4b2b945e80410d71c4b822a32b29a325d7bb9ca5a8ec53531182",
+      "status": "CLOSED_USER_ADOPTED_PENDING_INDEPENDENT_NUMERICAL_REVIEW"
+    },
+    {
+      "blocker": "D-C13-03-TERMINAL-ZONE-GENERAL-TOPOLOGY",
+      "binding_alias": "D-C13-03-GENERAL-TERMINAL-ZONE",
+      "path": "contracts/p15/TERMINAL_ZONE_CONTRACT_V1.json",
+      "contract_id": "UDC-20260802-C13-TERMINAL-ZONE-V1",
+      "sha256": "272106fabb9af9221d13c9f3b82fa9a963bea831c0a983747986789452b1bfe6",
+      "status": "CLOSED_USER_ADOPTED"
+    },
+    {
+      "path": "contracts/p15/OPERATOR_FIT_V1.json",
+      "contract_id": "bmx-p15-c13-operator-fit-v1",
+      "sha256": "4e391b63796f61cade7381a0a4168c6aa2d607272cd0c009cedef5aec4ad7168",
+      "status": "FITS_EXISTING_O02_O07_O09_SLOTS"
+    }
+  ],
+  "frozen_bytes": {
+    "global_operator_order_id": "bmx-p10-global-order-v1",
+    "global_operator_order_sha256": "bb63c219a860687d91ce1acf06a667c9208abf026b32f18acfc64884bb696dd6",
+    "global_operator_order_changed": false,
+    "chemistry_kernel_path": "src/chemistry/bmx_chem_K.H",
+    "chemistry_kernel_sha256": "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02",
+    "chemistry_kernel_changed": false
+  },
+  "implementation_authority": [
+    "implement a separate canonical finite-volume bonded-D graph-diffusion operator in O07",
+    "implement deterministic general terminal-zone metric-graph areas for O02",
+    "bind C13 contracts, state, ledgers, case hashes, and area-match data into configuration/checkpoint/restart evidence",
+    "build analytical, refinement, feature-off, conservation, restart, MPI, and decomposition engineering fixtures"
+  ],
+  "execution_gate": {
+    "analytical_and_short_engineering_fixtures_authorized": true,
+    "216h_qualification_outcomes_authorized_now": false,
+    "required_before_216h": "independent review of exact frozen source and NUMERICAL_PREREGISTRATION_V1",
+    "P15_scientific_matrix_authorized": false,
+    "P15_scientific_interpretation_authorized": false
+  },
+  "preserved_classification": {
+    "mentor_approval": false,
+    "closed_scientific": false,
+    "biological_calibration": false,
+    "predictive_validation": false,
+    "RG_SCI_progress": false
+  },
+  "claim_boundary": "Closes three C13 implementation/preregistration specification gaps for provisional RG-SW work only. It does not establish numerical PASS until the frozen matrix passes after independent review and does not authorize P15 scientific outcomes."
+}

@@ -1,0 +1,79 @@
+{
+  "all_checks_passed": true,
+  "classification_source": "classification from tools/repro/linux_env.sh",
+  "failures": [],
+  "generated_utc": "2026-07-31T16:38:29.488073+00:00",
+  "not_release_evidence_because": [
+    "platform class is 'smoke-only', not 'reference-capable' (RT-1 unsatisfied)"
+  ],
+  "platform": "WSL1 (syscall translation layer, NOT a kernel) / Ubuntu 24.04.1 LTS / kernel 4.4.0-26100-Microsoft / WARNING: working tree is on drvfs (Windows drive mount)",
+  "platform_class": "smoke-only",
+  "provenance_resolved": true,
+  "reference_capable": false,
+  "release_evidence": false,
+  "steps": [
+    {
+      "detail": "9519fc24ec7ea15f... matches the reviewed candidate",
+      "expected": "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02",
+      "sha256": "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02",
+      "status": "PASS",
+      "step": "identity_reviewed_candidate_kernel"
+    },
+    {
+      "commit": "cbdc6580ee3d78cccdd37172e4ba077ee181f483",
+      "detail": "commit cbdc6580ee3d, tree fb714dc6e693",
+      "status": "PASS",
+      "step": "identity_amrex",
+      "tree": "fb714dc6e693c18f7c441d1d1febe4a5e8bf9ea6"
+    },
+    {
+      "detail": "status=RESOLVED commit=aba613d39618 dirty=dirty",
+      "provenance": {
+        "BMX_GIT_BRANCH": "rgsw/product",
+        "BMX_GIT_COMMIT": "aba613d396189b1fea477683db04f447ab40888d",
+        "BMX_GIT_COMMIT_SHORT": "aba613d39618",
+        "BMX_GIT_DESCRIBE": "v0.1-127-gaba613d39618-dirty",
+        "BMX_GIT_DIRTY": "dirty",
+        "BMX_PROVENANCE_NOTE": "linked worktree, absolute gitdir, translated across platforms",
+        "BMX_PROVENANCE_STATUS": "RESOLVED"
+      },
+      "status": "PASS",
+      "step": "identity_build_provenance"
+    },
+    {
+      "detail": "reused existing images",
+      "images": {
+        "baseline": "9cbbcef72891bc1d83fd111ebd9be10b553670f2226005d6e892d02bc3ef75c7",
+        "baseline_diag": "9cbbcef72891bc1d83fd111ebd9be10b553670f2226005d6e892d02bc3ef75c7",
+        "candidate": "af1964856ce49a3449a1f9e3d6c9e28ddad305cacfe4df960b6ac54fd696e3a9",
+        "candidate_diag": "af1964856ce49a3449a1f9e3d6c9e28ddad305cacfe4df960b6ac54fd696e3a9"
+      },
+      "status": "PASS",
+      "step": "build_images_present"
+    },
+    {
+      "detail": "7 fixtures, failing=0, neutrality=PASS",
+      "index": "/tmp/bmx-qual/runs/c04-p07-geometry/GEOMETRY_INDEX.json",
+      "status": "PASS",
+      "step": "geometry_matrix"
+    },
+    {
+      "detail": "5/5 checks",
+      "index": "/tmp/bmx-qual/runs/c04-diag-check/DIAGNOSTIC_CHECKS.json",
+      "status": "PASS",
+      "step": "diagnostic_regression_guard"
+    },
+    {
+      "detail": "verdict=CAP_FIRES_AND_TRANSFER_EQUALS_AVAILABLE, saturation=True, transfer_equals_available=True",
+      "index": "/tmp/bmx-qual/runs/c04-p07-donor-cap-fixture/DONOR_CAP_FIXTURE.json",
+      "status": "PASS",
+      "step": "donor_cap_fixture"
+    },
+    {
+      "detail": "7/7 checks",
+      "index": "/tmp/bmx-qual/runs/c04-provenance-check/PROVENANCE_CHECKS.json",
+      "status": "PASS",
+      "step": "provenance_regression_fixture"
+    }
+  ]
+}

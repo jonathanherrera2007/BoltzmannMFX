@@ -1,0 +1,310 @@
+{
+  "artifact_type": "C13_STAGE0_AUTHORITY_GATE",
+  "stage": "C13/P15 Stage 0",
+  "generated": "2026-08-02",
+  "status": "BLOCKED",
+  "classification": "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+  "input": {
+    "branch": "rgsw/c13-p15-stage0",
+    "head": "7768fc92f683f68b0d282b69e45d079103fc847a",
+    "tree": "b772bb974439aea3181257c109367a18136d1220",
+    "src_tree": "10ba9b7703a5715a47919714f17d9b9f258c40f5",
+    "amrex_commit": "cbdc6580ee3d78cccdd37172e4ba077ee181f483",
+    "amrex_tree": "fb714dc6e693c18f7c441d1d1febe4a5e8bf9ea6",
+    "initial_worktree_clean": true
+  },
+  "checks": [
+    {
+      "id": "c12_pass",
+      "status": "PASS",
+      "observed": "PASS"
+    },
+    {
+      "id": "stage_input_head",
+      "status": "PASS",
+      "observed": "7768fc92f683f68b0d282b69e45d079103fc847a"
+    },
+    {
+      "id": "stage_input_tree",
+      "status": "PASS",
+      "observed": "b772bb974439aea3181257c109367a18136d1220"
+    },
+    {
+      "id": "stage_input_src_tree",
+      "status": "PASS",
+      "observed": "10ba9b7703a5715a47919714f17d9b9f258c40f5"
+    },
+    {
+      "id": "amrex_commit",
+      "status": "PASS",
+      "observed": "cbdc6580ee3d78cccdd37172e4ba077ee181f483"
+    },
+    {
+      "id": "amrex_tree",
+      "status": "PASS",
+      "observed": "fb714dc6e693c18f7c441d1d1febe4a5e8bf9ea6"
+    },
+    {
+      "id": "frozen_kernel_sha256",
+      "status": "PASS",
+      "observed": "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02"
+    },
+    {
+      "id": "global_order_sha256",
+      "status": "PASS",
+      "observed": "bb63c219a860687d91ce1acf06a667c9208abf026b32f18acfc64884bb696dd6"
+    },
+    {
+      "id": "authority_sha256",
+      "status": "PASS",
+      "observed": "34e8414c09e6528fc86399ceb4902cb5fc6907d9562fcf7a78cb3a8e4e333066"
+    },
+    {
+      "id": "adopted_bonded_diffusivity_units",
+      "status": "PASS",
+      "observed": "centre and sensitivity set are expressed in cm^2/s"
+    },
+    {
+      "id": "inherited_exchange_expression",
+      "status": "PASS",
+      "observed": "Real d = (cnc1[n]-cnc2[n])*area*xpar[n]*dt;"
+    },
+    {
+      "id": "enabled_layout_legacy_transfer_is_zero",
+      "status": "PASS",
+      "observed": "src/chemistry/bmx_chem.cpp rejects nonzero legacy mass_transfer_P in enabled mode"
+    },
+    {
+      "id": "general_terminal_zone_fails_closed",
+      "status": "PASS",
+      "observed": "fixed-network exception explicitly refuses general topology"
+    },
+    {
+      "id": "p15_bonded_discretization_contract_absent",
+      "status": "PASS",
+      "observed": "contracts/p15/BONDED_D_TRANSPORT_CONTRACT_V1.json is absent"
+    },
+    {
+      "id": "p15_integrated_numerical_contract_absent",
+      "status": "PASS",
+      "observed": "contracts/p15/NUMERICAL_PREREGISTRATION_V1.json is absent"
+    },
+    {
+      "id": "diffusivity_substitution_dimension",
+      "status": "PASS",
+      "observed": [
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "legacy_velocity_dimension",
+      "status": "PASS",
+      "observed": [
+        1,
+        0,
+        0
+      ]
+    }
+  ],
+  "all_identity_and_gap_checks_passed": true,
+  "dimensional_analysis": {
+    "basis": [
+      "mol",
+      "cm",
+      "s"
+    ],
+    "concentration_difference": [
+      1,
+      -3,
+      0
+    ],
+    "cross_sectional_area": [
+      0,
+      2,
+      0
+    ],
+    "adopted_diffusivity": [
+      0,
+      2,
+      -1
+    ],
+    "legacy_mass_transfer_velocity": [
+      0,
+      1,
+      -1
+    ],
+    "timestep": [
+      0,
+      0,
+      1
+    ],
+    "legacy_expression_with_adopted_diffusivity": [
+      1,
+      1,
+      0
+    ],
+    "required_amount_dimension": [
+      1,
+      0,
+      0
+    ],
+    "missing_dimension": "cm^-1, requiring an exact effective length or equivalent conductance rule"
+  },
+  "contract_search_inventory": [
+    {
+      "path": "contracts/decision_reconciliation.json",
+      "matches": [
+        {
+          "line": 34,
+          "text": "\"rationale\":  \"D/E/F semantics are fully fixed: D exchangeable (mesh+internal, membrane+bonded transport), E internal-only growth precursor, F product/waste held inactive. The legacy names P_uptake/P_growth/P_delivery carry no separate semantics, so the canonical vocabulary is D/E/F and legacy aliases are REJECTED in enabled mode (AGENTS.md component order). No biology is chosen by naming.\","
+        }
+      ]
+    },
+    {
+      "path": "contracts/p10/OPERATOR_ORDER_V1.json",
+      "matches": [
+        {
+          "line": 35,
+          "text": "\"id\": \"O07_BONDED_TRANSPORT\","
+        },
+        {
+          "line": 36,
+          "text": "\"operation\": \"Apply bonded transport after split. D is mobile, E is immobile, and F transport infrastructure remains coefficient-zero; audit per-state global internal amounts across transport and redistribution.\""
+        },
+        {
+          "line": 68,
+          "text": "\"c08_integration_status\": \"O01 and O10 are integrated with a bound MPI-global ledger; pure volume, split, bonded transport, fusion-created split, MPI-global topology conflict, bond-owner, restart, and checkpoint boundaries are fail-closed. Derived Redistribute/Regrid wrappers preflight every product entry point before delegating to pinned AMReX, and serialized particle identities/coordinates are prevalidated before pinned Restart's internal nonvirtual redistribution. The clean C08 engineering suite passes. Independent review of these exact writer-frozen bytes remains pending. O09 and all C09-or-later behavior remain unimplemented.\","
+        }
+      ]
+    },
+    {
+      "path": "contracts/p12/UPTAKE_ONLY_CONTRACT_V1.json",
+      "matches": [
+        {
+          "line": 59,
+          "text": "\"growth\", \"branching\", \"nonessential topology\", \"bonded D transport\","
+        }
+      ]
+    },
+    {
+      "path": "contracts/p15/STAGE0_AUTHORITY_BOUNDARY_V1.json",
+      "matches": [
+        {
+          "line": 29,
+          "text": "\"D is the only bonded-mobile phosphorus state; E has no bonded transport and every F transport coefficient is exactly zero\","
+        },
+        {
+          "line": 30,
+          "text": "\"bonded transport occupies O07 after split and before fusion\","
+        },
+        {
+          "line": 31,
+          "text": "\"the adopted bonded-D coefficient set is 0, 1.25e-7, 1.25e-6, and 1.25e-5 cm^2/s, with 1.25e-6 cm^2/s at the provisional centre\","
+        },
+        {
+          "line": 32,
+          "text": "\"Stage 0 precedes every P15 science outcome and requires analytical bonded-transport and integrated grid/timestep qualification\","
+        },
+        {
+          "line": 37,
+          "text": "\"blocker_id\": \"D-C13-01-BONDED-D-DISCRETIZATION\","
+        },
+        {
+          "line": 64,
+          "text": "\"exact bonded-D extensive transfer discretization and arbitration contract\","
+        }
+      ]
+    },
+    {
+      "path": "contracts/release_blockers.json",
+      "matches": [
+        {
+          "line": 78,
+          "text": "\"id\":  \"D-C13-01-BONDED-D-DISCRETIZATION\","
+        },
+        {
+          "line": 82,
+          "text": "\"residual_gap\":  \"exact conservative conversion of the adopted bonded-D diffusivity in cm^2/s to a per-bond extensive amount, including area, effective length or equivalent conductance, exactly-once ownership, multi-bond donor arbitration, and refinement behavior\","
+        }
+      ]
+    },
+    {
+      "path": "contracts/USER_ADOPTED_DECISION_CONTRACT_20260801_V2.txt",
+      "matches": [
+        {
+          "line": 271,
+          "text": "bonded D transport      = disabled"
+        },
+        {
+          "line": 521,
+          "text": "bonded-D transport:"
+        },
+        {
+          "line": 564,
+          "text": "* Analytical diffusion, uptake, reaction, bonded-transport, growth, and export fixtures."
+        },
+        {
+          "line": 600,
+          "text": "| Bonded-D transport    | (0,1.25\\times10^{-7},1.25\\times10^{-6},1.25\\times10^{-5}\\ \\mathrm{cm^2/s})           |"
+        },
+        {
+          "line": 648,
+          "text": "* Bonded transport off."
+        },
+        {
+          "line": 687,
+          "text": "* No bonded-transport effect."
+        }
+      ]
+    },
+    {
+      "path": "contracts/USER_APPROVED_DECISION_CONTRACT_20260801.txt",
+      "matches": [
+        {
+          "line": 307,
+          "text": "D_D_bond                 = 1.25e-6 cm2/s"
+        },
+        {
+          "line": 358,
+          "text": "Growth, branching, nonessential topology, bonded transport, D\u2194E reactions, export, and reward remain disabled."
+        },
+        {
+          "line": 460,
+          "text": "* analytical diffusion, uptake, reaction, bonded-transport, growth, and export fixtures;"
+        },
+        {
+          "line": 498,
+          "text": "| Bonded D transport            | (0,1.25\\times10^{-7},1.25\\times10^{-6},1.25\\times10^{-5}\\ \\mathrm{cm^2/s})                           |"
+        },
+        {
+          "line": 583,
+          "text": "* Bonded transport off."
+        },
+        {
+          "line": 702,
+          "text": "* No effect of bonded D transport."
+        },
+        {
+          "line": 722,
+          "text": "* whether D uptake, D\u2194E conversion, bonded transport, structuralization, P limitation, export, and reward engage through their intended operators;"
+        }
+      ]
+    }
+  ],
+  "blockers": [
+    "D-C13-01-BONDED-D-DISCRETIZATION",
+    "D-C13-02-INTEGRATED-NUMERICAL-PREREGISTRATION",
+    "D-C13-03-TERMINAL-ZONE-GENERAL-TOPOLOGY"
+  ],
+  "stage_actions": {
+    "product_source_edit_started": false,
+    "build_started": false,
+    "stage0_runtime_started": false,
+    "science_outcome_started": false,
+    "external_resource_used": false,
+    "external_spend_usd": 0
+  },
+  "claim_boundary": "Specification-completeness and byte-identity evidence only; not mentor approval, calibration, CLOSED_SCIENTIFIC, predictive validation, release evidence, or a P15 outcome."
+}

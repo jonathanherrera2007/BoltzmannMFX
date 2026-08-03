@@ -1,0 +1,16 @@
+{
+    "artifact_type":  "C09_GEOMETRY_UNIT_TEST",
+    "stage":  "C09/P11",
+    "status":  "PASS",
+    "checks_executed":  153,
+    "output":  "C09_GEOMETRY_UNIT PASS checks=153",
+    "executable":  {
+                       "path":  "C:\\b\\BMX-shadow-handoff-20260721\\runs\\c09-geometry-unit-definitive\\c09_geometry_unit.exe",
+                       "sha256":  "1ce50562dfec7b59fac3fa57fbd6003fdcae0cd43fbc28ab4448a819c0a75b21"
+                   },
+    "source_sha256":  "0278760e31efb78cc80024290386fce6ad677bc389b28587d72da5fe66181020",
+    "geometry_header_sha256":  "a0604424ed5bb223fb5c0dc0baed729ce3536577992d71c07b40a827472795f8",
+    "external_resources":  "none",
+    "external_spend_usd":  0,
+    "claim_boundary":  "Pure deterministic C09 engineering predicates; no biological calibration, reference-host evidence, or independent numerical review."
+}

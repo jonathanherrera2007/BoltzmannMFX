@@ -9,6 +9,14 @@ target_include_directories( bmxcore
 
 target_sources( bmxcore
    PRIVATE
+   bmx_phosphorus_uptake.cpp
+   bmx_phosphorus_uptake_K.H
+   bmx_phosphorus_reactions.cpp
+   bmx_phosphorus_reactions_K.H
+   bmx_phosphorus_export.cpp
+   bmx_phosphorus_export_K.H
+   bmx_p15_stage0.cpp
+   bmx_p15_stage0_K.H
    bmx_chem.H
    bmx_chem_K.H
    bmx_cell_interaction.H
@@ -16,4 +24,3 @@ target_sources( bmxcore
    bmx_chem.cpp
    bmx_cell_interaction.cpp
    )
-

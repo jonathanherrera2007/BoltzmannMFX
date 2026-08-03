@@ -1,0 +1,9 @@
+e3eb56f3d02d64d2ab21efb4e3a435d36e59541d  C13 decision-only binding freeze
+7cd952ec22172a023de25f84952263c896458730  C13 deterministic Stage-0 implementation
+a475b3f968e17327f2ffe28d0d48a781d35e3e65  C13 clean native build recorder / source candidate
+0e75f5ce5f895bd58642099762a7e755c4d2922a  C13 engineering evidence and D-C13-04 handoff
+f43aed8d364b5ddc55ab98da1304091454a90669  C13 committed-byte evidence hash repair
+a9f383c7bde137b2e2ad74d7353a87203bfc2374  C13 D-C13-04 decision package
+1f877be92190dd4bffa1b701f3aa8260235170c2  C13 D-C13-04 adoption evidence
+91836c51529480ba0db44ec32d446d568dacd547  C13 D-C13-05 blocker evidence payload
+8136485e197590327c661a13107f298d899a66fe  C13 D-C13-05 evidence identity recorder

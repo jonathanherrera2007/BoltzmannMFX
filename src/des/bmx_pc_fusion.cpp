@@ -8,6 +8,12 @@
 #include <bmx_bc_parms.H>
 #include <bmx_cell_interaction_K.H>
 #include <bmx_chem_K.H>
+#include <bmx_fluid_parms.H>
+#include <bmx_pc_phosphorus.H>
+
+#include <cstdint>
+#include <unordered_map>
+#include <vector>
 
 using namespace amrex;
 
@@ -24,6 +30,273 @@ bool BMXParticleContainer::EvaluateTipFusion (const Vector<MultiFab*> cost,
     Real eps = std::numeric_limits<Real>::epsilon();
 
     int global_fused = 0;
+    const bool p10_enabled =
+        BMXChemLayout::classifyMeshSpecies(FLUID::chem_species) ==
+        BMXChemLayout::MeshMode::enabled;
+
+    if (p10_enabled) {
+      struct TipFusionMutation
+      {
+        int target_id;
+        int target_cpu;
+        int fix_site;
+        int fuse_tip;
+        Real tau_split;
+      };
+      auto stable_key = [] (int id, int cpu) -> std::uint64_t {
+        return (static_cast<std::uint64_t>(
+                    static_cast<std::uint32_t>(cpu)) << 32) |
+               static_cast<std::uint32_t>(id);
+      };
+
+      BMXPhosphorus::validateBondTopology(*this);
+      std::unordered_map<std::uint64_t,TipFusionMutation> frozen_mutations;
+      std::vector<BMXPhosphorus::TopologyEventParticipants> local_events;
+      int batch_conflict = 0;
+
+      // Evaluate every candidate against an immutable particle copy. The
+      // frozen kernel routine is reused for its geometry and RNG predicate,
+      // but its mutations land only in the copy until the complete global
+      // conflict graph has passed.
+      for (int lev = 0; lev <= finest_level; ++lev) {
+        if (this->NumberOfParticlesAtLevel(lev) == 0) continue;
+        BMXChemistry *chemistry = BMXChemistry::instance();
+        amrex::Gpu::DeviceVector<Real> fpar_vec =
+            chemistry->getFusionParameters();
+        auto* fpar = fpar_vec.data();
+        BMXCellInteraction *interaction = BMXCellInteraction::instance();
+        amrex::Gpu::DeviceVector<Real> xpar_vec =
+            interaction->getForceParams();
+        auto* xpar = xpar_vec.data();
+
+        clearNeighbors();
+        BMXPhosphorus::requireRedistributionSafe(*this);
+        Redistribute(0, 0, 0, 1);
+        fillNeighbors();
+        buildNeighborList(BMXCheckPair(DEM::neighborhood, false), false);
+
+        for (BMXParIter pti(*this, lev); pti.isValid(); ++pti) {
+          const Real tile_start = ParallelDescriptor::second();
+          PairIndex index(pti.index(), pti.LocalTileIndex());
+          auto& particles = pti.GetArrayOfStructs();
+          auto* pstruct = particles().dataPtr();
+          const int nrp = GetParticles(lev)[index].numRealParticles();
+          auto nbor_data = m_neighbor_list[lev][index].data();
+          const int me = ParallelDescriptor::MyProc();
+          constexpr Real small_number = 1.0e-15;
+
+          Gpu::DeviceVector<unsigned int> event_count(nrp, 0);
+          Gpu::DeviceVector<int> target_id(nrp, -1);
+          Gpu::DeviceVector<int> target_cpu(nrp, -1);
+          Gpu::DeviceVector<int> fix_site(nrp, -1);
+          Gpu::DeviceVector<int> fuse_tip(nrp, -1);
+          Gpu::DeviceVector<Real> tau_split(nrp, 0.0);
+          auto* event_count_ptr = event_count.data();
+          auto* target_id_ptr = target_id.data();
+          auto* target_cpu_ptr = target_cpu.data();
+          auto* fix_site_ptr = fix_site.data();
+          auto* fuse_tip_ptr = fuse_tip.data();
+          auto* tau_split_ptr = tau_split.data();
+
+          amrex::ParallelForRNG(nrp,
+              [=] AMREX_GPU_DEVICE (
+                  int particle_index,
+                  amrex::RandomEngine const& engine) noexcept
+              {
+                const auto& particle = pstruct[particle_index];
+                RealVect position(particle.pos());
+                const auto neighbors =
+                    nbor_data.getNeighbors(particle_index);
+                for (auto neighbor = neighbors.begin();
+                     neighbor != neighbors.end(); ++neighbor) {
+                  auto other = *neighbor;
+                  const Real dx = position[0] - other.pos(0);
+                  const Real dy = position[1] - other.pos(1);
+                  const Real dz = position[2] - other.pos(2);
+                  const Real distance_squared = dx*dx + dy*dy + dz*dz;
+                  const Real interaction_distance = maxInteractionDistance(
+                      &particle.rdata(0), &other.rdata(0),
+                      &particle.idata(0), &other.idata(0), &xpar[0]);
+                  if (distance_squared >
+                      (interaction_distance-small_number) *
+                      (interaction_distance-small_number)) {
+                    continue;
+                  }
+
+                  auto tip_copy = particle;
+                  auto target_copy = other;
+                  Real displacement[3] = {dx, dy, dz};
+                  int fusing = 0;
+                  checkTipFusion(
+                      displacement, &tip_copy.rdata(0),
+                      &tip_copy.idata(0), &target_copy.rdata(0),
+                      &target_copy.idata(0), fpar, me, &fusing, engine);
+                  if (fusing == 1) {
+                    const auto previous = amrex::Gpu::Atomic::Add(
+                        event_count_ptr + particle_index, 1u);
+                    if (previous == 0u) {
+                      target_id_ptr[particle_index] =
+                          tip_copy.idata(intIdx::fuse_id);
+                      target_cpu_ptr[particle_index] =
+                          tip_copy.idata(intIdx::fuse_cpu);
+                      fix_site_ptr[particle_index] =
+                          tip_copy.idata(intIdx::fix_site);
+                      fuse_tip_ptr[particle_index] =
+                          tip_copy.idata(intIdx::fuse_tip);
+                      tau_split_ptr[particle_index] =
+                          tip_copy.rdata(realIdx::tau_split);
+                    }
+                  }
+                }
+              });
+          amrex::Gpu::streamSynchronize();
+
+          amrex::Gpu::HostVector<unsigned int> host_event_count(nrp);
+          amrex::Gpu::HostVector<int> host_target_id(nrp);
+          amrex::Gpu::HostVector<int> host_target_cpu(nrp);
+          amrex::Gpu::HostVector<int> host_fix_site(nrp);
+          amrex::Gpu::HostVector<int> host_fuse_tip(nrp);
+          amrex::Gpu::HostVector<Real> host_tau_split(nrp);
+          amrex::Gpu::HostVector<ParticleType> host_particles(nrp);
+          amrex::Gpu::copy(amrex::Gpu::deviceToHost,
+                           event_count.begin(), event_count.end(),
+                           host_event_count.begin());
+          amrex::Gpu::copy(amrex::Gpu::deviceToHost,
+                           target_id.begin(), target_id.end(),
+                           host_target_id.begin());
+          amrex::Gpu::copy(amrex::Gpu::deviceToHost,
+                           target_cpu.begin(), target_cpu.end(),
+                           host_target_cpu.begin());
+          amrex::Gpu::copy(amrex::Gpu::deviceToHost,
+                           fix_site.begin(), fix_site.end(),
+                           host_fix_site.begin());
+          amrex::Gpu::copy(amrex::Gpu::deviceToHost,
+                           fuse_tip.begin(), fuse_tip.end(),
+                           host_fuse_tip.begin());
+          amrex::Gpu::copy(amrex::Gpu::deviceToHost,
+                           tau_split.begin(), tau_split.end(),
+                           host_tau_split.begin());
+          amrex::Gpu::copy(amrex::Gpu::deviceToHost,
+                           particles.begin(), particles.begin() + nrp,
+                           host_particles.begin());
+
+          for (int particle_index = 0;
+               particle_index < nrp; ++particle_index) {
+            if (host_event_count[particle_index] > 1) {
+              batch_conflict = 1;
+              continue;
+            }
+            if (host_event_count[particle_index] == 0) continue;
+            const auto& particle = host_particles[particle_index];
+            const int id = particle.idata(intIdx::id);
+            const int cpu = particle.idata(intIdx::cpu);
+            const TipFusionMutation mutation{
+                host_target_id[particle_index],
+                host_target_cpu[particle_index],
+                host_fix_site[particle_index],
+                host_fuse_tip[particle_index],
+                host_tau_split[particle_index]};
+            if (!frozen_mutations.emplace(
+                    stable_key(id, cpu), mutation).second) {
+              batch_conflict = 1;
+            }
+            local_events.push_back({
+                2, id, cpu, mutation.target_id, mutation.target_cpu});
+          }
+          if (cost[lev]) {
+            const Box& tile_box = pti.tilebox();
+            Real weight = 0.0;
+            if (knapsack_weight_type == "RunTimeCosts") {
+              weight = (ParallelDescriptor::second() - tile_start) /
+                       tile_box.d_numPts();
+            } else if (knapsack_weight_type == "NumParticles") {
+              weight = nrp / tile_box.d_numPts();
+            }
+            (*cost[lev])[pti].plus<RunOn::Device>(weight, tile_box);
+          }
+        }
+      }
+
+      ParallelDescriptor::ReduceIntMax(batch_conflict);
+      if (batch_conflict) {
+        amrex::Abort("P10_ABORT_SIMULTANEOUS_TOPOLOGY_CONFLICT");
+      }
+      BMXPhosphorus::requireDisjointTopologyBatch(*this, local_events);
+
+      // Commit the frozen, disjoint batch. Every relationship write is now
+      // deterministic from the approved snapshot and precedes the later
+      // interior split that owns the amount partition.
+      for (int lev = 0; lev <= finest_level; ++lev) {
+        if (this->NumberOfParticlesAtLevel(lev) == 0) continue;
+        BMXChemistry *chemistry = BMXChemistry::instance();
+        amrex::Gpu::DeviceVector<Real> fpar_vec =
+            chemistry->getFusionParameters();
+        auto* fpar = fpar_vec.data();
+        for (BMXParIter pti(*this, lev); pti.isValid(); ++pti) {
+          const Real tile_start = ParallelDescriptor::second();
+          PairIndex index(pti.index(), pti.LocalTileIndex());
+          auto& particles = pti.GetArrayOfStructs();
+          auto* pstruct = particles().dataPtr();
+          const int nrp = GetParticles(lev)[index].numRealParticles();
+          amrex::Gpu::HostVector<ParticleType> host_particles(nrp);
+          amrex::Gpu::copy(amrex::Gpu::deviceToHost,
+                           particles.begin(), particles.begin() + nrp,
+                           host_particles.begin());
+          for (auto& particle : host_particles) {
+            const auto mutation = frozen_mutations.find(stable_key(
+                particle.idata(intIdx::id), particle.idata(intIdx::cpu)));
+            if (mutation == frozen_mutations.end()) continue;
+            const int old_bond_count = particle.idata(intIdx::n_bnds);
+            if (old_bond_count < 0 || old_bond_count >= 4) {
+              amrex::Abort("P10_ABORT_SIMULTANEOUS_TOPOLOGY_CONFLICT");
+            }
+            particle.idata(intIdx::fuse_flag) = 1;
+            particle.idata(intIdx::fuse_id) = mutation->second.target_id;
+            particle.idata(intIdx::fuse_cpu) = mutation->second.target_cpu;
+            particle.idata(intIdx::position) = siteLocation::INTERIOR;
+            particle.rdata(realIdx::tau_split) = mutation->second.tau_split;
+            particle.idata(intIdx::fix_site) = mutation->second.fix_site;
+            particle.idata(intIdx::fuse_tip) = mutation->second.fuse_tip;
+            particle.idata(intIdx::seg1_id1 + old_bond_count) =
+                mutation->second.target_id;
+            particle.idata(intIdx::seg1_id2 + old_bond_count) =
+                mutation->second.target_cpu;
+            particle.idata(intIdx::site1 + old_bond_count) =
+                mutation->second.fuse_tip;
+            particle.idata(intIdx::n_bnds) = old_bond_count + 1;
+            particle.rdata(realIdx::bond_scale) = 0.0;
+          }
+          amrex::Gpu::copy(amrex::Gpu::hostToDevice,
+                           host_particles.begin(), host_particles.end(),
+                           particles.begin());
+          amrex::ParallelFor(nrp,
+              [=] AMREX_GPU_DEVICE (int particle_index) noexcept
+              {
+                incrementBondScale(&pstruct[particle_index].rdata(0),
+                                   &pstruct[particle_index].idata(0), fpar);
+              });
+          amrex::Gpu::streamSynchronize();
+          if (cost[lev] && knapsack_weight_type == "RunTimeCosts") {
+            const Box& tile_box = pti.tilebox();
+            const Real weight =
+                (ParallelDescriptor::second() - tile_start) /
+                tile_box.d_numPts();
+            (*cost[lev])[pti].plus<RunOn::Device>(weight, tile_box);
+          }
+        }
+      }
+
+      global_fused = frozen_mutations.empty() ? 0 : 1;
+      ParallelDescriptor::ReduceIntMax(global_fused);
+      ret = global_fused == 1;
+      if (!ret) {
+        BMXPhosphorus::requireRedistributionSafe(*this);
+        Redistribute(0, 0, 0, 1);
+      }
+      BL_PROFILE_REGION_STOP("bmx_dem::EvaluateTipFusion()");
+      return ret;
+    }
+
     for (int lev = 0; lev <= finest_level; lev++)
     {
 
@@ -220,6 +493,149 @@ void BMXParticleContainer::EvaluateInteriorFusion (const Vector<MultiFab*> cost,
 
   int l_num_reals = BMXChemistry::p_num_reals;
   int l_num_ints  = BMXChemistry::p_num_ints;
+  const bool p10_enabled =
+      BMXChemLayout::classifyMeshSpecies(FLUID::chem_species) ==
+      BMXChemLayout::MeshMode::enabled;
+
+  // The adopted P10 rule requires conflict detection for the complete batch
+  // before any child particle is created or any owning amount is partitioned.
+  // This pass deliberately duplicates only checkInteriorFusion's predicate:
+  // it does not call that routine because the frozen routine mutates flags and
+  // tau_split. The actual transaction remains in the existing pass below and
+  // is reached only if the MPI-global event graph is disjoint.
+  if (p10_enabled) {
+    BMXPhosphorus::validateBondTopology(*this);
+    clearNeighbors();
+    fillNeighbors();
+    buildNeighborList(
+        BMXCheckPair(DEM::neighborhood, false, pairDebug::INTERIORFUSION),
+        false);
+
+    int batch_conflict = 0;
+    std::vector<BMXPhosphorus::TopologyEventParticipants> local_events;
+    BMXCellInteraction *preflight_interaction = BMXCellInteraction::instance();
+    amrex::Gpu::DeviceVector<Real> preflight_xpar_vec =
+        preflight_interaction->getForceParams();
+    auto preflight_xpar = preflight_xpar_vec.data();
+
+    for (int preflight_lev = 0;
+         preflight_lev <= finest_level; ++preflight_lev) {
+      for (BMXParIter pti(*this, preflight_lev); pti.isValid(); ++pti) {
+        PairIndex index(pti.index(), pti.LocalTileIndex());
+        auto& particles = pti.GetArrayOfStructs();
+        ParticleType* pstruct = particles().dataPtr();
+        const int nrp = GetParticles(preflight_lev)[index].numRealParticles();
+        auto nbor_data = m_neighbor_list[preflight_lev][index].data();
+        constexpr Real small_number = 1.0e-15;
+
+        Gpu::DeviceVector<unsigned int> event_membership(nrp, 0);
+        auto event_membership_ptr = event_membership.data();
+        Gpu::DeviceVector<int> event_tip_id(nrp, -1);
+        Gpu::DeviceVector<int> event_tip_cpu(nrp, -1);
+        auto event_tip_id_ptr = event_tip_id.data();
+        auto event_tip_cpu_ptr = event_tip_cpu.data();
+        amrex::ParallelFor(nrp,
+            [pstruct,nbor_data,preflight_xpar,event_membership_ptr,
+             event_tip_id_ptr,event_tip_cpu_ptr]
+            AMREX_GPU_DEVICE (int i) noexcept
+            {
+              auto& particle = pstruct[i];
+              RealVect position(particle.pos());
+              const auto neighbors = nbor_data.getNeighbors(i);
+              for (auto neighbor = neighbors.begin();
+                   neighbor != neighbors.end(); ++neighbor) {
+                auto other = *neighbor;
+                const Real dx = position[0] - other.pos(0);
+                const Real dy = position[1] - other.pos(1);
+                const Real dz = position[2] - other.pos(2);
+                const Real distance_squared = dx*dx + dy*dy + dz*dz;
+                const Real interaction_distance = maxInteractionDistance(
+                    &particle.rdata(0), &other.rdata(0),
+                    &particle.idata(0), &other.idata(0),
+                    &preflight_xpar[0]);
+                if (distance_squared <=
+                    (interaction_distance-small_number) *
+                    (interaction_distance-small_number)) {
+                  const int* particle_int = &particle.idata(0);
+                  const int* other_int = &other.idata(0);
+                  bool candidate =
+                      particle_int[intIdx::position] != siteLocation::TIP &&
+                      other_int[intIdx::fuse_flag] == 1 &&
+                      particle_int[intIdx::id] ==
+                          other_int[intIdx::fuse_id] &&
+                      particle_int[intIdx::cpu] ==
+                          other_int[intIdx::fuse_cpu];
+                  bool bonded = false;
+                  if (candidate) {
+                    const int particle_bonds =
+                        particle_int[intIdx::n_bnds];
+                    const int other_bonds = other_int[intIdx::n_bnds];
+                    for (int particle_bond = 0;
+                         particle_bond < particle_bonds; ++particle_bond) {
+                      for (int other_bond = 0;
+                           other_bond < other_bonds; ++other_bond) {
+                        if (particle_int[intIdx::seg1_id1 + particle_bond] ==
+                                other_int[intIdx::seg1_id1 + other_bond] &&
+                            particle_int[intIdx::seg1_id2 + particle_bond] ==
+                                other_int[intIdx::seg1_id2 + other_bond]) {
+                          bonded = true;
+                        }
+                      }
+                    }
+                  }
+                  if (candidate && !bonded) {
+                    amrex::Gpu::Atomic::Add(event_membership_ptr+i, 1u);
+                    amrex::Gpu::Atomic::Exch(
+                        event_tip_id_ptr+i, other_int[intIdx::id]);
+                    amrex::Gpu::Atomic::Exch(
+                        event_tip_cpu_ptr+i, other_int[intIdx::cpu]);
+                  }
+                }
+              }
+            });
+        amrex::Gpu::streamSynchronize();
+
+        amrex::Gpu::HostVector<unsigned int> host_membership(nrp);
+        amrex::Gpu::HostVector<int> host_tip_id(nrp);
+        amrex::Gpu::HostVector<int> host_tip_cpu(nrp);
+        amrex::Gpu::copy(amrex::Gpu::deviceToHost,
+                         event_membership.begin(), event_membership.end(),
+                         host_membership.begin());
+        amrex::Gpu::copy(amrex::Gpu::deviceToHost,
+                         event_tip_id.begin(), event_tip_id.end(),
+                         host_tip_id.begin());
+        amrex::Gpu::copy(amrex::Gpu::deviceToHost,
+                         event_tip_cpu.begin(), event_tip_cpu.end(),
+                         host_tip_cpu.begin());
+        amrex::Gpu::HostVector<ParticleType> host_particles(nrp);
+        amrex::Gpu::copy(amrex::Gpu::deviceToHost,
+                         particles.begin(), particles.begin() + nrp,
+                         host_particles.begin());
+        for (int particle_index = 0;
+             particle_index < nrp; ++particle_index) {
+          if (host_membership[particle_index] > 1) {
+            batch_conflict = 1;
+          } else if (host_membership[particle_index] == 1) {
+            const auto& particle = host_particles[particle_index];
+            local_events.push_back({
+                1,
+                particle.idata(intIdx::id),
+                particle.idata(intIdx::cpu),
+                host_tip_id[particle_index],
+                host_tip_cpu[particle_index]});
+          }
+        }
+      }
+    }
+    ParallelDescriptor::ReduceIntMax(batch_conflict);
+    const auto decision = BMXPhosphorus::classifySimultaneousBatch(
+        batch_conflict ? 2 : 1);
+    if (decision.disposition ==
+        BMXPhosphorus::TopologyDisposition::abort_update) {
+      amrex::Abort(BMXPhosphorus::topologyReasonCode(decision.reason));
+    }
+    BMXPhosphorus::requireDisjointTopologyBatch(*this, local_events);
+  }
 
   for (int lev = 0; lev <= finest_level; lev++)
   {
@@ -408,11 +824,25 @@ void BMXParticleContainer::EvaluateInteriorFusion (const Vector<MultiFab*> cost,
             int *ipar_orig = &p_orig.idata(0);
             int *ipar_new  = &p.idata(0);
 
+            BMXPhosphorus::ParticleAmounts phosphorus_before;
+            if (p10_enabled &&
+                BMXPhosphorus::captureParticleAmounts(
+                    par_orig, phosphorus_before) !=
+                    BMXPhosphorus::AmountStatus::ok) {
+              amrex::Abort("P10 fusion split encountered invalid D/E/F amount state");
+            }
+
             // Set parameters on new particled based on values from
             // original particle
             setSplitSegment(pos_orig, pos_new, par_orig,
                 par_new, ipar_orig, ipar_new,
                 l_num_reals, l_num_ints, p.id(), p.cpu());
+            if (p10_enabled &&
+                BMXPhosphorus::partitionTwo(
+                    phosphorus_before, par_orig, par_new) !=
+                    BMXPhosphorus::AmountStatus::ok) {
+              amrex::Abort("P10 fusion split produced invalid D/E/F owning volumes");
+            }
             ipar_new[intIdx::id] = p.id();
             ipar_new[intIdx::cpu] = p.cpu();
             ipar_orig[intIdx::fuse_flag] = 0;
@@ -426,8 +856,12 @@ void BMXParticleContainer::EvaluateInteriorFusion (const Vector<MultiFab*> cost,
             ipar_new[intIdx::fuse_id] = -1;
             ipar_new[intIdx::fuse_cpu] = -1;
           } else if (do_split_p[pid] > 1) {
-            //TODO: Simultaneous fusion happened. We don't know how to
-            //handle this.
+            // Global preflight above makes this unreachable in enabled mode.
+            // Retain a device-side safety stop in case the candidate graph is
+            // ever changed without updating that preflight.
+            if (p10_enabled) {
+              amrex::Abort("P10_ABORT_SIMULTANEOUS_TOPOLOGY_CONFLICT");
+            }
 #ifndef AMREX_USE_GPU
             std::cout<<"Simultaneous fusion event happened. We cannot"
               " handle this situation"<<std::endl;
@@ -464,6 +898,9 @@ void BMXParticleContainer::EvaluateInteriorFusion (const Vector<MultiFab*> cost,
 
   } // lev
 
+  if (p10_enabled) {
+    BMXPhosphorus::validateBondTopology(*this);
+  }
   // Redistribute particles at the end of all substeps (note that the particle
   // neighbour list needs to be reset when redistributing).
   clearNeighbors();
@@ -530,6 +967,7 @@ void BMXParticleContainer::CleanupFusion (const Vector<MultiFab*> cost,
       clearNeighbors();
       //Redistribute(0, 0, 0, 1);
       //Redistribute(0, finest_level, 0, 1);
+      BMXPhosphorus::requireRedistributionSafe(*this);
       Redistribute();
       fillNeighbors();
       // send in "false" for sort_neighbor_list option
@@ -681,6 +1119,11 @@ void BMXParticleContainer::CleanupFusion (const Vector<MultiFab*> cost,
 
 
   } // lev
+
+  if (BMXChemLayout::classifyMeshSpecies(FLUID::chem_species) ==
+      BMXChemLayout::MeshMode::enabled) {
+    BMXPhosphorus::validateBondTopology(*this);
+  }
   // Redistribute particles at the end of all substeps (note that the particle
   // neighbour list needs to be reset when redistributing).
   clearNeighbors();

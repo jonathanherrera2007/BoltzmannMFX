@@ -1,0 +1,22 @@
+==============================================================================
+BMX RG-SW -- C04 qualification sequence
+platform      : native Linux / Ubuntu 24.04.4 LTS / kernel 6.17.0-1021-gcp
+platform class: reference-capable   (classification from tools/repro/linux_env.sh)
+==============================================================================
+
+[PASS] identity_reviewed_candidate_kernel: 9519fc24ec7ea15f... matches the reviewed candidate
+[PASS] identity_amrex: commit cbdc6580ee3d, tree fb714dc6e693
+[PASS] identity_build_provenance: status=RESOLVED commit=b686981faa9d dirty=clean
+[PASS] build_images_present: reused existing images
+[PASS] per_image_provenance_resolved_and_exact: all four images report RESOLVED provenance on a clean tree
+[PASS] geometry_matrix: 7 fixtures, failing=0, neutrality=PASS
+[PASS] diagnostic_regression_guard: 5/5 checks
+[PASS] donor_cap_fixture: verdict=CAP_FIRES_AND_TRANSFER_EQUALS_AVAILABLE, saturation=True, transfer_equals_available=True
+[PASS] provenance_regression_fixture: 7/7 checks
+
+==============================================================================
+checks passed        : 9/9
+platform class       : reference-capable
+RELEASE EVIDENCE     : True
+==============================================================================
+wrote /home/jherrera2007/bmx-c04-qual/runs/c04-qualification/QUALIFICATION_REFERENCE.json

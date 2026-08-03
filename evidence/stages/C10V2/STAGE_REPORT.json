@@ -1,0 +1,218 @@
+{
+  "artifact_type": "C10_V2_STAGE_REPORT",
+  "stage": "C10/P12",
+  "generated": "2026-08-02",
+  "status": "PASS",
+  "engineering_implementation": "PASS",
+  "independent_prerun_review": "PASS",
+  "windows_numerical_qualification": "PASS",
+  "reference_host_reproduction": "PASS",
+  "reference_host_timing": "PASS",
+  "final_independent_acceptance": "PASS",
+  "claim_boundary": "C10/P12 V2 is PASS for numerical and software correctness. The independently prereviewed study passed on Windows and the pinned native-Linux reference host, agreed exactly on claim-bearing values, selected L0 with dt=1800 s, and received final independent acceptance. This is not mentor approval, biological calibration, predictive validation, RG-SCI progress, a P15 timing estimate, or authorization for C11 or any later stage.",
+  "source": {
+    "implementation_commit": "0f38760b4daba3acbfd4b658c9ac522523b5c69b",
+    "implementation_tree": "511e3d1ec6ec5148aa0548b6256c85b52a3b68a2",
+    "branch": "rgsw/c10-p12",
+    "clean_before_outcome_run": true
+  },
+  "contracts": {
+    "numerical_v2_id": "USER-DIRECTED-20260801-P12-NUMERICAL-V2",
+    "numerical_v2_sha256": "43d64a8f4ec6c8c00379fc3d9605441cb900479fcdd8db9e78e6fc1edd28f81f",
+    "scientific_uptake_sha256": "2094aed3c8ef21a257d2c597352793384d01a1efc3d72936d5c5108d308f8804",
+    "operator_order_sha256": "bb63c219a860687d91ce1acf06a667c9208abf026b32f18acfc64884bb696dd6",
+    "frozen_kernel_sha256": "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02",
+    "v1_and_failed_evidence_preserved": true
+  },
+  "review": {
+    "id": "IR-20260801-P12-NUMERICAL-V2",
+    "status": "PASS",
+    "reviewer_identity": "Claude (Opus 5) acting as independent reviewer; writer role for rgsw/product handed to Codex at e7a6952 and not resumed. Same reviewer as IR-20260801-P10-U02.",
+    "attributed_but_unsigned": true,
+    "cryptographic_signature_present": false,
+    "artifact_sha256": "bda12aef209793b4537915e374e09caf100397c0fdf8678ed00118ff987a3ea2",
+    "outcome_execution_authorized": true
+  },
+  "final_acceptance": {
+    "id": "IA-20260802-C10-V2-FINAL",
+    "status": "PASS",
+    "artifact": "FINAL_INDEPENDENT_ACCEPTANCE.json",
+    "artifact_sha256": "de1fb8ba26696a84ff0f0233e9fe269e091a384eb5034e86fc74250cbb72de58",
+    "evidence_commit_reviewed": "3c4a0806c9d345b3ce8809076447c22784d5cbff",
+    "reviewer_identity": "Claude (Opus 5) acting as independent reviewer; writer role for rgsw/product handed to Codex at e7a6952 and not resumed.",
+    "reviewer_is_implementation_writer": false,
+    "read_only_review": true,
+    "confirmations_passed": 10,
+    "confirmations_failed": 0,
+    "cryptographic_signature_present": false,
+    "attributed_but_unsigned": true,
+    "closure_authorized": true,
+    "later_stage_authorized": false
+  },
+  "outcome_evidence": {
+    "artifact": "P12_V2_GRID_TIME.json",
+    "committed_lf_sha256": "d7ed0cce4af86517d1206427ff4bdc47eb931fbec6d4a87bcf30e33e48ea3742",
+    "exact_generated_sha256": "e25ff8256a1ab151cea3b007228b261bd1c4d8b83fa34234d71371d62b2d0ab0",
+    "exact_generated_size_bytes": 158169,
+    "exact_generated_archive": "P12_V2_GRID_TIME.raw.zip",
+    "exact_generated_archive_sha256": "d85e08240788f023e5f59ec16b31ebc11a0e790ff061af2cdbc26f1239ca23e9",
+    "exact_generated_archive_member": "P12_V2_GRID_TIME.json",
+    "line_ending_note": "The review copy follows the repository's LF JSON policy. The archive member is the byte-exact CRLF output emitted by the Windows runner.",
+    "status": "PASS",
+    "runner_sha256": "882fb997a71ccc91d6f660af33855b3631ba4e4fd39b6f6665464c7853622d5d",
+    "executable_sha256": "4591dacc8e2ece1a32a4e3ec18e1293a04cd0a364bcb62a7ccf94dd61d66518f",
+    "extractor_source_sha256": "5733e5d5b0b3ef65ad8a2282111c735c476ec6872331546e5e443fa250e63d1b",
+    "extractor_executable_sha256": "968ab9c05073cec8cd1bbb339a63379acea153ea54640c43403f6ae93c3815ff",
+    "case_groups": 10,
+    "simulation_summaries": 50,
+    "failed_simulation_summaries": 0
+  },
+  "reference_outcome_evidence": {
+    "artifact": "reference/results/P12_V2_GRID_TIME_REFERENCE.json",
+    "sha256": "b3d72145bfd9310d4d0f2ea171bbcb0e814debe36bbac56ac6e52103e7b89d43",
+    "execution_report": "reference/REFERENCE_EXECUTION_REPORT.json",
+    "status": "PASS",
+    "platform": "GCE native Linux; n2-standard-8; us-west1-b; required and observed Intel Cascade Lake",
+    "executable_sha256": "30d9e79289d1c9fe4324aaefe0d3bfb998f650578431fcc4b2e32a4f0dafbe4b",
+    "extractor_sha256": "489c41375ae6ee974f67111f2c99d93af9d5348612a34bc75918496db473bc02",
+    "case_groups": 10,
+    "simulation_summaries": 50,
+    "failed_simulation_summaries": 0,
+    "windows_reference_claim_value_differences": 0
+  },
+  "selection": {
+    "selected_grid": "L0",
+    "n_cell": [8, 8, 4],
+    "selected_dt_s": 1800.0,
+    "status_qualifier": "Selected by the frozen V2 coarsest-passing rule, reproduced exactly on the pinned reference host, and accepted independently for C10/P12 engineering use. Scientific parameters remain provisional."
+  },
+  "no_clipping": {
+    "maximum_eta_over_all_qualified_trajectories": 0.10654141714024555,
+    "eta_limit": 0.25,
+    "minimum_donor_scale_over_all_qualified_trajectories": 1.0,
+    "minimum_scale_limit": 0.9999999999999858,
+    "maximum_cumulative_rejected_mol": 0.0,
+    "status": "PASS"
+  },
+  "coupled_grid_comparisons": {
+    "L0_vs_L1_low": {
+      "uptake_relative_difference": 0.0001184302677306849,
+      "maximum_profile_l1_relative": 0.0000331410499321656,
+      "status": "PASS"
+    },
+    "L0_vs_L1_high": {
+      "uptake_relative_difference": 0.0000158372861288955,
+      "maximum_profile_l1_relative": 0.0000121040507770917,
+      "status": "PASS"
+    },
+    "L1_vs_L2_low": {
+      "uptake_relative_difference": 0.00022035613306748612,
+      "maximum_profile_l1_relative": 0.0000178283220746863,
+      "status": "PASS"
+    },
+    "L1_vs_L2_high": {
+      "uptake_relative_difference": 0.0000293698776247757,
+      "maximum_profile_l1_relative": 0.00000625459189205004,
+      "status": "PASS"
+    }
+  },
+  "fixed_grid_temporal_comparisons": {
+    "T0_vs_T1_low": {
+      "uptake_relative_difference": 0.00000653535033734091,
+      "maximum_profile_l1_relative": 0.00000646805932577853,
+      "status": "PASS"
+    },
+    "T0_vs_T1_high": {
+      "uptake_relative_difference": 0.000000876404101437377,
+      "maximum_profile_l1_relative": 0.00000239456259075868,
+      "status": "PASS"
+    },
+    "T1_vs_T2_low": {
+      "uptake_relative_difference": 0.0000032679282662518,
+      "maximum_profile_l1_relative": 0.00000302488790673219,
+      "status": "PASS"
+    },
+    "T1_vs_T2_high": {
+      "uptake_relative_difference": 0.000000438216141476448,
+      "maximum_profile_l1_relative": 0.00000112014431229343,
+      "status": "PASS"
+    }
+  },
+  "low_high_contrast": {
+    "concentration_ratio_high_over_low": 2.8074534161490687,
+    "predicted_initial_flux_ratio_high_over_low": 1.039154791108985,
+    "measured_48h_ratio_high_over_low": {
+      "L0": 1.04026036885716,
+      "L1": 1.04036709057986,
+      "L2": 1.04056578055927
+    },
+    "interpretation": "The measured contrast is near the saturation prediction at every level. Relative excess over the predicted ratio is 0.1064% at L0, 0.1167% at L1, and 0.1358% at L2. No biological amplification claim is made."
+  },
+  "secondary_host_timing": {
+    "platform": "windows-development-secondary",
+    "selected_configuration_canonical_wall_s": {
+      "low": 2.4135849000012968,
+      "high": 2.502015499994741
+    },
+    "aggregate_recorded_simulation_wall_s": 8100.33001929999,
+    "reference_host_timing_available": false,
+    "campaign_projection_available": false
+  },
+  "reference_host_timing_evidence": {
+    "artifact": "reference/results/REFERENCE_TIMING_AND_PROJECTIONS.json",
+    "sha256": "2473d2f8675077d6e9ede062f128b1a8307035bd23f21f8bf03ce5f75ed0d2e5",
+    "platform": "GCE n2-standard-8 / Intel Cascade Lake / native Ubuntu 24.04.4",
+    "selected_configuration": "L0, 8x8x4, dt=1800 s, 48 h, 96 updates, one rank, plot every update, checkpoint update 48",
+    "repeats_per_arm": 5,
+    "low_median_wall_s": 0.9068460409998806,
+    "high_median_wall_s": 0.9089595030000055,
+    "representative_wall_s": 0.9079027719999431,
+    "campaign_projection_minutes_at_nine_way_concurrency": {
+      "n5": 1.2710638807999204,
+      "n10": 2.5421277615998406,
+      "n20": 5.084255523199681
+    },
+    "claim_boundary": "Frozen C10/P12 uptake-only fixed-network timing only. It is not a P15 estimate: P15 is 216 h with growth, reactions, topology and export active and may differ by orders of magnitude. Excludes provisioning, queue, transfer and retries."
+  },
+  "review_findings": {
+    "F-13": "RECORDED: eta<=0.25 is a conventional engineering headroom margin, not a derived physical bound; no gate changed.",
+    "F-14": "ACKNOWLEDGED: expected eta values are non-gating and the observed run-wide extrema are reported directly.",
+    "F-15": "NOT_TRIGGERED: both successive comparisons passed. The pre-existing owner rule remains block-and-escalate rather than inventing L3 if a future frozen study has no selectable level.",
+    "F-16": "NONBLOCKING_RECORDED: the 151-configuration arithmetic is retained as requested but is explicitly not a P15 estimate; later all-mechanism 216 h runs may differ by orders of magnitude.",
+    "F-17": "NONBLOCKING_OPEN_FOLLOWUP: exact GCE billing is unsettled. Query and record it before any P15 budget decision; it is not required for C10 closure."
+  },
+  "p15_design_recommendation": {
+    "status": "UNADOPTED_REVIEWER_RECOMMENDATION",
+    "finding": "The approved low/high D arms are both transporter-saturated and produced a near-null 1.040 uptake ratio despite a 2.807 concentration ratio.",
+    "decision_required_before_p15_costing_or_science": "Either prospectively adopt arms that straddle K_m, or retain the current arms and explicitly predeclare environmental D as expected-null/control. Do not decide after P15 outcomes.",
+    "c10_source_or_contract_change": false
+  },
+  "invocation_note": {
+    "first_attempt_status": "ORCHESTRATION_ABORTED_NONCLAIM",
+    "cause": "The stock AMReX 1-D fextract tool was mistakenly supplied where the frozen full-volume c10_plot_extract helper was required.",
+    "scientific_or_numerical_change": false,
+    "qualifying_attempt": "Fresh run root with the frozen c10_plot_extract helper; no run output was reused."
+  },
+  "blockers": [],
+  "closed_blockers": [
+    {
+      "id": "D-C10-02-NUMERICAL-CONVERGENCE",
+      "status": "CLOSED",
+      "residual_gap": null,
+      "closure_evidence": "FINAL_INDEPENDENT_ACCEPTANCE.json",
+      "closure_evidence_sha256": "de1fb8ba26696a84ff0f0233e9fe269e091a384eb5034e86fc74250cbb72de58"
+    }
+  ],
+  "later_stages_started": false,
+  "next_stage_authorized": false,
+  "release_evidence": true,
+  "release_evidence_scope": "C10/P12 numerical and software qualification only",
+  "external_resources": {
+    "gce_instances_created": 1,
+    "gce_instances_remaining": 0,
+    "gce_disks_remaining": 0,
+    "cleanup_status": "PASS"
+  },
+  "external_spend_usd": null,
+  "external_spend_status": "Exact bill not yet settled or queried; one authorized VM existed for approximately 84 minutes within the USD 1-2 authorization estimate."
+}

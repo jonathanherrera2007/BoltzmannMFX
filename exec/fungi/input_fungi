@@ -111,9 +111,9 @@ amr.check_file     ="chk"
 # Fluid model settings
 #
 fluid.solve = fluid
-fluid.chem_species      = A B C D F
-fluid.chem_species_diff = 6.0e-10 0.0 6.0e-10 6.0e-10 0.0
-fluid.init_conc_species = 2.0e-5 0.0 2.0e-6 2.0e-5 0.0
+fluid.chem_species      = A B C D F P
+fluid.chem_species_diff = 6.0e-10 0.0 6.0e-10 6.0e-10 0.0 6.0e-10
+fluid.init_conc_species = 2.0e-5 0.0 2.0e-6 2.0e-5 0.0 2.0e-5
 fluid.surface_location = 0.0750
 #_______________________________________________________________________
 # Reaction model parameters
@@ -136,14 +136,20 @@ chem_species.k6 = 2.0e-5
 chem_species.kr6 = 2.0e-5
 chem_species.k7 = 2.0e-5
 chem_species.kr7 = 2.0e-5
+chem_species.kP = 2.0e-5
+chem_species.krP = 2.0e-5
 chem_species.kg = 4.0 # 400.0
 chem_species.kv = 40000.0
 chem_species.kb = 4.0 # 400.0
 chem_species.kbv = 4000.0 # 40000.0
+chem_species.p_growth_limit = 0
+# Internal P amount required per unit fungal volume growth when p_growth_limit != 0.
+chem_species.qP = 2.0e-4
 
 chem_species.mass_transfer_A = 2.0e-5
 chem_species.mass_transfer_B = 2.0e-5
 chem_species.mass_transfer_C = 2.0e-5
+chem_species.mass_transfer_P = 2.0e-5
 
 chem_species.branching_probability = 0.0000
 chem_species.splitting_probability = 0.2
@@ -199,4 +205,3 @@ amr.plt_grad_X = 1
 #_______________________________________________________________________
 # DEM model settings
 #
-

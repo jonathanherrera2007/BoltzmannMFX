@@ -1,0 +1,300 @@
+{
+  "artifact_type": "C10_P12_48H_GRID_TIME_STUDY",
+  "claim_boundary": "User-authorized engineering outcome; provisional parameters, Windows development host, and no independent numerical/release review.",
+  "comparisons": {
+    "L0_vs_L1_high": {
+      "cumulative_uptake_relative_difference": 1.5124026849218928e-05,
+      "max_profile_l1": 1.2104921927440837e-05,
+      "profile_l1": {
+        "0": 0.0,
+        "129600": 1.2067469027185666e-05,
+        "14400": 1.1969061797773221e-05,
+        "172800": 1.2104921927440837e-05,
+        "1800": 8.825832344773145e-06,
+        "28800": 1.1982451618468262e-05,
+        "3600": 1.0850078394340813e-05,
+        "43200": 1.1994498505983972e-05,
+        "7200": 1.1836915871660328e-05,
+        "86400": 1.2030779094139202e-05
+      },
+      "status": "PASS"
+    },
+    "L0_vs_L1_low": {
+      "cumulative_uptake_relative_difference": 0.00011311055327433198,
+      "max_profile_l1": 3.3151977715902605e-05,
+      "profile_l1": {
+        "0": 2.0551071119329885e-16,
+        "129600": 3.291936593325189e-05,
+        "14400": 3.236548626196239e-05,
+        "172800": 3.3151977715902605e-05,
+        "1800": 2.3846951989607454e-05,
+        "28800": 3.243520575656469e-05,
+        "3600": 2.931817322562416e-05,
+        "43200": 3.250257181097548e-05,
+        "7200": 3.1993657570015844e-05,
+        "86400": 3.2705887719414165e-05
+      },
+      "status": "PASS"
+    },
+    "L1_vs_L2_high": {
+      "cumulative_uptake_relative_difference": 2.956616853862426e-05,
+      "max_profile_l1": 6.254526139330786e-06,
+      "profile_l1": {
+        "0": 0.0,
+        "129600": 6.235944505975091e-06,
+        "14400": 6.189918775343976e-06,
+        "172800": 6.254526139330786e-06,
+        "1800": 5.1456962988363074e-06,
+        "28800": 6.195420873904423e-06,
+        "3600": 5.912122330480182e-06,
+        "43200": 6.200970310197338e-06,
+        "7200": 6.170900354716108e-06,
+        "86400": 6.218151147322194e-06
+      },
+      "status": "PASS"
+    },
+    "L1_vs_L2_low": {
+      "cumulative_uptake_relative_difference": 0.6562069705917112,
+      "max_profile_l1": 0.015457589939943566,
+      "profile_l1": {
+        "0": 2.0551071119329885e-16,
+        "129600": 0.011483359454791474,
+        "14400": 0.001243522215143758,
+        "172800": 0.015457589939943566,
+        "1800": 0.0001548079667709664,
+        "28800": 0.002495269181151291,
+        "3600": 0.0003099640769354234,
+        "43200": 0.0037550392159778536,
+        "7200": 0.0006206506040532532,
+        "86400": 0.007582704754969641
+      },
+      "status": "FAIL"
+    }
+  },
+  "contract_sha256": "2094aed3c8ef21a257d2c597352793384d01a1efc3d72936d5c5108d308f8804",
+  "executable": {
+    "path": "C:\\b\\BMX-shadow-handoff-20260721\\build-c10-native-release-definitive\\bmx.exe",
+    "sha256": "8efdf36d3e8cbd022b5a3dbc4e3d5b54889cee8a2fcf90410387bf5f3ae6c4df"
+  },
+  "measured_48h_contrast_at_L2": {
+    "high_cumulative_uptake_mol": 2.5536509101848885e-12,
+    "high_over_low_cumulative_uptake": 1.723004348602396,
+    "low_cumulative_uptake_mol": 1.482091970491117e-12
+  },
+  "runs": {
+    "L0_high": {
+      "checks": {
+        "all_o10_ledgers_recorded": true,
+        "all_observations_present": true,
+        "all_updates_recorded": true,
+        "conservation": true,
+        "exit_zero": true,
+        "field_positivity": true
+      },
+      "field_minimum": 4.4534526264451815e-08,
+      "final": {
+        "accepted": 2.6597608259246467e-14,
+        "area": 5.105088062083415e-06,
+        "cum_accepted": 2.5537650344849064e-12,
+        "cum_area_time": 0.8821592171280158,
+        "cum_rejected": 0.0,
+        "cum_requested": 2.5537650344849064e-12,
+        "min_scale": 1.0,
+        "rejected": 0.0,
+        "requested": 2.6597608259246467e-14,
+        "update": 96
+      },
+      "final_ledger": {
+        "boundary": "O10_POST_UPDATE_LEDGER",
+        "internal_d": 2.5537650344849064e-12,
+        "internal_e": 0.0,
+        "internal_f": 0.0,
+        "mesh_d": 1.7824620834051695e-10,
+        "residual": 6.979336418416171e-25,
+        "tolerance": 3.61599946750003e-20
+      },
+      "status": "PASS",
+      "wall_s": 2.364053799999965
+    },
+    "L0_low": {
+      "checks": {
+        "all_o10_ledgers_recorded": true,
+        "all_observations_present": true,
+        "all_updates_recorded": true,
+        "conservation": true,
+        "exit_zero": true,
+        "field_positivity": true
+      },
+      "field_minimum": 1.546030777344664e-08,
+      "final": {
+        "accepted": 2.5542415206884e-14,
+        "area": 5.105088062083415e-06,
+        "cum_accepted": 2.454928699524046e-12,
+        "cum_area_time": 0.8821592171280158,
+        "cum_rejected": 0.0,
+        "cum_requested": 2.454928699524046e-12,
+        "min_scale": 1.0,
+        "rejected": 0.0,
+        "requested": 2.5542415206884e-14,
+        "update": 96
+      },
+      "final_ledger": {
+        "boundary": "O10_POST_UPDATE_LEDGER",
+        "internal_d": 2.454928699524047e-12,
+        "internal_e": 0.0,
+        "internal_f": 0.0,
+        "mesh_d": 6.194506181679273e-11,
+        "residual": -5.816113682013476e-25,
+        "tolerance": 1.2879998103263411e-20
+      },
+      "status": "PASS",
+      "wall_s": 2.700451200002135
+    },
+    "L1_high": {
+      "checks": {
+        "all_o10_ledgers_recorded": true,
+        "all_observations_present": true,
+        "all_updates_recorded": true,
+        "conservation": true,
+        "exit_zero": true,
+        "field_positivity": true
+      },
+      "field_minimum": 4.4505126013191434e-08,
+      "final": {
+        "accepted": 1.3298589248476415e-14,
+        "area": 5.105088062083415e-06,
+        "cum_accepted": 2.553726411858088e-12,
+        "cum_area_time": 0.8821592171280116,
+        "cum_rejected": 0.0,
+        "cum_requested": 2.553726411858088e-12,
+        "min_scale": 1.0,
+        "rejected": 0.0,
+        "requested": 1.3298589248476415e-14,
+        "update": 192
+      },
+      "final_ledger": {
+        "boundary": "O10_POST_UPDATE_LEDGER",
+        "internal_d": 2.5537264118580883e-12,
+        "internal_e": 0.0,
+        "internal_f": 0.0,
+        "mesh_d": 1.78246246963173e-10,
+        "residual": 2.6082038689562654e-23,
+        "tolerance": 3.615999467500361e-20
+      },
+      "status": "PASS",
+      "wall_s": 7.457232199998543
+    },
+    "L1_low": {
+      "checks": {
+        "all_o10_ledgers_recorded": true,
+        "all_observations_present": true,
+        "all_updates_recorded": true,
+        "conservation": true,
+        "exit_zero": true,
+        "field_positivity": true
+      },
+      "field_minimum": 1.5432139861987827e-08,
+      "final": {
+        "accepted": 1.2769630743136665e-14,
+        "area": 5.105088062083415e-06,
+        "cum_accepted": 2.4546510525853926e-12,
+        "cum_area_time": 0.8821592171280116,
+        "cum_rejected": 0.0,
+        "cum_requested": 2.4546510525853926e-12,
+        "min_scale": 1.0,
+        "rejected": 0.0,
+        "requested": 1.2769630743136665e-14,
+        "update": 192
+      },
+      "final_ledger": {
+        "boundary": "O10_POST_UPDATE_LEDGER",
+        "internal_d": 2.454651052585391e-12,
+        "internal_e": 0.0,
+        "internal_f": 0.0,
+        "mesh_d": 6.19453394637598e-11,
+        "residual": 2.529363216822305e-23,
+        "tolerance": 1.2879998103266508e-20
+      },
+      "status": "PASS",
+      "wall_s": 7.6180325000023
+    },
+    "L2_high": {
+      "checks": {
+        "all_o10_ledgers_recorded": true,
+        "all_observations_present": true,
+        "all_updates_recorded": true,
+        "conservation": true,
+        "exit_zero": true,
+        "field_positivity": true
+      },
+      "field_minimum": 4.444536831707644e-08,
+      "final": {
+        "accepted": 6.64909255622887e-15,
+        "area": 5.105088062083415e-06,
+        "cum_accepted": 2.5536509101848885e-12,
+        "cum_area_time": 0.8821592171280088,
+        "cum_rejected": 0.0,
+        "cum_requested": 2.5536509101848885e-12,
+        "min_scale": 1.0,
+        "rejected": 0.0,
+        "requested": 6.64909255622887e-15,
+        "update": 384
+      },
+      "final_ledger": {
+        "boundary": "O10_POST_UPDATE_LEDGER",
+        "internal_d": 2.553650910184887e-12,
+        "internal_e": 0.0,
+        "internal_f": 0.0,
+        "mesh_d": 1.7824632246531532e-10,
+        "residual": 4.553112284221572e-22,
+        "tolerance": 3.615999467505451e-20
+      },
+      "status": "PASS",
+      "wall_s": 70.40317420000065
+    },
+    "L2_low": {
+      "checks": {
+        "all_o10_ledgers_recorded": true,
+        "all_observations_present": true,
+        "all_updates_recorded": true,
+        "conservation": true,
+        "exit_zero": true,
+        "field_positivity": true
+      },
+      "field_minimum": 1.566279604783249e-08,
+      "final": {
+        "accepted": 3.814929966312119e-15,
+        "area": 5.105088062083415e-06,
+        "cum_accepted": 1.482091970491117e-12,
+        "cum_area_time": 0.8821592171280088,
+        "cum_rejected": 9.73557376528791e-13,
+        "cum_requested": 2.4556493470199065e-12,
+        "min_scale": 0.5969698781537861,
+        "rejected": 2.5755599158747856e-15,
+        "requested": 6.390489882186905e-15,
+        "update": 384
+      },
+      "final_ledger": {
+        "boundary": "O10_POST_UPDATE_LEDGER",
+        "internal_d": 1.482091970491115e-12,
+        "internal_e": 0.0,
+        "internal_f": 0.0,
+        "mesh_d": 6.291789854611489e-11,
+        "residual": 3.045575617843679e-22,
+        "tolerance": 1.2879998103290746e-20
+      },
+      "status": "PASS",
+      "wall_s": 69.43580790000124
+    }
+  },
+  "saturation_prediction": {
+    "concentration_ratio_high_over_low": 2.8074534161490687,
+    "fractions": {
+      "high": 0.9783370399706305,
+      "low": 0.9414738288667758
+    },
+    "initial_flux_ratio_high_over_low": 1.039154791108985
+  },
+  "selected_production_level": null,
+  "status": "FAIL"
+}

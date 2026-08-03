@@ -1,0 +1,168 @@
+{
+  "artifact_type": "P15_BONDED_D_TRANSPORT_CONTRACT",
+  "schema": "bmx-p15-bonded-d-transport-v1",
+  "contract_id": "UDC-20260802-C13-BONDED-D-V1",
+  "stage": "C13/P15 Stage 0",
+  "classification": "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+  "status": "CLOSED_USER_ADOPTED_FOR_RG_SW_IMPLEMENTATION",
+  "frozen_before_product_implementation": true,
+  "artifact_sha256_binding": "The adjacent BONDED_D_TRANSPORT_CONTRACT_V1.sha256 is the SHA-256 of these exact JSON bytes.",
+  "authority": {
+    "source_kind": "user-attached binding adopted by explicit read-and-act request",
+    "source_path_at_adoption": "C:/Users/Shadow/.codex/attachments/3186333f-00d2-46e0-863c-36290cc3dc47/pasted-text.txt",
+    "source_sha256": "cbd1eedddf31b94c8a9d23d7b2d3329f065a007824387c70435d1004fdc6f350",
+    "source_size_bytes": 40449,
+    "source_line_count": 1272,
+    "mentor_approval": false,
+    "calibration": false,
+    "closed_scientific": false,
+    "predictive_validation": false
+  },
+  "operator_fit": {
+    "global_order_id": "bmx-p10-global-order-v1",
+    "global_order_sha256": "bb63c219a860687d91ce1acf06a667c9208abf026b32f18acfc64884bb696dd6",
+    "slot": "O07_BONDED_TRANSPORT",
+    "global_order_changed": false,
+    "frozen_kernel_path": "src/chemistry/bmx_chem_K.H",
+    "frozen_kernel_sha256": "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02",
+    "frozen_kernel_changed": false,
+    "legacy_evaluate_exchange_used_for_D": false
+  },
+  "state_scope": {
+    "mobile_state": "P_D",
+    "changed_state": ["particle P_D amount"],
+    "exact_identities": [
+      "particle P_E",
+      "particle P_F",
+      "structural P",
+      "mesh fields",
+      "A/B/C particle pools",
+      "bootstrap A ledger",
+      "exchange-derived A ledger",
+      "geometry",
+      "topology"
+    ],
+    "P_E_bonded_transport": 0.0,
+    "P_F_bonded_transport": 0.0
+  },
+  "coefficient": {
+    "symbol": "D_bond",
+    "units": "cm^2/s",
+    "allowed_values": [0.0, 1.25e-7, 1.25e-6, 1.25e-5],
+    "provisional_centre": 1.25e-6,
+    "forbidden_mappings": [
+      "legacy cm/s membrane-transfer parameter",
+      "mesh-spacing factor",
+      "centre-to-centre Euclidean distance",
+      "mechanical gap",
+      "extra empirical bond length"
+    ]
+  },
+  "segment_state": {
+    "cross_section_area": "A_i = pi*r_i^2",
+    "concentration": "C_i = N_D_i/V_i",
+    "length": "L_i is positive physical centreline length",
+    "volume": "V_i is positive owning segment volume",
+    "amount": "N_D_i is extensive exchangeable elemental-P amount"
+  },
+  "ports_and_junctions": {
+    "port_key": ["particle_id", "cpu_id", "endpoint_site"],
+    "equivalence": "Transitive closure of valid reciprocal endpoint-bond records forms one zero-length junction.",
+    "junction_key": "Lexicographically smallest port key in the equivalence class.",
+    "free_endpoint": "No transport junction and no bonded transfer.",
+    "canonical_order": "Sort junctions by junction key and ports lexicographically; evaluate each unordered distinct-port pair exactly once.",
+    "pre_mutation_abort_conditions": [
+      "missing reciprocal bond",
+      "disagreeing reciprocal site metadata",
+      "duplicate bond record",
+      "invalid endpoint site",
+      "inconsistent particle identity",
+      "nonfinite or nonpositive radius",
+      "nonfinite or nonpositive centreline length",
+      "nonfinite or nonpositive owning volume",
+      "nonfinite concentration",
+      "nonfinite conductance",
+      "nonfinite D amount",
+      "negative D amount beyond frozen numerical tolerance"
+    ]
+  },
+  "conductance": {
+    "port_half_segment": "gamma_p = 2*D_bond*A_i/L_i",
+    "port_half_segment_units": "cm^3/s",
+    "junction_sum": "Gamma_J = sum_{p in J}(gamma_p)",
+    "virtual_pair": "G_pq^J = gamma_p*gamma_q/Gamma_J",
+    "virtual_pair_units": "cm^3/s",
+    "same_segment_ports": "Their concentration difference is exactly zero and transfer is exactly zero.",
+    "degree_two_reduction": "G_ij = D_bond/(L_i/(2*A_i) + L_j/(2*A_j))",
+    "branch_rule": "Degree-three-or-higher junctions use junction elimination; independent degree-two formulas that duplicate a shared half-segment resistance are prohibited."
+  },
+  "explicit_update": {
+    "common_snapshot": true,
+    "requested_pair_amount": "q_pq = G_pq^J*(C_p-C_q)*delta_t",
+    "positive_direction": "Positive q_pq transfers from p's segment to q's segment.",
+    "diagonal_rate": "a_i = (1/V_i)*sum(G_pq^J incident on segment i and a different segment)",
+    "global_rate": "a_max = MPI global max_i(a_i) after rejecting nonfinite values",
+    "stability_bound": 0.25,
+    "substeps": "m = max(1,ceil(Delta_t*a_max/0.25)); increment m until (Delta_t/m)*a_max <= 0.25; delta_t=Delta_t/m",
+    "within_O07_fixed": ["topology", "geometry", "owning volumes", "conductances"],
+    "refreshed_after_each_substep": ["P_D amounts", "P_D concentrations"],
+    "no_new_extremum_requirement": true
+  },
+  "donor_arbitration": {
+    "outgoing_request": "R_i = sum of absolute requested q over every virtual pair for which i is donor from the common snapshot",
+    "scale_zero_request": "s_i = 1 when R_i = 0",
+    "scale_positive_request": "s_i = min(1,N_D_i/R_i) when R_i > 0",
+    "pair_acceptance": "Multiply each pair request by its donor segment's scale.",
+    "commit": "Accumulate all accepted pair debits and credits from the common snapshot and apply simultaneously and atomically.",
+    "pair_conservation": "Every accepted pair debit equals its pair credit.",
+    "ledger_fields": ["requested", "accepted", "rejected", "gross_absolute_accepted"],
+    "order_independence": ["rank", "tile", "particle iteration", "junction order after canonicalization", "bond-list order"]
+  },
+  "cap_policy": {
+    "roundoff_limit": "1-s_i <= 64*epsilon_binary64",
+    "material_activation": "1-s_i > 64*epsilon_binary64",
+    "material_activation_result": "hard qualification failure BONDED_D_CAP_ACTIVATED",
+    "only_exemption": "dedicated proportional-cap fault-injection fixture",
+    "rejected_amount": "record separately and never omit from the ledger"
+  },
+  "zero_coefficient": {
+    "behavior": "exact identity",
+    "evaluate_junction_formula": false,
+    "write_D_amounts": false,
+    "write_transport_ledgers": false,
+    "zero_over_zero_permitted": false
+  },
+  "representation_refinement": {
+    "scope": "straight collinear unchanged-radius subdivision with the same physical union",
+    "amount_partition": "by owning volume",
+    "external_connectivity": "preserved",
+    "inserted_endpoints": "zero-length degree-two junctions",
+    "artificial_exposed_endcaps": false,
+    "axial_resistance_identity": "L/(D_bond*A) = sum_k(L_k/(D_bond*A))",
+    "required_properties": [
+      "global D amount unchanged",
+      "constant concentration gives exactly zero transfer before and after subdivision",
+      "steady conductance between unchanged external endpoints unchanged",
+      "affine concentration at child control-volume centres gives the same physical steady flux",
+      "canonical transport ledgers remain globally conservative"
+    ],
+    "required_subdivisions": [2, 4, 8],
+    "prohibited_claim": "arbitrary transient particle-by-particle identity after subdivision"
+  },
+  "required_fixtures": [
+    "unequal-radius unequal-length degree-two conductance",
+    "degree-three junction elimination",
+    "degree-four junction elimination",
+    "two-segment exponential-equilibration convergence",
+    "exact D_bond=0 identity",
+    "pairwise and global conservation",
+    "positivity and no-new-extremum",
+    "proportional donor arbitration",
+    "deliberate cap fault injection",
+    "MPI/decomposition-independent canonical junction construction",
+    "constant-field refinement identity",
+    "affine steady-flux refinement identity",
+    "additive resistance for 1-to-2, 1-to-4, and 1-to-8 subdivision"
+  ],
+  "claim_boundary": "Conservative RG-SW graph-diffusion implementation contract only; not mentor approval, biological calibration, predictive validation, or evidence that the adopted coefficient is biologically correct."
+}

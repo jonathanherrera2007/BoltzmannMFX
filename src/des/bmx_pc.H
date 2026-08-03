@@ -219,6 +219,18 @@ public:
 
     virtual ~BMXParticleContainer () {};
 
+    // C08/P10 interception seam. These intentionally hide the non-virtual
+    // inherited entry points so every product call checks for prohibited
+    // deletion or nonperiodic loss before pinned AMReX can invalidate state.
+    void Redistribute (int lev_min = 0, int lev_max = -1,
+                       int nGrow = 0, int local = 0);
+    void Regrid (const amrex::DistributionMapping& dmap,
+                 const amrex::BoxArray& ba);
+    void Regrid (const amrex::DistributionMapping& dmap,
+                 const amrex::BoxArray& ba, int lev);
+    void Regrid (const amrex::Vector<amrex::DistributionMapping>& dmap,
+                 const amrex::Vector<amrex::BoxArray>& ba);
+
     void InitData ();
 
     void InitParticlesAscii (const std::string& file);
@@ -234,6 +246,8 @@ public:
 
     Real computeParticleVolume () const;
 
+    Real computeParticleArea () const;
+
     Real computeParticleContent (int comp) const;
 
     void AllocData ();
@@ -244,6 +258,8 @@ public:
                           const amrex::Vector<amrex::MultiFab *> cost,
                           std::string & knapsack_weight_type,
                           int & nsubsteps);
+    void AuditP11GeometryEvents (int update_id);
+    void ApplyP14Export (int update_id, amrex::Real dt);
     void ParticleExchange (Real dt,
                            const amrex::Vector<amrex::MultiFab*> cost,
                            std::string& knapsack_weight_type,
@@ -292,6 +308,15 @@ public:
     int nlev;
     int finest_level;
     bool reset_neighborhood;
+
+    // C09 operational counters are reset for each EvolveParticles update and
+    // emitted with the once-per-update final geometry event record.  They are
+    // diagnostics only and never alter chemistry, export, reward, or topology.
+    amrex::Long p11_attempted_penetrations = 0;
+    amrex::Long p11_projected_motions = 0;
+    amrex::Long p11_tangential_motions = 0;
+    amrex::Long p11_rejected_growth = 0;
+    int p11_last_audit_update = -1;
 
     amrex::IntVect m_sorting_bin = amrex::IntVect::TheZeroVector();
 

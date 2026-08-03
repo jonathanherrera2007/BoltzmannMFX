@@ -1,0 +1,110 @@
+{
+  "artifact_type": "C07_SEMANTIC_FEATURE_OFF_FOLLOWUP",
+  "finding": "REVIEW-C07-001",
+  "status": "PASS",
+  "particle_ascii_precision_digits": 15,
+  "method": "exact comparison of every G1/G4 particle dump across the 46-real P07 and 52-real C07 ABIs for topology, geometry, and the first six values in each chemistry block; exact-zero audit of C07 slots 6/7 in all three blocks",
+  "p07_executable": {
+    "path": "C:\\Users\\Shadow\\Documents\\Codex\\BMX-RG-SW\\build\\c04-p07-release\\bmx.exe",
+    "sha256": "64b9aaccd6a97599e8bb0df17640018e89533ed7627e947800ae33b0426bef7c"
+  },
+  "c07_executable": {
+    "path": "C:\\b\\BMX-shadow-handoff-20260721\\build-c07-native-release\\bmx.exe",
+    "sha256": "f86889fc0def576f520340c91f14847aed7f2facf0362349852b1e259bcb1b67"
+  },
+  "case_dir": "C:\\b\\BMX-shadow-handoff-20260721\\BMX-RG-SW-C07-product\\exec\\fungi",
+  "raw_run_root": "C:\\b\\BMX-shadow-handoff-20260721\\runs\\c07-semantic-feature-off-20260801-01",
+  "fixtures": [
+    {
+      "id": "G1_tip_length_only",
+      "engineering_overrides": [
+        "bmx.max_step=40"
+      ],
+      "target_branch": "TIP_LENGTH_ONLY",
+      "target_branch_count": 76,
+      "split_or_new_particle_events": 2,
+      "p07_exit": 0,
+      "c07_exit": 0,
+      "p07_particle_storage_components": [
+        6
+      ],
+      "c07_particle_storage_components": [
+        8
+      ],
+      "c07_reserved_slot_audit": {
+        "observations": 474,
+        "nonzero": 0,
+        "max_abs": 0.0
+      },
+      "trajectory": {
+        "baseline_dumps": 41,
+        "c07_dumps": 41,
+        "dumps_compared": 41,
+        "particle_records_compared": 79,
+        "differing_values": 0,
+        "fields_differing": [],
+        "max_relative_difference": 0.0,
+        "first_difference": null,
+        "identical": true
+      },
+      "checks": {
+        "both_exits_zero": true,
+        "baseline_layout_is_6": true,
+        "c07_layout_is_8": true,
+        "target_branch_exercised": true,
+        "split_exercised_when_required": true,
+        "semantic_trajectory_identical": true,
+        "c07_reserved_slots_observed": true,
+        "c07_reserved_slots_exact_zero": true
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "G4_nontip_rejected",
+      "engineering_overrides": [
+        "bmx.max_step=30",
+        "chem_species.max_seg_length=6.0e-4",
+        "chem_species.seg_split_length=3.0e-4"
+      ],
+      "target_branch": "NONTIP_REJECTED",
+      "target_branch_count": 188,
+      "split_or_new_particle_events": 19,
+      "p07_exit": 0,
+      "c07_exit": 0,
+      "p07_particle_storage_components": [
+        6
+      ],
+      "c07_particle_storage_components": [
+        8
+      ],
+      "c07_reserved_slot_audit": {
+        "observations": 2046,
+        "nonzero": 0,
+        "max_abs": 0.0
+      },
+      "trajectory": {
+        "baseline_dumps": 31,
+        "c07_dumps": 31,
+        "dumps_compared": 31,
+        "particle_records_compared": 341,
+        "differing_values": 0,
+        "fields_differing": [],
+        "max_relative_difference": 0.0,
+        "first_difference": null,
+        "identical": true
+      },
+      "checks": {
+        "both_exits_zero": true,
+        "baseline_layout_is_6": true,
+        "c07_layout_is_8": true,
+        "target_branch_exercised": true,
+        "split_exercised_when_required": true,
+        "semantic_trajectory_identical": true,
+        "c07_reserved_slots_observed": true,
+        "c07_reserved_slots_exact_zero": true
+      },
+      "status": "PASS"
+    }
+  ],
+  "claim_boundary": "engineering feature-off semantic regression with branch-forcing values; not release-host evidence and not scientific validation"
+}

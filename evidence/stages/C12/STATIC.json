@@ -1,0 +1,66 @@
+{
+  "artifact_type": "C12_STATIC_GATE",
+  "stage": "C12/P14",
+  "generated": "2026-08-02",
+  "status": "PASS_TO_BLOCKER_BOUNDARY",
+  "stage_base_commit": "5afe3298823011a3506d3799ccdbe815f162a227",
+  "stage_base_tree": "4ff25357439e103074e5a4ac07c59c9a1dd133e2",
+  "stage_base_src_tree": "ef72f6930912a57e95a942dd7742a8584d7bc684",
+  "c11_implementation_src_tree": "ef72f6930912a57e95a942dd7742a8584d7bc684",
+  "source_changes_since_stage_base": [],
+  "checks": [
+    {
+      "id": "stage_branch",
+      "status": "PASS",
+      "observed": "rgsw/c12-p14"
+    },
+    {
+      "id": "source_tree_unchanged_from_c11",
+      "status": "PASS",
+      "observed": "ef72f6930912a57e95a942dd7742a8584d7bc684"
+    },
+    {
+      "id": "frozen_kernel_sha256",
+      "status": "PASS",
+      "observed": "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02"
+    },
+    {
+      "id": "global_operator_order_sha256",
+      "status": "PASS",
+      "observed": "bb63c219a860687d91ce1acf06a667c9208abf026b32f18acfc64884bb696dd6"
+    },
+    {
+      "id": "adopted_v2_attachment_byte_identity",
+      "status": "PASS",
+      "observed": "34e8414c09e6528fc86399ceb4902cb5fc6907d9562fcf7a78cb3a8e4e333066"
+    },
+    {
+      "id": "p11_geometry_contract_sha256",
+      "status": "PASS",
+      "observed": "6a4329f013c857c664a11d669747845006a6c0c9d34f568625b6939d1462acba"
+    },
+    {
+      "id": "verified_p14_inventory_sha256",
+      "status": "PASS",
+      "observed": "5790530a273d5d4c4e3bb28f0744020cc61ce8d89b306b722c687634c981d751"
+    },
+    {
+      "id": "p14_fits_existing_o09",
+      "status": "PASS",
+      "observed": "contracts/p14/OPERATOR_FIT_V1.json@72193a1034d4148d167f059c347053d2206fa580cce9a156ec705304e7f378e7"
+    },
+    {
+      "id": "prototype_literals_promoted",
+      "status": "PASS",
+      "observed": false
+    },
+    {
+      "id": "later_stage_behavior_present",
+      "status": "PASS",
+      "observed": false
+    }
+  ],
+  "check_count": 10,
+  "out_of_scope_paths": [],
+  "qualification_boundary": "Static identity and scope checks only. P14 implementation and runtime qualification are blocked before source edit."
+}

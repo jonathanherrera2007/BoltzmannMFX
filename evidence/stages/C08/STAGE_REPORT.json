@@ -1,0 +1,119 @@
+{
+  "artifact_type": "C08_STAGE_REPORT",
+  "stage": "C08",
+  "status": "PASS",
+  "input": {
+    "original_c08_commit": "2e7bb249fecdd4c0764190b3e0ee3ee26f29f0d3",
+    "authority_resume_commit": "d75dfe264c3b5ede102334fc2fc55dd773d6c621",
+    "branch": "rgsw/c08-p10"
+  },
+  "writer": {
+    "identity": "Codex",
+    "sole_product_branch_writer": true,
+    "independent_reviewer_for_authored_bytes": false
+  },
+  "authority": {
+    "approval_id": "UDC-20260801-P10-U01",
+    "scope": "P10-U01 for RG-SW C08 only",
+    "reconciliation_status": "CLOSED_USER_ADOPTED",
+    "mentor_or_independent_scientific_approval": false,
+    "later_source_sections_ingested": false,
+    "redistribution_wrapper_grant_record": "evidence/stages/C08/USER_APPROVAL.md",
+    "wall_projection_or_sliding_authorized": false,
+    "c09_or_later_authorized": false
+  },
+  "qualified_source": {
+    "commit": "a33e37749450432fb15c1021fc554a26f4e3fc7d",
+    "tree": "333613990076476707f7e8aa82b1119e2d9a3f58",
+    "dirty_before_evidence_outputs": false
+  },
+  "frozen_identities": {
+    "chemistry_kernel_sha256": "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02",
+    "amrex_commit": "cbdc6580ee3d78cccdd37172e4ba077ee181f483",
+    "amrex_tree": "fb714dc6e693c18f7c441d1d1febe4a5e8bf9ea6",
+    "topology_contract_sha256": "a6a5a8a8d299ee3e0cfc30f6d359d84ed13fb9872db7cf51bfb38777b800bdfb",
+    "operator_order_sha256": "bb63c219a860687d91ce1acf06a667c9208abf026b32f18acfc64884bb696dd6",
+    "operator_review_sha256": "c033b950fc83c21b05ff9a7243d34c82b18e8f389916bd8dc9b4c9834e8d778a",
+    "global_ledger_schema_sha256": "23b0593ae3c07fbe6c20a4994226f2dce0f81af60a53b4ba91d3fa0f26c5a95b",
+    "decision_reconciliation_sha256": "de467a9be4c67d165e9c9f1f82bae727bfce5f4d6251aa5dd3be25c1e200ec0b"
+  },
+  "independent_review": {
+    "review_id": "IR-20260801-P10-U02",
+    "target": "contracts/p10/OPERATOR_ORDER_V1.json",
+    "target_sha256": "bb63c219a860687d91ce1acf06a667c9208abf026b32f18acfc64884bb696dd6",
+    "verdict": "APPROVE_OPERATOR_ORDER_WITH_CORRECTIONS",
+    "operator_order_approved": true,
+    "operator_sequence_change_required": false,
+    "operator_order_bytes_changed_after_review": false,
+    "all_required_corrections_resolved": true,
+    "receipt": "evidence/stages/C08/INDEPENDENT_REVIEW.md",
+    "disposition": "evidence/stages/C08/REVIEW_DISPOSITION.json"
+  },
+  "build": {
+    "status": "PASS",
+    "configuration": "native Windows Release, MPI ON, OpenMP OFF, GPU backend NONE, C++17",
+    "embedded_provenance_clean": true,
+    "executable_size_bytes": 2487808,
+    "executable_sha256": "ab726982f693e1e873dc45bbcaa6e2f94cc9968852e9433f712a5bd06c1a700e",
+    "raw_log_sha256": "7c365a0980b9540088dcfd9346e23223c86da257d683711fe89f387fe535f974",
+    "cmake_cache_sha256": "03f2d09f1d1b6346971ba05edc9c3c9b0f75392768c776a7d65579de2296658e",
+    "strict_utf8_json_without_bom": true,
+    "evidence": "evidence/stages/C08/BUILD.json"
+  },
+  "tests": {
+    "clean_native_release_build": "PASS",
+    "amount_unit_floor_and_scaled_tolerance": "PASS",
+    "topology_amount_1_rank": "PASS",
+    "topology_amount_2_rank": "PASS",
+    "checkpoint_restart_1_rank": "PASS",
+    "checkpoint_restart_2_to_2": "PASS",
+    "checkpoint_restart_2_to_1": "PASS",
+    "checkpoint_corruptions": "PASS_11_OF_11",
+    "redistribution_guards_1_to_1": "PASS_4_OF_4",
+    "redistribution_guards_2_to_2": "PASS_4_OF_4",
+    "redistribution_guards_2_to_1": "PASS_4_OF_4",
+    "feature_off_semantic_g1_g4": "PASS",
+    "schema_runtime": "PASS_9_OF_9",
+    "static": "PASS_55_PATHS_ZERO_UNEXPECTED",
+    "git_diff_check": "PASS"
+  },
+  "review_corrections": {
+    "resolved": [
+      "F-10",
+      "F-9",
+      "F-7",
+      "F-8",
+      "F-11",
+      "F-1",
+      "F-3",
+      "F-4",
+      "F-5"
+    ],
+    "accepted_no_code_change": [
+      "F-2",
+      "F-6"
+    ],
+    "information_retained": [
+      "F-12"
+    ]
+  },
+  "blockers": [],
+  "closed_by_this_stage": [
+    "B-C08-03-INDEPENDENT-OPERATOR-ORDER-REVIEW",
+    "B-C08-04-REDISTRIBUTION-INTERCEPTION-AUTHORITY"
+  ],
+  "qualified_source_commit": "a33e37749450432fb15c1021fc554a26f4e3fc7d",
+  "final_evidence_commit": "b0cc13ac20ba307f4ff7e981d7cf36067aa4ba60",
+  "external_resources": "none",
+  "external_spend_usd": 0,
+  "c09_or_later_started": false,
+  "claims_prohibited": [
+    "reference-host or release qualification",
+    "calibrated or predictive biology",
+    "full-plate validity",
+    "RG-SW:GO",
+    "RG-SCI:GO",
+    "publication readiness",
+    "formal P05-P18 acceptance"
+  ]
+}

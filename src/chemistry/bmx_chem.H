@@ -9,13 +9,24 @@
 #include <AMReX.H>
 #include <AMReX_REAL.H>
 
+#include <bmx_chem_layout.H>
+
 /**
  * These two values need to be coordinated with the number of variables
  * defined in the realIdx and intIdx enumerations, plus the number of
  * variables in the undefined blocks */
-#define NUM_CHEM_COMPONENTS 5
-#define MAX_CHEM_REAL_VAR 28 + 3*NUM_CHEM_COMPONENTS
+#define NUM_MESH_CHEM_COMPONENTS_MAX BMXChemLayout::max_mesh_components
+#define NUM_PARTICLE_CHEM_COMPONENTS BMXChemLayout::particle_components
+// Compatibility alias consumed by the frozen chemistry kernel. It now names
+// the particle stride; mesh counts are always obtained separately.
+#define NUM_CHEM_COMPONENTS NUM_PARTICLE_CHEM_COMPONENTS
+#define MAX_CHEM_REAL_VAR (28 + BMXChemLayout::particle_blocks*NUM_PARTICLE_CHEM_COMPONENTS)
 #define MAX_CHEM_INT_VAR 35
+
+static constexpr int P_COMP = BMXChemLayout::P_D;
+static_assert(P_COMP == 5, "the frozen legacy P index must remain slot 5");
+static_assert(NUM_PARTICLE_CHEM_COMPONENTS == 8,
+              "P09 requires an eight-component particle chemistry stride");
 
 using amrex::Real;
 
@@ -213,6 +224,9 @@ class BMXChemistry
    */
   amrex::Gpu::DeviceVector<Real> getExchangeParameters();
 
+  /** Return deterministic initial values for the committed particle block. */
+  const std::vector<Real>& getParticleInitialConcentrations() const;
+
   /**
    * Return a vector containing parameters for segment fusion
    * @return vector of fusion parameters
@@ -246,9 +260,12 @@ class BMXChemistry
   static Real k5, kr5;   // rate coefficients for species C and D into E and A
   static Real k6, kr6;   // rate coefficients for species A into and out of bacterium
   static Real k7, kr7;   // rate coefficients for species C into and out of bacterium
+  static Real kP, krP;   // rate coefficients for inert P into and out of fungi
 
   static Real kg, kv;        // fungi growth coefficients
   static Real kb, kbv;       // bacterium growth coefficients
+  static Real p_growth_limit; // nonzero makes internal P cap fungal growth
+  static Real qP;             // internal P required per unit fungal volume growth
 
   static Real bacteria_radius_max;  // maximum value of radius for bacterium
   static Real radius_max;  // maximum value of cylinder radius for fungi segment
@@ -259,6 +276,7 @@ class BMXChemistry
   static Real mtA;  // Septum mass transfer coefficient for A
   static Real mtB;  // Septum mass transfer coefficient for B
   static Real mtC;  // Septum mass transfer coefficient for C
+  static Real mtP;  // Septum mass transfer coefficient for inert P
 
   int p_num_species; // Total number chemical species in model
   int p_num_ivals;   // Total number integer settings in model
@@ -267,6 +285,8 @@ class BMXChemistry
   static Real fusion_prob; // probability of segments fusing
   static Real max_fusion_separation; // maximum separtion when fusion can occur
   static Real scale_inc; // increment for increasing bond scaling parameter
+
+  static std::vector<Real> p_initial_concentrations;
 
   std::vector<int> p_int_vals; // stored values of integers
 

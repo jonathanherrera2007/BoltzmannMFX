@@ -1,0 +1,70 @@
+{
+  "artifact_type": "P15_STAGE0_AUTHORITY_BOUNDARY",
+  "contract_id": "bmx-p15-stage0-authority-boundary-v1",
+  "stage": "C13/P15 Stage 0",
+  "generated": "2026-08-02",
+  "status": "BLOCKED_SPECIFICATION_INCOMPLETE",
+  "classification": "USER_ADOPTED_PROVISIONAL_PENDING_MENTOR_OVERRIDE",
+  "frozen_before_any_c13_product_implementation": true,
+  "science_outcomes_executed": false,
+  "claim_boundary": "Specification-completeness boundary for RG-SW Stage 0 only; not mentor approval, calibration, CLOSED_SCIENTIFIC, predictive validation, RG-SCI progress, or authorization for a P15 science outcome.",
+  "input": {
+    "c12_status": "PASS",
+    "c12_report": "evidence/stages/C12V2/STAGE_REPORT.json",
+    "c12_input_commit": "7768fc92f683f68b0d282b69e45d079103fc847a",
+    "c12_input_tree": "b772bb974439aea3181257c109367a18136d1220",
+    "c12_input_src_tree": "10ba9b7703a5715a47919714f17d9b9f258c40f5",
+    "authority_source": "contracts/USER_ADOPTED_DECISION_CONTRACT_20260801_V2.txt",
+    "authority_source_sha256": "34e8414c09e6528fc86399ceb4902cb5fc6907d9562fcf7a78cb3a8e4e333066"
+  },
+  "unchanged_frozen_bytes": {
+    "global_operator_order": "contracts/p10/OPERATOR_ORDER_V1.json",
+    "global_operator_order_sha256": "bb63c219a860687d91ce1acf06a667c9208abf026b32f18acfc64884bb696dd6",
+    "frozen_chemistry_kernel": "src/chemistry/bmx_chem_K.H",
+    "frozen_chemistry_kernel_sha256": "9519fc24ec7ea15fe391c23eb1b3739e0ad399f22f58dc87c303306ad6ffba02",
+    "operator_order_change": false
+  },
+  "binding_inventory": {
+    "bound": [
+      "D is the only bonded-mobile phosphorus state; E has no bonded transport and every F transport coefficient is exactly zero",
+      "bonded transport occupies O07 after split and before fusion",
+      "the adopted bonded-D coefficient set is 0, 1.25e-7, 1.25e-6, and 1.25e-5 cm^2/s, with 1.25e-6 cm^2/s at the provisional centre",
+      "Stage 0 precedes every P15 science outcome and requires analytical bonded-transport and integrated grid/timestep qualification",
+      "the P15 centre uses full-surface uptake; terminal-zone modes remain required sensitivities and controls"
+    ],
+    "unbound": [
+      {
+        "blocker_id": "D-C13-01-BONDED-D-DISCRETIZATION",
+        "missing": "An exact conservative mapping from the adopted diffusivity in cm^2/s to a per-bond transferred amount, including the bond interface area, effective transport length or equivalent conductance, exactly-once pair ownership, simultaneous multi-bond donor arbitration/capping, and representation-refinement behavior.",
+        "why_required": "The inherited frozen expression is concentration difference times cross-sectional area times a coefficient times dt. That expression requires a cm/s mass-transfer velocity. Substituting a cm^2/s diffusivity yields mol*cm, not mol; converting diffusivity to velocity requires an unstated inverse-length factor."
+      },
+      {
+        "blocker_id": "D-C13-02-INTEGRATED-NUMERICAL-PREREGISTRATION",
+        "missing": "A prospective full-mechanism P15 Stage-0 numerical contract with exact nested grids and timesteps, comparison observables and formulas, limits, production-selection rule, fallback on no selectable level, and the required rank/thread/decomposition matrix.",
+        "why_required": "The exact C10 V2 levels and 2% uptake/5% profile gates are frozen for the hash-bound 48-hour uptake-only model. The P15 source requests at least three levels but does not bind the corresponding 216-hour all-mechanism schedule or acceptance comparators. AGENTS.md prohibits choosing final criteria after outcomes."
+      },
+      {
+        "blocker_id": "D-C13-03-TERMINAL-ZONE-GENERAL-TOPOLOGY",
+        "missing": "The terminal-zone graph-distance origin, partial-segment eligible-area rule, branch-tie handling, area-matched normalization, and representation-refinement behavior for evolving or branched P15 networks.",
+        "why_required": "D-C10-01 was resolved only for one hash-bound 0.003-cm fixed live-tip segment. The product currently fails closed for every topology that needs the missing general rule, while P15 requires terminal-zone sensitivities and full-surface-versus-terminal controls."
+      }
+    ]
+  },
+  "prohibited_defaults": [
+    "do not pass the adopted cm^2/s value directly to the inherited cm/s mass-transfer expression",
+    "do not infer an effective length from particle radius, segment length, centre distance, or a mesh spacing",
+    "do not weaken, silently reuse, or reinterpret C10 uptake-only convergence gates for the integrated 216-hour model",
+    "do not infer terminal-zone graph or partial-area semantics from the fixed-network C10 exception",
+    "do not modify OPERATOR_ORDER_V1.json or bmx_chem_K.H",
+    "do not execute a C13 science outcome"
+  ],
+  "resume_gate": {
+    "status": "BLOCKED",
+    "required_bindings": [
+      "exact bonded-D extensive transfer discretization and arbitration contract",
+      "exact integrated P15 Stage-0 numerical preregistration",
+      "exact general terminal-zone uptake geometry/area contract"
+    ],
+    "independent_numerical_review_required_before_claim-bearing_convergence_outcomes": true
+  }
+}

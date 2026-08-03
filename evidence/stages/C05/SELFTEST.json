@@ -1,0 +1,123 @@
+{
+  "cases": [
+    {
+      "case": "historical_failure_and_repaired_success",
+      "detail": "as predeclared",
+      "status": "PASS"
+    },
+    {
+      "case": "both_pass_no_difference_is_not_a_repair",
+      "detail": "as predeclared",
+      "status": "PASS"
+    },
+    {
+      "case": "both_fail_repaired_does_not_saturate",
+      "detail": "as predeclared",
+      "status": "PASS"
+    },
+    {
+      "case": "contradictory_repaired_exceeds_available",
+      "detail": "as predeclared",
+      "status": "PASS"
+    },
+    {
+      "case": "contradictory_branch_prediction_disagrees",
+      "detail": "as predeclared",
+      "status": "PASS"
+    },
+    {
+      "case": "contradictory_phosphorus_line_changed",
+      "detail": "as predeclared",
+      "status": "PASS"
+    },
+    {
+      "case": "contradictory_phosphorus_claim_present",
+      "detail": "as predeclared",
+      "status": "PASS"
+    },
+    {
+      "case": "contradictory_identity_mismatch",
+      "detail": "as predeclared",
+      "status": "PASS"
+    },
+    {
+      "case": "platform_only_difference_must_not_be_a_repair_effect",
+      "detail": "as predeclared",
+      "status": "PASS"
+    },
+    {
+      "case": "sweep_rows_are_not_platform_variance",
+      "detail": "as predeclared",
+      "status": "PASS"
+    },
+    {
+      "case": "single_platform_cannot_decide_attribution",
+      "detail": "as predeclared",
+      "status": "PASS"
+    },
+    {
+      "case": "difference_without_observed_branch_is_inconclusive",
+      "detail": "as predeclared",
+      "status": "PASS"
+    },
+    {
+      "case": "no_rejection_observed_is_inconclusive",
+      "detail": "as predeclared",
+      "status": "PASS"
+    },
+    {
+      "case": "saturation_just_inside_tolerance",
+      "detail": "as predeclared",
+      "status": "PASS"
+    },
+    {
+      "case": "saturation_just_outside_tolerance",
+      "detail": "as predeclared",
+      "status": "PASS"
+    },
+    {
+      "case": "missing_historical_member",
+      "detail": "as predeclared",
+      "status": "PASS"
+    },
+    {
+      "case": "missing_repaired_member",
+      "detail": "as predeclared",
+      "status": "PASS"
+    },
+    {
+      "case": "duplicate_member",
+      "detail": "as predeclared",
+      "status": "PASS"
+    },
+    {
+      "case": "extra_member_unknown_dimension",
+      "detail": "as predeclared",
+      "status": "PASS"
+    },
+    {
+      "case": "wrong_generation_source_chain",
+      "detail": "as predeclared",
+      "status": "PASS"
+    },
+    {
+      "case": "untraceable_derived_record",
+      "detail": "as predeclared",
+      "status": "PASS"
+    },
+    {
+      "case": "incomplete_derived_output",
+      "detail": "as predeclared",
+      "status": "PASS"
+    },
+    {
+      "case": "input_order_independence",
+      "detail": "12 shuffles produce byte-identical records",
+      "status": "PASS"
+    }
+  ],
+  "contract_id": "CON-P08-001",
+  "failures": [],
+  "status": "PASS",
+  "suite": "p08_selftest"
+}
